@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Locale, SiteDictionary } from "../lib/i18n";
-import { employeeIndexPath, getEmployeeCatalog } from "../lib/employee-content-engine";
+import { employeeIndexPath } from "../lib/employee-content-engine";
+import { getDiscoveryFilterOptions, getDiscoveryProfiles } from "../lib/employee-discovery";
+import { EmployeeCatalogExplorer } from "./employee-catalog-explorer";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -12,15 +14,11 @@ type EmployeeIndexPageProps = {
 const copy = {
   es: {
     eyebrow: "CATÁLOGO DE EMPLEADOS IA",
-    title: "Empleados IA especializados en trabajos reales de empresa.",
-    intro: "IA Empleado organiza capacidades de inteligencia artificial alrededor de funciones empresariales concretas. Cada perfil define qué trabajo asume, qué sistemas necesita, qué límites aplica y cuándo debe intervenir una persona.",
-    reference: "Suite de referencia",
-    referenceText: "Los cuatro perfiles siguientes forman la primera suite comercial de referencia y ya cuentan con contenido profundo público. El catálogo de producto identifica 22 oportunidades, que se publicarán por fases para no presentar como disponible lo que todavía pertenece al roadmap.",
-    discover: "Explorar perfiles",
-    department: "Departamento",
-    focus: "Foco",
-    ready: "Contenido profundo disponible",
-    next: "Ficha profunda en preparación",
+    title: "Encuentra el Empleado IA que encaja con el trabajo real de tu empresa.",
+    intro: "Explora el catálogo por departamento, sector, problema o tarea. La primera suite de referencia ya tiene contenido profundo; el resto se muestra como oportunidad de catálogo o, cuando corresponde, como uso restringido sujeto a revisión.",
+    discover: "Explorar los 22 perfiles",
+    reference: "Descubrimiento por necesidad",
+    referenceText: "No hace falta empezar sabiendo el nombre del empleado. Puedes partir del problema que quieres resolver —correo, facturas, pedidos, reservas, reporting o soporte— y ver qué perfiles están relacionados.",
     whyTitle: "Un catálogo no significa una colección de chatbots.",
     whyBody: "Los perfiles comparten una base de gobierno, herramientas, permisos, conocimiento y supervisión. Lo importante es que puedan combinarse en equipos y pasarse tareas de forma controlada cuando un proceso cruza varios departamentos.",
     architecture: [
@@ -34,15 +32,11 @@ const copy = {
   },
   en: {
     eyebrow: "AI EMPLOYEE CATALOG",
-    title: "AI Employees specialized in real business jobs.",
-    intro: "IA Empleado organizes AI capabilities around concrete business functions. Each profile defines the work it takes on, the systems it needs, its boundaries and when a person must intervene.",
-    reference: "Reference suite",
-    referenceText: "The four profiles below form the first commercial reference suite and now have deep public content. Product discovery identifies 22 opportunities, which will be published in phases so roadmap scope is not presented as already available.",
-    discover: "Explore profiles",
-    department: "Department",
-    focus: "Focus",
-    ready: "Deep content available",
-    next: "Deep profile in preparation",
+    title: "Find the AI Employee that fits the real work inside your company.",
+    intro: "Explore the catalog by department, sector, problem or task. The first reference suite already has deep public content; the rest is shown as catalog opportunities or, where appropriate, restricted use requiring review.",
+    discover: "Explore all 22 profiles",
+    reference: "Discover by business need",
+    referenceText: "You do not need to know the employee name first. Start from the problem you want to solve — email, invoices, orders, reservations, reporting or support — and see which profiles are related.",
     whyTitle: "A catalog does not mean a collection of chatbots.",
     whyBody: "Profiles share a governed foundation of tools, permissions, knowledge and supervision. The important part is that they can be composed into teams and hand work across roles in a controlled way when a process crosses departments.",
     architecture: [
@@ -58,20 +52,21 @@ const copy = {
 
 export function EmployeeIndexPage({ locale, dictionary }: EmployeeIndexPageProps) {
   const t = copy[locale];
-  const employees = getEmployeeCatalog(locale);
+  const profiles = getDiscoveryProfiles(locale);
+  const options = getDiscoveryFilterOptions(locale);
   const alternateHref = employeeIndexPath(locale === "es" ? "en" : "es");
   const homeHref = locale === "es" ? "/" : "/en";
 
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: t.reference,
-    numberOfItems: employees.length,
-    itemListElement: employees.map((employee, index) => ({
+    name: locale === "es" ? "Catálogo de Empleados IA" : "AI Employee catalog",
+    numberOfItems: profiles.length,
+    itemListElement: profiles.map((profile, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: employee.name,
-      ...(employee.href ? { url: `https://iaempleado.com${employee.href}` } : {}),
+      name: profile.name,
+      ...(profile.href ? { url: `https://iaempleado.com${profile.href}` } : {}),
     })),
   };
 
@@ -96,42 +91,19 @@ export function EmployeeIndexPage({ locale, dictionary }: EmployeeIndexPageProps
             <aside className="catalog-stat-card" aria-label={locale === "es" ? "Resumen del catálogo" : "Catalog summary"}>
               <span className="catalog-stat-number">22</span>
               <strong>{locale === "es" ? "perfiles identificados" : "identified profiles"}</strong>
-              <p>{locale === "es" ? "4 forman la primera suite de referencia pública." : "4 form the first public reference suite."}</p>
+              <p>{locale === "es" ? "4 perfiles profundos · 16 oportunidades de catálogo · 2 usos restringidos." : "4 deep profiles · 16 catalog opportunities · 2 restricted-use areas."}</p>
             </aside>
           </div>
         </section>
 
         <section className="content-section section-panel" id="perfiles" aria-labelledby="profiles-title">
           <div className="container">
-            <div className="section-heading">
+            <div className="section-heading catalog-discovery-heading">
               <p className="eyebrow">{t.reference}</p>
               <h2 id="profiles-title">{t.reference}</h2>
               <p>{t.referenceText}</p>
             </div>
-            <div className="employee-catalog-grid">
-              {employees.map((employee, index) => (
-                <article className="employee-catalog-card" key={employee.key}>
-                  <div className="employee-card-topline">
-                    <span className="employee-card-index">0{index + 1}</span>
-                    <span className={`employee-content-status ${employee.href ? "is-ready" : "is-next"}`}>
-                      {employee.href ? t.ready : t.next}
-                    </span>
-                  </div>
-                  <p className="employee-department">{employee.department}</p>
-                  <h3>{employee.shortName}</h3>
-                  <p className="employee-card-description">{employee.description}</p>
-                  <dl className="employee-card-meta">
-                    <div><dt>{t.department}</dt><dd>{employee.department}</dd></div>
-                    <div><dt>{t.focus}</dt><dd>{employee.focus}</dd></div>
-                  </dl>
-                  {employee.href ? (
-                    <Link className="employee-text-link" href={employee.href}>{employee.cardCta} <span aria-hidden="true">→</span></Link>
-                  ) : (
-                    <span className="employee-text-link is-disabled" aria-disabled="true">{employee.cardCta}</span>
-                  )}
-                </article>
-              ))}
-            </div>
+            <EmployeeCatalogExplorer locale={locale} profiles={profiles} options={options} />
           </div>
         </section>
 
