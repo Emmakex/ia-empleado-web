@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import "../light-theme.css";
 import "../employee-content.css";
+import "../employee-discovery.css";
 import { getDictionary } from "../../lib/i18n";
 
 const dictionary = getDictionary("es");

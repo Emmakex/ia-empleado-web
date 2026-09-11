@@ -35,6 +35,7 @@ It does **not** own:
 - [`docs/I18N_AND_MARKET_LOCALIZATION.md`](docs/I18N_AND_MARKET_LOCALIZATION.md) — EN/ES web localization and SEO contract.
 - [`docs/ANALYTICS_AND_CONSENT.md`](docs/ANALYTICS_AND_CONSENT.md) — privacy-safe analytics and consent baseline.
 - [`docs/PRODUCT_CONTEXT.md`](docs/PRODUCT_CONTEXT.md) — product facts and source documents that constrain public claims.
+- [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery, filtering, relationship and restricted-profile contract.
 
 ## Strategic narrative
 
@@ -95,17 +96,21 @@ Direct-to-`main` functional delivery is not the normal workflow.
 
 ## Current state
 
-**Web Phase 0 — Foundation:** implementation baseline complete. Hostinger/Next.js, engineering rules, EN/ES architecture, SEO/GEO information architecture, design-system foundation, privacy-safe analytics/consent baseline and CI are in place. Public production verification remains a release check whenever Hostinger publishes a new main revision.
+### Web Phase 0 — Foundation
 
-**Web Phase 1 — Core commercial shell:** implementation and repository validation complete through PR #4.
+Complete. Hostinger/Next.js, engineering rules, EN/ES architecture, SEO/GEO information architecture, design-system foundation, privacy-safe analytics/consent baseline and CI are in place.
 
-Phase 1 now includes:
+### Web Phase 1 — Core commercial shell
+
+Complete and production-verified.
+
+Includes:
 
 - global navigation and footer;
-- bilingual Spanish `/` and English `/en` homepage V1;
+- bilingual Spanish `/` and English `/en` homepage;
+- white-first visual system;
 - lightweight collaborative ecosystem animation using HTML/SVG/CSS;
 - Empleado IA → Equipo IA → Empresa aumentada narrative;
-- reference employee and team content;
 - collaborative workflow explanation;
 - before/after process comparison;
 - integrations and private-control narrative;
@@ -113,7 +118,48 @@ Phase 1 now includes:
 - sitemap and robots baseline;
 - visible FAQ plus matching structured data;
 - responsive, keyboard-focus and reduced-motion behavior;
-- automated EN/ES content-parity gate;
-- TypeScript and production build gates.
+- automated EN/ES content-parity, TypeScript and production-build gates.
 
-The next development phase is **Web Phase 2 — Employee content engine**, but it must not start until the deployed Phase 1 homepage is verified on Hostinger/`iaempleado.com`.
+### Web Phase 2A — Employee content engine
+
+Complete and production-verified.
+
+Includes:
+
+- reusable structured Employee content engine;
+- `/empleados-ia/` and `/en/ai-employees/` indexes;
+- first deep bilingual Reference Employee profile;
+- server-rendered SEO/GEO content structure;
+- canonical, hreflang, Service and FAQPage structured data;
+- sitemap integration.
+
+### Web Phase 2B — Reference Employee deep content
+
+Complete and production-verified on `iaempleado.com` on **2026-09-11**.
+
+Deep ES/EN profiles now exist for:
+
+1. Customer Support / Atención al Cliente;
+2. Administrative / Administrativo;
+3. Accounting & Billing / Contabilidad y Facturación;
+4. Sales / SDR / Comercial SDR.
+
+Each profile includes definition, tasks, workflow, integrations, collaboration, human-control boundaries, use cases, sectors, limitations, FAQ and conversion CTA.
+
+### Web Phase 2C — Employee catalog discovery
+
+In implementation.
+
+Phase 2C expands the catalog from four visible Reference Employees to the complete documented set of **22 opportunity profiles** while preserving truthful status boundaries.
+
+Target scope:
+
+- all 22 profiles discoverable from the canonical catalog index;
+- search plus filters by department, sector, business problem and task;
+- four deep Reference Employee links;
+- sixteen catalog-opportunity summaries without thin standalone pages;
+- two restricted/high-impact areas clearly gated: Recruitment Selection and Financial Decisions;
+- related-role ecosystem blocks on Reference Employee pages;
+- dedicated CI contract for profile count, taxonomy, restricted status and filter presence.
+
+After Phase 2C production verification, the next development phase is **Web Phase 3 — AI Teams**, starting with Sales, Ecommerce, Administration and Travel team compositions.
