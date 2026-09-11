@@ -6,7 +6,9 @@ import {
   getDetailedEmployeeRecords as getBaseDetailedEmployeeRecords,
   getEmployeeBySlug as getBaseEmployeeBySlug,
   getEmployeeCatalog as getBaseEmployeeCatalog,
+  type EmployeeAvailability,
   type EmployeeKey,
+  type LocalizedEmployeeDetail,
 } from "./employee-catalog";
 import {
   getSupplementalEmployeeBySlug,
@@ -15,6 +17,12 @@ import {
 } from "./reference-employee-details";
 
 export { employeeIndexPath };
+
+type DetailedEmployeeRecord = {
+  key: EmployeeKey;
+  availability: EmployeeAvailability;
+  detail: Record<Locale, LocalizedEmployeeDetail>;
+};
 
 export function employeeDetailPath(key: EmployeeKey, locale: Locale) {
   return supplementalEmployeeDetailPath(key, locale) ?? baseEmployeeDetailPath(key, locale);
@@ -30,9 +38,15 @@ export function getEmployeeBySlug(locale: Locale, slug: string) {
   return getBaseEmployeeBySlug(locale, slug) ?? getSupplementalEmployeeBySlug(locale, slug);
 }
 
-export function getDetailedEmployeeRecords() {
+export function getDetailedEmployeeRecords(): DetailedEmployeeRecord[] {
+  const baseRecords: DetailedEmployeeRecord[] = getBaseDetailedEmployeeRecords().flatMap((employee) =>
+    employee.detail
+      ? [{ key: employee.key, availability: employee.availability, detail: employee.detail }]
+      : [],
+  );
+
   return [
-    ...getBaseDetailedEmployeeRecords(),
+    ...baseRecords,
     ...supplementalEmployeeDetails.map((employee) => ({
       key: employee.key,
       availability: "reference" as const,
