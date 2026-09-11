@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Locale, SiteDictionary } from "../lib/i18n";
-import { employeeIndexPath, getEmployeeCatalog } from "../lib/employee-catalog";
+import { employeeIndexPath, getEmployeeCatalog } from "../lib/employee-content-engine";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -15,7 +15,7 @@ const copy = {
     title: "Empleados IA especializados en trabajos reales de empresa.",
     intro: "IA Empleado organiza capacidades de inteligencia artificial alrededor de funciones empresariales concretas. Cada perfil define qué trabajo asume, qué sistemas necesita, qué límites aplica y cuándo debe intervenir una persona.",
     reference: "Suite de referencia",
-    referenceText: "Los cuatro perfiles siguientes son la primera suite comercial de referencia. El catálogo de producto identifica 22 oportunidades, pero la publicación profunda se realiza por fases para no presentar como disponible lo que todavía pertenece al roadmap.",
+    referenceText: "Los cuatro perfiles siguientes forman la primera suite comercial de referencia y ya cuentan con contenido profundo público. El catálogo de producto identifica 22 oportunidades, que se publicarán por fases para no presentar como disponible lo que todavía pertenece al roadmap.",
     discover: "Explorar perfiles",
     department: "Departamento",
     focus: "Foco",
@@ -37,7 +37,7 @@ const copy = {
     title: "AI Employees specialized in real business jobs.",
     intro: "IA Empleado organizes AI capabilities around concrete business functions. Each profile defines the work it takes on, the systems it needs, its boundaries and when a person must intervene.",
     reference: "Reference suite",
-    referenceText: "The four profiles below form the first commercial reference suite. Product discovery identifies 22 opportunities, but deep public content is released in phases so the website does not present roadmap scope as already available.",
+    referenceText: "The four profiles below form the first commercial reference suite and now have deep public content. Product discovery identifies 22 opportunities, which will be published in phases so roadmap scope is not presented as already available.",
     discover: "Explore profiles",
     department: "Department",
     focus: "Focus",
