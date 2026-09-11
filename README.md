@@ -148,18 +148,19 @@ Each profile includes definition, tasks, workflow, integrations, collaboration, 
 
 ### Web Phase 2C — Employee catalog discovery
 
-In implementation.
+Implementation and repository validation complete through **PR #10**. Production verification on Hostinger remains the final release gate.
 
-Phase 2C expands the catalog from four visible Reference Employees to the complete documented set of **22 opportunity profiles** while preserving truthful status boundaries.
+Phase 2C now includes:
 
-Target scope:
-
-- all 22 profiles discoverable from the canonical catalog index;
-- search plus filters by department, sector, business problem and task;
+- all **22 opportunity profiles** discoverable from the canonical catalog index;
+- plain-language search;
+- filters by department, sector, business problem and task;
 - four deep Reference Employee links;
-- sixteen catalog-opportunity summaries without thin standalone pages;
+- sixteen catalog-opportunity summaries without thin standalone SEO pages;
 - two restricted/high-impact areas clearly gated: Recruitment Selection and Financial Decisions;
-- related-role ecosystem blocks on Reference Employee pages;
-- dedicated CI contract for profile count, taxonomy, restricted status and filter presence.
+- related-role ecosystem blocks on every deep Reference Employee page;
+- responsive catalog/discovery UI in ES and EN;
+- ItemList structured data aligned with the visible 22-profile catalog;
+- dedicated CI contract for profile count, taxonomy, restricted status, filter presence, EN/ES parity, TypeScript and production build.
 
 After Phase 2C production verification, the next development phase is **Web Phase 3 — AI Teams**, starting with Sales, Ecommerce, Administration and Travel team compositions.
