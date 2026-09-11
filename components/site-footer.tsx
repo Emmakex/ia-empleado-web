@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Locale, SiteDictionary } from "../lib/i18n";
 import { localeHref } from "../lib/i18n";
+import { employeeIndexPath } from "../lib/employee-catalog";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -8,13 +9,14 @@ type SiteFooterProps = {
 };
 
 export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
-  const anchors = ["#empleados", "#equipos", "#como-funciona", "#seguridad"];
+  const homeHref = localeHref(locale);
+  const links = [employeeIndexPath(locale), `${homeHref}#equipos`, `${homeHref}#como-funciona`, `${homeHref}#seguridad`];
 
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <Link className="brand brand-footer" href={localeHref(locale)} aria-label="IA Empleado">
+          <Link className="brand brand-footer" href={homeHref} aria-label="IA Empleado">
             <span className="brand-mark" aria-hidden="true">IA</span>
             <span>IA Empleado</span>
           </Link>
@@ -24,7 +26,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
           <p className="footer-heading">{dictionary.footer.product}</p>
           <ul className="footer-links">
             {dictionary.footer.links.slice(0, 2).map((label, index) => (
-              <li key={label}><a href={anchors[index]}>{label}</a></li>
+              <li key={label}><Link href={links[index]}>{label}</Link></li>
             ))}
           </ul>
         </div>
@@ -32,7 +34,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
           <p className="footer-heading">{dictionary.footer.resources}</p>
           <ul className="footer-links">
             {dictionary.footer.links.slice(2).map((label, index) => (
-              <li key={label}><a href={anchors[index + 2]}>{label}</a></li>
+              <li key={label}><Link href={links[index + 2]}>{label}</Link></li>
             ))}
           </ul>
         </div>

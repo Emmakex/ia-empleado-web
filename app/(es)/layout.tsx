@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import "../light-theme.css";
+import "../employee-content.css";
 import { getDictionary } from "../../lib/i18n";
 
 const dictionary = getDictionary("es");
@@ -26,10 +27,7 @@ export const metadata: Metadata = {
     title: dictionary.seo.ogTitle,
     description: dictionary.seo.ogDescription,
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
@@ -40,9 +38,5 @@ export const viewport: Viewport = {
 };
 
 export default function SpanishRootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html lang="es">
-      <body>{children}</body>
-    </html>
-  );
+  return <html lang="es"><body>{children}</body></html>;
 }
