@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale, SiteDictionary } from "../lib/i18n";
 import type { EmployeeKey, LocalizedEmployeeDetail } from "../lib/employee-catalog";
 import { alternateEmployeePath, employeeIndexPath } from "../lib/employee-content-engine";
+import { getRelatedDiscoveryProfiles } from "../lib/employee-discovery";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -24,6 +25,7 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
   const indexHref = employeeIndexPath(locale);
   const canonicalPath = locale === "es" ? `/empleados-ia/${content.slug}` : `/en/ai-employees/${content.slug}`;
   const contactSubject = encodeURIComponent(`IA Empleado - ${content.shortName}`);
+  const relatedProfiles = getRelatedDiscoveryProfiles(employeeKey, locale);
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -123,6 +125,40 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
             <div className="section-heading"><p className="eyebrow">{locale === "es" ? "COLABORACIÓN" : "COLLABORATION"}</p><h2 id="collaboration-title">{content.collaborationTitle}</h2><p>{content.collaborationIntro}</p></div>
             <div className="employee-collaboration-grid">
               {content.collaboration.map((item) => <article key={item.title}><span className="collaboration-dot" aria-hidden="true" /><h3>{item.title}</h3><p>{item.text}</p></article>)}
+            </div>
+          </div>
+        </section>
+
+        <section className="content-section section-panel" aria-labelledby="related-employees-title">
+          <div className="container">
+            <div className="section-heading">
+              <p className="eyebrow">{locale === "es" ? "ECOSISTEMA" : "ECOSYSTEM"}</p>
+              <h2 id="related-employees-title">{locale === "es" ? "Empleados IA relacionados con este proceso" : "AI Employees related to this process"}</h2>
+              <p>{locale === "es" ? "Los procesos reales suelen cruzar funciones. Estos perfiles son conexiones naturales para construir un equipo coordinado, no asistentes aislados." : "Real processes usually cross functions. These profiles are natural connections for building a coordinated team rather than isolated assistants."}</p>
+            </div>
+            <div className="related-employee-grid">
+              {relatedProfiles.map((profile) => (
+                <article key={profile.key} className={`related-employee-card status-${profile.status}`}>
+                  <span className={`employee-content-status is-${profile.status}`}>
+                    {profile.status === "reference"
+                      ? (locale === "es" ? "Perfil profundo" : "Deep profile")
+                      : profile.status === "restricted"
+                        ? (locale === "es" ? "Uso restringido" : "Restricted use")
+                        : (locale === "es" ? "Perfil de catálogo" : "Catalog profile")}
+                  </span>
+                  <p className="employee-department">{profile.department}</p>
+                  <h3>{profile.shortName}</h3>
+                  <p>{profile.focus}</p>
+                  {profile.href ? (
+                    <Link className="employee-text-link" href={profile.href}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link>
+                  ) : (
+                    <span className="employee-text-link is-disabled">{locale === "es" ? "Relacionado en el catálogo" : "Related catalog profile"}</span>
+                  )}
+                </article>
+              ))}
+            </div>
+            <div className="related-catalog-link">
+              <Link className="button button-ghost" href={indexHref}>{locale === "es" ? "Explorar los 22 perfiles" : "Explore all 22 profiles"}</Link>
             </div>
           </div>
         </section>
