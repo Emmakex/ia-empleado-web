@@ -33,6 +33,7 @@ It does **not** own:
 - [`docs/WEB_ECOSYSTEM_VISION.md`](docs/WEB_ECOSYSTEM_VISION.md) — collaborative ecosystem vision: Empleado IA → Equipo IA → Empresa aumentada, interactive experiences, SEO/GEO content system and website roadmap.
 - [`docs/ENGINEERING_RULES.md`](docs/ENGINEERING_RULES.md) — engineering contract adapted specifically to this commercial website.
 - [`docs/I18N_AND_MARKET_LOCALIZATION.md`](docs/I18N_AND_MARKET_LOCALIZATION.md) — EN/ES web localization and SEO contract.
+- [`docs/ANALYTICS_AND_CONSENT.md`](docs/ANALYTICS_AND_CONSENT.md) — privacy-safe analytics and consent baseline.
 - [`docs/PRODUCT_CONTEXT.md`](docs/PRODUCT_CONTEXT.md) — product facts and source documents that constrain public claims.
 
 ## Strategic narrative
@@ -71,6 +72,7 @@ The commercial site uses:
 - TypeScript;
 - server/static-first rendering for SEO-critical content;
 - progressive client-side interaction only where it materially improves explanation or conversion;
+- structured EN/ES content with automated parity validation;
 - GitHub Actions validation;
 - Hostinger Node.js/Next.js deployment.
 
@@ -93,13 +95,25 @@ Direct-to-`main` functional delivery is not the normal workflow.
 
 ## Current state
 
-The repository has completed its technical bootstrap:
+**Web Phase 0 — Foundation:** implementation baseline complete. Hostinger/Next.js, engineering rules, EN/ES architecture, SEO/GEO information architecture, design-system foundation, privacy-safe analytics/consent baseline and CI are in place. Public production verification remains a release check whenever Hostinger publishes a new main revision.
 
-- valid Next.js application baseline;
-- TypeScript configuration;
-- production build/start scripts;
-- GitHub Actions typecheck + build validation;
-- Hostinger deployment configuration;
-- canonical commercial, engineering, localization and ecosystem documentation.
+**Web Phase 1 — Core commercial shell:** implementation and repository validation complete through PR #4.
 
-The next implementation stage is **Web Phase 1 — Core commercial shell** as defined in `docs/WEB_ECOSYSTEM_VISION.md`.
+Phase 1 now includes:
+
+- global navigation and footer;
+- bilingual Spanish `/` and English `/en` homepage V1;
+- lightweight collaborative ecosystem animation using HTML/SVG/CSS;
+- Empleado IA → Equipo IA → Empresa aumentada narrative;
+- reference employee and team content;
+- collaborative workflow explanation;
+- before/after process comparison;
+- integrations and private-control narrative;
+- localized metadata, canonical and hreflang;
+- sitemap and robots baseline;
+- visible FAQ plus matching structured data;
+- responsive, keyboard-focus and reduced-motion behavior;
+- automated EN/ES content-parity gate;
+- TypeScript and production build gates.
+
+The next development phase is **Web Phase 2 — Employee content engine**, but it must not start until the deployed Phase 1 homepage is verified on Hostinger/`iaempleado.com`.
