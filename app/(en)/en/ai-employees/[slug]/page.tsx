@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { EmployeeDetailPage } from "../../../../../components/employee-detail-page";
-import { alternateEmployeePath, employeeDetailPath, getDetailedEmployeeRecords, getEmployeeBySlug } from "../../../../../lib/employee-catalog";
+import { alternateEmployeePath, employeeDetailPath, getDetailedEmployeeRecords, getEmployeeBySlug } from "../../../../../lib/employee-content-engine";
 import { getDictionary } from "../../../../../lib/i18n";
 
 const dictionary = getDictionary("en");
@@ -11,7 +11,7 @@ type PageProps = {
 };
 
 export function generateStaticParams() {
-  return getDetailedEmployeeRecords().map((employee) => ({ slug: employee.detail!.en.slug }));
+  return getDetailedEmployeeRecords().map((employee) => ({ slug: employee.detail.en.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
