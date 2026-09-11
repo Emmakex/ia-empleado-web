@@ -29,6 +29,9 @@ jobs:
       - name: EN/ES parity
         run: npm run i18n:check
 
+      - name: Reference employee content contract
+        run: node scripts/check-reference-employees.mjs
+
       - name: Typecheck
         run: npm run typecheck
 

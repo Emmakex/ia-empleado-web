@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { employeeDetailPath, getDetailedEmployeeRecords } from "../lib/employee-catalog";
+import { employeeDetailPath, getDetailedEmployeeRecords } from "../lib/employee-content-engine";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
