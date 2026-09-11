@@ -1,0 +1,136 @@
+{
+  "locale": "es",
+  "languageName": "Español",
+  "seo": {
+    "title": "IA Empleado | Equipos de Empleados IA para empresas",
+    "description": "Diseña equipos de Empleados IA especializados que colaboran entre sí, se conectan con tus sistemas y trabajan bajo políticas y supervisión humana.",
+    "ogTitle": "IA Empleado — un equipo digital que trabaja con tu empresa",
+    "ogDescription": "Empleados IA especializados, conectados y gobernados para automatizar procesos empresariales reales."
+  },
+  "nav": {
+    "employees": "Empleados IA",
+    "teams": "Equipos IA",
+    "how": "Cómo funciona",
+    "security": "Privacidad y control",
+    "faq": "Preguntas",
+    "cta": "Diseñar mi equipo IA",
+    "language": "EN"
+  },
+  "hero": {
+    "eyebrow": "EMPLEADOS IA QUE TRABAJAN EN EQUIPO",
+    "title": "Tu empresa. Un equipo de Empleados IA trabajando juntos.",
+    "description": "Automatiza operaciones reales con empleados digitales especializados que colaboran entre departamentos, utilizan tus sistemas y escalan las decisiones importantes a personas.",
+    "primaryCta": "Diseñar mi equipo IA",
+    "secondaryCta": "Ver cómo trabajan juntos",
+    "note": "Empieza por un proceso. Amplía hacia un equipo completo cuando tenga sentido.",
+    "visualLabel": "Flujo de trabajo coordinado",
+    "core": "IA Empleado",
+    "nodes": ["Atención al cliente", "Administración", "Contabilidad", "Comercial"],
+    "systems": ["CRM", "ERP", "Email", "Calendario"]
+  },
+  "principles": [
+    {"title": "Especializados", "text": "Cada Empleado IA tiene un trabajo definido, no un prompt genérico."},
+    {"title": "Conectados", "text": "Pueden trabajar con CRM, ERP, email, calendarios, ecommerce y documentos."},
+    {"title": "Gobernados", "text": "Permisos, políticas y aprobaciones humanas delimitan lo que pueden hacer."},
+    {"title": "Privados", "text": "La arquitectura está pensada para despliegues privados adaptados a cada empresa."}
+  ],
+  "definition": {
+    "eyebrow": "QUÉ ES IA EMPLEADO",
+    "title": "Más que un chatbot: una unidad de trabajo digital con función, herramientas y límites.",
+    "body": "Un Empleado IA representa un rol empresarial concreto. Recibe trabajo, consulta información autorizada, utiliza herramientas aprobadas, entrega resultados y pide intervención humana cuando una decisión supera su autoridad.",
+    "bullets": ["Rol y objetivos definidos", "Herramientas e integraciones aprobadas", "Políticas y límites de autoridad", "Historial y resultados medibles"]
+  },
+  "workflow": {
+    "eyebrow": "VER CÓMO TRABAJAN JUNTOS",
+    "title": "Un problema puede recorrer varios empleados sin perder el contexto del proceso.",
+    "description": "Ejemplo educativo: un cliente detecta un error en una factura y solicita cancelar un pedido. El trabajo pasa por los perfiles adecuados y se detiene ante una aprobación cuando la política lo exige.",
+    "steps": [
+      {"index": "01", "title": "Atención recibe", "text": "Interpreta la solicitud y consulta cliente y pedido."},
+      {"index": "02", "title": "Contabilidad valida", "text": "Comprueba la factura y detecta la discrepancia."},
+      {"index": "03", "title": "Administración corrige", "text": "Prepara o actualiza el registro permitido."},
+      {"index": "04", "title": "Humano aprueba", "text": "La cancelación se detiene si requiere autorización."},
+      {"index": "05", "title": "Atención resuelve", "text": "Comunica el resultado y cierra el caso."}
+    ],
+    "disclaimer": "Escenario ilustrativo con datos sintéticos. La autoridad real depende de la configuración, integraciones y políticas de cada implantación."
+  },
+  "levels": {
+    "eyebrow": "CRECE POR CAPAS",
+    "title": "De un Empleado IA a una empresa aumentada por IA.",
+    "items": [
+      {"label": "01", "title": "Empleado IA", "text": "Un especialista digital para un trabajo empresarial definido."},
+      {"label": "02", "title": "Equipo IA", "text": "Varios especialistas colaboran sobre un proceso o un objetivo común."},
+      {"label": "03", "title": "Empresa aumentada", "text": "Personas, Empleados IA y sistemas coordinados con límites explícitos."}
+    ]
+  },
+  "employees": {
+    "eyebrow": "SUITE DE REFERENCIA",
+    "title": "Cuatro perfiles para demostrar necesidades empresariales universales.",
+    "description": "La primera suite de referencia cubre atención, operaciones internas, finanzas y ventas. El catálogo se ampliará progresivamente sin convertir todos los perfiles en promesas de disponibilidad inmediata.",
+    "items": [
+      {"title": "Atención al Cliente IA", "text": "Consultas, incidencias, pedidos y escalado de excepciones.", "tag": "Referencia"},
+      {"title": "Administrativo IA", "text": "Email, documentos, registros y tareas repetitivas de back office.", "tag": "Referencia"},
+      {"title": "Contabilidad y Facturación IA", "text": "Facturas, validaciones, vencimientos y apoyo a conciliación.", "tag": "Referencia"},
+      {"title": "Comercial SDR IA", "text": "Research, CRM, seguimiento y preparación de reuniones.", "tag": "Referencia"}
+    ]
+  },
+  "teams": {
+    "eyebrow": "EQUIPOS IA",
+    "title": "El valor aumenta cuando los especialistas coordinan procesos completos.",
+    "description": "Un Equipo IA agrupa perfiles que pueden colaborar alrededor de un departamento o resultado. Estos ejemplos son modelos comerciales de referencia y se validan según cada implantación.",
+    "items": [
+      {"title": "Equipo Ventas", "members": "Marketing + SDR + Email + Reporting", "text": "Desde la detección de una oportunidad hasta el seguimiento y la preparación comercial."},
+      {"title": "Equipo Ecommerce", "members": "Atención + Pedidos + Ecommerce + Facturación", "text": "Coordina consultas, operaciones de pedido, incidencias y tareas financieras."},
+      {"title": "Equipo Administración", "members": "Email + Administrativo + Documentación + Facturación", "text": "Reduce traspasos manuales entre bandejas, documentos y sistemas internos."},
+      {"title": "Equipo Turismo", "members": "Viajes + Reservas + Atención + Administración", "text": "Conecta solicitudes, disponibilidad, comunicación y preparación operativa."}
+    ]
+  },
+  "beforeAfter": {
+    "eyebrow": "ANTES Y DESPUÉS",
+    "title": "Automatizar no significa quitar control. Significa mover el trabajo repetitivo y conservar las excepciones importantes.",
+    "beforeTitle": "Proceso fragmentado",
+    "before": ["Email entra en una bandeja", "Una persona copia datos", "Otro equipo revisa el sistema", "Se espera una respuesta", "Se repite el seguimiento"],
+    "afterTitle": "Proceso coordinado",
+    "after": ["Se clasifica el evento", "El perfil adecuado consulta sistemas", "Las tareas se derivan con contexto", "La política decide si hace falta aprobación", "Se registra el resultado"]
+  },
+  "systems": {
+    "eyebrow": "TRABAJA CON TU OPERACIÓN",
+    "title": "Los Empleados IA deben conectarse al trabajo real, no vivir en una ventana aislada.",
+    "description": "La arquitectura de IA Empleado separa el puesto, las capacidades y las integraciones. Cada empresa habilita únicamente lo necesario para sus procesos aprobados.",
+    "items": ["CRM", "ERP / contabilidad", "Email", "Calendario", "Ecommerce", "Ticketing", "Documentos", "APIs propias"]
+  },
+  "security": {
+    "eyebrow": "PRIVACIDAD, CONTROL Y SUPERVISIÓN",
+    "title": "La autonomía no significa autoridad ilimitada.",
+    "description": "IA Empleado está diseñado alrededor de permisos explícitos, políticas deterministas, aprobaciones humanas y despliegues privados. Una capacidad técnica no concede por sí sola permiso para ejecutar una acción empresarial.",
+    "items": [
+      {"title": "Límites explícitos", "text": "Cada rol dispone solo de capacidades y herramientas autorizadas."},
+      {"title": "Aprobación humana", "text": "Las acciones sensibles pueden detenerse antes de ejecutarse."},
+      {"title": "Despliegue privado", "text": "La producción del cliente puede operar en infraestructura privada o dedicada."}
+    ]
+  },
+  "faq": {
+    "eyebrow": "PREGUNTAS CLAVE",
+    "title": "Entender IA Empleado sin lenguaje ambiguo.",
+    "items": [
+      {"question": "¿Qué es un Empleado IA?", "answer": "Es un trabajador digital configurado para un rol empresarial definido, con objetivos, herramientas, permisos, políticas y supervisión. No es simplemente un chatbot con un nombre de puesto."},
+      {"question": "¿Los Empleados IA pueden trabajar entre sí?", "answer": "La visión del producto contempla equipos de perfiles especializados que coordinan tareas y contexto estructurado. La disponibilidad concreta de cada flujo depende de las capacidades e integraciones implementadas y validadas."},
+      {"question": "¿Puede conectarse con los sistemas de mi empresa?", "answer": "La plataforma está diseñada para integrar sistemas como CRM, ERP, email, calendario, ecommerce, ticketing, documentos y APIs mediante conectores y permisos específicos."},
+      {"question": "¿La IA toma todas las decisiones automáticamente?", "answer": "No. Las acciones importantes pueden requerir reglas deterministas y aprobación humana. La autonomía se configura y no equivale a autoridad sin límites."},
+      {"question": "¿Puede instalarse de forma privada?", "answer": "La arquitectura está diseñada para permitir producción en infraestructura controlada por el cliente o en un entorno privado dedicado, según el alcance de la implantación."}
+    ]
+  },
+  "cta": {
+    "eyebrow": "EMPIEZA POR UN PROCESO REAL",
+    "title": "Diseña el equipo IA que tendría sentido para tu empresa.",
+    "description": "Identifica el proceso, los sistemas implicados, las acciones permitidas y dónde debe intervenir una persona. A partir de ahí se define el equipo y las capacidades necesarias.",
+    "primary": "Diseñar mi equipo IA",
+    "secondary": "Ver el flujo de ejemplo"
+  },
+  "footer": {
+    "tagline": "Empleados IA especializados que trabajan con personas, sistemas y procesos empresariales reales.",
+    "product": "Producto",
+    "resources": "Explorar",
+    "legal": "IA Empleado es una metáfora de producto; no implica una relación laboral.",
+    "links": ["Empleados IA", "Equipos IA", "Cómo funciona", "Privacidad y control"]
+  }
+}
