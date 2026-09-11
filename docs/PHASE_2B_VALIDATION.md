@@ -1,13 +1,17 @@
 # Phase 2B validation
 
-The Phase 2B pull request must pass the following gates before merge:
+Phase 2B is complete.
 
-- EN/ES content parity check;
-- Reference Employee content contract check;
-- TypeScript typecheck;
-- Next.js production build;
-- successful generation of all localized Reference Employee routes.
+Required pre-merge gates:
 
-The CI run must execute against the current pull-request head; a historical run from a reused branch is not sufficient evidence.
+- EN/ES content parity check — passed;
+- Reference Employee content contract check — passed;
+- TypeScript typecheck — passed;
+- Next.js production build — passed;
+- successful generation of all localized Reference Employee routes — passed.
 
-Production verification remains a separate gate after merge and Hostinger deployment.
+The CI run executed against the current pull-request head; a historical run from a reused branch was not accepted as evidence.
+
+## Production verification
+
+Hostinger production deployment was visually confirmed on `iaempleado.com` on **2026-09-11** after merge. The Reference Employee pages were visible in production, closing the final Phase 2B release gate.
