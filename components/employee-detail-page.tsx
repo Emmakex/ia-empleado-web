@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Locale, SiteDictionary } from "../lib/i18n";
 import type { EmployeeKey, LocalizedEmployeeDetail } from "../lib/employee-catalog";
-import { alternateEmployeePath, employeeIndexPath } from "../lib/employee-catalog";
+import { alternateEmployeePath, employeeIndexPath } from "../lib/employee-content-engine";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -12,10 +12,18 @@ type EmployeeDetailPageProps = {
   content: LocalizedEmployeeDetail;
 };
 
+const roleMarks: Record<EmployeeKey, string> = {
+  "customer-support": "CS",
+  administrative: "AD",
+  "accounting-billing": "FB",
+  "sales-sdr": "SDR",
+};
+
 export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }: EmployeeDetailPageProps) {
   const alternateHref = alternateEmployeePath(employeeKey, locale);
   const indexHref = employeeIndexPath(locale);
   const canonicalPath = locale === "es" ? `/empleados-ia/${content.slug}` : `/en/ai-employees/${content.slug}`;
+  const contactSubject = encodeURIComponent(`IA Empleado - ${content.shortName}`);
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -67,7 +75,7 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
             </div>
             <aside className="employee-role-card">
               <span className="status-pill">{content.statusLabel}</span>
-              <div className="employee-role-mark" aria-hidden="true">CS</div>
+              <div className="employee-role-mark" aria-hidden="true">{roleMarks[employeeKey]}</div>
               <h2>{content.shortName}</h2>
               <dl>
                 <div><dt>{locale === "es" ? "Departamento" : "Department"}</dt><dd>{content.department}</dd></div>
@@ -158,7 +166,7 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
           <div className="container cta-panel">
             <div><p className="eyebrow">{content.ctaEyebrow}</p><h2>{content.ctaTitle}</h2><p>{content.ctaText}</p></div>
             <div className="cta-actions">
-              <a className="button" href="mailto:hola@iaempleado.com?subject=IA%20Empleado%20-%20Atencion%20al%20Cliente">{content.ctaPrimary}</a>
+              <a className="button" href={`mailto:hola@iaempleado.com?subject=${contactSubject}`}>{content.ctaPrimary}</a>
               <Link className="button button-ghost" href={indexHref}>{content.ctaSecondary}</Link>
             </div>
           </div>
