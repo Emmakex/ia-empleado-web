@@ -32,6 +32,9 @@ jobs:
       - name: Reference employee content contract
         run: node scripts/check-reference-employees.mjs
 
+      - name: Employee discovery contract
+        run: node scripts/check-employee-discovery.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
