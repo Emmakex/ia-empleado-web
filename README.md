@@ -172,9 +172,9 @@ The Process Analyzer is an educational design tool. It does not inspect customer
 
 ### Web Phase 5B — Transparent ROI / Value Estimator
 
-Current development phase. Release completion requires feature merge, green `main` CI and Hostinger production verification.
+Implementation and repository validation complete through **PR #20**. Hostinger production verification remains the final release gate.
 
-Phase 5B introduces:
+Phase 5B includes:
 
 - `/calculadora-roi` and `/en/roi-calculator`;
 - editable monthly volume, manual minutes/unit and hourly-cost inputs;
