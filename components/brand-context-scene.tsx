@@ -1,5 +1,5 @@
 import type { Locale } from "../lib/i18n";
-import type { RoleReference, SectorKey, UseCaseKey } from "../lib/sector-use-cases";
+import type { RoleReference } from "../lib/sector-use-cases";
 import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
 
 type BrandCharacterStripProps = {
@@ -30,7 +30,7 @@ export function BrandCharacterStrip({ locale, roles, compact = false }: BrandCha
 type BrandContextSceneProps = {
   locale: Locale;
   kind: "sector" | "use-case";
-  contextKey: SectorKey | UseCaseKey;
+  contextKey: string;
   eyebrow: string;
   title: string;
   roles: RoleReference[];
