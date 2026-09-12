@@ -62,6 +62,9 @@ jobs:
       - name: Organization map contract
         run: node scripts/check-organization-map.mjs
 
+      - name: Branding system contract
+        run: node scripts/check-branding.mjs
+
       - name: Typecheck
         run: npm run typecheck
 

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Patrón orbital IA Empleado">
+  <defs>
+    <linearGradient id="line" x1="120" y1="80" x2="680" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C83FF" stop-opacity=".12"/>
+      <stop offset=".5" stop-color="#5B5FF5" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#4F46E5" stop-opacity=".08"/>
+    </linearGradient>
+    <radialGradient id="mist" cx="50%" cy="50%" r="50%">
+      <stop stop-color="#737CFF" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#737CFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="#fff"/>
+  <ellipse cx="400" cy="250" rx="320" ry="168" fill="none" stroke="url(#line)" stroke-width="2"/>
+  <ellipse cx="400" cy="250" rx="232" ry="220" fill="none" stroke="url(#line)" stroke-width="1.5" transform="rotate(-22 400 250)"/>
+  <ellipse cx="400" cy="250" rx="170" ry="330" fill="none" stroke="url(#line)" stroke-width="1.3" transform="rotate(58 400 250)"/>
+  <circle cx="400" cy="250" r="164" fill="url(#mist)"/>
+  <g fill="#5B5FF5">
+    <circle cx="113" cy="174" r="5" opacity=".45"/><circle cx="671" cy="324" r="5" opacity=".35"/>
+    <circle cx="520" cy="88" r="4" opacity=".38"/><circle cx="268" cy="420" r="4" opacity=".32"/>
+    <circle cx="400" cy="250" r="7" opacity=".55"/>
+  </g>
+</svg>

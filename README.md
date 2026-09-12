@@ -6,7 +6,7 @@ This repository is intentionally separate from [`Emmakex/ia-empleado`](https://g
 
 ## Repository responsibility
 
-`ia-empleado-web` owns the public commercial website only: marketing/product education, SEO/GEO, EN/ES content, Employee/Team/sector/integration/comparison/use-case pages, interactive explainers, lead journeys, analytics/experimentation, public media and Hostinger website delivery.
+`ia-empleado-web` owns the public commercial website only: marketing/product education, SEO/GEO, EN/ES content, Employee/Team/sector/integration/comparison/use-case pages, interactive explainers, lead journeys, analytics/experimentation, public media, branding assets and Hostinger website delivery.
 
 It does **not** own the private IA Empleado runtime, customer production orchestration, product API/workers, Reference Lab runtime, customer data, secrets, memory or operational state.
 
@@ -18,6 +18,8 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`docs/I18N_AND_MARKET_LOCALIZATION.md`](docs/I18N_AND_MARKET_LOCALIZATION.md) — EN/ES localization and SEO contract.
 - [`docs/ANALYTICS_AND_CONSENT.md`](docs/ANALYTICS_AND_CONSENT.md) — privacy-safe analytics baseline.
 - [`docs/PRODUCT_CONTEXT.md`](docs/PRODUCT_CONTEXT.md) — product facts constraining public claims.
+- [`branding/README.md`](branding/README.md) — approved Concept 1 branding workspace and release rules.
+- [`branding/BRAND_SYSTEM.md`](branding/BRAND_SYSTEM.md) — visual identity, humanized AI Employee, color, motion and asset rules.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — AI Teams model and handoff/control rules.
 - [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — collaboration simulator contract.
@@ -37,6 +39,13 @@ Empleado IA
 ```
 
 The commercial website explains how specialized AI Employees can collaborate with people and company systems under explicit permissions, policies, approvals and supervision boundaries.
+
+Approved visual proposition:
+
+```text
+Personas. IA. Sistemas. Un mismo equipo.
+People. AI. Systems. One team.
+```
 
 ## Separation of concerns
 
@@ -61,6 +70,7 @@ None of these surfaces may become an accidental runtime dependency of another.
 - server/static-first rendering for SEO-critical meaning
 - progressive client interaction where useful
 - structured EN/ES content and parity validation
+- vector-first reusable branding assets
 - GitHub Actions CI
 - Hostinger Node.js/Next.js deployment
 - Node.js `>=20.9.0`; production uses Node.js 22.x
@@ -79,95 +89,62 @@ feature/fix/chore branch
 ## Current state
 
 ### Web Phase 0 — Foundation
-
 Complete.
 
 ### Web Phase 1 — Core commercial shell
-
-Complete and production-verified. Includes bilingual homepage, white-first visual system, global navigation/footer, semantic SEO baseline, responsive/mobile navigation and CI gates.
+Complete and production-verified.
 
 ### Web Phase 2A — Employee content engine
-
-Complete and production-verified. Reusable structured Employee content, bilingual indexes, deep Reference Employee pages, metadata, structured data and sitemap integration are in place.
+Complete and production-verified.
 
 ### Web Phase 2B — Reference Employee deep content
-
-Complete and production-verified. Deep ES/EN profiles exist for Customer Support, Administrative, Accounting & Billing and Sales / SDR.
+Complete and production-verified.
 
 ### Web Phase 2C — Employee catalog discovery
-
 Complete and production-verified. Includes all **22 opportunity profiles**, search/filters, sixteen catalog summaries, four deep profiles and two restricted/high-impact areas.
 
 ### Web Phase 3 — AI Teams
-
-Complete and production-verified. Includes Sales, Ecommerce, Administration and Travel team compositions with roles, handoffs, systems, controls, metrics, use cases and limitations.
+Complete and production-verified. Includes Sales, Ecommerce, Administration and Travel reference compositions.
 
 ### Web Phase 4A — Interactive collaboration
-
-Complete and production-verified. Includes `/como-trabajan-juntos` and `/en/see-team-work` with three synthetic step-by-step scenarios and crawlable HTML equivalents.
+Complete and production-verified.
 
 ### Web Phase 4B — Team Builder
-
-Complete and production-verified. Includes deterministic recommendations over the 22-profile taxonomy, reference-team matching, restricted-area warnings and local-browser calculation.
+Complete and production-verified.
 
 ### Web Phase 5A — Process Analyzer
-
-Complete and production-verified. Includes bilingual before/after process analysis, bottleneck marking, `automated / assisted / human` responsibility classification and local-browser state.
+Complete and production-verified.
 
 ### Web Phase 5B — Transparent ROI / Value Estimator
-
-Complete and production-verified. Includes bilingual ROI/value routes, editable user assumptions, conservative/base/high scenarios, optional solution costs, local calculation, visible methodology and dedicated CI validation.
-
-The calculator is an educational commercial estimator, not a verified customer outcome, financial guarantee or binding proposal.
+Complete and production-verified. The calculator is an educational commercial estimator, not a verified customer outcome, financial guarantee or binding proposal.
 
 ### Web Phase 6A — Comparison surfaces
-
 Complete and production-verified.
-
-Includes `/comparativas` and `/en/comparisons` plus five bilingual high-intent comparisons: chatbot, AI agent, RPA, traditional automation and generic AI copilot. Pages provide direct answers, semantic comparison tables, trade-offs, combination patterns, FAQ, structured data, canonical/hreflang and dedicated CI validation.
 
 ### Web Phase 6B — Sectors and use cases
-
 Complete and production-verified.
 
-Phase 6B includes:
-
-- `/sectores` and `/en/sectors`;
-- four deep bilingual sector pages: Ecommerce, Travel/Turismo, Professional Services/Servicios profesionales and Sales/Ventas;
-- `/casos-de-uso` and `/en/use-cases`;
-- six deep bilingual use-case pages: customer issue, invoice validation, sales follow-up, order exception, travel booking and administrative documentation;
-- reusable sector/use-case content models instead of duplicated landing pages;
-- sector pages linking operational problems to cases, Employees, reference AI Teams, systems, controls, metrics and a bounded implementation path;
-- use-case pages exposing step-by-step `automated / assisted / human` responsibility classification;
-- explicit authority, escalation and limitation language;
-- internal links across sectors, use cases, Employees, Teams, Process Analyzer, ROI and comparisons;
-- CollectionPage / ItemList, WebPage, BreadcrumbList, HowTo and visible FAQ structured data where appropriate;
-- canonical, hreflang, sitemap and footer discoverability;
-- responsive sector/use-case layouts;
-- dedicated Sector/use-case CI contract.
-
-The sector and use-case pages are educational reference designs. They do not imply universal connector availability, production readiness or measured customer outcomes.
-
 ### Web Phase 6C — Departments and integrations
-
-Implementation and repository validation complete through **PR #26**. Hostinger production verification remains the final release gate.
-
-Phase 6C includes:
-
-- `/departamentos` and `/en/departments`;
-- six deep bilingual department pages: Customer Support, Administration, Accounting & Billing, Sales, Ecommerce Operations and Travel & Reservations;
-- `/integraciones` and `/en/integrations`;
-- seven deep bilingual integration categories: CRM, ERP, Email, Calendar, Ecommerce platform, Ticketing / case management and Document management;
-- department pages connecting responsibilities, deep Employee profiles, catalog roles, AI Teams, use cases, systems, controls, metrics and operating models;
-- integration pages separating typical read scope from write operations that may be evaluated;
-- least-privilege, reliable identity/resource matching, fallback and audit principles;
-- explicit wording that integration categories do not imply universal or vendor-certified connectors;
-- cross-links between departments, integrations, use cases, Employees and AI Teams;
-- CollectionPage / ItemList, WebPage, BreadcrumbList and FAQPage structured data;
-- canonical, hreflang, sitemap and footer discoverability;
-- responsive organization-map layouts;
-- dedicated Organization map CI contract.
+Complete and production-verified. Includes six deep bilingual department pages and seven deep bilingual integration-category pages with explicit read/write authority, least-privilege, fallback and audit boundaries.
 
 The integration pages are architecture and evaluation guidance. Actual connector availability depends on the provider, API, authentication model, data model, permissions and customer environment.
 
-After Phase 6C production verification, the highest-value remaining work shifts from taxonomy expansion to **proof and conversion**: real lead capture, attribution/analytics under consent, proof media and Reference Lab evidence, followed by technical/CRO hardening and selective content expansion.
+### Branding Phase 1 — Core visual system
+
+Implementation in progress on the approved **Concept 1** direction.
+
+Scope:
+
+- master three-node collaboration mark;
+- monochrome mark;
+- humanized AI Employee vector baseline;
+- orbit/background pattern;
+- people + AI + systems explainer asset;
+- portable design tokens;
+- active website brand CSS;
+- header/footer identity application;
+- homepage ecosystem humanized AI representation;
+- favicon source;
+- dedicated branding CI contract.
+
+After Branding Phase 1 production verification, continue with role-specific visual families, team/department motion scenes, sector hero art and reusable campaign/social resources before final lead-capture/CTA expansion.

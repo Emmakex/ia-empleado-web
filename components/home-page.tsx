@@ -63,6 +63,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
               </svg>
               <div className="core-node">
                 <span className="core-pulse" aria-hidden="true" />
+                <img className="brand-core-avatar" src="/branding/ia-employee-human.svg" alt="" width={82} height={82} aria-hidden="true" />
                 <strong>{dictionary.hero.core}</strong>
                 <small>{locale === "es" ? "Coordinación" : "Coordination"}</small>
               </div>
