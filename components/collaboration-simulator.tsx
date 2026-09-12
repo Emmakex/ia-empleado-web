@@ -2,13 +2,16 @@
 
 import { useEffect, useState } from "react";
 import type { CollaborationPageContent, CollaborationScenario } from "../lib/collaboration-demo";
+import type { Locale } from "../lib/i18n";
+import { getBrandCharacterForActorLabel } from "../lib/brand-characters";
 
 type CollaborationSimulatorProps = {
+  locale: Locale;
   content: CollaborationPageContent;
   scenarios: CollaborationScenario[];
 };
 
-export function CollaborationSimulator({ content, scenarios }: CollaborationSimulatorProps) {
+export function CollaborationSimulator({ locale, content, scenarios }: CollaborationSimulatorProps) {
   const [scenarioIndex, setScenarioIndex] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -42,6 +45,7 @@ export function CollaborationSimulator({ content, scenarios }: CollaborationSimu
   };
   const kindLabel = kindLabels[step.kind];
   const progress = Math.round(((stepIndex + 1) / scenario.steps.length) * 100);
+  const activeCharacter = getBrandCharacterForActorLabel(step.actor, locale);
 
   function selectScenario(index: number) {
     setScenarioIndex(index);
@@ -65,7 +69,7 @@ export function CollaborationSimulator({ content, scenarios }: CollaborationSimu
   }
 
   return (
-    <div className="collaboration-simulator">
+    <div className="collaboration-simulator brand-collaboration-simulator">
       <div className="collaboration-scenario-tabs" role="tablist" aria-label={content.scenarioLabel}>
         {scenarios.map((item, index) => (
           <button
@@ -83,6 +87,18 @@ export function CollaborationSimulator({ content, scenarios }: CollaborationSimu
       </div>
 
       <div className="collaboration-stage">
+        <div className="brand-simulator-state-strip" aria-hidden="true">
+          <span className="brand-state is-done">{locale === "es" ? "Entrada" : "Input"}</span>
+          <i>→</i>
+          <span className={`brand-state${step.kind === "employee" ? " is-active" : ""}`}>{locale === "es" ? "Empleado IA" : "AI Employee"}</span>
+          <i>→</i>
+          <span className={`brand-state${step.kind === "system" ? " is-active" : ""}`}>{locale === "es" ? "Sistema" : "System"}</span>
+          <i>→</i>
+          <span className={`brand-state${step.kind === "human" ? " is-active" : ""}`}>{locale === "es" ? "Control humano" : "Human control"}</span>
+          <i>→</i>
+          <span className={`brand-state${step.kind === "result" ? " is-active" : ""}`}>{locale === "es" ? "Resultado" : "Outcome"}</span>
+        </div>
+
         <div className="collaboration-stage-copy">
           <div className="collaboration-stage-kicker">
             <span className={`kind-dot kind-${step.kind}`} aria-hidden="true" />
@@ -105,16 +121,17 @@ export function CollaborationSimulator({ content, scenarios }: CollaborationSimu
           </div>
         </div>
 
-        <div className="collaboration-map" aria-label={content.progressLabel}>
+        <div className="collaboration-map brand-collaboration-map" aria-label={content.progressLabel}>
           <div className="collaboration-map-line" aria-hidden="true" />
           {scenario.steps.map((item, index) => {
             const isActive = index === stepIndex;
             const isComplete = index < stepIndex;
+            const character = getBrandCharacterForActorLabel(item.actor, locale);
             return (
               <button
                 type="button"
                 key={`${scenario.key}-${index}`}
-                className={`collaboration-node kind-${item.kind}${isActive ? " is-active" : ""}${isComplete ? " is-complete" : ""}`}
+                className={`collaboration-node kind-${item.kind}${isActive ? " is-active" : ""}${isComplete ? " is-complete" : ""}${character ? " has-character" : ""}`}
                 aria-current={isActive ? "step" : undefined}
                 onClick={() => {
                   setStepIndex(index);
@@ -122,14 +139,20 @@ export function CollaborationSimulator({ content, scenarios }: CollaborationSimu
                 }}
                 title={item.actor}
               >
-                <span className="collaboration-node-index">{index + 1}</span>
-                <span className="collaboration-node-actor">{item.actor}</span>
+                {character ? <img src={character.asset} alt="" width={52} height={58} /> : <span className="collaboration-node-index">{index + 1}</span>}
+                <span className="collaboration-node-actor">{character?.name ?? item.actor}</span>
               </button>
             );
           })}
         </div>
 
-        <div className="collaboration-step-card" aria-live="polite">
+        <div className={`collaboration-step-card${activeCharacter ? " has-brand-character" : ""}`} aria-live="polite">
+          {activeCharacter && (
+            <div className="brand-active-character" data-accent={activeCharacter.accent} aria-hidden="true">
+              <img src={activeCharacter.asset} alt="" width={122} height={144} />
+              <div><strong>{activeCharacter.name}</strong><span>{activeCharacter.shortRole}</span></div>
+            </div>
+          )}
           <div className="collaboration-step-head">
             <div>
               <span className={`collaboration-kind-badge kind-${step.kind}`}>{kindLabel}</span>
