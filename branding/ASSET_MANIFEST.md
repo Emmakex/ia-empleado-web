@@ -22,13 +22,7 @@ Minimum recommended digital size: `28 × 28px`.
 
 Clear space: at least 25% of the mark width around all sides.
 
-Do not:
-
-- rotate the mark;
-- recolor individual nodes randomly;
-- place text inside the mark;
-- stretch non-proportionally;
-- add extra nodes to represent specific employees.
+Do not rotate the mark, recolor individual nodes randomly, place text inside the mark, stretch it non-proportionally or add extra nodes to represent specific employees.
 
 ### Humanized AI Employee
 
@@ -41,20 +35,18 @@ For the four Reference Employees, the approved WebP portraits above are the **ca
 - Sofía — Accounting & Billing / Contabilidad y Facturación;
 - Javier — Sales / SDR / Comercial.
 
-Older simplified SVG role portraits may remain in the repository only as legacy/prototype material. They must not be used on new public surfaces and must not replace the approved canonical portraits.
+Older simplified SVG role portraits may remain only as legacy/prototype material. They must not replace the approved canonical portraits on public surfaces.
 
 The names and portraits are a visual identity layer for the public commercial website. They do not imply a human employee, legal identity or independent product availability beyond the documented Reference Employee scope.
 
 ### Role color accents
-
-Role accent colors support recognition but do not replace the master IA Empleado palette:
 
 - Clara: blue — communication/customer context;
 - Alex: violet — organization/coordination;
 - Sofía: teal — validation/financial operations;
 - Javier: amber — commercial opportunity/action.
 
-Success green remains semantic. Do not recolor role cards green simply because a role is active.
+Success green remains semantic and must not become a decorative role color.
 
 ### Orbit pattern
 
@@ -62,7 +54,7 @@ Keep opacity low (`0.04–0.16`) in ordinary product UI. Larger hero composition
 
 ### People + AI + systems
 
-Use when explaining the system-level proposition. Embedded labels are intentionally minimal; localized explanatory copy should remain outside the SVG in HTML.
+Use when explaining the system-level proposition. Embedded labels remain minimal; localized explanatory copy stays in HTML.
 
 ## Production application status
 
@@ -72,23 +64,20 @@ Implemented: master mark, generic humanized AI Employee, core palette/tokens, pa
 
 ### Canonical character fidelity correction
 
-The public homepage must use the approved Clara, Alex, Sofía and Javier artwork rather than simplified redraws. The mobile collaboration scene has its own deliberate composition: two characters above the coordination core, two below it, human approval separated from the character cards and a simplified three-system row.
+The homepage uses the approved Clara, Alex, Sofía and Javier artwork. The mobile collaboration scene uses a deliberate composition instead of a scaled-down desktop diagram.
 
-The public homepage uses:
+### Employee surfaces
 
-- the master mark in header/footer;
-- the four canonical Reference Employee portraits in the hero collaboration scene;
-- meaningful task-transfer motion;
-- visible human-approval state;
-- system chips around the team;
-- the same four characters in the Reference Employee cards;
-- a dedicated mobile layout rather than a scaled-down desktop diagram;
-- responsive and reduced-motion fallbacks.
+The employee catalog, the four deep Reference Employee pages and their public catalog cards reuse the same canonical character registry. No page is allowed to invent a different public identity for Clara, Alex, Sofía or Javier.
+
+### AI Team surfaces
+
+The AI Team index and team detail pages reuse the canonical Reference Employee portraits when those roles participate in a composition. Catalog-only roles remain visually neutral and are not given invented faces. Team scenes retain explicit systems/process context and visible human-control semantics.
 
 ## Next reusable asset phases
 
-- employee-detail hero/callout application;
-- AI Team compositions using the same four canonical characters where relevant;
 - department and sector scene families;
+- use-case and integration visual families;
+- simulator/interactive surface skinning;
 - proof/demo media frames and video package;
 - social/Open Graph exports derived from the canonical system.
