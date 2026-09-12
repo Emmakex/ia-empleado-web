@@ -80,14 +80,14 @@ test("employee catalog portraits keep a dedicated label footer", async ({ page }
   }
 });
 
-test("team hero core no longer covers the definition card", async ({ page }) => {
+test("team hero core no longer covers the definition heading", async ({ page }) => {
   await page.setViewportSize({ width: 1648, height: 1000 });
   await page.goto("/equipos-ia", { waitUntil: "networkidle" });
 
   const core = await requiredBox(page.locator(".brand-team-hero-core"), "team hero core");
-  const definition = await requiredBox(page.locator(".brand-team-definition-card"), "team definition card");
+  const heading = await requiredBox(page.locator(".brand-team-definition-card h2"), "team definition heading");
 
-  expect(core.y + core.height, "team core must finish before the definition card starts").toBeLessThanOrEqual(definition.y - 6);
+  expect(core.y + core.height, "team core may dock into the card but must finish before its heading").toBeLessThanOrEqual(heading.y - 6);
 });
 
 for (const route of ["/sectores", "/casos-de-uso"]) {
