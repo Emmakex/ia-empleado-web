@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
 import { employeeDetailPath, getEmployeeCatalog } from "../lib/employee-content-engine";
+import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
 import { getTeamRecords, teamDetailPath } from "../lib/team-content-engine";
 import { useCaseDetailPath, useCaseRecords } from "../lib/sector-use-cases";
 import {
@@ -12,6 +13,7 @@ import {
   type IntegrationRecord,
 } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
+import { BrandOrganizationScene } from "./brand-organization-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -63,7 +65,7 @@ export function IntegrationDetailPage({ locale, integration }: Props) {
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
       <main id="contenido" className="organization-map-page">
         <section className="organization-detail-hero section-shell integration-detail-hero">
-          <div className="container organization-detail-hero-grid">
+          <div className="container organization-detail-hero-grid brand-organization-detail-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={localeHref(locale)}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -78,11 +80,23 @@ export function IntegrationDetailPage({ locale, integration }: Props) {
               <div className="organization-short-answer" role="note"><strong>{locale === "es" ? "Respuesta corta" : "Short answer"}</strong><p>{integration.shortAnswer[locale]}</p></div>
               <div className="hero-actions"><a className="button" href="#integration-contract">{locale === "es" ? "Ver contrato de integración" : "View integration contract"}</a><Link className="button button-ghost" href={processAnalyzerPath(locale)}>{locale === "es" ? "Analizar mi proceso" : "Analyze my process"}</Link></div>
             </div>
-            <aside className="organization-summary-card integration-summary">
-              <span>{locale === "es" ? "Alcance de referencia" : "Reference scope"}</span>
-              <dl><div><dt>{locale === "es" ? "Departamentos" : "Departments"}</dt><dd>{integration.departments.length}</dd></div><div><dt>{locale === "es" ? "Casos de uso" : "Use cases"}</dt><dd>{integration.useCases.length}</dd></div><div><dt>{locale === "es" ? "Perfiles profundos" : "Deep profiles"}</dt><dd>{integration.employeeKeys.length}</dd></div></dl>
-              <p>{locale === "es" ? "Categoría de sistema · no implica un conector universal ni compatibilidad con todos los proveedores." : "System category · does not imply a universal connector or compatibility with every vendor."}</p>
-            </aside>
+            <div className="brand-organization-hero-side">
+              <BrandOrganizationScene
+                locale={locale}
+                kind="integration"
+                contextKey={integration.key}
+                eyebrow={integration.eyebrow[locale]}
+                title={integration.name[locale]}
+                employeeKeys={integration.employeeKeys}
+                systems={[integration.name[locale], "READ", "WRITE", locale === "es" ? "Auditoría" : "Audit"]}
+                humanLabel={locale === "es" ? "Acción sensible → persona" : "Sensitive action → person"}
+              />
+              <aside className="organization-summary-card integration-summary">
+                <span>{locale === "es" ? "Alcance de referencia" : "Reference scope"}</span>
+                <dl><div><dt>{locale === "es" ? "Departamentos" : "Departments"}</dt><dd>{integration.departments.length}</dd></div><div><dt>{locale === "es" ? "Casos de uso" : "Use cases"}</dt><dd>{integration.useCases.length}</dd></div><div><dt>{locale === "es" ? "Perfiles profundos" : "Deep profiles"}</dt><dd>{integration.employeeKeys.length}</dd></div></dl>
+                <p>{locale === "es" ? "Categoría de sistema · no implica un conector universal ni compatibilidad con todos los proveedores." : "System category · does not imply a universal connector or compatibility with every vendor."}</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -96,7 +110,7 @@ export function IntegrationDetailPage({ locale, integration }: Props) {
         <section className="content-section" id="integration-contract" aria-labelledby="integration-contract-title">
           <div className="container">
             <div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "CONTRATO" : "CONTRACT"}</p><h2 id="integration-contract-title">{locale === "es" ? "Separar lectura y escritura" : "Separate read and write"}</h2><p>{locale === "es" ? "Una misma API puede exponer muchas acciones, pero cada Empleado IA debe recibir solo el alcance necesario." : "The same API may expose many actions, but each AI Employee should receive only the scope it needs."}</p></div>
-            <div className="integration-read-write-grid">
+            <div className="integration-read-write-grid brand-integration-contract-grid">
               <article><span className="integration-mode read-mode">READ</span><h3>{locale === "es" ? "Lecturas habituales" : "Typical reads"}</h3><ul>{integration.reads[locale].map((item) => <li key={item}>{item}</li>)}</ul></article>
               <article><span className="integration-mode write-mode">WRITE</span><h3>{locale === "es" ? "Escrituras que pueden evaluarse" : "Writes that may be evaluated"}</h3><ul>{integration.writes[locale].map((item) => <li key={item}>{item}</li>)}</ul></article>
             </div>
@@ -104,39 +118,38 @@ export function IntegrationDetailPage({ locale, integration }: Props) {
         </section>
 
         <section className="content-section section-panel" aria-labelledby="integration-departments-title">
-          <div className="container">
-            <div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "DEPARTAMENTOS" : "DEPARTMENTS"}</p><h2 id="integration-departments-title">{locale === "es" ? "Dónde puede aportar valor" : "Where it can add value"}</h2></div>
-            <div className="organization-card-grid compact-grid">{relatedDepartments.map((record) => record && <article className="organization-card" key={record.key}><h3>{record.name[locale]}</h3><p>{record.shortAnswer[locale]}</p><Link className="text-link" href={departmentDetailPath(record.key, locale)}>{locale === "es" ? "Ver departamento" : "View department"} <span aria-hidden="true">→</span></Link></article>)}</div>
-          </div>
+          <div className="container"><div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "DEPARTAMENTOS" : "DEPARTMENTS"}</p><h2 id="integration-departments-title">{locale === "es" ? "Dónde puede aportar valor" : "Where it can add value"}</h2></div><div className="organization-card-grid compact-grid">{relatedDepartments.map((record) => record && <article className="organization-card" key={record.key}><h3>{record.name[locale]}</h3><p>{record.shortAnswer[locale]}</p><Link className="text-link" href={departmentDetailPath(record.key, locale)}>{locale === "es" ? "Ver departamento" : "View department"} <span aria-hidden="true">→</span></Link></article>)}</div></div>
         </section>
 
         <section className="content-section" aria-labelledby="integration-process-title">
-          <div className="container">
-            <div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "CASOS DE USO" : "USE CASES"}</p><h2 id="integration-process-title">{locale === "es" ? "Procesos relacionados" : "Related processes"}</h2></div>
-            <div className="organization-card-grid compact-grid">{relatedUseCases.map((record) => record && <article className="organization-card" key={record.key}><h3>{record.title[locale]}</h3><p>{record.shortAnswer[locale]}</p><Link className="text-link" href={useCaseDetailPath(record.key, locale)}>{locale === "es" ? "Ver caso de uso" : "View use case"} <span aria-hidden="true">→</span></Link></article>)}</div>
-          </div>
+          <div className="container"><div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "CASOS DE USO" : "USE CASES"}</p><h2 id="integration-process-title">{locale === "es" ? "Procesos relacionados" : "Related processes"}</h2></div><div className="organization-card-grid compact-grid">{relatedUseCases.map((record) => record && <article className="organization-card" key={record.key}><h3>{record.title[locale]}</h3><p>{record.shortAnswer[locale]}</p><Link className="text-link" href={useCaseDetailPath(record.key, locale)}>{locale === "es" ? "Ver caso de uso" : "View use case"} <span aria-hidden="true">→</span></Link></article>)}</div></div>
         </section>
 
         <section className="content-section section-panel" aria-labelledby="integration-roles-title">
           <div className="container">
             <div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "ROLES" : "ROLES"}</p><h2 id="integration-roles-title">{locale === "es" ? "Empleados IA que podrían usarla" : "AI Employees that could use it"}</h2><p>{locale === "es" ? "Cada rol mantiene permisos independientes aunque comparta el mismo sistema." : "Each role keeps independent permissions even when sharing the same system."}</p></div>
-            <div className="organization-role-grid">{integration.employeeKeys.map((key) => { const employee = catalog.find((item) => item.key === key); return employee ? <article className="organization-role-card" key={key}><span aria-hidden="true">{employee.shortName.slice(0, 2).toUpperCase()}</span><div><h3>{employee.shortName}</h3><p>{employee.description}</p><Link className="text-link" href={employeeDetailPath(key, locale)}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link></div></article> : null; })}</div>
+            <div className="organization-role-grid">
+              {integration.employeeKeys.map((key) => {
+                const employee = catalog.find((item) => item.key === key);
+                const character = getBrandCharacterByEmployeeKey(key, locale);
+                return employee ? (
+                  <article className="organization-role-card brand-organization-role-card" data-accent={character?.accent} key={key}>
+                    {character ? <img className="organization-role-portrait" src={character.asset} alt="" width={104} height={124} /> : <span aria-hidden="true">{employee.shortName.slice(0, 2).toUpperCase()}</span>}
+                    <div><h3>{character ? `${character.name} · ${employee.shortName}` : employee.shortName}</h3><p>{employee.description}</p><Link className="text-link" href={employeeDetailPath(key, locale)}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link></div>
+                  </article>
+                ) : null;
+              })}
+            </div>
             <div className="organization-team-links"><strong>{locale === "es" ? "Equipos IA relacionados" : "Related AI Teams"}</strong><div>{integration.teams.map((key) => { const team = teams.find((item) => item.key === key); return team ? <Link className="chip-link" key={key} href={teamDetailPath(key, locale)}>{team.locales[locale].shortName}</Link> : null; })}</div></div>
           </div>
         </section>
 
         <section className="content-section" aria-labelledby="integration-checklist-title">
-          <div className="container">
-            <div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "ANTES DE CONECTAR" : "BEFORE CONNECTING"}</p><h2 id="integration-checklist-title">{locale === "es" ? "Checklist mínimo de diseño" : "Minimum design checklist"}</h2></div>
-            <div className="organization-method-grid">{integration.checklist[locale].map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
-          </div>
+          <div className="container"><div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "ANTES DE CONECTAR" : "BEFORE CONNECTING"}</p><h2 id="integration-checklist-title">{locale === "es" ? "Checklist mínimo de diseño" : "Minimum design checklist"}</h2></div><div className="organization-method-grid">{integration.checklist[locale].map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div>
         </section>
 
         <section className="content-section section-panel" aria-labelledby="integration-control-title">
-          <div className="container organization-control-metrics">
-            <div className="organization-control-panel"><p className="eyebrow">{locale === "es" ? "CONTROL" : "CONTROL"}</p><h2 id="integration-control-title">{locale === "es" ? "Guardrails que deben quedar explícitos" : "Guardrails that should remain explicit"}</h2><ul>{integration.controls[locale].map((item) => <li key={item}>{item}</li>)}</ul></div>
-            <div><p className="eyebrow">{locale === "es" ? "LÍMITES" : "LIMITS"}</p><h2>{locale === "es" ? "Lo que la página no promete" : "What this page does not promise"}</h2><ul className="organization-limit-list">{integration.limits[locale].map((item) => <li key={item}>{item}</li>)}</ul></div>
-          </div>
+          <div className="container organization-control-metrics"><div className="organization-control-panel"><p className="eyebrow">{locale === "es" ? "CONTROL" : "CONTROL"}</p><h2 id="integration-control-title">{locale === "es" ? "Guardrails que deben quedar explícitos" : "Guardrails that should remain explicit"}</h2><ul>{integration.controls[locale].map((item) => <li key={item}>{item}</li>)}</ul></div><div><p className="eyebrow">{locale === "es" ? "LÍMITES" : "LIMITS"}</p><h2>{locale === "es" ? "Lo que la página no promete" : "What this page does not promise"}</h2><ul className="organization-limit-list">{integration.limits[locale].map((item) => <li key={item}>{item}</li>)}</ul></div></div>
         </section>
 
         <section className="content-section" aria-labelledby="integration-faq-title">
