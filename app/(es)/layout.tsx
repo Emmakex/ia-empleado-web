@@ -21,6 +21,7 @@ import "../brand-interactive-content.css";
 import "../brand-comparison-proof.css";
 import "../brand-motion.css";
 import "../ux-accessibility.css";
+import "../reflow-hardening.css";
 import { getDictionary } from "../../lib/i18n";
 import { brandPreviewUrl } from "../../lib/brand-social-previews";
 
