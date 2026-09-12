@@ -136,9 +136,11 @@
 
 @media (min-width: 981px) {
   /* Shared sector/use-case artwork gets a protected central lane. The old
-     128px core intersected both lower role cards on desktop. */
+     128px core intersected both lower role cards on desktop. A 500px scene
+     gives the centered core and bottom role row a measurable safety gap while
+     keeping systems and human-control chips in their existing lower band. */
   .brand-context-scene {
-    min-height: 480px;
+    min-height: 500px;
   }
 
   .brand-context-core {
