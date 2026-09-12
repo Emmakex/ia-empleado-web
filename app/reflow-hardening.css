@@ -1,0 +1,100 @@
+/* Structural reflow hardening discovered by real browser QA.
+ * Loaded after UX/accessibility so grid/flex items can shrink at narrow widths
+ * and under text enlargement. Do not hide horizontal overflow globally.
+ */
+
+@media (max-width: 760px) {
+  /* CSS Grid/Flex defaults to min-width:auto. Explicitly allow content tracks
+     to shrink to the viewport instead of widening the document. */
+  .two-column,
+  .two-column > *,
+  .content-stack,
+  .section-heading,
+  .check-list,
+  .levels-grid,
+  .card-grid,
+  .team-card,
+  .team-card-header,
+  .team-card-header > *,
+  .comparison-grid,
+  .security-intro,
+  .faq-layout,
+  .cta-panel,
+  .footer-grid,
+  .team-index-hero-grid,
+  .team-index-hero-grid > *,
+  .team-detail-hero-grid,
+  .team-detail-hero-grid > *,
+  .team-definition-card,
+  .team-outcome-card,
+  .team-directory-grid,
+  .team-member-grid,
+  .team-controls-grid,
+  .team-limits-grid,
+  .team-metrics-grid {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .two-column,
+  .team-index-hero-grid,
+  .team-detail-hero-grid {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Long translated labels, enlarged text and compound product names should
+     wrap before they can establish an oversized min-content track. */
+  .content-section :is(h1, h2, h3, p, li),
+  .team-index-hero :is(h1, h2, h3, p),
+  .team-detail-hero :is(h1, h2, h3, p),
+  .team-card-header h3,
+  .breadcrumbs,
+  .eyebrow {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .team-card-header {
+    flex-wrap: wrap;
+  }
+
+  .team-detail-hero .hero-actions,
+  .team-index-hero .hero-actions {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .team-detail-hero .hero-actions .button,
+  .team-index-hero .hero-actions .button {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .team-outcome-card,
+  .team-definition-card {
+    width: 100%;
+  }
+
+  /* Decorative absolute layers must never determine document width. */
+  .brand-hero-mist,
+  .brand-hero-orbit,
+  .brand-hero-lines,
+  .team-definition-card::after,
+  .team-outcome-card::after {
+    max-width: none;
+  }
+}
+
+/* Reflow mode: equivalent to large user text / browser zoom on a narrow
+   viewport. Keep normal mobile aesthetics unchanged until text actually grows. */
+@media (max-width: 760px) {
+  .content-section > .container,
+  .team-detail-hero > .container,
+  .team-index-hero > .container {
+    min-width: 0;
+  }
+}
