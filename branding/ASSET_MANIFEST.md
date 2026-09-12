@@ -106,14 +106,22 @@ Interactive visuals have dedicated tablet/mobile compositions instead of scaling
 
 ### Commercial media and social previews
 
-A central `1200 × 630` renderer now produces localized Open Graph/Twitter cards from the canonical brand registry. Home, the four interactive experiences and the main commercial hubs use branded share previews instead of generic metadata-only cards.
+A central `1200 × 630` renderer produces localized Open Graph/Twitter cards from the canonical brand registry. Home, the four interactive experiences and the main commercial hubs use branded share previews instead of generic metadata-only cards.
 
 Reusable transparent SVG masters are available for 16:9 demo/video, square social and vertical story compositions. Campaign copy remains outside the frame masters so EN/ES can be produced from the same source system.
 
 See `branding/SOCIAL_MEDIA_SYSTEM.md` for surface keys, export sizes, composition hierarchy and claim-safety rules.
 
+### Comparison and proof surfaces
+
+The comparison hub and all five deep comparisons now use a shared decision scene that contrasts a neutral alternative pattern with the IA Empleado role/system/governance model. Canonical characters appear only on the IA Empleado side and remain tied to the approved registry.
+
+Deep comparison pages use the visual sequence **Before / isolated approach → With IA Empleado → Potential outcome**. The outcome stage is explicitly labeled **POTENTIAL · NOT GUARANTEED** / **POTENCIAL · NO GARANTIZADO** until stronger evidence exists.
+
+Commercial evidence cards keep three evidence types separate: **DEMONSTRABLE** behavior, **INDICATIVE ANALYSIS** and **ESTIMATE**. Future measured or customer case-study claims must follow `branding/PROOF_SYSTEM.md` and include a traceable evidence source before stronger labels are used.
+
 ## Next reusable asset phases
 
-- comparison/proof surfaces where additional visual evidence improves evaluation;
 - campaign-specific content packs derived from the reusable masters;
+- global motion and transition system for the approved visual universe;
 - future canonical characters for catalog roles only after explicit visual approval.
