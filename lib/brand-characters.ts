@@ -1,6 +1,15 @@
 import type { EmployeeKey } from "./employee-catalog";
 import type { Locale } from "./i18n";
 
+export type BrandRoleMotif = "conversation" | "operations" | "ledger" | "pipeline";
+
+export type BrandRoleVisualFamily = {
+  motif: BrandRoleMotif;
+  flow: [string, string, string];
+  systems: [string, string, string];
+  humanControl: string;
+};
+
 export type BrandCharacter = {
   id: "clara" | "alex" | "sofia" | "javier";
   employeeKey: EmployeeKey;
@@ -10,20 +19,141 @@ export type BrandCharacter = {
   shortRole: string;
   accent: "blue" | "violet" | "teal" | "amber";
   promise: string;
+  visualFamily: BrandRoleVisualFamily;
 };
 
 const characters = {
   es: [
-    { id: "clara", employeeKey: "customer-support", name: "Clara", asset: "/branding/characters/clara-canonical.webp", role: "Atención al Cliente IA", shortRole: "Atención al Cliente", accent: "blue", promise: "Responde, acompaña y escala excepciones con contexto." },
-    { id: "alex", employeeKey: "administrative", name: "Alex", asset: "/branding/characters/alex-canonical.webp", role: "Administrativo IA", shortRole: "Administración", accent: "violet", promise: "Organiza tareas, documentos y seguimiento operativo." },
-    { id: "sofia", employeeKey: "accounting-billing", name: "Sofía", asset: "/branding/characters/sofia-canonical.webp", role: "Contabilidad y Facturación IA", shortRole: "Contabilidad", accent: "teal", promise: "Controla, valida y prepara información financiera." },
-    { id: "javier", employeeKey: "sales-sdr", name: "Javier", asset: "/branding/characters/javier-canonical.webp", role: "Comercial / SDR IA", shortRole: "Comercial / SDR", accent: "amber", promise: "Prospecta, cualifica y mantiene el seguimiento comercial." },
+    {
+      id: "clara",
+      employeeKey: "customer-support",
+      name: "Clara",
+      asset: "/branding/characters/clara-canonical.webp",
+      role: "Atención al Cliente IA",
+      shortRole: "Atención al Cliente",
+      accent: "blue",
+      promise: "Responde, acompaña y escala excepciones con contexto.",
+      visualFamily: {
+        motif: "conversation",
+        flow: ["Entrada", "Contexto", "Resolución"],
+        systems: ["Helpdesk", "CRM", "Email"],
+        humanControl: "Escala excepciones cuando corresponde",
+      },
+    },
+    {
+      id: "alex",
+      employeeKey: "administrative",
+      name: "Alex",
+      asset: "/branding/characters/alex-canonical.webp",
+      role: "Administrativo IA",
+      shortRole: "Administración",
+      accent: "violet",
+      promise: "Organiza tareas, documentos y seguimiento operativo.",
+      visualFamily: {
+        motif: "operations",
+        flow: ["Solicitud", "Documento", "Seguimiento"],
+        systems: ["ERP", "Documentos", "Email"],
+        humanControl: "Valida cambios sensibles antes de ejecutar",
+      },
+    },
+    {
+      id: "sofia",
+      employeeKey: "accounting-billing",
+      name: "Sofía",
+      asset: "/branding/characters/sofia-canonical.webp",
+      role: "Contabilidad y Facturación IA",
+      shortRole: "Contabilidad",
+      accent: "teal",
+      promise: "Controla, valida y prepara información financiera.",
+      visualFamily: {
+        motif: "ledger",
+        flow: ["Factura", "Validación", "Registro"],
+        systems: ["ERP", "Facturas", "Datos"],
+        humanControl: "Revisión humana para excepciones y cierres",
+      },
+    },
+    {
+      id: "javier",
+      employeeKey: "sales-sdr",
+      name: "Javier",
+      asset: "/branding/characters/javier-canonical.webp",
+      role: "Comercial / SDR IA",
+      shortRole: "Comercial / SDR",
+      accent: "amber",
+      promise: "Prospecta, cualifica y mantiene el seguimiento comercial.",
+      visualFamily: {
+        motif: "pipeline",
+        flow: ["Lead", "Cualificación", "Seguimiento"],
+        systems: ["CRM", "Email", "Pipeline"],
+        humanControl: "Aprobación humana antes de compromisos",
+      },
+    },
   ],
   en: [
-    { id: "clara", employeeKey: "customer-support", name: "Clara", asset: "/branding/characters/clara-canonical.webp", role: "AI Customer Support", shortRole: "Customer Support", accent: "blue", promise: "Responds, supports and escalates exceptions with context." },
-    { id: "alex", employeeKey: "administrative", name: "Alex", asset: "/branding/characters/alex-canonical.webp", role: "AI Administrative", shortRole: "Administration", accent: "violet", promise: "Organizes tasks, documents and operational follow-up." },
-    { id: "sofia", employeeKey: "accounting-billing", name: "Sofía", asset: "/branding/characters/sofia-canonical.webp", role: "AI Accounting & Billing", shortRole: "Accounting & Billing", accent: "teal", promise: "Checks, validates and prepares financial information." },
-    { id: "javier", employeeKey: "sales-sdr", name: "Javier", asset: "/branding/characters/javier-canonical.webp", role: "AI Sales / SDR", shortRole: "Sales / SDR", accent: "amber", promise: "Prospects, qualifies and maintains commercial follow-up." },
+    {
+      id: "clara",
+      employeeKey: "customer-support",
+      name: "Clara",
+      asset: "/branding/characters/clara-canonical.webp",
+      role: "AI Customer Support",
+      shortRole: "Customer Support",
+      accent: "blue",
+      promise: "Responds, supports and escalates exceptions with context.",
+      visualFamily: {
+        motif: "conversation",
+        flow: ["Request", "Context", "Resolution"],
+        systems: ["Helpdesk", "CRM", "Email"],
+        humanControl: "Escalates exceptions when required",
+      },
+    },
+    {
+      id: "alex",
+      employeeKey: "administrative",
+      name: "Alex",
+      asset: "/branding/characters/alex-canonical.webp",
+      role: "AI Administrative",
+      shortRole: "Administration",
+      accent: "violet",
+      promise: "Organizes tasks, documents and operational follow-up.",
+      visualFamily: {
+        motif: "operations",
+        flow: ["Request", "Document", "Follow-up"],
+        systems: ["ERP", "Documents", "Email"],
+        humanControl: "Validates sensitive changes before execution",
+      },
+    },
+    {
+      id: "sofia",
+      employeeKey: "accounting-billing",
+      name: "Sofía",
+      asset: "/branding/characters/sofia-canonical.webp",
+      role: "AI Accounting & Billing",
+      shortRole: "Accounting & Billing",
+      accent: "teal",
+      promise: "Checks, validates and prepares financial information.",
+      visualFamily: {
+        motif: "ledger",
+        flow: ["Invoice", "Validation", "Record"],
+        systems: ["ERP", "Invoices", "Data"],
+        humanControl: "Human review for exceptions and close",
+      },
+    },
+    {
+      id: "javier",
+      employeeKey: "sales-sdr",
+      name: "Javier",
+      asset: "/branding/characters/javier-canonical.webp",
+      role: "AI Sales / SDR",
+      shortRole: "Sales / SDR",
+      accent: "amber",
+      promise: "Prospects, qualifies and maintains commercial follow-up.",
+      visualFamily: {
+        motif: "pipeline",
+        flow: ["Lead", "Qualification", "Follow-up"],
+        systems: ["CRM", "Email", "Pipeline"],
+        humanControl: "Human approval before commitments",
+      },
+    },
   ],
 } satisfies Record<Locale, BrandCharacter[]>;
 
