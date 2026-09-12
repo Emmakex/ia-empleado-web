@@ -1,6 +1,6 @@
 # IA Empleado — Branding Phase 2A: role visual families
 
-Status: **implementation in progress**
+Status: **Complete and production-verified — 2026-09-12**
 
 ## Goal
 
@@ -41,18 +41,32 @@ The following are hard requirements:
 6. Mobile reflow and reduced-motion compatibility are required.
 7. The role-family renderer must be reusable in later Team, Department, Sector and campaign compositions.
 
-## Release criteria
+## Production verification
 
-Phase 2A is complete when:
+Phase 2A closed only after the deployed Hostinger site passed the same browser contracts used in CI.
+
+Evidence:
+
+- merged implementation: PR #45;
+- main release commit: `6f4220c53509398a714b5ff59e90b7280ab0a0b3`;
+- Web CI #107 / run `34717087126`: **success**;
+- Hostinger served release marker `branding-phase-2a-role-families` before production browser QA began;
+- Production Verification #3 / run `34717199794`: **success**;
+- production Playwright step `Verify production geometry, role families, responsive UX and accessibility`: **success**;
+- failure diagnostics were not uploaded because the production gate completed cleanly.
+
+## Release criteria result
+
+All Phase 2A exit criteria are satisfied:
 
 - all four deep ES employee pages render their correct family and motif;
 - all four EN equivalents preserve the same canonical mapping;
-- flow, systems and human-control elements stay contained on desktop and mobile;
+- flow, systems and human-control elements remain contained on desktop and mobile;
 - no family creates horizontal overflow;
-- static role-family contract, TypeScript, browser QA and build pass;
-- Hostinger serves the `branding-phase-2a-role-families` release marker;
-- the production Playwright workflow passes the role-family tests against `iaempleado.com`.
+- static role-family contract, TypeScript, browser QA and production build pass;
+- Hostinger serves the expected Phase 2A marker;
+- production Playwright passes against `iaempleado.com`.
 
-## Next after 2A
+## Next — Branding Phase 2B
 
-Reuse the same role-family grammar inside richer Team and Department compositions before expanding sector-specific hero art and campaign/social variants.
+Reuse the same role-family grammar inside richer **Team and Department compositions**. The next phase must make collaboration visually legible — role handoffs, shared systems and human approval — without creating a second visual language or changing the approved character identities.
