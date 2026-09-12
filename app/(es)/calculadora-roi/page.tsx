@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { RoiEstimatorPage } from "../../../components/roi-estimator-page";
 import { getRoiEstimatorPageContent, roiEstimatorPath } from "../../../lib/roi-estimator";
+import { brandPreviewUrl } from "../../../lib/brand-social-previews";
 
 const content = getRoiEstimatorPageContent("es");
 const canonical = roiEstimatorPath("es");
 const alternate = roiEstimatorPath("en");
+const preview = brandPreviewUrl("es", "roi");
 
 export const metadata: Metadata = {
   title: content.seoTitle,
@@ -21,7 +23,9 @@ export const metadata: Metadata = {
     alternateLocale: ["en_US"],
     title: content.seoTitle,
     description: content.seoDescription,
+    images: [{ url: preview, width: 1200, height: 630, alt: content.seoTitle }],
   },
+  twitter: { card: "summary_large_image", title: content.seoTitle, description: content.seoDescription, images: [preview] },
 };
 
 export default function RoiCalculatorSpanishPage() {

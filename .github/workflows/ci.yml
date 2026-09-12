@@ -65,6 +65,9 @@ jobs:
       - name: Branding system contract
         run: node scripts/check-branding.mjs
 
+      - name: Brand media contract
+        run: node scripts/check-brand-media.mjs
+
       - name: Typecheck
         run: npm run typecheck
 

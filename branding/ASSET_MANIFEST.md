@@ -13,6 +13,9 @@ All paths below are production public paths relative to the site root.
 | Javier — Sales / SDR | `/branding/characters/javier-canonical.webp` | Canonical approved Reference Employee portrait for commercial/sales surfaces |
 | Orbit pattern | `/branding/orbit-pattern.svg` | Low-contrast background texture and animation reference |
 | People + AI + systems diagram | `/branding/people-ai-systems.svg` | Explainers, decks, landing sections, social/campaign composition source |
+| Demo/video frame | `/branding/media/demo-frame.svg` | 16:9 transparent overlay for demos, recordings and sales-deck stills |
+| Square social frame | `/branding/media/social-square-frame.svg` | 1080 × 1080 master overlay for square campaign compositions |
+| Story frame | `/branding/media/story-frame.svg` | 1080 × 1920 master overlay for vertical stories/reels/covers |
 
 ## Usage guidance
 
@@ -101,9 +104,16 @@ The four interactive experiences use a shared motion and state language while pr
 
 Interactive visuals have dedicated tablet/mobile compositions instead of scaling desktop scenes down. Motion is progressive enhancement and respects `prefers-reduced-motion`.
 
+### Commercial media and social previews
+
+A central `1200 × 630` renderer now produces localized Open Graph/Twitter cards from the canonical brand registry. Home, the four interactive experiences and the main commercial hubs use branded share previews instead of generic metadata-only cards.
+
+Reusable transparent SVG masters are available for 16:9 demo/video, square social and vertical story compositions. Campaign copy remains outside the frame masters so EN/ES can be produced from the same source system.
+
+See `branding/SOCIAL_MEDIA_SYSTEM.md` for surface keys, export sizes, composition hierarchy and claim-safety rules.
+
 ## Next reusable asset phases
 
-- proof/demo media frames and video package;
-- social/Open Graph exports derived from the canonical system;
 - comparison/proof surfaces where additional visual evidence improves evaluation;
+- campaign-specific content packs derived from the reusable masters;
 - future canonical characters for catalog roles only after explicit visual approval.
