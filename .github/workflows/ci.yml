@@ -35,6 +35,9 @@ jobs:
       - name: Employee discovery contract
         run: node scripts/check-employee-discovery.mjs
 
+      - name: Mobile navigation contract
+        run: node scripts/check-mobile-navigation.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
