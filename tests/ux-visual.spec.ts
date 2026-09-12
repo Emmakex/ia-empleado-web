@@ -59,6 +59,28 @@ async function assertNoHorizontalOverflow(page: Page, label: string) {
   expect(measured, `${label} must not create horizontal page overflow`).toBeLessThanOrEqual(metrics.clientWidth + 1);
 }
 
+async function assertPortraitsVerticallyContained(page: Page, label: string) {
+  const portraits = await page.locator(".brand-character-node").evaluateAll((nodes) =>
+    nodes.map((node) => {
+      const card = (node as HTMLElement).getBoundingClientRect();
+      const image = node.querySelector(".brand-character-portrait img")?.getBoundingClientRect();
+      return image ? {
+        cardTop: card.top,
+        cardBottom: card.bottom,
+        imageTop: image.top,
+        imageBottom: image.bottom,
+      } : null;
+    }).filter(Boolean),
+  );
+
+  expect(portraits.length, `${label}: all four portraits must render`).toBe(4);
+  for (const [index, portrait] of portraits.entries()) {
+    if (!portrait) continue;
+    expect(portrait.imageTop, `${label}: portrait ${index + 1} head must stay inside its card`).toBeGreaterThanOrEqual(portrait.cardTop - 1);
+    expect(portrait.imageBottom, `${label}: portrait ${index + 1} must stay inside its card`).toBeLessThanOrEqual(portrait.cardBottom + 1);
+  }
+}
+
 async function assertMobileHeroGeometry(page: Page, label: string) {
   const stage = await requiredBox(page.locator(".brand-hero-stage"), `${label}: hero stage`);
   const first = await requiredBox(page.locator(".brand-character-node-1"), `${label}: Clara`);
@@ -94,6 +116,8 @@ async function assertMobileHeroGeometry(page: Page, label: string) {
     expect(box.x + box.width, `${label}: ${name} must remain inside the stage`).toBeLessThanOrEqual(stage.x + stage.width + 1);
   }
 
+  await assertPortraitsVerticallyContained(page, label);
+
   const labelFontSizes = await page.locator(".brand-character-label span").evaluateAll((nodes) =>
     nodes.map((node) => Number.parseFloat(getComputedStyle(node).fontSize)),
   );
@@ -123,6 +147,19 @@ for (const viewport of mobileMatrix) {
   });
 }
 
+test("desktop hero keeps a balanced headline and uncropped portraits", async ({ page }) => {
+  await page.setViewportSize({ width: 1648, height: 900 });
+  await page.goto("/", { waitUntil: "networkidle" });
+
+  const headlineSize = await page.locator(".brand-home-hero .hero-copy h1").evaluate((node) =>
+    Number.parseFloat(getComputedStyle(node).fontSize),
+  );
+  expect(headlineSize, "desktop hero headline should not dominate the full viewport").toBeLessThanOrEqual(80);
+  expect(headlineSize, "desktop hero headline must remain visually prominent").toBeGreaterThanOrEqual(50);
+  await assertPortraitsVerticallyContained(page, "1648px desktop home");
+  await assertNoHorizontalOverflow(page, "1648px desktop home");
+});
+
 test("200% text scaling keeps the mobile hero usable", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/", { waitUntil: "networkidle" });
@@ -133,7 +170,7 @@ test("200% text scaling keeps the mobile hero usable", async ({ page }) => {
   await assertMobileHeroGeometry(page, "390px home at 200% text scale");
 });
 
-test("mobile navigation traps focus and restores it on Escape", async ({ page }) => {
+test("mobile navigation traps focus, restores it and exposes all primary sections", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/", { waitUntil: "networkidle" });
 
@@ -146,6 +183,23 @@ test("mobile navigation traps focus and restores it on Escape", async ({ page })
   const lastLink = dialog.locator("a").last();
   await expect(firstLink).toBeFocused();
 
+  for (const href of [
+    "/",
+    "/empleados-ia",
+    "/equipos-ia",
+    "/como-trabajan-juntos",
+    "/disena-tu-equipo-ia",
+    "/mejora-tu-proceso",
+    "/calculadora-roi",
+    "/comparativas",
+    "/sectores",
+    "/casos-de-uso",
+    "/departamentos",
+    "/integraciones",
+  ]) {
+    await expect(dialog.locator(`a[href="${href}"]`).first(), `mobile navigation must expose ${href}`).toBeVisible();
+  }
+
   await lastLink.focus();
   await page.keyboard.press("Tab");
   await expect(firstLink).toBeFocused();
@@ -156,6 +210,28 @@ test("mobile navigation traps focus and restores it on Escape", async ({ page })
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(toggle).toBeFocused();
+});
+
+test("desktop Explore menu exposes the remaining primary sections", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/", { waitUntil: "networkidle" });
+  const explore = page.locator(".site-nav-explore summary");
+  await explore.click();
+  const menu = page.locator(".site-nav-mega");
+  await expect(menu).toBeVisible();
+
+  for (const href of [
+    "/disena-tu-equipo-ia",
+    "/mejora-tu-proceso",
+    "/calculadora-roi",
+    "/comparativas",
+    "/sectores",
+    "/casos-de-uso",
+    "/departamentos",
+    "/integraciones",
+  ]) {
+    await expect(menu.locator(`a[href="${href}"]`), `desktop navigation must expose ${href}`).toBeVisible();
+  }
 });
 
 const smokeRoutes = [
