@@ -1,5 +1,6 @@
 import type { Locale } from "../lib/i18n";
 import { getBrandCharacters } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type BrandHeroSceneProps = {
   locale: Locale;
@@ -63,13 +64,10 @@ export function BrandHeroScene({ locale, visualLabel, systems }: BrandHeroSceneP
           aria-hidden="true"
         >
           <div className="brand-character-portrait">
-            <img
-              src={character.asset}
-              alt=""
-              width={420}
-              height={525}
-              loading="eager"
-              decoding="async"
+            <BrandCharacterImage
+              character={character}
+              sizes="(max-width: 430px) 120px, (max-width: 760px) 126px, 140px"
+              eager
               fetchPriority={index < 2 ? "high" : "auto"}
             />
           </div>
