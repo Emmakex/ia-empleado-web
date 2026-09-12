@@ -170,9 +170,9 @@ The public simulator is educational only: it uses synthetic data and does not co
 
 ### Web Phase 4B — Team Builder
 
-Current development phase. Release completion requires feature merge, green `main` CI and Hostinger production verification.
+Implementation and repository validation complete through **PR #16**. Hostinger production verification remains the final release gate.
 
-Phase 4B introduces:
+Phase 4B includes:
 
 - `/disena-tu-equipo-ia` and `/en/design-your-ai-team`;
 - deterministic recommendations using the canonical 22-profile Employee taxonomy;
