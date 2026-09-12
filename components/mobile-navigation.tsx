@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { MenuNavigationLink } from "./menu-navigation-link";
 
 export type NavigationLink = {
   href: string;
@@ -152,21 +152,21 @@ export function MobileNavigation({
                   <p className="mobile-menu-group-label">{group.label}</p>
                   <div className="mobile-menu-group-links">
                     {group.links.map((link) => (
-                      <Link href={link.href} onClick={close} key={`${group.label}-${link.href}`}>
+                      <MenuNavigationLink href={link.href} onClick={close} key={`${group.label}-${link.href}`}>
                         {link.label}
-                      </Link>
+                      </MenuNavigationLink>
                     ))}
                   </div>
                 </section>
               ))}
             </nav>
             <div className="mobile-menu-actions">
-              <Link className="mobile-language-link" href={alternateHref} hrefLang={alternateHrefLang} onClick={close}>
+              <MenuNavigationLink className="mobile-language-link" href={alternateHref} hrefLang={alternateHrefLang} onClick={close}>
                 {languageLabel}
-              </Link>
-              <Link className="button mobile-menu-cta" href={ctaHref} onClick={close}>
+              </MenuNavigationLink>
+              <MenuNavigationLink className="button mobile-menu-cta" href={ctaHref} onClick={close}>
                 {ctaLabel}
-              </Link>
+              </MenuNavigationLink>
             </div>
           </div>
         </>
