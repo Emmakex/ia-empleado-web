@@ -5,6 +5,7 @@ import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { teamBuilderPath } from "../lib/team-builder";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
+import { comparisonDetailPath, comparisonIndexPath, comparisonRecords } from "../lib/comparison-content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -107,6 +108,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.81,
       alternates: { languages: { es: `https://iaempleado.com${roiEstimatorPath("es")}`, en: `https://iaempleado.com${roiEstimatorPath("en")}` } },
     },
+    {
+      url: `https://iaempleado.com${comparisonIndexPath("es")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: { languages: { es: `https://iaempleado.com${comparisonIndexPath("es")}`, en: `https://iaempleado.com${comparisonIndexPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${comparisonIndexPath("en")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: { languages: { es: `https://iaempleado.com${comparisonIndexPath("es")}`, en: `https://iaempleado.com${comparisonIndexPath("en")}` } },
+    },
   ];
 
   for (const employee of getDetailedEmployeeRecords()) {
@@ -146,6 +161,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified,
         changeFrequency: "weekly",
         priority: 0.8,
+        alternates: { languages: { es: `https://iaempleado.com${esPath}`, en: `https://iaempleado.com${enPath}` } },
+      },
+    );
+  }
+
+  for (const comparison of comparisonRecords) {
+    const esPath = comparisonDetailPath(comparison.key, "es");
+    const enPath = comparisonDetailPath(comparison.key, "en");
+    entries.push(
+      {
+        url: `https://iaempleado.com${esPath}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.82,
+        alternates: { languages: { es: `https://iaempleado.com${esPath}`, en: `https://iaempleado.com${enPath}` } },
+      },
+      {
+        url: `https://iaempleado.com${enPath}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.72,
         alternates: { languages: { es: `https://iaempleado.com${esPath}`, en: `https://iaempleado.com${enPath}` } },
       },
     );

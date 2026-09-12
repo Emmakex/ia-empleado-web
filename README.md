@@ -6,45 +6,27 @@ This repository is intentionally separate from [`Emmakex/ia-empleado`](https://g
 
 ## Repository responsibility
 
-`ia-empleado-web` owns only the public commercial website:
+`ia-empleado-web` owns the public commercial website only: marketing/product education, SEO/GEO, EN/ES content, Employee/Team/sector/integration/comparison/use-case pages, interactive explainers, lead journeys, analytics/experimentation, public media and Hostinger website delivery.
 
-- marketing and product education;
-- SEO and GEO / AI-search answer-engine readiness;
-- employee, team, department, sector, integration, comparison and use-case landing pages;
-- EN/ES public content;
-- interactive product explainers and workflow simulations;
-- public videos/images/diagrams;
-- lead capture, demo/contact journeys and attribution;
-- analytics and experimentation for the public website;
-- Hostinger deployment and website-specific CI/CD.
+It does **not** own the private IA Empleado runtime, customer production orchestration, product API/workers, Reference Lab runtime, customer data, secrets, memory or operational state.
 
-It does **not** own:
+## Canonical documentation
 
-- the IA Empleado private runtime;
-- AI Employee orchestration;
-- customer production deployments;
-- product API/worker implementation;
-- Reference Lab runtime;
-- customer data, secrets, memory or operational state.
-
-## Canonical website documentation
-
-- [`docs/COMMERCIAL_WEBSITE.md`](docs/COMMERCIAL_WEBSITE.md) — commercial website product/SEO contract migrated from `ia-empleado`.
-- [`docs/WEB_ECOSYSTEM_VISION.md`](docs/WEB_ECOSYSTEM_VISION.md) — collaborative ecosystem vision: Empleado IA → Equipo IA → Empresa aumentada, interactive experiences, SEO/GEO content system and website roadmap.
-- [`docs/ENGINEERING_RULES.md`](docs/ENGINEERING_RULES.md) — engineering contract adapted specifically to this commercial website.
-- [`docs/I18N_AND_MARKET_LOCALIZATION.md`](docs/I18N_AND_MARKET_LOCALIZATION.md) — EN/ES web localization and SEO contract.
-- [`docs/ANALYTICS_AND_CONSENT.md`](docs/ANALYTICS_AND_CONSENT.md) — privacy-safe analytics and consent baseline.
-- [`docs/PRODUCT_CONTEXT.md`](docs/PRODUCT_CONTEXT.md) — product facts and source documents that constrain public claims.
-- [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery, filtering, relationship and restricted-profile contract.
-- [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — first-class AI Team model, four initial compositions, SEO/GEO routes, handoff/control rules and validation contract.
-- [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — interactive collaboration simulator, synthetic scenarios, SEO/GEO fallback content, accessibility and validation contract.
-- [`docs/PHASE_4B_TEAM_BUILDER.md`](docs/PHASE_4B_TEAM_BUILDER.md) — deterministic Team Builder, restricted-area handling, local-processing privacy boundary and release contract.
-- [`docs/PHASE_5A_PROCESS_ANALYZER.md`](docs/PHASE_5A_PROCESS_ANALYZER.md) — before/after process analysis, automation/assistance/human-control classification, privacy boundary and release contract.
-- [`docs/PHASE_5B_ROI_ESTIMATOR.md`](docs/PHASE_5B_ROI_ESTIMATOR.md) — transparent value/ROI methodology, scenario assumptions, privacy boundary and release contract.
+- [`docs/COMMERCIAL_WEBSITE.md`](docs/COMMERCIAL_WEBSITE.md) — public product/SEO contract.
+- [`docs/WEB_ECOSYSTEM_VISION.md`](docs/WEB_ECOSYSTEM_VISION.md) — Empleado IA → Equipo IA → Empresa aumentada strategy and web roadmap.
+- [`docs/ENGINEERING_RULES.md`](docs/ENGINEERING_RULES.md) — website engineering contract.
+- [`docs/I18N_AND_MARKET_LOCALIZATION.md`](docs/I18N_AND_MARKET_LOCALIZATION.md) — EN/ES localization and SEO contract.
+- [`docs/ANALYTICS_AND_CONSENT.md`](docs/ANALYTICS_AND_CONSENT.md) — privacy-safe analytics baseline.
+- [`docs/PRODUCT_CONTEXT.md`](docs/PRODUCT_CONTEXT.md) — product facts constraining public claims.
+- [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery contract.
+- [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — AI Teams model and handoff/control rules.
+- [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — collaboration simulator contract.
+- [`docs/PHASE_4B_TEAM_BUILDER.md`](docs/PHASE_4B_TEAM_BUILDER.md) — deterministic Team Builder contract.
+- [`docs/PHASE_5A_PROCESS_ANALYZER.md`](docs/PHASE_5A_PROCESS_ANALYZER.md) — before/after process analysis contract.
+- [`docs/PHASE_5B_ROI_ESTIMATOR.md`](docs/PHASE_5B_ROI_ESTIMATOR.md) — transparent ROI/value methodology.
+- [`docs/PHASE_6A_COMPARISONS.md`](docs/PHASE_6A_COMPARISONS.md) — comparison-page methodology, truthfulness and SEO/GEO contract.
 
 ## Strategic narrative
-
-The website does not present AI Employees as isolated assistants. The public product story progresses through:
 
 ```text
 Empleado IA
@@ -52,7 +34,7 @@ Empleado IA
 → Empresa aumentada por IA
 ```
 
-The commercial experience should make visitors understand and see how specialized AI Employees can collaborate with each other, people and company systems to resolve end-to-end business processes under explicit policy and supervision boundaries.
+The commercial website explains how specialized AI Employees can collaborate with people and company systems under explicit permissions, policies, approvals and supervision boundaries.
 
 ## Separation of concerns
 
@@ -61,7 +43,7 @@ iaempleado.com
 = marketing + SEO/GEO + education + interactive explanation + lead capture
 
 Kairoseth Reference Lab
-= real governed demo execution + proof assets
+= governed demo execution + proof assets
 
 Customer deployment
 = private production runtime
@@ -71,22 +53,17 @@ None of these surfaces may become an accidental runtime dependency of another.
 
 ## Technology baseline
 
-The commercial site uses:
-
-- Next.js App Router;
-- React;
-- TypeScript;
-- server/static-first rendering for SEO-critical content;
-- progressive client-side interaction only where it materially improves explanation or conversion;
-- structured EN/ES content with automated parity validation;
-- GitHub Actions validation;
-- Hostinger Node.js/Next.js deployment.
-
-Current package contract requires Node.js `>=20.9.0`; production is configured on Hostinger with Node.js 22.x.
+- Next.js App Router
+- React
+- TypeScript
+- server/static-first rendering for SEO-critical meaning
+- progressive client interaction where useful
+- structured EN/ES content and parity validation
+- GitHub Actions CI
+- Hostinger Node.js/Next.js deployment
+- Node.js `>=20.9.0`; production uses Node.js 22.x
 
 ## Delivery workflow
-
-All functional website changes follow:
 
 ```text
 feature/fix/chore branch
@@ -97,100 +74,82 @@ feature/fix/chore branch
 → production verification
 ```
 
-Direct-to-`main` functional delivery is not the normal workflow.
-
 ## Current state
 
 ### Web Phase 0 — Foundation
 
-Complete. Hostinger/Next.js, engineering rules, EN/ES architecture, SEO/GEO information architecture, design-system foundation, privacy-safe analytics/consent baseline and CI are in place.
+Complete.
 
 ### Web Phase 1 — Core commercial shell
 
-Complete and production-verified.
-
-Includes global navigation/footer, bilingual homepage, white-first visual system, collaborative ecosystem explanation, localized metadata, canonical/hreflang, sitemap/robots, FAQ structured data, responsive behavior, mobile navigation and automated ES/EN, TypeScript and production-build gates.
+Complete and production-verified. Includes bilingual homepage, white-first visual system, global navigation/footer, semantic SEO baseline, responsive/mobile navigation and CI gates.
 
 ### Web Phase 2A — Employee content engine
 
-Complete and production-verified.
-
-Includes reusable structured Employee content, bilingual indexes, deep Reference Employee pages, SEO/GEO content structure, structured data and sitemap integration.
+Complete and production-verified. Reusable structured Employee content, bilingual indexes, deep Reference Employee pages, metadata, structured data and sitemap integration are in place.
 
 ### Web Phase 2B — Reference Employee deep content
 
-Complete and production-verified on `iaempleado.com`.
-
-Deep ES/EN profiles exist for Customer Support, Administrative, Accounting & Billing and Sales / SDR, each with tasks, workflow, integrations, collaboration, control boundaries, use cases, sectors, limitations, FAQ and conversion CTA.
+Complete and production-verified. Deep ES/EN profiles exist for Customer Support, Administrative, Accounting & Billing and Sales / SDR.
 
 ### Web Phase 2C — Employee catalog discovery
 
-Complete and production-verified.
-
-Includes all **22 opportunity profiles**, search and filters, four deep Reference Employee links, sixteen catalog-opportunity summaries, two restricted/high-impact areas, related-role ecosystem blocks, responsive ES/EN discovery and a dedicated CI contract.
+Complete and production-verified. Includes all **22 opportunity profiles**, search/filters, sixteen catalog summaries, four deep profiles and two restricted/high-impact areas.
 
 ### Web Phase 3 — AI Teams
 
-Complete and production-verified.
-
-Includes `/equipos-ia/` and `/en/ai-teams/` plus four bilingual reference compositions: Sales, Ecommerce, Administration and Travel. Each team explains participating roles, handoffs, systems, human-control boundaries, metrics, use cases, limitations and FAQ.
+Complete and production-verified. Includes Sales, Ecommerce, Administration and Travel team compositions with roles, handoffs, systems, controls, metrics, use cases and limitations.
 
 ### Web Phase 4A — Interactive collaboration
 
-Complete and production-verified.
-
-Includes `/como-trabajan-juntos` and `/en/see-team-work`, three bilingual synthetic scenarios, step-by-step controls, visible handoffs, human-control points, crawlable HTML equivalents, structured data, canonical/hreflang, sitemap coverage and a dedicated CI contract.
-
-The public simulator is educational only: it uses synthetic data and does not connect to customer production systems.
+Complete and production-verified. Includes `/como-trabajan-juntos` and `/en/see-team-work` with three synthetic step-by-step scenarios and crawlable HTML equivalents.
 
 ### Web Phase 4B — Team Builder
 
-Complete and production-verified.
-
-Includes bilingual Team Builder routes, deterministic recommendations over the 22-profile catalog, sector/problem/department/system inputs, four reference presets, role explanations, reference-team matching, relationship handoffs, restricted-area warnings, local browser calculation, sitemap/structured data and a dedicated CI contract.
+Complete and production-verified. Includes deterministic recommendations over the 22-profile taxonomy, reference-team matching, restricted-area warnings and local-browser calculation.
 
 ### Web Phase 5A — Process Analyzer
+
+Complete and production-verified. Includes bilingual before/after process analysis, bottleneck marking, `automated / assisted / human` responsibility classification and local-browser state.
+
+### Web Phase 5B — Transparent ROI / Value Estimator
 
 Complete and production-verified.
 
 Includes:
 
-- `/mejora-tu-proceso` and `/en/improve-your-process`;
-- four bilingual reference processes: customer issue, invoice validation, sales follow-up and order exception;
-- general and step-level bottleneck marking;
-- visible current-process vs proposed-process comparison;
-- explicit `automated`, `assisted` and `human` responsibility classification;
-- participating IA Employee and systems-to-evaluate context;
-- human-control text on every step;
-- local browser state with no analysis POST;
-- crawlable before/after equivalents;
-- WebPage, ItemList and FAQPage structured data;
-- canonical, hreflang, sitemap and footer discoverability;
-- dedicated Process Analyzer CI contract.
-
-The Process Analyzer is an educational design tool. It does not inspect customer systems, execute actions or claim that a reference redesign is production-ready.
-
-### Web Phase 5B — Transparent ROI / Value Estimator
-
-Implementation and repository validation complete through **PR #20**. Hostinger production verification remains the final release gate.
-
-Phase 5B includes:
-
 - `/calculadora-roi` and `/en/roi-calculator`;
-- editable monthly volume, manual minutes/unit and hourly-cost inputs;
-- a user-controlled base manual-time reduction assumption;
-- transparent conservative/base/high scenarios using base −10 pp / base / base +10 pp;
+- editable monthly volume, manual minutes/unit and hourly cost;
+- user-controlled base time-reduction assumption;
+- conservative/base/high scenarios;
 - potential hours freed and economic-capacity calculations;
-- optional implementation and monthly operating costs;
-- percentage ROI only when a valid solution-cost denominator exists;
-- explicit separation between capacity estimates and guaranteed savings;
+- optional implementation/monthly solution costs;
+- first-year ROI only when a valid cost denominator exists;
+- explicit distinction between estimates and guaranteed savings;
 - EUR/USD/GBP display without FX conversion;
-- local browser calculation with no calculator-data POST;
-- visible formulas, methodology and synthetic worked example for SEO/GEO;
-- WebPage, ItemList and FAQPage structured data;
-- canonical, hreflang, sitemap and footer discoverability;
-- dedicated ROI Estimator CI contract.
+- local browser calculation;
+- visible methodology, formulas and synthetic example;
+- structured data, canonical/hreflang, sitemap and dedicated CI contract.
 
 The calculator is an educational commercial estimator, not a verified customer outcome, financial guarantee or binding proposal.
 
-After Phase 5B production verification, the next web work can expand SEO/GEO and evaluation depth through comparison surfaces, sector/use-case clusters and proof media.
+### Web Phase 6A — Comparison surfaces
+
+Current development phase. Release completion requires feature merge, green `main` CI and Hostinger production verification.
+
+Phase 6A introduces:
+
+- `/comparativas` and `/en/comparisons`;
+- five bilingual high-intent comparisons: chatbot, AI agent, RPA, traditional automation and AI copilot;
+- direct short answers for answer engines;
+- semantic dimension-by-dimension comparison tables;
+- explicit guidance for when AI Employee fits better;
+- explicit guidance for when the alternative fits better;
+- combination patterns instead of false either/or positioning;
+- methodology stating that category boundaries are not universal rules;
+- generic AI-copilot framing rather than unsourced vendor-specific product claims;
+- WebPage / CollectionPage, BreadcrumbList, ItemList and FAQPage structured data where applicable;
+- canonical, hreflang, sitemap and footer discoverability;
+- dedicated Comparison surfaces CI contract.
+
+After Phase 6A production verification, the next growth block can expand sector/use-case clusters and proof media while preserving evidence and thin-page controls.

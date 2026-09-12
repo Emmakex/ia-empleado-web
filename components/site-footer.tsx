@@ -6,6 +6,7 @@ import { teamIndexPath } from "../lib/team-content-engine";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
+import { comparisonIndexPath } from "../lib/comparison-content";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -42,6 +43,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             ))}
             <li><Link href={processAnalyzerPath(locale)}>{locale === "es" ? "Mejora tu proceso" : "Improve your process"}</Link></li>
             <li><Link href={roiEstimatorPath(locale)}>{locale === "es" ? "Calculadora ROI" : "ROI calculator"}</Link></li>
+            <li><Link href={comparisonIndexPath(locale)}>{locale === "es" ? "Comparativas" : "Comparisons"}</Link></li>
           </ul>
         </div>
       </div>
