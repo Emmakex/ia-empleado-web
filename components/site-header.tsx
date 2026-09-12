@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale, SiteDictionary } from "../lib/i18n";
 import { alternateLocale, localeHref } from "../lib/i18n";
 import { employeeIndexPath } from "../lib/employee-catalog";
+import { MobileNavigation } from "./mobile-navigation";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -13,6 +14,11 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
   const otherLocale = alternateLocale(locale);
   const homeHref = localeHref(locale);
   const employeeHref = employeeIndexPath(locale);
+  const teamsHref = `${homeHref}#equipos`;
+  const howHref = `${homeHref}#como-funciona`;
+  const securityHref = `${homeHref}#seguridad`;
+  const ctaHref = `${homeHref}#disena-tu-equipo`;
+  const languageHref = alternateHref ?? localeHref(otherLocale);
 
   return (
     <header className="site-header">
@@ -23,18 +29,36 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
         </Link>
         <nav className="main-nav" aria-label={locale === "es" ? "Navegación principal" : "Main navigation"}>
           <Link href={employeeHref}>{dictionary.nav.employees}</Link>
-          <Link href={`${homeHref}#equipos`}>{dictionary.nav.teams}</Link>
-          <Link href={`${homeHref}#como-funciona`}>{dictionary.nav.how}</Link>
-          <Link href={`${homeHref}#seguridad`}>{dictionary.nav.security}</Link>
+          <Link href={teamsHref}>{dictionary.nav.teams}</Link>
+          <Link href={howHref}>{dictionary.nav.how}</Link>
+          <Link href={securityHref}>{dictionary.nav.security}</Link>
         </nav>
         <div className="header-actions">
-          <Link className="language-link" href={alternateHref ?? localeHref(otherLocale)} hrefLang={otherLocale}>
+          <Link className="language-link" href={languageHref} hrefLang={otherLocale}>
             {dictionary.nav.language}
           </Link>
-          <Link className="button button-small" href={`${homeHref}#disena-tu-equipo`}>
+          <Link className="button button-small" href={ctaHref}>
             {dictionary.nav.cta}
           </Link>
         </div>
+        <MobileNavigation
+          employeeHref={employeeHref}
+          teamsHref={teamsHref}
+          howHref={howHref}
+          securityHref={securityHref}
+          alternateHref={languageHref}
+          alternateHrefLang={otherLocale}
+          languageLabel={dictionary.nav.language}
+          ctaHref={ctaHref}
+          ctaLabel={dictionary.nav.cta}
+          employeesLabel={dictionary.nav.employees}
+          teamsLabel={dictionary.nav.teams}
+          howLabel={dictionary.nav.how}
+          securityLabel={dictionary.nav.security}
+          openLabel={locale === "es" ? "Abrir menú" : "Open menu"}
+          closeLabel={locale === "es" ? "Cerrar menú" : "Close menu"}
+          navigationLabel={locale === "es" ? "Navegación móvil" : "Mobile navigation"}
+        />
       </div>
     </header>
   );
