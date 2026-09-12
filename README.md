@@ -21,7 +21,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`branding/README.md`](branding/README.md) — approved Concept 1 branding workspace and release rules.
 - [`branding/BRAND_SYSTEM.md`](branding/BRAND_SYSTEM.md) — visual identity, humanized AI Employee, color, motion and asset rules.
 - [`branding/PHASE_1_VALIDATION.md`](branding/PHASE_1_VALIDATION.md) — production verification evidence for Branding Phase 1.
-- [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md) — Branding Phase 2A role-family contract.
+- [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md) — Branding Phase 2A role-family contract and production-verification evidence.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — AI Teams model and handoff/control rules.
 - [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — collaboration simulator contract.
@@ -155,15 +155,17 @@ Production evidence is recorded in [`branding/PHASE_1_VALIDATION.md`](branding/P
 
 ### Branding Phase 2A — Role visual families
 
-**Implementation in progress.**
+**Complete and production-verified — 2026-09-12.**
 
-The four canonical Reference Employees now receive a reusable functional visual grammar without changing their approved identities:
+The four canonical Reference Employees now have a reusable functional visual grammar without changing their approved identities:
 
 - Clara — conversation/context;
 - Alex — operations/documents;
 - Sofía — validation/ledger;
 - Javier — pipeline/follow-up.
 
-Phase 2A applies these families to the four deep bilingual Employee pages and protects the mapping with static CI, browser geometry tests and production verification. See [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md).
+Phase 2A applies these families to all four deep bilingual Employee pages and protects the mapping with static CI, responsive canonical image delivery, browser geometry tests and a production Playwright gate. The deployed Hostinger release `branding-phase-2a-role-families` passed Production Verification #3. Evidence is recorded in [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md).
 
-After 2A is production-verified, the same grammar will be reused in richer Team/Department compositions, sector-specific hero art and campaign/social resources. Lead-capture/CTA expansion follows after the visual system is complete and stable.
+### Next — Branding Phase 2B
+
+Reuse the same role-family grammar in richer **Team and Department compositions** so multi-role collaboration, handoffs, shared systems and human approval become visually legible without creating a second visual language. Sector-specific hero art and campaign/social resources follow after that layer is stable.
