@@ -65,6 +65,9 @@ jobs:
       - name: Branding system contract
         run: node scripts/check-branding.mjs
 
+      - name: Brand motion contract
+        run: node scripts/check-brand-motion.mjs
+
       - name: Brand media contract
         run: node scripts/check-brand-media.mjs
 
