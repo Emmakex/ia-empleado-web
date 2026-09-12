@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
 import { employeeDetailPath } from "../lib/employee-content-engine";
+import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
 import { getTeamRecords, teamDetailPath } from "../lib/team-content-engine";
 import {
   sectorDetailPath,
@@ -12,6 +13,7 @@ import {
 } from "../lib/sector-use-cases";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
+import { BrandContextScene } from "./brand-context-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -66,8 +68,8 @@ export function UseCaseDetailPage({ locale, record }: Props) {
     <>
       <a className="skip-link" href="#contenido">{locale === "es" ? "Saltar al contenido" : "Skip to content"}</a>
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
-      <main id="contenido" className="sector-cluster-page">
-        <section className="use-case-detail-hero section-shell">
+      <main id="contenido" className="sector-cluster-page brand-sector-cluster-page">
+        <section className="use-case-detail-hero section-shell brand-use-case-detail-hero" data-use-case={record.key}>
           <div className="container sector-detail-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
@@ -86,15 +88,27 @@ export function UseCaseDetailPage({ locale, record }: Props) {
                 <Link className="button button-ghost" href={processAnalyzerPath(locale)}>{locale === "es" ? "Aplicarlo a mi proceso" : "Apply it to my process"}</Link>
               </div>
             </div>
-            <aside className="sector-detail-summary">
-              <span className="sector-summary-kicker">{locale === "es" ? "Patrón de referencia" : "Reference pattern"}</span>
-              <dl>
-                <div><dt>{locale === "es" ? "Pasos" : "Steps"}</dt><dd>{record.steps[locale].length}</dd></div>
-                <div><dt>{locale === "es" ? "Roles" : "Roles"}</dt><dd>{record.roles[locale].length}</dd></div>
-                <div><dt>{locale === "es" ? "Sectores relacionados" : "Related industries"}</dt><dd>{record.sectors.length}</dd></div>
-              </dl>
-              <p>{locale === "es" ? "Diseño educativo · no representa una implantación lista para producción." : "Educational design · not a production-ready implementation."}</p>
-            </aside>
+            <div className="brand-sector-detail-visual">
+              <BrandContextScene
+                locale={locale}
+                kind="use-case"
+                contextKey={record.key}
+                eyebrow={record.eyebrow[locale]}
+                title={record.title[locale]}
+                roles={record.roles[locale]}
+                systems={record.systems[locale]}
+                humanLabel={locale === "es" ? "Escalado humano en excepciones" : "Human escalation for exceptions"}
+              />
+              <aside className="sector-detail-summary brand-sector-summary">
+                <span className="sector-summary-kicker">{locale === "es" ? "Patrón de referencia" : "Reference pattern"}</span>
+                <dl>
+                  <div><dt>{locale === "es" ? "Pasos" : "Steps"}</dt><dd>{record.steps[locale].length}</dd></div>
+                  <div><dt>{locale === "es" ? "Roles" : "Roles"}</dt><dd>{record.roles[locale].length}</dd></div>
+                  <div><dt>{locale === "es" ? "Sectores relacionados" : "Related industries"}</dt><dd>{record.sectors.length}</dd></div>
+                </dl>
+                <p>{locale === "es" ? "Diseño educativo · no representa una implantación lista para producción." : "Educational design · not a production-ready implementation."}</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -115,7 +129,7 @@ export function UseCaseDetailPage({ locale, record }: Props) {
               <h2 id="use-case-flow-title">{locale === "es" ? "Responsabilidad paso a paso" : "Responsibility step by step"}</h2>
               <p>{locale === "es" ? "Automatizable no significa autónomo sin límites. Cada paso depende de calidad de datos, permisos y reglas." : "Automatable does not mean autonomous without limits. Every step depends on data quality, permissions and rules."}</p>
             </div>
-            <ol className="use-case-flow-list">
+            <ol className="use-case-flow-list brand-use-case-flow-list">
               {record.steps[locale].map((step, index) => (
                 <li key={step.title} className={`use-case-flow-step mode-${step.mode}`}>
                   <span className="use-case-step-number">{String(index + 1).padStart(2, "0")}</span>
@@ -133,12 +147,24 @@ export function UseCaseDetailPage({ locale, record }: Props) {
               <h2 id="use-case-roles-title">{locale === "es" ? "Qué roles pueden intervenir" : "Which roles can participate"}</h2>
             </div>
             <div className="sector-role-grid">
-              {record.roles[locale].map((role) => (
-                <article className="sector-role-card" key={role.name}>
-                  <span className="sector-role-mark" aria-hidden="true">{role.name.slice(0, 2).toUpperCase()}</span>
-                  <div><h3>{role.name}</h3><p>{role.contribution}</p>{role.employeeKey ? <Link className="text-link" href={employeeDetailPath(role.employeeKey, locale)}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link> : <small>{locale === "es" ? "Perfil de catálogo · requiere adaptación" : "Catalog profile · requires adaptation"}</small>}</div>
-                </article>
-              ))}
+              {record.roles[locale].map((role) => {
+                const character = role.employeeKey ? getBrandCharacterByEmployeeKey(role.employeeKey, locale) : undefined;
+                return (
+                  <article className={`sector-role-card${character ? " has-brand-character" : ""}`} key={role.name}>
+                    {character ? (
+                      <span className="sector-role-character" data-accent={character.accent} aria-hidden="true"><img src={character.asset} alt="" width={96} height={112} /></span>
+                    ) : (
+                      <span className="sector-role-mark" aria-hidden="true">{role.name.slice(0, 2).toUpperCase()}</span>
+                    )}
+                    <div>
+                      {character && <p className="sector-role-character-name">{character.name}</p>}
+                      <h3>{role.name}</h3>
+                      <p>{role.contribution}</p>
+                      {role.employeeKey ? <Link className="text-link" href={employeeDetailPath(role.employeeKey, locale)}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link> : <small>{locale === "es" ? "Perfil de catálogo · requiere adaptación" : "Catalog profile · requires adaptation"}</small>}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
             <div className="sector-reference-teams">
               <strong>{locale === "es" ? "Equipos de referencia" : "Reference teams"}</strong>
