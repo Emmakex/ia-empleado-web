@@ -9,6 +9,7 @@ import {
   integrationRecords,
 } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
+import { BrandOrganizationRoster, BrandOrganizationScene } from "./brand-organization-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -48,7 +49,7 @@ export function IntegrationIndexPage({ locale }: Props) {
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
       <main id="contenido" className="organization-map-page">
         <section className="organization-hero section-shell integration-hero">
-          <div className="container organization-hero-grid">
+          <div className="container organization-hero-grid brand-organization-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={localeHref(locale)}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -63,11 +64,22 @@ export function IntegrationIndexPage({ locale }: Props) {
                 <Link className="button button-ghost" href={departmentIndexPath(locale)}>{locale === "es" ? "Ver departamentos" : "View departments"}</Link>
               </div>
             </div>
-            <aside className="organization-hero-note">
-              <strong>{integrationRecords.length}</strong>
-              <span>{locale === "es" ? "categorías de sistema con contrato de control" : "system categories with a control contract"}</span>
-              <p>{locale === "es" ? "No prometemos conectores universales: cada integración debe validarse contra el sistema y proceso reales." : "We do not promise universal connectors: every integration must be validated against the real system and process."}</p>
-            </aside>
+            <div className="brand-organization-hero-side">
+              <BrandOrganizationScene
+                locale={locale}
+                kind="integration"
+                contextKey="integrations"
+                eyebrow={locale === "es" ? "DATOS · PERMISOS · TRAZABILIDAD" : "DATA · PERMISSIONS · TRACEABILITY"}
+                title={locale === "es" ? "Sistemas conectados con autoridad delimitada" : "Connected systems with bounded authority"}
+                systems={["CRM", "ERP", "Email", "Ecommerce"]}
+                humanLabel={locale === "es" ? "Aprobación humana" : "Human approval"}
+              />
+              <aside className="organization-hero-note">
+                <strong>{integrationRecords.length}</strong>
+                <span>{locale === "es" ? "categorías de sistema con contrato de control" : "system categories with a control contract"}</span>
+                <p>{locale === "es" ? "No prometemos conectores universales: cada integración debe validarse contra el sistema y proceso reales." : "We do not promise universal connectors: every integration must be validated against the real system and process."}</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -80,11 +92,12 @@ export function IntegrationIndexPage({ locale }: Props) {
             </div>
             <div className="organization-card-grid">
               {integrationRecords.map((record) => (
-                <article className="organization-card integration-card" key={record.key}>
+                <article className="organization-card integration-card brand-organization-card" key={record.key}>
                   <div className="organization-card-topline">
                     <span>{record.eyebrow[locale]}</span>
                     <span>{record.departments.length} {locale === "es" ? "departamentos" : "departments"}</span>
                   </div>
+                  <BrandOrganizationRoster locale={locale} employeeKeys={record.employeeKeys} compact />
                   <h3>{record.name[locale]}</h3>
                   <p>{record.shortAnswer[locale]}</p>
                   <div className="organization-tag-row">
