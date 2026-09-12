@@ -36,6 +36,7 @@ It does **not** own:
 - [`docs/ANALYTICS_AND_CONSENT.md`](docs/ANALYTICS_AND_CONSENT.md) — privacy-safe analytics and consent baseline.
 - [`docs/PRODUCT_CONTEXT.md`](docs/PRODUCT_CONTEXT.md) — product facts and source documents that constrain public claims.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery, filtering, relationship and restricted-profile contract.
+- [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — first-class AI Team model, four initial compositions, SEO/GEO routes, handoff/control rules and validation contract.
 
 ## Strategic narrative
 
@@ -118,6 +119,7 @@ Includes:
 - sitemap and robots baseline;
 - visible FAQ plus matching structured data;
 - responsive, keyboard-focus and reduced-motion behavior;
+- accessible mobile/tablet navigation with a dedicated CI regression gate;
 - automated EN/ES content-parity, TypeScript and production-build gates.
 
 ### Web Phase 2A — Employee content engine
@@ -135,7 +137,7 @@ Includes:
 
 ### Web Phase 2B — Reference Employee deep content
 
-Complete and production-verified on `iaempleado.com` on **2026-09-11**.
+Complete and production-verified on `iaempleado.com`.
 
 Deep ES/EN profiles now exist for:
 
@@ -148,9 +150,9 @@ Each profile includes definition, tasks, workflow, integrations, collaboration, 
 
 ### Web Phase 2C — Employee catalog discovery
 
-Implementation and repository validation complete through **PR #10**. Production verification on Hostinger remains the final release gate.
+Complete and production-verified.
 
-Phase 2C now includes:
+Includes:
 
 - all **22 opportunity profiles** discoverable from the canonical catalog index;
 - plain-language search;
@@ -163,4 +165,28 @@ Phase 2C now includes:
 - ItemList structured data aligned with the visible 22-profile catalog;
 - dedicated CI contract for profile count, taxonomy, restricted status, filter presence, EN/ES parity, TypeScript and production build.
 
-After Phase 2C production verification, the next development phase is **Web Phase 3 — AI Teams**, starting with Sales, Ecommerce, Administration and Travel team compositions.
+### Web Phase 3 — AI Teams
+
+Implementation in progress on the dedicated feature branch.
+
+Phase 3 introduces `/equipos-ia/` and `/en/ai-teams/` as first-class SEO/GEO surfaces and publishes four reference team compositions:
+
+1. Sales / Ventas;
+2. Ecommerce;
+3. Administration / Administración;
+4. Travel / Turismo.
+
+Each team model is designed to explain:
+
+- the process-level problem;
+- participating AI Employees and responsibilities;
+- explicit handoffs between roles;
+- systems and integrations;
+- human approval and authority boundaries;
+- measurable process indicators;
+- realistic use cases and limitations;
+- FAQ and customer-specific design CTA.
+
+Team pages are reference commercial models, not claims that every composition or connector is available as an off-the-shelf deployment.
+
+After Phase 3 production verification, the next major experience is **Web Phase 4 — Interactive collaboration**, beginning with `Ver cómo trabajan juntos / See the team work`, followed by the guided Team Builder.
