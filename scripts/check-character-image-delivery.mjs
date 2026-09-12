@@ -11,6 +11,7 @@ const directCriticalSurfaces = [
   "components/team-detail-page.tsx",
   "components/brand-context-scene.tsx",
   "components/brand-organization-scene.tsx",
+  "components/brand-collaboration-composition.tsx",
   "components/brand-comparison-scene.tsx",
   "components/brand-interactive-preview.tsx",
   "components/collaboration-simulator.tsx",
@@ -62,6 +63,11 @@ for (const token of [
 }
 if (/<img\s[^>]*src=\{character\.asset\}/s.test(roleFamily)) {
   throw new Error("Role family scene bypasses responsive delivery with a raw canonical <img>");
+}
+
+const collaboration = fs.readFileSync("components/brand-collaboration-composition.tsx", "utf8");
+if (!collaboration.includes('sizes="(max-width: 760px) 86px, 104px"')) {
+  throw new Error("Team/Department collaboration composition is missing an explicit responsive portrait sizes contract");
 }
 
 const detail = fs.readFileSync("components/employee-detail-page.tsx", "utf8");
