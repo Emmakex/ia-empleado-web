@@ -4,6 +4,7 @@ import { getDictionary, localeHref, type Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
 import { alternateTeamPath, getTeamRecords, teamIndexPath, type TeamKey } from "../lib/team-content-engine";
 import { BrandCharacterImage } from "./brand-character-image";
+import { BrandCollaborationComposition } from "./brand-collaboration-composition";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -19,6 +20,12 @@ export function TeamDetailPage({ locale, teamKey }: TeamDetailPageProps) {
   const indexHref = teamIndexPath(locale);
   const canonical = `https://iaempleado.com${indexHref}/${detail.slug}`;
   const brandedMembers = detail.members.map((member) => member.employeeKey ? getBrandCharacterForProfileKey(member.employeeKey, locale) : undefined);
+  const collaborationParticipants = detail.members.map((member, index) => ({
+    id: `${teamKey}-${index + 1}`,
+    employeeKey: member.employeeKey,
+    name: member.name,
+    responsibility: member.responsibility,
+  }));
 
   const schemas = [
     { "@context": "https://schema.org", "@type": "WebPage", name: detail.name, description: detail.seoDescription, url: canonical, inLanguage: locale === "es" ? "es-ES" : "en", isPartOf: { "@type": "WebSite", name: "IA Empleado", url: locale === "es" ? "https://iaempleado.com/" : "https://iaempleado.com/en" } },
@@ -39,14 +46,17 @@ export function TeamDetailPage({ locale, teamKey }: TeamDetailPageProps) {
               <div className="hero-actions"><a className="button" href="#flujo-equipo">{locale === "es" ? "Ver el flujo" : "See the workflow"}</a><Link className="button button-ghost" href={`${homeHref}#disena-tu-equipo`}>{detail.ctaPrimary}</Link></div>
             </div>
             <aside className="team-outcome-card brand-team-outcome-card" aria-label={detail.outcomeLabel}>
-              <div className="brand-team-scene" aria-hidden="true">
-                <div className="brand-team-scene-core"><img src="/branding/ia-empleado-mark.svg" alt="" width={44} height={44} /><span>{locale === "es" ? "Proceso" : "Process"}</span></div>
-                {detail.members.slice(0, 5).map((member, index) => {
-                  const character = brandedMembers[index];
-                  return <div className={`brand-team-scene-member member-${index + 1}`} data-accent={character?.accent ?? "neutral"} key={member.name}>{character ? <BrandCharacterImage character={character} sizes="(max-width: 760px) 82px, 110px" eager /> : <span className="brand-team-generic-member">{String(index + 1).padStart(2, "0")}</span>}<small>{member.name}</small></div>;
-                })}
-                <div className="brand-team-human-approval"><span>✓</span>{locale === "es" ? "Control humano" : "Human control"}</div>
-              </div>
+              <BrandCollaborationComposition
+                locale={locale}
+                variant="team"
+                contextKey={teamKey}
+                eyebrow={detail.eyebrow}
+                title={detail.shortName}
+                participants={collaborationParticipants}
+                systems={detail.systems}
+                humanLabel={locale === "es" ? "Control humano en excepciones y acciones sensibles" : "Human control for exceptions and sensitive actions"}
+                handoffLabel={locale === "es" ? "Handoffs del equipo" : "Team handoffs"}
+              />
               <span className="team-outcome-kicker">{detail.outcomeLabel}</span><p>{detail.outcome}</p>
             </aside>
           </div>
