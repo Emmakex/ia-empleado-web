@@ -7,10 +7,10 @@ All paths below are production public paths relative to the site root.
 | Master mark | `/branding/ia-empleado-mark.svg` | Header, footer, favicon source, compact brand identifier |
 | Monochrome mark | `/branding/ia-empleado-mark-mono.svg` | Single-color print, dark/light constrained contexts |
 | Humanized AI Employee | `/branding/ia-employee-human.svg` | Generic UI avatar, diagrams and employee-coordination prototypes |
-| Clara — Customer Support | `/branding/characters/clara-customer-support.svg` | Reference Employee portrait for customer support surfaces |
-| Alex — Administrative | `/branding/characters/alex-administrative.svg` | Reference Employee portrait for administration surfaces |
-| Sofía — Accounting & Billing | `/branding/characters/sofia-accounting.svg` | Reference Employee portrait for accounting/billing surfaces |
-| Javier — Sales / SDR | `/branding/characters/javier-sales.svg` | Reference Employee portrait for commercial/sales surfaces |
+| Clara — Customer Support | `/branding/characters/clara-canonical.webp` | Canonical approved Reference Employee portrait for customer support surfaces |
+| Alex — Administrative | `/branding/characters/alex-canonical.webp` | Canonical approved Reference Employee portrait for administration surfaces |
+| Sofía — Accounting & Billing | `/branding/characters/sofia-canonical.webp` | Canonical approved Reference Employee portrait for accounting/billing surfaces |
+| Javier — Sales / SDR | `/branding/characters/javier-canonical.webp` | Canonical approved Reference Employee portrait for commercial/sales surfaces |
 | Orbit pattern | `/branding/orbit-pattern.svg` | Low-contrast background texture and animation reference |
 | People + AI + systems diagram | `/branding/people-ai-systems.svg` | Explainers, decks, landing sections, social/campaign composition source |
 
@@ -34,14 +34,16 @@ Do not:
 
 Use the generic portrait for the **concept of an AI Employee**, not as the literal identity of every role.
 
-For the four Reference Employees, use the role-specific canonical assets:
+For the four Reference Employees, the approved WebP portraits above are the **canonical visual identity**:
 
 - Clara — Customer Support / Atención al Cliente;
 - Alex — Administrative / Administrativo;
 - Sofía — Accounting & Billing / Contabilidad y Facturación;
 - Javier — Sales / SDR / Comercial.
 
-These names and portraits are a visual identity layer for the public commercial website. They do not imply a human employee, legal identity or independent product availability beyond the documented Reference Employee scope.
+Older simplified SVG role portraits may remain in the repository only as legacy/prototype material. They must not be used on new public surfaces and must not replace the approved canonical portraits.
+
+The names and portraits are a visual identity layer for the public commercial website. They do not imply a human employee, legal identity or independent product availability beyond the documented Reference Employee scope.
 
 ### Role color accents
 
@@ -68,16 +70,19 @@ Use when explaining the system-level proposition. Embedded labels are intentiona
 
 Implemented: master mark, generic humanized AI Employee, core palette/tokens, pattern, favicon source and brand contract.
 
-### Branding application — Homepage
+### Canonical character fidelity correction
+
+The public homepage must use the approved Clara, Alex, Sofía and Javier artwork rather than simplified redraws. The mobile collaboration scene has its own deliberate composition: two characters above the coordination core, two below it, human approval separated from the character cards and a simplified three-system row.
 
 The public homepage uses:
 
 - the master mark in header/footer;
-- the four canonical Reference Employee characters in the hero collaboration scene;
+- the four canonical Reference Employee portraits in the hero collaboration scene;
 - meaningful task-transfer motion;
 - visible human-approval state;
 - system chips around the team;
 - the same four characters in the Reference Employee cards;
+- a dedicated mobile layout rather than a scaled-down desktop diagram;
 - responsive and reduced-motion fallbacks.
 
 ## Next reusable asset phases

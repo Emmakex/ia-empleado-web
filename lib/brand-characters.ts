@@ -15,7 +15,7 @@ const characters = {
     {
       id: "clara",
       name: "Clara",
-      asset: "/branding/characters/clara-customer-support.svg",
+      asset: "/branding/characters/clara-canonical.webp",
       role: "Atención al Cliente IA",
       shortRole: "Atención al Cliente",
       accent: "blue",
@@ -24,7 +24,7 @@ const characters = {
     {
       id: "alex",
       name: "Alex",
-      asset: "/branding/characters/alex-administrative.svg",
+      asset: "/branding/characters/alex-canonical.webp",
       role: "Administrativo IA",
       shortRole: "Administración",
       accent: "violet",
@@ -33,7 +33,7 @@ const characters = {
     {
       id: "sofia",
       name: "Sofía",
-      asset: "/branding/characters/sofia-accounting.svg",
+      asset: "/branding/characters/sofia-canonical.webp",
       role: "Contabilidad y Facturación IA",
       shortRole: "Contabilidad",
       accent: "teal",
@@ -42,7 +42,7 @@ const characters = {
     {
       id: "javier",
       name: "Javier",
-      asset: "/branding/characters/javier-sales.svg",
+      asset: "/branding/characters/javier-canonical.webp",
       role: "Comercial / SDR IA",
       shortRole: "Comercial / SDR",
       accent: "amber",
@@ -53,7 +53,7 @@ const characters = {
     {
       id: "clara",
       name: "Clara",
-      asset: "/branding/characters/clara-customer-support.svg",
+      asset: "/branding/characters/clara-canonical.webp",
       role: "AI Customer Support",
       shortRole: "Customer Support",
       accent: "blue",
@@ -62,7 +62,7 @@ const characters = {
     {
       id: "alex",
       name: "Alex",
-      asset: "/branding/characters/alex-administrative.svg",
+      asset: "/branding/characters/alex-canonical.webp",
       role: "AI Administrative",
       shortRole: "Administration",
       accent: "violet",
@@ -71,7 +71,7 @@ const characters = {
     {
       id: "sofia",
       name: "Sofía",
-      asset: "/branding/characters/sofia-accounting.svg",
+      asset: "/branding/characters/sofia-canonical.webp",
       role: "AI Accounting & Billing",
       shortRole: "Accounting & Billing",
       accent: "teal",
@@ -80,7 +80,7 @@ const characters = {
     {
       id: "javier",
       name: "Javier",
-      asset: "/branding/characters/javier-sales.svg",
+      asset: "/branding/characters/javier-canonical.webp",
       role: "AI Sales / SDR",
       shortRole: "Sales / SDR",
       accent: "amber",
