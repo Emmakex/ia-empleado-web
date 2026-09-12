@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="IA Empleado">
+  <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round">
+    <path d="M48 15A33 33 0 0 1 79 59"/>
+    <path d="M73 70A33 33 0 0 1 23 70"/>
+    <path d="M17 59A33 33 0 0 1 40 16"/>
+  </g>
+  <g fill="currentColor">
+    <circle cx="48" cy="14" r="9"/>
+    <circle cx="79" cy="67" r="9"/>
+    <circle cx="17" cy="67" r="9"/>
+  </g>
+  <circle cx="48" cy="48" r="7" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/>
+</svg>

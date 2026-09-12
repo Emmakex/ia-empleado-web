@@ -27,8 +27,8 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
     <header className="site-header">
       <div className="container header-inner">
         <Link className="brand" href={homeHref} aria-label="IA Empleado">
-          <span className="brand-mark" aria-hidden="true">IA</span>
-          <span>IA Empleado</span>
+          <img className="brand-symbol" src="/branding/ia-empleado-mark.svg" alt="" width={41} height={41} aria-hidden="true" />
+          <span className="brand-wordmark">IA Empleado</span>
         </Link>
         <nav className="main-nav" aria-label={locale === "es" ? "Navegación principal" : "Main navigation"}>
           <Link href={employeeHref}>{dictionary.nav.employees}</Link>
