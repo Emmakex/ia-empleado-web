@@ -20,15 +20,21 @@ const requiredFiles = [
   "public/branding/people-ai-systems.svg",
   "lib/brand-characters.ts",
   "components/brand-hero-scene.tsx",
+  "components/brand-context-scene.tsx",
   "components/employee-index-page.tsx",
   "components/employee-detail-page.tsx",
   "components/employee-catalog-explorer.tsx",
   "components/team-index-page.tsx",
   "components/team-detail-page.tsx",
+  "components/sector-index-page.tsx",
+  "components/sector-detail-page.tsx",
+  "components/use-case-index-page.tsx",
+  "components/use-case-detail-page.tsx",
   "app/icon.svg",
   "app/brand-system.css",
   "app/brand-fidelity.css",
   "app/brand-content.css",
+  "app/brand-sector-content.css",
 ];
 
 for (const path of requiredFiles) {
@@ -49,15 +55,21 @@ const header = fs.readFileSync("components/site-header.tsx", "utf8");
 const footer = fs.readFileSync("components/site-footer.tsx", "utf8");
 const home = fs.readFileSync("components/home-page.tsx", "utf8");
 const hero = fs.readFileSync("components/brand-hero-scene.tsx", "utf8");
+const contextScene = fs.readFileSync("components/brand-context-scene.tsx", "utf8");
 const employeeIndex = fs.readFileSync("components/employee-index-page.tsx", "utf8");
 const employeeDetail = fs.readFileSync("components/employee-detail-page.tsx", "utf8");
 const explorer = fs.readFileSync("components/employee-catalog-explorer.tsx", "utf8");
 const teamIndex = fs.readFileSync("components/team-index-page.tsx", "utf8");
 const teamDetail = fs.readFileSync("components/team-detail-page.tsx", "utf8");
+const sectorIndex = fs.readFileSync("components/sector-index-page.tsx", "utf8");
+const sectorDetail = fs.readFileSync("components/sector-detail-page.tsx", "utf8");
+const useCaseIndex = fs.readFileSync("components/use-case-index-page.tsx", "utf8");
+const useCaseDetail = fs.readFileSync("components/use-case-detail-page.tsx", "utf8");
 const characterRegistry = fs.readFileSync("lib/brand-characters.ts", "utf8");
 const brandCss = fs.readFileSync("app/brand-system.css", "utf8");
 const fidelityCss = fs.readFileSync("app/brand-fidelity.css", "utf8");
 const contentCss = fs.readFileSync("app/brand-content.css", "utf8");
+const sectorBrandCss = fs.readFileSync("app/brand-sector-content.css", "utf8");
 const esLayout = fs.readFileSync("app/(es)/layout.tsx", "utf8");
 const enLayout = fs.readFileSync("app/(en)/en/layout.tsx", "utf8");
 
@@ -75,13 +87,23 @@ if (!explorer.includes("discovery-character-visual") || !explorer.includes("getB
 if (!teamIndex.includes("brand-team-hero-art") || !teamIndex.includes("brand-team-card-portraits")) throw new Error("Team index does not use branded team compositions");
 if (!teamDetail.includes("brand-team-scene") || !teamDetail.includes("brand-team-human-approval") || !teamDetail.includes("brand-team-member-portrait")) throw new Error("Team detail does not expose branded collaboration and human control");
 
-if (!brandCss.includes("prefers-reduced-motion") || !fidelityCss.includes("prefers-reduced-motion") || !contentCss.includes("prefers-reduced-motion")) throw new Error("Brand motion lacks reduced-motion handling");
+if (!contextScene.includes("BrandContextScene") || !contextScene.includes("BrandCharacterStrip") || !contextScene.includes("getBrandCharacterByEmployeeKey")) throw new Error("Reusable sector/use-case brand scene is incomplete");
+if (!sectorIndex.includes("<BrandContextScene") || !sectorIndex.includes("<BrandCharacterStrip")) throw new Error("Sector index does not use approved brand scenes");
+if (!sectorDetail.includes("<BrandContextScene") || !sectorDetail.includes("sector-role-character") || !sectorDetail.includes("getBrandCharacterByEmployeeKey")) throw new Error("Sector detail does not use canonical character art");
+if (!useCaseIndex.includes("<BrandContextScene") || !useCaseIndex.includes("<BrandCharacterStrip")) throw new Error("Use-case index does not use approved brand scenes");
+if (!useCaseDetail.includes("<BrandContextScene") || !useCaseDetail.includes("sector-role-character") || !useCaseDetail.includes("brand-use-case-flow-list")) throw new Error("Use-case detail does not use branded process visuals");
+
+for (const css of [brandCss, fidelityCss, contentCss, sectorBrandCss]) {
+  if (!css.includes("prefers-reduced-motion")) throw new Error("Brand motion lacks reduced-motion handling");
+}
 if (!fidelityCss.includes("@media (max-width: 760px)")) throw new Error("Approved mobile hero layout is missing");
 if (!contentCss.includes("@media (max-width: 760px)")) throw new Error("Employee/team branded surfaces lack mobile handling");
+if (!sectorBrandCss.includes("@media (max-width: 760px)")) throw new Error("Sector/use-case branded surfaces lack mobile handling");
+if (!sectorBrandCss.includes('data-context="ecommerce"') || !sectorBrandCss.includes('data-context="travel"') || !sectorBrandCss.includes('data-context="sales"')) throw new Error("Sector visual accents are incomplete");
 if (!fidelityCss.includes("span:nth-child(n + 4)")) throw new Error("Mobile system-chip simplification is missing");
 
 for (const [localeName, layout] of [["ES", esLayout], ["EN", enLayout]]) {
-  for (const stylesheet of ["brand-system.css", "brand-fidelity.css", "brand-content.css"]) {
+  for (const stylesheet of ["brand-system.css", "brand-fidelity.css", "brand-content.css", "brand-sector-content.css"]) {
     if (!layout.includes(stylesheet)) throw new Error(`${localeName} layout does not load ${stylesheet}`);
   }
 }
