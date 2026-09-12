@@ -7,6 +7,7 @@ import {
   getCollaborationPageContent,
   getCollaborationScenarios,
 } from "../lib/collaboration-demo";
+import { BrandInteractivePreview } from "./brand-interactive-preview";
 import { CollaborationSimulator } from "./collaboration-simulator";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -69,7 +70,7 @@ export function CollaborationPage({ locale, dictionary }: CollaborationPageProps
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternatePath} />
       <main id="contenido" className="collaboration-page">
         <section className="collaboration-hero section-shell" aria-labelledby="collaboration-hero-title">
-          <div className="container collaboration-hero-grid">
+          <div className="container collaboration-hero-grid brand-interactive-hero-grid">
             <div>
               <p className="eyebrow">{content.eyebrow}</p>
               <h1 id="collaboration-hero-title">{content.heroTitle}</h1>
@@ -83,16 +84,19 @@ export function CollaborationPage({ locale, dictionary }: CollaborationPageProps
                 </Link>
               </div>
             </div>
-            <aside className="collaboration-hero-note" aria-label={locale === "es" ? "Alcance de la demo" : "Demo scope"}>
-              <span className="collaboration-demo-badge">SYNTHETIC DEMO</span>
-              <p>{content.heroNote}</p>
-              <div className="collaboration-hero-legend">
-                <span><i className="kind-dot kind-employee" />{locale === "es" ? "Empleado IA" : "AI Employee"}</span>
-                <span><i className="kind-dot kind-system" />{locale === "es" ? "Sistema" : "System"}</span>
-                <span><i className="kind-dot kind-human" />{locale === "es" ? "Persona" : "Person"}</span>
-                <span><i className="kind-dot kind-result" />{locale === "es" ? "Resultado" : "Outcome"}</span>
-              </div>
-            </aside>
+            <div className="brand-interactive-hero-side">
+              <BrandInteractivePreview locale={locale} mode="collaboration" title={content.simulatorTitle} />
+              <aside className="collaboration-hero-note" aria-label={locale === "es" ? "Alcance de la demo" : "Demo scope"}>
+                <span className="collaboration-demo-badge">SYNTHETIC DEMO</span>
+                <p>{content.heroNote}</p>
+                <div className="collaboration-hero-legend">
+                  <span><i className="kind-dot kind-employee" />{locale === "es" ? "Empleado IA" : "AI Employee"}</span>
+                  <span><i className="kind-dot kind-system" />{locale === "es" ? "Sistema" : "System"}</span>
+                  <span><i className="kind-dot kind-human" />{locale === "es" ? "Persona" : "Person"}</span>
+                  <span><i className="kind-dot kind-result" />{locale === "es" ? "Resultado" : "Outcome"}</span>
+                </div>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -103,7 +107,7 @@ export function CollaborationPage({ locale, dictionary }: CollaborationPageProps
               <h2 id="simulator-title">{content.simulatorTitle}</h2>
               <p>{content.simulatorDescription}</p>
             </div>
-            <CollaborationSimulator content={content} scenarios={scenarios} />
+            <CollaborationSimulator locale={locale} content={content} scenarios={scenarios} />
           </div>
         </section>
 
