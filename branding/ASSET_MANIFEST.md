@@ -82,9 +82,17 @@ The Ecommerce, Travel, Professional Services and Sales sector pages reuse the sa
 
 The six public use-case patterns reuse the same visual grammar: canonical Reference Employees, neutral catalog roles, process core, system context and explicit human escalation. The workflow visuals distinguish automatable, assisted and human responsibility without implying unrestricted autonomy.
 
+### Department surfaces
+
+The six department pages now use a shared organizational scene: participating Reference Employees surround a coordinated-work core, connected system categories remain visible and human approval is a separate semantic layer. Deep employee cards reuse the canonical portrait and approved role accent; catalog-only roles remain neutral.
+
+### Integration surfaces
+
+The seven integration categories use the same brand grammar while emphasizing **source of truth, READ, WRITE, audit and human approval**. A system category is never presented as a universal connector. Employee identity is reused only for the approved Reference Employees that are actually related to that integration.
+
 ## Next reusable asset phases
 
-- department and integration visual families;
-- simulator/interactive surface skinning;
+- simulator and interactive-surface skinning;
 - proof/demo media frames and video package;
-- social/Open Graph exports derived from the canonical system.
+- social/Open Graph exports derived from the canonical system;
+- future canonical characters for catalog roles only after explicit visual approval.

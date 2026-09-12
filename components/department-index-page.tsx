@@ -9,6 +9,7 @@ import {
   integrationIndexPath,
 } from "../lib/organization-map";
 import { teamBuilderPath } from "../lib/team-builder";
+import { BrandOrganizationRoster, BrandOrganizationScene } from "./brand-organization-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -48,7 +49,7 @@ export function DepartmentIndexPage({ locale }: Props) {
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
       <main id="contenido" className="organization-map-page">
         <section className="organization-hero section-shell">
-          <div className="container organization-hero-grid">
+          <div className="container organization-hero-grid brand-organization-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={localeHref(locale)}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -63,11 +64,22 @@ export function DepartmentIndexPage({ locale }: Props) {
                 <Link className="button button-ghost" href={integrationIndexPath(locale)}>{locale === "es" ? "Ver integraciones" : "View integrations"}</Link>
               </div>
             </div>
-            <aside className="organization-hero-note">
-              <strong>{departmentRecords.length}</strong>
-              <span>{locale === "es" ? "departamentos con mapa operativo" : "departments with an operating map"}</span>
-              <p>{locale === "es" ? "Cada página conecta responsabilidades, Empleados IA, procesos, sistemas y control humano." : "Each page connects responsibilities, AI Employees, processes, systems and human control."}</p>
-            </aside>
+            <div className="brand-organization-hero-side">
+              <BrandOrganizationScene
+                locale={locale}
+                kind="department"
+                contextKey="departments"
+                eyebrow={locale === "es" ? "PERSONAS · IA · SISTEMAS" : "PEOPLE · AI · SYSTEMS"}
+                title={locale === "es" ? "Un departamento aumentado por IA" : "An AI-augmented department"}
+                systems={["CRM", "ERP", "Email", "Ticketing"]}
+                humanLabel={locale === "es" ? "Control humano" : "Human control"}
+              />
+              <aside className="organization-hero-note">
+                <strong>{departmentRecords.length}</strong>
+                <span>{locale === "es" ? "departamentos con mapa operativo" : "departments with an operating map"}</span>
+                <p>{locale === "es" ? "Cada página conecta responsabilidades, Empleados IA, procesos, sistemas y control humano." : "Each page connects responsibilities, AI Employees, processes, systems and human control."}</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -80,11 +92,12 @@ export function DepartmentIndexPage({ locale }: Props) {
             </div>
             <div className="organization-card-grid">
               {departmentRecords.map((record) => (
-                <article className="organization-card" key={record.key}>
+                <article className="organization-card brand-organization-card" key={record.key}>
                   <div className="organization-card-topline">
                     <span>{record.eyebrow[locale]}</span>
                     <span>{record.useCases.length} {locale === "es" ? "procesos" : "processes"}</span>
                   </div>
+                  <BrandOrganizationRoster locale={locale} employeeKeys={record.employeeKeys} compact />
                   <h3>{record.name[locale]}</h3>
                   <p>{record.shortAnswer[locale]}</p>
                   <div className="organization-tag-row">
