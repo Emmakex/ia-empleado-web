@@ -23,6 +23,8 @@ import "../brand-motion.css";
 import "../ux-accessibility.css";
 import "../reflow-hardening.css";
 import "../brand-visual-polish.css";
+import "../internal-page-ux.css";
+import { MenuScrollReset } from "../../components/menu-scroll-reset";
 import { getDictionary } from "../../lib/i18n";
 import { brandPreviewUrl } from "../../lib/brand-social-previews";
 
@@ -56,5 +58,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };
 
 export default function SpanishRootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="es"><body>{children}</body></html>;
+  return <html lang="es"><body><MenuScrollReset />{children}</body></html>;
 }
