@@ -9,6 +9,7 @@ import "../../collaboration-demo.css";
 import "../../team-builder.css";
 import "../../process-analyzer.css";
 import "../../roi-estimator.css";
+import "../../comparison-content.css";
 import { getDictionary } from "../../../lib/i18n";
 
 const dictionary = getDictionary("en");

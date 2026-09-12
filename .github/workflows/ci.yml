@@ -53,6 +53,9 @@ jobs:
       - name: ROI Estimator contract
         run: node scripts/check-roi-estimator.mjs
 
+      - name: Comparison surfaces contract
+        run: node scripts/check-comparisons.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
