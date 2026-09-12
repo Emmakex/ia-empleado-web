@@ -20,6 +20,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`docs/PRODUCT_CONTEXT.md`](docs/PRODUCT_CONTEXT.md) — product facts constraining public claims.
 - [`branding/README.md`](branding/README.md) — approved Concept 1 branding workspace and release rules.
 - [`branding/BRAND_SYSTEM.md`](branding/BRAND_SYSTEM.md) — visual identity, humanized AI Employee, color, motion and asset rules.
+- [`branding/PHASE_1_VALIDATION.md`](branding/PHASE_1_VALIDATION.md) — production verification evidence for Branding Phase 1.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — AI Teams model and handoff/control rules.
 - [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — collaboration simulator contract.
@@ -86,6 +87,8 @@ feature/fix/chore branch
 → production verification
 ```
 
+Production verification is automated by `.github/workflows/production-verify.yml`: after successful `Web CI` on `main`, it waits until Hostinger serves the expected release marker and then runs Playwright directly against `https://iaempleado.com`.
+
 ## Current state
 
 ### Web Phase 0 — Foundation
@@ -131,20 +134,24 @@ The integration pages are architecture and evaluation guidance. Actual connector
 
 ### Branding Phase 1 — Core visual system
 
-Implementation in progress on the approved **Concept 1** direction.
+**Complete and production-verified — 2026-09-12.**
 
-Scope:
+Delivered scope:
 
 - master three-node collaboration mark;
 - monochrome mark;
-- humanized AI Employee vector baseline;
-- orbit/background pattern;
-- people + AI + systems explainer asset;
-- portable design tokens;
-- active website brand CSS;
-- header/footer identity application;
-- homepage ecosystem humanized AI representation;
-- favicon source;
-- dedicated branding CI contract.
+- approved humanized AI Employee character family: Clara, Alex, Sofía and Javier;
+- orbit/background pattern and people + AI + systems visual language;
+- portable design tokens and production brand CSS;
+- header/footer and homepage identity application;
+- canonical character application across Employee, Team, sector, use-case, comparison, department, integration and interactive surfaces;
+- responsive/DPR-aware canonical portrait delivery;
+- CSS/SVG-first motion with reduced-motion support;
+- reusable social/preview resources and branding CI contracts;
+- desktop/mobile geometry, reflow, accessibility and production browser verification.
 
-After Branding Phase 1 production verification, continue with role-specific visual families, team/department motion scenes, sector hero art and reusable campaign/social resources before final lead-capture/CTA expansion.
+Production evidence is recorded in [`branding/PHASE_1_VALIDATION.md`](branding/PHASE_1_VALIDATION.md).
+
+### Next — Branding Phase 2
+
+Role-specific visual families and reusable compositions for Clara, Alex, Sofía and Javier, followed by richer team/department motion scenes, sector-specific hero art and campaign/social resources. Lead-capture/CTA expansion follows after the visual system is complete and stable.

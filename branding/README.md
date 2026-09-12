@@ -16,12 +16,19 @@ People ↔ AI Employees ↔ Business systems
         governed outcomes
 ```
 
+## Phase status
+
+**Branding Phase 1 — Core visual system: Complete and production-verified (2026-09-12).**
+
+Production evidence is recorded in `PHASE_1_VALIDATION.md`. The next phase deepens the existing identity with role-specific visual families and richer reusable compositions; it does not replace the approved canonical character identities.
+
 ## Folder contract
 
 - `BRAND_SYSTEM.md` — strategy, visual language and usage rules.
 - `ASSET_MANIFEST.md` — reusable asset inventory and where each asset belongs.
+- `PHASE_1_VALIDATION.md` — CI and production-browser evidence closing Branding Phase 1.
 - `tokens.json` — portable design tokens for web, product, decks and future apps.
-- `../public/branding/` — production-ready SVG assets served by the website.
+- `../public/branding/` — production-ready SVG/assets served by the website.
 - `../app/brand-system.css` — active web implementation of the brand tokens and visual rules.
 
 ## Primary message
