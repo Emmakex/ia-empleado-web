@@ -22,6 +22,7 @@ import "../../brand-comparison-proof.css";
 import "../../brand-motion.css";
 import "../../ux-accessibility.css";
 import "../../reflow-hardening.css";
+import "../../brand-visual-polish.css";
 import { getDictionary } from "../../../lib/i18n";
 import { brandPreviewUrl } from "../../../lib/brand-social-previews";
 
