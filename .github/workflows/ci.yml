@@ -41,6 +41,9 @@ jobs:
       - name: AI Teams content contract
         run: node scripts/check-ai-teams.mjs
 
+      - name: Interactive collaboration contract
+        run: node scripts/check-interactive-collaboration.mjs
+
       - name: Typecheck
         run: npm run typecheck
 

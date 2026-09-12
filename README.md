@@ -37,6 +37,7 @@ It does **not** own:
 - [`docs/PRODUCT_CONTEXT.md`](docs/PRODUCT_CONTEXT.md) — product facts and source documents that constrain public claims.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery, filtering, relationship and restricted-profile contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — first-class AI Team model, four initial compositions, SEO/GEO routes, handoff/control rules and validation contract.
+- [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — interactive collaboration simulator, synthetic scenarios, SEO/GEO fallback content, accessibility and validation contract.
 
 ## Strategic narrative
 
@@ -167,9 +168,9 @@ Includes:
 
 ### Web Phase 3 — AI Teams
 
-Implementation and repository validation complete through **PR #13**. Hostinger production verification remains the final release gate.
+Complete and production-verified.
 
-Phase 3 now includes `/equipos-ia/` and `/en/ai-teams/` as first-class SEO/GEO surfaces plus four bilingual reference team compositions:
+Phase 3 includes `/equipos-ia/` and `/en/ai-teams/` as first-class SEO/GEO surfaces plus four bilingual reference team compositions:
 
 1. Sales / Ventas;
 2. Ecommerce;
@@ -187,8 +188,28 @@ Each team model explains:
 - realistic use cases and limitations;
 - FAQ and customer-specific design CTA.
 
-The global header/footer now route directly to the Team index, all Team pages are included in sitemap generation, canonical/hreflang and structured data are present, and CI now includes a dedicated AI Teams content contract in addition to EN/ES parity, Employee contracts, mobile navigation, TypeScript and production build.
+The global header/footer route directly to the Team index, all Team pages are included in sitemap generation, canonical/hreflang and structured data are present, and CI includes a dedicated AI Teams content contract.
 
 Team pages are reference commercial models, not claims that every composition or connector is available as an off-the-shelf deployment.
 
-After Phase 3 production verification, the next major experience is **Web Phase 4 — Interactive collaboration**, beginning with `Ver cómo trabajan juntos / See the team work`, followed by the guided Team Builder.
+### Web Phase 4A — Interactive collaboration
+
+Current development phase. Release completion requires feature merge, green main-branch CI and Hostinger production verification.
+
+Phase 4A introduces:
+
+- `/como-trabajan-juntos` and `/en/see-team-work`;
+- three bilingual synthetic business scenarios;
+- scenario selection and step-by-step inspection;
+- play, pause, previous, next and reset controls;
+- visible handoffs between events, AI Employees, company systems, people and results;
+- explicit human-control points;
+- static HTML equivalents of every scenario for SEO/GEO and accessibility;
+- WebPage, ItemList and FAQPage structured data;
+- canonical, hreflang and sitemap coverage;
+- global `Cómo funciona / How it works` navigation to the simulator;
+- a dedicated Interactive collaboration CI contract.
+
+The public simulator is educational only: it uses synthetic data and does not connect to customer production systems.
+
+After Phase 4A production verification, the next interactive product step is the guided **Team Builder / Diseña tu equipo IA**, reusing the existing Employee and AI Team taxonomies.
