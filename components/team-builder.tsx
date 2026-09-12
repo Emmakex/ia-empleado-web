@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Locale } from "../lib/i18n";
+import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
 import {
   buildTeamRecommendation,
   type BuilderPageContent,
@@ -39,6 +40,9 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
   const [selection, setSelection] = useState<BuilderSelection>(emptySelection);
   const recommendation = useMemo(() => buildTeamRecommendation(locale, selection), [locale, selection]);
   const hasSelection = Boolean(selection.sectorId || selection.problemIds.length || selection.departmentIds.length || selection.systemIds.length);
+  const recommendedCharacters = recommendation.roles
+    .map((role) => getBrandCharacterForProfileKey(role.key, locale))
+    .filter((character): character is NonNullable<typeof character> => Boolean(character));
 
   const optionLabel = (items: Array<{ value: string; label: string }>, value: string) =>
     items.find((item) => item.value === value)?.label ?? value;
@@ -64,7 +68,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
         : "Note: this composition is indicative and requires validation of technology, permissions, data, exceptions and human control.",
     ];
     return lines.join("\n");
-  }, [content, hasSelection, locale, options, recommendation, selection]);
+  }, [hasSelection, locale, options, recommendation, selection]);
 
   const mailtoHref = hasSelection
     ? `mailto:hola@iaempleado.com?subject=${encodeURIComponent(locale === "es" ? "IA Empleado - Configuración Team Builder" : "IA Empleado - Team Builder configuration")}&body=${encodeURIComponent(summary)}`
@@ -80,7 +84,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
   };
 
   return (
-    <div className="team-builder-shell">
+    <div className="team-builder-shell brand-team-builder-shell">
       <section className="team-builder-config" aria-labelledby="builder-config-title">
         <div className="team-builder-config-head">
           <div>
@@ -199,13 +203,32 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
         </div>
 
         {!hasSelection ? (
-          <div className="builder-empty-state">
-            <span aria-hidden="true">◎</span>
+          <div className="builder-empty-state brand-builder-empty-state">
+            <img src="/branding/ia-empleado-mark.svg" alt="" width={58} height={58} aria-hidden="true" />
             <h3>{content.emptyTitle}</h3>
             <p>{content.emptyText}</p>
           </div>
         ) : (
           <>
+            <div className="builder-brand-team-map" aria-hidden="true">
+              <div className="builder-brand-team-core">
+                <img src="/branding/ia-empleado-mark.svg" alt="" width={48} height={48} />
+                <span>{locale === "es" ? "Composición sugerida" : "Suggested composition"}</span>
+              </div>
+              <div className="builder-brand-roster">
+                {recommendedCharacters.map((character) => (
+                  <div className="builder-brand-person" data-accent={character.accent} key={character.id}>
+                    <img src={character.asset} alt="" width={92} height={108} />
+                    <span><strong>{character.name}</strong><small>{character.shortRole}</small></span>
+                  </div>
+                ))}
+                {recommendation.roles.filter((role) => !getBrandCharacterForProfileKey(role.key, locale)).slice(0, 2).map((role) => (
+                  <div className="builder-brand-neutral" key={role.key}><i>◇</i><span>{role.shortName}</span></div>
+                ))}
+              </div>
+              <div className="builder-brand-governance"><span>✓</span>{locale === "es" ? "Validación humana y permisos explícitos" : "Human validation and explicit permissions"}</div>
+            </div>
+
             {recommendation.restrictedAreas.length > 0 && (
               <div className="builder-restricted-alert" role="note">
                 <span aria-hidden="true">!</span>
@@ -233,21 +256,30 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
             <section className="builder-role-section" aria-labelledby="builder-roles-title">
               <h3 id="builder-roles-title">{content.rolesLabel}</h3>
               <div className="builder-role-grid">
-                {recommendation.roles.map((role, index) => (
-                  <article className="builder-role-card" key={role.key}>
-                    <div className="builder-role-topline">
-                      <span className="builder-role-index">{String(index + 1).padStart(2, "0")}</span>
-                      <span className={`builder-fit is-${role.fit}`}>{fitLabel(role.fit)}</span>
-                    </div>
-                    <p className="builder-role-status">{role.status === "reference" ? content.referenceLabel : content.catalogLabel}</p>
-                    <h4>{role.shortName}</h4>
-                    <p>{role.focus}</p>
-                    <ul className="builder-reasons">
-                      {role.reasons.map((reason) => <li key={reason}>{reason}</li>)}
-                    </ul>
-                    {role.href && <Link className="builder-role-link" href={role.href}>{content.viewProfileLabel} <span aria-hidden="true">→</span></Link>}
-                  </article>
-                ))}
+                {recommendation.roles.map((role, index) => {
+                  const character = getBrandCharacterForProfileKey(role.key, locale);
+                  return (
+                    <article className={`builder-role-card${character ? " has-brand-character" : ""}`} key={role.key}>
+                      {character && (
+                        <div className="builder-role-character" data-accent={character.accent} aria-hidden="true">
+                          <img src={character.asset} alt="" width={104} height={122} />
+                          <span>{character.name}</span>
+                        </div>
+                      )}
+                      <div className="builder-role-topline">
+                        <span className="builder-role-index">{String(index + 1).padStart(2, "0")}</span>
+                        <span className={`builder-fit is-${role.fit}`}>{fitLabel(role.fit)}</span>
+                      </div>
+                      <p className="builder-role-status">{role.status === "reference" ? content.referenceLabel : content.catalogLabel}</p>
+                      <h4>{role.shortName}</h4>
+                      <p>{role.focus}</p>
+                      <ul className="builder-reasons">
+                        {role.reasons.map((reason) => <li key={reason}>{reason}</li>)}
+                      </ul>
+                      {role.href && <Link className="builder-role-link" href={role.href}>{content.viewProfileLabel} <span aria-hidden="true">→</span></Link>}
+                    </article>
+                  );
+                })}
               </div>
             </section>
 
