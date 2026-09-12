@@ -25,6 +25,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`docs/PHASE_5A_PROCESS_ANALYZER.md`](docs/PHASE_5A_PROCESS_ANALYZER.md) — before/after process analysis contract.
 - [`docs/PHASE_5B_ROI_ESTIMATOR.md`](docs/PHASE_5B_ROI_ESTIMATOR.md) — transparent ROI/value methodology.
 - [`docs/PHASE_6A_COMPARISONS.md`](docs/PHASE_6A_COMPARISONS.md) — comparison-page methodology, truthfulness and SEO/GEO contract.
+- [`docs/PHASE_6B_SECTORS_USE_CASES.md`](docs/PHASE_6B_SECTORS_USE_CASES.md) — sector/use-case content model, truthfulness, SEO/GEO and release contract.
 
 ## Strategic narrative
 
@@ -114,42 +115,36 @@ Complete and production-verified. Includes bilingual before/after process analys
 
 ### Web Phase 5B — Transparent ROI / Value Estimator
 
-Complete and production-verified.
-
-Includes:
-
-- `/calculadora-roi` and `/en/roi-calculator`;
-- editable monthly volume, manual minutes/unit and hourly cost;
-- user-controlled base time-reduction assumption;
-- conservative/base/high scenarios;
-- potential hours freed and economic-capacity calculations;
-- optional implementation/monthly solution costs;
-- first-year ROI only when a valid cost denominator exists;
-- explicit distinction between estimates and guaranteed savings;
-- EUR/USD/GBP display without FX conversion;
-- local browser calculation;
-- visible methodology, formulas and synthetic example;
-- structured data, canonical/hreflang, sitemap and dedicated CI contract.
+Complete and production-verified. Includes bilingual ROI/value routes, editable user assumptions, conservative/base/high scenarios, optional solution costs, local calculation, visible methodology and dedicated CI validation.
 
 The calculator is an educational commercial estimator, not a verified customer outcome, financial guarantee or binding proposal.
 
 ### Web Phase 6A — Comparison surfaces
 
-Implementation and repository validation complete through **PR #22**. Hostinger production verification remains the final release gate.
+Complete and production-verified.
 
-Phase 6A includes:
+Includes `/comparativas` and `/en/comparisons` plus five bilingual high-intent comparisons: chatbot, AI agent, RPA, traditional automation and generic AI copilot. Pages provide direct answers, semantic comparison tables, trade-offs, combination patterns, FAQ, structured data, canonical/hreflang and dedicated CI validation.
 
-- `/comparativas` and `/en/comparisons`;
-- five bilingual high-intent comparisons: chatbot, AI agent, RPA, traditional automation and AI copilot;
-- direct short answers for answer engines;
-- semantic dimension-by-dimension comparison tables;
-- explicit guidance for when AI Employee fits better;
-- explicit guidance for when the alternative fits better;
-- combination patterns instead of false either/or positioning;
-- methodology stating that category boundaries are not universal rules;
-- generic AI-copilot framing rather than unsourced vendor-specific product claims;
-- WebPage / CollectionPage, BreadcrumbList, ItemList and FAQPage structured data where applicable;
+### Web Phase 6B — Sectors and use cases
+
+Implementation and repository validation complete through **PR #24**. Hostinger production verification remains the final release gate.
+
+Phase 6B includes:
+
+- `/sectores` and `/en/sectors`;
+- four deep bilingual sector pages: Ecommerce, Travel/Turismo, Professional Services/Servicios profesionales and Sales/Ventas;
+- `/casos-de-uso` and `/en/use-cases`;
+- six deep bilingual use-case pages: customer issue, invoice validation, sales follow-up, order exception, travel booking and administrative documentation;
+- reusable sector/use-case content models instead of duplicated landing pages;
+- sector pages linking operational problems to cases, Employees, reference AI Teams, systems, controls, metrics and a bounded implementation path;
+- use-case pages exposing step-by-step `automated / assisted / human` responsibility classification;
+- explicit authority, escalation and limitation language;
+- internal links across sectors, use cases, Employees, Teams, Process Analyzer, ROI and comparisons;
+- CollectionPage / ItemList, WebPage, BreadcrumbList, HowTo and visible FAQ structured data where appropriate;
 - canonical, hreflang, sitemap and footer discoverability;
-- dedicated Comparison surfaces CI contract.
+- responsive sector/use-case layouts;
+- dedicated Sector/use-case CI contract.
 
-After Phase 6A production verification, the next growth block can expand sector/use-case clusters and proof media while preserving evidence and thin-page controls.
+The sector and use-case pages are educational reference designs. They do not imply universal connector availability, production readiness or measured customer outcomes.
+
+After Phase 6B production verification, the highest-value remaining web work is proof/evidence media, integrations/departments, conversion forms and attribution, followed by technical/CRO hardening and broader content expansion.
