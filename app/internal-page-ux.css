@@ -1,0 +1,66 @@
+/* Global polish for internal commercial pages.
+ * Keeps the home hero expressive while preventing oversized H1s and excessive
+ * top spacing on every interior route. Route navigation is intentionally
+ * instant; in-page anchors still land on their target with scroll-margin.
+ */
+
+html {
+  scroll-behavior: auto;
+}
+
+main#contenido > section:first-child:not(.brand-home-hero) {
+  padding-top: clamp(3.5rem, 5vw, 5rem);
+  padding-bottom: clamp(3rem, 4.5vw, 4.5rem);
+}
+
+main#contenido > section:first-child:not(.brand-home-hero) h1 {
+  max-width: 18ch;
+  margin-bottom: 1.2rem;
+  font-size: clamp(2.9rem, 4.5vw, 4.7rem);
+  line-height: 1.01;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+main#contenido > section:first-child:not(.brand-home-hero) :is(.hero-description, .employee-hero-lead, .collaboration-hero-lead, .process-analyzer-hero-lead) {
+  max-width: 62ch;
+}
+
+@media (max-width: 1080px) {
+  main#contenido > section:first-child:not(.brand-home-hero) {
+    padding-top: clamp(3rem, 5.5vw, 4rem);
+    padding-bottom: clamp(2.75rem, 5vw, 3.75rem);
+  }
+
+  main#contenido > section:first-child:not(.brand-home-hero) h1 {
+    max-width: 19ch;
+    font-size: clamp(2.65rem, 6vw, 4rem);
+    line-height: 1.02;
+  }
+}
+
+@media (max-width: 760px) {
+  main#contenido > section:first-child:not(.brand-home-hero) {
+    padding-top: 2.25rem;
+    padding-bottom: 2.75rem;
+  }
+
+  main#contenido > section:first-child:not(.brand-home-hero) h1 {
+    max-width: 20ch;
+    margin-bottom: 1rem;
+    font-size: clamp(2.05rem, 8.5vw, 2.85rem);
+    line-height: 1.04;
+    letter-spacing: -0.048em;
+  }
+}
+
+@media (max-width: 430px) {
+  main#contenido > section:first-child:not(.brand-home-hero) {
+    padding-top: 1.9rem;
+    padding-bottom: 2.4rem;
+  }
+
+  main#contenido > section:first-child:not(.brand-home-hero) h1 {
+    font-size: clamp(1.95rem, 8vw, 2.5rem);
+  }
+}
