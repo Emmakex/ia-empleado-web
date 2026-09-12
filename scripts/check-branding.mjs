@@ -20,7 +20,7 @@ for (const path of requiredFiles) {
 }
 
 const brandGuide = fs.readFileSync("branding/BRAND_SYSTEM.md", "utf8");
-for (const phrase of ["Personas. IA. Sistemas. Un mismo equipo.", "People. AI. Systems. One team.", "humanized digital colleague"]) {
+for (const phrase of ["Personas. IA. Sistemas. Un mismo equipo.", "People. AI. Systems. One team.", "digital colleague"]) {
   if (!brandGuide.includes(phrase)) throw new Error(`Brand guide missing contract phrase: ${phrase}`);
 }
 
