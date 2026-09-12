@@ -75,6 +75,16 @@ html {
   color: var(--ux-readable-muted);
 }
 
+/* Number badges and inactive simulator tabs are information, not decoration. */
+.team-builder-method-grid > li > span,
+.team-builder-interpretation-grid article > span {
+  color: #4338ca;
+}
+
+.scenario-tab:not(.is-active) > span {
+  color: #475569;
+}
+
 /* Visually hidden utility for concise live-region announcements. */
 .sr-only {
   position: absolute !important;
@@ -144,12 +154,7 @@ html {
     line-height: 1.2;
   }
 
-  /*
-   * Mobile hero: content participates in document flow.
-   * The SVG/orbits stay absolute as decoration, but cards/core/approval/systems
-   * use named grid areas. This removes the fixed top offsets that caused the
-   * IA core to overlap Sofía/Javier at real iPhone widths and under text zoom.
-   */
+  /* Mobile hero: structural content flows in named grid rows. */
   .brand-hero-stage {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -176,21 +181,9 @@ html {
     pointer-events: none;
   }
 
-  .brand-hero-stage::before {
-    background-size: 155% auto;
-  }
-
-  .brand-hero-orbit-one {
-    top: 43%;
-    width: 62%;
-    height: 30%;
-  }
-
-  .brand-hero-orbit-two {
-    top: 44%;
-    width: 96%;
-    height: 58%;
-  }
+  .brand-hero-stage::before { background-size: 155% auto; }
+  .brand-hero-orbit-one { top: 43%; width: 62%; height: 30%; }
+  .brand-hero-orbit-two { top: 44%; width: 96%; height: 58%; }
 
   .brand-hero-lines {
     inset: 10% 2% 18%;
@@ -230,10 +223,7 @@ html {
     padding: 0.8rem 0.55rem 0.8rem 0.1rem;
   }
 
-  .brand-character-label strong {
-    font-size: 0.94rem;
-    line-height: 1.15;
-  }
+  .brand-character-label strong { font-size: 0.94rem; line-height: 1.15; }
 
   .brand-character-label span {
     margin-top: 0.25rem;
@@ -255,22 +245,9 @@ html {
     animation: none !important;
   }
 
-  .brand-hero-core img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .brand-hero-core strong {
-    margin-top: 0.35rem;
-    font-size: 0.94rem;
-    line-height: 1.15;
-  }
-
-  .brand-hero-core small {
-    margin-top: 0.2rem;
-    font-size: 0.8125rem;
-    line-height: 1.25;
-  }
+  .brand-hero-core img { width: 50px; height: 50px; }
+  .brand-hero-core strong { margin-top: 0.35rem; font-size: 0.94rem; line-height: 1.15; }
+  .brand-hero-core small { margin-top: 0.2rem; font-size: 0.8125rem; line-height: 1.25; }
 
   .brand-hero-approval {
     position: relative;
@@ -286,16 +263,8 @@ html {
     border-radius: 18px;
   }
 
-  .brand-hero-approval strong {
-    font-size: 0.9rem;
-    line-height: 1.2;
-  }
-
-  .brand-hero-approval small {
-    margin-top: 0.12rem;
-    font-size: 0.8125rem;
-    line-height: 1.3;
-  }
+  .brand-hero-approval strong { font-size: 0.9rem; line-height: 1.2; }
+  .brand-hero-approval small { margin-top: 0.12rem; font-size: 0.8125rem; line-height: 1.3; }
 
   .brand-hero-systems {
     position: relative;
@@ -321,11 +290,8 @@ html {
 
   .brand-hero-task,
   .brand-hero-result,
-  .brand-hero-caption {
-    display: none;
-  }
+  .brand-hero-caption { display: none; }
 
-  /* Mobile keeps motion that explains handoff/core state, not constant bobbing. */
   .brand-character-node,
   .brand-context-person,
   .brand-organization-person,
@@ -350,14 +316,8 @@ html {
 }
 
 @media (max-width: 430px) {
-  .brand-home-hero .hero-grid {
-    gap: 1.6rem;
-  }
-
-  .brand-home-hero .hero-actions .button {
-    padding-inline: 0.65rem;
-    font-size: 0.9rem;
-  }
+  .brand-home-hero .hero-grid { gap: 1.6rem; }
+  .brand-home-hero .hero-actions .button { padding-inline: 0.65rem; font-size: 0.9rem; }
 
   .brand-hero-stage {
     column-gap: 0.6rem;
@@ -370,38 +330,17 @@ html {
     grid-template-columns: minmax(0, 55%) minmax(0, 45%);
   }
 
-  .brand-character-portrait img {
-    width: 120px;
-    height: 154px;
-  }
-
-  .brand-character-label {
-    padding-right: 0.4rem;
-  }
-
-  .brand-character-label strong {
-    font-size: 0.9rem;
-  }
-
-  .brand-character-label span {
-    font-size: 0.8125rem;
-  }
-
-  .brand-hero-core {
-    width: 128px;
-    height: 128px;
-  }
+  .brand-character-portrait img { width: 120px; height: 154px; }
+  .brand-character-label { padding-right: 0.4rem; }
+  .brand-character-label strong { font-size: 0.9rem; }
+  .brand-character-label span { font-size: 0.8125rem; }
+  .brand-hero-core { width: 128px; height: 128px; }
 }
 
 @media (max-width: 360px) {
-  .brand-home-hero .hero-actions {
-    grid-template-columns: 1fr;
-  }
+  .brand-home-hero .hero-actions { grid-template-columns: 1fr; }
 
-  .brand-hero-stage {
-    column-gap: 0.55rem;
-    row-gap: 1rem;
-  }
+  .brand-hero-stage { column-gap: 0.55rem; row-gap: 1rem; }
 
   .brand-character-node {
     min-height: 176px;
@@ -410,34 +349,17 @@ html {
     align-items: stretch;
   }
 
-  .brand-character-portrait img {
-    bottom: -10px;
-    width: 106px;
-    height: 126px;
-  }
+  .brand-character-portrait img { bottom: -10px; width: 106px; height: 126px; }
 
   .brand-character-label {
     padding: 0.35rem 0.4rem 0.65rem;
     text-align: center;
   }
 
-  .brand-character-label strong {
-    font-size: 0.875rem;
-  }
-
-  .brand-character-label span {
-    display: block;
-    font-size: 0.8125rem;
-  }
-
-  .brand-hero-core {
-    width: 120px;
-    height: 120px;
-  }
-
-  .brand-hero-systems {
-    gap: 0.35rem;
-  }
+  .brand-character-label strong { font-size: 0.875rem; }
+  .brand-character-label span { display: block; font-size: 0.8125rem; }
+  .brand-hero-core { width: 120px; height: 120px; }
+  .brand-hero-systems { gap: 0.35rem; }
 
   .brand-hero-systems span {
     min-width: 0;
@@ -447,9 +369,7 @@ html {
 }
 
 @media (hover: none) {
-  .button:hover {
-    transform: none;
-  }
+  .button:hover { transform: none; }
 }
 
 @media (prefers-contrast: more) {
@@ -461,27 +381,19 @@ html {
   .brand-hero-stage,
   .brand-character-node,
   .brand-hero-approval,
-  .brand-hero-systems span {
-    border-color: rgba(15, 23, 42, 0.24);
-  }
+  .brand-hero-systems span { border-color: rgba(15, 23, 42, 0.24); }
 }
 
 @media (forced-colors: active) {
-  :focus-visible {
-    outline: 3px solid CanvasText;
-  }
+  :focus-visible { outline: 3px solid CanvasText; }
 
   .button,
   .mobile-menu-toggle,
   .mobile-language-link,
   .builder-choice,
-  .builder-preset {
-    border: 1px solid CanvasText;
-  }
+  .builder-preset { border: 1px solid CanvasText; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 }

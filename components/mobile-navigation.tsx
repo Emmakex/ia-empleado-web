@@ -3,39 +3,35 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+export type NavigationLink = {
+  href: string;
+  label: string;
+};
+
+export type NavigationGroup = {
+  label: string;
+  links: NavigationLink[];
+};
+
 type MobileNavigationProps = {
-  employeeHref: string;
-  teamsHref: string;
-  howHref: string;
-  securityHref: string;
+  groups: NavigationGroup[];
   alternateHref: string;
   alternateHrefLang: string;
   languageLabel: string;
   ctaHref: string;
   ctaLabel: string;
-  employeesLabel: string;
-  teamsLabel: string;
-  howLabel: string;
-  securityLabel: string;
   openLabel: string;
   closeLabel: string;
   navigationLabel: string;
 };
 
 export function MobileNavigation({
-  employeeHref,
-  teamsHref,
-  howHref,
-  securityHref,
+  groups,
   alternateHref,
   alternateHrefLang,
   languageLabel,
   ctaHref,
   ctaLabel,
-  employeesLabel,
-  teamsLabel,
-  howLabel,
-  securityLabel,
   openLabel,
   closeLabel,
   navigationLabel,
@@ -151,10 +147,18 @@ export function MobileNavigation({
             aria-label={navigationLabel}
           >
             <nav className="mobile-menu-links" aria-label={navigationLabel}>
-              <Link href={employeeHref} onClick={close}>{employeesLabel}</Link>
-              <Link href={teamsHref} onClick={close}>{teamsLabel}</Link>
-              <Link href={howHref} onClick={close}>{howLabel}</Link>
-              <Link href={securityHref} onClick={close}>{securityLabel}</Link>
+              {groups.map((group) => (
+                <section className="mobile-menu-group" key={group.label}>
+                  <p className="mobile-menu-group-label">{group.label}</p>
+                  <div className="mobile-menu-group-links">
+                    {group.links.map((link) => (
+                      <Link href={link.href} onClick={close} key={`${group.label}-${link.href}`}>
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              ))}
             </nav>
             <div className="mobile-menu-actions">
               <Link className="mobile-language-link" href={alternateHref} hrefLang={alternateHrefLang} onClick={close}>

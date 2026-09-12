@@ -50,7 +50,7 @@ export function BrandHeroScene({ locale, visualLabel, systems }: BrandHeroSceneP
 
       <div className="brand-hero-core" aria-hidden="true">
         <span className="brand-hero-core-ring" />
-        <img src="/branding/ia-empleado-mark.svg" alt="" width={58} height={58} />
+        <img src="/branding/ia-empleado-mark.svg" alt="" width={58} height={58} decoding="async" />
         <strong>{copy.core}</strong>
         <small>{copy.coordination}</small>
       </div>
@@ -63,7 +63,15 @@ export function BrandHeroScene({ locale, visualLabel, systems }: BrandHeroSceneP
           aria-hidden="true"
         >
           <div className="brand-character-portrait">
-            <img src={character.asset} alt="" width={112} height={126} />
+            <img
+              src={character.asset}
+              alt=""
+              width={420}
+              height={525}
+              loading="eager"
+              decoding="async"
+              fetchPriority={index < 2 ? "high" : "auto"}
+            />
           </div>
           <div className="brand-character-label">
             <strong>{character.name}</strong>
