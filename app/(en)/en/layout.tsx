@@ -19,15 +19,32 @@ import "../../brand-sector-content.css";
 import "../../brand-organization-content.css";
 import "../../brand-interactive-content.css";
 import { getDictionary } from "../../../lib/i18n";
+import { brandPreviewUrl } from "../../../lib/brand-social-previews";
 
 const dictionary = getDictionary("en");
+const homePreview = brandPreviewUrl("en", "home");
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://iaempleado.com"),
   title: dictionary.seo.title,
   description: dictionary.seo.description,
   alternates: { canonical: "/en", languages: { "es-ES": "/", en: "/en", "x-default": "/" } },
-  openGraph: { type: "website", url: "/en", siteName: "IA Empleado", locale: "en_US", alternateLocale: ["es_ES"], title: dictionary.seo.ogTitle, description: dictionary.seo.ogDescription },
+  openGraph: {
+    type: "website",
+    url: "/en",
+    siteName: "IA Empleado",
+    locale: "en_US",
+    alternateLocale: ["es_ES"],
+    title: dictionary.seo.ogTitle,
+    description: dictionary.seo.ogDescription,
+    images: [{ url: homePreview, width: 1200, height: 630, alt: dictionary.seo.ogTitle }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: dictionary.seo.ogTitle,
+    description: dictionary.seo.ogDescription,
+    images: [homePreview],
+  },
   robots: { index: true, follow: true },
 };
 
