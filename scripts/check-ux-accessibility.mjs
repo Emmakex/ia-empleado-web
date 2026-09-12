@@ -5,6 +5,10 @@ const required = [
   "components/mobile-navigation.tsx",
   "app/(es)/layout.tsx",
   "app/(en)/en/layout.tsx",
+  "playwright.config.ts",
+  "tests/ux-visual.spec.ts",
+  "package.json",
+  ".github/workflows/ci.yml",
 ];
 
 for (const path of required) {
@@ -17,6 +21,10 @@ const css = read("app/ux-accessibility.css");
 const nav = read("components/mobile-navigation.tsx");
 const esLayout = read("app/(es)/layout.tsx");
 const enLayout = read("app/(en)/en/layout.tsx");
+const playwright = read("playwright.config.ts");
+const browserQa = read("tests/ux-visual.spec.ts");
+const packageJson = read("package.json");
+const ci = read(".github/workflows/ci.yml");
 
 for (const [locale, layout] of [["ES", esLayout], ["EN", enLayout]]) {
   if (!layout.includes("ux-accessibility.css")) throw new Error(`${locale} layout does not load UX/accessibility hardening last`);
@@ -70,6 +78,45 @@ for (const token of [
 
 if (nav.includes("maximum-scale") || esLayout.includes("maximumScale") || enLayout.includes("maximumScale")) {
   throw new Error("Viewport must not disable user zoom");
+}
+
+for (const token of [
+  "@playwright/test",
+  "@axe-core/playwright",
+  '"qa:browser"',
+]) {
+  if (!packageJson.includes(token)) throw new Error(`Browser QA dependency/script missing: ${token}`);
+}
+
+for (const token of [
+  "reducedMotion: \"reduce\"",
+  "screenshot: \"only-on-failure\"",
+  "trace: \"retain-on-failure\"",
+]) {
+  if (!playwright.includes(token)) throw new Error(`Playwright diagnostics/stability contract missing: ${token}`);
+}
+
+for (const token of [
+  "320",
+  "360",
+  "390",
+  "430",
+  "768",
+  "200% text scaling",
+  "assertNoHorizontalOverflow",
+  "assertMobileHeroGeometry",
+  "AxeBuilder",
+  "mobile navigation traps focus",
+]) {
+  if (!browserQa.includes(token)) throw new Error(`Browser QA coverage missing: ${token}`);
+}
+
+for (const token of [
+  "npx playwright install --with-deps chromium",
+  "npm run qa:browser",
+  "actions/upload-artifact@v4",
+]) {
+  if (!ci.includes(token)) throw new Error(`CI browser QA wiring missing: ${token}`);
 }
 
 console.log("UX/accessibility contract OK");
