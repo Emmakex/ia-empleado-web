@@ -40,7 +40,18 @@ Preferred traits:
 - no metallic full-body android unless a specific story requires it;
 - no childish mascot proportions.
 
-The master vector portrait in `public/branding/ia-employee-human.svg` is the reusable baseline representation for small UI surfaces, diagrams and animation prototypes. Higher-detail campaign art can evolve from the same visual grammar.
+The generic vector portrait in `public/branding/ia-employee-human.svg` is the reusable baseline representation for small UI surfaces, diagrams and animation prototypes.
+
+The four Reference Employees also have canonical public visual identities:
+
+| Character | Reference role | Asset | Recognition cue |
+| --- | --- | --- | --- |
+| Clara | Customer Support / Atención al Cliente | `characters/clara-customer-support.svg` | blue, communication/headset |
+| Alex | Administrative / Administrativo | `characters/alex-administrative.svg` | violet, organization/documents |
+| Sofía | Accounting & Billing / Contabilidad y Facturación | `characters/sofia-accounting.svg` | teal, validation/financial review |
+| Javier | Sales / SDR / Comercial | `characters/javier-sales.svg` | amber, opportunity/commercial motion |
+
+Character names are a public visual identity layer. They help visitors follow handoffs and recognize roles consistently across the website, demos and campaign art. They do **not** represent real people or expand the documented product availability of the underlying Reference Employee roles.
 
 ## 4. Color
 
@@ -65,6 +76,8 @@ The master vector portrait in `public/branding/ia-employee-human.svg` is the reu
 - Error: `#B42318` — confirmed error/destructive state.
 
 Green must not become a decorative secondary brand color. Its semantic meaning is important.
+
+Role accents — blue, violet, teal and amber — support recognition. They are secondary cues and must not redefine system states.
 
 ## 5. Typography
 
@@ -115,9 +128,12 @@ Motion principles:
 
 - slow ambient orbit for background coordination;
 - short directional pulses for task transfer;
+- characters may float subtly but should not bounce like mascots;
 - green only when a step is actually completed/approved;
 - no endless high-energy motion;
 - `prefers-reduced-motion` must preserve meaning without animation.
+
+The homepage collaboration stage is the reference motion composition: four specialist characters around a shared coordination core, two directional task paths, a visible approval state and business-system chips.
 
 ## 8. Photography / campaign art
 
@@ -147,3 +163,21 @@ IA Empleado
 ```
 
 The master brand mark stays constant. Product/category differentiation should happen through labels, diagrams and context, not by inventing a new logo for every role or team.
+
+## 11. Reuse contract
+
+The same visual identity must survive across page types:
+
+```text
+Homepage
+→ Reference Employee pages
+→ AI Team compositions
+→ Departments / sectors / use cases
+→ Process and collaboration simulators
+→ Demo/video frames
+→ Social / Open Graph / campaigns
+```
+
+Do not regenerate a visually different “Clara”, “Alex”, “Sofía” or “Javier” for each surface. New poses or higher-detail art must preserve the canonical identifying cues and role accent.
+
+When animation or interaction requires a simplified form, use the vector assets or a derived silhouette rather than replacing the character with a robot icon.
