@@ -1,6 +1,7 @@
 import type { Locale } from "../lib/i18n";
 import type { RoleReference } from "../lib/sector-use-cases";
 import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type BrandCharacterStripProps = {
   locale: Locale;
@@ -19,7 +20,7 @@ export function BrandCharacterStrip({ locale, roles, compact = false }: BrandCha
     <div className={`brand-context-roster${compact ? " is-compact" : ""}`} aria-hidden="true">
       {canonical.slice(0, 4).map((character) => (
         <span className="brand-context-avatar" data-accent={character.accent} key={character.id}>
-          <img src={character.asset} alt="" width={96} height={112} />
+          <BrandCharacterImage character={character} sizes={compact ? "48px" : "96px"} />
           {!compact && <small>{character.name}</small>}
         </span>
       ))}
@@ -66,7 +67,7 @@ export function BrandContextScene({ locale, kind, contextKey, eyebrow, title, ro
       <div className="brand-context-people" aria-hidden="true">
         {canonical.slice(0, 4).map((character, index) => (
           <div className={`brand-context-person person-${index + 1}`} data-accent={character.accent} key={character.id}>
-            <img src={character.asset} alt="" width={130} height={154} />
+            <BrandCharacterImage character={character} sizes="(max-width: 760px) 112px, 130px" />
             <span><strong>{character.name}</strong><small>{character.shortRole}</small></span>
           </div>
         ))}
