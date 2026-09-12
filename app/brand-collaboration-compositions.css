@@ -2,7 +2,7 @@
 
 .brand-collaboration-composition {
   position: relative;
-  min-height: 510px;
+  min-height: 550px;
   overflow: hidden;
   isolation: isolate;
   border: 1px solid rgba(91, 95, 245, 0.16);
@@ -15,7 +15,7 @@
 }
 
 .brand-collaboration-composition.is-department {
-  min-height: 470px;
+  min-height: 550px;
 }
 
 .brand-collaboration-composition::before {
@@ -253,12 +253,12 @@
   top: 50%;
   z-index: 6;
   display: grid;
-  width: 9.3rem;
-  height: 9.3rem;
+  width: 6.8rem;
+  height: 6.8rem;
   place-items: center;
   align-content: center;
-  gap: .28rem;
-  padding: .8rem;
+  gap: .18rem;
+  padding: .58rem;
   transform: translate(-50%, -50%);
   border: 1px solid rgba(91,95,245,.2);
   border-radius: 999px;
@@ -286,9 +286,9 @@
   animation: brand-collaboration-spin 24s linear infinite;
 }
 
-.brand-collaboration-hub img { width: 2.65rem; height: 2.65rem; }
-.brand-collaboration-hub strong { max-width: 7.2rem; color:#172033; font-size:.72rem; line-height:1.2; }
-.brand-collaboration-hub small { max-width: 7rem; color:#768196; font-size:.5rem; line-height:1.2; }
+.brand-collaboration-hub img { width: 2.15rem; height: 2.15rem; }
+.brand-collaboration-hub strong { max-width: 5.5rem; color:#172033; font-size:.61rem; line-height:1.15; }
+.brand-collaboration-hub small { max-width: 5.6rem; color:#768196; font-size:.43rem; line-height:1.15; }
 
 .brand-collaboration-extra {
   position: absolute;
@@ -390,7 +390,8 @@
 @keyframes brand-collaboration-spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 1080px) {
-  .brand-collaboration-composition { min-height: 500px; }
+  .brand-collaboration-composition,
+  .brand-collaboration-composition.is-department { min-height: 540px; }
 }
 
 @media (max-width: 760px) {
