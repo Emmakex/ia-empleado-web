@@ -19,10 +19,11 @@
     min-height: 140px;
     grid-template-columns: 100px minmax(0, 1fr);
   }
+}
 
-  /* The team hero previously positioned the IA core at 52% of the whole
-     illustration, which made it drift into the definition card as that card
-     grew. Keep the core in normal flow between roster and definition. */
+@media (min-width: 761px) and (max-width: 980px) {
+  /* Tablet uses the two-column portrait roster, so the safest geometry is to
+     keep the core in normal flow between roster and definition. */
   .brand-team-hero-art {
     min-height: 0;
   }
@@ -39,6 +40,33 @@
 
   .brand-team-definition-card {
     margin-top: 0;
+  }
+}
+
+@media (min-width: 981px) {
+  /* On wide screens the roster is a single row. Dock the core into a reserved
+     notch at the top of the definition card instead of positioning it at 52%
+     of a variable-height illustration. This keeps the approved circular motif
+     without letting it cover the heading. */
+  .brand-team-hero-art {
+    min-height: 0;
+  }
+
+  .brand-team-hero-core {
+    left: 50%;
+    top: calc(1rem + 310px + 0.8rem + 56px);
+    width: 112px;
+    height: 112px;
+    transform: translate(-50%, -50%);
+  }
+
+  .brand-team-definition-card {
+    margin-top: 0.8rem;
+    padding-top: 7.5rem;
+  }
+
+  .brand-team-definition-card .team-definition-icon {
+    display: none;
   }
 }
 
