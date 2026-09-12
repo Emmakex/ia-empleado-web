@@ -1,4 +1,6 @@
 import type { Locale, SiteDictionary } from "../lib/i18n";
+import { getBrandCharacters } from "../lib/brand-characters";
+import { BrandHeroScene } from "./brand-hero-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -8,6 +10,8 @@ type HomePageProps = {
 };
 
 export function HomePage({ locale, dictionary }: HomePageProps) {
+  const brandCharacters = getBrandCharacters(locale);
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -37,7 +41,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
       </a>
       <SiteHeader locale={locale} dictionary={dictionary} />
       <main id="contenido">
-        <section className="hero section-shell" aria-labelledby="hero-title">
+        <section className="hero section-shell brand-home-hero" aria-labelledby="hero-title">
           <div className="container hero-grid">
             <div className="hero-copy">
               <p className="eyebrow">{dictionary.hero.eyebrow}</p>
@@ -48,36 +52,17 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
                 <a className="button button-ghost" href="#como-funciona">{dictionary.hero.secondaryCta}</a>
               </div>
               <p className="hero-note"><span aria-hidden="true">↳</span> {dictionary.hero.note}</p>
+              <div className="brand-hero-signature" aria-label={locale === "es" ? "Propuesta de marca" : "Brand proposition"}>
+                <img src="/branding/ia-empleado-mark.svg" alt="" width={28} height={28} aria-hidden="true" />
+                <span>{locale === "es" ? "Personas. IA. Sistemas. Un mismo equipo." : "People. AI. Systems. One team."}</span>
+              </div>
             </div>
 
-            <div className="ecosystem-card" aria-label={dictionary.hero.visualLabel}>
-              <div className="ecosystem-orbit ecosystem-orbit-one" aria-hidden="true" />
-              <div className="ecosystem-orbit ecosystem-orbit-two" aria-hidden="true" />
-              <svg className="network-lines" viewBox="0 0 600 520" role="presentation" aria-hidden="true">
-                <path d="M300 260 L125 115" />
-                <path d="M300 260 L475 115" />
-                <path d="M300 260 L125 405" />
-                <path d="M300 260 L475 405" />
-                <path className="network-flow" d="M125 115 L300 260 L475 405" />
-                <path className="network-flow network-flow-delay" d="M475 115 L300 260 L125 405" />
-              </svg>
-              <div className="core-node">
-                <span className="core-pulse" aria-hidden="true" />
-                <img className="brand-core-avatar" src="/branding/ia-employee-human.svg" alt="" width={82} height={82} aria-hidden="true" />
-                <strong>{dictionary.hero.core}</strong>
-                <small>{locale === "es" ? "Coordinación" : "Coordination"}</small>
-              </div>
-              {dictionary.hero.nodes.map((node, index) => (
-                <div className={`employee-node employee-node-${index + 1}`} key={node}>
-                  <span className="node-status" aria-hidden="true" />
-                  <span>{node}</span>
-                </div>
-              ))}
-              <div className="system-row">
-                {dictionary.hero.systems.map((system) => <span key={system}>{system}</span>)}
-              </div>
-              <p className="visual-caption">{dictionary.hero.visualLabel}</p>
-            </div>
+            <BrandHeroScene
+              locale={locale}
+              visualLabel={dictionary.hero.visualLabel}
+              systems={dictionary.hero.systems}
+            />
           </div>
         </section>
 
@@ -149,22 +134,31 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
           </div>
         </section>
 
-        <section className="content-section section-panel" id="empleados" aria-labelledby="employees-title">
+        <section className="content-section section-panel brand-employee-showcase" id="empleados" aria-labelledby="employees-title">
           <div className="container">
             <div className="section-heading">
               <p className="eyebrow">{dictionary.employees.eyebrow}</p>
               <h2 id="employees-title">{dictionary.employees.title}</h2>
               <p>{dictionary.employees.description}</p>
             </div>
-            <div className="card-grid four-grid">
-              {dictionary.employees.items.map((employee) => (
-                <article className="info-card employee-card" key={employee.title}>
-                  <span className="status-pill">{employee.tag}</span>
-                  <div className="avatar-mark" aria-hidden="true">{employee.title.slice(0, 2).toUpperCase()}</div>
-                  <h3>{employee.title}</h3>
-                  <p>{employee.text}</p>
-                </article>
-              ))}
+            <div className="card-grid four-grid brand-character-grid">
+              {dictionary.employees.items.map((employee, index) => {
+                const character = brandCharacters[index];
+                return (
+                  <article className="info-card employee-card brand-character-card" data-accent={character.accent} key={employee.title}>
+                    <div className="brand-character-card-visual">
+                      <span className="status-pill">{employee.tag}</span>
+                      <img src={character.asset} alt="" width={240} height={270} aria-hidden="true" />
+                    </div>
+                    <div className="brand-character-card-copy">
+                      <p className="brand-character-name">{character.name}</p>
+                      <h3>{employee.title}</h3>
+                      <p>{employee.text}</p>
+                      <p className="brand-character-promise">{character.promise}</p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
