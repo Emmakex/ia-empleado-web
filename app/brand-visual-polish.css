@@ -1,6 +1,6 @@
 /* Visual polish from production screenshot review.
- * Keeps the approved brand direction while correcting headline scale and
- * preserving the full canonical portrait inside every hero character card.
+ * Keeps the approved brand direction while correcting headline scale,
+ * preserving canonical portraits and enforcing collision-free hero geometry.
  */
 
 @media (min-width: 761px) {
@@ -21,6 +21,67 @@
   }
 }
 
+@media (min-width: 761px) and (max-width: 980px) {
+  /* Tablet uses the two-column portrait roster, so the safest geometry is to
+     keep the core in normal flow between roster and definition. */
+  .brand-team-hero-art {
+    min-height: 0;
+  }
+
+  .brand-team-hero-core {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 112px;
+    height: 112px;
+    margin: 0.85rem auto 0.95rem;
+    transform: none;
+  }
+
+  .brand-team-definition-card {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 981px) {
+  /* On wide screens the roster is a single row. Dock the core into a reserved
+     notch at the top of the definition card instead of positioning it at 52%
+     of a variable-height illustration. This keeps the approved circular motif
+     without letting it cover the heading. */
+  .brand-team-hero-art {
+    min-height: 0;
+  }
+
+  .brand-team-hero-core {
+    left: 50%;
+    top: calc(1rem + 310px + 0.8rem + 56px);
+    width: 112px;
+    height: 112px;
+    transform: translate(-50%, -50%);
+  }
+
+  .brand-team-definition-card {
+    margin-top: 0.8rem;
+    padding-top: 7.5rem;
+  }
+
+  .brand-team-definition-card .team-definition-icon {
+    display: none;
+  }
+}
+
+@media (min-width: 1081px) {
+  /* Interior heroes must align from the top. Centering columns of different
+     heights created the large empty area visible above breadcrumbs/copy. */
+  .team-index-hero-grid,
+  .team-detail-hero-grid,
+  .comparison-hero-grid,
+  .sector-hero-grid,
+  .sector-detail-hero-grid {
+    align-items: start;
+  }
+}
+
 .brand-character-portrait {
   min-width: 0;
 }
@@ -34,6 +95,98 @@
   transform: translateX(-50%);
   object-fit: contain;
   object-position: center top;
+}
+
+/* Reserve a real footer band in catalog portraits. Previously the image ended
+   exactly where the name/role block started, so jackets and labels collided. */
+.brand-catalog-person::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4.2rem;
+  border-top: 1px solid rgba(91, 95, 245, 0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), var(--person-soft));
+  pointer-events: none;
+}
+
+.brand-catalog-person img {
+  top: 0.35rem;
+  bottom: auto;
+  width: calc(100% + 0.25rem);
+  height: calc(100% - 4.55rem);
+  object-fit: contain;
+  object-position: center top;
+}
+
+.brand-catalog-person > span {
+  bottom: 0.48rem;
+  z-index: 2;
+  min-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-catalog-person small {
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 981px) {
+  /* Shared sector/use-case artwork gets a protected central lane. The old
+     128px core intersected both lower role cards on desktop. A 500px scene
+     gives the centered core and bottom role row a measurable safety gap while
+     keeping systems and human-control chips in their existing lower band. */
+  .brand-context-scene {
+    min-height: 500px;
+  }
+
+  .brand-context-core {
+    width: 96px;
+    height: 96px;
+  }
+
+  .brand-context-core-ring {
+    inset: -8px;
+  }
+
+  .brand-context-core img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-context-core strong {
+    max-width: 78px;
+    margin-top: 0.3rem;
+    font-size: 0.61rem;
+    line-height: 1.15;
+  }
+
+  /* Four portraits must fit inside the employee side of comparisons instead
+     of spilling outside the right card at wide desktop viewports. */
+  .brand-comparison-scene:not(.is-compact) .brand-comparison-employee {
+    overflow: hidden;
+  }
+
+  .brand-comparison-scene:not(.is-compact) .brand-comparison-portraits {
+    display: grid;
+    width: 100%;
+    max-width: 13rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.2rem;
+    padding-left: 0;
+  }
+
+  .brand-comparison-scene:not(.is-compact) .brand-comparison-portrait {
+    width: 100%;
+    max-width: 3rem;
+    height: 3.65rem;
+    margin-left: 0;
+    justify-self: center;
+    border-radius: 0.72rem;
+  }
 }
 
 @media (max-width: 760px) {
