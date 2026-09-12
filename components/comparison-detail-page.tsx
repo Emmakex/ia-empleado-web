@@ -8,6 +8,9 @@ import {
 } from "../lib/comparison-content";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { teamBuilderPath } from "../lib/team-builder";
+import { BrandBeforeAfterProof } from "./brand-before-after-proof";
+import { BrandComparisonScene } from "./brand-comparison-scene";
+import { BrandEvidencePanel } from "./brand-evidence-panel";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -65,7 +68,7 @@ export function ComparisonDetailPage({ locale, record }: ComparisonDetailPagePro
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternatePath} />
       <main id="contenido" className="comparison-page comparison-detail-page">
         <section className="comparison-hero section-shell" aria-labelledby="comparison-title">
-          <div className="container comparison-hero-grid">
+          <div className="container comparison-hero-grid comparison-brand-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={homeHref}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -82,10 +85,13 @@ export function ComparisonDetailPage({ locale, record }: ComparisonDetailPagePro
                 <Link className="button button-ghost" href={processAnalyzerPath(locale)}>{locale === "es" ? "Analizar mi proceso" : "Analyze my process"}</Link>
               </div>
             </div>
-            <aside className="comparison-answer-card" role="note">
-              <span>{locale === "es" ? "RESPUESTA CORTA" : "SHORT ANSWER"}</span>
-              <p>{record.shortAnswer[locale]}</p>
-            </aside>
+            <div className="comparison-hero-side">
+              <BrandComparisonScene locale={locale} alternativeName={record.alternativeName[locale]} comparisonKey={record.key} />
+              <aside className="comparison-answer-card" role="note">
+                <span>{locale === "es" ? "RESPUESTA CORTA" : "SHORT ANSWER"}</span>
+                <p>{record.shortAnswer[locale]}</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -116,6 +122,12 @@ export function ComparisonDetailPage({ locale, record }: ComparisonDetailPagePro
                 </tbody>
               </table>
             </div>
+          </div>
+        </section>
+
+        <section className="content-section comparison-proof-section" aria-label={locale === "es" ? "Lectura visual de la comparación" : "Visual comparison reading"}>
+          <div className="container">
+            <BrandBeforeAfterProof locale={locale} alternativeName={record.alternativeName[locale]} />
           </div>
         </section>
 
@@ -161,6 +173,17 @@ export function ComparisonDetailPage({ locale, record }: ComparisonDetailPagePro
               <p>{locale === "es" ? "IA Empleado no parte de la idea de reemplazar todas las herramientas existentes. Un proceso puede conservar reglas deterministas, usar RPA en sistemas legacy, ofrecer un chatbot al cliente y delegar coordinación a un Empleado IA." : "IA Empleado does not start from the assumption that every existing tool should be replaced. A process can keep deterministic rules, use RPA for legacy systems, expose a chatbot to customers and delegate coordination to an AI Employee."}</p>
               <p>{locale === "es" ? "La decisión correcta depende del proceso, el nivel de riesgo, la calidad de las integraciones y qué acciones deben permanecer bajo autoridad humana." : "The right decision depends on the process, the level of risk, integration quality and which actions must remain under human authority."}</p>
             </div>
+          </div>
+        </section>
+
+        <section className="content-section comparison-evidence-section" aria-labelledby="comparison-evidence-title">
+          <div className="container">
+            <div className="section-heading comparison-section-heading">
+              <p className="eyebrow">{locale === "es" ? "PRUEBA INSPECCIONABLE" : "INSPECTABLE EVIDENCE"}</p>
+              <h2 id="comparison-evidence-title">{locale === "es" ? "Comprueba el enfoque con demos, análisis y estimaciones separadas" : "Inspect the approach through separate demos, analysis and estimates"}</h2>
+              <p>{locale === "es" ? "Cada superficie indica qué tipo de evidencia estás viendo para no confundir una demo con producción ni una estimación con un resultado medido." : "Each surface states what kind of evidence you are viewing so a demo is not confused with production and an estimate is not confused with a measured result."}</p>
+            </div>
+            <BrandEvidencePanel locale={locale} />
           </div>
         </section>
 
