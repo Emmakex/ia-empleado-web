@@ -9,6 +9,7 @@ import {
 } from "../lib/process-analyzer";
 import { teamBuilderPath } from "../lib/team-builder";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
+import { BrandInteractivePreview } from "./brand-interactive-preview";
 import { ProcessAnalyzer } from "./process-analyzer";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -70,7 +71,7 @@ export function ProcessAnalyzerPage({ locale }: ProcessAnalyzerPageProps) {
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternatePath} />
       <main id="contenido" className="process-analyzer-page">
         <section className="process-analyzer-hero section-shell" aria-labelledby="process-analyzer-hero-title">
-          <div className="container process-analyzer-hero-grid">
+          <div className="container process-analyzer-hero-grid brand-interactive-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={homeHref}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -85,11 +86,14 @@ export function ProcessAnalyzerPage({ locale }: ProcessAnalyzerPageProps) {
                 <Link className="button button-ghost" href={teamBuilderPath(locale)}>{locale === "es" ? "Diseñar un Equipo IA" : "Design an AI Team"}</Link>
               </div>
             </div>
-            <aside className="process-analyzer-hero-note" role="note">
-              <span className="process-analyzer-note-icon" aria-hidden="true">↔</span>
-              <p>{content.heroNote}</p>
-              <div className="process-analyzer-local-chip">{locale === "es" ? "Estado local · sin conexión al runtime" : "Local state · no runtime connection"}</div>
-            </aside>
+            <div className="brand-interactive-hero-side">
+              <BrandInteractivePreview locale={locale} mode="process" title={content.analyzerTitle} />
+              <aside className="process-analyzer-hero-note" role="note">
+                <span className="process-analyzer-note-icon" aria-hidden="true">↔</span>
+                <p>{content.heroNote}</p>
+                <div className="process-analyzer-local-chip">{locale === "es" ? "Estado local · sin conexión al runtime" : "Local state · no runtime connection"}</div>
+              </aside>
+            </div>
           </div>
         </section>
 
