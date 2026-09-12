@@ -17,8 +17,16 @@
   .team-card-header,
   .team-card-header > *,
   .comparison-grid,
+  .principles-grid,
+  .principles-grid > *,
+  .principle-item,
   .security-intro,
   .faq-layout,
+  .faq-layout > *,
+  .faq-heading,
+  .faq-list,
+  .faq-item,
+  .faq-item summary,
   .cta-panel,
   .footer-grid,
   .team-index-hero-grid,
@@ -37,6 +45,8 @@
   }
 
   .two-column,
+  .principles-grid,
+  .faq-layout,
   .team-index-hero-grid,
   .team-detail-hero-grid {
     width: 100%;
@@ -50,10 +60,15 @@
   .team-detail-hero :is(h1, h2, h3, p),
   .team-card-header h3,
   .breadcrumbs,
-  .eyebrow {
+  .eyebrow,
+  .faq-item summary {
     min-width: 0;
     max-width: 100%;
     overflow-wrap: anywhere;
+  }
+
+  .principle-item {
+    grid-template-columns: auto minmax(0, 1fr);
   }
 
   .team-card-header {
@@ -79,7 +94,22 @@
     width: 100%;
   }
 
-  /* Decorative absolute layers must never determine document width. */
+  /* Keep the FAQ affordance inside the available inline size even with 200%
+     text. Its content can grow, but it cannot establish a wider flex track. */
+  .faq-item summary {
+    align-items: flex-start;
+    padding-inline: 0.25rem;
+  }
+
+  .faq-item summary span {
+    flex: 0 0 1.5em;
+    width: 1.5em;
+    min-width: 0;
+    margin-left: 0.35rem;
+    text-align: center;
+  }
+
+  /* Decorative absolute layers must never determine content track sizing. */
   .brand-hero-mist,
   .brand-hero-orbit,
   .brand-hero-lines,
@@ -93,8 +123,10 @@
    viewport. Keep normal mobile aesthetics unchanged until text actually grows. */
 @media (max-width: 760px) {
   .content-section > .container,
+  .principles-strip > .container,
   .team-detail-hero > .container,
   .team-index-hero > .container {
     min-width: 0;
+    max-width: 100%;
   }
 }
