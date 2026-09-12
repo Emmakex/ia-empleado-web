@@ -1,11 +1,11 @@
 import fs from "node:fs";
 
 const helperPath = "components/brand-character-image.tsx";
-const criticalSurfaces = [
+const roleFamilyPath = "components/brand-role-family-scene.tsx";
+const directCriticalSurfaces = [
   "components/brand-hero-scene.tsx",
   "components/home-page.tsx",
   "components/employee-index-page.tsx",
-  "components/employee-detail-page.tsx",
   "components/employee-catalog-explorer.tsx",
   "components/team-index-page.tsx",
   "components/team-detail-page.tsx",
@@ -17,8 +17,11 @@ const criticalSurfaces = [
   "components/team-builder.tsx",
   "components/process-analyzer.tsx",
 ];
+const composedCriticalSurfaces = [
+  "components/employee-detail-page.tsx",
+];
 
-for (const path of [helperPath, ...criticalSurfaces]) {
+for (const path of [helperPath, roleFamilyPath, ...directCriticalSurfaces, ...composedCriticalSurfaces]) {
   if (!fs.existsSync(path)) throw new Error(`Missing character image delivery contract file: ${path}`);
 }
 
@@ -35,7 +38,7 @@ for (const token of [
   if (!helper.includes(token)) throw new Error(`BrandCharacterImage is missing responsive delivery contract: ${token}`);
 }
 
-for (const path of criticalSurfaces) {
+for (const path of directCriticalSurfaces) {
   const source = fs.readFileSync(path, "utf8");
   if (!source.includes("BrandCharacterImage")) {
     throw new Error(`Critical portrait surface does not use BrandCharacterImage: ${path}`);
@@ -46,17 +49,32 @@ for (const path of criticalSurfaces) {
   }
 }
 
+const roleFamily = fs.readFileSync(roleFamilyPath, "utf8");
+for (const token of [
+  "BrandCharacterImage",
+  'sizes="(max-width: 760px) 250px, 300px"',
+  "eager",
+  'fetchPriority="high"',
+]) {
+  if (!roleFamily.includes(token)) {
+    throw new Error(`Role family scene is missing employee-detail image delivery contract: ${token}`);
+  }
+}
+if (/<img\s[^>]*src=\{character\.asset\}/s.test(roleFamily)) {
+  throw new Error("Role family scene bypasses responsive delivery with a raw canonical <img>");
+}
+
+const detail = fs.readFileSync("components/employee-detail-page.tsx", "utf8");
+if (!detail.includes("BrandRoleFamilyScene") || !detail.includes("<BrandRoleFamilyScene character={character} />")) {
+  throw new Error("Employee detail hero must delegate canonical portrait delivery through BrandRoleFamilyScene");
+}
+
 const hero = fs.readFileSync("components/brand-hero-scene.tsx", "utf8");
 if (!hero.includes("fetchPriority={index < 2 ? \"high\" : \"auto\"}")) {
   throw new Error("Homepage hero must reserve high fetch priority for the first visible character row");
 }
 if (!hero.includes("sizes=\"(max-width: 430px) 120px, (max-width: 760px) 126px, 140px\"")) {
   throw new Error("Homepage hero is missing an explicit responsive portrait sizes contract");
-}
-
-const detail = fs.readFileSync("components/employee-detail-page.tsx", "utf8");
-if (!detail.includes('fetchPriority="high"') || !detail.includes("eager")) {
-  throw new Error("Employee detail hero portrait must remain eagerly requested with high fetch priority");
 }
 
 console.log("Canonical character responsive image delivery contract OK");
