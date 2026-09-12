@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
 import { employeeDetailPath, getEmployeeCatalog } from "../lib/employee-content-engine";
+import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
 import { getTeamRecords, teamDetailPath } from "../lib/team-content-engine";
 import { useCaseDetailPath, useCaseRecords } from "../lib/sector-use-cases";
 import {
@@ -14,6 +15,7 @@ import {
 } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
+import { BrandOrganizationScene } from "./brand-organization-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -28,6 +30,7 @@ export function DepartmentDetailPage({ locale, department }: Props) {
   const teams = getTeamRecords();
   const relatedUseCases = department.useCases.map((key) => useCaseRecords.find((item) => item.key === key)).filter(Boolean);
   const relatedIntegrations = department.integrations.map((key) => integrationRecords.find((item) => item.key === key)).filter(Boolean);
+  const sceneSystems = relatedIntegrations.map((item) => item?.name[locale]).filter((item): item is string => Boolean(item));
 
   const pageSchema = {
     "@context": "https://schema.org",
@@ -65,7 +68,7 @@ export function DepartmentDetailPage({ locale, department }: Props) {
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
       <main id="contenido" className="organization-map-page">
         <section className="organization-detail-hero section-shell">
-          <div className="container organization-detail-hero-grid">
+          <div className="container organization-detail-hero-grid brand-organization-detail-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={localeHref(locale)}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -86,15 +89,27 @@ export function DepartmentDetailPage({ locale, department }: Props) {
                 <Link className="button button-ghost" href={integrationIndexPath(locale)}>{locale === "es" ? "Explorar integraciones" : "Explore integrations"}</Link>
               </div>
             </div>
-            <aside className="organization-summary-card">
-              <span>{locale === "es" ? "Mapa del departamento" : "Department map"}</span>
-              <dl>
-                <div><dt>{locale === "es" ? "Perfiles profundos" : "Deep profiles"}</dt><dd>{department.employeeKeys.length}</dd></div>
-                <div><dt>{locale === "es" ? "Casos de uso" : "Use cases"}</dt><dd>{department.useCases.length}</dd></div>
-                <div><dt>{locale === "es" ? "Integraciones" : "Integrations"}</dt><dd>{department.integrations.length}</dd></div>
-              </dl>
-              <p>{locale === "es" ? "Modelo educativo · la composición final se adapta a sistemas, permisos y procesos reales." : "Educational model · final composition adapts to real systems, permissions and processes."}</p>
-            </aside>
+            <div className="brand-organization-hero-side">
+              <BrandOrganizationScene
+                locale={locale}
+                kind="department"
+                contextKey={department.key}
+                eyebrow={department.eyebrow[locale]}
+                title={department.name[locale]}
+                employeeKeys={department.employeeKeys}
+                systems={sceneSystems.length ? sceneSystems : department.integrations}
+                humanLabel={locale === "es" ? "Aprobación y excepciones" : "Approval and exceptions"}
+              />
+              <aside className="organization-summary-card">
+                <span>{locale === "es" ? "Mapa del departamento" : "Department map"}</span>
+                <dl>
+                  <div><dt>{locale === "es" ? "Perfiles profundos" : "Deep profiles"}</dt><dd>{department.employeeKeys.length}</dd></div>
+                  <div><dt>{locale === "es" ? "Casos de uso" : "Use cases"}</dt><dd>{department.useCases.length}</dd></div>
+                  <div><dt>{locale === "es" ? "Integraciones" : "Integrations"}</dt><dd>{department.integrations.length}</dd></div>
+                </dl>
+                <p>{locale === "es" ? "Modelo educativo · la composición final se adapta a sistemas, permisos y procesos reales." : "Educational model · final composition adapts to real systems, permissions and processes."}</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -121,8 +136,14 @@ export function DepartmentDetailPage({ locale, department }: Props) {
             <div className="organization-role-grid">
               {department.employeeKeys.map((key) => {
                 const employee = catalog.find((item) => item.key === key);
+                const character = getBrandCharacterByEmployeeKey(key, locale);
                 if (!employee) return null;
-                return <article className="organization-role-card" key={key}><span aria-hidden="true">{employee.shortName.slice(0, 2).toUpperCase()}</span><div><h3>{employee.shortName}</h3><p>{employee.description}</p><Link className="text-link" href={employeeDetailPath(key, locale)}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link></div></article>;
+                return (
+                  <article className="organization-role-card brand-organization-role-card" data-accent={character?.accent} key={key}>
+                    {character ? <img className="organization-role-portrait" src={character.asset} alt="" width={104} height={124} /> : <span aria-hidden="true">{employee.shortName.slice(0, 2).toUpperCase()}</span>}
+                    <div><h3>{character ? `${character.name} · ${employee.shortName}` : employee.shortName}</h3><p>{employee.description}</p><Link className="text-link" href={employeeDetailPath(key, locale)}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link></div>
+                  </article>
+                );
               })}
               {department.catalogRoles[locale].map((role) => <article className="organization-role-card catalog-role" key={role}><span aria-hidden="true">+</span><div><h3>{role}</h3><p>{locale === "es" ? "Perfil del catálogo general · requiere definición y adaptación al entorno real." : "General catalog profile · requires definition and adaptation to the real environment."}</p></div></article>)}
             </div>
@@ -135,34 +156,20 @@ export function DepartmentDetailPage({ locale, department }: Props) {
 
         <section className="content-section section-panel" aria-labelledby="department-processes-title">
           <div className="container">
-            <div className="section-heading organization-section-heading">
-              <p className="eyebrow">{locale === "es" ? "PROCESOS" : "PROCESSES"}</p>
-              <h2 id="department-processes-title">{locale === "es" ? "Casos de uso relacionados" : "Related use cases"}</h2>
-            </div>
-            <div className="organization-card-grid compact-grid">
-              {relatedUseCases.map((record) => record && <article className="organization-card" key={record.key}><h3>{record.title[locale]}</h3><p>{record.shortAnswer[locale]}</p><Link className="text-link" href={useCaseDetailPath(record.key, locale)}>{locale === "es" ? "Ver proceso" : "View process"} <span aria-hidden="true">→</span></Link></article>)}
-            </div>
+            <div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "PROCESOS" : "PROCESSES"}</p><h2 id="department-processes-title">{locale === "es" ? "Casos de uso relacionados" : "Related use cases"}</h2></div>
+            <div className="organization-card-grid compact-grid">{relatedUseCases.map((record) => record && <article className="organization-card" key={record.key}><h3>{record.title[locale]}</h3><p>{record.shortAnswer[locale]}</p><Link className="text-link" href={useCaseDetailPath(record.key, locale)}>{locale === "es" ? "Ver proceso" : "View process"} <span aria-hidden="true">→</span></Link></article>)}</div>
           </div>
         </section>
 
         <section className="content-section" aria-labelledby="department-integrations-title">
           <div className="container">
-            <div className="section-heading organization-section-heading">
-              <p className="eyebrow">{locale === "es" ? "SISTEMAS" : "SYSTEMS"}</p>
-              <h2 id="department-integrations-title">{locale === "es" ? "Integraciones a evaluar" : "Integrations to evaluate"}</h2>
-              <p>{locale === "es" ? "Que una categoría aparezca aquí no significa que exista un conector universal listo para activar." : "A category appearing here does not mean a universal ready-made connector exists."}</p>
-            </div>
-            <div className="organization-integration-grid">
-              {relatedIntegrations.map((record) => record && <Link className="organization-integration-link" key={record.key} href={integrationDetailPath(record.key, locale)}><strong>{record.name[locale]}</strong><span>{record.shortAnswer[locale]}</span><em aria-hidden="true">→</em></Link>)}
-            </div>
+            <div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "SISTEMAS" : "SYSTEMS"}</p><h2 id="department-integrations-title">{locale === "es" ? "Integraciones a evaluar" : "Integrations to evaluate"}</h2><p>{locale === "es" ? "Que una categoría aparezca aquí no significa que exista un conector universal listo para activar." : "A category appearing here does not mean a universal ready-made connector exists."}</p></div>
+            <div className="organization-integration-grid">{relatedIntegrations.map((record) => record && <Link className="organization-integration-link" key={record.key} href={integrationDetailPath(record.key, locale)}><strong>{record.name[locale]}</strong><span>{record.shortAnswer[locale]}</span><em aria-hidden="true">→</em></Link>)}</div>
           </div>
         </section>
 
         <section className="content-section section-panel" aria-labelledby="department-model-title">
-          <div className="container">
-            <div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "MODELO OPERATIVO" : "OPERATING MODEL"}</p><h2 id="department-model-title">{locale === "es" ? "Cómo introducir IA sin delegar autoridad de golpe" : "How to introduce AI without delegating authority all at once"}</h2></div>
-            <div className="organization-method-grid">{department.operatingModel[locale].map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
-          </div>
+          <div className="container"><div className="section-heading organization-section-heading"><p className="eyebrow">{locale === "es" ? "MODELO OPERATIVO" : "OPERATING MODEL"}</p><h2 id="department-model-title">{locale === "es" ? "Cómo introducir IA sin delegar autoridad de golpe" : "How to introduce AI without delegating authority all at once"}</h2></div><div className="organization-method-grid">{department.operatingModel[locale].map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div>
         </section>
 
         <section className="content-section" aria-labelledby="department-control-title">
