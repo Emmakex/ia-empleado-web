@@ -65,6 +65,9 @@ jobs:
       - name: Branding system contract
         run: node scripts/check-branding.mjs
 
+      - name: Canonical character image delivery contract
+        run: node scripts/check-character-image-delivery.mjs
+
       - name: Brand motion contract
         run: node scripts/check-brand-motion.mjs
 
