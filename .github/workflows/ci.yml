@@ -68,6 +68,9 @@ jobs:
       - name: Brand motion contract
         run: node scripts/check-brand-motion.mjs
 
+      - name: UX accessibility contract
+        run: node scripts/check-ux-accessibility.mjs
+
       - name: Brand media contract
         run: node scripts/check-brand-media.mjs
 

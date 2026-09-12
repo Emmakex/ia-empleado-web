@@ -42,30 +42,85 @@ export function MobileNavigation({
 }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const panelId = "mobile-site-navigation";
 
   useEffect(() => {
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
+    const main = document.querySelector<HTMLElement>("main");
+    const footer = document.querySelector<HTMLElement>(".site-footer");
+    const mainWasInert = main?.hasAttribute("inert") ?? false;
+    const footerWasInert = footer?.hasAttribute("inert") ?? false;
+
     document.body.style.overflow = "hidden";
+    main?.setAttribute("inert", "");
+    footer?.setAttribute("inert", "");
+
+    const focusableSelector = [
+      "a[href]",
+      "button:not([disabled])",
+      "input:not([disabled])",
+      "select:not([disabled])",
+      "textarea:not([disabled])",
+      "[tabindex]:not([tabindex='-1'])",
+    ].join(",");
+
+    const getFocusable = () =>
+      Array.from(panelRef.current?.querySelectorAll<HTMLElement>(focusableSelector) ?? [])
+        .filter((element) => element.getAttribute("aria-hidden") !== "true");
+
+    const focusFrame = window.requestAnimationFrame(() => {
+      getFocusable()[0]?.focus();
+    });
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         setOpen(false);
+        window.requestAnimationFrame(() => toggleRef.current?.focus());
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = getFocusable();
+      if (focusable.length === 0) {
+        event.preventDefault();
         toggleRef.current?.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      window.cancelAnimationFrame(focusFrame);
       document.body.style.overflow = previousOverflow;
+      if (!mainWasInert) main?.removeAttribute("inert");
+      if (!footerWasInert) footer?.removeAttribute("inert");
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
 
   const close = () => setOpen(false);
+  const closeAndRestoreFocus = () => {
+    setOpen(false);
+    window.requestAnimationFrame(() => toggleRef.current?.focus());
+  };
 
   return (
     <div className="mobile-navigation">
@@ -74,6 +129,7 @@ export function MobileNavigation({
         className={`mobile-menu-toggle${open ? " is-open" : ""}`}
         type="button"
         aria-expanded={open}
+        aria-haspopup="dialog"
         aria-controls={panelId}
         aria-label={open ? closeLabel : openLabel}
         onClick={() => setOpen((current) => !current)}
@@ -85,8 +141,15 @@ export function MobileNavigation({
 
       {open ? (
         <>
-          <button className="mobile-menu-backdrop" type="button" aria-label={closeLabel} onClick={close} tabIndex={-1} />
-          <div className="mobile-menu-panel" id={panelId}>
+          <button className="mobile-menu-backdrop" type="button" aria-label={closeLabel} onClick={closeAndRestoreFocus} tabIndex={-1} />
+          <div
+            ref={panelRef}
+            className="mobile-menu-panel"
+            id={panelId}
+            role="dialog"
+            aria-modal="true"
+            aria-label={navigationLabel}
+          >
             <nav className="mobile-menu-links" aria-label={navigationLabel}>
               <Link href={employeeHref} onClick={close}>{employeesLabel}</Link>
               <Link href={teamsHref} onClick={close}>{teamsLabel}</Link>
