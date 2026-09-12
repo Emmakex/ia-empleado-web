@@ -135,9 +135,9 @@ The calculator is an educational commercial estimator, not a verified customer o
 
 ### Web Phase 6A — Comparison surfaces
 
-Current development phase. Release completion requires feature merge, green `main` CI and Hostinger production verification.
+Implementation and repository validation complete through **PR #22**. Hostinger production verification remains the final release gate.
 
-Phase 6A introduces:
+Phase 6A includes:
 
 - `/comparativas` and `/en/comparisons`;
 - five bilingual high-intent comparisons: chatbot, AI agent, RPA, traditional automation and AI copilot;
