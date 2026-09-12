@@ -7,6 +7,7 @@ import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
 import { comparisonIndexPath } from "../lib/comparison-content";
+import { sectorIndexPath, useCaseIndexPath } from "../lib/sector-use-cases";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -33,6 +34,8 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             {dictionary.footer.links.slice(0, 2).map((label, index) => (
               <li key={label}><Link href={links[index]}>{label}</Link></li>
             ))}
+            <li><Link href={sectorIndexPath(locale)}>{locale === "es" ? "Sectores" : "Industries"}</Link></li>
+            <li><Link href={useCaseIndexPath(locale)}>{locale === "es" ? "Casos de uso" : "Use cases"}</Link></li>
           </ul>
         </div>
         <div>

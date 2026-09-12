@@ -6,6 +6,14 @@ import { teamBuilderPath } from "../lib/team-builder";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
 import { comparisonDetailPath, comparisonIndexPath, comparisonRecords } from "../lib/comparison-content";
+import {
+  sectorDetailPath,
+  sectorIndexPath,
+  sectorRecords,
+  useCaseDetailPath,
+  useCaseIndexPath,
+  useCaseRecords,
+} from "../lib/sector-use-cases";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -122,6 +130,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       alternates: { languages: { es: `https://iaempleado.com${comparisonIndexPath("es")}`, en: `https://iaempleado.com${comparisonIndexPath("en")}` } },
     },
+    {
+      url: `https://iaempleado.com${sectorIndexPath("es")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: { languages: { es: `https://iaempleado.com${sectorIndexPath("es")}`, en: `https://iaempleado.com${sectorIndexPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${sectorIndexPath("en")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: { languages: { es: `https://iaempleado.com${sectorIndexPath("es")}`, en: `https://iaempleado.com${sectorIndexPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${useCaseIndexPath("es")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: { languages: { es: `https://iaempleado.com${useCaseIndexPath("es")}`, en: `https://iaempleado.com${useCaseIndexPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${useCaseIndexPath("en")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: { languages: { es: `https://iaempleado.com${useCaseIndexPath("es")}`, en: `https://iaempleado.com${useCaseIndexPath("en")}` } },
+    },
   ];
 
   for (const employee of getDetailedEmployeeRecords()) {
@@ -182,6 +218,48 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified,
         changeFrequency: "monthly",
         priority: 0.72,
+        alternates: { languages: { es: `https://iaempleado.com${esPath}`, en: `https://iaempleado.com${enPath}` } },
+      },
+    );
+  }
+
+  for (const sector of sectorRecords) {
+    const esPath = sectorDetailPath(sector.key, "es");
+    const enPath = sectorDetailPath(sector.key, "en");
+    entries.push(
+      {
+        url: `https://iaempleado.com${esPath}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.84,
+        alternates: { languages: { es: `https://iaempleado.com${esPath}`, en: `https://iaempleado.com${enPath}` } },
+      },
+      {
+        url: `https://iaempleado.com${enPath}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.74,
+        alternates: { languages: { es: `https://iaempleado.com${esPath}`, en: `https://iaempleado.com${enPath}` } },
+      },
+    );
+  }
+
+  for (const useCase of useCaseRecords) {
+    const esPath = useCaseDetailPath(useCase.key, "es");
+    const enPath = useCaseDetailPath(useCase.key, "en");
+    entries.push(
+      {
+        url: `https://iaempleado.com${esPath}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.84,
+        alternates: { languages: { es: `https://iaempleado.com${esPath}`, en: `https://iaempleado.com${enPath}` } },
+      },
+      {
+        url: `https://iaempleado.com${enPath}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.74,
         alternates: { languages: { es: `https://iaempleado.com${esPath}`, en: `https://iaempleado.com${enPath}` } },
       },
     );
