@@ -19,6 +19,7 @@ import "../brand-sector-content.css";
 import "../brand-organization-content.css";
 import "../brand-interactive-content.css";
 import "../brand-comparison-proof.css";
+import "../brand-motion.css";
 import { getDictionary } from "../../lib/i18n";
 import { brandPreviewUrl } from "../../lib/brand-social-previews";
 
