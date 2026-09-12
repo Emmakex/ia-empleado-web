@@ -1,10 +1,10 @@
-import Link from "next/link";
 import type { Locale, SiteDictionary } from "../lib/i18n";
 import { alternateLocale, localeHref } from "../lib/i18n";
 import { employeeIndexPath } from "../lib/employee-catalog";
 import { teamIndexPath } from "../lib/team-content-engine";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { teamBuilderPath } from "../lib/team-builder";
+import { MenuNavigationLink } from "./menu-navigation-link";
 import { MobileNavigation, type NavigationGroup } from "./mobile-navigation";
 
 type SiteHeaderProps = {
@@ -118,14 +118,14 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link className="brand" href={homeHref} aria-label="IA Empleado">
+        <MenuNavigationLink className="brand" href={homeHref}>
           <img className="brand-symbol" src="/branding/ia-empleado-mark.svg" alt="" width={41} height={41} aria-hidden="true" />
           <span className="brand-wordmark">IA Empleado</span>
-        </Link>
+        </MenuNavigationLink>
         <nav className="main-nav" aria-label={navigationLabel}>
-          <Link href={employeeHref}>{dictionary.nav.employees}</Link>
-          <Link href={teamsHref}>{dictionary.nav.teams}</Link>
-          <Link href={howHref}>{dictionary.nav.how}</Link>
+          <MenuNavigationLink href={employeeHref}>{dictionary.nav.employees}</MenuNavigationLink>
+          <MenuNavigationLink href={teamsHref}>{dictionary.nav.teams}</MenuNavigationLink>
+          <MenuNavigationLink href={howHref}>{dictionary.nav.how}</MenuNavigationLink>
           <details className="site-nav-explore">
             <summary>{exploreLabel}</summary>
             <div className="site-nav-mega" aria-label={exploreLabel}>
@@ -134,7 +134,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
                   <p className="site-nav-group-label">{group.label}</p>
                   <div className="site-nav-group-links">
                     {group.links.map((link) => (
-                      <Link href={link.href} key={`${group.label}-${link.href}`}>{link.label}</Link>
+                      <MenuNavigationLink href={link.href} key={`${group.label}-${link.href}`}>{link.label}</MenuNavigationLink>
                     ))}
                   </div>
                 </section>
@@ -143,12 +143,12 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
           </details>
         </nav>
         <div className="header-actions">
-          <Link className="language-link" href={languageHref} hrefLang={otherLocale}>
+          <MenuNavigationLink className="language-link" href={languageHref} hrefLang={otherLocale}>
             {dictionary.nav.language}
-          </Link>
-          <Link className="button button-small" href={ctaHref}>
+          </MenuNavigationLink>
+          <MenuNavigationLink className="button button-small" href={ctaHref}>
             {dictionary.nav.cta}
-          </Link>
+          </MenuNavigationLink>
         </div>
         <MobileNavigation
           groups={navigationGroups}
