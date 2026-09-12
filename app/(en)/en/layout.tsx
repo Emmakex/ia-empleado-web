@@ -4,6 +4,7 @@ import "../../light-theme.css";
 import "../../employee-content.css";
 import "../../employee-discovery.css";
 import "../../mobile-navigation.css";
+import "../../team-content.css";
 import { getDictionary } from "../../../lib/i18n";
 
 const dictionary = getDictionary("en");

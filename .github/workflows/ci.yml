@@ -38,6 +38,9 @@ jobs:
       - name: Mobile navigation contract
         run: node scripts/check-mobile-navigation.mjs
 
+      - name: AI Teams content contract
+        run: node scripts/check-ai-teams.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
