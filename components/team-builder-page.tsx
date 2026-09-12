@@ -8,6 +8,7 @@ import {
   teamBuilderPath,
 } from "../lib/team-builder";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
+import { processAnalyzerPath } from "../lib/process-analyzer";
 import { TeamBuilder } from "./team-builder";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -81,8 +82,8 @@ export function TeamBuilderPage({ locale }: TeamBuilderPageProps) {
               <p className="team-builder-hero-lead">{content.heroDescription}</p>
               <div className="hero-actions">
                 <a className="button" href="#team-builder">{locale === "es" ? "Configurar mi equipo" : "Configure my team"}</a>
-                <Link className="button button-ghost" href={collaborationDemoPath(locale)}>
-                  {locale === "es" ? "Ver cómo trabajan juntos" : "See the team work"}
+                <Link className="button button-ghost" href={processAnalyzerPath(locale)}>
+                  {locale === "es" ? "Mejorar un proceso" : "Improve a process"}
                 </Link>
               </div>
             </div>
@@ -157,13 +158,13 @@ export function TeamBuilderPage({ locale }: TeamBuilderPageProps) {
         <section className="content-section final-cta">
           <div className="container cta-panel">
             <div>
-              <p className="eyebrow">{locale === "es" ? "DEL MAPA AL PROCESO" : "FROM MAP TO PROCESS"}</p>
-              <h2>{locale === "es" ? "¿Quieres ver cómo se comporta un equipo cuando una tarea cambia de responsable?" : "Want to see how a team behaves when work changes owner?"}</h2>
-              <p>{locale === "es" ? "El simulador de colaboración muestra handoffs, sistemas y puntos de control humano con escenarios sintéticos paso a paso." : "The collaboration simulator shows handoffs, systems and human-control points through step-by-step synthetic scenarios."}</p>
+              <p className="eyebrow">{locale === "es" ? "DEL EQUIPO AL PROCESO" : "FROM TEAM TO PROCESS"}</p>
+              <h2>{locale === "es" ? "Ahora compara cómo trabaja hoy el proceso y qué cambia con una composición coordinada." : "Now compare how the process works today and what changes with a coordinated composition."}</h2>
+              <p>{locale === "es" ? "El Process Analyzer separa automatización, asistencia y responsabilidad humana paso a paso, sin asumir que todo debe ser autónomo." : "The Process Analyzer separates automation, assistance and human responsibility step by step without assuming everything should be autonomous."}</p>
             </div>
             <div className="cta-actions">
-              <Link className="button" href={collaborationDemoPath(locale)}>{locale === "es" ? "Ver simulador" : "Open simulator"}</Link>
-              <Link className="button button-ghost" href={locale === "es" ? "/equipos-ia" : "/en/ai-teams"}>{locale === "es" ? "Explorar Equipos IA" : "Explore AI Teams"}</Link>
+              <Link className="button" href={processAnalyzerPath(locale)}>{locale === "es" ? "Mejorar mi proceso" : "Improve my process"}</Link>
+              <Link className="button button-ghost" href={collaborationDemoPath(locale)}>{locale === "es" ? "Ver simulador" : "Open simulator"}</Link>
             </div>
           </div>
         </section>

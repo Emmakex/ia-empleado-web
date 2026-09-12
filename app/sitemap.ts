@@ -3,6 +3,7 @@ import { employeeDetailPath, getDetailedEmployeeRecords } from "../lib/employee-
 import { getTeamRecords, teamDetailPath, teamIndexPath } from "../lib/team-content-engine";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { teamBuilderPath } from "../lib/team-builder";
+import { processAnalyzerPath } from "../lib/process-analyzer";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -40,72 +41,56 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 0.95,
-      alternates: {
-        languages: {
-          es: `https://iaempleado.com${teamIndexPath("es")}`,
-          en: `https://iaempleado.com${teamIndexPath("en")}`,
-        },
-      },
+      alternates: { languages: { es: `https://iaempleado.com${teamIndexPath("es")}`, en: `https://iaempleado.com${teamIndexPath("en")}` } },
     },
     {
       url: `https://iaempleado.com${teamIndexPath("en")}`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.85,
-      alternates: {
-        languages: {
-          es: `https://iaempleado.com${teamIndexPath("es")}`,
-          en: `https://iaempleado.com${teamIndexPath("en")}`,
-        },
-      },
+      alternates: { languages: { es: `https://iaempleado.com${teamIndexPath("es")}`, en: `https://iaempleado.com${teamIndexPath("en")}` } },
     },
     {
       url: `https://iaempleado.com${collaborationDemoPath("es")}`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.92,
-      alternates: {
-        languages: {
-          es: `https://iaempleado.com${collaborationDemoPath("es")}`,
-          en: `https://iaempleado.com${collaborationDemoPath("en")}`,
-        },
-      },
+      alternates: { languages: { es: `https://iaempleado.com${collaborationDemoPath("es")}`, en: `https://iaempleado.com${collaborationDemoPath("en")}` } },
     },
     {
       url: `https://iaempleado.com${collaborationDemoPath("en")}`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.82,
-      alternates: {
-        languages: {
-          es: `https://iaempleado.com${collaborationDemoPath("es")}`,
-          en: `https://iaempleado.com${collaborationDemoPath("en")}`,
-        },
-      },
+      alternates: { languages: { es: `https://iaempleado.com${collaborationDemoPath("es")}`, en: `https://iaempleado.com${collaborationDemoPath("en")}` } },
     },
     {
       url: `https://iaempleado.com${teamBuilderPath("es")}`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.94,
-      alternates: {
-        languages: {
-          es: `https://iaempleado.com${teamBuilderPath("es")}`,
-          en: `https://iaempleado.com${teamBuilderPath("en")}`,
-        },
-      },
+      alternates: { languages: { es: `https://iaempleado.com${teamBuilderPath("es")}`, en: `https://iaempleado.com${teamBuilderPath("en")}` } },
     },
     {
       url: `https://iaempleado.com${teamBuilderPath("en")}`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.84,
-      alternates: {
-        languages: {
-          es: `https://iaempleado.com${teamBuilderPath("es")}`,
-          en: `https://iaempleado.com${teamBuilderPath("en")}`,
-        },
-      },
+      alternates: { languages: { es: `https://iaempleado.com${teamBuilderPath("es")}`, en: `https://iaempleado.com${teamBuilderPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${processAnalyzerPath("es")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.93,
+      alternates: { languages: { es: `https://iaempleado.com${processAnalyzerPath("es")}`, en: `https://iaempleado.com${processAnalyzerPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${processAnalyzerPath("en")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.83,
+      alternates: { languages: { es: `https://iaempleado.com${processAnalyzerPath("es")}`, en: `https://iaempleado.com${processAnalyzerPath("en")}` } },
     },
   ];
 
