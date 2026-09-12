@@ -26,6 +26,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`docs/PHASE_5B_ROI_ESTIMATOR.md`](docs/PHASE_5B_ROI_ESTIMATOR.md) — transparent ROI/value methodology.
 - [`docs/PHASE_6A_COMPARISONS.md`](docs/PHASE_6A_COMPARISONS.md) — comparison-page methodology, truthfulness and SEO/GEO contract.
 - [`docs/PHASE_6B_SECTORS_USE_CASES.md`](docs/PHASE_6B_SECTORS_USE_CASES.md) — sector/use-case content model, truthfulness, SEO/GEO and release contract.
+- [`docs/PHASE_6C_INTEGRATIONS_DEPARTMENTS.md`](docs/PHASE_6C_INTEGRATIONS_DEPARTMENTS.md) — department/integration graph, authority boundaries, SEO/GEO and release contract.
 
 ## Strategic narrative
 
@@ -127,7 +128,7 @@ Includes `/comparativas` and `/en/comparisons` plus five bilingual high-intent c
 
 ### Web Phase 6B — Sectors and use cases
 
-Implementation and repository validation complete through **PR #24**. Hostinger production verification remains the final release gate.
+Complete and production-verified.
 
 Phase 6B includes:
 
@@ -147,4 +148,26 @@ Phase 6B includes:
 
 The sector and use-case pages are educational reference designs. They do not imply universal connector availability, production readiness or measured customer outcomes.
 
-After Phase 6B production verification, the highest-value remaining web work is proof/evidence media, integrations/departments, conversion forms and attribution, followed by technical/CRO hardening and broader content expansion.
+### Web Phase 6C — Departments and integrations
+
+Implementation and repository validation complete through **PR #26**. Hostinger production verification remains the final release gate.
+
+Phase 6C includes:
+
+- `/departamentos` and `/en/departments`;
+- six deep bilingual department pages: Customer Support, Administration, Accounting & Billing, Sales, Ecommerce Operations and Travel & Reservations;
+- `/integraciones` and `/en/integrations`;
+- seven deep bilingual integration categories: CRM, ERP, Email, Calendar, Ecommerce platform, Ticketing / case management and Document management;
+- department pages connecting responsibilities, deep Employee profiles, catalog roles, AI Teams, use cases, systems, controls, metrics and operating models;
+- integration pages separating typical read scope from write operations that may be evaluated;
+- least-privilege, reliable identity/resource matching, fallback and audit principles;
+- explicit wording that integration categories do not imply universal or vendor-certified connectors;
+- cross-links between departments, integrations, use cases, Employees and AI Teams;
+- CollectionPage / ItemList, WebPage, BreadcrumbList and FAQPage structured data;
+- canonical, hreflang, sitemap and footer discoverability;
+- responsive organization-map layouts;
+- dedicated Organization map CI contract.
+
+The integration pages are architecture and evaluation guidance. Actual connector availability depends on the provider, API, authentication model, data model, permissions and customer environment.
+
+After Phase 6C production verification, the highest-value remaining work shifts from taxonomy expansion to **proof and conversion**: real lead capture, attribution/analytics under consent, proof media and Reference Lab evidence, followed by technical/CRO hardening and selective content expansion.
