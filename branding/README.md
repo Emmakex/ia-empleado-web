@@ -20,16 +20,18 @@ People ↔ AI Employees ↔ Business systems
 
 **Branding Phase 1 — Core visual system: Complete and production-verified (2026-09-12).**
 
-**Branding Phase 2A — Role visual families: implementation in progress.**
+**Branding Phase 2A — Role visual families: Complete and production-verified (2026-09-12).**
 
-Phase 2A deepens the existing identity with reusable role-specific visual grammars for Clara, Alex, Sofía and Javier; it does not replace or redraw the approved canonical character identities.
+Phase 2A deepens the existing identity with reusable role-specific visual grammars for Clara, Alex, Sofía and Javier without replacing or redrawing the approved canonical character identities.
+
+**Next: Branding Phase 2B — Team and Department compositions.** Reuse the same four role grammars to make collaboration, handoffs, shared systems and human approval visible across richer multi-role scenes.
 
 ## Folder contract
 
 - `BRAND_SYSTEM.md` — strategy, visual language and usage rules.
 - `ASSET_MANIFEST.md` — reusable asset inventory and where each asset belongs.
 - `PHASE_1_VALIDATION.md` — CI and production-browser evidence closing Branding Phase 1.
-- `PHASE_2_ROLE_VISUAL_FAMILIES.md` — role-family mapping, implementation rules and Phase 2A release criteria.
+- `PHASE_2_ROLE_VISUAL_FAMILIES.md` — role-family mapping, implementation rules and Phase 2A production-verification evidence.
 - `tokens.json` — portable design tokens for web, product, decks and future apps.
 - `../public/branding/` — production-ready SVG/assets served by the website.
 - `../app/brand-system.css` — active web implementation of the brand tokens and visual rules.
