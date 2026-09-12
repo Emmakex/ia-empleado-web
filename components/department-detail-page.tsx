@@ -15,7 +15,7 @@ import {
 } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
-import { BrandOrganizationScene } from "./brand-organization-scene";
+import { BrandCollaborationComposition } from "./brand-collaboration-composition";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -31,6 +31,22 @@ export function DepartmentDetailPage({ locale, department }: Props) {
   const relatedUseCases = department.useCases.map((key) => useCaseRecords.find((item) => item.key === key)).filter(Boolean);
   const relatedIntegrations = department.integrations.map((key) => integrationRecords.find((item) => item.key === key)).filter(Boolean);
   const sceneSystems = relatedIntegrations.map((item) => item?.name[locale]).filter((item): item is string => Boolean(item));
+  const collaborationParticipants = [
+    ...department.employeeKeys.map((key) => {
+      const employee = catalog.find((item) => item.key === key);
+      return {
+        id: key,
+        employeeKey: key,
+        name: employee?.shortName ?? key,
+        responsibility: employee?.focus,
+      };
+    }),
+    ...department.catalogRoles[locale].slice(0, Math.max(0, 4 - department.employeeKeys.length)).map((role, index) => ({
+      id: `${department.key}-catalog-${index + 1}`,
+      name: role,
+      responsibility: locale === "es" ? "Rol de catálogo adaptable" : "Adaptable catalog role",
+    })),
+  ];
 
   const pageSchema = {
     "@context": "https://schema.org",
@@ -90,15 +106,16 @@ export function DepartmentDetailPage({ locale, department }: Props) {
               </div>
             </div>
             <div className="brand-organization-hero-side">
-              <BrandOrganizationScene
+              <BrandCollaborationComposition
                 locale={locale}
-                kind="department"
+                variant="department"
                 contextKey={department.key}
                 eyebrow={department.eyebrow[locale]}
                 title={department.name[locale]}
-                employeeKeys={department.employeeKeys}
+                participants={collaborationParticipants}
                 systems={sceneSystems.length ? sceneSystems : department.integrations}
-                humanLabel={locale === "es" ? "Aprobación y excepciones" : "Approval and exceptions"}
+                humanLabel={locale === "es" ? "Aprobación humana, excepciones y autoridad sensible" : "Human approval, exceptions and sensitive authority"}
+                handoffLabel={locale === "es" ? "Coordinación del departamento" : "Department coordination"}
               />
               <aside className="organization-summary-card">
                 <span>{locale === "es" ? "Mapa del departamento" : "Department map"}</span>
