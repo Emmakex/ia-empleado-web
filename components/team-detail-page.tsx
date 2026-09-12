@@ -3,6 +3,7 @@ import { employeeDetailPath } from "../lib/employee-content-engine";
 import { getDictionary, localeHref, type Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
 import { alternateTeamPath, getTeamRecords, teamIndexPath, type TeamKey } from "../lib/team-content-engine";
+import { BrandCharacterImage } from "./brand-character-image";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -42,7 +43,7 @@ export function TeamDetailPage({ locale, teamKey }: TeamDetailPageProps) {
                 <div className="brand-team-scene-core"><img src="/branding/ia-empleado-mark.svg" alt="" width={44} height={44} /><span>{locale === "es" ? "Proceso" : "Process"}</span></div>
                 {detail.members.slice(0, 5).map((member, index) => {
                   const character = brandedMembers[index];
-                  return <div className={`brand-team-scene-member member-${index + 1}`} data-accent={character?.accent ?? "neutral"} key={member.name}>{character ? <img src={character.asset} alt="" width={110} height={132} /> : <span className="brand-team-generic-member">{String(index + 1).padStart(2, "0")}</span>}<small>{member.name}</small></div>;
+                  return <div className={`brand-team-scene-member member-${index + 1}`} data-accent={character?.accent ?? "neutral"} key={member.name}>{character ? <BrandCharacterImage character={character} sizes="(max-width: 760px) 82px, 110px" eager /> : <span className="brand-team-generic-member">{String(index + 1).padStart(2, "0")}</span>}<small>{member.name}</small></div>;
                 })}
                 <div className="brand-team-human-approval"><span>✓</span>{locale === "es" ? "Control humano" : "Human control"}</div>
               </div>
@@ -55,7 +56,7 @@ export function TeamDetailPage({ locale, teamKey }: TeamDetailPageProps) {
 
         <section className="content-section" aria-labelledby="team-members-title"><div className="container"><div className="section-heading"><p className="eyebrow">{locale === "es" ? "ROLES ESPECIALIZADOS" : "SPECIALIZED ROLES"}</p><h2 id="team-members-title">{detail.membersTitle}</h2><p>{detail.membersIntro}</p></div><div className="team-member-grid brand-team-member-grid">{detail.members.map((member, index) => {
           const character = brandedMembers[index];
-          const content = <><div className="team-member-topline"><span className="team-member-index">{String(index + 1).padStart(2, "0")}</span><span className="team-member-role">{member.responsibility}</span></div>{character && <div className="brand-team-member-portrait" data-accent={character.accent} aria-hidden="true"><img src={character.asset} alt="" width={150} height={180} /><span>{character.name}</span></div>}<h3>{member.name}</h3><p>{member.description}</p>{member.employeeKey && <span className="team-member-link-label">{locale === "es" ? "Ver perfil profundo" : "View deep profile"} →</span>}</>;
+          const content = <><div className="team-member-topline"><span className="team-member-index">{String(index + 1).padStart(2, "0")}</span><span className="team-member-role">{member.responsibility}</span></div>{character && <div className="brand-team-member-portrait" data-accent={character.accent} aria-hidden="true"><BrandCharacterImage character={character} sizes="(max-width: 760px) 112px, 150px" /><span>{character.name}</span></div>}<h3>{member.name}</h3><p>{member.description}</p>{member.employeeKey && <span className="team-member-link-label">{locale === "es" ? "Ver perfil profundo" : "View deep profile"} →</span>}</>;
           return member.employeeKey ? <Link className={`team-member-card linked${character ? " has-brand-character" : ""}`} href={employeeDetailPath(member.employeeKey, locale)} key={member.name}>{content}</Link> : <article className="team-member-card" key={member.name}>{content}</article>;
         })}</div><p className="disclaimer team-model-disclaimer">{locale === "es" ? "Los perfiles sin ficha profunda se muestran como oportunidades del catálogo. Su aparición en esta composición no implica una implantación lista para usar sin adaptación." : "Profiles without a deep page are shown as catalog opportunities. Their presence in this composition does not imply an out-of-the-box deployment without adaptation."}</p></div></section>
 
