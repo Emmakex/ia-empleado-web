@@ -3,6 +3,7 @@ import type { Locale, SiteDictionary } from "../lib/i18n";
 import { employeeIndexPath } from "../lib/employee-content-engine";
 import { getDiscoveryFilterOptions, getDiscoveryProfiles } from "../lib/employee-discovery";
 import { getBrandCharacters } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 import { EmployeeCatalogExplorer } from "./employee-catalog-explorer";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -79,7 +80,7 @@ export function EmployeeIndexPage({ locale, dictionary }: EmployeeIndexPageProps
               <div className="brand-catalog-team" aria-hidden="true">
                 {characters.map((character) => (
                   <div className="brand-catalog-person" data-accent={character.accent} key={character.id}>
-                    <img src={character.asset} alt="" width={180} height={220} />
+                    <BrandCharacterImage character={character} sizes="(max-width: 760px) 132px, 180px" eager />
                     <span><strong>{character.name}</strong><small>{character.shortRole}</small></span>
                   </div>
                 ))}

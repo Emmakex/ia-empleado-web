@@ -10,6 +10,7 @@ import {
   type BuilderPreset,
   type BuilderSelection,
 } from "../lib/team-builder";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type BuilderOptions = {
   sectors: Array<{ value: string; label: string }>;
@@ -218,7 +219,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
               <div className="builder-brand-roster">
                 {recommendedCharacters.map((character) => (
                   <div className="builder-brand-person" data-accent={character.accent} key={character.id}>
-                    <img src={character.asset} alt="" width={92} height={108} />
+                    <BrandCharacterImage character={character} sizes="92px" />
                     <span><strong>{character.name}</strong><small>{character.shortRole}</small></span>
                   </div>
                 ))}
@@ -262,7 +263,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
                     <article className={`builder-role-card${character ? " has-brand-character" : ""}`} key={role.key}>
                       {character && (
                         <div className="builder-role-character" data-accent={character.accent} aria-hidden="true">
-                          <img src={character.asset} alt="" width={104} height={122} />
+                          <BrandCharacterImage character={character} sizes="(max-width: 760px) 88px, 104px" />
                           <span>{character.name}</span>
                         </div>
                       )}

@@ -1,5 +1,6 @@
 import type { Locale, SiteDictionary } from "../lib/i18n";
 import { getBrandCharacters } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 import { BrandHeroScene } from "./brand-hero-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -148,7 +149,10 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
                   <article className="info-card employee-card brand-character-card" data-accent={character.accent} key={employee.title}>
                     <div className="brand-character-card-visual">
                       <span className="status-pill">{employee.tag}</span>
-                      <img src={character.asset} alt="" width={240} height={270} aria-hidden="true" />
+                      <BrandCharacterImage
+                        character={character}
+                        sizes="(max-width: 760px) 205px, 230px"
+                      />
                     </div>
                     <div className="brand-character-card-copy">
                       <p className="brand-character-name">{character.name}</p>

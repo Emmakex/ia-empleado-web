@@ -1,6 +1,7 @@
 import type { Locale } from "../lib/i18n";
 import type { ComparisonKey } from "../lib/comparison-content";
 import { getBrandCharacters } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type BrandComparisonSceneProps = {
   locale: Locale;
@@ -49,7 +50,7 @@ export function BrandComparisonScene({ locale, alternativeName, comparisonKey, c
         <div className="brand-comparison-portraits" aria-hidden="true">
           {characters.map((character) => (
             <span className="brand-comparison-portrait" data-accent={character.accent} key={character.id}>
-              <img src={character.asset} alt="" />
+              <BrandCharacterImage character={character} sizes={compact ? "44px" : "(max-width: 760px) 52px, 64px"} />
             </span>
           ))}
         </div>

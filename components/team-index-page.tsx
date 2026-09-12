@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getDictionary, localeHref, type Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey, getBrandCharacters } from "../lib/brand-characters";
 import { getLocalizedTeams, getTeamIndexContent, teamDetailPath, teamIndexPath } from "../lib/team-content-engine";
+import { BrandCharacterImage } from "./brand-character-image";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -40,7 +41,7 @@ export function TeamIndexPage({ locale }: TeamIndexPageProps) {
               <div className="hero-actions"><a className="button" href="#equipos-disponibles">{locale === "es" ? "Explorar equipos" : "Explore teams"}</a><Link className="button button-ghost" href={`${homeHref}#disena-tu-equipo`}>{content.ctaPrimary}</Link></div>
             </div>
             <aside className="brand-team-hero-art" aria-labelledby="team-definition-title">
-              <div className="brand-team-hero-people" aria-hidden="true">{characters.map((character) => <div className="brand-team-hero-person" data-accent={character.accent} key={character.id}><img src={character.asset} alt="" width={190} height={235} /><span>{character.name}</span></div>)}</div>
+              <div className="brand-team-hero-people" aria-hidden="true">{characters.map((character, index) => <div className="brand-team-hero-person" data-accent={character.accent} key={character.id}><BrandCharacterImage character={character} sizes="(max-width: 760px) 138px, 190px" eager fetchPriority={index < 2 ? "high" : "auto"} /><span>{character.name}</span></div>)}</div>
               <div className="brand-team-hero-core"><img src="/branding/ia-empleado-mark.svg" alt="" width={48} height={48} aria-hidden="true" /><strong>{locale === "es" ? "Un mismo equipo" : "One team"}</strong><small>{locale === "es" ? "Handoffs · sistemas · control humano" : "Handoffs · systems · human control"}</small></div>
               <div className="team-definition-card brand-team-definition-card"><span className="team-definition-icon" aria-hidden="true">◎</span><h2 id="team-definition-title">{content.definitionTitle}</h2><p>{content.definitionBody}</p></div>
             </aside>
@@ -52,7 +53,7 @@ export function TeamIndexPage({ locale }: TeamIndexPageProps) {
             const brandedMembers = team.members.map((member) => member.employeeKey ? getBrandCharacterForProfileKey(member.employeeKey, locale) : undefined).filter(Boolean);
             return <Link className="team-directory-card brand-team-directory-card" href={teamDetailPath(team.key, locale)} key={team.key}>
               <div className="team-directory-topline"><span className="status-pill">{team.statusLabel}</span><span className="team-member-count">{team.members.length} {content.memberCountLabel}</span></div>
-              {brandedMembers.length > 0 && <div className="brand-team-card-portraits" aria-hidden="true">{brandedMembers.map((character) => character && <span data-accent={character.accent} key={character.id}><img src={character.asset} alt="" width={96} height={112} /></span>)}</div>}
+              {brandedMembers.length > 0 && <div className="brand-team-card-portraits" aria-hidden="true">{brandedMembers.map((character) => character && <span data-accent={character.accent} key={character.id}><BrandCharacterImage character={character} sizes="72px" /></span>)}</div>}
               <h3>{team.name}</h3><p className="team-directory-outcome">{team.outcome}</p>
               <div className="team-mini-members" aria-label={locale === "es" ? "Miembros del equipo" : "Team members"}>{team.members.map((member) => <span key={member.name}>{member.name}</span>)}</div>
               <span className="team-card-cta">{content.viewLabel} <span aria-hidden="true">→</span></span>

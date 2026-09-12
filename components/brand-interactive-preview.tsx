@@ -1,5 +1,6 @@
 import type { Locale } from "../lib/i18n";
 import { getBrandCharacters } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type BrandInteractivePreviewProps = {
   locale: Locale;
@@ -38,7 +39,7 @@ export function BrandInteractivePreview({ locale, mode, title }: BrandInteractiv
       <div className="brand-interactive-portraits" aria-hidden="true">
         {characters.map((character, index) => (
           <div className={`brand-interactive-person person-${index + 1}`} data-accent={character.accent} key={character.id}>
-            <img src={character.asset} alt="" width={112} height={132} />
+            <BrandCharacterImage character={character} sizes="(max-width: 760px) 88px, 112px" />
             <span>{character.name}</span>
           </div>
         ))}

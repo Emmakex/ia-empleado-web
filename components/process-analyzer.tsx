@@ -10,6 +10,7 @@ import type {
 } from "../lib/process-analyzer";
 import type { Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type ProcessAnalyzerProps = {
   locale: Locale;
@@ -135,7 +136,7 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
         <div className="process-brand-people">
           {processCharacters.map((character) => (
             <div className="process-brand-person" data-accent={character.accent} key={character.id}>
-              <img src={character.asset} alt="" width={88} height={104} />
+              <BrandCharacterImage character={character} sizes="88px" />
               <span>{character.name}</span>
             </div>
           ))}
@@ -196,7 +197,7 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
                   <div className="process-step-employees brand-process-step-employees">
                     {step.employees.map((employee) => {
                       const character = getBrandCharacterForProfileKey(employee.key, locale);
-                      const inner = <>{character && <img src={character.asset} alt="" width={28} height={32} aria-hidden="true" />}<span>{character?.name ?? employee.shortName}</span></>;
+                      const inner = <>{character && <BrandCharacterImage character={character} sizes="28px" />}<span>{character?.name ?? employee.shortName}</span></>;
                       return employee.href ? <Link href={employee.href} key={employee.key}>{inner}</Link> : <span key={employee.key}>{inner}</span>;
                     })}
                   </div>
@@ -225,7 +226,7 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
             <div className="process-summary-chips brand-process-summary-chips">
               {process.employees.map((employee) => {
                 const character = getBrandCharacterForProfileKey(employee.key, locale);
-                const inner = <>{character && <img src={character.asset} alt="" width={30} height={34} aria-hidden="true" />}<span>{character?.name ?? employee.shortName}</span></>;
+                const inner = <>{character && <BrandCharacterImage character={character} sizes="30px" />}<span>{character?.name ?? employee.shortName}</span></>;
                 return employee.href ? <Link href={employee.href} key={employee.key}>{inner}</Link> : <span key={employee.key}>{inner}</span>;
               })}
             </div>

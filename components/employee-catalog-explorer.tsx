@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import type { DiscoveryProfileView } from "../lib/employee-discovery";
 import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type FilterOption = { value: string; label: string };
 
@@ -65,7 +66,7 @@ export function EmployeeCatalogExplorer({ locale, profiles, options }: EmployeeC
             const character = profile.status === "reference" ? getBrandCharacterForProfileKey(profile.key, locale) : undefined;
             return (
               <article className={`employee-catalog-card discovery-card status-${profile.status}${character ? " has-brand-character" : ""}`} data-accent={character?.accent} key={profile.key}>
-                {character && <div className="discovery-character-visual" aria-hidden="true"><img src={character.asset} alt="" width={180} height={220} /><span><strong>{character.name}</strong><small>{character.shortRole}</small></span></div>}
+                {character && <div className="discovery-character-visual" aria-hidden="true"><BrandCharacterImage character={character} sizes="(max-width: 760px) 140px, 180px" /><span><strong>{character.name}</strong><small>{character.shortRole}</small></span></div>}
                 <div className="employee-card-topline"><span className="employee-card-index">{String(index + 1).padStart(2, "0")}</span><span className={`employee-content-status is-${profile.status}`}>{profile.status === "reference" ? t.reference : profile.status === "restricted" ? t.restricted : t.catalog}</span></div>
                 <p className="employee-department">{profile.department}</p>
                 <h3>{profile.shortName}</h3>

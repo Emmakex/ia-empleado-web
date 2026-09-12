@@ -65,10 +65,14 @@ These artifacts are diagnostic evidence and should be used before changing CSS h
 
 ## Image / CLS discipline
 
-Character images must declare intrinsic width and height using the canonical 4:5 portrait ratio. Above-the-fold hero portraits are eager-loaded and asynchronously decoded. Non-critical portrait surfaces should remain lazy where possible.
+Character images must keep the canonical 4:5 intrinsic ratio. Critical public portrait surfaces render the approved WebP identity through `BrandCharacterImage`, which centralizes `next/image`, explicit `sizes`, async decoding and eager/lazy loading policy. Above-the-fold portraits may be eager; high fetch priority is reserved for portraits that are actually expected in the first visible row. Non-critical surfaces remain lazy.
 
-High-density portrait derivatives should be introduced when a surface needs to render a canonical portrait materially larger than the current source can support without upscaling. Character identity must never be replaced by a simplified vector to solve a performance problem.
+Responsive image delivery is not the same as inventing source resolution. `next/image` can provide viewport/DPR-appropriate derivatives from the approved canonical source, but it cannot restore detail that does not exist in that source. If a future surface needs more source pixels than the current canonical WebP provides, create a genuine higher-resolution master from the approved artwork rather than upscaling, redrawing or replacing the character identity.
+
+Small decorative portrait slots that already render far below the canonical source dimensions do not require a new high-density master merely for DPR support. Character identity must never be replaced by a simplified vector to solve a performance problem.
+
+The static `Canonical character image delivery contract` in CI protects the critical responsive portrait surfaces from regressing to raw, one-size image delivery.
 
 ## Engineering rule
 
-A visual fix is not complete when it only matches one screenshot. It is complete when the changed contract passes the relevant viewport, reflow, keyboard, accessibility, build and content gates.
+A visual fix is not complete when it only matches one screenshot. It is complete when the changed contract passes the relevant viewport, reflow, keyboard, accessibility, image-delivery, build and content gates.
