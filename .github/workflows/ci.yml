@@ -44,6 +44,9 @@ jobs:
       - name: Interactive collaboration contract
         run: node scripts/check-interactive-collaboration.mjs
 
+      - name: Team Builder contract
+        run: node scripts/check-team-builder.mjs
+
       - name: Typecheck
         run: npm run typecheck
 

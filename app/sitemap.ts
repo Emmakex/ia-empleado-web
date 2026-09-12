@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { employeeDetailPath, getDetailedEmployeeRecords } from "../lib/employee-content-engine";
 import { getTeamRecords, teamDetailPath, teamIndexPath } from "../lib/team-content-engine";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
+import { teamBuilderPath } from "../lib/team-builder";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -79,6 +80,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           es: `https://iaempleado.com${collaborationDemoPath("es")}`,
           en: `https://iaempleado.com${collaborationDemoPath("en")}`,
+        },
+      },
+    },
+    {
+      url: `https://iaempleado.com${teamBuilderPath("es")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.94,
+      alternates: {
+        languages: {
+          es: `https://iaempleado.com${teamBuilderPath("es")}`,
+          en: `https://iaempleado.com${teamBuilderPath("en")}`,
+        },
+      },
+    },
+    {
+      url: `https://iaempleado.com${teamBuilderPath("en")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.84,
+      alternates: {
+        languages: {
+          es: `https://iaempleado.com${teamBuilderPath("es")}`,
+          en: `https://iaempleado.com${teamBuilderPath("en")}`,
         },
       },
     },

@@ -38,6 +38,7 @@ It does **not** own:
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery, filtering, relationship and restricted-profile contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — first-class AI Team model, four initial compositions, SEO/GEO routes, handoff/control rules and validation contract.
 - [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — interactive collaboration simulator, synthetic scenarios, SEO/GEO fallback content, accessibility and validation contract.
+- [`docs/PHASE_4B_TEAM_BUILDER.md`](docs/PHASE_4B_TEAM_BUILDER.md) — deterministic Team Builder, restricted-area handling, local-processing privacy boundary and release contract.
 
 ## Strategic narrative
 
@@ -127,89 +128,63 @@ Includes:
 
 Complete and production-verified.
 
-Includes:
-
-- reusable structured Employee content engine;
-- `/empleados-ia/` and `/en/ai-employees/` indexes;
-- first deep bilingual Reference Employee profile;
-- server-rendered SEO/GEO content structure;
-- canonical, hreflang, Service and FAQPage structured data;
-- sitemap integration.
+Includes reusable structured Employee content, bilingual indexes, deep Reference Employee pages, SEO/GEO content structure, structured data and sitemap integration.
 
 ### Web Phase 2B — Reference Employee deep content
 
 Complete and production-verified on `iaempleado.com`.
 
-Deep ES/EN profiles now exist for:
-
-1. Customer Support / Atención al Cliente;
-2. Administrative / Administrativo;
-3. Accounting & Billing / Contabilidad y Facturación;
-4. Sales / SDR / Comercial SDR.
-
-Each profile includes definition, tasks, workflow, integrations, collaboration, human-control boundaries, use cases, sectors, limitations, FAQ and conversion CTA.
+Deep ES/EN profiles exist for Customer Support, Administrative, Accounting & Billing and Sales / SDR, each with tasks, workflow, integrations, collaboration, control boundaries, use cases, sectors, limitations, FAQ and conversion CTA.
 
 ### Web Phase 2C — Employee catalog discovery
 
 Complete and production-verified.
 
-Includes:
-
-- all **22 opportunity profiles** discoverable from the canonical catalog index;
-- plain-language search;
-- filters by department, sector, business problem and task;
-- four deep Reference Employee links;
-- sixteen catalog-opportunity summaries without thin standalone SEO pages;
-- two restricted/high-impact areas clearly gated: Recruitment Selection and Financial Decisions;
-- related-role ecosystem blocks on every deep Reference Employee page;
-- responsive catalog/discovery UI in ES and EN;
-- ItemList structured data aligned with the visible 22-profile catalog;
-- dedicated CI contract for profile count, taxonomy, restricted status, filter presence, EN/ES parity, TypeScript and production build.
+Includes all **22 opportunity profiles**, search and filters, four deep Reference Employee links, sixteen catalog-opportunity summaries, two restricted/high-impact areas, related-role ecosystem blocks, responsive ES/EN discovery and a dedicated CI contract.
 
 ### Web Phase 3 — AI Teams
 
 Complete and production-verified.
 
-Phase 3 includes `/equipos-ia/` and `/en/ai-teams/` as first-class SEO/GEO surfaces plus four bilingual reference team compositions:
-
-1. Sales / Ventas;
-2. Ecommerce;
-3. Administration / Administración;
-4. Travel / Turismo.
-
-Each team model explains:
-
-- the process-level problem;
-- participating AI Employees and responsibilities;
-- explicit handoffs between roles;
-- systems and integrations;
-- human approval and authority boundaries;
-- measurable process indicators;
-- realistic use cases and limitations;
-- FAQ and customer-specific design CTA.
-
-The global header/footer route directly to the Team index, all Team pages are included in sitemap generation, canonical/hreflang and structured data are present, and CI includes a dedicated AI Teams content contract.
-
-Team pages are reference commercial models, not claims that every composition or connector is available as an off-the-shelf deployment.
+Includes `/equipos-ia/` and `/en/ai-teams/` plus four bilingual reference compositions: Sales, Ecommerce, Administration and Travel. Each team explains participating roles, handoffs, systems, human-control boundaries, metrics, use cases, limitations and FAQ.
 
 ### Web Phase 4A — Interactive collaboration
 
-Current development phase. Release completion requires feature merge, green main-branch CI and Hostinger production verification.
+Complete and production-verified.
 
-Phase 4A introduces:
+Includes:
 
 - `/como-trabajan-juntos` and `/en/see-team-work`;
 - three bilingual synthetic business scenarios;
 - scenario selection and step-by-step inspection;
 - play, pause, previous, next and reset controls;
-- visible handoffs between events, AI Employees, company systems, people and results;
+- visible handoffs between events, AI Employees, systems, people and results;
 - explicit human-control points;
-- static HTML equivalents of every scenario for SEO/GEO and accessibility;
+- crawlable HTML equivalents for SEO/GEO;
 - WebPage, ItemList and FAQPage structured data;
 - canonical, hreflang and sitemap coverage;
-- global `Cómo funciona / How it works` navigation to the simulator;
-- a dedicated Interactive collaboration CI contract.
+- global `Cómo funciona / How it works` navigation;
+- dedicated Interactive collaboration CI contract.
 
 The public simulator is educational only: it uses synthetic data and does not connect to customer production systems.
 
-After Phase 4A production verification, the next interactive product step is the guided **Team Builder / Diseña tu equipo IA**, reusing the existing Employee and AI Team taxonomies.
+### Web Phase 4B — Team Builder
+
+Current development phase. Release completion requires feature merge, green `main` CI and Hostinger production verification.
+
+Phase 4B introduces:
+
+- `/disena-tu-equipo-ia` and `/en/design-your-ai-team`;
+- deterministic recommendations using the canonical 22-profile Employee taxonomy;
+- sector, business-problem, department and system context inputs;
+- four quick presets based on the existing Sales, Ecommerce, Administration and Travel reference teams;
+- up to six recommended roles with visible reasons for each recommendation;
+- closest reference-team match when overlap is sufficient;
+- natural handoff suggestions derived from the catalog relationship graph;
+- explicit restricted/high-impact warnings instead of self-service recommendations;
+- local browser calculation with no configuration POST in this phase;
+- a user-controlled email handoff containing the selected context and suggested composition;
+- canonical, hreflang, sitemap and WebPage / ItemList / FAQPage structured data;
+- a dedicated Team Builder CI contract.
+
+After Phase 4B production verification, the next web phases can expand conversion and evidence: richer process analysis, ROI modeling, comparison surfaces, sector/use-case clusters, videos and proof assets.

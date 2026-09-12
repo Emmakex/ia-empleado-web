@@ -4,6 +4,7 @@ import { alternateLocale, localeHref } from "../lib/i18n";
 import { employeeIndexPath } from "../lib/employee-catalog";
 import { teamIndexPath } from "../lib/team-content-engine";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
+import { teamBuilderPath } from "../lib/team-builder";
 import { MobileNavigation } from "./mobile-navigation";
 
 type SiteHeaderProps = {
@@ -19,7 +20,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
   const teamsHref = teamIndexPath(locale);
   const howHref = collaborationDemoPath(locale);
   const securityHref = `${homeHref}#seguridad`;
-  const ctaHref = `${homeHref}#disena-tu-equipo`;
+  const ctaHref = teamBuilderPath(locale);
   const languageHref = alternateHref ?? localeHref(otherLocale);
 
   return (
