@@ -16,6 +16,7 @@ import "../../brand-system.css";
 import "../../brand-fidelity.css";
 import "../../brand-content.css";
 import "../../brand-role-families.css";
+import "../../brand-collaboration-compositions.css";
 import "../../brand-sector-content.css";
 import "../../brand-organization-content.css";
 import "../../brand-interactive-content.css";
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "branding-phase-2a-role-families" },
+  other: { "ia-web-release": "branding-phase-2b-team-department-compositions" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };
