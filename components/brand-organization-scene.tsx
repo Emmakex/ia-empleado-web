@@ -1,6 +1,7 @@
 import type { EmployeeKey } from "../lib/employee-catalog";
 import type { Locale } from "../lib/i18n";
 import { getBrandCharacterByEmployeeKey, getBrandCharacters } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type BrandOrganizationRosterProps = {
   locale: Locale;
@@ -19,7 +20,7 @@ export function BrandOrganizationRoster({ locale, employeeKeys, compact = false 
     <div className={`brand-organization-roster${compact ? " is-compact" : ""}`} aria-hidden="true">
       {characters.slice(0, 4).map((character) => (
         <span className="brand-organization-avatar" data-accent={character.accent} key={character.id}>
-          <img src={character.asset} alt="" width={88} height={104} />
+          <BrandCharacterImage character={character} sizes={compact ? "44px" : "88px"} />
           {!compact && <small>{character.name}</small>}
         </span>
       ))}
@@ -81,7 +82,7 @@ export function BrandOrganizationScene({
       <div className="brand-organization-people" aria-hidden="true">
         {characters.slice(0, 4).map((character, index) => (
           <div className={`brand-organization-person person-${index + 1}`} data-accent={character.accent} key={character.id}>
-            <img src={character.asset} alt="" width={126} height={150} />
+            <BrandCharacterImage character={character} sizes="(max-width: 760px) 108px, 126px" />
             <span><strong>{character.name}</strong><small>{character.shortRole}</small></span>
           </div>
         ))}
