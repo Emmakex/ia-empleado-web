@@ -256,15 +256,32 @@
 
 @media (max-width: 760px) {
   .header-inner {
+    min-width: 0;
     justify-content: space-between;
   }
 
+  .site-header .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .site-header .brand-symbol {
+    flex: 0 0 auto;
+  }
+
+  .site-header .brand-wordmark,
   .brand > span:last-child {
     display: inline;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .mobile-navigation {
-    margin-left: 0;
+    flex: 0 0 44px;
+    margin-left: 0.65rem;
   }
 
   .mobile-menu-panel {
