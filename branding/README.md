@@ -24,7 +24,9 @@ People ↔ AI Employees ↔ Business systems
 
 Phase 2A deepens the existing identity with reusable role-specific visual grammars for Clara, Alex, Sofía and Javier without replacing or redrawing the approved canonical character identities.
 
-**Next: Branding Phase 2B — Team and Department compositions.** Reuse the same four role grammars to make collaboration, handoffs, shared systems and human approval visible across richer multi-role scenes.
+**Branding Phase 2B — Team and Department compositions: implementation in progress.**
+
+Phase 2B reuses the same role grammars inside one shared multi-role composition for deep Team and Department pages. The composition makes handoffs, shared systems and human-control boundaries visible while preserving the canonical character identities and existing product authority model.
 
 ## Folder contract
 
@@ -32,10 +34,12 @@ Phase 2A deepens the existing identity with reusable role-specific visual gramma
 - `ASSET_MANIFEST.md` — reusable asset inventory and where each asset belongs.
 - `PHASE_1_VALIDATION.md` — CI and production-browser evidence closing Branding Phase 1.
 - `PHASE_2_ROLE_VISUAL_FAMILIES.md` — role-family mapping, implementation rules and Phase 2A production-verification evidence.
+- `PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md` — shared Team/Department composition contract and Phase 2B release criteria.
 - `tokens.json` — portable design tokens for web, product, decks and future apps.
 - `../public/branding/` — production-ready SVG/assets served by the website.
 - `../app/brand-system.css` — active web implementation of the brand tokens and visual rules.
 - `../app/brand-role-families.css` — role-specific visual grammar for the four Reference Employees.
+- `../app/brand-collaboration-compositions.css` — shared Team/Department multi-role composition geometry.
 
 ## Primary message
 

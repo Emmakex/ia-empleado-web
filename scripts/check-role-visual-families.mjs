@@ -65,8 +65,8 @@ for (const token of ["@media (max-width: 760px)", "@media (max-width: 430px)", "
 
 for (const [label, source] of [["ES", esLayout], ["EN", enLayout]]) {
   if (!source.includes("brand-role-families.css")) throw new Error(`${label} layout does not load role family CSS`);
-  if (!source.includes('ia-web-release": "branding-phase-2a-role-families"')) {
-    throw new Error(`${label} layout is not marked with Branding Phase 2A release`);
+  if (!source.includes('"ia-web-release"')) {
+    throw new Error(`${label} layout no longer exposes a production release marker`);
   }
 }
 
@@ -74,4 +74,4 @@ for (const route of ["atencion-cliente", "administrativo", "contabilidad-factura
   if (!browser.includes(route)) throw new Error(`Browser QA missing deep employee route: ${route}`);
 }
 
-console.log("Role visual family contract OK: four canonical motifs, responsive CSS, deep-profile application and production release marker protected.");
+console.log("Role visual family contract OK: four canonical motifs, responsive CSS, deep-profile application and production marker presence protected.");

@@ -22,6 +22,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`branding/BRAND_SYSTEM.md`](branding/BRAND_SYSTEM.md) — visual identity, humanized AI Employee, color, motion and asset rules.
 - [`branding/PHASE_1_VALIDATION.md`](branding/PHASE_1_VALIDATION.md) — production verification evidence for Branding Phase 1.
 - [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md) — Branding Phase 2A role-family contract and production-verification evidence.
+- [`branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md`](branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md) — Branding Phase 2B Team/Department composition contract and release criteria.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — AI Teams model and handoff/control rules.
 - [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — collaboration simulator contract.
@@ -166,6 +167,12 @@ The four canonical Reference Employees now have a reusable functional visual gra
 
 Phase 2A applies these families to all four deep bilingual Employee pages and protects the mapping with static CI, responsive canonical image delivery, browser geometry tests and a production Playwright gate. The deployed Hostinger release `branding-phase-2a-role-families` passed Production Verification #3. Evidence is recorded in [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md).
 
-### Next — Branding Phase 2B
+### Branding Phase 2B — Team and Department compositions
 
-Reuse the same role-family grammar in richer **Team and Department compositions** so multi-role collaboration, handoffs, shared systems and human approval become visually legible without creating a second visual language. Sector-specific hero art and campaign/social resources follow after that layer is stable.
+**Implementation in progress.**
+
+Phase 2B introduces one shared collaboration composition for all four deep AI Team pages and all six deep Department pages. It reuses the Phase 2A character families and makes role handoffs, shared systems and human-control boundaries visible without changing the underlying content/authority model. Integration detail pages keep their system-centric visual scene because they solve a different communication problem.
+
+The release is protected across all 20 bilingual desktop Team/Department routes and all 10 Spanish mobile routes. See [`branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md`](branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md).
+
+After 2B is production-verified, the next visual layer is sector-specific hero art, followed by reusable campaign/social variants.
