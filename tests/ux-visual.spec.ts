@@ -3,10 +3,44 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 
 type Box = { x: number; y: number; width: number; height: number };
 
+type OverflowOffender = {
+  tag: string;
+  id: string;
+  className: string;
+  text: string;
+  left: number;
+  right: number;
+  width: number;
+};
+
 async function requiredBox(locator: Locator, label: string): Promise<Box> {
   const box = await locator.boundingBox();
   expect(box, `${label} must have a rendered box`).not.toBeNull();
   return box as Box;
+}
+
+async function findHorizontalOverflow(page: Page): Promise<OverflowOffender[]> {
+  return page.evaluate(() => {
+    const viewportWidth = document.documentElement.clientWidth;
+    return Array.from(document.querySelectorAll<HTMLElement>("body *"))
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          tag: element.tagName.toLowerCase(),
+          id: element.id,
+          className: typeof element.className === "string" ? element.className : "",
+          text: (element.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 90),
+          left: Math.round(rect.left * 10) / 10,
+          right: Math.round(rect.right * 10) / 10,
+          width: Math.round(rect.width * 10) / 10,
+          visible: rect.width > 0 && rect.height > 0 && getComputedStyle(element).visibility !== "hidden",
+        };
+      })
+      .filter((item) => item.visible && (item.right > viewportWidth + 1 || item.left < -1))
+      .sort((a, b) => Math.max(b.right - viewportWidth, -b.left) - Math.max(a.right - viewportWidth, -a.left))
+      .slice(0, 12)
+      .map(({ visible: _visible, ...item }) => item);
+  });
 }
 
 async function assertNoHorizontalOverflow(page: Page, label: string) {
@@ -15,11 +49,14 @@ async function assertNoHorizontalOverflow(page: Page, label: string) {
     clientWidth: document.documentElement.clientWidth,
     bodyScrollWidth: document.body.scrollWidth,
   }));
+  const measured = Math.max(metrics.scrollWidth, metrics.bodyScrollWidth);
 
-  expect(
-    Math.max(metrics.scrollWidth, metrics.bodyScrollWidth),
-    `${label} must not create horizontal page overflow`,
-  ).toBeLessThanOrEqual(metrics.clientWidth + 1);
+  if (measured > metrics.clientWidth + 1) {
+    const offenders = await findHorizontalOverflow(page);
+    console.log(`[overflow] ${label}: viewport=${metrics.clientWidth}, scroll=${measured}`, JSON.stringify(offenders, null, 2));
+  }
+
+  expect(measured, `${label} must not create horizontal page overflow`).toBeLessThanOrEqual(metrics.clientWidth + 1);
 }
 
 async function assertMobileHeroGeometry(page: Page, label: string) {
@@ -82,9 +119,7 @@ for (const viewport of mobileMatrix) {
     await page.goto("/", { waitUntil: "networkidle" });
     await assertNoHorizontalOverflow(page, `${viewport.name}px home`);
 
-    if (viewport.width <= 760) {
-      await assertMobileHeroGeometry(page, `${viewport.name}px home`);
-    }
+    if (viewport.width <= 760) await assertMobileHeroGeometry(page, `${viewport.name}px home`);
   });
 }
 
