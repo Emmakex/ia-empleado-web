@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { CollaborationPageContent, CollaborationScenario } from "../lib/collaboration-demo";
 import type { Locale } from "../lib/i18n";
 import { getBrandCharacterForActorLabel } from "../lib/brand-characters";
+import { BrandCharacterImage } from "./brand-character-image";
 
 type CollaborationSimulatorProps = {
   locale: Locale;
@@ -139,7 +140,7 @@ export function CollaborationSimulator({ locale, content, scenarios }: Collabora
                 }}
                 title={item.actor}
               >
-                {character ? <img src={character.asset} alt="" width={52} height={58} /> : <span className="collaboration-node-index">{index + 1}</span>}
+                {character ? <BrandCharacterImage character={character} sizes="52px" /> : <span className="collaboration-node-index">{index + 1}</span>}
                 <span className="collaboration-node-actor">{character?.name ?? item.actor}</span>
               </button>
             );
@@ -149,7 +150,7 @@ export function CollaborationSimulator({ locale, content, scenarios }: Collabora
         <div className={`collaboration-step-card${activeCharacter ? " has-brand-character" : ""}`} aria-live="polite">
           {activeCharacter && (
             <div className="brand-active-character" data-accent={activeCharacter.accent} aria-hidden="true">
-              <img src={activeCharacter.asset} alt="" width={122} height={144} />
+              <BrandCharacterImage character={activeCharacter} sizes="(max-width: 760px) 104px, 122px" />
               <div><strong>{activeCharacter.name}</strong><span>{activeCharacter.shortRole}</span></div>
             </div>
           )}
