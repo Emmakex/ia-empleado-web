@@ -71,6 +71,9 @@ jobs:
       - name: Role visual family contract
         run: node scripts/check-role-visual-families.mjs
 
+      - name: Team and Department composition contract
+        run: node scripts/check-team-department-compositions.mjs
+
       - name: Brand motion contract
         run: node scripts/check-brand-motion.mjs
 
