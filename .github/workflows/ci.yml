@@ -50,6 +50,9 @@ jobs:
       - name: Process Analyzer contract
         run: node scripts/check-process-analyzer.mjs
 
+      - name: ROI Estimator contract
+        run: node scripts/check-roi-estimator.mjs
+
       - name: Typecheck
         run: npm run typecheck
 

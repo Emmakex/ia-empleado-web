@@ -40,6 +40,7 @@ It does **not** own:
 - [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — interactive collaboration simulator, synthetic scenarios, SEO/GEO fallback content, accessibility and validation contract.
 - [`docs/PHASE_4B_TEAM_BUILDER.md`](docs/PHASE_4B_TEAM_BUILDER.md) — deterministic Team Builder, restricted-area handling, local-processing privacy boundary and release contract.
 - [`docs/PHASE_5A_PROCESS_ANALYZER.md`](docs/PHASE_5A_PROCESS_ANALYZER.md) — before/after process analysis, automation/assistance/human-control classification, privacy boundary and release contract.
+- [`docs/PHASE_5B_ROI_ESTIMATOR.md`](docs/PHASE_5B_ROI_ESTIMATOR.md) — transparent value/ROI methodology, scenario assumptions, privacy boundary and release contract.
 
 ## Strategic narrative
 
@@ -146,42 +147,50 @@ The public simulator is educational only: it uses synthetic data and does not co
 
 Complete and production-verified.
 
-Phase 4B includes:
-
-- `/disena-tu-equipo-ia` and `/en/design-your-ai-team`;
-- deterministic recommendations using the canonical 22-profile Employee taxonomy;
-- sector, business-problem, department and system context inputs;
-- four quick presets based on Sales, Ecommerce, Administration and Travel reference teams;
-- up to six recommended roles with visible reasons;
-- closest reference-team match when overlap is sufficient;
-- natural handoff suggestions from the catalog relationship graph;
-- restricted/high-impact warnings instead of self-service recommendations;
-- local browser calculation with no configuration POST;
-- user-controlled email handoff;
-- canonical, hreflang, sitemap and WebPage / ItemList / FAQPage structured data;
-- dedicated Team Builder CI contract.
+Includes bilingual Team Builder routes, deterministic recommendations over the 22-profile catalog, sector/problem/department/system inputs, four reference presets, role explanations, reference-team matching, relationship handoffs, restricted-area warnings, local browser calculation, sitemap/structured data and a dedicated CI contract.
 
 ### Web Phase 5A — Process Analyzer
 
-Implementation and repository validation complete through **PR #18**. Hostinger production verification remains the final release gate.
+Complete and production-verified.
 
-Phase 5A introduces:
+Includes:
 
 - `/mejora-tu-proceso` and `/en/improve-your-process`;
 - four bilingual reference processes: customer issue, invoice validation, sales follow-up and order exception;
-- interactive marking of general and step-level bottlenecks;
+- general and step-level bottleneck marking;
 - visible current-process vs proposed-process comparison;
-- explicit `automated`, `assisted` and `human` responsibility classification for every proposed step;
-- links to participating IA Employee profiles when deep pages exist;
-- systems-to-evaluate context without claiming connector availability;
-- explicit human-control text on every step;
+- explicit `automated`, `assisted` and `human` responsibility classification;
+- participating IA Employee and systems-to-evaluate context;
+- human-control text on every step;
 - local browser state with no analysis POST;
-- crawlable HTML equivalents of all before/after process patterns;
+- crawlable before/after equivalents;
 - WebPage, ItemList and FAQPage structured data;
-- canonical, hreflang and sitemap coverage;
-- crawlable internal linking from the global footer;
-- a dedicated Process Analyzer CI contract.
+- canonical, hreflang, sitemap and footer discoverability;
+- dedicated Process Analyzer CI contract.
 
 The Process Analyzer is an educational design tool. It does not inspect customer systems, execute actions or claim that a reference redesign is production-ready.
 
-After Phase 5A production verification, the next web work can expand conversion and evidence through a transparent ROI/value estimator, comparison surfaces, sector/use-case clusters and proof media.
+### Web Phase 5B — Transparent ROI / Value Estimator
+
+Current development phase. Release completion requires feature merge, green `main` CI and Hostinger production verification.
+
+Phase 5B introduces:
+
+- `/calculadora-roi` and `/en/roi-calculator`;
+- editable monthly volume, manual minutes/unit and hourly-cost inputs;
+- a user-controlled base manual-time reduction assumption;
+- transparent conservative/base/high scenarios using base −10 pp / base / base +10 pp;
+- potential hours freed and economic-capacity calculations;
+- optional implementation and monthly operating costs;
+- percentage ROI only when a valid solution-cost denominator exists;
+- explicit separation between capacity estimates and guaranteed savings;
+- EUR/USD/GBP display without FX conversion;
+- local browser calculation with no calculator-data POST;
+- visible formulas, methodology and synthetic worked example for SEO/GEO;
+- WebPage, ItemList and FAQPage structured data;
+- canonical, hreflang, sitemap and footer discoverability;
+- dedicated ROI Estimator CI contract.
+
+The calculator is an educational commercial estimator, not a verified customer outcome, financial guarantee or binding proposal.
+
+After Phase 5B production verification, the next web work can expand SEO/GEO and evaluation depth through comparison surfaces, sector/use-case clusters and proof media.
