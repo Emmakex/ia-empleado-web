@@ -3,6 +3,7 @@ import type { Locale, SiteDictionary } from "../lib/i18n";
 import { alternateLocale, localeHref } from "../lib/i18n";
 import { employeeIndexPath } from "../lib/employee-catalog";
 import { teamIndexPath } from "../lib/team-content-engine";
+import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { MobileNavigation } from "./mobile-navigation";
 
 type SiteHeaderProps = {
@@ -16,7 +17,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
   const homeHref = localeHref(locale);
   const employeeHref = employeeIndexPath(locale);
   const teamsHref = teamIndexPath(locale);
-  const howHref = `${homeHref}#como-funciona`;
+  const howHref = collaborationDemoPath(locale);
   const securityHref = `${homeHref}#seguridad`;
   const ctaHref = `${homeHref}#disena-tu-equipo`;
   const languageHref = alternateHref ?? localeHref(otherLocale);

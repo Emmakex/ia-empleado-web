@@ -3,6 +3,7 @@ import type { Locale, SiteDictionary } from "../lib/i18n";
 import { localeHref } from "../lib/i18n";
 import { employeeIndexPath } from "../lib/employee-catalog";
 import { teamIndexPath } from "../lib/team-content-engine";
+import { collaborationDemoPath } from "../lib/collaboration-demo";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -11,7 +12,7 @@ type SiteFooterProps = {
 
 export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   const homeHref = localeHref(locale);
-  const links = [employeeIndexPath(locale), teamIndexPath(locale), `${homeHref}#como-funciona`, `${homeHref}#seguridad`];
+  const links = [employeeIndexPath(locale), teamIndexPath(locale), collaborationDemoPath(locale), `${homeHref}#seguridad`];
 
   return (
     <footer className="site-footer">
