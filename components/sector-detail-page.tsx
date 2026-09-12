@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
 import { employeeDetailPath } from "../lib/employee-content-engine";
+import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
 import { getTeamRecords, teamDetailPath } from "../lib/team-content-engine";
 import {
   sectorDetailPath,
@@ -14,6 +15,7 @@ import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
 import { teamBuilderPath } from "../lib/team-builder";
 import { comparisonIndexPath } from "../lib/comparison-content";
+import { BrandCharacterStrip, BrandContextScene } from "./brand-context-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -61,8 +63,8 @@ export function SectorDetailPage({ locale, sector }: Props) {
     <>
       <a className="skip-link" href="#contenido">{locale === "es" ? "Saltar al contenido" : "Skip to content"}</a>
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
-      <main id="contenido" className="sector-cluster-page">
-        <section className="sector-detail-hero section-shell">
+      <main id="contenido" className="sector-cluster-page brand-sector-cluster-page">
+        <section className="sector-detail-hero section-shell brand-sector-detail-hero" data-sector={sector.key}>
           <div className="container sector-detail-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
@@ -84,15 +86,27 @@ export function SectorDetailPage({ locale, sector }: Props) {
                 <Link className="button button-ghost" href={teamBuilderPath(locale)}>{locale === "es" ? "Diseñar mi Equipo IA" : "Design my AI Team"}</Link>
               </div>
             </div>
-            <aside className="sector-detail-summary">
-              <span className="sector-summary-kicker">{locale === "es" ? "Mapa operativo" : "Operating map"}</span>
-              <dl>
-                <div><dt>{locale === "es" ? "Casos de uso" : "Use cases"}</dt><dd>{sector.useCases.length}</dd></div>
-                <div><dt>{locale === "es" ? "Roles mostrados" : "Roles shown"}</dt><dd>{sector.roles[locale].length}</dd></div>
-                <div><dt>{locale === "es" ? "Sistemas a evaluar" : "Systems to evaluate"}</dt><dd>{sector.systems[locale].length}</dd></div>
-              </dl>
-              <p>{locale === "es" ? "Modelo educativo de referencia · la implantación final depende del entorno real." : "Educational reference model · final implementation depends on the real environment."}</p>
-            </aside>
+            <div className="brand-sector-detail-visual">
+              <BrandContextScene
+                locale={locale}
+                kind="sector"
+                contextKey={sector.key}
+                eyebrow={sector.eyebrow[locale]}
+                title={sector.name[locale]}
+                roles={sector.roles[locale]}
+                systems={sector.systems[locale]}
+                humanLabel={locale === "es" ? "Aprobación humana cuando la política lo exige" : "Human approval when policy requires it"}
+              />
+              <aside className="sector-detail-summary brand-sector-summary">
+                <span className="sector-summary-kicker">{locale === "es" ? "Mapa operativo" : "Operating map"}</span>
+                <dl>
+                  <div><dt>{locale === "es" ? "Casos de uso" : "Use cases"}</dt><dd>{sector.useCases.length}</dd></div>
+                  <div><dt>{locale === "es" ? "Roles mostrados" : "Roles shown"}</dt><dd>{sector.roles[locale].length}</dd></div>
+                  <div><dt>{locale === "es" ? "Sistemas a evaluar" : "Systems to evaluate"}</dt><dd>{sector.systems[locale].length}</dd></div>
+                </dl>
+                <p>{locale === "es" ? "Modelo educativo de referencia · la implantación final depende del entorno real." : "Educational reference model · final implementation depends on the real environment."}</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -120,8 +134,9 @@ export function SectorDetailPage({ locale, sector }: Props) {
             </div>
             <div className="use-case-card-grid">
               {relatedUseCases.map((record) => record && (
-                <article className="use-case-card" key={record.key}>
+                <article className="use-case-card brand-use-case-card" data-use-case={record.key} key={record.key}>
                   <div className="sector-card-topline"><span>{record.eyebrow[locale]}</span><span>{record.steps[locale].length} {locale === "es" ? "pasos" : "steps"}</span></div>
+                  <BrandCharacterStrip locale={locale} roles={record.roles[locale]} compact />
                   <h3>{record.title[locale]}</h3>
                   <p>{record.shortAnswer[locale]}</p>
                   <Link className="text-link" href={useCaseDetailPath(record.key, locale)}>{locale === "es" ? "Abrir caso de uso" : "Open use case"} <span aria-hidden="true">→</span></Link>
@@ -139,16 +154,24 @@ export function SectorDetailPage({ locale, sector }: Props) {
               <p>{locale === "es" ? "La composición no es un paquete fijo. Cada rol obtiene solo los sistemas y permisos necesarios para su trabajo." : "This is not a fixed package. Each role receives only the systems and permissions needed for its work."}</p>
             </div>
             <div className="sector-role-grid">
-              {sector.roles[locale].map((role) => (
-                <article key={role.name} className="sector-role-card">
-                  <span className="sector-role-mark" aria-hidden="true">{role.name.slice(0, 2).toUpperCase()}</span>
-                  <div>
-                    <h3>{role.name}</h3>
-                    <p>{role.contribution}</p>
-                    {role.employeeKey ? <Link className="text-link" href={employeeDetailPath(role.employeeKey, locale)}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link> : <small>{locale === "es" ? "Perfil de catálogo · requiere adaptación" : "Catalog profile · requires adaptation"}</small>}
-                  </div>
-                </article>
-              ))}
+              {sector.roles[locale].map((role) => {
+                const character = role.employeeKey ? getBrandCharacterByEmployeeKey(role.employeeKey, locale) : undefined;
+                return (
+                  <article key={role.name} className={`sector-role-card${character ? " has-brand-character" : ""}`}>
+                    {character ? (
+                      <span className="sector-role-character" data-accent={character.accent} aria-hidden="true"><img src={character.asset} alt="" width={96} height={112} /></span>
+                    ) : (
+                      <span className="sector-role-mark" aria-hidden="true">{role.name.slice(0, 2).toUpperCase()}</span>
+                    )}
+                    <div>
+                      {character && <p className="sector-role-character-name">{character.name}</p>}
+                      <h3>{role.name}</h3>
+                      <p>{role.contribution}</p>
+                      {role.employeeKey ? <Link className="text-link" href={employeeDetailPath(role.employeeKey, locale)}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link> : <small>{locale === "es" ? "Perfil de catálogo · requiere adaptación" : "Catalog profile · requires adaptation"}</small>}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
             <div className="sector-reference-teams">
               <strong>{locale === "es" ? "Equipos de referencia relacionados" : "Related reference teams"}</strong>

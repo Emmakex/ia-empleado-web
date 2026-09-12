@@ -7,8 +7,10 @@ import {
   sectorIndexPath,
   sectorRecords,
   useCaseIndexPath,
+  type RoleReference,
 } from "../lib/sector-use-cases";
 import { teamBuilderPath } from "../lib/team-builder";
+import { BrandCharacterStrip, BrandContextScene } from "./brand-context-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -20,6 +22,10 @@ export function SectorIndexPage({ locale }: Props) {
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonical = sectorIndexPath(locale);
   const alternate = sectorIndexPath(otherLocale);
+  const overviewRoles = sectorRecords
+    .flatMap((sector) => sector.roles[locale])
+    .filter((role, index, roles) => role.employeeKey && roles.findIndex((candidate) => candidate.employeeKey === role.employeeKey) === index) as RoleReference[];
+  const overviewSystems = [...new Set(sectorRecords.flatMap((sector) => sector.systems[locale]))];
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -46,8 +52,8 @@ export function SectorIndexPage({ locale }: Props) {
     <>
       <a className="skip-link" href="#contenido">{locale === "es" ? "Saltar al contenido" : "Skip to content"}</a>
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
-      <main id="contenido" className="sector-cluster-page">
-        <section className="sector-hero section-shell">
+      <main id="contenido" className="sector-cluster-page brand-sector-cluster-page">
+        <section className="sector-hero section-shell brand-sector-index-hero">
           <div className="container sector-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
@@ -63,11 +69,23 @@ export function SectorIndexPage({ locale }: Props) {
                 <Link className="button button-ghost" href={useCaseIndexPath(locale)}>{locale === "es" ? "Ver casos de uso" : "View use cases"}</Link>
               </div>
             </div>
-            <aside className="sector-hero-note">
-              <strong>{sectorRecords.length}</strong>
-              <span>{locale === "es" ? "sectores iniciales con contenido profundo" : "initial industries with deep content"}</span>
-              <p>{locale === "es" ? "Cada página conecta problemas, procesos, roles, sistemas, controles y métricas." : "Each page connects problems, processes, roles, systems, controls and metrics."}</p>
-            </aside>
+            <div className="brand-sector-overview">
+              <BrandContextScene
+                locale={locale}
+                kind="sector"
+                contextKey="overview"
+                eyebrow={locale === "es" ? "PERSONAS · IA · SISTEMAS" : "PEOPLE · AI · SYSTEMS"}
+                title={locale === "es" ? "Un mismo equipo, adaptado al sector" : "One team, adapted to the industry"}
+                roles={overviewRoles}
+                systems={overviewSystems}
+                humanLabel={locale === "es" ? "Control humano donde importa" : "Human control where it matters"}
+              />
+              <div className="sector-brand-overview-meta">
+                <strong>{sectorRecords.length}</strong>
+                <span>{locale === "es" ? "sectores iniciales con contenido profundo" : "initial industries with deep content"}</span>
+                <p>{locale === "es" ? "Cada página conecta problemas, procesos, roles, sistemas, controles y métricas." : "Each page connects problems, processes, roles, systems, controls and metrics."}</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -80,11 +98,12 @@ export function SectorIndexPage({ locale }: Props) {
             </div>
             <div className="sector-card-grid">
               {sectorRecords.map((sector) => (
-                <article className="sector-card" key={sector.key}>
+                <article className="sector-card brand-sector-card" data-sector={sector.key} key={sector.key}>
                   <div className="sector-card-topline">
                     <span>{sector.eyebrow[locale]}</span>
                     <span>{sector.useCases.length} {locale === "es" ? "casos" : "use cases"}</span>
                   </div>
+                  <BrandCharacterStrip locale={locale} roles={sector.roles[locale]} compact />
                   <h3>{sector.name[locale]}</h3>
                   <p>{sector.shortAnswer[locale]}</p>
                   <div className="sector-card-tags">

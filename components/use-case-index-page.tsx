@@ -7,8 +7,10 @@ import {
   useCaseIndexContent,
   useCaseIndexPath,
   useCaseRecords,
+  type RoleReference,
 } from "../lib/sector-use-cases";
 import { processAnalyzerPath } from "../lib/process-analyzer";
+import { BrandCharacterStrip, BrandContextScene } from "./brand-context-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -20,6 +22,10 @@ export function UseCaseIndexPage({ locale }: Props) {
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonical = useCaseIndexPath(locale);
   const alternate = useCaseIndexPath(otherLocale);
+  const overviewRoles = useCaseRecords
+    .flatMap((record) => record.roles[locale])
+    .filter((role, index, roles) => role.employeeKey && roles.findIndex((candidate) => candidate.employeeKey === role.employeeKey) === index) as RoleReference[];
+  const overviewSystems = [...new Set(useCaseRecords.flatMap((record) => record.systems[locale]))];
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -46,8 +52,8 @@ export function UseCaseIndexPage({ locale }: Props) {
     <>
       <a className="skip-link" href="#contenido">{locale === "es" ? "Saltar al contenido" : "Skip to content"}</a>
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
-      <main id="contenido" className="sector-cluster-page">
-        <section className="sector-hero section-shell">
+      <main id="contenido" className="sector-cluster-page brand-sector-cluster-page">
+        <section className="sector-hero section-shell brand-use-case-index-hero">
           <div className="container sector-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
@@ -63,11 +69,23 @@ export function UseCaseIndexPage({ locale }: Props) {
                 <Link className="button button-ghost" href={sectorIndexPath(locale)}>{locale === "es" ? "Ver sectores" : "View industries"}</Link>
               </div>
             </div>
-            <aside className="sector-hero-note">
-              <strong>{useCaseRecords.length}</strong>
-              <span>{locale === "es" ? "patrones operativos con pasos y controles" : "operational patterns with steps and controls"}</span>
-              <p>{locale === "es" ? "No son automatizaciones listas para activar: son diseños de referencia que deben adaptarse." : "These are not ready-to-activate automations; they are reference designs that require adaptation."}</p>
-            </aside>
+            <div className="brand-sector-overview">
+              <BrandContextScene
+                locale={locale}
+                kind="use-case"
+                contextKey="overview"
+                eyebrow={locale === "es" ? "PROCESO · HANDOFFS · CONTROL" : "PROCESS · HANDOFFS · CONTROL"}
+                title={locale === "es" ? "Del evento al resultado, con personas dentro del circuito" : "From event to outcome, with people in the loop"}
+                roles={overviewRoles}
+                systems={overviewSystems}
+                humanLabel={locale === "es" ? "Decisión humana cuando corresponde" : "Human decision where required"}
+              />
+              <div className="sector-brand-overview-meta">
+                <strong>{useCaseRecords.length}</strong>
+                <span>{locale === "es" ? "patrones operativos con pasos y controles" : "operational patterns with steps and controls"}</span>
+                <p>{locale === "es" ? "No son automatizaciones listas para activar: son diseños de referencia que deben adaptarse." : "These are not ready-to-activate automations; they are reference designs that require adaptation."}</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -82,11 +100,12 @@ export function UseCaseIndexPage({ locale }: Props) {
               {useCaseRecords.map((record) => {
                 const humanSteps = record.steps[locale].filter((step) => step.mode === "human").length;
                 return (
-                  <article className="use-case-card" key={record.key}>
+                  <article className="use-case-card brand-use-case-card" data-use-case={record.key} key={record.key}>
                     <div className="sector-card-topline">
                       <span>{record.eyebrow[locale]}</span>
                       <span>{humanSteps} {locale === "es" ? "punto humano" : "human point"}</span>
                     </div>
+                    <BrandCharacterStrip locale={locale} roles={record.roles[locale]} compact />
                     <h3>{record.title[locale]}</h3>
                     <p>{record.shortAnswer[locale]}</p>
                     <div className="use-case-mode-row" aria-label={locale === "es" ? "Tipos de responsabilidad" : "Responsibility modes"}>

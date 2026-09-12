@@ -15,6 +15,7 @@ import "../organization-map.css";
 import "../brand-system.css";
 import "../brand-fidelity.css";
 import "../brand-content.css";
+import "../brand-sector-content.css";
 import { getDictionary } from "../../lib/i18n";
 
 const dictionary = getDictionary("es");
