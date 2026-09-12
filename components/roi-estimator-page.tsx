@@ -4,6 +4,7 @@ import { getDictionary, localeHref } from "../lib/i18n";
 import { getRoiEstimatorPageContent, roiEstimatorPath } from "../lib/roi-estimator";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { teamBuilderPath } from "../lib/team-builder";
+import { BrandInteractivePreview } from "./brand-interactive-preview";
 import { RoiEstimator } from "./roi-estimator";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -63,7 +64,7 @@ export function RoiEstimatorPage({ locale }: RoiEstimatorPageProps) {
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternatePath} />
       <main id="contenido" className="roi-estimator-page">
         <section className="roi-hero section-shell" aria-labelledby="roi-hero-title">
-          <div className="container roi-hero-grid">
+          <div className="container roi-hero-grid brand-interactive-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={homeHref}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -78,11 +79,14 @@ export function RoiEstimatorPage({ locale }: RoiEstimatorPageProps) {
                 <Link className="button button-ghost" href={processAnalyzerPath(locale)}>{locale === "es" ? "Analizar primero mi proceso" : "Analyze my process first"}</Link>
               </div>
             </div>
-            <aside className="roi-hero-note" role="note">
-              <span aria-hidden="true">∑</span>
-              <p>{content.heroNote}</p>
-              <div className="roi-local-chip">{locale === "es" ? "Cálculo local · supuestos visibles" : "Local calculation · visible assumptions"}</div>
-            </aside>
+            <div className="brand-interactive-hero-side">
+              <BrandInteractivePreview locale={locale} mode="roi" title={content.calculatorTitle} />
+              <aside className="roi-hero-note" role="note">
+                <span aria-hidden="true">∑</span>
+                <p>{content.heroNote}</p>
+                <div className="roi-local-chip">{locale === "es" ? "Cálculo local · supuestos visibles" : "Local calculation · visible assumptions"}</div>
+              </aside>
+            </div>
           </div>
         </section>
 
