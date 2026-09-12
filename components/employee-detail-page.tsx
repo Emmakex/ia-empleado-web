@@ -4,7 +4,7 @@ import type { EmployeeKey, LocalizedEmployeeDetail } from "../lib/employee-catal
 import { alternateEmployeePath, employeeIndexPath } from "../lib/employee-content-engine";
 import { getRelatedDiscoveryProfiles } from "../lib/employee-discovery";
 import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
-import { BrandCharacterImage } from "./brand-character-image";
+import { BrandRoleFamilyScene } from "./brand-role-family-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -76,14 +76,8 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
             </div>
             <aside className="employee-role-card brand-employee-role-card" data-accent={character?.accent ?? "blue"}>
               <div className="brand-employee-role-visual" aria-hidden="true">
-                <span className="brand-employee-role-glow" />
                 {character ? (
-                  <BrandCharacterImage
-                    character={character}
-                    sizes="(max-width: 760px) 260px, 360px"
-                    eager
-                    fetchPriority="high"
-                  />
+                  <BrandRoleFamilyScene character={character} />
                 ) : (
                   <div className="employee-role-mark">{roleMarks[employeeKey]}</div>
                 )}
