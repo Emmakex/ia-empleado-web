@@ -47,6 +47,9 @@ jobs:
       - name: Team Builder contract
         run: node scripts/check-team-builder.mjs
 
+      - name: Process Analyzer contract
+        run: node scripts/check-process-analyzer.mjs
+
       - name: Typecheck
         run: npm run typecheck
 

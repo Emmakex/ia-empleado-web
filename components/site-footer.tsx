@@ -4,6 +4,7 @@ import { localeHref } from "../lib/i18n";
 import { employeeIndexPath } from "../lib/employee-catalog";
 import { teamIndexPath } from "../lib/team-content-engine";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
+import { processAnalyzerPath } from "../lib/process-analyzer";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -38,6 +39,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             {dictionary.footer.links.slice(2).map((label, index) => (
               <li key={label}><Link href={links[index + 2]}>{label}</Link></li>
             ))}
+            <li><Link href={processAnalyzerPath(locale)}>{locale === "es" ? "Mejora tu proceso" : "Improve your process"}</Link></li>
           </ul>
         </div>
       </div>
