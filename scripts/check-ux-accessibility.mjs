@@ -37,13 +37,16 @@ for (const token of [
   "min-height: 0",
   "brand-character-status",
   "var(--character-accent",
+  "env(safe-area-inset-left)",
+  "env(safe-area-inset-bottom)",
+  "@media (prefers-contrast: more)",
   "@media (forced-colors: active)",
   "@media (prefers-reduced-motion: reduce)",
 ]) {
   if (!css.includes(token)) throw new Error(`UX/accessibility CSS missing contract: ${token}`);
 }
 
-if (!css.includes("font-size: 0.81rem") || !css.includes("font-size: 0.94rem")) {
+if (!css.includes("font-size: 0.8125rem") || !css.includes("font-size: 0.94rem")) {
   throw new Error("Mobile hero typography does not expose the hardened readable scale");
 }
 
