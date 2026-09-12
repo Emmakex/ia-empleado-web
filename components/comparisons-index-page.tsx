@@ -9,6 +9,8 @@ import {
 } from "../lib/comparison-content";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { teamBuilderPath } from "../lib/team-builder";
+import { BrandComparisonScene } from "./brand-comparison-scene";
+import { BrandEvidencePanel } from "./brand-evidence-panel";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -56,7 +58,7 @@ export function ComparisonsIndexPage({ locale }: ComparisonsIndexPageProps) {
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternatePath} />
       <main id="contenido" className="comparison-page">
         <section className="comparison-hero section-shell" aria-labelledby="comparison-index-title">
-          <div className="container comparison-hero-grid">
+          <div className="container comparison-hero-grid comparison-brand-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={homeHref}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -71,11 +73,14 @@ export function ComparisonsIndexPage({ locale }: ComparisonsIndexPageProps) {
                 <Link className="button button-ghost" href={processAnalyzerPath(locale)}>{locale === "es" ? "Analizar mi proceso" : "Analyze my process"}</Link>
               </div>
             </div>
-            <aside className="comparison-hero-note">
-              <span className="comparison-note-kicker">{locale === "es" ? "CRITERIO" : "PRINCIPLE"}</span>
-              <strong>{locale === "es" ? "No hay un ganador universal." : "There is no universal winner."}</strong>
-              <p>{locale === "es" ? "La mejor arquitectura depende del trabajo, el riesgo, los sistemas existentes y cuánto control humano necesitas mantener." : "The best architecture depends on the work, the risk, existing systems and how much human control you need to preserve."}</p>
-            </aside>
+            <div className="comparison-hero-side">
+              <BrandComparisonScene locale={locale} />
+              <aside className="comparison-hero-note">
+                <span className="comparison-note-kicker">{locale === "es" ? "CRITERIO" : "PRINCIPLE"}</span>
+                <strong>{locale === "es" ? "No hay un ganador universal." : "There is no universal winner."}</strong>
+                <p>{locale === "es" ? "La mejor arquitectura depende del trabajo, el riesgo, los sistemas existentes y cuánto control humano necesitas mantener." : "The best architecture depends on the work, the risk, existing systems and how much human control you need to preserve."}</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -88,8 +93,8 @@ export function ComparisonsIndexPage({ locale }: ComparisonsIndexPageProps) {
             </div>
             <div className="comparison-card-grid">
               {comparisonRecords.map((record) => (
-                <article className="comparison-card" key={record.key}>
-                  <div className="comparison-card-icon" aria-hidden="true">↔</div>
+                <article className="comparison-card comparison-card-branded" key={record.key}>
+                  <BrandComparisonScene locale={locale} alternativeName={record.alternativeName[locale]} comparisonKey={record.key} compact />
                   <h3>{record.title[locale]}</h3>
                   <p>{record.shortAnswer[locale]}</p>
                   <Link className="comparison-card-link" href={comparisonDetailPath(record.key, locale)}>
@@ -115,6 +120,17 @@ export function ComparisonsIndexPage({ locale }: ComparisonsIndexPageProps) {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="content-section comparison-evidence-section" aria-labelledby="comparison-index-evidence-title">
+          <div className="container">
+            <div className="section-heading comparison-section-heading">
+              <p className="eyebrow">{locale === "es" ? "PRUEBA COMERCIAL" : "COMMERCIAL EVIDENCE"}</p>
+              <h2 id="comparison-index-evidence-title">{locale === "es" ? "Demos, análisis y estimaciones con su etiqueta correcta" : "Demos, analysis and estimates with the right evidence label"}</h2>
+              <p>{locale === "es" ? "La web separa lo que puede demostrarse visualmente, lo que es análisis orientativo y lo que es una estimación para que la decisión no dependa de claims ambiguos." : "The site separates what can be visually demonstrated, what is indicative analysis and what is an estimate so the decision does not depend on ambiguous claims."}</p>
+            </div>
+            <BrandEvidencePanel locale={locale} />
           </div>
         </section>
 
