@@ -22,6 +22,7 @@ const requiredFiles = [
   "components/brand-hero-scene.tsx",
   "components/brand-context-scene.tsx",
   "components/brand-organization-scene.tsx",
+  "components/brand-collaboration-composition.tsx",
   "components/brand-interactive-preview.tsx",
   "components/employee-index-page.tsx",
   "components/employee-detail-page.tsx",
@@ -50,6 +51,7 @@ const requiredFiles = [
   "app/brand-content.css",
   "app/brand-sector-content.css",
   "app/brand-organization-content.css",
+  "app/brand-collaboration-compositions.css",
   "app/brand-interactive-content.css",
 ];
 
@@ -74,6 +76,7 @@ const home = read("components/home-page.tsx");
 const hero = read("components/brand-hero-scene.tsx");
 const contextScene = read("components/brand-context-scene.tsx");
 const organizationScene = read("components/brand-organization-scene.tsx");
+const collaborationComposition = read("components/brand-collaboration-composition.tsx");
 const interactivePreview = read("components/brand-interactive-preview.tsx");
 const employeeIndex = read("components/employee-index-page.tsx");
 const employeeDetail = read("components/employee-detail-page.tsx");
@@ -102,6 +105,7 @@ const fidelityCss = read("app/brand-fidelity.css");
 const contentCss = read("app/brand-content.css");
 const sectorBrandCss = read("app/brand-sector-content.css");
 const organizationBrandCss = read("app/brand-organization-content.css");
+const collaborationBrandCss = read("app/brand-collaboration-compositions.css");
 const interactiveBrandCss = read("app/brand-interactive-content.css");
 const esLayout = read("app/(es)/layout.tsx");
 const enLayout = read("app/(en)/en/layout.tsx");
@@ -118,7 +122,8 @@ if (!employeeIndex.includes("brand-catalog-hero-art") || !employeeIndex.includes
 if (!employeeDetail.includes("brand-employee-role-card") || !employeeDetail.includes("getBrandCharacterByEmployeeKey")) throw new Error("Employee detail does not use canonical character art");
 if (!explorer.includes("discovery-character-visual") || !explorer.includes("getBrandCharacterForProfileKey")) throw new Error("Reference catalog cards do not use canonical character art");
 if (!teamIndex.includes("brand-team-hero-art") || !teamIndex.includes("brand-team-card-portraits")) throw new Error("Team index does not use branded team compositions");
-if (!teamDetail.includes("brand-team-scene") || !teamDetail.includes("brand-team-human-approval") || !teamDetail.includes("brand-team-member-portrait")) throw new Error("Team detail does not expose branded collaboration and human control");
+if (!collaborationComposition.includes("BrandCollaborationComposition") || !collaborationComposition.includes("brand-collaboration-hub") || !collaborationComposition.includes("brand-collaboration-human") || !collaborationComposition.includes("brand-collaboration-systems")) throw new Error("Reusable Team/Department collaboration composition is incomplete");
+if (!teamDetail.includes("<BrandCollaborationComposition") || !teamDetail.includes('variant="team"') || !teamDetail.includes("brand-team-member-portrait")) throw new Error("Team detail does not expose the shared branded collaboration composition and canonical member portraits");
 
 if (!contextScene.includes("BrandContextScene") || !contextScene.includes("BrandCharacterStrip") || !contextScene.includes("getBrandCharacterByEmployeeKey")) throw new Error("Reusable sector/use-case brand scene is incomplete");
 if (!sectorIndex.includes("<BrandContextScene") || !sectorIndex.includes("<BrandCharacterStrip")) throw new Error("Sector index does not use approved brand scenes");
@@ -128,7 +133,7 @@ if (!useCaseDetail.includes("<BrandContextScene") || !useCaseDetail.includes("se
 
 if (!organizationScene.includes("BrandOrganizationScene") || !organizationScene.includes("BrandOrganizationRoster") || !organizationScene.includes("getBrandCharacterByEmployeeKey")) throw new Error("Reusable department/integration brand scene is incomplete");
 if (!departmentIndex.includes("<BrandOrganizationScene") || !departmentIndex.includes("<BrandOrganizationRoster")) throw new Error("Department index does not use approved organization scenes");
-if (!departmentDetail.includes("<BrandOrganizationScene") || !departmentDetail.includes("organization-role-portrait") || !departmentDetail.includes("getBrandCharacterByEmployeeKey")) throw new Error("Department detail does not use canonical character art");
+if (!departmentDetail.includes("<BrandCollaborationComposition") || !departmentDetail.includes('variant="department"') || !departmentDetail.includes("organization-role-portrait") || !departmentDetail.includes("getBrandCharacterByEmployeeKey")) throw new Error("Department detail does not use the shared collaboration composition and canonical role art");
 if (!integrationIndex.includes("<BrandOrganizationScene") || !integrationIndex.includes("<BrandOrganizationRoster")) throw new Error("Integration index does not use approved organization scenes");
 if (!integrationDetail.includes("<BrandOrganizationScene") || !integrationDetail.includes("organization-role-portrait") || !integrationDetail.includes("brand-integration-contract-grid")) throw new Error("Integration detail does not use branded authority visuals");
 
@@ -143,22 +148,24 @@ if (!roiEstimatorPage.includes('<BrandInteractivePreview') || !roiEstimatorPage.
 if (!roiEstimator.includes("roi-brand-value-path") || !roiEstimator.includes("roi-brand-scenario-meter")) throw new Error("ROI Estimator does not expose branded workload/capacity visualization");
 if (roiEstimator.includes("getBrandCharacterForProfileKey") || roiEstimator.includes("getBrandCharacterForActorLabel")) throw new Error("ROI Estimator must not attribute financial estimates to a specific canonical character");
 
-for (const css of [brandCss, fidelityCss, contentCss, sectorBrandCss, organizationBrandCss, interactiveBrandCss]) {
+for (const css of [brandCss, fidelityCss, contentCss, sectorBrandCss, organizationBrandCss, collaborationBrandCss, interactiveBrandCss]) {
   if (!css.includes("prefers-reduced-motion")) throw new Error("Brand motion lacks reduced-motion handling");
 }
 if (!fidelityCss.includes("@media (max-width: 760px)")) throw new Error("Approved mobile hero layout is missing");
 if (!contentCss.includes("@media (max-width: 760px)")) throw new Error("Employee/team branded surfaces lack mobile handling");
 if (!sectorBrandCss.includes("@media (max-width: 760px)")) throw new Error("Sector/use-case branded surfaces lack mobile handling");
 if (!organizationBrandCss.includes("@media (max-width: 760px)")) throw new Error("Department/integration branded surfaces lack mobile handling");
+if (!collaborationBrandCss.includes("@media (max-width: 760px)")) throw new Error("Team/Department collaboration compositions lack mobile handling");
 if (!interactiveBrandCss.includes("@media (max-width: 760px)")) throw new Error("Interactive branded surfaces lack mobile handling");
 if (!interactiveBrandCss.includes("brand-interactive-human") || !interactiveBrandCss.includes("brand-simulator-state-strip")) throw new Error("Interactive visuals do not expose human-control/state layers");
 if (!organizationBrandCss.includes("brand-organization-human") || !organizationBrandCss.includes("brand-organization-systems")) throw new Error("Organization scenes do not expose human-control and system layers");
+if (!collaborationBrandCss.includes("brand-collaboration-human") || !collaborationBrandCss.includes("brand-collaboration-systems")) throw new Error("Team/Department compositions do not expose human-control and shared-system layers");
 if (!organizationBrandCss.includes("READ") && !integrationDetail.includes("READ")) throw new Error("Integration authority visual is missing READ semantics");
 if (!sectorBrandCss.includes('data-context="ecommerce"') || !sectorBrandCss.includes('data-context="travel"') || !sectorBrandCss.includes('data-context="sales"')) throw new Error("Sector visual accents are incomplete");
 if (!fidelityCss.includes("span:nth-child(n + 4)")) throw new Error("Mobile system-chip simplification is missing");
 
 for (const [localeName, layout] of [["ES", esLayout], ["EN", enLayout]]) {
-  for (const stylesheet of ["brand-system.css", "brand-fidelity.css", "brand-content.css", "brand-sector-content.css", "brand-organization-content.css", "brand-interactive-content.css"]) {
+  for (const stylesheet of ["brand-system.css", "brand-fidelity.css", "brand-content.css", "brand-sector-content.css", "brand-organization-content.css", "brand-collaboration-compositions.css", "brand-interactive-content.css"]) {
     if (!layout.includes(stylesheet)) throw new Error(`${localeName} layout does not load ${stylesheet}`);
   }
 }
