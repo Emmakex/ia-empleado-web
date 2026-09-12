@@ -74,10 +74,17 @@ The employee catalog, the four deep Reference Employee pages and their public ca
 
 The AI Team index and team detail pages reuse the canonical Reference Employee portraits when those roles participate in a composition. Catalog-only roles remain visually neutral and are not given invented faces. Team scenes retain explicit systems/process context and visible human-control semantics.
 
+### Sector surfaces
+
+The Ecommerce, Travel, Professional Services and Sales sector pages reuse the same canonical characters wherever a Reference Employee participates. Each sector gets a contextual visual treatment while preserving the master IA Empleado system. Catalog-only roles remain neutral, system context stays explicit and human approval remains visible.
+
+### Use-case surfaces
+
+The six public use-case patterns reuse the same visual grammar: canonical Reference Employees, neutral catalog roles, process core, system context and explicit human escalation. The workflow visuals distinguish automatable, assisted and human responsibility without implying unrestricted autonomy.
+
 ## Next reusable asset phases
 
-- department and sector scene families;
-- use-case and integration visual families;
+- department and integration visual families;
 - simulator/interactive surface skinning;
 - proof/demo media frames and video package;
 - social/Open Graph exports derived from the canonical system.
