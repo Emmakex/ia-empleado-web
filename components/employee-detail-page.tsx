@@ -121,7 +121,7 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
 
         <section className="content-section section-panel" aria-labelledby="sectors-title"><div className="container employee-two-column"><div><p className="eyebrow">{locale === "es" ? "SECTORES" : "SECTORS"}</p><h2 id="sectors-title">{content.sectorsTitle}</h2></div><div className="employee-sector-list">{content.sectors.map((sector) => <span key={sector}>{sector}</span>)}</div></div></section>
 
-        <section className="content-section" aria-labelledby="limits-title"><div className="container employee-limits-grid"><div><p className="eyebrow">{locale === "es" ? "LÍMITES" : "BOUNDARIES"}</p><h2 id="limits-title">{content.limitsTitle}</h2></div><ol>{content.limits.map((item) => <li key={item}>{item}</li>)}</div></section>
+        <section className="content-section" aria-labelledby="limits-title"><div className="container employee-limits-grid"><div><p className="eyebrow">{locale === "es" ? "LÍMITES" : "BOUNDARIES"}</p><h2 id="limits-title">{content.limitsTitle}</h2></div><ol>{content.limits.map((item) => <li key={item}>{item}</li>)}</ol></div></section>
 
         <section className="content-section section-panel" aria-labelledby="employee-faq-title"><div className="container faq-layout"><div className="faq-heading"><p className="eyebrow">FAQ</p><h2 id="employee-faq-title">{content.faqTitle}</h2></div><div className="faq-list">{content.faq.map((item, index) => <details className="faq-item" key={item.question} open={index === 0}><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}</div></div></section>
 
