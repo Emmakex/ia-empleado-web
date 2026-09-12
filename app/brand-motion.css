@@ -1,0 +1,402 @@
+/* IA Empleado global motion system.
+ * Motion explains coordination: handoff, context, system activity and human control.
+ * CSS/SVG first, progressive enhancement, no motion required for comprehension.
+ */
+
+:root {
+  --brand-motion-fast: 160ms;
+  --brand-motion-normal: 220ms;
+  --brand-motion-emphasis: 520ms;
+  --brand-motion-reveal: 720ms;
+  --brand-motion-handoff: 4.2s;
+  --brand-motion-orbit: 26s;
+  --brand-motion-ambient: 14s;
+  --brand-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --brand-motion-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* First-view choreography: copy first, visual system second. */
+@media (prefers-reduced-motion: no-preference) {
+  .brand-home-hero .hero-copy > :is(.eyebrow, h1, .hero-lead, .hero-actions, .brand-hero-signature) {
+    opacity: 0;
+    animation: brand-motion-enter-up var(--brand-motion-reveal) var(--brand-motion-ease) forwards;
+  }
+
+  .brand-home-hero .hero-copy > .eyebrow { animation-delay: 40ms; }
+  .brand-home-hero .hero-copy > h1 { animation-delay: 110ms; }
+  .brand-home-hero .hero-copy > .hero-lead { animation-delay: 180ms; }
+  .brand-home-hero .hero-copy > .hero-actions { animation-delay: 250ms; }
+  .brand-home-hero .hero-copy > .brand-hero-signature { animation-delay: 320ms; }
+
+  .brand-home-hero .brand-hero-stage {
+    opacity: 0;
+    animation: brand-motion-enter-stage 900ms var(--brand-motion-ease) 150ms forwards;
+  }
+}
+
+/* Ambient depth. These elements are decorative and move slowly. */
+.brand-hero-mist,
+.brand-context-glow,
+.brand-organization-glow,
+.brand-interactive-glow,
+.brand-comparison-glow {
+  animation: brand-motion-mist var(--brand-motion-ambient) ease-in-out infinite alternate;
+  will-change: translate, scale;
+}
+
+.brand-hero-mist-two,
+.brand-context-glow.glow-two,
+.brand-organization-glow.glow-b,
+.brand-interactive-glow.glow-b,
+.brand-comparison-glow.glow-right {
+  animation-delay: -7s;
+  animation-duration: 18s;
+}
+
+/* Slow orbital movement. Individual rotate composes with existing transforms. */
+.brand-hero-orbit-one,
+.brand-context-grid-lines,
+.brand-organization-lines,
+.brand-interactive-orbits {
+  animation: brand-motion-orbit var(--brand-motion-orbit) linear infinite;
+  transform-origin: center;
+  will-change: rotate;
+}
+
+.brand-hero-orbit-two,
+.brand-context-grid-lines::after,
+.brand-organization-lines::after,
+.brand-interactive-orbits::after {
+  animation: brand-motion-orbit-reverse calc(var(--brand-motion-orbit) * 1.45) linear infinite;
+  transform-origin: center;
+}
+
+/* Core activity: small breathing cue, never a flashing indicator. */
+.brand-hero-core img,
+.brand-context-core img,
+.brand-organization-core img,
+.brand-interactive-core img,
+.brand-comparison-core-mark img,
+.brand-team-scene-core img,
+.roi-brand-core img {
+  animation: brand-motion-core-breathe 4.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.brand-character-status,
+.node-status,
+.brand-active-character-status,
+.brand-team-status-dot {
+  animation: brand-motion-status 3.8s ease-in-out infinite;
+}
+
+/* Human approval is semantically separate from system activity. */
+.brand-hero-approval,
+.brand-context-human,
+.brand-organization-human,
+.brand-interactive-human,
+.brand-team-human-approval,
+.brand-process-human-control {
+  transition:
+    translate var(--brand-motion-normal) var(--brand-motion-ease),
+    box-shadow var(--brand-motion-normal) ease,
+    border-color var(--brand-motion-normal) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brand-hero-approval:hover,
+  .brand-context-human:hover,
+  .brand-organization-human:hover,
+  .brand-interactive-human:hover,
+  .brand-team-human-approval:hover,
+  .brand-process-human-control:hover {
+    translate: 0 -2px;
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 14px 30px rgba(30, 82, 68, 0.11);
+  }
+}
+
+/* Canonical people feel present, but never bob like mascots. */
+.brand-context-person,
+.brand-organization-person,
+.brand-interactive-person,
+.brand-team-member-portrait,
+.sector-role-character,
+.organization-role-portrait,
+.builder-role-character,
+.brand-active-character {
+  animation: brand-motion-person-drift 8.4s ease-in-out infinite;
+  will-change: translate;
+}
+
+.brand-context-person:nth-child(2),
+.brand-organization-person:nth-child(2),
+.brand-interactive-person:nth-child(2),
+.brand-team-member-portrait:nth-child(2) { animation-delay: -2.1s; }
+
+.brand-context-person:nth-child(3),
+.brand-organization-person:nth-child(3),
+.brand-interactive-person:nth-child(3),
+.brand-team-member-portrait:nth-child(3) { animation-delay: -4.2s; }
+
+.brand-context-person:nth-child(4),
+.brand-organization-person:nth-child(4),
+.brand-interactive-person:nth-child(4),
+.brand-team-member-portrait:nth-child(4) { animation-delay: -6.3s; }
+
+/* Handoff language: existing hero SVG paths plus preview/process sequences. */
+.brand-line-flow {
+  animation-duration: var(--brand-motion-handoff);
+}
+
+.brand-interactive-flow span,
+.brand-simulator-state-strip > *,
+.brand-use-case-flow-list > *,
+.process-brand-map .process-step,
+.builder-brand-team-map > * {
+  transition:
+    translate var(--brand-motion-fast) var(--brand-motion-ease),
+    border-color var(--brand-motion-fast) ease,
+    background-color var(--brand-motion-fast) ease,
+    box-shadow var(--brand-motion-fast) ease;
+}
+
+.brand-interactive-flow span {
+  animation: brand-motion-step-focus 8s ease-in-out infinite;
+}
+
+.brand-interactive-flow span:nth-child(2) { animation-delay: -6s; }
+.brand-interactive-flow span:nth-child(3) { animation-delay: -4s; }
+.brand-interactive-flow span:nth-child(4) { animation-delay: -2s; }
+
+.brand-comparison-core-line {
+  background-size: 220% 100%;
+  animation: brand-motion-line-sweep 5.6s linear infinite;
+}
+
+/* System chips show quiet activity, not fake live status. */
+.brand-hero-systems span,
+.brand-context-systems span,
+.brand-organization-systems span,
+.brand-comparison-system-row span,
+.brand-team-system-chip,
+.brand-integration-contract-grid article {
+  transition:
+    translate var(--brand-motion-fast) var(--brand-motion-ease),
+    border-color var(--brand-motion-fast) ease,
+    box-shadow var(--brand-motion-fast) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brand-hero-systems span:hover,
+  .brand-context-systems span:hover,
+  .brand-organization-systems span:hover,
+  .brand-comparison-system-row span:hover,
+  .brand-team-system-chip:hover,
+  .brand-integration-contract-grid article:hover {
+    translate: 0 -2px;
+    border-color: rgba(91, 95, 245, 0.22);
+    box-shadow: 0 10px 22px rgba(60, 72, 125, 0.08);
+  }
+}
+
+/* Commercial surfaces: tactile without becoming game UI. */
+:where(
+  .brand-character-card,
+  .brand-sector-card,
+  .brand-use-case-card,
+  .brand-department-card,
+  .brand-integration-card,
+  .comparison-card,
+  .comparison-choice-card,
+  .team-card,
+  .employee-card
+) {
+  transition:
+    translate var(--brand-motion-normal) var(--brand-motion-ease),
+    box-shadow var(--brand-motion-normal) ease,
+    border-color var(--brand-motion-normal) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(
+    .brand-sector-card,
+    .brand-use-case-card,
+    .brand-department-card,
+    .brand-integration-card,
+    .comparison-card,
+    .comparison-choice-card,
+    .team-card,
+    .employee-card
+  ):hover {
+    translate: 0 -4px;
+  }
+
+  .brand-comparison-scene:not(.is-compact):hover .brand-comparison-core-mark,
+  .brand-context-scene:hover .brand-context-core,
+  .brand-organization-scene:hover .brand-organization-core,
+  .brand-interactive-preview:hover .brand-interactive-core {
+    scale: 1.025;
+  }
+}
+
+.brand-comparison-core-mark,
+.brand-context-core,
+.brand-organization-core,
+.brand-interactive-core {
+  transition: scale var(--brand-motion-normal) var(--brand-motion-ease);
+}
+
+/* Progressive scroll reveal. Unsupported browsers simply render the final state. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :where(
+      .brand-context-scene,
+      .brand-organization-scene,
+      .brand-interactive-preview,
+      .brand-comparison-scene,
+      .brand-character-card,
+      .brand-sector-card,
+      .brand-use-case-card,
+      .comparison-card,
+      .comparison-choice-card,
+      .brand-team-scene,
+      .brand-proof-sequence,
+      .brand-evidence-grid
+    ) {
+      animation: brand-motion-scroll-reveal 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 6% cover 28%;
+    }
+
+    .content-section > .container > :is(.section-heading, .comparison-section-heading, .faq-heading) {
+      animation: brand-motion-scroll-heading 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 22%;
+    }
+  }
+}
+
+/* Narrow screens keep meaningful flow/core cues and drop continuous character drift. */
+@media (max-width: 760px) {
+  :root {
+    --brand-motion-orbit: 34s;
+    --brand-motion-ambient: 18s;
+  }
+
+  .brand-context-person,
+  .brand-organization-person,
+  .brand-interactive-person,
+  .brand-team-member-portrait,
+  .sector-role-character,
+  .organization-role-portrait,
+  .builder-role-character,
+  .brand-active-character {
+    animation: none;
+  }
+
+  .brand-hero-mist,
+  .brand-context-glow,
+  .brand-organization-glow,
+  .brand-interactive-glow,
+  .brand-comparison-glow {
+    will-change: auto;
+  }
+}
+
+@keyframes brand-motion-enter-up {
+  from { opacity: 0; translate: 0 18px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes brand-motion-enter-stage {
+  from { opacity: 0; translate: 0 22px; scale: 0.985; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+@keyframes brand-motion-mist {
+  0% { translate: -5px -4px; scale: 0.98; }
+  50% { translate: 8px 6px; scale: 1.035; }
+  100% { translate: -2px 10px; scale: 1.01; }
+}
+
+@keyframes brand-motion-orbit {
+  to { rotate: 360deg; }
+}
+
+@keyframes brand-motion-orbit-reverse {
+  to { rotate: -360deg; }
+}
+
+@keyframes brand-motion-core-breathe {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.045; }
+}
+
+@keyframes brand-motion-status {
+  0%, 70%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.08); }
+  82% { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+}
+
+@keyframes brand-motion-person-drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -4px; }
+}
+
+@keyframes brand-motion-step-focus {
+  0%, 16%, 100% { box-shadow: none; }
+  7% { box-shadow: 0 8px 24px rgba(91, 95, 245, 0.11); }
+}
+
+@keyframes brand-motion-line-sweep {
+  from { background-position: 100% 50%; }
+  to { background-position: -120% 50%; }
+}
+
+@keyframes brand-motion-scroll-reveal {
+  from { opacity: 0.35; translate: 0 24px; scale: 0.985; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+@keyframes brand-motion-scroll-heading {
+  from { opacity: 0.45; translate: 0 16px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* Accessibility: all information and controls remain complete without motion. */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  :where(
+    .brand-home-hero *,
+    .brand-context-scene *,
+    .brand-organization-scene *,
+    .brand-interactive-preview *,
+    .brand-comparison-scene *,
+    .brand-team-scene *,
+    .brand-character-card,
+    .brand-sector-card,
+    .brand-use-case-card,
+    .brand-department-card,
+    .brand-integration-card,
+    .comparison-card,
+    .comparison-choice-card,
+    .brand-proof-sequence *,
+    .brand-evidence-grid *
+  ) {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  .brand-home-hero .hero-copy > *,
+  .brand-home-hero .brand-hero-stage {
+    opacity: 1 !important;
+    translate: none !important;
+    scale: 1 !important;
+  }
+}
