@@ -9,6 +9,7 @@ import {
 } from "../lib/team-builder";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { processAnalyzerPath } from "../lib/process-analyzer";
+import { BrandInteractivePreview } from "./brand-interactive-preview";
 import { TeamBuilder } from "./team-builder";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -70,7 +71,7 @@ export function TeamBuilderPage({ locale }: TeamBuilderPageProps) {
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternatePath} />
       <main id="contenido" className="team-builder-page">
         <section className="team-builder-hero section-shell" aria-labelledby="team-builder-hero-title">
-          <div className="container team-builder-hero-grid">
+          <div className="container team-builder-hero-grid brand-interactive-hero-grid">
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}>
                 <Link href={homeHref}>{locale === "es" ? "Inicio" : "Home"}</Link>
@@ -87,11 +88,14 @@ export function TeamBuilderPage({ locale }: TeamBuilderPageProps) {
                 </Link>
               </div>
             </div>
-            <aside className="team-builder-hero-note" role="note">
-              <span aria-hidden="true">◎</span>
-              <p>{content.heroNote}</p>
-              <div className="team-builder-privacy-chip">{locale === "es" ? "Cálculo local · sin envío de datos" : "Local calculation · no data upload"}</div>
-            </aside>
+            <div className="brand-interactive-hero-side">
+              <BrandInteractivePreview locale={locale} mode="team-builder" title={content.builderTitle} />
+              <aside className="team-builder-hero-note" role="note">
+                <span aria-hidden="true">◎</span>
+                <p>{content.heroNote}</p>
+                <div className="team-builder-privacy-chip">{locale === "es" ? "Cálculo local · sin envío de datos" : "Local calculation · no data upload"}</div>
+              </aside>
+            </div>
           </div>
         </section>
 

@@ -22,6 +22,7 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
   const [inputs, setInputs] = useState<RoiInputs>(defaultRoiInputs);
   const result = useMemo(() => calculateRoi(inputs), [inputs]);
   const localeCode = locale === "es" ? "es-ES" : "en-US";
+  const baseScenario = result.scenarios.find((scenario) => scenario.key === "base") ?? result.scenarios[0];
 
   const number = (value: number, maximumFractionDigits = 1) =>
     new Intl.NumberFormat(localeCode, { maximumFractionDigits }).format(value);
@@ -45,7 +46,7 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
   };
 
   return (
-    <div className="roi-calculator-shell">
+    <div className="roi-calculator-shell brand-roi-calculator-shell">
       <div className="roi-input-panel">
         <div className="roi-panel-heading">
           <div>
@@ -127,6 +128,26 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
       </div>
 
       <div className="roi-results-panel" aria-live="polite">
+        <div className="roi-brand-value-path" aria-hidden="true">
+          <div className="roi-brand-node">
+            <span>01</span>
+            <strong>{locale === "es" ? "Carga actual" : "Current workload"}</strong>
+            <small>{number(result.baselineHoursMonthly)} h / {locale === "es" ? "mes" : "month"}</small>
+          </div>
+          <i>→</i>
+          <div className="roi-brand-core">
+            <img src="/branding/ia-empleado-mark.svg" alt="" width={52} height={52} />
+            <strong>IA Empleado</strong>
+            <span style={{ width: `${Math.min(90, Math.max(0, baseScenario?.improvementPercent ?? 0))}%` }} />
+          </div>
+          <i>→</i>
+          <div className="roi-brand-node is-outcome">
+            <span>02</span>
+            <strong>{locale === "es" ? "Capacidad potencial" : "Potential capacity"}</strong>
+            <small>{number(baseScenario?.savedHoursMonthly ?? 0)} h / {locale === "es" ? "mes" : "month"}</small>
+          </div>
+        </div>
+
         <div className="roi-baseline-card">
           <div>
             <p className="eyebrow">{content.baselineTitle}</p>
@@ -151,6 +172,7 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
                 <h4>{scenarioLabel(scenario.key)}</h4>
                 <span>{number(scenario.improvementPercent, 0)}%</span>
               </div>
+              <div className="roi-brand-scenario-meter" aria-hidden="true"><span style={{ width: `${Math.min(100, Math.max(0, scenario.improvementPercent))}%` }} /></div>
               <dl>
                 <div>
                   <dt>{content.timeFreedLabel}</dt>

@@ -90,9 +90,20 @@ The six department pages now use a shared organizational scene: participating Re
 
 The seven integration categories use the same brand grammar while emphasizing **source of truth, READ, WRITE, audit and human approval**. A system category is never presented as a universal connector. Employee identity is reused only for the approved Reference Employees that are actually related to that integration.
 
+### Interactive experience surfaces
+
+The four interactive experiences use a shared motion and state language while preserving the meaning of each tool:
+
+- **Cómo trabajan juntos / See the team work** maps the active simulator actor to Clara, Alex, Sofía or Javier only when the step actually belongs to that approved Reference Employee. Event, system, human-control and outcome states remain visually distinct.
+- **Team Builder** converts a recommendation into a visible team composition. Approved Reference Employees use canonical portraits; catalog-only roles stay neutral; restricted areas and human/permission validation remain explicit.
+- **Process Analyzer** reuses canonical portraits in the proposed workflow and summary when those roles participate, while preserving the separate `automated`, `assisted` and `human` responsibility semantics.
+- **ROI Estimator** uses the master IA Empleado core and a workload → potential-capacity visual. Financial estimates are deliberately **not attributed to a specific character or team** and remain scenario-based estimates, not promised outcomes.
+
+Interactive visuals have dedicated tablet/mobile compositions instead of scaling desktop scenes down. Motion is progressive enhancement and respects `prefers-reduced-motion`.
+
 ## Next reusable asset phases
 
-- simulator and interactive-surface skinning;
 - proof/demo media frames and video package;
 - social/Open Graph exports derived from the canonical system;
+- comparison/proof surfaces where additional visual evidence improves evaluation;
 - future canonical characters for catalog roles only after explicit visual approval.

@@ -9,6 +9,7 @@ import type {
   ProcessTemplateView,
 } from "../lib/process-analyzer";
 import type { Locale } from "../lib/i18n";
+import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
 
 type ProcessAnalyzerProps = {
   locale: Locale;
@@ -53,6 +54,9 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
     { automated: 0, assisted: 0, human: 0 },
   );
 
+  const processCharacters = process.employees
+    .map((employee) => getBrandCharacterForProfileKey(employee.key, locale))
+    .filter((character): character is NonNullable<typeof character> => Boolean(character));
   const selectedPainLabels = painOptions.filter((option) => selectedPains.includes(option.value)).map((option) => option.label);
   const bottleneckLabels = process.steps.filter((step) => bottlenecks.includes(step.id)).map((step) => step.currentTitle);
   const emailBody = [
@@ -71,7 +75,7 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
   const mailto = `mailto:hola@iaempleado.com?subject=${encodeURIComponent(`IA Empleado - ${process.label}`)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
-    <div className="process-analyzer-shell">
+    <div className="process-analyzer-shell brand-process-analyzer-shell">
       <div className="process-analyzer-controls" aria-labelledby="process-analyzer-controls-title">
         <div className="process-control-heading">
           <p className="eyebrow">{content.analyzerEyebrow}</p>
@@ -123,6 +127,26 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
         <div><span>{locale === "es" ? "Resultado" : "Outcome"}</span><strong>{process.outcome}</strong></div>
       </div>
 
+      <div className="process-brand-map" aria-hidden="true">
+        <div className="process-brand-core">
+          <img src="/branding/ia-empleado-mark.svg" alt="" width={48} height={48} />
+          <span>{locale === "es" ? "Proceso coordinado" : "Coordinated process"}</span>
+        </div>
+        <div className="process-brand-people">
+          {processCharacters.map((character) => (
+            <div className="process-brand-person" data-accent={character.accent} key={character.id}>
+              <img src={character.asset} alt="" width={88} height={104} />
+              <span>{character.name}</span>
+            </div>
+          ))}
+          {process.employees.filter((employee) => !getBrandCharacterForProfileKey(employee.key, locale)).slice(0, 2).map((employee) => (
+            <div className="process-brand-neutral" key={employee.key}><i>◇</i><span>{employee.shortName}</span></div>
+          ))}
+        </div>
+        <div className="process-brand-systems">{process.systems.slice(0, 4).map((system) => <span key={system}>{system}</span>)}</div>
+        <div className="process-brand-human"><span>✓</span>{locale === "es" ? "Control humano explícito" : "Explicit human control"}</div>
+      </div>
+
       <div className="process-before-after-grid">
         <section className="process-flow-column current-flow" aria-labelledby="current-process-title">
           <div className="process-flow-heading">
@@ -169,12 +193,12 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
                   </div>
                   <h4>{step.proposedTitle}</h4>
                   <p>{step.proposedText}</p>
-                  <div className="process-step-employees">
-                    {step.employees.map((employee) => employee.href ? (
-                      <Link href={employee.href} key={employee.key}>{employee.shortName}</Link>
-                    ) : (
-                      <span key={employee.key}>{employee.shortName}</span>
-                    ))}
+                  <div className="process-step-employees brand-process-step-employees">
+                    {step.employees.map((employee) => {
+                      const character = getBrandCharacterForProfileKey(employee.key, locale);
+                      const inner = <>{character && <img src={character.asset} alt="" width={28} height={32} aria-hidden="true" />}<span>{character?.name ?? employee.shortName}</span></>;
+                      return employee.href ? <Link href={employee.href} key={employee.key}>{inner}</Link> : <span key={employee.key}>{inner}</span>;
+                    })}
                   </div>
                   <div className="process-control-note"><strong>{content.controlLabel}:</strong> {step.humanControl}</div>
                 </li>
@@ -198,8 +222,12 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
         <div className="process-summary-columns">
           <div>
             <h4>{content.employeesLabel}</h4>
-            <div className="process-summary-chips">
-              {process.employees.map((employee) => employee.href ? <Link href={employee.href} key={employee.key}>{employee.shortName}</Link> : <span key={employee.key}>{employee.shortName}</span>)}
+            <div className="process-summary-chips brand-process-summary-chips">
+              {process.employees.map((employee) => {
+                const character = getBrandCharacterForProfileKey(employee.key, locale);
+                const inner = <>{character && <img src={character.asset} alt="" width={30} height={34} aria-hidden="true" />}<span>{character?.name ?? employee.shortName}</span></>;
+                return employee.href ? <Link href={employee.href} key={employee.key}>{inner}</Link> : <span key={employee.key}>{inner}</span>;
+              })}
             </div>
           </div>
           <div>

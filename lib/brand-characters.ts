@@ -38,3 +38,18 @@ export function getBrandCharacterByEmployeeKey(employeeKey: EmployeeKey, locale:
 export function getBrandCharacterForProfileKey(profileKey: string, locale: Locale): BrandCharacter | undefined {
   return characters[locale].find((character) => character.employeeKey === profileKey);
 }
+
+export function getBrandCharacterForActorLabel(actor: string, locale: Locale): BrandCharacter | undefined {
+  const normalized = actor.toLocaleLowerCase(locale === "es" ? "es" : "en");
+  const key = normalized.includes("atención al cliente") || normalized.includes("customer support")
+    ? "customer-support"
+    : normalized.includes("administrativo") || normalized.includes("administrative")
+      ? "administrative"
+      : normalized.includes("contabilidad") || normalized.includes("facturación") || normalized.includes("accounting") || normalized.includes("billing")
+        ? "accounting-billing"
+        : normalized.includes("comercial sdr") || normalized.includes("sales sdr")
+          ? "sales-sdr"
+          : undefined;
+
+  return key ? getBrandCharacterForProfileKey(key, locale) : undefined;
+}

@@ -17,6 +17,7 @@ import "../brand-fidelity.css";
 import "../brand-content.css";
 import "../brand-sector-content.css";
 import "../brand-organization-content.css";
+import "../brand-interactive-content.css";
 import { getDictionary } from "../../lib/i18n";
 
 const dictionary = getDictionary("es");
