@@ -56,6 +56,31 @@ test("desktop internal hero columns start on the same visual row", async ({ page
   }
 });
 
+test("homepage hero reserves separate overlay lanes", async ({ page }) => {
+  await page.setViewportSize({ width: 1648, height: 1000 });
+  await page.goto("/", { waitUntil: "networkidle" });
+
+  const stage = page.locator(".brand-home-hero .brand-hero-stage");
+  const task = await requiredBox(stage.locator(".brand-hero-task"), "home hero task");
+  const core = await requiredBox(stage.locator(".brand-hero-core"), "home hero core");
+  const approval = await requiredBox(stage.locator(".brand-hero-approval"), "home hero approval");
+  const systems = await requiredBox(stage.locator(".brand-hero-systems"), "home hero systems");
+  const caption = await requiredBox(stage.locator(".brand-hero-caption"), "home hero caption");
+  const people = stage.locator(".brand-character-node");
+  expect(await people.count(), "home hero must keep four canonical character nodes").toBe(4);
+
+  const topOne = await requiredBox(people.nth(0), "home hero top-left character");
+  const topTwo = await requiredBox(people.nth(1), "home hero top-right character");
+  const bottomOne = await requiredBox(people.nth(2), "home hero bottom-left character");
+  const bottomTwo = await requiredBox(people.nth(3), "home hero bottom-right character");
+
+  expect(task.y + task.height, "task chip must finish before the top character row").toBeLessThanOrEqual(Math.min(topOne.y, topTwo.y) - 6);
+  expect(core.y + core.height, "core must finish before the approval chip").toBeLessThanOrEqual(approval.y - 1);
+  expect(approval.y + approval.height, "approval chip must finish before the lower character row").toBeLessThanOrEqual(Math.min(bottomOne.y, bottomTwo.y) - 1);
+  expect(Math.max(bottomOne.y + bottomOne.height, bottomTwo.y + bottomTwo.height), "lower character row must finish before the systems rail").toBeLessThanOrEqual(systems.y - 1);
+  expect(caption.x + caption.width, "caption and systems must occupy separate footer lanes").toBeLessThanOrEqual(systems.x - 6);
+});
+
 test("employee catalog portraits keep a dedicated label footer", async ({ page }) => {
   await page.setViewportSize({ width: 1648, height: 1000 });
   await page.goto("/empleados-ia", { waitUntil: "networkidle" });
