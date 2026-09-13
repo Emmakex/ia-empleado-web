@@ -1,0 +1,105 @@
+/* Homepage hero geometry hardening.
+ * Production review showed the auxiliary task/approval/footer rails still used
+ * coordinates from before the canonical character cards were enlarged. Keep
+ * those rails visually separate from the approved people cards at every width.
+ */
+
+@media (min-width: 761px) {
+  .brand-home-hero .brand-hero-stage {
+    min-height: 620px;
+  }
+
+  .brand-home-hero .brand-character-node-1,
+  .brand-home-hero .brand-character-node-2 {
+    top: 10.5%;
+  }
+
+  .brand-home-hero .brand-character-node-3,
+  .brand-home-hero .brand-character-node-4 {
+    bottom: 18%;
+  }
+
+  .brand-home-hero .brand-hero-task {
+    top: 1.15rem;
+  }
+
+  .brand-home-hero .brand-hero-approval {
+    bottom: 3.7rem;
+  }
+}
+
+.brand-home-hero .brand-hero-footer {
+  position: absolute;
+  z-index: 7;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 0.85rem;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.brand-home-hero .brand-hero-footer .brand-hero-caption {
+  position: static;
+  flex: 1 1 auto;
+  max-width: 38%;
+  min-width: 0;
+  overflow: hidden;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.brand-home-hero .brand-hero-footer .brand-hero-systems {
+  position: static;
+  display: flex;
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 62%;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  transform: none;
+}
+
+@media (max-width: 760px) {
+  .brand-home-hero .brand-character-node-1,
+  .brand-home-hero .brand-character-node-2 {
+    top: 11%;
+  }
+
+  .brand-home-hero .brand-character-node-3,
+  .brand-home-hero .brand-character-node-4 {
+    bottom: 18%;
+  }
+
+  .brand-home-hero .brand-hero-task {
+    top: 1rem;
+  }
+
+  .brand-home-hero .brand-hero-approval {
+    bottom: 3.65rem;
+  }
+
+  .brand-home-hero .brand-hero-footer {
+    left: 0.8rem;
+    right: 0.8rem;
+    bottom: 0.45rem;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .brand-home-hero .brand-hero-footer .brand-hero-systems {
+    order: 1;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .brand-home-hero .brand-hero-footer .brand-hero-caption {
+    order: 2;
+    max-width: 100%;
+    text-align: center;
+  }
+}
