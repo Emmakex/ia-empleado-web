@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
+import { requestDemoPath } from "../lib/conversion-handoff";
 import {
   buildTeamRecommendation,
   type BuilderPageContent,
@@ -51,29 +52,24 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
   const fitLabel = (fit: "high" | "medium" | "useful") =>
     fit === "high" ? content.fitHigh : fit === "medium" ? content.fitMedium : content.fitUseful;
 
-  const summary = useMemo(() => {
+  const handoffContext = useMemo(() => {
     if (!hasSelection) return "";
-    const lines = [
-      locale === "es" ? "Configuración generada en IA Empleado Team Builder" : "Configuration generated in IA Empleado Team Builder",
-      "",
-      `${locale === "es" ? "Sector" : "Sector"}: ${selection.sectorId ? optionLabel(options.sectors, selection.sectorId) : "—"}`,
-      `${locale === "es" ? "Problemas" : "Problems"}: ${selection.problemIds.map((id) => optionLabel(options.problems, id)).join(", ") || "—"}`,
-      `${locale === "es" ? "Departamentos" : "Departments"}: ${selection.departmentIds.map((id) => optionLabel(options.departments, id)).join(", ") || "—"}`,
-      `${locale === "es" ? "Sistemas" : "Systems"}: ${selection.systemIds.map((id) => optionLabel(options.systems, id)).join(", ") || "—"}`,
-      "",
-      `${locale === "es" ? "Equipo de referencia" : "Reference team"}: ${recommendation.referenceTeam?.name ?? "—"}`,
-      `${locale === "es" ? "Roles sugeridos" : "Suggested roles"}: ${recommendation.roles.map((role) => role.shortName).join(", ") || "—"}`,
-      "",
-      locale === "es"
-        ? "Nota: esta composición es orientativa y requiere validación técnica, de permisos, datos, excepciones y control humano."
-        : "Note: this composition is indicative and requires validation of technology, permissions, data, exceptions and human control.",
-    ];
-    return lines.join("\n");
-  }, [hasSelection, locale, options, recommendation, selection]);
+    const sector = selection.sectorId ? optionLabel(options.sectors, selection.sectorId) : null;
+    const referenceTeam = recommendation.referenceTeam?.name ?? null;
+    const roles = recommendation.roles.slice(0, 3).map((role) => role.shortName);
+    const parts = [
+      sector ? `${locale === "es" ? "Sector" : "Sector"}: ${sector}` : null,
+      referenceTeam ? `${locale === "es" ? "Equipo" : "Team"}: ${referenceTeam}` : null,
+      roles.length ? `${locale === "es" ? "Roles" : "Roles"}: ${roles.join(", ")}` : null,
+    ].filter((part): part is string => Boolean(part));
+    return parts.join(" · ");
+  }, [hasSelection, locale, options.sectors, recommendation.referenceTeam, recommendation.roles, selection.sectorId]);
 
-  const mailtoHref = hasSelection
-    ? `mailto:hola@iaempleado.com?subject=${encodeURIComponent(locale === "es" ? "IA Empleado - Configuración Team Builder" : "IA Empleado - Team Builder configuration")}&body=${encodeURIComponent(summary)}`
-    : "mailto:hola@iaempleado.com";
+  const handoffHref = requestDemoPath(locale, {
+    intent: "team",
+    source: "team-builder",
+    context: handoffContext,
+  });
 
   const applyPreset = (preset: BuilderPreset) => {
     setSelection({
@@ -308,8 +304,10 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
             )}
 
             <div className="builder-result-cta">
-              <a className="button" href={mailtoHref}>{content.emailLabel}</a>
-              <p>{content.privacyNote}</p>
+              <Link className="button" href={handoffHref} data-contextual-result-handoff="team-builder">{content.emailLabel}</Link>
+              <p>{locale === "es"
+                ? "La configuración permanece en tu navegador. Al continuar solo se transfiere a la solicitud de demo un resumen breve generado con valores del catálogo; no se envían datos personales ni texto libre."
+                : "The configuration stays in your browser. Continuing sends only a short summary built from catalog values to the demo-request page; no personal data or free text is transferred."}</p>
             </div>
           </>
         )}
