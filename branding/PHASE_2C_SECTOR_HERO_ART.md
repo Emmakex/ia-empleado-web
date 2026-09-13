@@ -1,6 +1,6 @@
 # IA Empleado — Branding Phase 2C: Sector-specific hero art
 
-Status: **implementation in progress**
+Status: **complete and production-verified — 2026-09-13**
 
 ## Goal
 
@@ -131,9 +131,24 @@ The browser gate verifies:
 - functional blocks stay contained in the hero art;
 - no horizontal page overflow on desktop or mobile.
 
+## Production verification evidence
+
+Phase 2C completed the full repository delivery contract:
+
+- implementation PR: **#49 — `feat: add sector-specific hero art`**;
+- PR head validated by **Web CI #118**, run `34733509269`;
+- PR #49 squash-merged to `main` as `3962ba00e5a8a0e7300a08ce6ce4d28bd94e2375`;
+- `main` passed **Web CI #119**, run `34734517951`;
+- Hostinger published the release marker `branding-phase-2c-sector-hero-art`;
+- **Production Verification #7**, run `34734671808`, passed directly against `https://iaempleado.com`;
+- the production suite covered geometry, role families, Team/Department collaboration compositions, sector hero art, responsive UX and accessibility;
+- production diagnostics upload was skipped because the suite completed without failure.
+
+This evidence closes every Phase 2C release criterion below.
+
 ## Release criteria
 
-Phase 2C is complete only when:
+Phase 2C is complete because:
 
 1. all four real sector deep pages use the shared sector renderer in ES and EN;
 2. the four operating signatures are distinct and semantically aligned with sector content;
@@ -141,11 +156,11 @@ Phase 2C is complete only when:
 4. static branding/sector/image contracts pass;
 5. TypeScript and production build pass;
 6. browser QA passes on all covered routes;
-7. `main` CI passes after merge;
+7. `main` CI passed after merge;
 8. Hostinger serves `branding-phase-2c-sector-hero-art`;
-9. Production Verification passes the sector-art suite against `https://iaempleado.com`;
+9. Production Verification passed the sector-art suite against `https://iaempleado.com`;
 10. production evidence is recorded here before advancing.
 
-## Next after 2C
+## Next — Branding Phase 2D
 
-After the website sector layer is production-verified, the same stable visual assets can be adapted into reusable campaign/social variants instead of creating new isolated art for each channel.
+Adapt the stable identity, role, Team/Department and sector visual grammars into reusable campaign/social variants rather than creating isolated one-off art per channel. Phase 2D should preserve the same canonical identities, truthfulness boundaries, EN/ES parity and responsive/export contracts established by the website branding system.
