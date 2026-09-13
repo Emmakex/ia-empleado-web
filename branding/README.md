@@ -32,9 +32,11 @@ Phase 2B reuses the same role grammars inside one shared multi-role composition 
 
 Phase 2C applies one shared sector-art renderer to the four actual deep-sector families in the content model: Ecommerce, Travel, Professional Services and B2B Sales. Each variant has a distinct operating signature while reusing approved character identities, Phase 2A role motifs, representative systems and explicit human-control boundaries. The current content model does not contain a standalone Retail sector, so 2C does not invent one. PR #49 merged as `3962ba00e5a8a0e7300a08ce6ce4d28bd94e2375`; Web CI #119 passed on `main`; Hostinger served `branding-phase-2c-sector-hero-art`; Production Verification #7 (`34734671808`) passed directly against `iaempleado.com`.
 
-**Branding Phase 2D — reusable campaign/social variants: Implementation in progress.**
+**Branding Phase 2D — Reusable campaign/social variants: Complete and production-verified (2026-09-13).**
 
 Phase 2D keeps the verified `1200 × 630` OG/share system intact and adds reusable generated campaign outputs at `/brand-campaign/{locale}/{format}/{surface}` for landscape `1600 × 900`, square `1080 × 1080`, portrait `1080 × 1350` and story `1080 × 1920`. It reuses the same canonical character registry and bilingual semantic surfaces, keeps ROI character-neutral, and validates invalid formats/surfaces instead of falling back silently.
+
+The generated route runs on Node.js and rasterizes the approved WebP/SVG masters in memory with Sharp before rendering them through `ImageResponse`; the website's normal canonical portrait delivery remains unchanged. PR #51 was validated by Web CI #128, squash-merged to `main` as `745d3d1f6371cdb8200afd7a7aa98cb8ff8cc702`, revalidated by Web CI #129 (`34744316003`), deployed with marker `branding-phase-2d-campaign-social-variants`, and Production Verification #9 (`34744481711`) passed directly against `iaempleado.com`.
 
 ## Folder contract
 
@@ -44,7 +46,7 @@ Phase 2D keeps the verified `1200 × 630` OG/share system intact and adds reusab
 - `PHASE_2_ROLE_VISUAL_FAMILIES.md` — role-family mapping, implementation rules and Phase 2A production-verification evidence.
 - `PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md` — shared Team/Department composition contract and Phase 2B production-verification evidence.
 - `PHASE_2C_SECTOR_HERO_ART.md` — four-sector hero-art contract, QA scope and production-verification evidence.
-- `PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md` — reusable multi-format campaign/social generation contract and release criteria.
+- `PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md` — reusable multi-format campaign/social generation contract and production-verification evidence.
 - `SOCIAL_MEDIA_SYSTEM.md` — share, campaign, frame and export rules.
 - `tokens.json` — portable design tokens for web, product, decks and future apps.
 - `../public/branding/` — production-ready SVG/assets served by the website.
