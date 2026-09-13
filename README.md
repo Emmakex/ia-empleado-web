@@ -36,6 +36,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`docs/PHASE_6B_SECTORS_USE_CASES.md`](docs/PHASE_6B_SECTORS_USE_CASES.md) — sector/use-case content model, truthfulness, SEO/GEO and release contract.
 - [`docs/PHASE_6C_INTEGRATIONS_DEPARTMENTS.md`](docs/PHASE_6C_INTEGRATIONS_DEPARTMENTS.md) — department/integration graph, authority boundaries, SEO/GEO and release contract.
 - [`docs/PHASE_7A_CONVERSION_HANDOFF.md`](docs/PHASE_7A_CONVERSION_HANDOFF.md) — bilingual high-intent conversion route, context and truthful email-transport contract with production-verification evidence.
+- [`docs/PHASE_7B_CONTEXTUAL_RESULT_HANDOFF.md`](docs/PHASE_7B_CONTEXTUAL_RESULT_HANDOFF.md) — bounded Team Builder / Process Analyzer result-to-conversion handoff contract with production-verification evidence.
 
 ## Strategic narrative
 
@@ -147,6 +148,16 @@ Phase 7A provides one bilingual high-intent conversion destination at `/solicita
 The handoff is deliberately truthful: contact details stay in the browser and the primary action prepares a structured message to `hola@iaempleado.com` in the visitor's email application. The website does not claim that it stored a lead, created a CRM record or delivered an email, and no CRM/webhook/backend transport is implied.
 
 PR #53 was validated by Web CI #132 (`34746767088`) and squash-merged to `main` as `c84768217190688394728b7a0f41d63e4691dcc8`. Web CI #133 (`34747014123`) passed on `main`; Hostinger served `web-phase-7a-conversion-handoff`; Production Verification #11 (`34747171187`) passed directly against `iaempleado.com`, including the bilingual conversion handoff, responsive/mobile behavior, sanitization contract, campaign media and existing geometry/accessibility regressions. Full evidence is recorded in [`docs/PHASE_7A_CONVERSION_HANDOFF.md`](docs/PHASE_7A_CONVERSION_HANDOFF.md).
+
+### Web Phase 7B — Contextual Result Handoff
+
+**Complete and production-verified — 2026-09-13.**
+
+Phase 7B connects Team Builder and Process Analyzer results to the shared bilingual request-demo route instead of letting those interactive tools bypass it with their own raw `mailto:` actions. The handoff keeps the Phase 7A URL model unchanged: only `intent`, `source` and a normalized `context` of at most 160 characters are used.
+
+Team Builder transfers only product-controlled catalog context: selected sector when present, closest reference team when present and up to three recommended role labels. Process Analyzer transfers only the predefined process pattern, up to two predefined friction labels and the count of individually marked steps. No personal data, free text, full interactive state, storage, CRM submission or runtime dependency is introduced.
+
+PR #55 was validated by Web CI #136 (`34749517271`) and squash-merged to `main` as `e7724d7a219caa37a20827bbe49dc05002e5e3bf`. Web CI #137 (`34749674757`) passed on `main`; Hostinger served `web-phase-7b-contextual-result-handoff`; Production Verification #13 (`34749824213`) passed directly against `iaempleado.com`, including the contextual result handoff in ES/EN and mobile plus the existing conversion, campaign, geometry and accessibility regressions. Full evidence is recorded in [`docs/PHASE_7B_CONTEXTUAL_RESULT_HANDOFF.md`](docs/PHASE_7B_CONTEXTUAL_RESULT_HANDOFF.md).
 
 ### Branding Phase 1 — Core visual system
 
