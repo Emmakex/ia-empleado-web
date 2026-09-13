@@ -28,9 +28,11 @@ Phase 2A deepens the existing identity with reusable role-specific visual gramma
 
 Phase 2B reuses the same role grammars inside one shared multi-role composition for deep Team and Department pages. The composition makes handoffs, shared systems and human-control boundaries visible while preserving the canonical character identities and existing product authority model. Hostinger release `branding-phase-2b-team-department-compositions` passed production verification.
 
-**Branding Phase 2C — Sector-specific hero art: Implementation in progress.**
+**Branding Phase 2C — Sector-specific hero art: Complete and production-verified (2026-09-13).**
 
-Phase 2C applies one shared sector-art renderer to the four actual deep-sector families in the content model: Ecommerce, Travel, Professional Services and B2B Sales. Each variant gets a distinct operating signature while reusing approved character identities, Phase 2A role motifs, representative systems and explicit human-control boundaries. The current content model does not contain a standalone Retail sector, so 2C does not invent one.
+Phase 2C applies one shared sector-art renderer to the four actual deep-sector families in the content model: Ecommerce, Travel, Professional Services and B2B Sales. Each variant has a distinct operating signature while reusing approved character identities, Phase 2A role motifs, representative systems and explicit human-control boundaries. The current content model does not contain a standalone Retail sector, so 2C does not invent one. PR #49 merged as `3962ba00e5a8a0e7300a08ce6ce4d28bd94e2375`; Web CI #119 passed on `main`; Hostinger served `branding-phase-2c-sector-hero-art`; Production Verification #7 (`34734671808`) passed directly against `iaempleado.com`.
+
+**Next: Branding Phase 2D — reusable campaign/social variants.** Reuse the stable identity, role, Team/Department and sector grammars across exportable campaign/social compositions instead of creating one-off channel art.
 
 ## Folder contract
 
@@ -39,7 +41,7 @@ Phase 2C applies one shared sector-art renderer to the four actual deep-sector f
 - `PHASE_1_VALIDATION.md` — CI and production-browser evidence closing Branding Phase 1.
 - `PHASE_2_ROLE_VISUAL_FAMILIES.md` — role-family mapping, implementation rules and Phase 2A production-verification evidence.
 - `PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md` — shared Team/Department composition contract and Phase 2B production-verification evidence.
-- `PHASE_2C_SECTOR_HERO_ART.md` — four-sector hero-art contract, QA scope and release criteria.
+- `PHASE_2C_SECTOR_HERO_ART.md` — four-sector hero-art contract, QA scope and production-verification evidence.
 - `tokens.json` — portable design tokens for web, product, decks and future apps.
 - `../public/branding/` — production-ready SVG/assets served by the website.
 - `../app/brand-system.css` — active web implementation of the brand tokens and visual rules.
