@@ -98,6 +98,9 @@ jobs:
       - name: Lead intake foundation contract
         run: node scripts/check-lead-intake.mjs
 
+      - name: Hostinger SMTP lead delivery contract
+        run: node scripts/check-smtp-lead-delivery.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
