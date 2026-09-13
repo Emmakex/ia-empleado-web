@@ -1,0 +1,601 @@
+/* Branding Phase 2C — sector-specific hero art built from the shared IA Empleado visual grammar. */
+
+.brand-sector-hero-art {
+  --sector-primary: #5b5ff5;
+  --sector-secondary: #24c9c2;
+  --sector-soft: #eef1ff;
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 1.15rem;
+  border: 1px solid color-mix(in srgb, var(--sector-primary) 18%, #dce3ef);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--sector-primary) 15%, transparent), transparent 32%),
+    radial-gradient(circle at 12% 88%, color-mix(in srgb, var(--sector-secondary) 12%, transparent), transparent 32%),
+    linear-gradient(145deg, rgba(255,255,255,.995), color-mix(in srgb, var(--sector-soft) 72%, #fff));
+  box-shadow: 0 28px 72px rgba(36, 45, 90, .13);
+}
+
+.brand-sector-hero-art::before {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-image: url('/branding/orbit-pattern.svg');
+  background-position: center;
+  background-size: cover;
+  opacity: .065;
+  content: "";
+  pointer-events: none;
+}
+
+.brand-sector-hero-art[data-sector-art="ecommerce"] {
+  --sector-primary: #4f63f5;
+  --sector-secondary: #20bfa9;
+  --sector-soft: #edf4ff;
+}
+
+.brand-sector-hero-art[data-sector-art="travel"] {
+  --sector-primary: #0e9f9f;
+  --sector-secondary: #5b7df7;
+  --sector-soft: #e9fbf8;
+}
+
+.brand-sector-hero-art[data-sector-art="professional-services"] {
+  --sector-primary: #7558e8;
+  --sector-secondary: #24b9c8;
+  --sector-soft: #f2efff;
+}
+
+.brand-sector-hero-art[data-sector-art="sales"] {
+  --sector-primary: #d78b0f;
+  --sector-secondary: #675cf4;
+  --sector-soft: #fff4df;
+}
+
+.brand-sector-art-glow {
+  position: absolute;
+  z-index: -2;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 999px;
+  filter: blur(56px);
+  opacity: .24;
+  pointer-events: none;
+}
+
+.brand-sector-art-glow.glow-a {
+  top: -5rem;
+  right: -4rem;
+  background: color-mix(in srgb, var(--sector-primary) 64%, transparent);
+}
+
+.brand-sector-art-glow.glow-b {
+  bottom: -5rem;
+  left: -4rem;
+  background: color-mix(in srgb, var(--sector-secondary) 54%, transparent);
+}
+
+.brand-sector-art-heading {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .8rem;
+  min-width: 0;
+}
+
+.brand-sector-art-heading > span {
+  display: inline-flex;
+  align-items: center;
+  padding: .4rem .62rem;
+  border: 1px solid color-mix(in srgb, var(--sector-primary) 17%, #dbe3ef);
+  border-radius: 999px;
+  background: rgba(255,255,255,.86);
+  color: color-mix(in srgb, var(--sector-primary) 82%, #334155);
+  font-size: .64rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.brand-sector-art-heading > strong {
+  max-width: 15rem;
+  overflow: hidden;
+  color: #172033;
+  font-size: .9rem;
+  line-height: 1.2;
+  text-align: right;
+  text-overflow: ellipsis;
+}
+
+.brand-sector-art-body {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(240px, 1.1fr);
+  gap: 1rem;
+  min-height: 0;
+}
+
+.brand-sector-art-roles {
+  display: grid;
+  align-content: center;
+  gap: .5rem;
+  min-width: 0;
+}
+
+.brand-sector-art-person {
+  --person-soft: #eef1ff;
+  display: grid;
+  grid-template-columns: 4.7rem minmax(0,1fr);
+  min-width: 0;
+  min-height: 6.3rem;
+  overflow: hidden;
+  border: 1px solid rgba(148,163,184,.2);
+  border-radius: 1.2rem;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), color-mix(in srgb, var(--person-soft) 70%, #fff));
+  box-shadow: 0 12px 30px rgba(15,23,42,.075);
+}
+
+.brand-sector-art-person[data-accent="blue"] { --person-soft: #eaf4ff; box-shadow: inset 3px 0 0 #60a5fa, 0 12px 30px rgba(15,23,42,.075); }
+.brand-sector-art-person[data-accent="violet"] { --person-soft: #f0edff; box-shadow: inset 3px 0 0 #8b5cf6, 0 12px 30px rgba(15,23,42,.075); }
+.brand-sector-art-person[data-accent="teal"] { --person-soft: #e9faf5; box-shadow: inset 3px 0 0 #14b8a6, 0 12px 30px rgba(15,23,42,.075); }
+.brand-sector-art-person[data-accent="amber"] { --person-soft: #fff5e4; box-shadow: inset 3px 0 0 #f59e0b, 0 12px 30px rgba(15,23,42,.075); }
+
+.brand-sector-art-portrait {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,.56);
+}
+
+.brand-sector-art-portrait img {
+  position: absolute;
+  left: 50%;
+  bottom: -.2rem;
+  width: 5.2rem;
+  height: 6.5rem;
+  max-width: none;
+  transform: translateX(-50%);
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.brand-sector-art-person-copy {
+  display: grid;
+  align-content: center;
+  gap: .12rem;
+  min-width: 0;
+  padding: .65rem .7rem .65rem .65rem;
+}
+
+.brand-sector-art-person-copy strong {
+  color: #172033;
+  font-size: .78rem;
+}
+
+.brand-sector-art-person-copy small {
+  overflow: hidden;
+  color: #6b7280;
+  font-size: .58rem;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-sector-art-person-copy i {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: .18rem;
+  overflow: hidden;
+  color: color-mix(in srgb, var(--sector-primary) 82%, #334155);
+  font-size: .53rem;
+  font-style: normal;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-sector-art-neutral-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.brand-sector-art-neutral-list span {
+  max-width: 100%;
+  overflow: hidden;
+  padding: .36rem .55rem;
+  border: 1px dashed color-mix(in srgb, var(--sector-primary) 26%, #cbd5e1);
+  border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  color: #64748b;
+  font-size: .55rem;
+  font-weight: 780;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-sector-art-operating-view {
+  display: grid;
+  min-width: 0;
+  align-content: center;
+  gap: .75rem;
+}
+
+.brand-sector-art-signature {
+  position: relative;
+  display: grid;
+  grid-template-columns: 6.4rem minmax(0,1fr);
+  min-height: 11.5rem;
+  align-items: center;
+  overflow: hidden;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--sector-primary) 18%, #dce3ef);
+  border-radius: 1.45rem;
+  background:
+    radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--sector-primary) 11%, transparent), transparent 34%),
+    rgba(255,255,255,.87);
+  box-shadow: inset 0 1px rgba(255,255,255,.9), 0 14px 34px rgba(15,23,42,.06);
+}
+
+.brand-sector-art-signature > div:last-child {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  gap: .28rem;
+  min-width: 0;
+}
+
+.brand-sector-art-signature strong {
+  color: #172033;
+  font-size: .95rem;
+}
+
+.brand-sector-art-signature small {
+  color: #667085;
+  font-size: .64rem;
+  line-height: 1.4;
+}
+
+.brand-sector-signature-layer {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--sector-primary) 20%, transparent);
+  pointer-events: none;
+}
+
+.brand-sector-signature-mark {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  width: 5.25rem;
+  height: 5.25rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--sector-primary) 22%, #dce3ef);
+  border-radius: 1.35rem;
+  background: color-mix(in srgb, var(--sector-soft) 76%, #fff);
+  box-shadow: 0 16px 38px color-mix(in srgb, var(--sector-primary) 14%, transparent);
+}
+
+.brand-sector-signature-mark span {
+  position: absolute;
+  display: block;
+}
+
+/* Ecommerce: order card + parcel + movement. */
+.brand-sector-art-signature[data-sector-signature="ecommerce"] .brand-sector-signature-layer.layer-a {
+  left: .7rem; top: 1.2rem; width: 5.7rem; height: 3.2rem; border-radius: .8rem; transform: rotate(-8deg);
+}
+.brand-sector-art-signature[data-sector-signature="ecommerce"] .brand-sector-signature-layer.layer-b {
+  left: 1.2rem; bottom: 1rem; width: 5.2rem; height: 3rem; border-radius: .8rem; transform: rotate(7deg);
+}
+.brand-sector-art-signature[data-sector-signature="ecommerce"] .brand-sector-signature-mark span:nth-child(1) {
+  width: 2.7rem; height: 1.8rem; border: 2px solid var(--sector-primary); border-radius: .4rem;
+}
+.brand-sector-art-signature[data-sector-signature="ecommerce"] .brand-sector-signature-mark span:nth-child(2) {
+  left: 1.25rem; bottom: 1.05rem; width: .58rem; height: .58rem; border: 2px solid var(--sector-secondary); border-radius: 50%;
+  box-shadow: 2.15rem 0 0 -.08rem #fff, 2.15rem 0 0 .04rem var(--sector-secondary);
+}
+.brand-sector-art-signature[data-sector-signature="ecommerce"] .brand-sector-signature-mark span:nth-child(3) {
+  right: .8rem; top: .8rem; width: 1rem; height: 1rem; border-top: 2px solid var(--sector-primary); border-right: 2px solid var(--sector-primary); transform: rotate(45deg);
+}
+
+/* Travel: route arc + locator nodes. */
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-layer.layer-a {
+  left: .7rem; top: 1.1rem; width: 6rem; height: 6rem; border-style: dashed; border-radius: 50%; clip-path: inset(0 0 45% 0);
+}
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-layer.layer-b {
+  left: 1.4rem; bottom: 1.2rem; width: 4.8rem; height: 2.1rem; border-radius: 999px;
+}
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-mark span:nth-child(1),
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-mark span:nth-child(2),
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-mark span:nth-child(3) {
+  width: .7rem; height: .7rem; border: 2px solid var(--sector-primary); border-radius: 50%; background:#fff;
+}
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-mark span:nth-child(1) { left: .85rem; bottom: 1.25rem; }
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-mark span:nth-child(2) { left: 2.25rem; top: .9rem; border-color: var(--sector-secondary); }
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-mark span:nth-child(3) { right: .85rem; bottom: 1.25rem; }
+.brand-sector-art-signature[data-sector-signature="travel"] .brand-sector-signature-mark::after {
+  position:absolute; left:1.15rem; right:1.15rem; top:2.55rem; border-top:2px dashed color-mix(in srgb,var(--sector-primary) 70%,transparent); content:""; transform:rotate(-8deg);
+}
+
+/* Professional services: controlled document stack. */
+.brand-sector-art-signature[data-sector-signature="professional-services"] .brand-sector-signature-layer.layer-a {
+  left: 1rem; top: 1rem; width: 5.2rem; height: 6.4rem; border-radius: .7rem; transform: rotate(-7deg);
+}
+.brand-sector-art-signature[data-sector-signature="professional-services"] .brand-sector-signature-layer.layer-b {
+  left: 1.55rem; top: 1.35rem; width: 5rem; height: 6.2rem; border-radius: .7rem; transform: rotate(5deg);
+}
+.brand-sector-art-signature[data-sector-signature="professional-services"] .brand-sector-signature-mark span:nth-child(1) {
+  width: 2.65rem; height: 3.25rem; border: 2px solid var(--sector-primary); border-radius: .35rem;
+}
+.brand-sector-art-signature[data-sector-signature="professional-services"] .brand-sector-signature-mark span:nth-child(2) {
+  width: 1.65rem; height: 1px; background: var(--sector-secondary); box-shadow: 0 .65rem 0 var(--sector-secondary), 0 1.3rem 0 var(--sector-secondary);
+}
+.brand-sector-art-signature[data-sector-signature="professional-services"] .brand-sector-signature-mark span:nth-child(3) {
+  right: .75rem; bottom: .75rem; width: 1.25rem; height: 1.25rem; border-radius: 50%; background:#dcfce7;
+}
+.brand-sector-art-signature[data-sector-signature="professional-services"] .brand-sector-signature-mark span:nth-child(3)::after {
+  position:absolute; left:.34rem; top:.22rem; width:.42rem; height:.7rem; border-right:2px solid #059669; border-bottom:2px solid #059669; content:""; transform:rotate(42deg);
+}
+
+/* B2B sales: narrowing pipeline with governed handoff. */
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-layer.layer-a {
+  left: .8rem; top: 1.2rem; width: 5.8rem; height: 1.9rem; border-radius: .6rem;
+}
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-layer.layer-b {
+  left: 1.35rem; top: 3.45rem; width: 4.7rem; height: 1.9rem; border-radius: .6rem;
+}
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-layer.layer-c {
+  left: 2rem; top: 5.7rem; width: 3.4rem; height: 1.9rem; border-radius: .6rem;
+}
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-mark span:nth-child(1),
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-mark span:nth-child(2),
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-mark span:nth-child(3) {
+  height: .5rem; border-radius: 999px; background: linear-gradient(90deg,var(--sector-primary),var(--sector-secondary));
+}
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-mark span:nth-child(1) { top:1.2rem; width:3.1rem; }
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-mark span:nth-child(2) { top:2.35rem; width:2.35rem; }
+.brand-sector-art-signature[data-sector-signature="sales"] .brand-sector-signature-mark span:nth-child(3) { top:3.5rem; width:1.55rem; }
+
+.brand-sector-art-stage-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: .32rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brand-sector-art-stage-track li {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  gap: .15rem;
+  padding: .55rem .5rem;
+  border: 1px solid color-mix(in srgb, var(--sector-primary) 14%, #e2e8f0);
+  border-radius: .85rem;
+  background: rgba(255,255,255,.82);
+}
+
+.brand-sector-art-stage-track li:not(:last-child)::after {
+  position: absolute;
+  right: -.27rem;
+  top: 50%;
+  z-index: 3;
+  width: .4rem;
+  height: .4rem;
+  border-top: 1px solid var(--sector-primary);
+  border-right: 1px solid var(--sector-primary);
+  background: #fff;
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.brand-sector-art-stage-track span {
+  color: color-mix(in srgb, var(--sector-primary) 80%, #475569);
+  font-size: .5rem;
+  font-weight: 900;
+}
+
+.brand-sector-art-stage-track strong {
+  overflow: hidden;
+  color: #475569;
+  font-size: .55rem;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+}
+
+.brand-sector-art-footer {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: .65rem;
+  align-items: center;
+}
+
+.brand-sector-art-systems {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: .45rem;
+}
+
+.brand-sector-art-systems > strong {
+  flex: 0 0 auto;
+  color: #64748b;
+  font-size: .54rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.brand-sector-art-systems > div {
+  display: flex;
+  min-width: 0;
+  gap: .28rem;
+}
+
+.brand-sector-art-systems span {
+  min-width: 0;
+  max-width: 6.2rem;
+  overflow: hidden;
+  padding: .3rem .46rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  color: #64748b;
+  font-size: .52rem;
+  font-weight: 780;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-sector-art-human {
+  display: inline-flex;
+  max-width: 13rem;
+  align-items: center;
+  gap: .42rem;
+  padding: .4rem .58rem;
+  border: 1px solid rgba(16,185,129,.2);
+  border-radius: 999px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 9px 22px rgba(15,23,42,.06);
+}
+
+.brand-sector-art-human span {
+  display: grid;
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #059669;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.brand-sector-art-human strong {
+  overflow: hidden;
+  color: #475569;
+  font-size: .57rem;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 760px) {
+  .brand-sector-hero-art {
+    min-height: auto;
+    padding: 1rem;
+    border-radius: 1.6rem;
+  }
+
+  .brand-sector-art-heading {
+    align-items: flex-start;
+  }
+
+  .brand-sector-art-heading > strong {
+    max-width: 58%;
+    white-space: normal;
+  }
+
+  .brand-sector-art-body {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-sector-art-roles {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .brand-sector-art-person {
+    grid-template-columns: 3.85rem minmax(0,1fr);
+    min-height: 5.5rem;
+  }
+
+  .brand-sector-art-portrait img {
+    width: 4.5rem;
+    height: 5.7rem;
+  }
+
+  .brand-sector-art-neutral-list {
+    grid-column: 1 / -1;
+  }
+
+  .brand-sector-art-signature {
+    grid-template-columns: 5.7rem minmax(0,1fr);
+    min-height: 9.5rem;
+  }
+
+  .brand-sector-signature-mark {
+    width: 4.7rem;
+    height: 4.7rem;
+  }
+
+  .brand-sector-art-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-sector-art-systems,
+  .brand-sector-art-systems > div {
+    flex-wrap: wrap;
+  }
+
+  .brand-sector-art-human {
+    width: fit-content;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .brand-sector-art-heading {
+    display: grid;
+  }
+
+  .brand-sector-art-heading > strong {
+    max-width: none;
+    text-align: left;
+  }
+
+  .brand-sector-art-roles {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-sector-art-signature {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .brand-sector-art-stage-track {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .brand-sector-art-stage-track li:nth-child(2)::after {
+    display: none;
+  }
+
+  .brand-sector-art-stage-track li:not(:last-child)::after {
+    right: -.27rem;
+  }
+
+  .brand-sector-art-systems {
+    display: grid;
+    justify-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-sector-hero-art *,
+  .brand-sector-hero-art *::before,
+  .brand-sector-hero-art *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
