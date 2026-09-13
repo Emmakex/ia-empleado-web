@@ -2,7 +2,7 @@ import type { Locale } from "../../../../../lib/i18n";
 import { isBrandPreviewSurface } from "../../../../../lib/brand-social-previews";
 import { isBrandCampaignFormat, renderBrandCampaignMedia } from "../../../../../lib/brand-campaign-media";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function GET(
   _request: Request,
@@ -19,5 +19,5 @@ export async function GET(
     return new Response("Unknown campaign surface", { status: 404 });
   }
 
-  return renderBrandCampaignMedia(locale, format, surface);
+  return await renderBrandCampaignMedia(locale, format, surface);
 }
