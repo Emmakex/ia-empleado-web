@@ -174,7 +174,7 @@ test.describe("Phase 8A interaction UX", () => {
     const email = page.getByLabel("Email de contacto");
     const need = page.getByLabel("¿Qué proceso, equipo o necesidad quieres evaluar?");
     const consent = page.getByRole("checkbox");
-    const submit = page.getByRole("button", { name: "Enviar solicitud" });
+    const submit = page.locator("[data-lead-submit]");
     const form = page.locator(".lead-handoff-form");
 
     await submit.click();
