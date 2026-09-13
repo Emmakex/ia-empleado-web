@@ -4,6 +4,7 @@ const files = {
   renderer: "lib/brand-campaign-media.tsx",
   previewRenderer: "lib/brand-social-previews.tsx",
   route: "app/brand-campaign/[locale]/[format]/[surface]/route.tsx",
+  packageJson: "package.json",
   landscape: "public/branding/media/demo-frame.svg",
   square: "public/branding/media/social-square-frame.svg",
   portrait: "public/branding/media/portrait-frame.svg",
@@ -25,6 +26,7 @@ const read = (path) => fs.readFileSync(path, "utf8");
 const renderer = read(files.renderer);
 const previewRenderer = read(files.previewRenderer);
 const route = read(files.route);
+const packageJson = JSON.parse(read(files.packageJson));
 const phase = read(files.phase);
 const guide = read(files.guide);
 const browser = read(files.browser);
@@ -58,10 +60,30 @@ for (const token of [
   "getBrandCharacters",
   "brandCampaignUrl",
   "renderBrandCampaignMedia",
+  "rasterAsset",
+  "sharp(source).png()",
+  "rasterAsset(campaignFrames[format])",
+  "rasterAsset(character.asset)",
   'roi: {',
   "characterIds: []",
 ]) {
   if (!renderer.includes(token)) throw new Error(`Campaign renderer missing contract token: ${token}`);
+}
+
+if (renderer.includes("translate(calc(")) {
+  throw new Error("Campaign renderer reintroduced calc-based transforms unsupported by ImageResponse/Satori");
+}
+if (renderer.includes("zIndex:")) {
+  throw new Error("Campaign renderer reintroduced z-index, which is unsupported by ImageResponse/Satori");
+}
+if (packageJson.dependencies?.sharp !== "0.35.4") {
+  throw new Error("Campaign media must pin sharp 0.35.4 for deterministic canonical asset rasterization");
+}
+if (!route.includes('export const runtime = "nodejs"')) {
+  throw new Error("Campaign media route must use the Node runtime for Sharp rasterization");
+}
+if (!route.includes("return await renderBrandCampaignMedia")) {
+  throw new Error("Campaign route must await the async rasterized ImageResponse renderer");
 }
 
 const surfaces = [
@@ -136,4 +158,4 @@ if (!productionWorkflow.includes("tests/campaign-media.spec.ts")) {
   throw new Error("Production verification does not include campaign media browser QA");
 }
 
-console.log("Campaign media contract OK: four reusable formats, bilingual surfaces, claim-safe rendering and production verification protected.");
+console.log("Campaign media contract OK: four reusable formats, canonical in-memory rasterization, bilingual surfaces, claim-safe rendering and production verification protected.");
