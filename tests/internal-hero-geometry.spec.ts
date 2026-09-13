@@ -17,6 +17,15 @@ function areSeparated(a: Box, b: Box, gap = 0) {
   );
 }
 
+function isContained(inner: Box, outer: Box, tolerance = 1) {
+  return (
+    inner.x >= outer.x - tolerance &&
+    inner.y >= outer.y - tolerance &&
+    inner.x + inner.width <= outer.x + outer.width + tolerance &&
+    inner.y + inner.height <= outer.y + outer.height + tolerance
+  );
+}
+
 const desktopHeroRoutes = [
   {
     route: "/equipos-ia",
@@ -55,6 +64,63 @@ test("desktop internal hero columns start on the same visual row", async ({ page
     });
   }
 });
+
+for (const viewport of [
+  { label: "desktop", width: 1648, height: 1000, gap: 4 },
+  { label: "mobile", width: 390, height: 844, gap: 2 },
+]) {
+  test(`homepage hero status rails remain collision-free on ${viewport.label}`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await page.goto("/", { waitUntil: "networkidle" });
+
+    const stageLocator = page.locator(".brand-home-hero .brand-hero-stage");
+    const stage = await requiredBox(stageLocator, `${viewport.label}: home hero stage`);
+    const task = await requiredBox(stageLocator.locator(".brand-hero-task"), `${viewport.label}: task rail`);
+    const approval = await requiredBox(stageLocator.locator(".brand-hero-approval"), `${viewport.label}: approval rail`);
+    const footer = await requiredBox(stageLocator.locator(".brand-hero-footer"), `${viewport.label}: footer rail`);
+    const caption = await requiredBox(stageLocator.locator(".brand-hero-caption"), `${viewport.label}: footer caption`);
+    const systems = await requiredBox(stageLocator.locator(".brand-hero-systems"), `${viewport.label}: system chips`);
+    const nodes = stageLocator.locator(".brand-character-node");
+
+    expect(await nodes.count(), `${viewport.label}: all four canonical character cards must render`).toBe(4);
+
+    for (const [label, box] of [
+      ["task", task],
+      ["approval", approval],
+      ["footer", footer],
+      ["caption", caption],
+      ["systems", systems],
+    ] as const) {
+      expect(isContained(box, stage), `${viewport.label}: ${label} must stay inside the hero panel`).toBeTruthy();
+    }
+
+    for (let index = 0; index < 2; index += 1) {
+      const topNode = await requiredBox(nodes.nth(index), `${viewport.label}: top character ${index + 1}`);
+      expect(
+        areSeparated(task, topNode, viewport.gap),
+        `${viewport.label}: task rail must not touch top character ${index + 1}`,
+      ).toBeTruthy();
+    }
+
+    for (let index = 2; index < 4; index += 1) {
+      const lowerNode = await requiredBox(nodes.nth(index), `${viewport.label}: lower character ${index + 1}`);
+      expect(
+        areSeparated(approval, lowerNode, viewport.gap),
+        `${viewport.label}: approval rail must not cover lower character ${index + 1}`,
+      ).toBeTruthy();
+    }
+
+    expect(
+      areSeparated(approval, footer, viewport.gap),
+      `${viewport.label}: approval rail must stay above the footer rail`,
+    ).toBeTruthy();
+    expect(
+      areSeparated(caption, systems, viewport.gap),
+      `${viewport.label}: workflow caption and system chips must not overlap`,
+    ).toBeTruthy();
+  });
+}
 
 test("employee catalog portraits keep a dedicated label footer", async ({ page }) => {
   await page.setViewportSize({ width: 1648, height: 1000 });
