@@ -9,8 +9,6 @@ const files = {
   env: ".env.example",
   test: "tests/lead-intake.spec.ts",
   phase: "docs/PHASE_7C_LEAD_INTAKE_PIPELINE.md",
-  esLayout: "app/(es)/layout.tsx",
-  enLayout: "app/(en)/en/layout.tsx",
   production: ".github/workflows/production-verify.yml",
 };
 
@@ -28,8 +26,6 @@ const css = read(files.css);
 const env = read(files.env);
 const test = read(files.test);
 const phase = read(files.phase);
-const esLayout = read(files.esLayout);
-const enLayout = read(files.enLayout);
 const production = read(files.production);
 
 for (const token of [
@@ -135,18 +131,8 @@ for (const phrase of [
   if (!phase.includes(phrase)) throw new Error(`Phase 7C documentation missing contract phrase: ${phrase}`);
 }
 
-const release = '"ia-web-release": "web-phase-7c2-hostinger-smtp"';
-for (const [label, layout] of [["ES", esLayout], ["EN", enLayout]]) {
-  if (!layout.includes(release)) {
-    throw new Error(`${label} layout is not marked for the current Web Phase 7C2 SMTP release`);
-  }
-}
-
-if (!production.includes("web-phase-7c2-hostinger-smtp")) {
-  throw new Error("Production verification is not waiting for the current 7C2 SMTP release marker");
-}
 if (!production.includes("tests/lead-intake.spec.ts")) {
   throw new Error("Production verification does not include lead intake QA");
 }
 
-console.log("Lead intake contract OK: validation, consent, safe transport selection, truthful fallback and production verification protected.");
+console.log("Lead intake contract OK: validation, consent, safe transport selection, truthful fallback and production QA coverage protected independently of the active release marker.");
