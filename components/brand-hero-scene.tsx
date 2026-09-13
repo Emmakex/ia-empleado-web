@@ -84,15 +84,16 @@ export function BrandHeroScene({ locale, visualLabel, systems }: BrandHeroSceneP
         <span><strong>{copy.approval}</strong><small>{copy.approvalDetail}</small></span>
       </div>
 
-      <div className="brand-hero-systems" aria-hidden="true">
-        {systems.map((system) => <span key={system}>{system}</span>)}
-      </div>
-
       <div className="brand-hero-result" aria-hidden="true">
         <span>↗</span>{copy.result}
       </div>
 
-      <p className="brand-hero-caption" aria-hidden="true">{visualLabel}</p>
+      <div className="brand-hero-footer" aria-hidden="true">
+        <p className="brand-hero-caption">{visualLabel}</p>
+        <div className="brand-hero-systems">
+          {systems.map((system) => <span key={system}>{system}</span>)}
+        </div>
+      </div>
     </div>
   );
 }
