@@ -10,6 +10,7 @@ import type {
 } from "../lib/process-analyzer";
 import type { Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
+import { requestDemoPath } from "../lib/conversion-handoff";
 import { BrandCharacterImage } from "./brand-character-image";
 
 type ProcessAnalyzerProps = {
@@ -59,21 +60,18 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
     .map((employee) => getBrandCharacterForProfileKey(employee.key, locale))
     .filter((character): character is NonNullable<typeof character> => Boolean(character));
   const selectedPainLabels = painOptions.filter((option) => selectedPains.includes(option.value)).map((option) => option.label);
-  const bottleneckLabels = process.steps.filter((step) => bottlenecks.includes(step.id)).map((step) => step.currentTitle);
-  const emailBody = [
-    locale === "es" ? "Análisis orientativo de proceso - IA Empleado" : "Indicative process analysis - IA Empleado",
-    "",
-    `${locale === "es" ? "Proceso" : "Process"}: ${process.label}`,
-    `${locale === "es" ? "Cuellos generales" : "General bottlenecks"}: ${selectedPainLabels.length ? selectedPainLabels.join(", ") : "-"}`,
-    `${locale === "es" ? "Pasos marcados" : "Marked steps"}: ${bottleneckLabels.length ? bottleneckLabels.join(" | ") : "-"}`,
-    `${locale === "es" ? "Empleados IA" : "AI Employees"}: ${process.employees.map((employee) => employee.shortName).join(", ")}`,
-    `${locale === "es" ? "Sistemas a evaluar" : "Systems to evaluate"}: ${process.systems.join(", ")}`,
-    "",
-    locale === "es"
-      ? "Quiero revisar este flujo con un discovery técnico y validar datos, integraciones, excepciones, permisos y aprobaciones."
-      : "I want to review this workflow through technical discovery and validate data, integrations, exceptions, permissions and approvals.",
-  ].join("\n");
-  const mailto = `mailto:hola@iaempleado.com?subject=${encodeURIComponent(`IA Empleado - ${process.label}`)}&body=${encodeURIComponent(emailBody)}`;
+  const handoffContext = [
+    process.label,
+    selectedPainLabels.length
+      ? selectedPainLabels.slice(0, 2).join(", ")
+      : (locale === "es" ? "patrón completo" : "full reference pattern"),
+    locale === "es" ? `${bottlenecks.length} pasos marcados` : `${bottlenecks.length} marked steps`,
+  ].join(" · ");
+  const handoffHref = requestDemoPath(locale, {
+    intent: "process",
+    source: "process-analyzer",
+    context: handoffContext,
+  });
 
   return (
     <div className="process-analyzer-shell brand-process-analyzer-shell">
@@ -239,10 +237,12 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
           </div>
         </div>
         <div className="process-summary-actions">
-          <a className="button" href={mailto}>{content.emailLabel}</a>
+          <Link className="button" href={handoffHref} data-contextual-result-handoff="process-analyzer">{content.emailLabel}</Link>
           <button type="button" className="button button-ghost" onClick={() => { setSelectedPains([]); setBottlenecks([]); }}>{content.resetLabel}</button>
         </div>
-        <p className="process-privacy-note">{content.privacyNote}</p>
+        <p className="process-privacy-note">{locale === "es"
+          ? "El análisis permanece en tu navegador. Al continuar solo se transfiere a la solicitud de demo el patrón elegido, hasta dos fricciones predefinidas y el número de pasos marcados; no se envían datos personales ni texto libre."
+          : "The analysis stays in your browser. Continuing sends only the selected reference pattern, up to two predefined bottlenecks and the marked-step count to the demo-request page; no personal data or free text is transferred."}</p>
       </section>
     </div>
   );
