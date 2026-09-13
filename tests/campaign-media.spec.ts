@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import type { Locale } from "../lib/i18n";
 import { brandCampaignUrl, type BrandCampaignFormat } from "../lib/brand-campaign-media";
 
@@ -13,18 +13,30 @@ function campaignPath(locale: Locale, format: BrandCampaignFormat, surface: "hom
   return new URL(brandCampaignUrl(locale, format, surface)).pathname;
 }
 
-async function imageDimensions(page: import("@playwright/test").Page, path: string) {
-  await page.setContent(`<img id="campaign" src="${path}" alt="" />`);
+async function imageDimensions(page: Page, path: string) {
+  // `page.setContent()` alone lives on about:blank, where a root-relative image
+  // cannot resolve against Playwright's configured baseURL. Anchor the document
+  // to the active origin first so this helper works in both local CI and the
+  // production-verification configuration.
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const url = new URL(path, page.url()).toString();
+
+  const response = await page.request.get(url);
+  expect(response.status(), `${path} should return HTTP 200`).toBe(200);
+  expect(response.headers()["content-type"] ?? "", `${path} should return PNG campaign media`).toContain("image/png");
+
+  await page.setContent(`<img id="campaign" src="${url}" alt="" />`);
   const image = page.locator("#campaign");
-  await expect(image).toBeVisible();
-  await expect.poll(async () => image.evaluate((node: HTMLImageElement) => node.complete)).toBeTruthy();
-  const result = await image.evaluate((node: HTMLImageElement) => ({
+
+  await expect.poll(
+    async () => image.evaluate((node: HTMLImageElement) => node.complete && node.naturalWidth > 0 && node.naturalHeight > 0),
+    { timeout: 15_000, message: `${path} should load as a non-zero image` },
+  ).toBeTruthy();
+
+  return image.evaluate((node: HTMLImageElement) => ({
     naturalWidth: node.naturalWidth,
     naturalHeight: node.naturalHeight,
   }));
-  expect(result.naturalWidth).toBeGreaterThan(0);
-  expect(result.naturalHeight).toBeGreaterThan(0);
-  return result;
 }
 
 for (const locale of ["es", "en"] as Locale[]) {
