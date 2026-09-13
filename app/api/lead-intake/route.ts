@@ -6,6 +6,7 @@ import {
   type LeadIntakeCapability,
   type LeadIntakePayload,
   type LeadIntakeResponse,
+  type LeadIntakeTransport,
 } from "../../../lib/lead-intake";
 import { deliverLeadViaSmtp, getLeadSmtpConfig } from "../../../lib/lead-smtp-delivery";
 
@@ -50,7 +51,11 @@ function getTransportConfig() {
   const webhookUrl = validHttpUrl(process.env.LEAD_INTAKE_WEBHOOK_URL);
   const privacyNoticeUrl = validHttpUrl(process.env.LEAD_PRIVACY_NOTICE_URL);
   const token = process.env.LEAD_INTAKE_WEBHOOK_TOKEN?.trim() || undefined;
-  const transport = smtp.configured ? "smtp" : webhookUrl ? "webhook" : undefined;
+  const transport: LeadIntakeTransport | undefined = smtp.configured
+    ? "smtp"
+    : webhookUrl
+      ? "webhook"
+      : undefined;
 
   return {
     smtp,
@@ -64,8 +69,13 @@ function getTransportConfig() {
 
 function getCapability(): LeadIntakeCapability {
   const config = getTransportConfig();
-  return config.configured
-    ? { mode: "direct", configured: true, privacyNoticeUrl: config.privacyNoticeUrl }
+  return config.configured && config.transport
+    ? {
+        mode: "direct",
+        configured: true,
+        transport: config.transport,
+        privacyNoticeUrl: config.privacyNoticeUrl,
+      }
     : { mode: "email", configured: false };
 }
 
@@ -244,7 +254,7 @@ export async function POST(request: NextRequest) {
     const body: LeadIntakeResponse = { ok: true, status: "accepted", leadId };
     return json(body, 202);
   } catch (error) {
-    const reason = error instanceof Error ? error.message.slice(0, 80) : "unknown";
+    const reason = error instanceof Error ? error.message.slice(0, 120) : "unknown";
     console.error(`[lead-intake] delivery_failed leadId=${leadId} transport=${config.transport} reason=${reason}`);
     const body: LeadIntakeResponse = { ok: false, code: "delivery_failed", fallback: "email" };
     return json(body, 502);

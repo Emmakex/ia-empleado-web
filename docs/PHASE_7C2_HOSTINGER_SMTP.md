@@ -2,7 +2,7 @@
 
 ## Status
 
-**Implementation in progress — 2026-09-13.**
+**Implementation deployed; end-to-end acceptance still open — 2026-09-13.**
 
 This phase activates the already production-verified 7C1 lead-intake boundary with a real commercial delivery channel owned by `iaempleado.com`.
 
@@ -90,19 +90,60 @@ Direct mode may be exposed publicly only when:
 1. a valid public privacy-notice URL is configured; and
 2. a complete direct transport is configured.
 
-The browser receives only:
+The browser may receive the safe transport class for diagnostics:
 
 ```json
 {
   "mode": "direct",
   "configured": true,
+  "transport": "smtp",
   "privacyNoticeUrl": "https://..."
 }
 ```
 
 SMTP host, port, username, password, sender, recipients and webhook configuration are never returned to the browser.
 
-A submission is shown as received only after the SMTP provider accepts the send operation. On connection/authentication/provider failure, the API returns `delivery_failed` and the existing prepared-email fallback remains available.
+A submission is shown as received only after the SMTP provider accepts **every configured recipient**. Connection/authentication/provider failure, partial recipient acceptance, recipient rejection or pending recipient state must return `delivery_failed` and preserve the prepared-email fallback.
+
+## Production incident — 2026-09-13
+
+A real production test exposed a gap in the first 7C2 implementation.
+
+Observed Hostinger delivery results:
+
+```text
+leads@iaempleado.com → Enviado / Saved
+hola@iaempleado.com  → Rechazado / 5.7.1 Spam message rejected
+```
+
+The public form displayed `Solicitud recibida` because Nodemailer resolved `sendMail()` when at least one configured recipient was accepted. The application did not inspect `accepted[]`, `rejected[]` and `pending[]` before returning HTTP `202`.
+
+Root cause:
+
+```text
+partial recipient acceptance
++ application treated resolved sendMail() as full delivery
+= false-positive success state
+```
+
+Corrective contract:
+
+```text
+accepted recipients == configured recipients
+AND rejected recipients == 0
+AND pending recipients == 0
+→ success
+
+otherwise
+→ delivery_failed
+→ browser fallback
+```
+
+The transport capability now also exposes the non-sensitive transport class (`smtp` or `webhook`) so production verification can prove that Hostinger SMTP is actually selected without exposing credentials.
+
+The technical incident is separate from Hostinger's spam decision for `hola@iaempleado.com`. Hostinger successfully accepted and saved the same production lead for `leads@iaempleado.com`, proving SMTP authentication and connectivity are working. The remaining provider-side issue is recipient filtering/reputation for `hola@iaempleado.com`.
+
+Operationally, `leads@iaempleado.com` is the known-good commercial destination and should remain the primary intake mailbox while the `hola@iaempleado.com` filtering issue is investigated.
 
 ## Failure safety
 
@@ -110,6 +151,9 @@ Application logs may contain:
 
 - `leadId`;
 - selected transport type;
+- SMTP message ID;
+- accepted/rejected/pending recipient counts;
+- bounded provider response with email addresses redacted;
 - bounded technical error reason.
 
 They must not contain contact email, name, company, request text, SMTP password or SMTP username.
@@ -151,17 +195,17 @@ customer private runtime → production
 
 7C2 implementation is not complete until all of the following are green:
 
-- [ ] Nodemailer server dependency installs on the supported Node runtime;
-- [ ] SMTP configuration is server-only and validated;
-- [ ] local/CI with no secrets still reports safe email mode;
-- [ ] production with the configured Hostinger variables reports direct mode;
-- [ ] invalid/non-consented payloads remain rejected;
-- [ ] honeypot submissions are never delivered;
-- [ ] SMTP failure returns truthful fallback rather than fake success;
-- [ ] EN/ES request-demo flows remain intact;
-- [ ] mobile/browser QA remains green;
-- [ ] production serves release marker `web-phase-7c2-hostinger-smtp`;
-- [ ] one synthetic production lead is accepted through the real SMTP path;
-- [ ] the configured inbox confirms receipt of that synthetic lead.
+- [x] Nodemailer server dependency installs on the supported Node runtime;
+- [x] SMTP configuration is server-only and validated;
+- [x] local/CI with no secrets still reports safe email mode;
+- [x] production with the configured Hostinger variables reports direct mode;
+- [x] invalid/non-consented payloads remain rejected;
+- [x] honeypot submissions are never delivered;
+- [ ] partial SMTP acceptance returns truthful fallback rather than fake success in production;
+- [x] EN/ES request-demo flows remain intact;
+- [x] mobile/browser QA remains green;
+- [x] production serves release marker `web-phase-7c2-hostinger-smtp`;
+- [x] one synthetic production lead reached the real Hostinger SMTP service;
+- [ ] the configured primary commercial inbox confirms receipt after the corrective patch.
 
-Only the final two checks confirm real end-to-end delivery. CI and capability discovery alone do not prove inbox delivery.
+Only the final delivery check closes 7C2. CI and capability discovery alone do not prove inbox delivery.
