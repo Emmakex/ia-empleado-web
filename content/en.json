@@ -13,7 +13,7 @@
     "how": "How it works",
     "security": "Privacy & control",
     "faq": "Questions",
-    "cta": "Design my AI team",
+    "cta": "Request demo",
     "language": "ES"
   },
   "hero": {
@@ -120,11 +120,11 @@
     ]
   },
   "cta": {
-    "eyebrow": "START WITH A REAL PROCESS",
-    "title": "Design the AI team that makes sense for your company.",
-    "description": "Identify the process, systems involved, permitted actions and where a person must intervene. From there, define the team and capabilities required.",
-    "primary": "Design my AI team",
-    "secondary": "See the example flow"
+    "eyebrow": "TALK ABOUT YOUR USE CASE",
+    "title": "Want to see how IA Empleado could fit a real process in your company?",
+    "description": "Tell us about the process, the systems involved and where you need to keep human control. We will prepare the conversation around that context.",
+    "primary": "Request a demo",
+    "secondary": "Design my AI team"
   },
   "footer": {
     "tagline": "Specialized AI Employees working with people, systems and real business processes.",
