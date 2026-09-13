@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "../lib/i18n";
 import {
   calculateRoi,
@@ -20,9 +20,14 @@ const currencies: CurrencyCode[] = ["EUR", "USD", "GBP"];
 
 export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
   const [inputs, setInputs] = useState<RoiInputs>(defaultRoiInputs);
+  const [isHydrated, setIsHydrated] = useState(false);
   const result = useMemo(() => calculateRoi(inputs), [inputs]);
   const localeCode = locale === "es" ? "es-ES" : "en-US";
   const baseScenario = result.scenarios.find((scenario) => scenario.key === "base") ?? result.scenarios[0];
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   const number = (value: number, maximumFractionDigits = 1) =>
     new Intl.NumberFormat(localeCode, { maximumFractionDigits }).format(value);
@@ -46,7 +51,12 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
   };
 
   return (
-    <div className="roi-calculator-shell brand-roi-calculator-shell">
+    <div
+      className="roi-calculator-shell brand-roi-calculator-shell"
+      data-roi-hydrated={isHydrated ? "true" : "false"}
+      data-roi-release="phase8a-roi-hydration-sync"
+      aria-busy={!isHydrated}
+    >
       <div className="roi-input-panel">
         <div className="roi-panel-heading">
           <div>
@@ -62,6 +72,7 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
             <span>{content.currencyLabel}</span>
             <select
               value={inputs.currency}
+              disabled={!isHydrated}
               onChange={(event) => setInputs((current) => ({ ...current, currency: event.target.value as CurrencyCode }))}
             >
               {currencies.map((currency) => <option value={currency} key={currency}>{currency}</option>)}
@@ -70,19 +81,19 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
 
           <label className="roi-field">
             <span>{content.monthlyVolumeLabel}</span>
-            <input type="number" min="0" step="1" value={inputs.monthlyVolume} onChange={(event) => updateNumber("monthlyVolume", event.target.value)} />
+            <input type="number" min="0" step="1" value={inputs.monthlyVolume} disabled={!isHydrated} onChange={(event) => updateNumber("monthlyVolume", event.target.value)} />
             <small>{content.monthlyVolumeHelp}</small>
           </label>
 
           <label className="roi-field">
             <span>{content.minutesPerItemLabel}</span>
-            <input type="number" min="0" step="0.1" value={inputs.minutesPerItem} onChange={(event) => updateNumber("minutesPerItem", event.target.value)} />
+            <input type="number" min="0" step="0.1" value={inputs.minutesPerItem} disabled={!isHydrated} onChange={(event) => updateNumber("minutesPerItem", event.target.value)} />
             <small>{content.minutesPerItemHelp}</small>
           </label>
 
           <label className="roi-field">
             <span>{content.hourlyCostLabel}</span>
-            <input type="number" min="0" step="0.5" value={inputs.hourlyCost} onChange={(event) => updateNumber("hourlyCost", event.target.value)} />
+            <input type="number" min="0" step="0.5" value={inputs.hourlyCost} disabled={!isHydrated} onChange={(event) => updateNumber("hourlyCost", event.target.value)} />
             <small>{content.hourlyCostHelp}</small>
           </label>
 
@@ -96,6 +107,7 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
                 max="90"
                 step="1"
                 value={Math.min(90, Math.max(0, inputs.improvementPercent))}
+                disabled={!isHydrated}
                 onChange={(event) => updateNumber("improvementPercent", event.target.value)}
                 aria-label={content.improvementLabel}
               />
@@ -106,6 +118,7 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
                 max="90"
                 step="1"
                 value={inputs.improvementPercent}
+                disabled={!isHydrated}
                 onChange={(event) => updateNumber("improvementPercent", event.target.value)}
               />
               <strong>%</strong>
@@ -115,13 +128,13 @@ export function RoiEstimator({ locale, content }: RoiEstimatorProps) {
 
           <label className="roi-field">
             <span>{content.monthlyOperatingCostLabel}</span>
-            <input type="number" min="0" step="10" value={inputs.monthlyOperatingCost} onChange={(event) => updateNumber("monthlyOperatingCost", event.target.value)} />
+            <input type="number" min="0" step="10" value={inputs.monthlyOperatingCost} disabled={!isHydrated} onChange={(event) => updateNumber("monthlyOperatingCost", event.target.value)} />
             <small>{content.monthlyOperatingCostHelp}</small>
           </label>
 
           <label className="roi-field">
             <span>{content.implementationCostLabel}</span>
-            <input type="number" min="0" step="50" value={inputs.implementationCost} onChange={(event) => updateNumber("implementationCost", event.target.value)} />
+            <input type="number" min="0" step="50" value={inputs.implementationCost} disabled={!isHydrated} onChange={(event) => updateNumber("implementationCost", event.target.value)} />
             <small>{content.implementationCostHelp}</small>
           </label>
         </div>
