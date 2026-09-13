@@ -92,6 +92,9 @@ jobs:
       - name: Conversion handoff contract
         run: node scripts/check-conversion-handoff.mjs
 
+      - name: Contextual result handoff contract
+        run: node scripts/check-contextual-result-handoff.mjs
+
       - name: Typecheck
         run: npm run typecheck
 

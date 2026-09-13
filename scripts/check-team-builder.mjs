@@ -44,8 +44,16 @@ if (!client.includes('"use client"') || !client.includes("aria-live") || !client
   throw new Error("Team Builder client/accessibility boundary is incomplete");
 }
 
-if (!client.includes("mailto:hola@iaempleado.com")) {
-  throw new Error("Team Builder commercial handoff must remain explicit and user-controlled");
+for (const token of [
+  "requestDemoPath",
+  'intent: "team"',
+  'source: "team-builder"',
+  'data-contextual-result-handoff="team-builder"',
+]) {
+  if (!client.includes(token)) throw new Error(`Team Builder contextual handoff missing token: ${token}`);
+}
+if (client.includes("mailto:hola@iaempleado.com")) {
+  throw new Error("Team Builder must not bypass the shared conversion handoff with a raw mailto result CTA");
 }
 
 if (!page.includes("FAQPage") || !page.includes("ItemList")) {
@@ -55,13 +63,16 @@ if (!page.includes("FAQPage") || !page.includes("ItemList")) {
 if (!page.includes("Cálculo local") || !page.includes("Local calculation")) {
   throw new Error("Team Builder must preserve its local-processing disclosure in ES and EN");
 }
+if (!page.includes("no viajan datos personales ni texto libre") || !page.includes("no personal data or free text")) {
+  throw new Error("Team Builder public FAQ must describe the bounded contextual handoff truthfully in ES and EN");
+}
 
 if (!sitemap.includes("teamBuilderPath")) {
   throw new Error("Team Builder routes must be included in sitemap generation");
 }
 
 if (!header.includes("teamBuilderPath")) {
-  throw new Error("Global commercial CTA must route to the Team Builder");
+  throw new Error("Team Builder must remain reachable from global navigation");
 }
 
 console.log("Team Builder contract OK");

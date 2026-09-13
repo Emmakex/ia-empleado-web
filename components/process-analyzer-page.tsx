@@ -27,6 +27,14 @@ export function ProcessAnalyzerPage({ locale }: ProcessAnalyzerPageProps) {
   const canonicalPath = processAnalyzerPath(locale);
   const alternatePath = processAnalyzerPath(otherLocale);
   const homeHref = localeHref(locale);
+  const faq = content.faq.map((item, index) => index === content.faq.length - 1
+    ? {
+        ...item,
+        answer: locale === "es"
+          ? "No. El estado del análisis permanece en el navegador. Si decides continuar a Solicitar demo, solo se transfiere el patrón predefinido elegido, hasta dos fricciones predefinidas y el número de pasos marcados; no viajan datos personales ni texto libre del análisis."
+          : "No. Analysis state stays in the browser. If you continue to Request demo, only the selected predefined pattern, up to two predefined bottlenecks and the marked-step count are transferred; no personal data or free text from the analysis is carried over.",
+      }
+    : item);
 
   const pageSchema = {
     "@context": "https://schema.org",
@@ -58,7 +66,7 @@ export function ProcessAnalyzerPage({ locale }: ProcessAnalyzerPageProps) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: content.faq.map((item) => ({
+    mainEntity: faq.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
@@ -168,7 +176,7 @@ export function ProcessAnalyzerPage({ locale }: ProcessAnalyzerPageProps) {
               <h2 id="process-faq-title">{content.faqTitle}</h2>
             </div>
             <div className="faq-list">
-              {content.faq.map((item, index) => (
+              {faq.map((item, index) => (
                 <details className="faq-item" key={item.question} open={index === 0}>
                   <summary>{item.question}<span aria-hidden="true">+</span></summary>
                   <p>{item.answer}</p>

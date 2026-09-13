@@ -27,6 +27,14 @@ export function TeamBuilderPage({ locale }: TeamBuilderPageProps) {
   const canonicalPath = teamBuilderPath(locale);
   const alternatePath = teamBuilderPath(otherLocale);
   const homeHref = localeHref(locale);
+  const faq = content.faq.map((item, index) => index === content.faq.length - 1
+    ? {
+        ...item,
+        answer: locale === "es"
+          ? "No. El cálculo permanece en el navegador. Si decides continuar a Solicitar demo, solo se transfiere un resumen breve generado con valores predefinidos del catálogo; no viajan datos personales ni texto libre del configurador."
+          : "No. Calculation stays in the browser. If you continue to Request demo, only a short summary built from predefined catalog values is transferred; no personal data or free text from the builder is carried over.",
+      }
+    : item);
 
   const pageSchema = {
     "@context": "https://schema.org",
@@ -58,7 +66,7 @@ export function TeamBuilderPage({ locale }: TeamBuilderPageProps) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: content.faq.map((item) => ({
+    mainEntity: faq.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
@@ -149,7 +157,7 @@ export function TeamBuilderPage({ locale }: TeamBuilderPageProps) {
               <h2 id="builder-faq-title">{content.faqTitle}</h2>
             </div>
             <div className="faq-list">
-              {content.faq.map((item, index) => (
+              {faq.map((item, index) => (
                 <details className="faq-item" key={item.question} open={index === 0}>
                   <summary>{item.question}<span aria-hidden="true">+</span></summary>
                   <p>{item.answer}</p>
