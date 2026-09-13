@@ -10,6 +10,7 @@ const directCriticalSurfaces = [
   "components/team-index-page.tsx",
   "components/team-detail-page.tsx",
   "components/brand-context-scene.tsx",
+  "components/brand-sector-hero-art.tsx",
   "components/brand-organization-scene.tsx",
   "components/brand-collaboration-composition.tsx",
   "components/brand-comparison-scene.tsx",
@@ -68,6 +69,19 @@ if (/<img\s[^>]*src=\{character\.asset\}/s.test(roleFamily)) {
 const collaboration = fs.readFileSync("components/brand-collaboration-composition.tsx", "utf8");
 if (!collaboration.includes('sizes="(max-width: 760px) 86px, 104px"')) {
   throw new Error("Team/Department collaboration composition is missing an explicit responsive portrait sizes contract");
+}
+
+const sectorHero = fs.readFileSync("components/brand-sector-hero-art.tsx", "utf8");
+if (!sectorHero.includes('sizes="(max-width: 760px) 90px, 112px"')) {
+  throw new Error("Sector hero art is missing an explicit responsive canonical portrait sizes contract");
+}
+
+const sectorDetail = fs.readFileSync("components/sector-detail-page.tsx", "utf8");
+if (/<img\s[^>]*src=\{character\.asset\}/s.test(sectorDetail)) {
+  throw new Error("Sector detail bypasses responsive delivery with a raw canonical <img>");
+}
+if (!sectorDetail.includes('BrandCharacterImage character={character} sizes="96px"')) {
+  throw new Error("Sector detail role cards must use BrandCharacterImage with an explicit sizes contract");
 }
 
 const detail = fs.readFileSync("components/employee-detail-page.tsx", "utf8");
