@@ -27,10 +27,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Web Phase 7A release on Hostinger
+      - name: Wait for Web Phase 7B release on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-          EXPECTED_RELEASE: web-phase-7a-conversion-handoff
+          EXPECTED_RELEASE: web-phase-7b-contextual-result-handoff
         run: |
           set -euo pipefail
           for attempt in $(seq 1 40); do
@@ -51,7 +51,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Verify production geometry, brand systems, campaign media, conversion handoff, responsive UX and accessibility
+      - name: Verify production geometry, brand systems, campaign media, conversion and contextual result handoff, responsive UX and accessibility
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
         run: >-
@@ -63,6 +63,7 @@ jobs:
           tests/sector-hero-art.spec.ts
           tests/campaign-media.spec.ts
           tests/conversion-handoff.spec.ts
+          tests/contextual-result-handoff.spec.ts
           tests/navigation-and-hero-scale.spec.ts
           tests/ux-visual.spec.ts
 
