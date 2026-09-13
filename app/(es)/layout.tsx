@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "branding-phase-2c-sector-hero-art" },
+  other: { "ia-web-release": "branding-phase-2d-campaign-social-variants" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" fill="none">
+  <defs>
+    <linearGradient id="portraitEdge" x1="0" y1="0" x2="1080" y2="1350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B5FF5" stop-opacity="0.42"/>
+      <stop offset="0.52" stop-color="#8B5CF6" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#10B981" stop-opacity="0.34"/>
+    </linearGradient>
+  </defs>
+  <rect x="22" y="22" width="1036" height="1306" rx="52" stroke="url(#portraitEdge)" stroke-width="2"/>
+  <circle cx="872" cy="226" r="132" stroke="#5B5FF5" stroke-opacity="0.11"/>
+  <circle cx="872" cy="226" r="82" stroke="#5B5FF5" stroke-opacity="0.17" stroke-dasharray="10 12"/>
+  <circle cx="176" cy="1134" r="150" stroke="#10B981" stroke-opacity="0.10"/>
+  <path d="M92 118H308" stroke="#5B5FF5" stroke-opacity="0.30" stroke-width="2"/>
+  <circle cx="104" cy="118" r="7" fill="#5B5FF5"/>
+  <circle cx="130" cy="118" r="7" fill="#8B5CF6"/>
+  <circle cx="156" cy="118" r="7" fill="#10B981"/>
+  <path d="M814 1176C890 1140 952 1074 982 990" stroke="#8B5CF6" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="8 12"/>
+</svg>

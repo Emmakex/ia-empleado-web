@@ -71,8 +71,8 @@ for (const token of [
 
 for (const [label, layout] of [["ES", esLayout], ["EN", enLayout]]) {
   if (!layout.includes("brand-sector-hero-art.css")) throw new Error(`${label} layout does not load sector hero CSS`);
-  if (!layout.includes('ia-web-release\": \"branding-phase-2c-sector-hero-art\"')) {
-    throw new Error(`${label} layout is not marked with Branding Phase 2C release`);
+  if (!layout.includes('"ia-web-release":')) {
+    throw new Error(`${label} layout no longer exposes an IA Empleado release marker`);
   }
 }
 

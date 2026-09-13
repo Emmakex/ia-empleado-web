@@ -24,6 +24,8 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md) — Branding Phase 2A role-family contract and production-verification evidence.
 - [`branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md`](branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md) — Branding Phase 2B Team/Department composition contract and production-verification evidence.
 - [`branding/PHASE_2C_SECTOR_HERO_ART.md`](branding/PHASE_2C_SECTOR_HERO_ART.md) — Branding Phase 2C sector-art contract, four operating signatures and production-verification evidence.
+- [`branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md`](branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md) — Branding Phase 2D reusable campaign/social generation contract and release criteria.
+- [`branding/SOCIAL_MEDIA_SYSTEM.md`](branding/SOCIAL_MEDIA_SYSTEM.md) — share, campaign, reusable frame and export rules.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — AI Teams model and handoff/control rules.
 - [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — collaboration simulator contract.
@@ -184,8 +186,12 @@ Phase 2C gives the four actual deep sector families — **Ecommerce, Travel, Pro
 
 Each sector retains the approved canonical character family and Phase 2A motifs while adding a sector-specific operating signature: connected order, booking route, traceable case file or context-rich sales pipeline. Shared system context and human-control boundaries remain explicit. Deep use-case pages keep their process-centric visual grammar rather than being forced into a sector identity.
 
-PR #49 was validated by Web CI #118 and squash-merged to `main` as `3962ba00e5a8a0e7300a08ce6ce4d28bd94e2375`. Web CI #119 (`34734517951`) passed on `main`; Hostinger served `branding-phase-2c-sector-hero-art`; Production Verification #7 (`34734671808`) passed directly against `iaempleado.com`. Full evidence is recorded in [`branding/PHASE_2C_SECTOR_HERO_ART.md`](branding/PHASE_2C_SECTOR_HERO_ART.md).
+PR #49 was validated by Web CI #118 and squash-merged to `main` as `3962ba00e5a8a0e7300a08ce6ce4d28bd94e2375`. Web CI #119 (`34734517951`) passed on `main`; Hostinger served `branding-phase-2c-sector-hero-art`; Production Verification #7 (`34734671808`) passed directly against `iaempleado.com`. Formal documentation closure was merged in PR #50 and revalidated by Web CI #121 plus Production Verification #8. Full evidence is recorded in [`branding/PHASE_2C_SECTOR_HERO_ART.md`](branding/PHASE_2C_SECTOR_HERO_ART.md).
 
-### Next — Branding Phase 2D
+### Branding Phase 2D — Reusable campaign/social variants
 
-Build reusable **campaign/social variants** from the stable identity, role, Team/Department and sector visual grammars instead of creating isolated one-off art per channel. Phase 2D must preserve canonical character identity, truthfulness boundaries, EN/ES parity and reusable export contracts.
+**Implementation in progress.**
+
+Phase 2D preserves the existing production-verified `1200 × 630` Open Graph/share renderer and adds a separate reusable campaign-media route for ES/EN. The same registered semantic surfaces can now render as landscape `1600 × 900`, square `1080 × 1080`, portrait `1080 × 1350` and story `1080 × 1920` without rebuilding each piece manually.
+
+The system uses canonical characters only where semantically relevant, keeps ROI campaign media character-neutral, validates unknown formats/surfaces with 404, and protects the generator with static contracts plus browser dimension tests. The active release target is `branding-phase-2d-campaign-social-variants`. Full implementation and release criteria are recorded in [`branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md`](branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md).

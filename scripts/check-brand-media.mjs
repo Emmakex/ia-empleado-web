@@ -2,11 +2,15 @@ import fs from "node:fs";
 
 const requiredFiles = [
   "branding/SOCIAL_MEDIA_SYSTEM.md",
+  "branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md",
   "public/branding/media/demo-frame.svg",
   "public/branding/media/social-square-frame.svg",
+  "public/branding/media/portrait-frame.svg",
   "public/branding/media/story-frame.svg",
   "lib/brand-social-previews.tsx",
+  "lib/brand-campaign-media.tsx",
   "app/brand-preview/[locale]/[surface]/route.tsx",
+  "app/brand-campaign/[locale]/[format]/[surface]/route.tsx",
 ];
 
 for (const path of requiredFiles) {
@@ -20,7 +24,9 @@ for (const path of requiredFiles.filter((path) => path.endsWith(".svg"))) {
 }
 
 const renderer = fs.readFileSync("lib/brand-social-previews.tsx", "utf8");
+const campaignRenderer = fs.readFileSync("lib/brand-campaign-media.tsx", "utf8");
 const route = fs.readFileSync("app/brand-preview/[locale]/[surface]/route.tsx", "utf8");
+const campaignRoute = fs.readFileSync("app/brand-campaign/[locale]/[format]/[surface]/route.tsx", "utf8");
 const esLayout = fs.readFileSync("app/(es)/layout.tsx", "utf8");
 const enLayout = fs.readFileSync("app/(en)/en/layout.tsx", "utf8");
 
@@ -28,6 +34,13 @@ for (const token of ["clara", "alex", "sofia", "javier", "1200", "630", "renderB
   if (!renderer.includes(token)) throw new Error(`Social preview renderer missing contract token: ${token}`);
 }
 if (!route.includes("renderBrandSocialPreview") || !route.includes("isBrandPreviewSurface")) throw new Error("Brand preview route is not restricted to registered surfaces");
+
+for (const token of ["BrandCampaignFormat", "getBrandCharacters", "renderBrandCampaignMedia", "brandCampaignUrl", "landscape", "square", "portrait", "story"]) {
+  if (!campaignRenderer.includes(token)) throw new Error(`Campaign renderer missing contract token: ${token}`);
+}
+if (!campaignRoute.includes("renderBrandCampaignMedia") || !campaignRoute.includes("isBrandCampaignFormat") || !campaignRoute.includes("isBrandPreviewSurface")) {
+  throw new Error("Campaign media route is not restricted to registered formats and surfaces");
+}
 
 for (const [name, layout] of [["ES", esLayout], ["EN", enLayout]]) {
   if (!layout.includes('brandPreviewUrl(')) throw new Error(`${name} layout lacks branded home preview`);
@@ -65,7 +78,17 @@ for (const [path, surface] of pageContracts) {
 }
 
 const mediaGuide = fs.readFileSync("branding/SOCIAL_MEDIA_SYSTEM.md", "utf8");
-for (const phrase of ["People. AI. Systems. One team.", "ROI", "human control", "1080 × 1920", "1200 × 630"]) {
+for (const phrase of [
+  "People. AI. Systems. One team.",
+  "ROI",
+  "human control",
+  "1200 × 630",
+  "1600 × 900",
+  "1080 × 1080",
+  "1080 × 1350",
+  "1080 × 1920",
+  "/brand-campaign/{locale}/{format}/{surface}",
+]) {
   if (!mediaGuide.includes(phrase)) throw new Error(`Brand media guide missing rule: ${phrase}`);
 }
 

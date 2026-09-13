@@ -86,6 +86,9 @@ jobs:
       - name: Brand media contract
         run: node scripts/check-brand-media.mjs
 
+      - name: Campaign media contract
+        run: node scripts/check-campaign-media.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
