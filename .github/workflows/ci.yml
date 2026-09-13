@@ -95,6 +95,9 @@ jobs:
       - name: Contextual result handoff contract
         run: node scripts/check-contextual-result-handoff.mjs
 
+      - name: Lead intake foundation contract
+        run: node scripts/check-lead-intake.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
