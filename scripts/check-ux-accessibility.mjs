@@ -8,6 +8,7 @@ const required = [
   "app/(en)/en/layout.tsx",
   "playwright.config.ts",
   "tests/ux-visual.spec.ts",
+  "tests/phase8b-accessibility.spec.ts",
   "package.json",
   ".github/workflows/ci.yml",
 ];
@@ -25,6 +26,7 @@ const esLayout = read("app/(es)/layout.tsx");
 const enLayout = read("app/(en)/en/layout.tsx");
 const playwright = read("playwright.config.ts");
 const browserQa = read("tests/ux-visual.spec.ts");
+const phase8b = read("tests/phase8b-accessibility.spec.ts");
 const packageJson = read("package.json");
 const ci = read(".github/workflows/ci.yml");
 
@@ -128,6 +130,26 @@ for (const token of [
   "mobile navigation traps focus",
 ]) {
   if (!browserQa.includes(token)) throw new Error(`Browser QA coverage missing: ${token}`);
+}
+
+for (const token of [
+  'test.describe("Phase 8B accessibility matrix"',
+  "criticalRoutes",
+  "commercialFamilies",
+  "assertAxeBlockingFree",
+  "assertPageSemantics",
+  '"/en/design-your-ai-team"',
+  '"/en/improve-your-process"',
+  '"/en/roi-calculator"',
+  '"/en/request-demo"',
+  '"/en/comparisons"',
+  '"/en/sectors"',
+  '"/en/use-cases"',
+  '"/en/departments"',
+  '"/en/integrations"',
+  '"wcag22aa"',
+]) {
+  if (!phase8b.includes(token)) throw new Error(`Phase 8B accessibility matrix missing coverage: ${token}`);
 }
 
 for (const token of [
