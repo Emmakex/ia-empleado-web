@@ -140,6 +140,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
   const directMode = capability.mode === "direct" && capability.configured && Boolean(capability.privacyNoticeUrl);
   const description = directMode ? labels.directFormDescription : labels.formDescription;
   const privacy = directMode ? labels.directPrivacy : labels.privacy;
+  const formLocked = submitState === "submitting" || submitState === "success";
 
   return (
     <section
@@ -156,7 +157,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
         <p>{description}</p>
       </div>
 
-      <form className="lead-handoff-form" onSubmit={handleSubmit}>
+      <form className="lead-handoff-form" onSubmit={handleSubmit} aria-busy={submitState === "submitting"}>
         <div className="lead-handoff-field-grid">
           <label>
             <span>{labels.fields.name}</span>
@@ -167,7 +168,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
               required
               maxLength={100}
               value={name}
-              disabled={submitState === "success"}
+              disabled={formLocked}
               onChange={(event) => setName(event.target.value)}
             />
           </label>
@@ -180,7 +181,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
               required
               maxLength={160}
               value={email}
-              disabled={submitState === "success"}
+              disabled={formLocked}
               onChange={(event) => setEmail(event.target.value)}
             />
           </label>
@@ -194,7 +195,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
             autoComplete="organization"
             maxLength={140}
             value={company}
-            disabled={submitState === "success"}
+            disabled={formLocked}
             onChange={(event) => setCompany(event.target.value)}
           />
         </label>
@@ -207,7 +208,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
             rows={6}
             maxLength={1400}
             value={need}
-            disabled={submitState === "success"}
+            disabled={formLocked}
             onChange={(event) => setNeed(event.target.value)}
           />
         </label>
@@ -224,7 +225,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
               name="consent"
               required
               checked={consent}
-              disabled={submitState === "success"}
+              disabled={formLocked}
               onChange={(event) => setConsent(event.target.checked)}
             />
             <span>
@@ -240,6 +241,10 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
           <span aria-hidden="true">◇</span>
           {privacy}
         </p>
+
+        {submitState === "submitting" ? (
+          <p className="sr-only" role="status" aria-live="polite">{labels.sending}</p>
+        ) : null}
 
         {submitState === "success" ? (
           <div className="lead-handoff-status lead-handoff-status-success" role="status" data-lead-intake-success>
@@ -265,6 +270,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
               className="button"
               type="submit"
               aria-describedby="lead-handoff-privacy"
+              aria-busy={submitState === "submitting"}
               data-lead-submit={directMode ? "direct" : "email"}
               data-lead-prepare-email={directMode ? undefined : "true"}
               disabled={submitState === "submitting"}
