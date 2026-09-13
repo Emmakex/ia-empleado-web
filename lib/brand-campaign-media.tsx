@@ -1,4 +1,7 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import sharp from "sharp";
 import type { Locale } from "./i18n";
 import type { BrandPreviewSurface } from "./brand-social-previews";
 import { getBrandCharacters } from "./brand-characters";
@@ -188,6 +191,23 @@ const campaignCopy: Record<Locale, Record<BrandPreviewSurface, CampaignCopy>> = 
   },
 };
 
+const rasterAssetCache = new Map<string, Promise<string>>();
+
+function rasterAsset(publicPath: string): Promise<string> {
+  const cached = rasterAssetCache.get(publicPath);
+  if (cached) return cached;
+
+  const promise = (async () => {
+    const relativePath = publicPath.replace(/^\/+/, "");
+    const source = await readFile(join(process.cwd(), "public", relativePath));
+    const png = await sharp(source).png().toBuffer();
+    return `data:image/png;base64,${png.toString("base64")}`;
+  })();
+
+  rasterAssetCache.set(publicPath, promise);
+  return promise;
+}
+
 export function isBrandCampaignFormat(value: string): value is BrandCampaignFormat {
   return value in campaignDimensions;
 }
@@ -196,16 +216,29 @@ export function brandCampaignUrl(locale: Locale, format: BrandCampaignFormat, su
   return `https://iaempleado.com/brand-campaign/${locale}/${format}/${surface}`;
 }
 
-export function renderBrandCampaignMedia(locale: Locale, format: BrandCampaignFormat, surface: BrandPreviewSurface): ImageResponse {
+export async function renderBrandCampaignMedia(
+  locale: Locale,
+  format: BrandCampaignFormat,
+  surface: BrandPreviewSurface,
+): Promise<ImageResponse> {
   const dimensions = campaignDimensions[format];
   const copy = campaignCopy[locale][surface];
   const allCharacters = getBrandCharacters(locale);
   const characters = copy.characterIds
     .map((id) => allCharacters.find((character) => character.id === id))
     .filter((character): character is NonNullable<typeof character> => Boolean(character));
-  const base = "https://iaempleado.com";
-  const markUrl = `${base}/branding/ia-empleado-mark.svg`;
-  const frameUrl = `${base}${campaignFrames[format]}`;
+
+  const [markAsset, frameAsset, ...characterAssets] = await Promise.all([
+    rasterAsset("/branding/ia-empleado-mark.svg"),
+    rasterAsset(campaignFrames[format]),
+    ...characters.map((character) => rasterAsset(character.asset)),
+  ]);
+
+  const visualCharacters = characters.map((character, index) => ({
+    character,
+    asset: characterAssets[index],
+  }));
+
   const wide = format === "landscape";
   const story = format === "story";
   const portrait = format === "portrait";
@@ -214,6 +247,18 @@ export function renderBrandCampaignMedia(locale: Locale, format: BrandCampaignFo
   const subtitleSize = wide ? 25 : story ? 29 : 23;
   const cardWidth = wide ? 142 : story ? 172 : 142;
   const cardImageHeight = wide ? 150 : story ? 188 : 150;
+  const textMinHeight = wide ? "100%" : story ? 680 : portrait ? 500 : 410;
+  const artWidth = wide ? 520 : story ? 720 : 650;
+  const artHeight = wide ? 620 : story ? 900 : portrait ? 620 : 430;
+  const hubSize = wide ? 136 : story ? 166 : 126;
+  const outerOrbit = wide ? 370 : story ? 480 : 350;
+  const innerOrbit = wide ? 270 : story ? 350 : 250;
+  const cardPositions = [
+    { left: 0, top: 0 },
+    { right: 0, top: 0 },
+    { left: 0, bottom: 0 },
+    { right: 0, bottom: 0 },
+  ];
 
   return new ImageResponse(
     (
@@ -231,7 +276,7 @@ export function renderBrandCampaignMedia(locale: Locale, format: BrandCampaignFo
       >
         <div style={{ position: "absolute", width: wide ? 560 : 460, height: wide ? 560 : 460, borderRadius: 999, background: "rgba(91,95,245,.12)", filter: "blur(92px)", right: wide ? -130 : -150, top: -150 }} />
         <div style={{ position: "absolute", width: wide ? 440 : 380, height: wide ? 440 : 380, borderRadius: 999, background: "rgba(16,185,129,.09)", filter: "blur(90px)", left: -130, bottom: -150 }} />
-        <img src={frameUrl} alt="" width={dimensions.width} height={dimensions.height} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
+        <img src={frameAsset} alt="" width={dimensions.width} height={dimensions.height} style={{ position: "absolute", left: 0, top: 0, width: dimensions.width, height: dimensions.height }} />
 
         <div
           style={{
@@ -249,12 +294,11 @@ export function renderBrandCampaignMedia(locale: Locale, format: BrandCampaignFo
               flexDirection: "column",
               justifyContent: "space-between",
               width: wide ? "58%" : "100%",
-              minHeight: wide ? "100%" : story ? 680 : portrait ? 560 : 480,
-              zIndex: 2,
+              minHeight: textMinHeight,
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-              <img src={markUrl} width={wide ? 64 : 58} height={wide ? 64 : 58} alt="" />
+              <img src={markAsset} width={wide ? 64 : 58} height={wide ? 64 : 58} alt="" />
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ fontSize: wide ? 31 : 28, fontWeight: 800, letterSpacing: "-0.02em" }}>IA Empleado</div>
                 <div style={{ marginTop: 5, fontSize: wide ? 17 : 15, fontWeight: 800, letterSpacing: ".13em", color: "#5b5ff5" }}>{copy.eyebrow}</div>
@@ -276,34 +320,68 @@ export function renderBrandCampaignMedia(locale: Locale, format: BrandCampaignFo
           <div
             style={{
               display: "flex",
-              position: "relative",
               flex: 1,
-              minHeight: wide ? 0 : story ? 900 : portrait ? 610 : 470,
               alignItems: "center",
               justifyContent: "center",
-              zIndex: 2,
+              minHeight: artHeight,
             }}
           >
-            <div style={{ position: "absolute", width: wide ? 370 : story ? 480 : 350, height: wide ? 370 : story ? 480 : 350, border: "2px solid rgba(91,95,245,.12)", borderRadius: 999 }} />
-            <div style={{ position: "absolute", width: wide ? 270 : story ? 350 : 250, height: wide ? 270 : story ? 350 : 250, border: "2px dashed rgba(91,95,245,.17)", borderRadius: 999 }} />
-            <div style={{ display: "flex", width: wide ? 136 : story ? 166 : 126, height: wide ? 136 : story ? 166 : 126, borderRadius: 999, alignItems: "center", justifyContent: "center", background: "rgba(255,255,255,.97)", border: "1px solid rgba(91,95,245,.20)", boxShadow: "0 22px 62px rgba(79,70,229,.14)" }}>
-              <img src={markUrl} width={wide ? 72 : story ? 86 : 66} height={wide ? 72 : story ? 86 : 66} alt="" />
-            </div>
+            <div
+              style={{
+                display: "flex",
+                position: "relative",
+                width: artWidth,
+                height: artHeight,
+                flexShrink: 0,
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  left: (artWidth - outerOrbit) / 2,
+                  top: (artHeight - outerOrbit) / 2,
+                  width: outerOrbit,
+                  height: outerOrbit,
+                  border: "2px solid rgba(91,95,245,.12)",
+                  borderRadius: 999,
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  left: (artWidth - innerOrbit) / 2,
+                  top: (artHeight - innerOrbit) / 2,
+                  width: innerOrbit,
+                  height: innerOrbit,
+                  border: "2px dashed rgba(91,95,245,.17)",
+                  borderRadius: 999,
+                }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  position: "absolute",
+                  left: (artWidth - hubSize) / 2,
+                  top: (artHeight - hubSize) / 2,
+                  width: hubSize,
+                  height: hubSize,
+                  borderRadius: 999,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "rgba(255,255,255,.97)",
+                  border: "1px solid rgba(91,95,245,.20)",
+                  boxShadow: "0 22px 62px rgba(79,70,229,.14)",
+                }}
+              >
+                <img src={markAsset} width={wide ? 72 : story ? 86 : 66} height={wide ? 72 : story ? 86 : 66} alt="" />
+              </div>
 
-            {characters.map((character, index) => {
-              const radius = wide ? 245 : story ? 315 : portrait ? 255 : 220;
-              const angles = [-145, -35, 145, 35];
-              const angle = (angles[index] ?? 0) * (Math.PI / 180);
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius * (wide ? 0.72 : 0.82);
-              return (
+              {visualCharacters.map(({ character, asset }, index) => (
                 <div
                   key={character.id}
                   style={{
                     position: "absolute",
-                    left: "50%",
-                    top: "50%",
-                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                    ...cardPositions[index],
                     display: "flex",
                     flexDirection: "column",
                     width: cardWidth,
@@ -314,24 +392,24 @@ export function renderBrandCampaignMedia(locale: Locale, format: BrandCampaignFo
                     boxShadow: "0 18px 42px rgba(15,23,42,.10)",
                   }}
                 >
-                  <img src={`${base}${character.asset}`} width={cardWidth} height={cardImageHeight} style={{ width: cardWidth, height: cardImageHeight, objectFit: "contain", objectPosition: "center bottom", background: "#f8fafc" }} alt="" />
+                  <img src={asset} width={cardWidth} height={cardImageHeight} style={{ width: cardWidth, height: cardImageHeight, objectFit: "contain", objectPosition: "center bottom", background: "#f8fafc" }} alt="" />
                   <div style={{ display: "flex", flexDirection: "column", padding: story ? "12px 13px 14px" : "9px 11px 11px", background: "rgba(255,255,255,.98)" }}>
                     <span style={{ fontSize: story ? 19 : 16, fontWeight: 800 }}>{character.name}</span>
                     <span style={{ marginTop: 3, fontSize: story ? 13 : 11, lineHeight: 1.2, color: "#64748b" }}>{character.shortRole}</span>
                   </div>
                 </div>
-              );
-            })}
+              ))}
 
-            {characters.length === 0 ? (
-              <div style={{ position: "absolute", display: "flex", gap: story ? 18 : 12, alignItems: "flex-end", bottom: story ? 120 : 54 }}>
-                {[32, 52, 72].map((height, index) => (
-                  <div key={height} style={{ display: "flex", width: story ? 105 : 82, height: story ? 250 : 190, alignItems: "flex-end", padding: story ? 14 : 11, borderRadius: 22, background: "rgba(255,255,255,.94)", border: "1px solid rgba(148,163,184,.22)", boxShadow: "0 15px 36px rgba(15,23,42,.07)" }}>
-                    <div style={{ width: "100%", height: `${height}%`, borderRadius: 12, background: index === 0 ? "#c7d2fe" : index === 1 ? "#818cf8" : "#10b981" }} />
-                  </div>
-                ))}
-              </div>
-            ) : null}
+              {visualCharacters.length === 0 ? (
+                <div style={{ position: "absolute", display: "flex", gap: story ? 18 : 12, alignItems: "flex-end", left: (artWidth - (story ? 351 : 270)) / 2, bottom: story ? 120 : 54 }}>
+                  {[32, 52, 72].map((height, index) => (
+                    <div key={height} style={{ display: "flex", width: story ? 105 : 82, height: story ? 250 : 190, alignItems: "flex-end", padding: story ? 14 : 11, borderRadius: 22, background: "rgba(255,255,255,.94)", border: "1px solid rgba(148,163,184,.22)", boxShadow: "0 15px 36px rgba(15,23,42,.07)" }}>
+                      <div style={{ width: "100%", height: `${height}%`, borderRadius: 12, background: index === 0 ? "#c7d2fe" : index === 1 ? "#818cf8" : "#10b981" }} />
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
