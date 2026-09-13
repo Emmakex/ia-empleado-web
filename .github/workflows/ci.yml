@@ -101,6 +101,9 @@ jobs:
       - name: Hostinger SMTP lead delivery contract
         run: node scripts/check-smtp-lead-delivery.mjs
 
+      - name: Phase 8A release gate contract
+        run: node scripts/check-phase8-release-gate.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
