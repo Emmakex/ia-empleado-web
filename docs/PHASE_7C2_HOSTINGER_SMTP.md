@@ -2,11 +2,11 @@
 
 ## Status
 
-**Implementation deployed; end-to-end acceptance still open — 2026-09-13.**
+**Closed and production-verified — 2026-09-13.**
 
-This phase activates the already production-verified 7C1 lead-intake boundary with a real commercial delivery channel owned by `iaempleado.com`.
+7C2 activates the production-verified 7C1 lead-intake boundary with Hostinger SMTP owned by `iaempleado.com`.
 
-The approved architecture is:
+Approved production flow:
 
 ```text
 prospect
@@ -14,18 +14,16 @@ prospect
 → Team Builder / Process Analyzer / request-demo form
 → POST /api/lead-intake
 → Hostinger SMTP for iaempleado.com
-→ internal commercial inbox
+→ hola@iaempleado.com
 → human follow-up
 → live proof on kairoseth.iaempleado.com when appropriate
 ```
 
-`kairoseth.iaempleado.com` is the Kairoseth reference/demo company. It is **not** the SMTP owner and it is **not** commercial staging for `iaempleado.com`.
+`kairoseth.iaempleado.com` is the Kairoseth reference/demo company. It is not the SMTP owner and it is not commercial staging for `iaempleado.com`.
 
 ## Transport priority
 
-The 7C1 public contract remains provider-agnostic. 7C2 adds Hostinger SMTP as the primary commercial transport when its complete server-only configuration is present.
-
-Transport resolution is intentionally ordered as:
+The public 7C1 contract remains provider-agnostic. Hostinger SMTP is the primary commercial transport whenever its complete server-only configuration is present.
 
 ```text
 1. Hostinger SMTP when fully configured
@@ -33,7 +31,7 @@ Transport resolution is intentionally ordered as:
 3. truthful browser email fallback when neither direct transport is available
 ```
 
-The generic webhook remains available as compatibility and as a future CRM/orchestration boundary. SMTP does not imply Brevo, HubSpot or any other CRM dependency.
+The webhook remains a future CRM/orchestration boundary. SMTP does not imply Brevo, HubSpot or another CRM dependency.
 
 ## Required server variables
 
@@ -51,7 +49,7 @@ LEAD_NOTIFICATION_TO
 LEAD_NOTIFICATION_SUBJECT_PREFIX
 ```
 
-Recommended Hostinger settings:
+Production Hostinger settings use:
 
 ```text
 SMTP_HOST=smtp.hostinger.com
@@ -59,38 +57,50 @@ SMTP_PORT=465
 SMTP_SECURE=true
 ```
 
-Port `587` with `SMTP_SECURE=false` remains supported for STARTTLS deployments.
-
 All credentials are deployment secrets. None may use `NEXT_PUBLIC_*`, enter the browser bundle, be logged, or be committed to GitHub.
 
-## Notification contract
+## Current notification baseline
 
-A successful lead produces an internal commercial notification containing only the bounded 7C1 payload plus server-generated delivery metadata:
+The production-accepted message is intentionally simple and human-like because Hostinger rejected the richer automated variant as junk.
 
-- lead ID;
-- received timestamp;
-- locale;
-- company when supplied;
-- contact name and email;
-- requested intent;
-- bounded source and context;
-- stated need/process;
-- consent version and privacy notice URL;
-- commercial-site origin;
-- link to the Kairoseth reference/demo surface.
+Current baseline:
 
-The SMTP sender must use the configured `iaempleado.com` mailbox. The prospect address is set as `Reply-To`; it is never used as the SMTP `From` identity.
+- plain text only;
+- short neutral subject;
+- no HTML alternative;
+- no external `Reply-To`;
+- no custom `X-IA-*` headers;
+- no URLs in the body;
+- bounded lead fields only.
 
-The email is produced in both plain-text and HTML forms. Dynamic HTML values are escaped. User-controlled values are not inserted into SMTP headers without normalization.
+Example shape:
+
+```text
+Subject: IA Empleado - nuevo contacto
+
+Nuevo contacto desde IA Empleado.
+
+Nombre: ...
+Email: ...
+Empresa: ...
+Interés: ...
+
+Necesidad:
+...
+
+Referencia: lead_...
+```
+
+This profile is now the known-good production baseline. Richer email elements may only be reintroduced incrementally and must be verified against Hostinger deliverability after each change.
 
 ## Privacy and truthfulness
 
-Direct mode may be exposed publicly only when:
+Direct mode is exposed publicly only when:
 
 1. a valid public privacy-notice URL is configured; and
 2. a complete direct transport is configured.
 
-The browser may receive the safe transport class for diagnostics:
+The browser may receive only the safe transport class:
 
 ```json
 {
@@ -103,47 +113,43 @@ The browser may receive the safe transport class for diagnostics:
 
 SMTP host, port, username, password, sender, recipients and webhook configuration are never returned to the browser.
 
-A submission is shown as received only after the SMTP provider accepts **every configured recipient**. Connection/authentication/provider failure, partial recipient acceptance, recipient rejection or pending recipient state must return `delivery_failed` and preserve the prepared-email fallback.
+A submission is shown as received only after the SMTP provider synchronously accepts every configured recipient. Connection/authentication/provider failure, partial recipient acceptance, recipient rejection or pending recipient state returns `delivery_failed` and preserves the prepared-email fallback.
+
+This synchronous acceptance check is useful but does not prove final inbox delivery; an SMTP provider can still generate a later bounce. For that reason the final phase gate is real inbox receipt.
 
 ## Production incident — 2026-09-13
 
-A real production test exposed a gap in the first 7C2 implementation.
-
-Observed Hostinger delivery results:
+The first production version used a richer email with HTML, links, an external `Reply-To` and custom `X-IA-*` headers. Hostinger authenticated and accepted the SMTP submission, but its downstream filtering classified the message as junk and later rejected delivery to `hola@iaempleado.com` with:
 
 ```text
-leads@iaempleado.com → Enviado / Saved
-hola@iaempleado.com  → Rechazado / 5.7.1 Spam message rejected
+554 5.7.1 Spam message rejected
 ```
 
-The public form displayed `Solicitud recibida` because Nodemailer resolved `sendMail()` when at least one configured recipient was accepted. The application did not inspect `accepted[]`, `rejected[]` and `pending[]` before returning HTTP `202`.
+The bounce was returned to `leads@iaempleado.com`.
 
-Root cause:
+Important correction to the first diagnosis:
 
 ```text
-partial recipient acceptance
-+ application treated resolved sendMail() as full delivery
-= false-positive success state
+leads@iaempleado.com → Saved
 ```
 
-Corrective contract:
+was the delivery of the bounce/DSN back to the sender mailbox, not successful delivery of the commercial lead. The original commercial message had a single recipient: `hola@iaempleado.com`.
+
+Manual control tests proved that normal human emails between `leads@iaempleado.com` and `hola@iaempleado.com` delivered successfully in both directions. This ruled out mailbox existence, account routing and basic Hostinger SMTP authentication as the root problem.
+
+The automated notification was then reduced to the minimal baseline above. After deployment, a real production form submission from `iaempleado.com` was successfully received in the inbox of `hola@iaempleado.com`.
+
+Confirmed root cause:
 
 ```text
-accepted recipients == configured recipients
-AND rejected recipients == 0
-AND pending recipients == 0
-→ success
+rich automated message composition
+→ Hostinger junk classification / asynchronous bounce
 
-otherwise
-→ delivery_failed
-→ browser fallback
+minimal human-like automated message
+→ successful inbox delivery
 ```
 
-The transport capability now also exposes the non-sensitive transport class (`smtp` or `webhook`) so production verification can prove that Hostinger SMTP is actually selected without exposing credentials.
-
-The technical incident is separate from Hostinger's spam decision for `hola@iaempleado.com`. Hostinger successfully accepted and saved the same production lead for `leads@iaempleado.com`, proving SMTP authentication and connectivity are working. The remaining provider-side issue is recipient filtering/reputation for `hola@iaempleado.com`.
-
-Operationally, `leads@iaempleado.com` is the known-good commercial destination and should remain the primary intake mailbox while the `hola@iaempleado.com` filtering issue is investigated.
+The exact individual trigger among the removed rich-message elements was not isolated because the business objective was satisfied once a reliable baseline existed. Any future enrichment must therefore use one-change-at-a-time deliverability testing.
 
 ## Failure safety
 
@@ -177,12 +183,12 @@ Example:
 ```text
 Company X requests Accounting + Billing
 → iaempleado.com captures the qualified lead
-→ the commercial team receives the structured SMTP notification
+→ the commercial team receives the SMTP notification
 → the opportunity is prepared for follow-up
-→ kairoseth.iaempleado.com can demonstrate the corresponding live employee/workflow
+→ kairoseth.iaempleado.com demonstrates the corresponding live employee/workflow
 ```
 
-This same pattern is intended for the wider Kairoseth product universe:
+The same pattern applies to the wider Kairoseth universe:
 
 ```text
 kairoseth.com → discover
@@ -193,19 +199,18 @@ customer private runtime → production
 
 ## Release gates
 
-7C2 implementation is not complete until all of the following are green:
-
 - [x] Nodemailer server dependency installs on the supported Node runtime;
 - [x] SMTP configuration is server-only and validated;
 - [x] local/CI with no secrets still reports safe email mode;
-- [x] production with the configured Hostinger variables reports direct mode;
+- [x] production with configured Hostinger variables reports direct SMTP mode;
 - [x] invalid/non-consented payloads remain rejected;
 - [x] honeypot submissions are never delivered;
-- [ ] partial SMTP acceptance returns truthful fallback rather than fake success in production;
+- [x] partial recipient acceptance is rejected rather than shown as success;
 - [x] EN/ES request-demo flows remain intact;
 - [x] mobile/browser QA remains green;
-- [x] production serves release marker `web-phase-7c2-hostinger-smtp`;
-- [x] one synthetic production lead reached the real Hostinger SMTP service;
-- [ ] the configured primary commercial inbox confirms receipt after the corrective patch.
+- [x] production serves the 7C2 release;
+- [x] one synthetic production lead reached Hostinger SMTP;
+- [x] the configured primary commercial inbox confirmed actual receipt;
+- [x] production verification passed after the minimal-message deployment.
 
-Only the final delivery check closes 7C2. CI and capability discovery alone do not prove inbox delivery.
+**Web Phase 7C2 is closed.**
