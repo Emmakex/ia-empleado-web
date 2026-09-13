@@ -23,7 +23,7 @@
   /* Homepage scene uses explicit visual lanes so the informational overlays
      read as part of the composition instead of floating over character cards. */
   .brand-home-hero .brand-hero-stage {
-    min-height: 620px;
+    min-height: 670px;
   }
 
   .brand-home-hero .brand-hero-task {
@@ -41,7 +41,7 @@
   }
 
   .brand-home-hero .brand-hero-approval {
-    top: 67%;
+    top: 66%;
     bottom: auto;
     transform: translate(-50%, -50%);
   }
