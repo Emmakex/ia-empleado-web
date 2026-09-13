@@ -89,6 +89,9 @@ jobs:
       - name: Campaign media contract
         run: node scripts/check-campaign-media.mjs
 
+      - name: Conversion handoff contract
+        run: node scripts/check-conversion-handoff.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
