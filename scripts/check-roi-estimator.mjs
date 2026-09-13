@@ -30,6 +30,10 @@ mustContain("components/roi-estimator.tsx", [
   'content.roiUnavailable',
   'aria-live="polite"',
   'calculateRoi(inputs)',
+  'const [isHydrated, setIsHydrated] = useState(false)',
+  'data-roi-hydrated={isHydrated ? "true" : "false"}',
+  'data-roi-release="phase8a-roi-hydration-sync"',
+  'disabled={!isHydrated}',
 ]);
 
 mustContain("components/roi-estimator-page.tsx", [
