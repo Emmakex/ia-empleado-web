@@ -6,6 +6,7 @@ import {
   type LeadIntakeCapability,
   type LeadIntakePayload,
   type LeadIntakeResponse,
+  type LeadIntakeTransport,
 } from "../../../lib/lead-intake";
 import { deliverLeadViaSmtp, getLeadSmtpConfig } from "../../../lib/lead-smtp-delivery";
 
@@ -50,7 +51,11 @@ function getTransportConfig() {
   const webhookUrl = validHttpUrl(process.env.LEAD_INTAKE_WEBHOOK_URL);
   const privacyNoticeUrl = validHttpUrl(process.env.LEAD_PRIVACY_NOTICE_URL);
   const token = process.env.LEAD_INTAKE_WEBHOOK_TOKEN?.trim() || undefined;
-  const transport = smtp.configured ? "smtp" : webhookUrl ? "webhook" : undefined;
+  const transport: LeadIntakeTransport | undefined = smtp.configured
+    ? "smtp"
+    : webhookUrl
+      ? "webhook"
+      : undefined;
 
   return {
     smtp,
