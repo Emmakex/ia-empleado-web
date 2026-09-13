@@ -4,6 +4,7 @@ import { employeeIndexPath } from "../lib/employee-catalog";
 import { teamIndexPath } from "../lib/team-content-engine";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { teamBuilderPath } from "../lib/team-builder";
+import { requestDemoPath } from "../lib/conversion-handoff";
 import { MenuNavigationLink } from "./menu-navigation-link";
 import { MobileNavigation, type NavigationGroup } from "./mobile-navigation";
 
@@ -20,7 +21,8 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
   const teamsHref = teamIndexPath(locale);
   const howHref = collaborationDemoPath(locale);
   const securityHref = `${homeHref}#seguridad`;
-  const ctaHref = teamBuilderPath(locale);
+  const builderHref = teamBuilderPath(locale);
+  const ctaHref = requestDemoPath(locale, { intent: "demo", source: "header" });
   const languageHref = alternateHref ?? localeHref(otherLocale);
 
   const routes = locale === "es"
@@ -57,7 +59,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
         {
           label: "Herramientas",
           links: [
-            { href: ctaHref, label: "Diseña tu equipo IA" },
+            { href: builderHref, label: "Diseña tu equipo IA" },
             { href: routes.process, label: "Mejora tu proceso" },
             { href: routes.roi, label: "Calculadora ROI" },
           ],
@@ -90,7 +92,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
         {
           label: "Tools",
           links: [
-            { href: ctaHref, label: "Design your AI team" },
+            { href: builderHref, label: "Design your AI team" },
             { href: routes.process, label: "Improve your process" },
             { href: routes.roi, label: "ROI calculator" },
           ],
