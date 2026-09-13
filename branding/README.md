@@ -24,9 +24,11 @@ People ↔ AI Employees ↔ Business systems
 
 Phase 2A deepens the existing identity with reusable role-specific visual grammars for Clara, Alex, Sofía and Javier without replacing or redrawing the approved canonical character identities.
 
-**Branding Phase 2B — Team and Department compositions: implementation in progress.**
+**Branding Phase 2B — Team and Department compositions: Complete and production-verified (2026-09-12).**
 
-Phase 2B reuses the same role grammars inside one shared multi-role composition for deep Team and Department pages. The composition makes handoffs, shared systems and human-control boundaries visible while preserving the canonical character identities and existing product authority model.
+Phase 2B reuses the same role grammars inside one shared multi-role composition for deep Team and Department pages. The composition makes handoffs, shared systems and human-control boundaries visible while preserving the canonical character identities and existing product authority model. Hostinger release `branding-phase-2b-team-department-compositions` passed Production Verification #5.
+
+**Next: Branding Phase 2C — sector-specific hero art.** Reuse the stable identity, role and collaboration grammars to make Ecommerce, Travel, B2B Services and Retail visually distinct without creating one-off illustration systems.
 
 ## Folder contract
 
@@ -34,7 +36,7 @@ Phase 2B reuses the same role grammars inside one shared multi-role composition 
 - `ASSET_MANIFEST.md` — reusable asset inventory and where each asset belongs.
 - `PHASE_1_VALIDATION.md` — CI and production-browser evidence closing Branding Phase 1.
 - `PHASE_2_ROLE_VISUAL_FAMILIES.md` — role-family mapping, implementation rules and Phase 2A production-verification evidence.
-- `PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md` — shared Team/Department composition contract and Phase 2B release criteria.
+- `PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md` — shared Team/Department composition contract and Phase 2B production-verification evidence.
 - `tokens.json` — portable design tokens for web, product, decks and future apps.
 - `../public/branding/` — production-ready SVG/assets served by the website.
 - `../app/brand-system.css` — active web implementation of the brand tokens and visual rules.
