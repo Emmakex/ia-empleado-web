@@ -105,8 +105,14 @@ test.describe("Phase 8A interaction UX", () => {
     await assertKeyboardFocusVisible(page, bottleneck, "Process bottleneck control");
 
     await page.goto("/calculadora-roi", { waitUntil: "domcontentloaded" });
+    const roiShell = page.locator(".roi-calculator-shell");
     const range = page.locator(".roi-range");
     const rangeNumber = page.locator(".roi-range-number");
+    await expect(roiShell).toHaveAttribute("data-roi-release", "phase8a-roi-hydration-sync");
+    await expect(roiShell).toHaveAttribute("data-roi-hydrated", "true");
+    await expect(roiShell).toHaveAttribute("aria-busy", "false");
+    await expect(range).toBeEnabled();
+    await expect(rangeNumber).toBeEnabled();
     await expect(range).toHaveValue("30");
     await range.focus();
     await page.keyboard.press("ArrowRight");

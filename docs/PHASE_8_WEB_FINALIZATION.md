@@ -63,6 +63,22 @@ Acceptance:
 - 200% text zoom/reflow on critical conversion routes;
 - no visual regression in ES or EN.
 
+### Phase 8A production regression — ROI hydration synchronization
+
+Production Verification #27 exposed a real browser-timing defect after the initial Phase 8A release: 107 of 108 production tests passed, but keyboard interaction on the ROI range control could move the native slider from `30` to `31` before React hydration completed while the synchronized numeric control remained at `30`.
+
+Root cause: production timing allowed interaction after `DOMContentLoaded` but before React had attached the controlled-component event handling. The browser changed the native range value, while React state remained unchanged.
+
+Fix and regression protection:
+
+- ROI controls remain disabled until client hydration completes;
+- the calculator exposes `data-roi-hydrated` and an explicit hydration release marker;
+- Playwright waits for the hydrated state before keyboard interaction and verifies both controls stay synchronized;
+- the ROI source contract requires the hydration guard to remain present;
+- the active production marker is `web-phase-8a-roi-hydration-sync`, preventing verification against the previous deployment.
+
+Phase 8A remains open until this corrected release passes CI, deploys to Hostinger and completes production verification green.
+
 ## Phase 8B — Accessibility closure
 
 Target public-web WCAG 2.2 AA behavior where applicable.
