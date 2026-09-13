@@ -5,7 +5,6 @@ import type { LeadIntakePayload } from "./lead-intake";
 const DEFAULT_FROM_NAME = "IA Empleado";
 const DEFAULT_SUBJECT_PREFIX = "[IA Empleado]";
 const DEFAULT_APP_BASE_URL = "https://iaempleado.com";
-const REFERENCE_DEMO_URL = "https://kairoseth.iaempleado.com";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export type LeadSmtpConfig = {
@@ -121,15 +120,6 @@ export function getLeadSmtpConfig(): LeadSmtpConfig {
   };
 }
 
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
 function display(value: string | undefined, fallback = "No indicado"): string {
   return value?.trim() || fallback;
 }
@@ -144,74 +134,31 @@ function safeDiagnostic(value: unknown, fallback = "none", maxLength = 160): str
     .slice(0, maxLength) || fallback;
 }
 
-export function buildLeadNotification(input: LeadSmtpDeliveryInput, config: LeadSmtpConfig) {
-  const { payload, leadId, receivedAt, privacyNoticeUrl } = input;
+export function buildLeadNotification(input: LeadSmtpDeliveryInput, _config: LeadSmtpConfig) {
+  const { payload, leadId } = input;
   const interest = getLeadIntentLabel("es", payload.intent);
-  const companyOrName = display(payload.company, payload.name);
-  const subject = cleanHeader(
-    `${config.subjectPrefix} Nuevo lead — ${companyOrName} — ${interest}`,
-    `${DEFAULT_SUBJECT_PREFIX} Nuevo lead`,
-    180,
-  );
 
+  // Diagnostic profile: keep the automated message intentionally close to a
+  // normal human-to-human mailbox message while Hostinger's spam trigger is
+  // isolated. Rich HTML, URLs, external Reply-To and custom X-* headers are
+  // deliberately omitted and will be reintroduced one at a time after a
+  // confirmed inbox delivery.
+  const subject = "IA Empleado - nuevo contacto";
   const text = [
-    "Nuevo lead recibido desde iaempleado.com",
+    "Nuevo contacto desde IA Empleado.",
     "",
-    `Lead ID: ${leadId}`,
-    `Fecha: ${receivedAt}`,
-    `Idioma: ${payload.locale.toUpperCase()}`,
-    `Empresa: ${display(payload.company)}`,
-    `Contacto: ${payload.name}`,
+    `Nombre: ${payload.name}`,
     `Email: ${payload.email}`,
+    `Empresa: ${display(payload.company)}`,
     `Interés: ${interest}`,
-    `Origen: ${payload.source}`,
-    `Contexto: ${display(payload.context, "No especificado")}`,
     "",
-    "Necesidad / proceso:",
+    "Necesidad:",
     payload.need,
     "",
-    `Consentimiento: ${payload.consentVersion}`,
-    `Privacidad: ${privacyNoticeUrl}`,
-    `Origen técnico: ${config.appBaseUrl}`,
-    `Demo de referencia: ${REFERENCE_DEMO_URL}`,
+    `Referencia: ${leadId}`,
   ].join("\n");
 
-  const row = (label: string, value: string) => `
-    <tr>
-      <td style="padding:6px 12px 6px 0;font-weight:700;vertical-align:top;white-space:nowrap">${escapeHtml(label)}</td>
-      <td style="padding:6px 0;vertical-align:top">${escapeHtml(value)}</td>
-    </tr>`;
-
-  const html = `<!doctype html>
-<html lang="es">
-  <body style="margin:0;padding:24px;background:#f7f7f8;font-family:Arial,Helvetica,sans-serif;color:#151515">
-    <div style="max-width:720px;margin:0 auto;background:#ffffff;border:1px solid #e6e6e8;border-radius:16px;padding:28px">
-      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#666">IA Empleado · Lead comercial</div>
-      <h1 style="margin:10px 0 20px;font-size:24px;line-height:1.2">Nuevo lead recibido</h1>
-      <table role="presentation" style="border-collapse:collapse;width:100%;font-size:14px;line-height:1.5">
-        ${row("Lead ID", leadId)}
-        ${row("Fecha", receivedAt)}
-        ${row("Idioma", payload.locale.toUpperCase())}
-        ${row("Empresa", display(payload.company))}
-        ${row("Contacto", payload.name)}
-        ${row("Email", payload.email)}
-        ${row("Interés", interest)}
-        ${row("Origen", payload.source)}
-        ${row("Contexto", display(payload.context, "No especificado"))}
-      </table>
-      <h2 style="margin:24px 0 8px;font-size:16px">Necesidad / proceso</h2>
-      <div style="white-space:pre-wrap;background:#f7f7f8;border-radius:10px;padding:14px;font-size:14px;line-height:1.55">${escapeHtml(payload.need)}</div>
-      <div style="margin-top:24px;padding-top:18px;border-top:1px solid #ececef;font-size:12px;line-height:1.6;color:#666">
-        Consentimiento: ${escapeHtml(payload.consentVersion)}<br>
-        Privacidad: <a href="${escapeHtml(privacyNoticeUrl)}">${escapeHtml(privacyNoticeUrl)}</a><br>
-        Origen técnico: <a href="${escapeHtml(config.appBaseUrl)}">${escapeHtml(config.appBaseUrl)}</a><br>
-        Demo de referencia: <a href="${REFERENCE_DEMO_URL}">${REFERENCE_DEMO_URL}</a>
-      </div>
-    </div>
-  </body>
-</html>`;
-
-  return { subject, text, html };
+  return { subject, text };
 }
 
 export async function deliverLeadViaSmtp(input: LeadSmtpDeliveryInput): Promise<LeadSmtpDeliveryResult> {
@@ -252,17 +199,8 @@ export async function deliverLeadViaSmtp(input: LeadSmtpDeliveryInput): Promise<
       address: config.fromEmail,
     },
     to: config.recipients,
-    replyTo: {
-      name: payloadSafeReplyName(input.payload.name),
-      address: input.payload.email,
-    },
     subject: message.subject,
     text: message.text,
-    html: message.html,
-    headers: {
-      "X-IA-Empleado-Lead-Id": input.leadId,
-      "X-IA-Empleado-Event": "lead.created",
-    },
   });
 
   const acceptedCount = Array.isArray(info.accepted) ? info.accepted.length : 0;
@@ -287,8 +225,4 @@ export async function deliverLeadViaSmtp(input: LeadSmtpDeliveryInput): Promise<
   );
 
   return { messageId, acceptedCount, rejectedCount, pendingCount };
-}
-
-function payloadSafeReplyName(name: string): string {
-  return cleanHeader(name, "Contacto IA Empleado", 100);
 }

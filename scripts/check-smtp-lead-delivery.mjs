@@ -7,6 +7,7 @@ const files = {
   package: "package.json",
   test: "tests/lead-intake.spec.ts",
   docs: "docs/PHASE_7C2_HOSTINGER_SMTP.md",
+  diagnostic: "docs/EMAIL_DELIVERABILITY_DIAGNOSTIC.md",
   esLayout: "app/(es)/layout.tsx",
   enLayout: "app/(en)/en/layout.tsx",
   production: ".github/workflows/production-verify.yml",
@@ -24,6 +25,7 @@ const env = read(files.env);
 const pkg = read(files.package);
 const test = read(files.test);
 const docs = read(files.docs);
+const diagnostic = read(files.diagnostic);
 const esLayout = read(files.esLayout);
 const enLayout = read(files.enLayout);
 const production = read(files.production);
@@ -40,14 +42,12 @@ for (const token of [
   "SMTP_FROM_EMAIL",
   "LEAD_NOTIFICATION_TO",
   "LEAD_NOTIFICATION_SUBJECT_PREFIX",
-  "replyTo",
-  '"X-IA-Empleado-Lead-Id"',
   "connectionTimeout",
   "greetingTimeout",
   "socketTimeout",
   'minVersion: "TLSv1.2"',
-  "escapeHtml",
-  "kairoseth.iaempleado.com",
+  'const subject = "IA Empleado - nuevo contacto"',
+  "Nuevo contacto desde IA Empleado.",
   "info.accepted",
   "info.rejected",
   "info.pending",
@@ -64,8 +64,12 @@ for (const forbidden of [
   "console.error(config",
   "console.log(input.payload",
   "console.error(input.payload",
+  "replyTo:",
+  '"X-IA-Empleado-Lead-Id"',
+  '"X-IA-Empleado-Event"',
+  "html: message.html",
 ]) {
-  if (smtp.includes(forbidden)) throw new Error(`SMTP delivery contains forbidden secret/PII pattern: ${forbidden}`);
+  if (smtp.includes(forbidden)) throw new Error(`SMTP diagnostic profile contains forbidden pattern: ${forbidden}`);
 }
 
 for (const token of [
@@ -129,6 +133,16 @@ for (const phrase of [
   if (!docs.includes(phrase)) throw new Error(`7C2 SMTP documentation missing phrase: ${phrase}`);
 }
 
+for (const phrase of [
+  "Manual messages",
+  "plain text only",
+  "no HTML alternative",
+  "no external Reply-To",
+  "no custom X-IA-* headers",
+]) {
+  if (!diagnostic.includes(phrase)) throw new Error(`Deliverability diagnostic documentation missing phrase: ${phrase}`);
+}
+
 const release = '"ia-web-release": "web-phase-7c2-hostinger-smtp"';
 if (!esLayout.includes(release) || !enLayout.includes(release)) {
   throw new Error("ES/EN layouts are not marked for the Web Phase 7C2 SMTP release");
@@ -141,4 +155,4 @@ if (!production.includes("tests/lead-intake.spec.ts")) {
   throw new Error("Production verification does not include lead intake QA");
 }
 
-console.log("Hostinger SMTP lead-delivery contract OK: server-only secrets, explicit SMTP transport, full-recipient acceptance and production gate protected.");
+console.log("Hostinger SMTP lead-delivery contract OK: minimal diagnostic message, server-only secrets, explicit SMTP transport, full-recipient acceptance and production gate protected.");
