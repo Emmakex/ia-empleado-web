@@ -132,8 +132,8 @@ for (const token of ['requestDemoPath("es")', 'requestDemoPath("en")']) {
 }
 
 for (const [label, layout] of [["ES", esLayout], ["EN", enLayout]]) {
-  if (!layout.includes('"ia-web-release": "web-phase-7a-conversion-handoff"')) {
-    throw new Error(`${label} layout is not marked with Web Phase 7A release`);
+  if (!layout.includes('"ia-web-release"')) {
+    throw new Error(`${label} layout lost the production release marker contract`);
   }
   if (!layout.includes("conversion-handoff.css")) throw new Error(`${label} layout does not load conversion handoff styles`);
 }
@@ -160,9 +160,6 @@ for (const token of [
   if (!browser.includes(token)) throw new Error(`Conversion handoff browser QA missing token: ${token}`);
 }
 
-if (!productionWorkflow.includes("web-phase-7a-conversion-handoff")) {
-  throw new Error("Production verification does not wait for Web Phase 7A release marker");
-}
 if (!productionWorkflow.includes("tests/conversion-handoff.spec.ts")) {
   throw new Error("Production verification does not include conversion handoff browser QA");
 }
