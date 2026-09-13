@@ -29,6 +29,13 @@ export type LeadSmtpDeliveryInput = {
   privacyNoticeUrl: string;
 };
 
+export type LeadSmtpDeliveryResult = {
+  messageId: string;
+  acceptedCount: number;
+  rejectedCount: number;
+  pendingCount: number;
+};
+
 function cleanHeader(value: string | undefined, fallback = "", maxLength = 120): string {
   const clean = (value || fallback)
     .replace(/[\r\n\u0000-\u001f\u007f]+/g, " ")
@@ -71,10 +78,12 @@ function validEmail(value: string | undefined): string | undefined {
 
 function parseRecipients(value: string | undefined): string[] {
   if (!value) return [];
-  return value
-    .split(/[;,]/)
-    .map((candidate) => validEmail(candidate))
-    .filter((candidate): candidate is string => Boolean(candidate));
+  return Array.from(new Set(
+    value
+      .split(/[;,]/)
+      .map((candidate) => validEmail(candidate))
+      .filter((candidate): candidate is string => Boolean(candidate)),
+  ));
 }
 
 export function getLeadSmtpConfig(): LeadSmtpConfig {
@@ -123,6 +132,16 @@ function escapeHtml(value: string): string {
 
 function display(value: string | undefined, fallback = "No indicado"): string {
   return value?.trim() || fallback;
+}
+
+function safeDiagnostic(value: unknown, fallback = "none", maxLength = 160): string {
+  const raw = typeof value === "string" ? value : fallback;
+  return raw
+    .replace(/[\r\n\u0000-\u001f\u007f]+/g, " ")
+    .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "<email>")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, maxLength) || fallback;
 }
 
 export function buildLeadNotification(input: LeadSmtpDeliveryInput, config: LeadSmtpConfig) {
@@ -195,7 +214,7 @@ export function buildLeadNotification(input: LeadSmtpDeliveryInput, config: Lead
   return { subject, text, html };
 }
 
-export async function deliverLeadViaSmtp(input: LeadSmtpDeliveryInput): Promise<void> {
+export async function deliverLeadViaSmtp(input: LeadSmtpDeliveryInput): Promise<LeadSmtpDeliveryResult> {
   const config = getLeadSmtpConfig();
   if (
     !config.configured
@@ -227,7 +246,7 @@ export async function deliverLeadViaSmtp(input: LeadSmtpDeliveryInput): Promise<
     },
   });
 
-  await transporter.sendMail({
+  const info = await transporter.sendMail({
     from: {
       name: config.fromName,
       address: config.fromEmail,
@@ -245,6 +264,29 @@ export async function deliverLeadViaSmtp(input: LeadSmtpDeliveryInput): Promise<
       "X-IA-Empleado-Event": "lead.created",
     },
   });
+
+  const acceptedCount = Array.isArray(info.accepted) ? info.accepted.length : 0;
+  const rejectedCount = Array.isArray(info.rejected) ? info.rejected.length : 0;
+  const pendingCount = Array.isArray(info.pending) ? info.pending.length : 0;
+  const messageId = safeDiagnostic(info.messageId, "unknown", 160);
+  const response = safeDiagnostic(info.response, "none", 160);
+
+  if (
+    acceptedCount !== config.recipients.length
+    || rejectedCount > 0
+    || pendingCount > 0
+  ) {
+    console.error(
+      `[lead-smtp] partial_delivery leadId=${input.leadId} accepted=${acceptedCount}/${config.recipients.length} rejected=${rejectedCount} pending=${pendingCount} response=${response}`,
+    );
+    throw new Error(`smtp_partial_delivery accepted=${acceptedCount} rejected=${rejectedCount} pending=${pendingCount}`);
+  }
+
+  console.info(
+    `[lead-smtp] accepted leadId=${input.leadId} messageId=${messageId} accepted=${acceptedCount} rejected=${rejectedCount} pending=${pendingCount} response=${response}`,
+  );
+
+  return { messageId, acceptedCount, rejectedCount, pendingCount };
 }
 
 function payloadSafeReplyName(name: string): string {
