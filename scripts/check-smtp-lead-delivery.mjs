@@ -48,6 +48,12 @@ for (const token of [
   'minVersion: "TLSv1.2"',
   "escapeHtml",
   "kairoseth.iaempleado.com",
+  "info.accepted",
+  "info.rejected",
+  "info.pending",
+  "acceptedCount !== config.recipients.length",
+  "smtp_partial_delivery",
+  "partial_delivery",
 ]) {
   if (!smtp.includes(token)) throw new Error(`SMTP delivery contract missing token: ${token}`);
 }
@@ -65,6 +71,7 @@ for (const forbidden of [
 for (const token of [
   "getLeadSmtpConfig",
   'smtp.configured ? "smtp"',
+  'transport: config.transport',
   'config.transport === "smtp"',
   "deliverLeadViaSmtp",
   "LEAD_INTAKE_WEBHOOK_URL",
@@ -99,8 +106,9 @@ for (const token of [
   "PRODUCTION_BASE_URL",
   'expect(publicState.mode).toBe("direct")',
   'expect(publicState.configured).toBe(true)',
-  'not.toContain("SMTP")',
-  'not.toContain("PASSWORD")',
+  'expect(publicState.transport).toBe("smtp")',
+  'not.toContain("SMTP_PASSWORD")',
+  'not.toContain("LEAD_NOTIFICATION_TO")',
 ]) {
   if (!test.includes(token)) throw new Error(`Lead intake QA missing SMTP production token: ${token}`);
 }
@@ -112,6 +120,8 @@ for (const phrase of [
   "SMTP_PASSWORD",
   "generic webhook",
   "one synthetic production lead",
+  "partial recipient acceptance",
+  "5.7.1 Spam message rejected",
 ]) {
   if (!docs.includes(phrase)) throw new Error(`7C2 SMTP documentation missing phrase: ${phrase}`);
 }
@@ -128,4 +138,4 @@ if (!production.includes("tests/lead-intake.spec.ts")) {
   throw new Error("Production verification does not include lead intake QA");
 }
 
-console.log("Hostinger SMTP lead-delivery contract OK: server-only secrets, truthful capability, structured notification and production gate protected.");
+console.log("Hostinger SMTP lead-delivery contract OK: server-only secrets, explicit SMTP transport, full-recipient acceptance and production gate protected.");
