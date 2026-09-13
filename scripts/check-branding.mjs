@@ -21,6 +21,7 @@ const requiredFiles = [
   "lib/brand-characters.ts",
   "components/brand-hero-scene.tsx",
   "components/brand-context-scene.tsx",
+  "components/brand-sector-hero-art.tsx",
   "components/brand-organization-scene.tsx",
   "components/brand-collaboration-composition.tsx",
   "components/brand-interactive-preview.tsx",
@@ -50,6 +51,7 @@ const requiredFiles = [
   "app/brand-fidelity.css",
   "app/brand-content.css",
   "app/brand-sector-content.css",
+  "app/brand-sector-hero-art.css",
   "app/brand-organization-content.css",
   "app/brand-collaboration-compositions.css",
   "app/brand-interactive-content.css",
@@ -75,6 +77,7 @@ const footer = read("components/site-footer.tsx");
 const home = read("components/home-page.tsx");
 const hero = read("components/brand-hero-scene.tsx");
 const contextScene = read("components/brand-context-scene.tsx");
+const sectorHeroArt = read("components/brand-sector-hero-art.tsx");
 const organizationScene = read("components/brand-organization-scene.tsx");
 const collaborationComposition = read("components/brand-collaboration-composition.tsx");
 const interactivePreview = read("components/brand-interactive-preview.tsx");
@@ -104,6 +107,7 @@ const brandCss = read("app/brand-system.css");
 const fidelityCss = read("app/brand-fidelity.css");
 const contentCss = read("app/brand-content.css");
 const sectorBrandCss = read("app/brand-sector-content.css");
+const sectorHeroCss = read("app/brand-sector-hero-art.css");
 const organizationBrandCss = read("app/brand-organization-content.css");
 const collaborationBrandCss = read("app/brand-collaboration-compositions.css");
 const interactiveBrandCss = read("app/brand-interactive-content.css");
@@ -125,9 +129,11 @@ if (!teamIndex.includes("brand-team-hero-art") || !teamIndex.includes("brand-tea
 if (!collaborationComposition.includes("BrandCollaborationComposition") || !collaborationComposition.includes("brand-collaboration-hub") || !collaborationComposition.includes("brand-collaboration-human") || !collaborationComposition.includes("brand-collaboration-systems")) throw new Error("Reusable Team/Department collaboration composition is incomplete");
 if (!teamDetail.includes("<BrandCollaborationComposition") || !teamDetail.includes('variant="team"') || !teamDetail.includes("brand-team-member-portrait")) throw new Error("Team detail does not expose the shared branded collaboration composition and canonical member portraits");
 
-if (!contextScene.includes("BrandContextScene") || !contextScene.includes("BrandCharacterStrip") || !contextScene.includes("getBrandCharacterByEmployeeKey")) throw new Error("Reusable sector/use-case brand scene is incomplete");
-if (!sectorIndex.includes("<BrandContextScene") || !sectorIndex.includes("<BrandCharacterStrip")) throw new Error("Sector index does not use approved brand scenes");
-if (!sectorDetail.includes("<BrandContextScene") || !sectorDetail.includes("sector-role-character") || !sectorDetail.includes("getBrandCharacterByEmployeeKey")) throw new Error("Sector detail does not use canonical character art");
+if (!contextScene.includes("BrandContextScene") || !contextScene.includes("BrandCharacterStrip") || !contextScene.includes("getBrandCharacterByEmployeeKey")) throw new Error("Reusable overview/use-case brand scene is incomplete");
+if (!sectorHeroArt.includes("BrandSectorHeroArt") || !sectorHeroArt.includes("data-sector-art={sectorKey}") || !sectorHeroArt.includes("brand-sector-art-human") || !sectorHeroArt.includes("brand-sector-art-systems") || !sectorHeroArt.includes("BrandCharacterImage")) throw new Error("Reusable sector-specific hero art is incomplete");
+if (!sectorIndex.includes("<BrandContextScene") || !sectorIndex.includes("<BrandCharacterStrip")) throw new Error("Sector index does not use approved overview brand scenes");
+if (!sectorDetail.includes("<BrandSectorHeroArt") || !sectorDetail.includes("sectorKey={sector.key}") || !sectorDetail.includes("sector-role-character") || !sectorDetail.includes("getBrandCharacterByEmployeeKey")) throw new Error("Sector detail does not use sector-specific hero art and canonical character roles");
+if (sectorDetail.includes("<BrandContextScene")) throw new Error("Deep sector detail must not fall back to the generic context scene");
 if (!useCaseIndex.includes("<BrandContextScene") || !useCaseIndex.includes("<BrandCharacterStrip")) throw new Error("Use-case index does not use approved brand scenes");
 if (!useCaseDetail.includes("<BrandContextScene") || !useCaseDetail.includes("sector-role-character") || !useCaseDetail.includes("brand-use-case-flow-list")) throw new Error("Use-case detail does not use branded process visuals");
 
@@ -148,24 +154,31 @@ if (!roiEstimatorPage.includes('<BrandInteractivePreview') || !roiEstimatorPage.
 if (!roiEstimator.includes("roi-brand-value-path") || !roiEstimator.includes("roi-brand-scenario-meter")) throw new Error("ROI Estimator does not expose branded workload/capacity visualization");
 if (roiEstimator.includes("getBrandCharacterForProfileKey") || roiEstimator.includes("getBrandCharacterForActorLabel")) throw new Error("ROI Estimator must not attribute financial estimates to a specific canonical character");
 
-for (const css of [brandCss, fidelityCss, contentCss, sectorBrandCss, organizationBrandCss, collaborationBrandCss, interactiveBrandCss]) {
+for (const css of [brandCss, fidelityCss, contentCss, sectorBrandCss, sectorHeroCss, organizationBrandCss, collaborationBrandCss, interactiveBrandCss]) {
   if (!css.includes("prefers-reduced-motion")) throw new Error("Brand motion lacks reduced-motion handling");
 }
 if (!fidelityCss.includes("@media (max-width: 760px)")) throw new Error("Approved mobile hero layout is missing");
 if (!contentCss.includes("@media (max-width: 760px)")) throw new Error("Employee/team branded surfaces lack mobile handling");
 if (!sectorBrandCss.includes("@media (max-width: 760px)")) throw new Error("Sector/use-case branded surfaces lack mobile handling");
+if (!sectorHeroCss.includes("@media (max-width: 760px)") || !sectorHeroCss.includes("@media (max-width: 430px)")) throw new Error("Sector hero art lacks mobile handling");
 if (!organizationBrandCss.includes("@media (max-width: 760px)")) throw new Error("Department/integration branded surfaces lack mobile handling");
 if (!collaborationBrandCss.includes("@media (max-width: 760px)")) throw new Error("Team/Department collaboration compositions lack mobile handling");
 if (!interactiveBrandCss.includes("@media (max-width: 760px)")) throw new Error("Interactive branded surfaces lack mobile handling");
 if (!interactiveBrandCss.includes("brand-interactive-human") || !interactiveBrandCss.includes("brand-simulator-state-strip")) throw new Error("Interactive visuals do not expose human-control/state layers");
 if (!organizationBrandCss.includes("brand-organization-human") || !organizationBrandCss.includes("brand-organization-systems")) throw new Error("Organization scenes do not expose human-control and system layers");
 if (!collaborationBrandCss.includes("brand-collaboration-human") || !collaborationBrandCss.includes("brand-collaboration-systems")) throw new Error("Team/Department compositions do not expose human-control and shared-system layers");
+if (!sectorHeroCss.includes("brand-sector-art-human") || !sectorHeroCss.includes("brand-sector-art-systems")) throw new Error("Sector hero art does not expose human-control and system layers");
 if (!organizationBrandCss.includes("READ") && !integrationDetail.includes("READ")) throw new Error("Integration authority visual is missing READ semantics");
-if (!sectorBrandCss.includes('data-context="ecommerce"') || !sectorBrandCss.includes('data-context="travel"') || !sectorBrandCss.includes('data-context="sales"')) throw new Error("Sector visual accents are incomplete");
+if (!sectorBrandCss.includes('data-context="ecommerce"') || !sectorBrandCss.includes('data-context="travel"') || !sectorBrandCss.includes('data-context="sales"')) throw new Error("Sector/use-case context accents are incomplete");
+for (const sector of ["ecommerce", "travel", "professional-services", "sales"]) {
+  if (!sectorHeroCss.includes(`[data-sector-art="${sector}"]`) || !sectorHeroCss.includes(`[data-sector-signature="${sector}"]`)) {
+    throw new Error(`Sector hero visual grammar missing: ${sector}`);
+  }
+}
 if (!fidelityCss.includes("span:nth-child(n + 4)")) throw new Error("Mobile system-chip simplification is missing");
 
 for (const [localeName, layout] of [["ES", esLayout], ["EN", enLayout]]) {
-  for (const stylesheet of ["brand-system.css", "brand-fidelity.css", "brand-content.css", "brand-sector-content.css", "brand-organization-content.css", "brand-collaboration-compositions.css", "brand-interactive-content.css"]) {
+  for (const stylesheet of ["brand-system.css", "brand-fidelity.css", "brand-content.css", "brand-sector-content.css", "brand-sector-hero-art.css", "brand-organization-content.css", "brand-collaboration-compositions.css", "brand-interactive-content.css"]) {
     if (!layout.includes(stylesheet)) throw new Error(`${localeName} layout does not load ${stylesheet}`);
   }
 }
