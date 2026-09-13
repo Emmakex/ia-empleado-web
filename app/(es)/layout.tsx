@@ -18,6 +18,7 @@ import "../brand-content.css";
 import "../brand-role-families.css";
 import "../brand-collaboration-compositions.css";
 import "../brand-sector-content.css";
+import "../brand-sector-hero-art.css";
 import "../brand-organization-content.css";
 import "../brand-interactive-content.css";
 import "../brand-comparison-proof.css";
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "branding-phase-2b-team-department-compositions" },
+  other: { "ia-web-release": "branding-phase-2c-sector-hero-art" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };
