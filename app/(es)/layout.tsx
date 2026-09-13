@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "web-phase-7b-contextual-result-handoff" },
+  other: { "ia-web-release": "web-hotfix-home-hero-overlay-geometry" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };
