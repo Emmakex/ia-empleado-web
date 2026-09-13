@@ -36,7 +36,6 @@ test.describe("Web Phase 7C1 lead intake foundation", () => {
       data: { ...validPayload(), consent: false },
     });
     expect(invalid.status()).toBe(400);
-    await expect(invalid).toBeOK({ soft: true }).catch(() => undefined);
     expect(await invalid.json()).toEqual({ ok: false, code: "validation_error" });
 
     const unconfigured = await request.post("/api/lead-intake", { data: validPayload() });
