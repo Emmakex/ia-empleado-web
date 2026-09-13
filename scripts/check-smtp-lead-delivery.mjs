@@ -70,8 +70,11 @@ for (const forbidden of [
 
 for (const token of [
   "getLeadSmtpConfig",
-  'smtp.configured ? "smtp"',
-  'transport: config.transport',
+  "LeadIntakeTransport",
+  "const transport:",
+  '"smtp"',
+  '"webhook"',
+  "transport: config.transport",
   'config.transport === "smtp"',
   "deliverLeadViaSmtp",
   "LEAD_INTAKE_WEBHOOK_URL",
