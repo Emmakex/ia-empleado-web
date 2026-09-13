@@ -1,6 +1,6 @@
 # IA Empleado — Branding Phase 2B: Team and Department compositions
 
-Status: **implementation in progress**
+Status: **complete and production-verified — 2026-09-12**
 
 ## Goal
 
@@ -15,7 +15,7 @@ The objective is not to add decorative complexity. The scene must make four oper
 
 ## Shared visual contract
 
-Teams and Departments now use one reusable composition renderer rather than maintaining separate visual languages.
+Teams and Departments use one reusable composition renderer rather than maintaining separate visual languages.
 
 `BrandCollaborationComposition` combines:
 
@@ -100,9 +100,29 @@ The browser gate verifies:
 - mobile composition preserves all functional blocks;
 - no horizontal page overflow.
 
-## Release criteria
+## Production verification evidence
 
-Phase 2B is complete only when:
+Phase 2B was delivered through PR **#47 — `feat: unify Team and Department collaboration compositions`** and merged to `main` as commit:
+
+`e9af3bad026b6b4809bc8fa913152dd130317bda`
+
+Validation evidence:
+
+- PR Web CI **#112**: all static contracts passed, including `Team and Department composition contract`; TypeScript passed; browser QA passed; production build passed.
+- `main` Web CI **#113**, run `34719513419`: all contracts, TypeScript, browser QA and build passed again after merge.
+- Hostinger served the expected release marker `branding-phase-2b-team-department-compositions` before production browser validation started.
+- Production Verification **#5**, run `34719659316`: completed successfully against `https://iaempleado.com`.
+- Production Playwright validated geometry, Phase 2A role families, Phase 2B Team/Department compositions, responsive behavior and accessibility on the deployed website.
+- No failure diagnostics artifact was produced because the production gate completed successfully.
+
+During validation two historical contracts were also corrected so they protect behavior rather than obsolete implementation details:
+
+- the global branding contract now recognizes `BrandCollaborationComposition` instead of requiring the superseded Team-only scene classes;
+- the Phase 2A role-family contract no longer hardcodes the Phase 2A release-marker value, while still requiring the role-family implementation and an active website release marker.
+
+## Release criteria — closed
+
+All release criteria are satisfied:
 
 - all four Team deep pages and all six Department deep pages use the shared collaboration renderer in ES and EN;
 - Phase 2A character/motif mapping is preserved;
@@ -110,8 +130,8 @@ Phase 2B is complete only when:
 - static contracts, TypeScript, browser QA and production build pass;
 - Hostinger serves `branding-phase-2b-team-department-compositions`;
 - production Playwright passes Team/Department composition tests against `iaempleado.com`;
-- production evidence is recorded before advancing.
+- production evidence is recorded here before advancing.
 
 ## Next after 2B
 
-Branding Phase 2C should apply the stable visual grammar to **sector-specific hero art**. Campaign and social variants follow after the website surfaces are stable so those resources can be generated from a proven system rather than from one-off creative treatments.
+**Branding Phase 2C — sector-specific hero art.** Apply the stable visual grammar to the public sector surfaces so Ecommerce, Travel, B2B Services and Retail become visually distinct without creating isolated one-off illustration systems. Campaign and social variants follow after the website sector layer is production-verified.
