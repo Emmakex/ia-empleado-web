@@ -66,6 +66,7 @@ jobs:
           tests/contextual-result-handoff.spec.ts
           tests/lead-intake.spec.ts
           tests/navigation-and-hero-scale.spec.ts
+          tests/phase8-interaction-ux.spec.ts
           tests/ux-visual.spec.ts
 
       - name: Upload production QA diagnostics
