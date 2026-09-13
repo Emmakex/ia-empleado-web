@@ -39,7 +39,30 @@
   .team-member-grid,
   .team-controls-grid,
   .team-limits-grid,
-  .team-metrics-grid {
+  .team-metrics-grid,
+  .team-builder-shell,
+  .team-builder-shell > *,
+  .team-builder-config,
+  .team-builder-results,
+  .team-builder-config-head,
+  .team-builder-config-head > *,
+  .builder-presets,
+  .builder-preset-grid,
+  .builder-fields,
+  .builder-field,
+  .builder-choice-grid,
+  .builder-role-section,
+  .builder-role-grid,
+  .builder-role-card,
+  .builder-handoffs,
+  .builder-handoff-list,
+  .builder-selected-systems,
+  .process-analyzer-hero-grid,
+  .process-analyzer-hero-grid > *,
+  .process-analyzer-hero h1,
+  .process-analyzer-hero-lead,
+  .process-analyzer-hero .hero-actions,
+  .process-analyzer-hero-note {
     min-width: 0;
     max-width: 100%;
   }
@@ -48,7 +71,9 @@
   .principles-grid,
   .faq-layout,
   .team-index-hero-grid,
-  .team-detail-hero-grid {
+  .team-detail-hero-grid,
+  .team-builder-shell,
+  .process-analyzer-hero-grid {
     width: 100%;
     grid-template-columns: minmax(0, 1fr);
   }
@@ -58,10 +83,13 @@
   .content-section :is(h1, h2, h3, p, li),
   .team-index-hero :is(h1, h2, h3, p),
   .team-detail-hero :is(h1, h2, h3, p),
+  .process-analyzer-hero :is(h1, p),
   .team-card-header h3,
   .breadcrumbs,
   .eyebrow,
-  .faq-item summary {
+  .faq-item summary,
+  .team-builder-config :is(button, a, span, strong, small),
+  .team-builder-results :is(button, a, span, strong, small) {
     min-width: 0;
     max-width: 100%;
     overflow-wrap: anywhere;
@@ -76,13 +104,17 @@
   }
 
   .team-detail-hero .hero-actions,
-  .team-index-hero .hero-actions {
+  .team-index-hero .hero-actions,
+  .process-analyzer-hero .hero-actions {
     min-width: 0;
     max-width: 100%;
   }
 
   .team-detail-hero .hero-actions .button,
-  .team-index-hero .hero-actions .button {
+  .team-index-hero .hero-actions .button,
+  .process-analyzer-hero .hero-actions .button,
+  .team-builder-config button,
+  .team-builder-results .button {
     min-width: 0;
     max-width: 100%;
     white-space: normal;
@@ -90,7 +122,9 @@
   }
 
   .team-outcome-card,
-  .team-definition-card {
+  .team-definition-card,
+  .team-builder-config,
+  .team-builder-results {
     width: 100%;
   }
 
@@ -127,7 +161,9 @@
   .content-section > .container,
   .principles-strip > .container,
   .team-detail-hero > .container,
-  .team-index-hero > .container {
+  .team-index-hero > .container,
+  .team-builder-main-section > .container,
+  .process-analyzer-hero > .container {
     min-width: 0;
     max-width: 100%;
   }
