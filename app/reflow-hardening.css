@@ -39,7 +39,24 @@
   .team-member-grid,
   .team-controls-grid,
   .team-limits-grid,
-  .team-metrics-grid {
+  .team-metrics-grid,
+  .team-builder-shell,
+  .team-builder-shell > *,
+  .team-builder-config,
+  .team-builder-results,
+  .team-builder-config-head,
+  .team-builder-config-head > *,
+  .builder-presets,
+  .builder-preset-grid,
+  .builder-fields,
+  .builder-field,
+  .builder-choice-grid,
+  .builder-role-section,
+  .builder-role-grid,
+  .builder-role-card,
+  .builder-handoffs,
+  .builder-handoff-list,
+  .builder-selected-systems {
     min-width: 0;
     max-width: 100%;
   }
@@ -48,7 +65,8 @@
   .principles-grid,
   .faq-layout,
   .team-index-hero-grid,
-  .team-detail-hero-grid {
+  .team-detail-hero-grid,
+  .team-builder-shell {
     width: 100%;
     grid-template-columns: minmax(0, 1fr);
   }
@@ -61,7 +79,9 @@
   .team-card-header h3,
   .breadcrumbs,
   .eyebrow,
-  .faq-item summary {
+  .faq-item summary,
+  .team-builder-config :is(button, a, span, strong, small),
+  .team-builder-results :is(button, a, span, strong, small) {
     min-width: 0;
     max-width: 100%;
     overflow-wrap: anywhere;
@@ -82,7 +102,9 @@
   }
 
   .team-detail-hero .hero-actions .button,
-  .team-index-hero .hero-actions .button {
+  .team-index-hero .hero-actions .button,
+  .team-builder-config button,
+  .team-builder-results .button {
     min-width: 0;
     max-width: 100%;
     white-space: normal;
@@ -90,7 +112,9 @@
   }
 
   .team-outcome-card,
-  .team-definition-card {
+  .team-definition-card,
+  .team-builder-config,
+  .team-builder-results {
     width: 100%;
   }
 
@@ -127,7 +151,8 @@
   .content-section > .container,
   .principles-strip > .container,
   .team-detail-hero > .container,
-  .team-index-hero > .container {
+  .team-index-hero > .container,
+  .team-builder-main-section > .container {
     min-width: 0;
     max-width: 100%;
   }
