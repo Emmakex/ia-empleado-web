@@ -76,19 +76,18 @@ for (const [label, layout] of [["ES", esLayout], ["EN", enLayout]]) {
   }
 }
 
-const requiredRoutes = [
-  "/sectores/ecommerce",
-  "/sectores/turismo",
-  "/sectores/servicios-profesionales",
-  "/sectores/ventas",
-  "/en/sectors/ecommerce",
-  "/en/sectors/travel",
-  "/en/sectors/professional-services",
-  "/en/sectors/sales",
-];
-for (const route of requiredRoutes) {
-  if (!browser.includes(route)) throw new Error(`Sector hero browser QA missing route: ${route}`);
+for (const token of [
+  "sectorRecords",
+  "sectorDetailPath",
+  '([\"es\", \"en\"] as Locale[])',
+  'routesFor(\"es\")',
+  'width: 390',
+  'data-sector-art',
+  'data-sector-signature',
+  'brand-sector-art-systems',
+  'brand-sector-art-human',
+]) {
+  if (!browser.includes(token)) throw new Error(`Sector hero browser QA missing canonical coverage token: ${token}`);
 }
-if (!browser.includes("390")) throw new Error("Sector hero browser QA must include 390px mobile coverage");
 
-console.log("Sector hero art contract OK: four sector signatures, canonical role families, bilingual rendering and responsive production gate protected.");
+console.log("Sector hero art contract OK: four sector signatures, canonical role families, bilingual route generation and responsive production gate protected.");
