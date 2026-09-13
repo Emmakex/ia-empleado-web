@@ -1,0 +1,256 @@
+.conversion-handoff-page {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(91, 95, 245, 0.08), transparent 28rem),
+    linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+}
+
+.conversion-handoff-hero {
+  padding-bottom: 3.5rem;
+}
+
+.conversion-handoff-hero-grid,
+.conversion-handoff-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(19rem, 0.75fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.conversion-handoff-hero h1 {
+  max-width: 13ch;
+}
+
+.conversion-handoff-lead {
+  max-width: 46rem;
+  margin-top: 1.25rem;
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--text-muted, #525866);
+}
+
+.lead-context-card,
+.lead-handoff-card,
+.lead-next-step-card {
+  border: 1px solid rgba(55, 65, 81, 0.12);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 1.1rem 3.5rem rgba(31, 41, 55, 0.07);
+}
+
+.lead-context-card {
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+
+.lead-context-card h2 {
+  margin: 0.4rem 0 1.25rem;
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+}
+
+.lead-context-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+
+.lead-context-list > div {
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(55, 65, 81, 0.1);
+}
+
+.lead-context-list dt {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.lead-context-list dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-weight: 650;
+  color: #1f2937;
+}
+
+.conversion-handoff-main {
+  padding-top: 1rem;
+}
+
+.lead-handoff-card {
+  padding: clamp(1.4rem, 4vw, 2.5rem);
+}
+
+.lead-handoff-card-heading {
+  max-width: 44rem;
+  margin-bottom: 1.75rem;
+}
+
+.lead-handoff-card-heading h2 {
+  margin: 0.35rem 0 0.8rem;
+}
+
+.lead-handoff-card-heading p:last-child {
+  color: #5f6673;
+  line-height: 1.65;
+}
+
+.lead-handoff-form {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.lead-handoff-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lead-handoff-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #202633;
+}
+
+.lead-handoff-form input,
+.lead-handoff-form textarea {
+  width: 100%;
+  min-height: 3rem;
+  border: 1px solid #cfd4df;
+  border-radius: 0.85rem;
+  background: #ffffff;
+  padding: 0.8rem 0.9rem;
+  color: #111827;
+  font: inherit;
+  font-weight: 500;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.lead-handoff-form textarea {
+  min-height: 9rem;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.lead-handoff-form input:focus-visible,
+.lead-handoff-form textarea:focus-visible {
+  outline: none;
+  border-color: #5b5ff5;
+  box-shadow: 0 0 0 4px rgba(91, 95, 245, 0.15);
+}
+
+.lead-handoff-privacy {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  margin: 0.2rem 0 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  background: #f7f8ff;
+  color: #525866;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.lead-handoff-privacy span {
+  color: #5b5ff5;
+  font-weight: 900;
+}
+
+.lead-handoff-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.25rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.lead-handoff-actions .button {
+  min-height: 3rem;
+}
+
+.lead-handoff-actions p {
+  margin: 0;
+  color: #667085;
+  font-size: 0.92rem;
+}
+
+.lead-handoff-actions a:not(.button) {
+  font-weight: 750;
+}
+
+.lead-next-step-card {
+  padding: clamp(1.3rem, 3vw, 2rem);
+  position: sticky;
+  top: 7rem;
+}
+
+.lead-next-step-card ol {
+  display: grid;
+  gap: 1.15rem;
+  margin: 1.2rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.lead-next-step-card li {
+  display: grid;
+  grid-template-columns: 2.15rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.lead-next-step-card li > span {
+  display: grid;
+  place-items: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 999px;
+  background: #eef0ff;
+  color: #4f46e5;
+  font-weight: 850;
+  font-size: 0.8rem;
+}
+
+.lead-next-step-card h2 {
+  margin: 0.05rem 0 0.3rem;
+  font-size: 1rem;
+}
+
+.lead-next-step-card p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.55;
+  font-size: 0.94rem;
+}
+
+@media (max-width: 760px) {
+  .conversion-handoff-hero-grid,
+  .conversion-handoff-main-grid,
+  .lead-handoff-field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .conversion-handoff-hero-grid,
+  .conversion-handoff-main-grid {
+    gap: 1.4rem;
+  }
+
+  .conversion-handoff-hero h1 {
+    max-width: none;
+  }
+
+  .lead-next-step-card {
+    position: static;
+  }
+
+  .lead-handoff-actions {
+    align-items: stretch;
+  }
+
+  .lead-handoff-actions .button {
+    width: 100%;
+  }
+}
