@@ -1,6 +1,6 @@
 # IA Empleado Web — Phase 7A: Conversion Handoff
 
-Status: **implementation in progress**
+Status: **Complete and production-verified — 2026-09-13**
 
 ## Goal
 
@@ -80,7 +80,7 @@ Interactive-result state propagation is intentionally deferred rather than seria
 
 ## Validation contract
 
-Static CI must verify:
+Static CI verifies:
 
 - both canonical routes and EN/ES metadata exist;
 - the six allowed intents stay explicit;
@@ -93,7 +93,7 @@ Static CI must verify:
 - both layouts use the Phase 7A release marker;
 - production verification includes the conversion handoff browser suite.
 
-Browser QA must verify:
+Browser QA verifies:
 
 - ES and EN routes render;
 - intent/source/context survive a valid handoff;
@@ -104,9 +104,26 @@ Browser QA must verify:
 - mobile layout has no horizontal overflow;
 - the page explains the no-storage/no-CRM transport boundary.
 
+## Production evidence
+
+Implementation and release evidence for 2026-09-13:
+
+- implementation PR: **#53 — `feat: add bilingual conversion handoff`**;
+- validated PR head: `4627c719208865dd7933480c6cc71ad72351b6a7`;
+- PR Web CI: **#132**, run `34746767088` — success;
+- PR gates passed: EN/ES parity, all historical product/branding contracts, Conversion handoff contract, TypeScript, Chromium browser QA and Next.js build;
+- squash merge to `main`: **`c84768217190688394728b7a0f41d63e4691dcc8`**;
+- post-merge Web CI: **#133**, run `34747014123` — success;
+- Hostinger served release marker **`web-phase-7a-conversion-handoff`**;
+- Production Verification: **#11**, run `34747171187` — success;
+- production browser step **`Verify production geometry, brand systems, campaign media, conversion handoff, responsive UX and accessibility`** — success directly against `https://iaempleado.com`;
+- production diagnostics upload — skipped because no browser failure occurred.
+
+This evidence validates the deployed website contract. It does not imply that a CRM, webhook, backend form receiver or private runtime integration exists.
+
 ## Release criteria
 
-Phase 7A is complete only when:
+Phase 7A is complete because:
 
 1. ES and EN canonical request-demo routes exist;
 2. global/header and homepage high-intent CTAs use the handoff route;
@@ -116,12 +133,12 @@ Phase 7A is complete only when:
 6. no fake CRM/API submission exists;
 7. sitemap and canonical metadata are correct;
 8. static contract, TypeScript, browser QA and build pass;
-9. PR CI passes;
-10. `main` CI passes after merge;
+9. PR CI #132 passed;
+10. `main` CI #133 passed after merge;
 11. Hostinger serves `web-phase-7a-conversion-handoff`;
-12. Production Verification passes directly against `https://iaempleado.com`;
-13. production evidence is recorded here before advancing.
+12. Production Verification #11 passed directly against `https://iaempleado.com`;
+13. production evidence is recorded in this document.
 
 ## Next likely phase
 
-A later conversion phase can propagate selected, non-sensitive results from Team Builder / Process Analyzer into this handoff and can introduce a real CRM transport **only after** a provider, authorization model, credentials and privacy/consent contract are explicitly configured.
+The next conversion phase can propagate selected, non-sensitive results from Team Builder / Process Analyzer into this handoff. A real CRM transport should be introduced **only after** a provider, authorization model, credentials and privacy/consent contract are explicitly configured and verified.
