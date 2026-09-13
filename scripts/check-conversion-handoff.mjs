@@ -85,19 +85,22 @@ for (const token of [
   if (!page.includes(token)) throw new Error(`Request-demo page missing context contract: ${token}`);
 }
 
+// Phase 7A remains responsible for the truthful email fallback even when a
+// later phase adds an explicitly governed server-side transport.
 for (const token of [
   "form.reportValidity()",
   "window.location.href = mailto",
+  "buildLeadMailto",
   "data-lead-handoff-form",
   "data-lead-prepare-email",
   'type="email"',
   "required",
   "LEAD_CONTACT_EMAIL",
 ]) {
-  if (!form.includes(token)) throw new Error(`Lead handoff form missing truthful transport contract: ${token}`);
+  if (!form.includes(token)) throw new Error(`Lead handoff form missing Phase 7A fallback contract: ${token}`);
 }
-for (const forbidden of ["fetch(", "localStorage", "sessionStorage", "/api/"]) {
-  if (form.includes(forbidden)) throw new Error(`Lead handoff form introduced unapproved storage/network transport: ${forbidden}`);
+for (const forbidden of ["localStorage", "sessionStorage"]) {
+  if (form.includes(forbidden)) throw new Error(`Lead handoff form introduced unapproved browser storage: ${forbidden}`);
 }
 
 if (!header.includes("requestDemoPath") || !header.includes('source: "header"')) {
@@ -176,4 +179,4 @@ for (const phrase of [
   if (!phase.includes(phrase)) throw new Error(`Phase 7A documentation missing contract phrase: ${phrase}`);
 }
 
-console.log("Conversion handoff contract OK: bilingual high-intent routing, bounded context, truthful email transport and production verification protected.");
+console.log("Conversion handoff contract OK: bilingual routing, bounded context and truthful email fallback remain protected while later governed transports may extend the form.");

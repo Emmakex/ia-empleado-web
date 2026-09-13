@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "web-hotfix-home-hero-overlay-geometry" },
+  other: { "ia-web-release": "web-phase-7c1-lead-intake-foundation" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };
