@@ -13,7 +13,7 @@
     "how": "Cómo funciona",
     "security": "Privacidad y control",
     "faq": "Preguntas",
-    "cta": "Diseñar mi equipo IA",
+    "cta": "Solicitar demo",
     "language": "EN"
   },
   "hero": {
@@ -120,11 +120,11 @@
     ]
   },
   "cta": {
-    "eyebrow": "EMPIEZA POR UN PROCESO REAL",
-    "title": "Diseña el equipo IA que tendría sentido para tu empresa.",
-    "description": "Identifica el proceso, los sistemas implicados, las acciones permitidas y dónde debe intervenir una persona. A partir de ahí se define el equipo y las capacidades necesarias.",
-    "primary": "Diseñar mi equipo IA",
-    "secondary": "Ver el flujo de ejemplo"
+    "eyebrow": "HABLEMOS DE TU CASO",
+    "title": "¿Quieres ver cómo encajaría IA Empleado en un proceso real de tu empresa?",
+    "description": "Cuéntanos el proceso, los sistemas implicados y dónde necesitas mantener control humano. Prepararemos la conversación a partir de ese contexto.",
+    "primary": "Solicitar una demo",
+    "secondary": "Diseñar mi equipo IA"
   },
   "footer": {
     "tagline": "Empleados IA especializados que trabajan con personas, sistemas y procesos empresariales reales.",
