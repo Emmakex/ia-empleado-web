@@ -27,6 +27,7 @@ import "../brand-motion.css";
 import "../ux-accessibility.css";
 import "../reflow-hardening.css";
 import "../brand-visual-polish.css";
+import "../home-hero-geometry.css";
 import "../internal-page-ux.css";
 import { MenuScrollReset } from "../../components/menu-scroll-reset";
 import { getDictionary } from "../../lib/i18n";
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "web-phase-7b-contextual-result-handoff" },
+  other: { "ia-web-release": "web-home-hero-geometry-fix" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };
