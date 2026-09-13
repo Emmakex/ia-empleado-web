@@ -5,6 +5,7 @@ import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { teamBuilderPath } from "../lib/team-builder";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
+import { requestDemoPath } from "../lib/conversion-handoff";
 import { comparisonDetailPath, comparisonIndexPath, comparisonRecords } from "../lib/comparison-content";
 import {
   sectorDetailPath,
@@ -123,6 +124,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.81,
       alternates: { languages: { es: `https://iaempleado.com${roiEstimatorPath("es")}`, en: `https://iaempleado.com${roiEstimatorPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${requestDemoPath("es")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.88,
+      alternates: { languages: { es: `https://iaempleado.com${requestDemoPath("es")}`, en: `https://iaempleado.com${requestDemoPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${requestDemoPath("en")}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.78,
+      alternates: { languages: { es: `https://iaempleado.com${requestDemoPath("es")}`, en: `https://iaempleado.com${requestDemoPath("en")}` } },
     },
     {
       url: `https://iaempleado.com${comparisonIndexPath("es")}`,

@@ -12,6 +12,7 @@ import "../../roi-estimator.css";
 import "../../comparison-content.css";
 import "../../sector-use-cases.css";
 import "../../organization-map.css";
+import "../../conversion-handoff.css";
 import "../../brand-system.css";
 import "../../brand-fidelity.css";
 import "../../brand-content.css";
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "branding-phase-2d-campaign-social-variants" },
+  other: { "ia-web-release": "web-phase-7a-conversion-handoff" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };

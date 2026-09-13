@@ -1,5 +1,7 @@
 import type { Locale, SiteDictionary } from "../lib/i18n";
 import { getBrandCharacters } from "../lib/brand-characters";
+import { teamBuilderPath } from "../lib/team-builder";
+import { requestDemoPath } from "../lib/conversion-handoff";
 import { BrandCharacterImage } from "./brand-character-image";
 import { BrandHeroScene } from "./brand-hero-scene";
 import { SiteFooter } from "./site-footer";
@@ -12,6 +14,12 @@ type HomePageProps = {
 
 export function HomePage({ locale, dictionary }: HomePageProps) {
   const brandCharacters = getBrandCharacters(locale);
+  const builderHref = teamBuilderPath(locale);
+  const demoHref = requestDemoPath(locale, {
+    intent: "demo",
+    source: "home-final",
+    context: locale === "es" ? "Página principal" : "Homepage",
+  });
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -49,7 +57,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
               <h1 id="hero-title">{dictionary.hero.title}</h1>
               <p className="hero-description">{dictionary.hero.description}</p>
               <div className="hero-actions">
-                <a className="button" href="#disena-tu-equipo">{dictionary.hero.primaryCta}</a>
+                <a className="button" href={builderHref}>{dictionary.hero.primaryCta}</a>
                 <a className="button button-ghost" href="#como-funciona">{dictionary.hero.secondaryCta}</a>
               </div>
               <p className="hero-note"><span aria-hidden="true">↳</span> {dictionary.hero.note}</p>
@@ -149,10 +157,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
                   <article className="info-card employee-card brand-character-card" data-accent={character.accent} key={employee.title}>
                     <div className="brand-character-card-visual">
                       <span className="status-pill">{employee.tag}</span>
-                      <BrandCharacterImage
-                        character={character}
-                        sizes="(max-width: 760px) 205px, 230px"
-                      />
+                      <BrandCharacterImage character={character} sizes="(max-width: 760px) 205px, 230px" />
                     </div>
                     <div className="brand-character-card-copy">
                       <p className="brand-character-name">{character.name}</p>
@@ -272,8 +277,8 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
               <p>{dictionary.cta.description}</p>
             </div>
             <div className="cta-actions">
-              <a className="button" href="mailto:hola@iaempleado.com?subject=IA%20Empleado%20-%20Equipo%20IA">{dictionary.cta.primary}</a>
-              <a className="button button-ghost" href="#como-funciona">{dictionary.cta.secondary}</a>
+              <a className="button" href={demoHref}>{dictionary.cta.primary}</a>
+              <a className="button button-ghost" href={builderHref}>{dictionary.cta.secondary}</a>
             </div>
           </div>
         </section>

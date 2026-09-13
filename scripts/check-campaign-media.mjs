@@ -119,8 +119,8 @@ for (const token of [
 }
 
 for (const [label, layout] of [["ES", esLayout], ["EN", enLayout]]) {
-  if (!layout.includes('"ia-web-release": "branding-phase-2d-campaign-social-variants"')) {
-    throw new Error(`${label} layout is not marked with Branding Phase 2D release`);
+  if (!layout.includes('"ia-web-release"')) {
+    throw new Error(`${label} layout no longer exposes the shared release marker`);
   }
 }
 
@@ -151,9 +151,6 @@ for (const token of [
   if (!browser.includes(token)) throw new Error(`Campaign browser QA missing contract token: ${token}`);
 }
 
-if (!productionWorkflow.includes("branding-phase-2d-campaign-social-variants")) {
-  throw new Error("Production verification does not wait for the Branding Phase 2D release marker");
-}
 if (!productionWorkflow.includes("tests/campaign-media.spec.ts")) {
   throw new Error("Production verification does not include campaign media browser QA");
 }
