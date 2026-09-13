@@ -35,7 +35,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`docs/PHASE_6A_COMPARISONS.md`](docs/PHASE_6A_COMPARISONS.md) — comparison-page methodology, truthfulness and SEO/GEO contract.
 - [`docs/PHASE_6B_SECTORS_USE_CASES.md`](docs/PHASE_6B_SECTORS_USE_CASES.md) — sector/use-case content model, truthfulness, SEO/GEO and release contract.
 - [`docs/PHASE_6C_INTEGRATIONS_DEPARTMENTS.md`](docs/PHASE_6C_INTEGRATIONS_DEPARTMENTS.md) — department/integration graph, authority boundaries, SEO/GEO and release contract.
-- [`docs/PHASE_7A_CONVERSION_HANDOFF.md`](docs/PHASE_7A_CONVERSION_HANDOFF.md) — bilingual high-intent conversion route, context and truthful email-transport contract.
+- [`docs/PHASE_7A_CONVERSION_HANDOFF.md`](docs/PHASE_7A_CONVERSION_HANDOFF.md) — bilingual high-intent conversion route, context and truthful email-transport contract with production-verification evidence.
 
 ## Strategic narrative
 
@@ -140,11 +140,13 @@ The integration pages are architecture and evaluation guidance. Actual connector
 
 ### Web Phase 7A — Conversion Handoff
 
-**Implementation in progress.**
+**Complete and production-verified — 2026-09-13.**
 
-Phase 7A introduces one bilingual high-intent conversion destination at `/solicitar-demo` and `/en/request-demo`. Header and homepage conversion CTAs preserve bounded `intent`, `source` and public `context`, while Team Builder remains a separate educational tool.
+Phase 7A provides one bilingual high-intent conversion destination at `/solicitar-demo` and `/en/request-demo`. Header and homepage conversion CTAs preserve bounded `intent`, `source` and public `context`, while Team Builder remains a separate educational tool.
 
-Until a real CRM/webhook transport is configured, the handoff is deliberately truthful: contact details stay in the browser and the primary action prepares a structured message to `hola@iaempleado.com` in the visitor's email application. The website does not claim that it stored a lead, created a CRM record or delivered an email. The active release target is `web-phase-7a-conversion-handoff`; implementation and release criteria are defined in [`docs/PHASE_7A_CONVERSION_HANDOFF.md`](docs/PHASE_7A_CONVERSION_HANDOFF.md).
+The handoff is deliberately truthful: contact details stay in the browser and the primary action prepares a structured message to `hola@iaempleado.com` in the visitor's email application. The website does not claim that it stored a lead, created a CRM record or delivered an email, and no CRM/webhook/backend transport is implied.
+
+PR #53 was validated by Web CI #132 (`34746767088`) and squash-merged to `main` as `c84768217190688394728b7a0f41d63e4691dcc8`. Web CI #133 (`34747014123`) passed on `main`; Hostinger served `web-phase-7a-conversion-handoff`; Production Verification #11 (`34747171187`) passed directly against `iaempleado.com`, including the bilingual conversion handoff, responsive/mobile behavior, sanitization contract, campaign media and existing geometry/accessibility regressions. Full evidence is recorded in [`docs/PHASE_7A_CONVERSION_HANDOFF.md`](docs/PHASE_7A_CONVERSION_HANDOFF.md).
 
 ### Branding Phase 1 — Core visual system
 
