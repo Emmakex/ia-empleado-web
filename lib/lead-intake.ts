@@ -6,10 +6,12 @@ export const LEAD_INTAKE_SCHEMA_VERSION = 1;
 export const LEAD_CONSENT_VERSION = "lead-intake-v1";
 
 export type LeadIntakeMode = "direct" | "email";
+export type LeadIntakeTransport = "smtp" | "webhook";
 
 export type LeadIntakeCapability = {
   mode: LeadIntakeMode;
   configured: boolean;
+  transport?: LeadIntakeTransport;
   privacyNoticeUrl?: string;
 };
 
