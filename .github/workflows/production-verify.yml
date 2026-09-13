@@ -27,10 +27,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Web Phase 7C1 lead intake foundation on Hostinger
+      - name: Wait for Web Phase 7C2 Hostinger SMTP on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-          EXPECTED_RELEASE: web-phase-7c1-lead-intake-foundation
+          EXPECTED_RELEASE: web-phase-7c2-hostinger-smtp
         run: |
           set -euo pipefail
           for attempt in $(seq 1 40); do
@@ -51,7 +51,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Verify production geometry, brand systems, campaign media, conversion, contextual result handoff, lead intake foundation, responsive UX and accessibility
+      - name: Verify production geometry, brand systems, conversion, SMTP lead capability, responsive UX and accessibility
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
         run: >-

@@ -23,14 +23,26 @@ function validPayload(locale: "es" | "en" = "es") {
   };
 }
 
-test.describe("Web Phase 7C1 lead intake foundation", () => {
-  test("server defaults to truthful email mode when production transport is not configured", async ({ request }) => {
+test.describe("Web Phase 7C lead intake", () => {
+  test("server exposes the truthful transport capability without leaking configuration", async ({ request }) => {
     const capability = await request.get("/api/lead-intake");
     expect(capability.status()).toBe(200);
     const publicState = await capability.json();
+    const serialized = JSON.stringify(publicState);
+
+    expect(serialized).not.toContain("WEBHOOK");
+    expect(serialized).not.toContain("TOKEN");
+    expect(serialized).not.toContain("SMTP");
+    expect(serialized).not.toContain("PASSWORD");
+
+    if (process.env.PRODUCTION_BASE_URL) {
+      expect(publicState.mode).toBe("direct");
+      expect(publicState.configured).toBe(true);
+      expect(publicState.privacyNoticeUrl).toMatch(/^https?:\/\//);
+      return;
+    }
+
     expect(publicState).toEqual({ mode: "email", configured: false });
-    expect(JSON.stringify(publicState)).not.toContain("WEBHOOK");
-    expect(JSON.stringify(publicState)).not.toContain("TOKEN");
 
     const invalid = await request.post("/api/lead-intake", {
       data: { ...validPayload(), consent: false },
@@ -143,7 +155,7 @@ test.describe("Web Phase 7C1 lead intake foundation", () => {
     });
 
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/solicitar-demo?intent=demo&source=mobile-7c1");
+    await page.goto("/solicitar-demo?intent=demo&source=mobile-7c2");
     await expect(page.locator("[data-lead-handoff-form]")).toHaveAttribute("data-lead-intake-mode", "direct");
     await expect(page.getByRole("button", { name: "Enviar solicitud" })).toBeVisible();
 

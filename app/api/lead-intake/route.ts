@@ -4,8 +4,10 @@ import {
   LEAD_INTAKE_SCHEMA_VERSION,
   validateLeadIntakePayload,
   type LeadIntakeCapability,
+  type LeadIntakePayload,
   type LeadIntakeResponse,
 } from "../../../lib/lead-intake";
+import { deliverLeadViaSmtp, getLeadSmtpConfig } from "../../../lib/lead-smtp-delivery";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -44,15 +46,19 @@ function validHttpUrl(value: string | undefined): string | undefined {
 }
 
 function getTransportConfig() {
+  const smtp = getLeadSmtpConfig();
   const webhookUrl = validHttpUrl(process.env.LEAD_INTAKE_WEBHOOK_URL);
   const privacyNoticeUrl = validHttpUrl(process.env.LEAD_PRIVACY_NOTICE_URL);
   const token = process.env.LEAD_INTAKE_WEBHOOK_TOKEN?.trim() || undefined;
+  const transport = smtp.configured ? "smtp" : webhookUrl ? "webhook" : undefined;
 
   return {
+    smtp,
     webhookUrl,
     privacyNoticeUrl,
     token,
-    configured: Boolean(webhookUrl && privacyNoticeUrl),
+    transport,
+    configured: Boolean(transport && privacyNoticeUrl),
   };
 }
 
@@ -115,6 +121,60 @@ function rateLimited(ip: string | undefined): boolean {
   return existing.count > RATE_MAX_REQUESTS;
 }
 
+async function deliverLeadViaWebhook(
+  config: ReturnType<typeof getTransportConfig>,
+  leadId: string,
+  receivedAt: string,
+  payload: LeadIntakePayload,
+): Promise<void> {
+  if (!config.webhookUrl || !config.privacyNoticeUrl) throw new Error("webhook_unconfigured");
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), DELIVERY_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(config.webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "User-Agent": "IAEmpleadoWeb/lead-intake",
+        "X-IA-Empleado-Event": "lead.created",
+        ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
+      },
+      body: JSON.stringify({
+        schemaVersion: LEAD_INTAKE_SCHEMA_VERSION,
+        leadId,
+        receivedAt,
+        locale: payload.locale,
+        contact: {
+          name: payload.name,
+          email: payload.email,
+          company: payload.company,
+        },
+        request: {
+          intent: payload.intent,
+          source: payload.source,
+          context: payload.context,
+          need: payload.need,
+        },
+        consent: {
+          accepted: true,
+          version: payload.consentVersion,
+          privacyNoticeUrl: config.privacyNoticeUrl,
+        },
+        origin: "iaempleado.com",
+      }),
+      cache: "no-store",
+      signal: controller.signal,
+    });
+
+    if (!response.ok) throw new Error(`webhook_status_${response.status}`);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 export async function GET() {
   return json(getCapability());
 }
@@ -152,7 +212,7 @@ export async function POST(request: NextRequest) {
   }
 
   const config = getTransportConfig();
-  if (!config.configured || !config.webhookUrl || !config.privacyNoticeUrl) {
+  if (!config.configured || !config.transport || !config.privacyNoticeUrl) {
     const body: LeadIntakeResponse = {
       ok: false,
       code: "transport_unconfigured",
@@ -168,60 +228,25 @@ export async function POST(request: NextRequest) {
 
   const leadId = `lead_${randomUUID()}`;
   const receivedAt = new Date().toISOString();
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), DELIVERY_TIMEOUT_MS);
 
   try {
-    const response = await fetch(config.webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "User-Agent": "IAEmpleadoWeb/lead-intake",
-        "X-IA-Empleado-Event": "lead.created",
-        ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
-      },
-      body: JSON.stringify({
-        schemaVersion: LEAD_INTAKE_SCHEMA_VERSION,
+    if (config.transport === "smtp") {
+      await deliverLeadViaSmtp({
         leadId,
         receivedAt,
-        locale: validation.value.locale,
-        contact: {
-          name: validation.value.name,
-          email: validation.value.email,
-          company: validation.value.company,
-        },
-        request: {
-          intent: validation.value.intent,
-          source: validation.value.source,
-          context: validation.value.context,
-          need: validation.value.need,
-        },
-        consent: {
-          accepted: true,
-          version: validation.value.consentVersion,
-          privacyNoticeUrl: config.privacyNoticeUrl,
-        },
-        origin: "iaempleado.com",
-      }),
-      cache: "no-store",
-      signal: controller.signal,
-    });
-
-    if (!response.ok) {
-      console.error(`[lead-intake] delivery_failed leadId=${leadId} status=${response.status}`);
-      const body: LeadIntakeResponse = { ok: false, code: "delivery_failed", fallback: "email" };
-      return json(body, 502);
+        payload: validation.value,
+        privacyNoticeUrl: config.privacyNoticeUrl,
+      });
+    } else {
+      await deliverLeadViaWebhook(config, leadId, receivedAt, validation.value);
     }
 
     const body: LeadIntakeResponse = { ok: true, status: "accepted", leadId };
     return json(body, 202);
   } catch (error) {
-    const reason = error instanceof Error ? error.name : "unknown";
-    console.error(`[lead-intake] delivery_failed leadId=${leadId} reason=${reason}`);
+    const reason = error instanceof Error ? error.message.slice(0, 80) : "unknown";
+    console.error(`[lead-intake] delivery_failed leadId=${leadId} transport=${config.transport} reason=${reason}`);
     const body: LeadIntakeResponse = { ok: false, code: "delivery_failed", fallback: "email" };
     return json(body, 502);
-  } finally {
-    clearTimeout(timeout);
   }
 }
