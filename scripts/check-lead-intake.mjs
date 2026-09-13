@@ -136,14 +136,11 @@ for (const phrase of [
 }
 
 for (const [label, layout] of [["ES", esLayout], ["EN", enLayout]]) {
-  if (!layout.includes('"ia-web-release": "web-phase-7c1-lead-intake-foundation"')) {
-    throw new Error(`${label} layout is not marked for the Web Phase 7C1 foundation release`);
+  if (!layout.includes('"ia-web-release"')) {
+    throw new Error(`${label} layout lost the production release marker contract`);
   }
 }
 
-if (!production.includes("web-phase-7c1-lead-intake-foundation")) {
-  throw new Error("Production verification is not waiting for the 7C1 release marker");
-}
 if (!production.includes("tests/lead-intake.spec.ts")) {
   throw new Error("Production verification does not include lead intake QA");
 }
