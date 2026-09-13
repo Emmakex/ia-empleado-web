@@ -37,6 +37,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`docs/PHASE_6C_INTEGRATIONS_DEPARTMENTS.md`](docs/PHASE_6C_INTEGRATIONS_DEPARTMENTS.md) — department/integration graph, authority boundaries, SEO/GEO and release contract.
 - [`docs/PHASE_7A_CONVERSION_HANDOFF.md`](docs/PHASE_7A_CONVERSION_HANDOFF.md) — bilingual high-intent conversion route, context and truthful email-transport contract with production-verification evidence.
 - [`docs/PHASE_7B_CONTEXTUAL_RESULT_HANDOFF.md`](docs/PHASE_7B_CONTEXTUAL_RESULT_HANDOFF.md) — bounded Team Builder / Process Analyzer result-to-conversion handoff contract with production-verification evidence.
+- [`docs/PHASE_7C_LEAD_INTAKE_PIPELINE.md`](docs/PHASE_7C_LEAD_INTAKE_PIPELINE.md) — server-side lead-intake foundation, privacy-gated activation contract and 7C1 production-verification evidence.
 
 ## Strategic narrative
 
@@ -158,6 +159,18 @@ Phase 7B connects Team Builder and Process Analyzer results to the shared biling
 Team Builder transfers only product-controlled catalog context: selected sector when present, closest reference team when present and up to three recommended role labels. Process Analyzer transfers only the predefined process pattern, up to two predefined friction labels and the count of individually marked steps. No personal data, free text, full interactive state, storage, CRM submission or runtime dependency is introduced.
 
 PR #55 was validated by Web CI #136 (`34749517271`) and squash-merged to `main` as `e7724d7a219caa37a20827bbe49dc05002e5e3bf`. Web CI #137 (`34749674757`) passed on `main`; Hostinger served `web-phase-7b-contextual-result-handoff`; Production Verification #13 (`34749824213`) passed directly against `iaempleado.com`, including the contextual result handoff in ES/EN and mobile plus the existing conversion, campaign, geometry and accessibility regressions. Full evidence is recorded in [`docs/PHASE_7B_CONTEXTUAL_RESULT_HANDOFF.md`](docs/PHASE_7B_CONTEXTUAL_RESULT_HANDOFF.md).
+
+### Web Phase 7C — Lead Intake & Commercial Pipeline
+
+**7C1 Lead Intake Foundation complete and production-verified — 2026-09-13. Full Phase 7C remains in progress.**
+
+7C1 adds a production-deployed `/api/lead-intake` capability and delivery boundary with strict server-side validation, explicit consent versioning, honeypot and baseline rate limiting, bounded authenticated webhook delivery, no-PII error logging and truthful email fallback. The public form progressively switches to direct submission only when production confirms that both a real receiving destination and a public privacy notice are configured.
+
+Production intentionally remains in **email mode** after 7C1. No CRM, webhook provider or data-controller identity is invented. Direct mode is not considered active until 7C2 provides the real destination, correct public privacy notice, production secrets, one verified synthetic end-to-end lead and documented downstream retention/deletion/SDR ownership.
+
+PR #59 was validated by Web CI #145 (`34754040517`) and squash-merged to `main` as `b8196a53986a0d4d71458c539dd2fb08cb593fa0`. Web CI #146 (`34754252946`) passed on `main`; Hostinger served `web-phase-7c1-lead-intake-foundation`; Production Verification #16 (`34754443126`) passed directly against `iaempleado.com`, including the lead-intake foundation plus the existing conversion, contextual result handoff, campaign, geometry, responsive and accessibility regressions. Full evidence and 7C2 blockers are recorded in [`docs/PHASE_7C_LEAD_INTAKE_PIPELINE.md`](docs/PHASE_7C_LEAD_INTAKE_PIPELINE.md).
+
+**Next milestone: Web Phase 7C2 — Direct Intake Activation.**
 
 ### Branding Phase 1 — Core visual system
 
