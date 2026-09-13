@@ -103,47 +103,64 @@ The browser may receive the safe transport class for diagnostics:
 
 SMTP host, port, username, password, sender, recipients and webhook configuration are never returned to the browser.
 
-A submission is shown as received only after the SMTP provider accepts **every configured recipient**. Connection/authentication/provider failure, partial recipient acceptance, recipient rejection or pending recipient state must return `delivery_failed` and preserve the prepared-email fallback.
+A successful `sendMail()` result proves that the configured SMTP submission server accepted the message for processing. It does **not** by itself prove final inbox delivery: a downstream MX can reject the message later and generate an asynchronous DSN/bounce.
+
+The implementation still requires every recipient returned synchronously by Nodemailer to be accepted and treats synchronous rejection or pending state as `delivery_failed`. This prevents one class of false-positive delivery, but it cannot detect a later provider-generated bounce within the original HTTP request.
 
 ## Production incident — 2026-09-13
 
-A real production test exposed a gap in the first 7C2 implementation.
+A real production test exposed the difference between SMTP submission acceptance and final mailbox delivery.
 
-Observed Hostinger delivery results:
-
-```text
-leads@iaempleado.com → Enviado / Saved
-hola@iaempleado.com  → Rechazado / 5.7.1 Spam message rejected
-```
-
-The public form displayed `Solicitud recibida` because Nodemailer resolved `sendMail()` when at least one configured recipient was accepted. The application did not inspect `accepted[]`, `rejected[]` and `pending[]` before returning HTTP `202`.
-
-Root cause:
+The original lead message had a single destination:
 
 ```text
-partial recipient acceptance
-+ application treated resolved sendMail() as full delivery
-= false-positive success state
+From: leads@iaempleado.com
+To: hola@iaempleado.com
+SMTP authentication: leads@iaempleado.com
 ```
 
-Corrective contract:
+The Hostinger submission server accepted the message over authenticated ESMTPSA. Hostinger also DKIM-signed it with `d=iaempleado.com` and selector `hostingermail-a`.
+
+The destination server then rejected the message after DATA:
 
 ```text
-accepted recipients == configured recipients
-AND rejected recipients == 0
-AND pending recipients == 0
-→ success
-
-otherwise
-→ delivery_failed
-→ browser fallback
+mx1.hostinger.com
+554 5.7.1 Spam message rejected
 ```
 
-The transport capability now also exposes the non-sensitive transport class (`smtp` or `webhook`) so production verification can prove that Hostinger SMTP is actually selected without exposing credentials.
+The original message was classified by Hostinger as:
 
-The technical incident is separate from Hostinger's spam decision for `hola@iaempleado.com`. Hostinger successfully accepted and saved the same production lead for `leads@iaempleado.com`, proving SMTP authentication and connectivity are working. The remaining provider-side issue is recipient filtering/reputation for `hola@iaempleado.com`.
+```text
+X-Hostinger-Verdict: junk
+X-Spam: Yes
+```
 
-Operationally, `leads@iaempleado.com` is the known-good commercial destination and should remain the primary intake mailbox while the `hola@iaempleado.com` filtering issue is investigated.
+After that downstream rejection, Hostinger generated an asynchronous `Undelivered Mail Returned to Sender` DSN. That bounce was delivered to `leads@iaempleado.com` because it was the authenticated sender/return path.
+
+Therefore the earlier interpretation of the delivery logs was incorrect:
+
+```text
+leads@iaempleado.com → Saved
+```
+
+was the bounce/DSN being saved to the sender mailbox, **not** the original commercial lead being successfully delivered to a second configured recipient.
+
+Correct root cause:
+
+```text
+SMTP submission accepted by Hostinger
++ downstream Hostinger MX classified the message as spam
++ asynchronous 554 5.7.1 rejection after sendMail() had already resolved
+= browser showed success before final inbox delivery was known
+```
+
+The full-recipient acceptance check introduced after the first investigation remains valuable for synchronous SMTP failures, but it cannot catch this asynchronous rejection path.
+
+### Operational acceptance rule
+
+7C2 is not considered end-to-end complete until a synthetic lead is visible in the intended commercial inbox. SMTP submission acceptance alone is insufficient evidence.
+
+If a provider supports DSN/webhook delivery events in the future, those events may become an additional delivery signal. Until then, inbox confirmation is the final acceptance gate.
 
 ## Failure safety
 
@@ -201,11 +218,12 @@ customer private runtime → production
 - [x] production with the configured Hostinger variables reports direct mode;
 - [x] invalid/non-consented payloads remain rejected;
 - [x] honeypot submissions are never delivered;
-- [ ] partial SMTP acceptance returns truthful fallback rather than fake success in production;
+- [x] synchronous partial SMTP acceptance returns truthful fallback rather than fake success;
 - [x] EN/ES request-demo flows remain intact;
 - [x] mobile/browser QA remains green;
 - [x] production serves release marker `web-phase-7c2-hostinger-smtp`;
-- [x] one synthetic production lead reached the real Hostinger SMTP service;
-- [ ] the configured primary commercial inbox confirms receipt after the corrective patch.
+- [x] one synthetic production lead reached the real Hostinger SMTP submission service;
+- [ ] the intended commercial inbox confirms receipt of a synthetic lead;
+- [ ] Hostinger no longer returns an asynchronous `5.7.1 Spam message rejected` DSN for the production template.
 
-Only the final delivery check closes 7C2. CI and capability discovery alone do not prove inbox delivery.
+Only final inbox delivery closes 7C2. CI, capability discovery and SMTP submission acceptance alone do not prove inbox delivery.
