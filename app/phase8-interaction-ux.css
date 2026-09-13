@@ -1,0 +1,84 @@
+/* Phase 8A interaction UX hardening.
+ * Loaded after the established visual system so usability wins over decorative
+ * sizing while keeping the existing component language intact.
+ */
+
+/* Primary interactive controls on the commercial tools must expose a reliable
+ * 44px touch target. Text links outside these tool surfaces remain unaffected. */
+.process-template-option,
+.process-pain-chip,
+.process-bottleneck-button,
+.process-step-employees a,
+.process-summary-chips a,
+.builder-reference-team a,
+.builder-role-link,
+.roi-field input,
+.roi-field select,
+.lead-handoff-form input:not([type="checkbox"]):not([name="website"]),
+.lead-handoff-form textarea,
+.lead-handoff-consent,
+.lead-handoff-actions .button,
+.lead-handoff-status-actions .button {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+.builder-reference-team a,
+.builder-role-link,
+.process-step-employees a,
+.process-summary-chips a {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* A range control can have a thin visual track while its operable box remains
+ * large enough for touch and motor accessibility. */
+.roi-range-row .roi-range {
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* Some component styles intentionally remove the shared outline. Restore a
+ * strong keyboard-only focus indicator after those local rules. */
+.process-pain-chip:focus-visible,
+.process-step-employees a:focus-visible,
+.process-summary-chips a:focus-visible,
+.builder-reference-team a:focus-visible,
+.builder-role-link:focus-visible {
+  outline: 3px solid var(--ux-focus, #1d4ed8);
+  outline-offset: 3px;
+}
+
+/* Native constraint validation remains authoritative, but attempted invalid
+ * fields also receive a persistent visual state instead of relying only on the
+ * browser tooltip. :user-invalid avoids painting untouched required fields. */
+.lead-handoff-form input:user-invalid,
+.lead-handoff-form textarea:user-invalid {
+  border-color: #b42318;
+  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.12);
+}
+
+.lead-handoff-form[aria-busy="true"] {
+  cursor: progress;
+}
+
+.lead-handoff-form[aria-busy="true"] input,
+.lead-handoff-form[aria-busy="true"] textarea,
+.lead-handoff-form[aria-busy="true"] button {
+  cursor: progress;
+}
+
+@media (forced-colors: active) {
+  .process-pain-chip:focus-visible,
+  .process-step-employees a:focus-visible,
+  .process-summary-chips a:focus-visible,
+  .builder-reference-team a:focus-visible,
+  .builder-role-link:focus-visible {
+    outline-color: CanvasText;
+  }
+
+  .lead-handoff-form input:user-invalid,
+  .lead-handoff-form textarea:user-invalid {
+    outline: 2px solid CanvasText;
+  }
+}
