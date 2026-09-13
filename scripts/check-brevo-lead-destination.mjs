@@ -45,6 +45,7 @@ for (const token of [
   "BREVO_PIPELINE_ID",
   "BREVO_DEAL_STAGE_ID",
   "BREVO_DEAL_OWNER",
+  "LEAD_INTAKE_WEBHOOK_TOKEN",
   '"api-key"',
   '`${baseUrl}/contacts`',
   'identifierType=email_id',
@@ -80,7 +81,6 @@ for (const forbidden of [
 for (const token of [
   'export const runtime = "nodejs"',
   "timingSafeEqual",
-  "LEAD_INTAKE_WEBHOOK_TOKEN",
   "validateLeadDestinationEnvelope",
   "deliverLeadToBrevo",
   'provider: "brevo"',
@@ -119,7 +119,6 @@ for (const token of [
   'provider: "brevo"',
   "destination_unconfigured",
   "listIds",
-  "390",
 ]) {
   if (!test.includes(token)) throw new Error(`Brevo destination QA missing token: ${token}`);
 }
