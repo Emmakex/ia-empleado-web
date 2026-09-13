@@ -8,8 +8,6 @@ const files = {
   test: "tests/lead-intake.spec.ts",
   docs: "docs/PHASE_7C2_HOSTINGER_SMTP.md",
   diagnostic: "docs/EMAIL_DELIVERABILITY_DIAGNOSTIC.md",
-  esLayout: "app/(es)/layout.tsx",
-  enLayout: "app/(en)/en/layout.tsx",
   production: ".github/workflows/production-verify.yml",
 };
 
@@ -26,8 +24,6 @@ const pkg = read(files.package);
 const test = read(files.test);
 const docs = read(files.docs);
 const diagnostic = read(files.diagnostic);
-const esLayout = read(files.esLayout);
-const enLayout = read(files.enLayout);
 const production = read(files.production);
 
 for (const token of [
@@ -122,6 +118,7 @@ for (const token of [
 
 for (const phrase of [
   "Hostinger SMTP Commercial Lead Delivery",
+  "Closed and production-verified",
   "iaempleado.com",
   "kairoseth.iaempleado.com",
   "SMTP_PASSWORD",
@@ -143,16 +140,8 @@ for (const phrase of [
   if (!diagnostic.includes(phrase)) throw new Error(`Deliverability diagnostic documentation missing phrase: ${phrase}`);
 }
 
-const release = '"ia-web-release": "web-phase-7c2-hostinger-smtp"';
-if (!esLayout.includes(release) || !enLayout.includes(release)) {
-  throw new Error("ES/EN layouts are not marked for the Web Phase 7C2 SMTP release");
-}
-
-if (!production.includes("web-phase-7c2-hostinger-smtp")) {
-  throw new Error("Production verification is not waiting for the 7C2 SMTP release marker");
-}
 if (!production.includes("tests/lead-intake.spec.ts")) {
   throw new Error("Production verification does not include lead intake QA");
 }
 
-console.log("Hostinger SMTP lead-delivery contract OK: minimal diagnostic message, server-only secrets, explicit SMTP transport, full-recipient acceptance and production gate protected.");
+console.log("Hostinger SMTP lead-delivery contract OK: minimal diagnostic message, server-only secrets, explicit SMTP transport, full-recipient acceptance and historical production evidence preserved.");
