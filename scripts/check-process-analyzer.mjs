@@ -36,16 +36,31 @@ for (const mode of ["automated", "assisted", "human"]) {
 
 if (!interaction.includes('"use client"')) throw new Error("Process Analyzer interaction must remain an explicit client boundary");
 if (interaction.includes("fetch(") || interaction.includes("axios") || interaction.includes("XMLHttpRequest")) {
-  throw new Error("Process Analyzer must not upload analysis state in Phase 5A");
+  throw new Error("Process Analyzer must not upload analysis state");
 }
 if (!interaction.includes("aria-pressed") || !interaction.includes("bottlenecks")) {
   throw new Error("Process Analyzer must preserve accessible bottleneck selection");
+}
+for (const token of [
+  "requestDemoPath",
+  'intent: "process"',
+  'source: "process-analyzer"',
+  'data-contextual-result-handoff="process-analyzer"',
+  "selectedPainLabels.slice(0, 2)",
+]) {
+  if (!interaction.includes(token)) throw new Error(`Process Analyzer contextual handoff missing token: ${token}`);
+}
+if (interaction.includes("mailto:hola@iaempleado.com")) {
+  throw new Error("Process Analyzer must not bypass the shared conversion handoff with a raw mailto result CTA");
 }
 if (!page.includes("process-static-patterns")) {
   throw new Error("Process Analyzer meaning must also be rendered as crawlable static HTML");
 }
 if (!page.includes("FAQPage") || !page.includes("ItemList")) {
   throw new Error("Process Analyzer structured-data contract is incomplete");
+}
+if (!page.includes("no viajan datos personales ni texto libre") || !page.includes("no personal data or free text")) {
+  throw new Error("Process Analyzer public FAQ must describe the bounded contextual handoff truthfully in ES and EN");
 }
 if (!sitemap.includes("processAnalyzerPath")) throw new Error("Process Analyzer routes must be present in sitemap generation");
 if (!footer.includes("processAnalyzerPath")) throw new Error("Process Analyzer must have a crawlable internal navigation link");
