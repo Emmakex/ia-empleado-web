@@ -80,8 +80,8 @@ for (const path of ["app/(es)/layout.tsx", "app/(en)/en/layout.tsx"]) {
   if (!layout.includes("brand-collaboration-compositions.css")) {
     throw new Error(`Phase 2B stylesheet is not loaded by ${path}`);
   }
-  if (!layout.includes("branding-phase-2b-team-department-compositions")) {
-    throw new Error(`Phase 2B release marker is missing from ${path}`);
+  if (!layout.includes("ia-web-release")) {
+    throw new Error(`Website release marker is missing from ${path}`);
   }
 }
 
