@@ -19,6 +19,49 @@
     min-height: 140px;
     grid-template-columns: 100px minmax(0, 1fr);
   }
+
+  /* Homepage scene uses explicit visual lanes so the informational overlays
+     read as part of the composition instead of floating over character cards. */
+  .brand-home-hero .brand-hero-stage {
+    min-height: 620px;
+  }
+
+  .brand-home-hero .brand-hero-task {
+    top: 1.15rem;
+  }
+
+  .brand-home-hero .brand-character-node-1,
+  .brand-home-hero .brand-character-node-2 {
+    top: 10.5%;
+  }
+
+  .brand-home-hero .brand-character-node-3,
+  .brand-home-hero .brand-character-node-4 {
+    bottom: 8%;
+  }
+
+  .brand-home-hero .brand-hero-approval {
+    top: 65.5%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  .brand-home-hero .brand-hero-systems {
+    left: auto;
+    right: 1.15rem;
+    bottom: 1rem;
+    max-width: 62%;
+    transform: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .brand-home-hero .brand-hero-caption {
+    left: 1.15rem;
+    bottom: 1.28rem;
+    max-width: 28%;
+    line-height: 1.25;
+  }
 }
 
 @media (min-width: 761px) and (max-width: 980px) {
