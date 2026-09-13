@@ -2,14 +2,16 @@
 
 ## Status
 
-Implementation in progress.
+**7C1 complete and production-verified — 2026-09-13.**
+
+**Full Phase 7C remains in progress.** The remaining milestone is 7C2 — Direct Intake Activation.
 
 Phase 7C converts the production-verified Phase 7A/7B conversion handoff into a server-side lead-intake capability without inventing CRM delivery, storage or legal readiness.
 
 The phase is intentionally split into two release milestones:
 
-1. **7C1 — Lead Intake Foundation**: server endpoint, validation, consent contract, transport abstraction, truthful fallback and QA.
-2. **7C2 — Direct Intake Activation**: configure a real receiving destination plus a published privacy notice, verify real delivery and then close the full phase.
+1. **7C1 — Lead Intake Foundation**: server endpoint, validation, consent contract, transport abstraction, truthful fallback and QA. **Complete and production-verified.**
+2. **7C2 — Direct Intake Activation**: configure a real receiving destination plus a published privacy notice, verify real delivery and then close the full phase. **Not yet activated.**
 
 Phase 7C belongs only to `ia-empleado-web`. It does not create a dependency on the private IA Empleado runtime.
 
@@ -22,7 +24,9 @@ Phase 7A provides the bilingual request-demo routes:
 
 Phase 7B lets Team Builder and Process Analyzer preserve bounded non-sensitive result context through the same `intent`, `source` and `context` model.
 
-Before Phase 7C, the form is intentionally local: it prepares a structured message to `hola@iaempleado.com` and does not claim to store or deliver a lead.
+Before Phase 7C, the form was intentionally local: it prepared a structured message to `hola@iaempleado.com` and did not claim to store or deliver a lead.
+
+After 7C1, the site has a production-deployed server-side intake boundary, but **direct intake remains disabled by default** until 7C2 provides both a real destination and the correct public privacy notice. The existing email handoff therefore remains the truthful production behavior today.
 
 ## 7C1 — Lead Intake Foundation
 
@@ -35,13 +39,22 @@ GET  /api/lead-intake
 POST /api/lead-intake
 ```
 
-`GET` exposes only public capability state:
+`GET` exposes only public capability state. In direct mode the public shape may include the privacy URL:
 
 ```json
 {
-  "mode": "email | direct",
+  "mode": "direct",
   "configured": true,
   "privacyNoticeUrl": "https://..."
+}
+```
+
+With direct intake unconfigured, production returns the safe capability state:
+
+```json
+{
+  "mode": "email",
+  "configured": false
 }
 ```
 
@@ -150,20 +163,36 @@ A receiving endpoint can later be implemented by:
 
 The website contract remains stable while the downstream destination can change independently.
 
-## 7C1 release criteria
+## 7C1 release criteria — satisfied
 
-7C1 is complete only when:
+7C1 is production-verified with every release criterion satisfied:
 
-- `/api/lead-intake` compiles on Node.js;
-- capability discovery defaults to email mode with no secrets configured;
-- a valid payload is rejected from direct delivery when transport/privacy are unconfigured;
-- invalid or non-consented payloads are rejected server-side;
-- the existing email path remains functional;
-- the form progressively enables direct mode only after capability discovery reports it configured;
-- failed direct delivery exposes a truthful email fallback;
-- ES/EN and 390px mobile behavior pass Playwright;
-- static CI protects the server, client, consent, fallback and environment contract;
-- Hostinger production verification confirms the 7C1 foundation release.
+- [x] `/api/lead-intake` compiles on Node.js;
+- [x] capability discovery defaults to email mode with no secrets configured;
+- [x] a valid payload is rejected from direct delivery when transport/privacy are unconfigured;
+- [x] invalid or non-consented payloads are rejected server-side;
+- [x] the existing email path remains functional;
+- [x] the form progressively enables direct mode only after capability discovery reports it configured;
+- [x] failed direct delivery exposes a truthful email fallback;
+- [x] ES/EN and 390px mobile behavior pass Playwright;
+- [x] static CI protects the server, client, consent, fallback and environment contract;
+- [x] Hostinger production verification confirms the 7C1 foundation release.
+
+## 7C1 production evidence
+
+Implementation and release evidence:
+
+- implementation PR: **#59 — `feat: add Web Phase 7C1 lead intake foundation`**;
+- validated PR head: `a42c4cec4c793580de5a32ad499022ae79e61288`;
+- PR Web CI: **#145**, run `34754040517` — success;
+- squash merge to `main`: **`b8196a53986a0d4d71458c539dd2fb08cb593fa0`**;
+- `main` Web CI: **#146**, run `34754252946` — success;
+- production release marker: **`web-phase-7c1-lead-intake-foundation`**;
+- Production Verification: **#16**, run `34754443126` — success;
+- production browser step `Verify production geometry, brand systems, campaign media, conversion, contextual result handoff, lead intake foundation, responsive UX and accessibility` — success;
+- production diagnostics upload — skipped because the production suite had no failures.
+
+Production verification directly exercised `iaempleado.com`. At the time of 7C1 closure, production intentionally remains in **email mode** because 7C2 configuration has not been supplied. This is the expected safe state, not an incomplete 7C1 deployment.
 
 ## 7C2 activation blockers
 
@@ -175,4 +204,8 @@ The following external facts are required before direct intake can be marked act
 4. end-to-end evidence that one synthetic test lead reaches the intended receiving system;
 5. a decision on retention, deletion and SDR follow-up ownership downstream.
 
-Until those blockers are resolved, Phase 7C remains in progress even if 7C1 is production-verified.
+Until those blockers are resolved, **Phase 7C remains in progress even though 7C1 is complete and production-verified**.
+
+## Next milestone — 7C2
+
+The next implementation unit must not change the already verified 7C1 contract. It must select and configure the real commercial receiving destination, publish the correct privacy notice, configure secrets outside the repository, verify one synthetic lead end-to-end and document downstream retention/deletion/SDR ownership. Only after that evidence is green may direct mode become the production default and full Web Phase 7C be closed.
