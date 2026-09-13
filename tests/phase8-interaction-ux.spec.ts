@@ -107,8 +107,11 @@ test.describe("Phase 8A interaction UX", () => {
     await page.goto("/calculadora-roi", { waitUntil: "domcontentloaded" });
     const range = page.locator(".roi-range");
     const rangeNumber = page.locator(".roi-range-number");
-    await range.fill("60");
-    await expect(rangeNumber).toHaveValue("60");
+    await expect(range).toHaveValue("30");
+    await range.focus();
+    await page.keyboard.press("ArrowRight");
+    await expect(range).toHaveValue("31");
+    await expect(rangeNumber).toHaveValue("31");
     await assertKeyboardFocusVisible(page, rangeNumber, "ROI numeric control");
   });
 
