@@ -98,6 +98,9 @@ jobs:
       - name: Lead intake foundation contract
         run: node scripts/check-lead-intake.mjs
 
+      - name: Brevo lead destination contract
+        run: node scripts/check-brevo-lead-destination.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
