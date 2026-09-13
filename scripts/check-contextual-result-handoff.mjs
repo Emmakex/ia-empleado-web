@@ -95,30 +95,27 @@ for (const token of [
   if (!browser.includes(token)) throw new Error(`Phase 7B browser QA missing token: ${token}`);
 }
 
-const releaseMarker = '"ia-web-release": "web-phase-7b-contextual-result-handoff"';
 for (const [label, layout] of [["ES", esLayout], ["EN", enLayout]]) {
-  if (!layout.includes(releaseMarker)) throw new Error(`${label} layout is not marked with Web Phase 7B release`);
+  if (!layout.includes('"ia-web-release"')) throw new Error(`${label} layout lost the production release marker contract`);
 }
 
 if (!ci.includes("Contextual result handoff contract") || !ci.includes("node scripts/check-contextual-result-handoff.mjs")) {
   throw new Error("Web CI does not execute the Phase 7B static contract");
 }
-if (!production.includes("web-phase-7b-contextual-result-handoff")) {
-  throw new Error("Production verification does not wait for the Web Phase 7B release marker");
-}
 if (!production.includes("tests/contextual-result-handoff.spec.ts")) {
-  throw new Error("Production verification does not execute Phase 7B browser QA");
+  throw new Error("Production verification no longer executes Phase 7B browser QA");
 }
 
 for (const phrase of [
-  "implementation in progress",
+  "Complete and production-verified",
   "no personal data",
   "no free text",
   "no storage",
   "web-phase-7b-contextual-result-handoff",
   "Production Verification",
+  "34749824213",
 ]) {
-  if (!phase.includes(phrase)) throw new Error(`Phase 7B documentation missing contract phrase: ${phrase}`);
+  if (!phase.includes(phrase)) throw new Error(`Phase 7B documentation missing closure evidence: ${phrase}`);
 }
 
-console.log("Contextual result handoff contract OK: Team Builder and Process Analyzer route bounded non-sensitive result context through the shared bilingual conversion handoff.");
+console.log("Contextual result handoff contract OK: bounded non-sensitive Team Builder and Process Analyzer result context remains protected after Phase 7B production closure.");
