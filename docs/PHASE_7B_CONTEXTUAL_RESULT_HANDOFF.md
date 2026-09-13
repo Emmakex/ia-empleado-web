@@ -1,6 +1,6 @@
 # IA Empleado Web — Phase 7B: Contextual Result Handoff
 
-Status: **implementation in progress**
+Status: **Complete and production-verified — 2026-09-13**
 
 ## Goal
 
@@ -88,7 +88,7 @@ Phase 7B changes only the result-to-conversion transition:
 
 ## Browser validation contract
 
-Browser QA must verify for both ES and EN:
+Browser QA verifies for both ES and EN:
 
 1. Team Builder can generate a result and exposes a shared handoff link;
 2. the link is not a `mailto:`;
@@ -103,13 +103,28 @@ Browser QA must verify for both ES and EN:
 
 ## Release marker
 
-Active Phase 7B production marker:
+Production marker verified on Hostinger:
 
 `web-phase-7b-contextual-result-handoff`
 
+## Production evidence
+
+Implementation and release evidence:
+
+- implementation PR: **#55 — `feat: add contextual result handoff`**;
+- PR head validated: `e635d024c1fb3f8a9cd6dcc29ab82b6a6bba4db6`;
+- PR Web CI: **#136**, run `34749517271` — success;
+- PR gates passed: historical product/branding contracts, Phase 7A conversion contract, dedicated Phase 7B contextual-result contract, TypeScript, browser QA and build;
+- squash merge to `main`: **`e7724d7a219caa37a20827bbe49dc05002e5e3bf`**;
+- post-merge Web CI on `main`: **#137**, run `34749674757` — success;
+- Hostinger served release marker `web-phase-7b-contextual-result-handoff`;
+- Production Verification: **#13**, run `34749824213` — success directly against `https://iaempleado.com`;
+- production browser step **“Verify production geometry, brand systems, campaign media, conversion and contextual result handoff, responsive UX and accessibility”** — success;
+- production diagnostics upload — skipped because no browser failure occurred.
+
 ## Release criteria
 
-Phase 7B is complete only when:
+All Phase 7B release criteria are satisfied:
 
 1. both interactive result CTAs use `requestDemoPath()`;
 2. neither tool result contains a raw commercial `mailto:` bypass;
@@ -128,4 +143,4 @@ Phase 7B is complete only when:
 
 ## Next likely phase
 
-After Phase 7B is production-verified, the next conversion step should focus on a real transport only if a concrete CRM/webhook provider, authorization model, credentials, consent/privacy model and operational ownership are explicitly configured. Until then, the public website should keep the verified Phase 7A email handoff rather than pretending server-side lead capture exists.
+The next conversion step should focus on a real transport only if a concrete CRM/webhook provider, authorization model, credentials, consent/privacy model and operational ownership are explicitly configured. Until then, the public website should keep the verified Phase 7A email handoff rather than pretending server-side lead capture exists.
