@@ -24,7 +24,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md) — Branding Phase 2A role-family contract and production-verification evidence.
 - [`branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md`](branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md) — Branding Phase 2B Team/Department composition contract and production-verification evidence.
 - [`branding/PHASE_2C_SECTOR_HERO_ART.md`](branding/PHASE_2C_SECTOR_HERO_ART.md) — Branding Phase 2C sector-art contract, four operating signatures and production-verification evidence.
-- [`branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md`](branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md) — Branding Phase 2D reusable campaign/social generation contract and release criteria.
+- [`branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md`](branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md) — Branding Phase 2D reusable campaign/social generation contract and production-verification evidence.
 - [`branding/SOCIAL_MEDIA_SYSTEM.md`](branding/SOCIAL_MEDIA_SYSTEM.md) — share, campaign, reusable frame and export rules.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — AI Teams model and handoff/control rules.
@@ -190,8 +190,10 @@ PR #49 was validated by Web CI #118 and squash-merged to `main` as `3962ba00e5a8
 
 ### Branding Phase 2D — Reusable campaign/social variants
 
-**Implementation in progress.**
+**Complete and production-verified — 2026-09-13.**
 
-Phase 2D preserves the existing production-verified `1200 × 630` Open Graph/share renderer and adds a separate reusable campaign-media route for ES/EN. The same registered semantic surfaces can now render as landscape `1600 × 900`, square `1080 × 1080`, portrait `1080 × 1350` and story `1080 × 1920` without rebuilding each piece manually.
+Phase 2D preserves the production-verified `1200 × 630` Open Graph/share renderer and adds a separate reusable campaign-media route for ES/EN. The same registered semantic surfaces can render as landscape `1600 × 900`, square `1080 × 1080`, portrait `1080 × 1350` and story `1080 × 1920` without rebuilding each piece manually.
 
-The system uses canonical characters only where semantically relevant, keeps ROI campaign media character-neutral, validates unknown formats/surfaces with 404, and protects the generator with static contracts plus browser dimension tests. The active release target is `branding-phase-2d-campaign-social-variants`. Full implementation and release criteria are recorded in [`branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md`](branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md).
+The system uses canonical characters only where semantically relevant, keeps ROI campaign media character-neutral, validates unknown formats/surfaces with 404, and protects the generator with static contracts plus browser dimension tests. The route runs on Node.js and uses Sharp only to rasterize the approved canonical WebP/SVG sources in memory for `ImageResponse` compatibility; normal website portrait delivery remains unchanged.
+
+PR #51 was validated by Web CI #128 and squash-merged to `main` as `745d3d1f6371cdb8200afd7a7aa98cb8ff8cc702`. Web CI #129 (`34744316003`) passed on `main`; Hostinger served `branding-phase-2d-campaign-social-variants`; Production Verification #9 (`34744481711`) passed directly against `iaempleado.com`, including campaign media, geometry, role families, collaboration compositions, sector hero art, responsive UX and accessibility. Full evidence is recorded in [`branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md`](branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md).
