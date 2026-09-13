@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "web-phase-7a-conversion-handoff" },
+  other: { "ia-web-release": "web-phase-7b-contextual-result-handoff" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };
