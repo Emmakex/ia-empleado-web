@@ -4,6 +4,7 @@ import { LEAD_CONSENT_VERSION } from "../lib/lead-intake";
 const directCapability = {
   mode: "direct",
   configured: true,
+  transport: "smtp",
   privacyNoticeUrl: "https://example.com/privacy",
 };
 
@@ -30,14 +31,16 @@ test.describe("Web Phase 7C lead intake", () => {
     const publicState = await capability.json();
     const serialized = JSON.stringify(publicState);
 
-    expect(serialized).not.toContain("WEBHOOK");
+    expect(serialized).not.toContain("SMTP_PASSWORD");
+    expect(serialized).not.toContain("SMTP_USER");
+    expect(serialized).not.toContain("LEAD_NOTIFICATION_TO");
+    expect(serialized).not.toContain("WEBHOOK_URL");
     expect(serialized).not.toContain("TOKEN");
-    expect(serialized).not.toContain("SMTP");
-    expect(serialized).not.toContain("PASSWORD");
 
     if (process.env.PRODUCTION_BASE_URL) {
       expect(publicState.mode).toBe("direct");
       expect(publicState.configured).toBe(true);
+      expect(publicState.transport).toBe("smtp");
       expect(publicState.privacyNoticeUrl).toMatch(/^https?:\/\//);
       return;
     }
