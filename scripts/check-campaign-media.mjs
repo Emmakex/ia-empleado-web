@@ -113,7 +113,19 @@ for (const phrase of [
   if (!guide.includes(phrase)) throw new Error(`Social media guide missing Phase 2D contract phrase: ${phrase}`);
 }
 
-for (const token of ["brandCampaignUrl", "landscape", "square", "portrait", "story", "naturalWidth", "naturalHeight", "404"]) {
+for (const token of [
+  "brandCampaignUrl",
+  "landscape",
+  "square",
+  "portrait",
+  "story",
+  "response.status()",
+  'response.headers()["content-type"]',
+  "image/png",
+  "naturalWidth",
+  "naturalHeight",
+  "404",
+]) {
   if (!browser.includes(token)) throw new Error(`Campaign browser QA missing contract token: ${token}`);
 }
 
