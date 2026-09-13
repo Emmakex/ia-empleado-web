@@ -205,11 +205,11 @@ customer private runtime → production
 - [x] production with configured Hostinger variables reports direct SMTP mode;
 - [x] invalid/non-consented payloads remain rejected;
 - [x] honeypot submissions are never delivered;
-- [x] partial synchronous SMTP acceptance is rejected rather than shown as success;
+- [x] partial recipient acceptance is rejected rather than shown as success;
 - [x] EN/ES request-demo flows remain intact;
 - [x] mobile/browser QA remains green;
 - [x] production serves the 7C2 release;
-- [x] a real synthetic production lead reached Hostinger SMTP;
+- [x] one synthetic production lead reached Hostinger SMTP;
 - [x] the configured primary commercial inbox confirmed actual receipt;
 - [x] production verification passed after the minimal-message deployment.
 
