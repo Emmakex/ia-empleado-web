@@ -74,6 +74,9 @@ jobs:
       - name: Team and Department composition contract
         run: node scripts/check-team-department-compositions.mjs
 
+      - name: Sector hero art contract
+        run: node scripts/check-sector-hero-art.mjs
+
       - name: Brand motion contract
         run: node scripts/check-brand-motion.mjs
 

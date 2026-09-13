@@ -23,6 +23,7 @@ It does **not** own the private IA Empleado runtime, customer production orchest
 - [`branding/PHASE_1_VALIDATION.md`](branding/PHASE_1_VALIDATION.md) — production verification evidence for Branding Phase 1.
 - [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md) — Branding Phase 2A role-family contract and production-verification evidence.
 - [`branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md`](branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md) — Branding Phase 2B Team/Department composition contract and production-verification evidence.
+- [`branding/PHASE_2C_SECTOR_HERO_ART.md`](branding/PHASE_2C_SECTOR_HERO_ART.md) — Branding Phase 2C sector-art contract, four operating signatures and production release criteria.
 - [`docs/PHASE_2C_CATALOG_DISCOVERY.md`](docs/PHASE_2C_CATALOG_DISCOVERY.md) — 22-profile catalog discovery contract.
 - [`docs/PHASE_3_AI_TEAMS.md`](docs/PHASE_3_AI_TEAMS.md) — AI Teams model and handoff/control rules.
 - [`docs/PHASE_4_INTERACTIVE_COLLABORATION.md`](docs/PHASE_4_INTERACTIVE_COLLABORATION.md) — collaboration simulator contract.
@@ -165,7 +166,7 @@ The four canonical Reference Employees now have a reusable functional visual gra
 - Sofía — validation/ledger;
 - Javier — pipeline/follow-up.
 
-Phase 2A applies these families to all four deep bilingual Employee pages and protects the mapping with static CI, responsive canonical image delivery, browser geometry tests and a production Playwright gate. The deployed Hostinger release `branding-phase-2a-role-families` passed Production Verification #3. Evidence is recorded in [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md).
+Phase 2A applies these families to all four deep bilingual Employee pages and protects the mapping with static CI, responsive canonical image delivery, browser geometry tests and a production Playwright gate. Evidence is recorded in [`branding/PHASE_2_ROLE_VISUAL_FAMILIES.md`](branding/PHASE_2_ROLE_VISUAL_FAMILIES.md).
 
 ### Branding Phase 2B — Team and Department compositions
 
@@ -173,8 +174,18 @@ Phase 2A applies these families to all four deep bilingual Employee pages and pr
 
 Phase 2B introduces one shared collaboration composition for all four deep AI Team pages and all six deep Department pages. It reuses the Phase 2A character families and makes role handoffs, shared systems and human-control boundaries visible without changing the underlying content/authority model. Integration detail pages keep their system-centric visual scene because they solve a different communication problem.
 
-Coverage protects all 20 bilingual desktop Team/Department routes and all 10 Spanish mobile routes. PR #47 merged as `e9af3bad026b6b4809bc8fa913152dd130317bda`; Web CI #113 passed on `main`; Hostinger served `branding-phase-2b-team-department-compositions`; Production Verification #5 (`34719659316`) passed directly against `iaempleado.com`. Full evidence is recorded in [`branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md`](branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md).
+Coverage protects all 20 bilingual desktop Team/Department routes and all 10 Spanish mobile routes. PR #47 merged as `e9af3bad026b6b4809bc8fa913152dd130317bda`; Web CI #113 passed on `main`; Hostinger served `branding-phase-2b-team-department-compositions`; Production Verification #5 (`34719659316`) passed directly against `iaempleado.com`. Formal documentation closure was merged in PR #48 and revalidated by Web CI #115 plus Production Verification #6. Full evidence is recorded in [`branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md`](branding/PHASE_2B_TEAM_DEPARTMENT_COMPOSITIONS.md).
 
-### Next — Branding Phase 2C
+### Branding Phase 2C — Sector-specific hero art
 
-Build **sector-specific hero art** for Ecommerce, Travel, B2B Services and Retail by reusing the stable identity, role-family and collaboration grammars. The objective is visual differentiation by operating context without creating isolated one-off illustration systems. Reusable campaign/social variants follow after the sector website layer is production-verified.
+**Implementation in progress.**
+
+Phase 2C gives the four actual deep sector families — **Ecommerce, Travel, Professional Services and B2B Sales** — distinct operating-context hero art through one reusable renderer. The content model does not currently contain a standalone Retail sector, so the branding layer does not invent one.
+
+Each sector retains the approved canonical character family and Phase 2A motifs while adding a sector-specific operating signature: connected order, booking route, traceable case file or context-rich sales pipeline. Shared system context and human-control boundaries remain explicit. Deep use-case pages keep their process-centric visual grammar rather than being forced into a sector identity.
+
+The active release target for this phase is `branding-phase-2c-sector-hero-art`. Static CI, responsive image delivery and dedicated browser geometry/reflow tests protect the implementation before production verification. The complete contract is recorded in [`branding/PHASE_2C_SECTOR_HERO_ART.md`](branding/PHASE_2C_SECTOR_HERO_ART.md).
+
+### Next after Branding Phase 2C
+
+Once the sector website layer is production-verified, adapt the stable identity/role/team/sector assets into reusable campaign and social variants instead of creating isolated one-off art per channel.

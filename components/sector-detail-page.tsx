@@ -15,7 +15,9 @@ import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
 import { teamBuilderPath } from "../lib/team-builder";
 import { comparisonIndexPath } from "../lib/comparison-content";
-import { BrandCharacterStrip, BrandContextScene } from "./brand-context-scene";
+import { BrandCharacterStrip } from "./brand-context-scene";
+import { BrandCharacterImage } from "./brand-character-image";
+import { BrandSectorHeroArt } from "./brand-sector-hero-art";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -87,10 +89,9 @@ export function SectorDetailPage({ locale, sector }: Props) {
               </div>
             </div>
             <div className="brand-sector-detail-visual">
-              <BrandContextScene
+              <BrandSectorHeroArt
                 locale={locale}
-                kind="sector"
-                contextKey={sector.key}
+                sectorKey={sector.key}
                 eyebrow={sector.eyebrow[locale]}
                 title={sector.name[locale]}
                 roles={sector.roles[locale]}
@@ -159,7 +160,7 @@ export function SectorDetailPage({ locale, sector }: Props) {
                 return (
                   <article key={role.name} className={`sector-role-card${character ? " has-brand-character" : ""}`}>
                     {character ? (
-                      <span className="sector-role-character" data-accent={character.accent} aria-hidden="true"><img src={character.asset} alt="" width={96} height={112} /></span>
+                      <span className="sector-role-character" data-accent={character.accent} aria-hidden="true"><BrandCharacterImage character={character} sizes="96px" /></span>
                     ) : (
                       <span className="sector-role-mark" aria-hidden="true">{role.name.slice(0, 2).toUpperCase()}</span>
                     )}
