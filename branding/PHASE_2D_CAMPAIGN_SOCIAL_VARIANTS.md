@@ -1,6 +1,6 @@
 # IA Empleado — Branding Phase 2D: reusable campaign/social variants
 
-Status: **implementation in progress**
+Status: **Complete and production-verified — 2026-09-13**
 
 ## Goal
 
@@ -98,17 +98,20 @@ Phase 2D uses one master per generated format:
 - `public/branding/media/portrait-frame.svg` — portrait `1080 × 1350`;
 - `public/branding/media/story-frame.svg` — story `1080 × 1920`.
 
-The portrait frame is added in Phase 2D so portrait output does not stretch the square system.
+The portrait frame was added in Phase 2D so portrait output does not stretch the square system.
 
 ## Implementation contract
 
 - `lib/brand-campaign-media.tsx` — localized multi-format campaign renderer.
-- `app/brand-campaign/[locale]/[format]/[surface]/route.tsx` — validated Edge image route.
+- `app/brand-campaign/[locale]/[format]/[surface]/route.tsx` — validated **Node.js** image route.
+- `sharp` — in-memory rasterization layer for canonical WebP/SVG assets before they enter `ImageResponse`.
 - `public/branding/media/portrait-frame.svg` — dedicated portrait master.
 - `scripts/check-campaign-media.mjs` — static Phase 2D contract.
 - `tests/campaign-media.spec.ts` — generated image status/dimension and invalid-route browser contract.
 - `branding/SOCIAL_MEDIA_SYSTEM.md` — canonical distribution/export guidance.
 - production release marker: `branding-phase-2d-campaign-social-variants`.
+
+The website continues serving the approved canonical portraits as WebP. Sharp is used only by the generated campaign route to preserve those same source pixels while converting them to PNG in memory for `ImageResponse` compatibility. Campaign rendering must not reintroduce Satori-incompatible `translate(calc(...))`, unsupported external image formats or `z-index` assumptions.
 
 ## Truthfulness and identity boundaries
 
@@ -123,29 +126,44 @@ The portrait frame is added in Phase 2D so portrait output does not stretch the 
 
 ## Validation contract
 
-Static CI must verify:
+Static CI verifies:
 
 - all four campaign formats and exact dimensions;
 - all four frame masters exist and remain valid SVGs;
 - the campaign renderer uses the canonical character registry;
 - ROI has no named canonical character assignment;
 - the route validates both format and surface;
+- the campaign route runs on Node.js and uses Sharp for ImageResponse-compatible canonical asset rasterization;
+- the renderer does not use the Satori-incompatible `translate(calc(...))` positioning pattern or `zIndex`;
 - ES/EN layouts carry the Phase 2D release marker;
 - browser QA and production verification include the campaign media suite.
 
-Browser QA must verify representative ES/EN outputs across all four formats:
+Browser QA verifies representative ES/EN outputs across all four formats:
 
 - HTTP 200;
-- image content type;
+- `image/png` content type;
 - exact intrinsic width/height;
 - invalid format returns 404;
 - invalid surface returns 404.
 
-The browser suite does not need to duplicate all 11 surfaces × 4 formats because copy/surface membership is protected statically and the renderer path is shared. It must cover every format in both locales and multiple surface families, including ROI.
+The browser suite does not duplicate all 11 surfaces × 4 formats because copy/surface membership is protected statically and the renderer path is shared. It covers every format in both locales and multiple surface families, including ROI.
+
+## Production evidence
+
+Branding Phase 2D is closed with the following evidence:
+
+- PR **#51** — `feat: add reusable campaign and social media variants`;
+- PR Web CI **#128** — run `34743974890` — success;
+- squash merge to `main`: `745d3d1f6371cdb8200afd7a7aa98cb8ff8cc702`;
+- `main` Web CI **#129** — run `34744316003` — success;
+- Hostinger confirmed serving release marker `branding-phase-2d-campaign-social-variants`;
+- Production Verification **#9** — run `34744481711` — success directly against `https://iaempleado.com`;
+- production checks passed for campaign media, internal hero geometry, role families, Team/Department compositions, sector hero art, responsive UX and accessibility;
+- no production diagnostic artifact was uploaded because the verification suite had no failures.
 
 ## Release criteria
 
-Phase 2D is complete only when:
+All Phase 2D release criteria are satisfied:
 
 1. four reusable generated formats exist with exact dimensions;
 2. both locales use the same registered surface model;
@@ -158,4 +176,6 @@ Phase 2D is complete only when:
 9. `main` CI passes after merge;
 10. Hostinger serves `branding-phase-2d-campaign-social-variants`;
 11. Production Verification passes campaign media directly against `https://iaempleado.com`;
-12. production evidence is recorded here before advancing.
+12. production evidence is recorded here.
+
+Branding Phase 2D is therefore **complete and production-verified**.
