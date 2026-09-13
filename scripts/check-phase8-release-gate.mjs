@@ -7,6 +7,7 @@ const files = {
   docs: "docs/PHASE_8_WEB_FINALIZATION.md",
   responsive: "tests/phase8-responsive-matrix.spec.ts",
   interaction: "tests/phase8-interaction-ux.spec.ts",
+  roi: "components/roi-estimator.tsx",
 };
 
 for (const path of Object.values(files)) {
@@ -19,8 +20,10 @@ const esLayout = read(files.esLayout);
 const enLayout = read(files.enLayout);
 const production = read(files.production);
 const docs = read(files.docs);
+const interaction = read(files.interaction);
+const roi = read(files.roi);
 
-const marker = "web-phase-8a-responsive-interaction-ux";
+const marker = "web-phase-8a-roi-hydration-sync";
 const metadataMarker = `"ia-web-release": "${marker}"`;
 
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
@@ -41,6 +44,21 @@ for (const testPath of [
 }
 
 for (const phrase of [
+  'data-roi-hydrated={isHydrated ? "true" : "false"}',
+  'disabled={!isHydrated}',
+  'data-roi-release="phase8a-roi-hydration-sync"',
+]) {
+  if (!roi.includes(phrase)) throw new Error(`ROI hydration release contract missing phrase: ${phrase}`);
+}
+
+for (const phrase of [
+  'toHaveAttribute("data-roi-hydrated", "true")',
+  'toHaveValue("31")',
+]) {
+  if (!interaction.includes(phrase)) throw new Error(`Phase 8A interaction regression coverage missing phrase: ${phrase}`);
+}
+
+for (const phrase of [
   "Phase 8A — Full UX and responsive acceptance",
   "full route responsive matrix green",
   "production verification green",
@@ -48,4 +66,4 @@ for (const phrase of [
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
 
-console.log(`Web Phase 8A release gate OK: ${marker} is active in ES/EN and production verification covers responsive + interaction acceptance.`);
+console.log(`Web Phase 8A release gate OK: ${marker} is active in ES/EN and production verification covers responsive + interaction acceptance including ROI hydration synchronization.`);
