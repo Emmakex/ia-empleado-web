@@ -27,10 +27,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Web Phase 7C2 Hostinger SMTP on Hostinger
+      - name: Wait for Web Phase 8A responsive interaction UX on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-          EXPECTED_RELEASE: web-phase-7c2-hostinger-smtp
+          EXPECTED_RELEASE: web-phase-8a-responsive-interaction-ux
         run: |
           set -euo pipefail
           for attempt in $(seq 1 40); do
@@ -66,6 +66,7 @@ jobs:
           tests/contextual-result-handoff.spec.ts
           tests/lead-intake.spec.ts
           tests/navigation-and-hero-scale.spec.ts
+          tests/phase8-responsive-matrix.spec.ts
           tests/phase8-interaction-ux.spec.ts
           tests/ux-visual.spec.ts
 
