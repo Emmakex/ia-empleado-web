@@ -3,12 +3,15 @@ import fs from "node:fs";
 const required = [
   "app/ux-accessibility.css",
   "app/reflow-hardening.css",
+  "app/phase8b-accessibility.css",
   "components/mobile-navigation.tsx",
+  "components/site-header.tsx",
   "app/(es)/layout.tsx",
   "app/(en)/en/layout.tsx",
   "playwright.config.ts",
   "tests/ux-visual.spec.ts",
   "tests/phase8b-accessibility.spec.ts",
+  "tests/phase8b-interaction-accessibility.spec.ts",
   "package.json",
   ".github/workflows/ci.yml",
 ];
@@ -21,20 +24,25 @@ for (const path of required) {
 const read = (path) => fs.readFileSync(path, "utf8");
 const css = read("app/ux-accessibility.css");
 const reflow = read("app/reflow-hardening.css");
+const phase8bCss = read("app/phase8b-accessibility.css");
 const nav = read("components/mobile-navigation.tsx");
+const header = read("components/site-header.tsx");
 const esLayout = read("app/(es)/layout.tsx");
 const enLayout = read("app/(en)/en/layout.tsx");
 const playwright = read("playwright.config.ts");
 const browserQa = read("tests/ux-visual.spec.ts");
 const phase8b = read("tests/phase8b-accessibility.spec.ts");
+const phase8bInteraction = read("tests/phase8b-interaction-accessibility.spec.ts");
 const packageJson = read("package.json");
 const ci = read(".github/workflows/ci.yml");
 
 for (const [locale, layout] of [["ES", esLayout], ["EN", enLayout]]) {
   if (!layout.includes("ux-accessibility.css")) throw new Error(`${locale} layout does not load UX/accessibility hardening`);
   if (!layout.includes("reflow-hardening.css")) throw new Error(`${locale} layout does not load structural reflow hardening`);
+  if (!layout.includes("phase8b-accessibility.css")) throw new Error(`${locale} layout does not load Phase 8B accessibility closure styles`);
   if (layout.indexOf("ux-accessibility.css") < layout.indexOf("brand-motion.css")) throw new Error(`${locale} UX/accessibility stylesheet must load after brand motion`);
   if (layout.indexOf("reflow-hardening.css") < layout.indexOf("ux-accessibility.css")) throw new Error(`${locale} structural reflow hardening must load after UX/accessibility styles`);
+  if (layout.indexOf("phase8b-accessibility.css") < layout.indexOf("phase8-interaction-ux.css")) throw new Error(`${locale} Phase 8B accessibility stylesheet must load after Phase 8 interaction styles`);
 }
 
 for (const token of [
@@ -58,6 +66,17 @@ for (const token of [
   "@media (prefers-reduced-motion: reduce)",
 ]) {
   if (!css.includes(token)) throw new Error(`UX/accessibility CSS missing contract: ${token}`);
+}
+
+for (const token of [
+  ".lead-handoff-field-error",
+  '[aria-invalid="true"]',
+  "@media (prefers-contrast: more)",
+  "@media (forced-colors: active)",
+  "Highlight",
+  "CanvasText",
+]) {
+  if (!phase8bCss.includes(token)) throw new Error(`Phase 8B accessibility CSS missing contract: ${token}`);
 }
 
 for (const token of [
@@ -96,15 +115,15 @@ for (const token of [
   if (!nav.includes(token)) throw new Error(`Mobile navigation accessibility missing: ${token}`);
 }
 
+for (const token of ["hrefLang={otherLocale}", "navigationLabel", "languageHref"]) {
+  if (!header.includes(token)) throw new Error(`Bilingual navigation semantics missing: ${token}`);
+}
+
 if (nav.includes("maximum-scale") || esLayout.includes("maximumScale") || enLayout.includes("maximumScale")) {
   throw new Error("Viewport must not disable user zoom");
 }
 
-for (const token of [
-  "@playwright/test",
-  "@axe-core/playwright",
-  '"qa:browser"',
-]) {
+for (const token of ["@playwright/test", "@axe-core/playwright", '"qa:browser"']) {
   if (!packageJson.includes(token)) throw new Error(`Browser QA dependency/script missing: ${token}`);
 }
 
@@ -153,6 +172,19 @@ for (const token of [
 }
 
 for (const token of [
+  'test.describe("Phase 8B interaction accessibility"',
+  "works keyboard-only",
+  "language switch exposes hreflang",
+  "prefers-reduced-motion: reduce",
+  "prefers-contrast: more",
+  "forced-colors: active",
+  "persistent accessible validation errors",
+  "meaningful composite imagery is labelled",
+]) {
+  if (!phase8bInteraction.includes(token)) throw new Error(`Phase 8B interaction accessibility missing coverage: ${token}`);
+}
+
+for (const token of [
   "npx playwright install --with-deps chromium",
   "npm run qa:browser",
   "actions/upload-artifact@v4",
@@ -160,4 +192,4 @@ for (const token of [
   if (!ci.includes(token)) throw new Error(`CI browser QA wiring missing: ${token}`);
 }
 
-console.log("UX/accessibility contract OK");
+console.log("UX/accessibility contract OK: Phase 8B matrix, interaction, preferences, bilingual navigation, form errors and image semantics are protected.");

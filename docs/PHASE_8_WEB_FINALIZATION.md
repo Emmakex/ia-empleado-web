@@ -15,8 +15,8 @@ The web already has a substantial foundation:
 - CSS/SVG motion system with `prefers-reduced-motion` support;
 - responsive navigation and reflow hardening;
 - full Phase 8A responsive/interaction browser matrix;
+- Phase 8B bilingual Axe/semantic and interaction/preference browser coverage;
 - Playwright browser QA;
-- Axe WCAG checks on critical routes;
 - lead capture and Hostinger SMTP delivery verified in production;
 - sitemap and robots generation;
 - production verification workflow.
@@ -24,7 +24,7 @@ The web already has a substantial foundation:
 The repository also exposes important remaining gaps that prevent declaring the public web finished:
 
 1. **No finished website video assets are present.** `public/branding/media` currently contains framing SVGs, not production MP4/WebM/video deliverables.
-2. **Accessibility closure is still in progress.** Phase 8B expands Axe and semantic checks from a small route subset to the bilingual critical/commercial matrix, then must close keyboard, contrast/preference, form-error and image-semantics acceptance.
+2. **Accessibility closure is at its final production gate.** The full bilingual Axe matrix, keyboard navigation, focus, preferences, form errors and image semantics are green in CI; Phase 8B still requires exact-marker production verification before closure.
 3. **Performance is not a release gate yet.** There is no Lighthouse/Core Web Vitals budget in the package scripts or CI.
 4. **Motion is contract-tested but still needs final production UX acceptance** on real devices/preferences, including reduced motion and mobile simplification.
 5. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
@@ -75,7 +75,7 @@ Fix and regression protection:
 - the calculator exposes `data-roi-hydrated` and an explicit hydration release marker;
 - Playwright waits for the hydrated state before keyboard interaction and verifies both controls stay synchronized;
 - the ROI source contract requires the hydration guard to remain present;
-- the active production marker is `web-phase-8a-roi-hydration-sync`, preventing verification against the previous deployment.
+- the active production marker used for the Phase 8A closure was `web-phase-8a-roi-hydration-sync`, preventing verification against the previous deployment.
 
 ### Phase 8A closure evidence
 
@@ -120,7 +120,46 @@ The first Phase 8B gate reuses the already accepted Phase 8A commercial route mo
 - Axe blocks critical/serious violations using WCAG 2.x A/AA tags including WCAG 2.2 AA where supported;
 - each audited page must return successfully, expose the expected document language, render a main landmark and expose exactly one visible H1.
 
-This tranche is a discovery and blocking gate, not the whole Phase 8B closure. Any violations found by CI must be fixed and documented before moving to the keyboard/preference/form/image acceptance tranche.
+Closure evidence:
+
+- PR #73 merged into `main` as `0574344a1e1dbb96c2fbad755aeb630700268d38`;
+- PR Web CI #185 green;
+- main Web CI #186 green;
+- browser QA result: **138/138 tests passed**;
+- Production Verification #29 later remained green as regression evidence, while still using the Phase 8A release marker.
+
+### Phase 8B tranche 2 — interaction, preferences, form errors and imagery
+
+The second gate adds browser-level acceptance beyond static semantics:
+
+- ES/EN desktop Explore navigation works keyboard-only;
+- mobile navigation focus trap, Escape handling and focus restoration remain covered by the existing UX suite;
+- reduced motion keeps branded content complete while disabling non-essential animation;
+- `prefers-contrast: more` activates stronger readable text treatment;
+- forced-colors preserves an explicit system-color keyboard focus indicator;
+- lead-form validation exposes persistent localized errors with `aria-invalid` and associated descriptions, while retaining native constraint validation;
+- meaningful composite imagery is labelled while decorative child portraits remain silent;
+- SMTP/email/direct transport behavior remains unchanged.
+
+Closure evidence:
+
+- PR #74 merged into `main` as `d3eef02489b650fb24cced18340e41c3c2050cab`;
+- PR Web CI #187 green with **146/146 tests passed** and build green;
+- main Web CI #188 green with **146/146 tests passed in 6.5 minutes** and build green;
+- all contracts and TypeScript remained green.
+
+### Phase 8B final production closure gate
+
+Phase 8B does not close on integration evidence alone. The final gate binds the exact deployed runtime to the accessibility acceptance suite:
+
+- active ES/EN release marker advances to `web-phase-8b-accessibility-closure`;
+- browser acceptance explicitly verifies ES→EN and EN→ES language switching, `hreflang` semantics and resulting document language;
+- Production Verification must wait for `web-phase-8b-accessibility-closure` on Hostinger;
+- production must execute both `tests/phase8b-accessibility.spec.ts` and `tests/phase8b-interaction-accessibility.spec.ts` in addition to the permanent Phase 8A regressions;
+- the release-gate contract must fail if either Phase 8B suite or the exact release marker is removed;
+- the Phase 8A ROI hydration regression remains permanently protected after the marker advances.
+
+Phase 8B remains active until the final gate is merged, main CI is green, Hostinger serves the new marker and Production Verification passes the expanded suite. Only then may Phase 8B be marked complete and Phase 8C begin.
 
 ## Phase 8C — Motion and animation finalization
 
