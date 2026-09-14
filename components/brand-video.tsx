@@ -11,6 +11,7 @@ type BrandVideoProps = {
   mp4Src: string;
   mode?: BrandVideoMode;
   captionsSrc?: string;
+  captionsLang?: "es" | "en";
   captionsLabel?: string;
   transcriptHref?: string;
   transcriptLabel?: string;
@@ -27,6 +28,7 @@ export function BrandVideo({
   mp4Src,
   mode = "explainer",
   captionsSrc,
+  captionsLang = "en",
   captionsLabel = "Captions",
   transcriptHref,
   transcriptLabel = "Transcript",
@@ -106,7 +108,7 @@ export function BrandVideo({
             <track
               kind="captions"
               src={captionsSrc}
-              srcLang={captionsLabel.toLowerCase().startsWith("subt") ? "es" : "en"}
+              srcLang={captionsLang}
               label={captionsLabel}
               default
             />
