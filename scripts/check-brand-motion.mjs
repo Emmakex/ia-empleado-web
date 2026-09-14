@@ -55,6 +55,8 @@ for (const selector of [
 for (const marker of [
   "phase8c-home-copy-enter",
   "phase8c-motion-handoff-focus",
+  ":is(.eyebrow, h1, .hero-description, .hero-actions, .hero-note, .brand-hero-signature)",
+  "var(--brand-motion-ease)",
   ".brand-role-family-portrait img",
   ".brand-collaboration-portrait img",
   ".brand-collaboration-hub-ring",
@@ -70,6 +72,13 @@ for (const marker of [
 const forbiddenLayoutDeclaration = /(?:^|\n)\s*(?:width|height|top|right|bottom|left|margin(?:-[a-z]+)?|padding(?:-[a-z]+)?)\s*:/m;
 if (forbiddenLayoutDeclaration.test(phase8c)) {
   throw new Error("Phase 8C animation layer must not animate or redefine layout geometry properties");
+}
+
+const phase8cMotionVars = [...phase8c.matchAll(/var\((--brand-motion-[a-z0-9-]+)/g)].map((match) => match[1]);
+for (const variable of new Set(phase8cMotionVars)) {
+  if (!css.includes(`${variable}:`)) {
+    throw new Error(`Phase 8C motion layer references undefined canonical variable: ${variable}`);
+  }
 }
 
 for (const phrase of [
@@ -106,4 +115,4 @@ for (const phrase of [
   if (!guide.includes(phrase)) throw new Error(`Motion guide missing principle: ${phrase}`);
 }
 
-console.log("Brand motion contract OK: Phase 8C maps the canonical vocabulary to live employee/team/department/sector selectors, keeps core CTAs immediately available, avoids layout geometry animation, simplifies mobile motion and protects reduced-motion behavior.");
+console.log("Brand motion contract OK: Phase 8C maps the canonical vocabulary to live employee/team/department/sector selectors, keeps core CTAs immediately available, avoids layout geometry animation, validates canonical motion variables, simplifies mobile motion and protects reduced-motion behavior.");
