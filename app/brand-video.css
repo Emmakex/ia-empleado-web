@@ -55,9 +55,50 @@
   text-underline-offset: 0.2em;
 }
 
+.brand-video-section {
+  overflow: hidden;
+}
+
+.brand-video-section .container {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+}
+
+.brand-video-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+}
+
+.brand-video-intro h2 {
+  margin-bottom: 0;
+}
+
+.brand-video-intro .section-lead {
+  margin: 0;
+  max-width: 62ch;
+}
+
+.brand-video-home-story {
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.brand-video-home-story .brand-video-frame {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(91, 95, 245, 0.08), transparent 42%),
+    linear-gradient(180deg, #ffffff, #f7f8fc);
+}
+
 @media (max-width: 760px) {
   .brand-video-frame {
     border-radius: 20px;
+  }
+
+  .brand-video-intro {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 }
 
