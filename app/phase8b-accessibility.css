@@ -1,0 +1,31 @@
+/* Phase 8B accessibility closure.
+ * Targeted fixes backed by the full commercial-route Axe matrix.
+ * Keep these overrides narrow: they correct readable text contrast without
+ * changing layout, interaction, brand surfaces, or decorative treatments.
+ */
+
+.process-context-card span,
+.process-brand-systems span,
+.roi-scenario-base dt,
+.brand-proof-index,
+.sector-role-card small {
+  color: var(--ux-readable-muted);
+}
+
+/* Methodology step numbers are informational text. The previous #0284c7
+ * falls below 4.5:1 on white; the darker brand blue preserves the visual
+ * hierarchy while clearing WCAG AA for normal-size text.
+ */
+.organization-method-grid article > span {
+  color: #0369a1;
+}
+
+@media (prefers-contrast: more) {
+  .process-context-card span,
+  .process-brand-systems span,
+  .roi-scenario-base dt,
+  .brand-proof-index,
+  .sector-role-card small {
+    color: var(--ux-readable-soft);
+  }
+}
