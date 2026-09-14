@@ -66,6 +66,7 @@ export function BrandVideo({
   }, [isAmbientLoop, prefersReducedMotion]);
 
   const shouldPlayAmbientLoop = isAmbientLoop && !prefersReducedMotion;
+  const preload = shouldPlayAmbientLoop ? "metadata" : "none";
   const figureClassName = ["brand-video", `brand-video-${mode}`, className].filter(Boolean).join(" ");
 
   return (
@@ -92,7 +93,7 @@ export function BrandVideo({
           width={width}
           height={height}
           poster={poster}
-          preload={isAmbientLoop ? "metadata" : "none"}
+          preload={preload}
           muted={isAmbientLoop}
           loop={isAmbientLoop}
           playsInline
