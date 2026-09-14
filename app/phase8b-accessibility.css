@@ -7,6 +7,9 @@
 .process-context-card span,
 .process-brand-systems span,
 .process-step-topline > span:first-child,
+.process-static-outcome span,
+.process-static-before small,
+.process-static-after small,
 .roi-scenario-base dt,
 .roi-scenario-base > .roi-unavailable-note,
 .brand-proof-index,
@@ -25,6 +28,7 @@
  * Their previous #0284c7 foreground does not clear AA on white/cyan surfaces.
  */
 .organization-method-grid article > span,
+.organization-list li > span,
 .organization-role-list li > span,
 .organization-control-list li > span,
 .organization-purpose-list li > span,
@@ -36,6 +40,9 @@
   .process-context-card span,
   .process-brand-systems span,
   .process-step-topline > span:first-child,
+  .process-static-outcome span,
+  .process-static-before small,
+  .process-static-after small,
   .roi-scenario-base dt,
   .roi-scenario-base > .roi-unavailable-note,
   .brand-proof-index,
@@ -48,6 +55,7 @@
   }
 
   .organization-method-grid article > span,
+  .organization-list li > span,
   .organization-role-list li > span,
   .organization-control-list li > span,
   .organization-purpose-list li > span,
