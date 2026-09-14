@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
 import { requestDemoPath } from "../lib/conversion-handoff";
@@ -39,12 +39,17 @@ function toggleValue(values: string[], value: string) {
 }
 
 export function TeamBuilder({ locale, content, options, presets }: TeamBuilderProps) {
+  const [isHydrated, setIsHydrated] = useState(false);
   const [selection, setSelection] = useState<BuilderSelection>(emptySelection);
   const recommendation = useMemo(() => buildTeamRecommendation(locale, selection), [locale, selection]);
   const hasSelection = Boolean(selection.sectorId || selection.problemIds.length || selection.departmentIds.length || selection.systemIds.length);
   const recommendedCharacters = recommendation.roles
     .map((role) => getBrandCharacterForProfileKey(role.key, locale))
     .filter((character): character is NonNullable<typeof character> => Boolean(character));
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   const optionLabel = (items: Array<{ value: string; label: string }>, value: string) =>
     items.find((item) => item.value === value)?.label ?? value;
@@ -81,7 +86,12 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
   };
 
   return (
-    <div className="team-builder-shell brand-team-builder-shell">
+    <div
+      className="team-builder-shell brand-team-builder-shell"
+      data-team-builder-hydrated={isHydrated ? "true" : "false"}
+      data-team-builder-release="phase8b-hydration-sync"
+      aria-busy={!isHydrated}
+    >
       <section className="team-builder-config" aria-labelledby="builder-config-title">
         <div className="team-builder-config-head">
           <div>
@@ -89,7 +99,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
             <h2 id="builder-config-title">{content.builderTitle}</h2>
             <p>{content.builderDescription}</p>
           </div>
-          <button className="builder-clear" type="button" onClick={() => setSelection(emptySelection)} disabled={!hasSelection}>
+          <button className="builder-clear" type="button" onClick={() => setSelection(emptySelection)} disabled={!isHydrated || !hasSelection}>
             {content.clearLabel}
           </button>
         </div>
@@ -98,7 +108,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
           <h3 id="builder-presets-title">{content.presetsTitle}</h3>
           <div className="builder-preset-grid">
             {presets.map((preset) => (
-              <button className="builder-preset" type="button" key={preset.key} onClick={() => applyPreset(preset)}>
+              <button className="builder-preset" type="button" key={preset.key} onClick={() => applyPreset(preset)} disabled={!isHydrated}>
                 <span>{preset.label}</span>
                 <small>{preset.description}</small>
               </button>
@@ -120,6 +130,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
                     aria-pressed={active}
                     key={option.value}
                     onClick={() => setSelection((current) => ({ ...current, sectorId: active ? "" : option.value }))}
+                    disabled={!isHydrated}
                   >
                     {option.label}
                   </button>
@@ -141,6 +152,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
                     aria-pressed={active}
                     key={option.value}
                     onClick={() => setSelection((current) => ({ ...current, problemIds: toggleValue(current.problemIds, option.value) }))}
+                    disabled={!isHydrated}
                   >
                     {option.label}
                   </button>
@@ -162,6 +174,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
                     aria-pressed={active}
                     key={option.value}
                     onClick={() => setSelection((current) => ({ ...current, departmentIds: toggleValue(current.departmentIds, option.value) }))}
+                    disabled={!isHydrated}
                   >
                     {option.label}
                   </button>
@@ -183,6 +196,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
                     aria-pressed={active}
                     key={option.value}
                     onClick={() => setSelection((current) => ({ ...current, systemIds: toggleValue(current.systemIds, option.value) }))}
+                    disabled={!isHydrated}
                   >
                     {option.label}
                   </button>
