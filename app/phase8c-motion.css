@@ -1,0 +1,148 @@
+/* Web Phase 8C — final motion acceptance and normalization.
+ * This layer maps the canonical motion vocabulary onto the actual employee,
+ * team/department and sector scene selectors used by the public site.
+ * It intentionally animates only transform-like individual properties,
+ * opacity-free semantic entry motion, and existing SVG/visual affordances.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Core copy and CTAs are available from first paint. Motion adds direction,
+   * never visibility gating, so users do not wait for essential content. */
+  .brand-home-hero .hero-copy > .eyebrow,
+  .brand-home-hero .hero-copy > h1,
+  .brand-home-hero .hero-copy > .hero-description,
+  .brand-home-hero .hero-copy > .hero-actions,
+  .brand-home-hero .hero-copy > .hero-note,
+  .brand-home-hero .hero-copy > .brand-hero-signature {
+    opacity: 1;
+    animation: phase8c-home-copy-enter var(--brand-motion-reveal) var(--brand-motion-ease-out) both;
+  }
+
+  .brand-home-hero .hero-copy > .eyebrow { animation-delay: 0ms; }
+  .brand-home-hero .hero-copy > h1 { animation-delay: 60ms; }
+  .brand-home-hero .hero-copy > .hero-description { animation-delay: 120ms; }
+  .brand-home-hero .hero-copy > .hero-actions { animation-delay: 0ms; animation-duration: var(--brand-motion-emphasis); }
+  .brand-home-hero .hero-copy > .hero-note { animation-delay: 180ms; }
+  .brand-home-hero .hero-copy > .brand-hero-signature { animation-delay: 240ms; }
+
+  /* Ambient depth uses the same slow vocabulary across internal scene families. */
+  .brand-role-family-aura,
+  .brand-collaboration-glow,
+  .brand-sector-art-glow {
+    animation: brand-motion-mist var(--brand-motion-ambient) ease-in-out infinite alternate;
+    will-change: translate, scale;
+  }
+
+  .brand-collaboration-glow.glow-b,
+  .brand-sector-art-glow.glow-b {
+    animation-delay: calc(var(--brand-motion-ambient) / -2);
+    animation-direction: alternate-reverse;
+  }
+
+  /* Canonical people share one restrained presence motion on larger screens. */
+  .brand-role-family-portrait img,
+  .brand-collaboration-portrait img,
+  .brand-sector-art-portrait img {
+    animation: brand-motion-person-drift 8.4s ease-in-out infinite;
+    will-change: translate;
+  }
+
+  /* Workflow and sector stages explain handoff without implying live execution. */
+  .brand-role-family-flow > span,
+  .brand-sector-art-stage-track > li {
+    animation: phase8c-motion-handoff-focus 8s ease-in-out infinite;
+    will-change: translate;
+  }
+
+  .brand-role-family-flow > span:nth-child(2),
+  .brand-sector-art-stage-track > li:nth-child(2) { animation-delay: -6s; }
+  .brand-role-family-flow > span:nth-child(3),
+  .brand-sector-art-stage-track > li:nth-child(3) { animation-delay: -4s; }
+  .brand-sector-art-stage-track > li:nth-child(4) { animation-delay: -2s; }
+
+  /* Team/department coordination uses the global orbit/core vocabulary instead
+   * of a separate animation language. */
+  .brand-collaboration-hub-ring {
+    animation: brand-motion-orbit var(--brand-motion-orbit) linear infinite;
+  }
+
+  .brand-collaboration-hub img,
+  .brand-sector-signature-mark {
+    animation: brand-motion-core-breathe 4.8s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .brand-role-family-control,
+  .brand-collaboration-human,
+  .brand-sector-art-human {
+    transition:
+      translate var(--brand-motion-normal) var(--brand-motion-ease-out),
+      box-shadow var(--brand-motion-normal) var(--brand-motion-ease-out),
+      border-color var(--brand-motion-normal) var(--brand-motion-ease-out);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .brand-role-family-control:hover,
+  .brand-collaboration-human:hover,
+  .brand-sector-art-human:hover {
+    translate: 0 -2px;
+  }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  /* Continuous character drift is removed on mobile. Ambient/orbit durations
+   * automatically inherit the slower mobile tokens from brand-motion.css. */
+  .brand-role-family-portrait img,
+  .brand-collaboration-portrait img,
+  .brand-sector-art-portrait img {
+    animation: none;
+    will-change: auto;
+  }
+
+  .brand-role-family-flow > span,
+  .brand-sector-art-stage-track > li {
+    animation-duration: 10s;
+  }
+
+  .brand-role-family-aura,
+  .brand-collaboration-glow,
+  .brand-sector-art-glow {
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-role-family-aura,
+  .brand-role-family-portrait img,
+  .brand-role-family-flow > span,
+  .brand-collaboration-glow,
+  .brand-collaboration-portrait img,
+  .brand-collaboration-hub-ring,
+  .brand-collaboration-hub img,
+  .brand-sector-art-glow,
+  .brand-sector-art-portrait img,
+  .brand-sector-art-stage-track > li,
+  .brand-sector-signature-mark {
+    animation: none !important;
+    translate: none !important;
+  }
+
+  .brand-role-family-control,
+  .brand-collaboration-human,
+  .brand-sector-art-human {
+    transition: none !important;
+    translate: none !important;
+  }
+}
+
+@keyframes phase8c-home-copy-enter {
+  from { translate: 0 10px; }
+  to { translate: 0 0; }
+}
+
+@keyframes phase8c-motion-handoff-focus {
+  0%, 20%, 100% { translate: 0 0; }
+  8% { translate: 0 -2px; }
+  14% { translate: 0 0; }
+}
