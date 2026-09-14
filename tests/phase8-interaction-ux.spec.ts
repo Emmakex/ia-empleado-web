@@ -47,17 +47,38 @@ async function assertKeyboardFocusVisible(page: Page, locator: Locator, label: s
   expect(hasOutline || hasShadow, `${label}: focused control must expose a visible focus indicator`).toBeTruthy();
 }
 
+async function assertTeamBuilderHydrated(page: Page) {
+  const shell = page.locator(".team-builder-shell");
+  await expect(shell).toHaveAttribute("data-team-builder-release", "phase8b-hydration-sync");
+  await expect(shell).toHaveAttribute("data-team-builder-hydrated", "true");
+  await expect(shell).toHaveAttribute("aria-busy", "false");
+  await expect(page.locator(".builder-choice").first()).toBeEnabled();
+  await expect(page.locator(".builder-preset").first()).toBeEnabled();
+}
+
+async function assertProcessAnalyzerHydrated(page: Page) {
+  const shell = page.locator(".process-analyzer-shell");
+  await expect(shell).toHaveAttribute("data-process-analyzer-release", "phase8b-hydration-sync");
+  await expect(shell).toHaveAttribute("data-process-analyzer-hydrated", "true");
+  await expect(shell).toHaveAttribute("aria-busy", "false");
+  await expect(page.locator(".process-template-option").first()).toBeEnabled();
+  await expect(page.locator(".process-pain-chip").first()).toBeEnabled();
+  await expect(page.locator(".process-bottleneck-button").first()).toBeEnabled();
+}
+
 test.describe("Phase 8A interaction UX", () => {
   test("commercial tools expose 44px touch targets at mobile width", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
 
     await page.goto("/disena-tu-equipo-ia", { waitUntil: "domcontentloaded" });
+    await assertTeamBuilderHydrated(page);
     await assertMinimumTarget(page.locator(".builder-preset"), "Team Builder presets");
     await assertMinimumTarget(page.locator(".builder-choice"), "Team Builder choices");
     await page.locator(".builder-preset").first().click();
     await assertMinimumTarget(page.locator(".builder-reference-team a, .builder-role-link"), "Team Builder result links");
 
     await page.goto("/mejora-tu-proceso", { waitUntil: "domcontentloaded" });
+    await assertProcessAnalyzerHydrated(page);
     await assertMinimumTarget(page.locator(".process-template-option"), "Process templates");
     await assertMinimumTarget(page.locator(".process-pain-chip"), "Process pain chips");
     await assertMinimumTarget(page.locator(".process-bottleneck-button"), "Process bottleneck controls");
@@ -87,6 +108,7 @@ test.describe("Phase 8A interaction UX", () => {
     await page.setViewportSize({ width: 390, height: 844 });
 
     await page.goto("/disena-tu-equipo-ia", { waitUntil: "domcontentloaded" });
+    await assertTeamBuilderHydrated(page);
     const builderChoice = page.locator(".builder-choice").first();
     await builderChoice.click();
     await expect(builderChoice).toHaveAttribute("aria-pressed", "true");
@@ -94,6 +116,7 @@ test.describe("Phase 8A interaction UX", () => {
     await assertKeyboardFocusVisible(page, page.locator(".builder-choice").nth(1), "Team Builder choice");
 
     await page.goto("/mejora-tu-proceso", { waitUntil: "domcontentloaded" });
+    await assertProcessAnalyzerHydrated(page);
     const painChip = page.locator(".process-pain-chip").first();
     await painChip.click();
     await expect(painChip).toHaveAttribute("aria-pressed", "true");
