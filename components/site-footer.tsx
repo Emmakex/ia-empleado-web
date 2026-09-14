@@ -24,7 +24,16 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
       <div className="container footer-grid">
         <div>
           <Link className="brand brand-footer" href={homeHref} aria-label="IA Empleado">
-            <img className="brand-symbol" src="/branding/ia-empleado-mark.svg" alt="" width={38} height={38} aria-hidden="true" />
+            <img
+              className="brand-symbol"
+              src="/branding/ia-empleado-mark.svg"
+              alt=""
+              width={38}
+              height={38}
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
             <span className="brand-wordmark">IA Empleado</span>
           </Link>
           <p className="footer-tagline">{dictionary.footer.tagline}</p>
