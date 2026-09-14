@@ -10,6 +10,8 @@ const files = {
   accessibility: "tests/phase8b-accessibility.spec.ts",
   accessibilityInteraction: "tests/phase8b-interaction-accessibility.spec.ts",
   roi: "components/roi-estimator.tsx",
+  teamBuilder: "components/team-builder.tsx",
+  processAnalyzer: "components/process-analyzer.tsx",
   header: "components/site-header.tsx",
 };
 
@@ -27,9 +29,11 @@ const interaction = read(files.interaction);
 const accessibility = read(files.accessibility);
 const accessibilityInteraction = read(files.accessibilityInteraction);
 const roi = read(files.roi);
+const teamBuilder = read(files.teamBuilder);
+const processAnalyzer = read(files.processAnalyzer);
 const header = read(files.header);
 
-const marker = "web-phase-8b-accessibility-closure";
+const marker = "web-phase-8b-hydration-sync";
 const metadataMarker = `"ia-web-release": "${marker}"`;
 
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
@@ -51,7 +55,7 @@ for (const testPath of [
   }
 }
 
-// Phase 8A remains a permanent regression gate even after the active marker advances.
+// Phase 8A ROI hydration remains a permanent regression gate after later markers advance.
 for (const phrase of [
   'data-roi-hydrated={isHydrated ? "true" : "false"}',
   'disabled={!isHydrated}',
@@ -63,8 +67,27 @@ for (const phrase of [
 for (const phrase of [
   'toHaveAttribute("data-roi-hydrated", "true")',
   'toHaveValue("31")',
+  'toHaveAttribute("data-team-builder-hydrated", "true")',
+  'toHaveAttribute("data-process-analyzer-hydrated", "true")',
 ]) {
-  if (!interaction.includes(phrase)) throw new Error(`Phase 8A interaction regression coverage missing phrase: ${phrase}`);
+  if (!interaction.includes(phrase)) throw new Error(`Phase 8 interaction hydration regression coverage missing phrase: ${phrase}`);
+}
+
+for (const [name, source, phrases] of [
+  ["Team Builder", teamBuilder, [
+    'data-team-builder-hydrated={isHydrated ? "true" : "false"}',
+    'data-team-builder-release="phase8b-hydration-sync"',
+    "disabled={!isHydrated}",
+  ]],
+  ["Process Analyzer", processAnalyzer, [
+    'data-process-analyzer-hydrated={isHydrated ? "true" : "false"}',
+    'data-process-analyzer-release="phase8b-hydration-sync"',
+    "disabled={!isHydrated}",
+  ]],
+]) {
+  for (const phrase of phrases) {
+    if (!source.includes(phrase)) throw new Error(`${name} hydration release contract missing phrase: ${phrase}`);
+  }
 }
 
 for (const phrase of [
@@ -98,9 +121,10 @@ for (const phrase of [
   "Phase 8A — Full UX and responsive acceptance",
   "Phase 8B — Accessibility closure",
   "Phase 8B final production closure gate",
-  "web-phase-8b-accessibility-closure",
+  "Production Verification #31",
+  "web-phase-8b-hydration-sync",
 ]) {
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
 
-console.log(`Web Phase 8B release gate OK: ${marker} is active in ES/EN, Phase 8A ROI regression remains protected, and production verification includes both Phase 8B accessibility suites.`);
+console.log(`Web Phase 8B release gate OK: ${marker} is active in ES/EN; ROI, Team Builder and Process Analyzer hydration regressions are protected; production verification includes both Phase 8B accessibility suites.`);
