@@ -36,6 +36,22 @@
   color: #0369a1;
 }
 
+/* Native constraint validation keeps its browser behavior, while persistent
+ * text makes the same error available after the validation bubble disappears. */
+.lead-handoff-field-error {
+  display: block;
+  margin-top: -0.15rem;
+  color: #9f1d16;
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.lead-handoff-form :is(input, textarea)[aria-invalid="true"] {
+  border-color: #b42318;
+  box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.12);
+}
+
 @media (prefers-contrast: more) {
   .process-context-card span,
   .process-brand-systems span,
@@ -61,5 +77,28 @@
   .organization-purpose-list li > span,
   .organization-guardrail-list li > span {
     color: #075985;
+  }
+
+  .lead-handoff-field-error {
+    color: #7f1d1d;
+  }
+}
+
+/* Box shadows can disappear in Windows High Contrast / forced-colors mode.
+ * Restore an explicit system-color outline for every common keyboard target. */
+@media (forced-colors: active) {
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 2px solid Highlight !important;
+    outline-offset: 3px !important;
+    box-shadow: none !important;
+  }
+
+  .lead-handoff-form :is(input, textarea)[aria-invalid="true"] {
+    border: 2px solid CanvasText;
+    box-shadow: none;
+  }
+
+  .lead-handoff-field-error {
+    color: CanvasText;
   }
 }
