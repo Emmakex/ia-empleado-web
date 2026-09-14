@@ -24,7 +24,7 @@ The web already has a substantial foundation:
 The repository also exposes important remaining gaps that prevent declaring the public web finished:
 
 1. **No finished website video assets are present.** `public/branding/media` currently contains framing SVGs, not production MP4/WebM/video deliverables.
-2. **Accessibility closure is at its final production gate.** The full bilingual Axe matrix, keyboard navigation, focus, preferences, form errors and image semantics are green in CI; Phase 8B still requires exact-marker production verification before closure.
+2. **Accessibility closure is at its final production hotfix gate.** The full bilingual Axe matrix, keyboard navigation, focus, preferences, form errors and image semantics are green in CI; Production Verification #31 exposed a separate pre-hydration interaction race in Team Builder / Process Analyzer that must close before Phase 8B can be marked complete.
 3. **Performance is not a release gate yet.** There is no Lighthouse/Core Web Vitals budget in the package scripts or CI.
 4. **Motion is contract-tested but still needs final production UX acceptance** on real devices/preferences, including reduced motion and mobile simplification.
 5. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
@@ -152,14 +152,38 @@ Closure evidence:
 
 Phase 8B does not close on integration evidence alone. The final gate binds the exact deployed runtime to the accessibility acceptance suite:
 
-- active ES/EN release marker advances to `web-phase-8b-accessibility-closure`;
+- the initial final-gate marker advanced to `web-phase-8b-accessibility-closure`;
 - browser acceptance explicitly verifies ES→EN and EN→ES language switching, `hreflang` semantics and resulting document language;
-- Production Verification must wait for `web-phase-8b-accessibility-closure` on Hostinger;
-- production must execute both `tests/phase8b-accessibility.spec.ts` and `tests/phase8b-interaction-accessibility.spec.ts` in addition to the permanent Phase 8A regressions;
-- the release-gate contract must fail if either Phase 8B suite or the exact release marker is removed;
-- the Phase 8A ROI hydration regression remains permanently protected after the marker advances.
+- Production Verification executes both `tests/phase8b-accessibility.spec.ts` and `tests/phase8b-interaction-accessibility.spec.ts` in addition to the permanent Phase 8A regressions;
+- the release-gate contract fails if either Phase 8B suite or the exact release marker is removed;
+- the Phase 8A ROI hydration regression remains permanently protected after later markers advance.
 
-Phase 8B remains active until the final gate is merged, main CI is green, Hostinger serves the new marker and Production Verification passes the expanded suite. Only then may Phase 8B be marked complete and Phase 8C begin.
+PR #75 bound this gate to production and merged to `main` as `998f19b1a9e9ab54eaea52eb0bc2e865abe9540e`. Web CI #189 passed **148/148** on the PR and Web CI #190 repeated **148/148** on `main`, both with build green. Hostinger then published `web-phase-8b-accessibility-closure`.
+
+### Phase 8B production regression — Team Builder / Process Analyzer hydration synchronization
+
+Production Verification #31 (`34834177878`) ran against the exact `main` SHA `998f19b1a9e9ab54eaea52eb0bc2e865abe9540e` after Hostinger had already exposed `web-phase-8b-accessibility-closure`. The expanded production suite completed **147/148 tests** and failed only `tests/phase8-interaction-ux.spec.ts:86` (`pressed states, keyboard focus and ROI feedback remain explicit`).
+
+Actionable failure evidence:
+
+- first attempt: `.process-pain-chip`.first() was clicked, but `aria-pressed` remained `false` instead of the expected `true` for the full 10-second assertion window;
+- retry: the same test failed earlier on `.builder-choice`.first(), which likewise remained `aria-pressed="false"` after click;
+- the retry reproducing the lost interaction in a different React-controlled tool rules out a selector-specific Process Analyzer defect;
+- the exact production marker had already passed, so the failure was not stale deployment;
+- all 147 other production cases passed, including the full Phase 8B Axe/semantic and interaction/preference suites.
+
+Confirmed root cause: Team Builder and Process Analyzer were client components that server-rendered state-changing buttons as enabled before React hydration. Their state transitions existed only in React `onClick` handlers, so production timing could allow a browser click after `DOMContentLoaded` but before React owned the interaction. The click was accepted by the native button but no React state transition occurred. This is the same defect class previously exposed by the ROI range control, now affecting button-driven tools.
+
+Hotfix and regression protection:
+
+- Team Builder and Process Analyzer now expose explicit hydration state and set it only from a client `useEffect`;
+- all state-mutating controls remain disabled until hydration completes, including presets/choices/clear and process template/pain/bottleneck/reset controls;
+- each tool exposes a `data-*-hydrated` state, `aria-busy` and `phase8b-hydration-sync` component release marker;
+- Playwright waits for those hydration markers and enabled state before any state-changing click;
+- Team Builder, Process Analyzer and the global Phase 8 release gate statically require the hydration guards so they cannot be silently removed;
+- the active global production marker advances again to `web-phase-8b-hydration-sync`, preventing a rerun from approving the already-failed `web-phase-8b-accessibility-closure` deployment.
+
+Phase 8B remains active until the hydration hotfix completes PR CI, main CI, Hostinger publishes `web-phase-8b-hydration-sync`, and Production Verification passes the full **148/148** production suite. Only then may Phase 8B be marked complete and Phase 8C begin.
 
 ## Phase 8C — Motion and animation finalization
 
