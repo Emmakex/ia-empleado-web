@@ -2,7 +2,7 @@
 
 ## Status
 
-ACTIVE — canonical visual rollback and production verification in progress.
+COMPLETE — closed on 2026-09-14 after exact-marker production verification.
 
 This decision supersedes the earlier Phase 8D website-video direction for the public IA Empleado website.
 
@@ -50,6 +50,21 @@ Phase 8D canonical visual fidelity is accepted only when:
 - the active release marker is `web-phase-8d-canonical-visuals`;
 - Production Verification runs `tests/phase8d-canonical-visual.spec.ts` against `https://iaempleado.com`;
 - all permanent Phase 8A, Phase 8B and Phase 8C regressions remain green.
+
+## Closure evidence
+
+The rollback completed the full release chain on 2026-09-14:
+
+- PR #83 (`fix: remove website video and restore canonical visual fidelity`) passed Web CI #209 and merged to `main` as `8fd438b90bcfa9ea7e76d81c7eaf78f754491b02`;
+- main Web CI #210 passed all contracts, TypeScript, browser QA and build;
+- Hostinger published `web-phase-8d-canonical-visuals` and Production Verification detected the exact marker on its first check;
+- Production Verification #39 (`34879125094`) checked out exact `main` SHA `8fd438b90bcfa9ea7e76d81c7eaf78f754491b02`;
+- `tests/phase8d-canonical-visual.spec.ts` confirmed no public video binaries, no Home `<video>` surface, all four canonical WebP identities in ES/EN, and reduced-motion compatibility;
+- the complete production browser matrix finished **156/156 tests passed**;
+- all permanent Phase 8A, Phase 8B and Phase 8C regressions remained green;
+- no production diagnostic artifact was required because the verification job completed successfully.
+
+Phase 8D is closed. Phase 8E — Performance & Core Web Vitals — is the active phase.
 
 ## Future policy
 

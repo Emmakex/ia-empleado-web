@@ -17,6 +17,7 @@ The web already has a substantial foundation:
 - full Phase 8A responsive/interaction browser matrix;
 - Phase 8B accessibility closure completed in CI and exact-marker production verification;
 - Phase 8C motion and animation closure completed in CI and exact-marker production verification;
+- Phase 8D canonical visual fidelity closure completed in CI and exact-marker production verification;
 - Playwright browser QA;
 - lead capture and Hostinger SMTP delivery verified in production;
 - sitemap and robots generation;
@@ -24,10 +25,10 @@ The web already has a substantial foundation:
 
 The repository also exposes important remaining gaps that prevent declaring the public web finished:
 
-1. **Phase 8D canonical visual fidelity rollback must be closed in production.** The generated homepage video experiment was rejected because it did not preserve the approved character identities closely enough. The public website now intentionally uses canonical WebP/SVG assets plus controlled CSS/SVG motion instead of rendered website video.
-2. **Performance is not a release gate yet.** There is no Lighthouse/Core Web Vitals budget in the package scripts or CI.
-3. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
-4. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
+1. **Performance is now the active Phase 8E gate.** A measurable production budget is being introduced for Core Web Vitals, responsiveness, transfer size, images, fonts, third-party requests and static-media caching.
+2. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
+3. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
+4. **Final content/commercial acceptance remains required** before the public web can be declared launch-ready.
 
 ## Finish-before-advance rule
 
@@ -88,7 +89,7 @@ Phase 8A closed on 2026-09-13 after the hydration correction completed the full 
 - the previously failing ROI keyboard synchronization test passed;
 - final production result: **108/108 tests passed**.
 
-Phase 8A is complete. Phase 8B and Phase 8C are also complete; Phase 8D is now the active phase.
+Phase 8A is complete. Phase 8B, Phase 8C and Phase 8D are also complete; Phase 8E is now the active phase.
 
 ## Phase 8B — Accessibility closure
 
@@ -198,7 +199,7 @@ The hydration hotfix completed the full release chain on 2026-09-14:
 - final production result: **148/148 tests passed in 7.7 minutes**;
 - no production diagnostic artifact was required because the verification job completed successfully.
 
-**Phase 8B is complete. Phase 8C is also complete; Phase 8D — Canonical visual fidelity closure — is now the active phase.**
+**Phase 8B is complete. Phase 8C and Phase 8D are also complete; Phase 8E — Performance & Core Web Vitals — is now the active phase.**
 
 ## Phase 8C — Motion and animation finalization
 
@@ -236,11 +237,11 @@ Phase 8C completed the full implementation, integration and exact-marker product
 - final production result: **152/152 tests passed in 7.2 minutes**;
 - no production diagnostic artifact was required because the exact-marker production verification completed successfully.
 
-**Phase 8C is complete. Phase 8D — Canonical visual fidelity closure — is now the active phase.**
+**Phase 8C is complete. Phase 8D is also complete; Phase 8E — Performance & Core Web Vitals — is now the active phase.**
 
 ## Phase 8D — Canonical visual fidelity closure
 
-**Status: ACTIVE — generated website video rejected; rollback and exact-marker production verification in progress.**
+**Status: COMPLETE — closed on 2026-09-14 after exact-marker production verification.**
 
 The initial homepage video experiment was technically valid but visually unacceptable because it did not preserve the approved Clara, Alex, Sofía and Javier identities with enough fidelity. The renderer used the role-illustration SVG variants rather than the canonical WebP identity assets defined in `lib/brand-characters.ts`.
 
@@ -262,11 +263,24 @@ Acceptance marker:
 
 - `web-phase-8d-canonical-visuals`
 
-Production acceptance must include `tests/phase8d-canonical-visual.spec.ts` in addition to all permanent Phase 8A, Phase 8B and Phase 8C regressions.
+### Phase 8D closure evidence
+
+The canonical rollback completed the full release chain on 2026-09-14:
+
+- PR #83 passed Web CI #209 and merged to `main` as `8fd438b90bcfa9ea7e76d81c7eaf78f754491b02`;
+- main Web CI #210 passed all contracts, TypeScript, browser QA and build;
+- Hostinger exposed `web-phase-8d-canonical-visuals` on the first production-marker check;
+- Production Verification #39 (`34879125094`) checked out exact `main` SHA `8fd438b90bcfa9ea7e76d81c7eaf78f754491b02`;
+- the production run executed `tests/phase8d-canonical-visual.spec.ts` and confirmed no public website video binaries, no Home `<video>` in ES/EN, all four canonical character identities and reduced-motion compatibility;
+- final production result: **156/156 tests passed in 8.2 minutes**;
+- all permanent Phase 8A, Phase 8B and Phase 8C regressions remained green;
+- no production diagnostic artifact was required because verification completed successfully.
 
 The detailed product decision and future policy live in `docs/PHASE_8D_CANONICAL_VISUAL_FIDELITY.md`.
 
 ## Phase 8E — Performance & Core Web Vitals
+
+**Status: ACTIVE — first measurable production-budget tranche in progress.**
 
 Add measurable launch budgets rather than relying only on visual QA.
 
@@ -282,9 +296,30 @@ Required production measurements for representative ES/EN routes:
 - third-party requests;
 - caching headers/static media strategy.
 
+### Phase 8E tranche 1 — measurable production baseline
+
+The initial contract introduces:
+
+- `config/performance-budgets.json` as the machine-readable budget source;
+- six representative ES/EN production routes covering Home, Team Builder and ROI;
+- browser-observed LCP and CLS;
+- longest main-thread long task as the first lab responsiveness/INP proxy;
+- navigation TTFB/server response;
+- total, JS, CSS and image transfer budgets;
+- zero allowed third-party requests in the measured route load;
+- broken-image and below-fold lazy-loading checks;
+- explicit font-settling verification;
+- a bounded canonical WebP payload and reusable-cache-policy check;
+- structured `PHASE8E_METRICS` / `PHASE8E_STATIC_ASSET` diagnostics;
+- a dedicated static contract in Web CI and explicit production execution in Production Verification.
+
+The detailed baseline and initial limits live in `docs/PHASE_8E_PERFORMANCE_BASELINE.md`.
+
 Initial target: Lighthouse performance/accessibility/best-practices/SEO scores suitable for a production commercial site, with explicit exceptions documented rather than hidden.
 
 Core Web Vitals regressions must become actionable diagnostics in CI/production verification where technically stable.
+
+Phase 8E remains open until production measurements are green, exceeded budgets are remediated, and a stable Lighthouse launch score gate is added and accepted.
 
 ## Phase 8F — SEO, metadata and sharing
 
@@ -347,8 +382,8 @@ Phase 8 closes only when all are true:
 - [x] site-wide critical accessibility audit green;
 - [x] keyboard/reflow/reduced-motion acceptance green;
 - [x] final animation/motion polish green;
-- [ ] canonical visual rollback deployed and production verified;
-- [ ] generated website video absent and canonical character fidelity green;
+- [x] canonical visual rollback deployed and production verified;
+- [x] generated website video absent and canonical character fidelity green;
 - [ ] performance/Core Web Vitals budget measured and accepted;
 - [ ] SEO/metadata/link audit green;
 - [ ] cross-browser/device acceptance green;
@@ -357,5 +392,3 @@ Phase 8 closes only when all are true:
 - [ ] CI green;
 - [ ] production verification green;
 - [ ] final manual visual acceptance green.
-
-Only then may the project advance to the Kairoseth reference/demo-company implementation.

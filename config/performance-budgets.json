@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "routes": [
+    "/",
+    "/en",
+    "/disena-tu-equipo-ia",
+    "/en/design-your-ai-team",
+    "/calculadora-roi",
+    "/en/roi-calculator"
+  ],
+  "production": {
+    "lcpMs": 3000,
+    "cls": 0.1,
+    "longTaskMaxMs": 250,
+    "ttfbMs": 1200,
+    "totalTransferBytes": 3500000,
+    "jsTransferBytes": 900000,
+    "cssTransferBytes": 500000,
+    "imageTransferBytes": 2500000,
+    "thirdPartyRequests": 0
+  },
+  "staticMedia": {
+    "asset": "/branding/characters/clara-canonical.webp",
+    "maxEncodedBytes": 500000
+  }
+}
