@@ -80,9 +80,6 @@ jobs:
       - name: Brand motion contract
         run: node scripts/check-brand-motion.mjs
 
-      - name: Phase 8D website video contract
-        run: node scripts/check-brand-video.mjs
-
       - name: UX accessibility contract
         run: node scripts/check-ux-accessibility.mjs
 

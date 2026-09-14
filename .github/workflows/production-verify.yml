@@ -27,10 +27,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Web Phase 8C motion acceptance on Hostinger
+      - name: Wait for Web Phase 8D canonical visuals on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-          EXPECTED_RELEASE: web-phase-8c-motion-acceptance
+          EXPECTED_RELEASE: web-phase-8d-canonical-visuals
         run: |
           set -euo pipefail
           for attempt in $(seq 1 40); do
@@ -51,7 +51,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Verify production geometry, brand systems, conversion, SMTP lead capability, responsive UX, Phase 8B accessibility and Phase 8C motion
+      - name: Verify production geometry, brand systems, conversion, accessibility, motion and canonical visual fidelity
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
         run: >-
@@ -71,6 +71,7 @@ jobs:
           tests/phase8b-accessibility.spec.ts
           tests/phase8b-interaction-accessibility.spec.ts
           tests/phase8c-motion.spec.ts
+          tests/phase8d-canonical-visual.spec.ts
           tests/ux-visual.spec.ts
 
       - name: Upload production QA diagnostics

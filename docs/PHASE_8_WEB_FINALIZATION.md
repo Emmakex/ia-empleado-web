@@ -24,7 +24,7 @@ The web already has a substantial foundation:
 
 The repository also exposes important remaining gaps that prevent declaring the public web finished:
 
-1. **No finished website video assets are present.** `public/branding/media` currently contains framing SVGs, not production MP4/WebM/video deliverables.
+1. **Phase 8D canonical visual fidelity rollback must be closed in production.** The generated homepage video experiment was rejected because it did not preserve the approved character identities closely enough. The public website now intentionally uses canonical WebP/SVG assets plus controlled CSS/SVG motion instead of rendered website video.
 2. **Performance is not a release gate yet.** There is no Lighthouse/Core Web Vitals budget in the package scripts or CI.
 3. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
 4. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
@@ -198,7 +198,7 @@ The hydration hotfix completed the full release chain on 2026-09-14:
 - final production result: **148/148 tests passed in 7.7 minutes**;
 - no production diagnostic artifact was required because the verification job completed successfully.
 
-**Phase 8B is complete. Phase 8C is also complete; Phase 8D — Website video system — is now the active phase.**
+**Phase 8B is complete. Phase 8C is also complete; Phase 8D — Canonical visual fidelity closure — is now the active phase.**
 
 ## Phase 8C — Motion and animation finalization
 
@@ -236,33 +236,35 @@ Phase 8C completed the full implementation, integration and exact-marker product
 - final production result: **152/152 tests passed in 7.2 minutes**;
 - no production diagnostic artifact was required because the exact-marker production verification completed successfully.
 
-**Phase 8C is complete. Phase 8D — Website video system — is now the active phase.**
+**Phase 8C is complete. Phase 8D — Canonical visual fidelity closure — is now the active phase.**
 
-## Phase 8D — Website video system
+## Phase 8D — Canonical visual fidelity closure
 
-Website videos are a required deliverable and are not considered complete yet.
+**Status: ACTIVE — generated website video rejected; rollback and exact-marker production verification in progress.**
 
-Planned video set:
+The initial homepage video experiment was technically valid but visually unacceptable because it did not preserve the approved Clara, Alex, Sofía and Javier identities with enough fidelity. The renderer used the role-illustration SVG variants rather than the canonical WebP identity assets defined in `lib/brand-characters.ts`.
 
-1. **Homepage explainer / brand story** — short, silent-capable, demonstrates people + IA coordination.
-2. **How teams work** — shows handoff, human approval and system coordination.
-3. **Team Builder / Process Analyzer product walkthrough** — concise product proof.
-4. Optional short role/use-case loops where they materially improve comprehension.
+The public website therefore intentionally does **not** use generated website video. Character identity must come directly from the approved canonical assets, while motion remains limited to controlled CSS/SVG behavior around those assets and approved compositions.
 
-Video acceptance:
+Required state:
 
-- WebM + MP4 fallback where required;
-- optimized dimensions/bitrate and file size budget;
-- poster image for every video;
-- no audio-dependent meaning;
-- captions/subtitles for spoken content;
-- transcript for meaningful narrated content;
-- user controls for any long-form video;
-- no forced autoplay with sound;
-- autoplay loops, if used, are muted, short and non-essential;
-- reduced-motion preference replaces non-essential autoplay with poster/static state;
-- mobile network/performance behavior validated;
-- video does not become LCP unless deliberately budgeted and measured.
+- no `.mp4` or `.webm` delivery assets under `public/`;
+- no `BrandVideo` or `HomeBrandStory` runtime;
+- no website-video generation workflow or renderer;
+- ES and EN Home contain no `<video>` element;
+- both Home locales retain Clara, Alex, Sofía and Javier through their `*-canonical.webp` sources;
+- the existing CSS/SVG motion system remains active and continues to respect `prefers-reduced-motion`;
+- the homepage returns to the pre-video information flow without an empty or unfinished section;
+- CI prevents generated website-video assets or runtime from being reintroduced accidentally;
+- exact-marker production verification confirms the corrected public runtime.
+
+Acceptance marker:
+
+- `web-phase-8d-canonical-visuals`
+
+Production acceptance must include `tests/phase8d-canonical-visual.spec.ts` in addition to all permanent Phase 8A, Phase 8B and Phase 8C regressions.
+
+The detailed product decision and future policy live in `docs/PHASE_8D_CANONICAL_VISUAL_FIDELITY.md`.
 
 ## Phase 8E — Performance & Core Web Vitals
 
@@ -274,7 +276,7 @@ Required production measurements for representative ES/EN routes:
 - CLS;
 - INP/lab responsiveness proxy;
 - TTFB/server response;
-- JS/CSS/image/video transfer size;
+- JS/CSS/image/media transfer size;
 - image sizing and lazy loading;
 - font loading behavior;
 - third-party requests;
@@ -318,7 +320,7 @@ Validate:
 - hero/art geometry;
 - forms and SMTP conversion flow;
 - interactive tools;
-- video playback/fallback;
+- canonical character fidelity and static-art fallbacks;
 - motion preferences;
 - keyboard/focus behavior;
 - responsive layouts;
@@ -345,8 +347,8 @@ Phase 8 closes only when all are true:
 - [x] site-wide critical accessibility audit green;
 - [x] keyboard/reflow/reduced-motion acceptance green;
 - [x] final animation/motion polish green;
-- [ ] production website videos delivered and integrated;
-- [ ] video accessibility and fallback behavior green;
+- [ ] canonical visual rollback deployed and production verified;
+- [ ] generated website video absent and canonical character fidelity green;
 - [ ] performance/Core Web Vitals budget measured and accepted;
 - [ ] SEO/metadata/link audit green;
 - [ ] cross-browser/device acceptance green;

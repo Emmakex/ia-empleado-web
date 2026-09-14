@@ -4,7 +4,6 @@ import { teamBuilderPath } from "../lib/team-builder";
 import { requestDemoPath } from "../lib/conversion-handoff";
 import { BrandCharacterImage } from "./brand-character-image";
 import { BrandHeroScene } from "./brand-hero-scene";
-import { HomeBrandStory } from "./home-brand-story";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -101,8 +100,6 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
             </div>
           </div>
         </section>
-
-        <HomeBrandStory locale={locale} />
 
         <section className="content-section section-panel" id="como-funciona" aria-labelledby="workflow-title">
           <div className="container">

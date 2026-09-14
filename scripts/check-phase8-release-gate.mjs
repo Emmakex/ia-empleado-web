@@ -1,49 +1,58 @@
 import fs from "node:fs";
+import path from "node:path";
 
 const files = {
   esLayout: "app/(es)/layout.tsx",
   enLayout: "app/(en)/en/layout.tsx",
   production: ".github/workflows/production-verify.yml",
   docs: "docs/PHASE_8_WEB_FINALIZATION.md",
+  canonicalDecision: "docs/PHASE_8D_CANONICAL_VISUAL_FIDELITY.md",
   responsive: "tests/phase8-responsive-matrix.spec.ts",
   interaction: "tests/phase8-interaction-ux.spec.ts",
   accessibility: "tests/phase8b-accessibility.spec.ts",
   accessibilityInteraction: "tests/phase8b-interaction-accessibility.spec.ts",
   motion: "tests/phase8c-motion.spec.ts",
+  canonicalVisual: "tests/phase8d-canonical-visual.spec.ts",
   roi: "components/roi-estimator.tsx",
   teamBuilder: "components/team-builder.tsx",
   processAnalyzer: "components/process-analyzer.tsx",
+  homePage: "components/home-page.tsx",
+  brandCharacters: "lib/brand-characters.ts",
   header: "components/site-header.tsx",
 };
 
-for (const path of Object.values(files)) {
-  if (!fs.existsSync(path)) throw new Error(`Missing Web Phase 8 release-gate file: ${path}`);
-  if (fs.statSync(path).size === 0) throw new Error(`Empty Web Phase 8 release-gate file: ${path}`);
+for (const filePath of Object.values(files)) {
+  if (!fs.existsSync(filePath)) throw new Error(`Missing Web Phase 8 release-gate file: ${filePath}`);
+  if (fs.statSync(filePath).size === 0) throw new Error(`Empty Web Phase 8 release-gate file: ${filePath}`);
 }
 
-const read = (path) => fs.readFileSync(path, "utf8");
+const read = (filePath) => fs.readFileSync(filePath, "utf8");
 const esLayout = read(files.esLayout);
 const enLayout = read(files.enLayout);
 const production = read(files.production);
 const docs = read(files.docs);
+const canonicalDecision = read(files.canonicalDecision);
 const interaction = read(files.interaction);
 const accessibility = read(files.accessibility);
 const accessibilityInteraction = read(files.accessibilityInteraction);
 const motion = read(files.motion);
+const canonicalVisual = read(files.canonicalVisual);
 const roi = read(files.roi);
 const teamBuilder = read(files.teamBuilder);
 const processAnalyzer = read(files.processAnalyzer);
+const homePage = read(files.homePage);
+const brandCharacters = read(files.brandCharacters);
 const header = read(files.header);
 
-const marker = "web-phase-8c-motion-acceptance";
+const marker = "web-phase-8d-canonical-visuals";
 const metadataMarker = `"ia-web-release": "${marker}"`;
 
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
-  throw new Error(`ES/EN layouts are not marked for the active Web Phase 8C release: ${marker}`);
+  throw new Error(`ES/EN layouts are not marked for the active Web Phase 8D release: ${marker}`);
 }
 
 if (!production.includes(`EXPECTED_RELEASE: ${marker}`)) {
-  throw new Error(`Production verification is not waiting for the active Web Phase 8C release: ${marker}`);
+  throw new Error(`Production verification is not waiting for the active Web Phase 8D release: ${marker}`);
 }
 
 for (const testPath of [
@@ -52,6 +61,7 @@ for (const testPath of [
   "tests/phase8b-accessibility.spec.ts",
   "tests/phase8b-interaction-accessibility.spec.ts",
   "tests/phase8c-motion.spec.ts",
+  "tests/phase8d-canonical-visual.spec.ts",
 ]) {
   if (!production.includes(testPath)) {
     throw new Error(`Production verification is missing required Phase 8 browser coverage: ${testPath}`);
@@ -127,6 +137,66 @@ for (const phrase of [
   }
 }
 
+for (const phrase of [
+  'test.describe("Phase 8D canonical visual fidelity"',
+  'locator("video")',
+  'clara-canonical.webp',
+  'alex-canonical.webp',
+  'sofia-canonical.webp',
+  'javier-canonical.webp',
+  'reducedMotion: "reduce"',
+]) {
+  if (!canonicalVisual.includes(phrase)) {
+    throw new Error(`Phase 8D canonical visual gate missing phrase: ${phrase}`);
+  }
+}
+
+for (const phrase of [
+  "video experiment rejected",
+  "canonical WebP",
+  "CSS/SVG motion",
+  "web-phase-8d-canonical-visuals",
+]) {
+  if (!canonicalDecision.includes(phrase)) {
+    throw new Error(`Phase 8D canonical visual decision missing phrase: ${phrase}`);
+  }
+}
+
+const forbiddenVideoFiles = [
+  "components/brand-video.tsx",
+  "components/home-brand-story.tsx",
+  "app/brand-video.css",
+  "scripts/check-brand-video.mjs",
+  "scripts/render-home-brand-story.py",
+  ".github/workflows/generate-home-brand-story.yml",
+  "tests/phase8d-video.spec.ts",
+];
+for (const forbidden of forbiddenVideoFiles) {
+  if (fs.existsSync(forbidden)) throw new Error(`Rejected website-video implementation is still present: ${forbidden}`);
+}
+
+const listFiles = (directory) => fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+  const entryPath = path.join(directory, entry.name);
+  return entry.isDirectory() ? listFiles(entryPath) : [entryPath.replaceAll("\\", "/")];
+});
+const shippedVideo = listFiles("public").filter((filePath) => /\.(mp4|webm)$/i.test(filePath));
+if (shippedVideo.length) {
+  throw new Error(`Public website must not ship generated video binaries: ${shippedVideo.join(", ")}`);
+}
+
+if (homePage.includes("HomeBrandStory") || homePage.includes("<video")) {
+  throw new Error("Homepage reintroduced the rejected video surface");
+}
+
+for (const asset of [
+  "/branding/characters/clara-canonical.webp",
+  "/branding/characters/alex-canonical.webp",
+  "/branding/characters/sofia-canonical.webp",
+  "/branding/characters/javier-canonical.webp",
+]) {
+  if (!brandCharacters.includes(asset)) throw new Error(`Canonical character source missing: ${asset}`);
+}
+
 if (!header.includes("hrefLang={otherLocale}")) {
   throw new Error("Bilingual language switch no longer exposes hreflang semantics");
 }
@@ -142,4 +212,4 @@ for (const phrase of [
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
 
-console.log(`Web Phase 8C release gate OK: ${marker} is active in ES/EN; permanent Phase 8A/8B regressions remain protected; production verification includes Phase 8C motion acceptance.`);
+console.log(`Web Phase 8D canonical visual gate OK: ${marker} is active in ES/EN; generated website video is absent; canonical character identity, Phase 8A/8B regressions and Phase 8C motion remain protected.`);
