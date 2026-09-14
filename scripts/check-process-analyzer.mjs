@@ -42,6 +42,16 @@ if (!interaction.includes("aria-pressed") || !interaction.includes("bottlenecks"
   throw new Error("Process Analyzer must preserve accessible bottleneck selection");
 }
 for (const token of [
+  "useEffect",
+  "setIsHydrated(true)",
+  'data-process-analyzer-hydrated={isHydrated ? "true" : "false"}',
+  'data-process-analyzer-release="phase8b-hydration-sync"',
+  "aria-busy={!isHydrated}",
+  "disabled={!isHydrated}",
+]) {
+  if (!interaction.includes(token)) throw new Error(`Process Analyzer hydration guard missing token: ${token}`);
+}
+for (const token of [
   "requestDemoPath",
   'intent: "process"',
   'source: "process-analyzer"',
@@ -71,4 +81,4 @@ if (!engine.includes("Herramienta educativa") || !engine.includes("Educational t
   throw new Error("Process Analyzer must preserve its educational/non-runtime disclosure in ES and EN");
 }
 
-console.log("Process Analyzer contract OK");
+console.log("Process Analyzer contract OK: stateful controls stay disabled until hydration and local-only analysis behavior remains protected.");
