@@ -1,0 +1,1 @@
+Phase 8D media masters: 1280×720, silent, WebM + MP4 + poster. Runtime integration is handled in a later microphase.
