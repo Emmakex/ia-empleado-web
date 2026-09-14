@@ -14,6 +14,11 @@ const keyboardLocales = [
   { route: "/en", destination: "/en/design-your-ai-team", locale: "en" },
 ] as const;
 
+const languageLocales = [
+  { route: "/", switchHref: "/en", hrefLang: "en", expectedLang: "en", locale: "ES" },
+  { route: "/en", switchHref: "/", hrefLang: "es", expectedLang: "es", locale: "EN" },
+] as const;
+
 const validationLocales = [
   {
     route: "/solicitar-demo",
@@ -48,6 +53,25 @@ test.describe("Phase 8B interaction accessibility", () => {
 
       await page.keyboard.press("Enter");
       await expect(page).toHaveURL(new RegExp(`${scenario.destination}$`));
+      await expect(page.locator("main h1")).toBeVisible();
+    });
+  }
+
+  for (const scenario of languageLocales) {
+    test(`${scenario.locale} language switch exposes hreflang and updates document language`, async ({ page }) => {
+      await page.setViewportSize({ width: 1280, height: 900 });
+      await page.goto(scenario.route);
+
+      const languageLink = page.locator(".language-link");
+      await expect(languageLink).toHaveAttribute("href", scenario.switchHref);
+      await expect(languageLink).toHaveAttribute("hreflang", scenario.hrefLang);
+
+      await tabUntilFocused(page, ".language-link");
+      await expect(languageLink).toBeFocused();
+      await page.keyboard.press("Enter");
+
+      await expect.poll(() => new URL(page.url()).pathname).toBe(scenario.switchHref);
+      await expect(page.locator("html")).toHaveAttribute("lang", scenario.expectedLang);
       await expect(page.locator("main h1")).toBeVisible();
     });
   }
