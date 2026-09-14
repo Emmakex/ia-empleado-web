@@ -25,7 +25,6 @@ import "../brand-interactive-content.css";
 import "../brand-comparison-proof.css";
 import "../brand-motion.css";
 import "../phase8c-motion.css";
-import "../brand-video.css";
 import "../ux-accessibility.css";
 import "../reflow-hardening.css";
 import "../brand-visual-polish.css";
@@ -61,7 +60,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "web-phase-8c-motion-acceptance" },
+  other: { "ia-web-release": "web-phase-8d-canonical-visuals" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };
