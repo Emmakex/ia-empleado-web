@@ -1,0 +1,76 @@
+/* Web Phase 8D — reusable website video surface.
+ * Video is progressive enhancement: poster/static content remains complete,
+ * autoplay is silent only, and reduced-motion keeps the static poster visible.
+ */
+
+.brand-video {
+  margin: 0;
+  width: 100%;
+}
+
+.brand-video-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(91, 95, 245, 0.13);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(91, 95, 245, 0.09), transparent 46%),
+    #f7f8fc;
+  box-shadow: 0 22px 70px rgba(30, 42, 88, 0.09);
+}
+
+.brand-video-element,
+.brand-video-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-video-poster {
+  position: absolute;
+  inset: 0;
+}
+
+.brand-video-ambient-loop .brand-video-element {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity var(--brand-motion-normal, 220ms) ease;
+}
+
+.brand-video-ambient-loop[data-reduced-motion="true"] .brand-video-element {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.brand-video-caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.brand-video-caption a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 760px) {
+  .brand-video-frame {
+    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-video-ambient-loop .brand-video-element {
+    opacity: 0 !important;
+    transition: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .brand-video-frame {
+    border: 1px solid CanvasText;
+    box-shadow: none;
+  }
+}
