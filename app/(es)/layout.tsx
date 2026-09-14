@@ -29,6 +29,7 @@ import "../reflow-hardening.css";
 import "../brand-visual-polish.css";
 import "../internal-page-ux.css";
 import "../phase8-interaction-ux.css";
+import "../phase8b-accessibility.css";
 import { MenuScrollReset } from "../../components/menu-scroll-reset";
 import { getDictionary } from "../../lib/i18n";
 import { brandPreviewUrl } from "../../lib/brand-social-previews";

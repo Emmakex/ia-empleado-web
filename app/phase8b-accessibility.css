@@ -1,0 +1,65 @@
+/* Phase 8B accessibility closure.
+ * Targeted fixes backed by the full commercial-route Axe matrix.
+ * Keep these overrides narrow: they correct readable text contrast without
+ * changing layout, interaction, brand surfaces, or decorative treatments.
+ */
+
+.process-context-card span,
+.process-brand-systems span,
+.process-step-topline > span:first-child,
+.process-static-outcome span,
+.process-static-before small,
+.process-static-after small,
+.roi-scenario-base dt,
+.roi-scenario-base > .roi-unavailable-note,
+.brand-proof-index,
+.sector-role-card small {
+  color: var(--ux-readable-muted);
+}
+
+/* ROI methodology labels are normal-size informational text. #6366f1 on
+ * white sits just below the AA threshold, so keep the indigo hierarchy with
+ * the darker canonical shade. */
+.roi-methodology-grid article > span {
+  color: #4f46e5;
+}
+
+/* Organization methodology and numbered list badges are informational text.
+ * Their previous #0284c7 foreground does not clear AA on white/cyan surfaces.
+ */
+.organization-method-grid article > span,
+.organization-list li > span,
+.organization-role-list li > span,
+.organization-control-list li > span,
+.organization-purpose-list li > span,
+.organization-guardrail-list li > span {
+  color: #0369a1;
+}
+
+@media (prefers-contrast: more) {
+  .process-context-card span,
+  .process-brand-systems span,
+  .process-step-topline > span:first-child,
+  .process-static-outcome span,
+  .process-static-before small,
+  .process-static-after small,
+  .roi-scenario-base dt,
+  .roi-scenario-base > .roi-unavailable-note,
+  .brand-proof-index,
+  .sector-role-card small {
+    color: var(--ux-readable-soft);
+  }
+
+  .roi-methodology-grid article > span {
+    color: #4338ca;
+  }
+
+  .organization-method-grid article > span,
+  .organization-list li > span,
+  .organization-role-list li > span,
+  .organization-control-list li > span,
+  .organization-purpose-list li > span,
+  .organization-guardrail-list li > span {
+    color: #075985;
+  }
+}

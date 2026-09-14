@@ -14,6 +14,7 @@ The web already has a substantial foundation:
 - canonical IA Empleado branding and character system;
 - CSS/SVG motion system with `prefers-reduced-motion` support;
 - responsive navigation and reflow hardening;
+- full Phase 8A responsive/interaction browser matrix;
 - Playwright browser QA;
 - Axe WCAG checks on critical routes;
 - lead capture and Hostinger SMTP delivery verified in production;
@@ -23,12 +24,11 @@ The web already has a substantial foundation:
 The repository also exposes important remaining gaps that prevent declaring the public web finished:
 
 1. **No finished website video assets are present.** `public/branding/media` currently contains framing SVGs, not production MP4/WebM/video deliverables.
-2. **Accessibility automation is not yet site-wide.** Axe currently blocks critical/serious issues on a small critical-route subset rather than the full commercial route matrix.
-3. **Responsive browser QA is strongest on the homepage and 390px smoke checks.** The full route matrix is not yet exercised at all acceptance widths.
-4. **Performance is not a release gate yet.** There is no Lighthouse/Core Web Vitals budget in the package scripts or CI.
-5. **Motion is contract-tested but still needs final production UX acceptance** on real devices/preferences, including reduced motion and mobile simplification.
-6. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
-7. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
+2. **Accessibility closure is still in progress.** Phase 8B expands Axe and semantic checks from a small route subset to the bilingual critical/commercial matrix, then must close keyboard, contrast/preference, form-error and image-semantics acceptance.
+3. **Performance is not a release gate yet.** There is no Lighthouse/Core Web Vitals budget in the package scripts or CI.
+4. **Motion is contract-tested but still needs final production UX acceptance** on real devices/preferences, including reduced motion and mobile simplification.
+5. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
+6. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
 
 ## Finish-before-advance rule
 
@@ -77,7 +77,19 @@ Fix and regression protection:
 - the ROI source contract requires the hydration guard to remain present;
 - the active production marker is `web-phase-8a-roi-hydration-sync`, preventing verification against the previous deployment.
 
-Phase 8A remains open until this corrected release passes CI, deploys to Hostinger and completes production verification green.
+### Phase 8A closure evidence
+
+Phase 8A closed on 2026-09-13 after the hydration correction completed the full delivery chain:
+
+- PR #72 merged to `main` as `66ae61f6c269ec98c7ceb552db377b957bceb1f2`;
+- Web CI #178 green on the PR;
+- Web CI #179 green on `main`;
+- Hostinger served `web-phase-8a-roi-hydration-sync`;
+- Production Verification #28 executed the corrected release against `https://iaempleado.com`;
+- the previously failing ROI keyboard synchronization test passed;
+- final production result: **108/108 tests passed**.
+
+Phase 8A is complete. Phase 8B is the active phase.
 
 ## Phase 8B — Accessibility closure
 
@@ -97,6 +109,18 @@ Required checks:
 - language attributes and bilingual navigation semantics;
 - decorative imagery excluded appropriately from accessibility tree;
 - meaningful images have suitable alternatives.
+
+### Phase 8B tranche 1 — bilingual Axe and semantic matrix
+
+The first Phase 8B gate reuses the already accepted Phase 8A commercial route model instead of creating a parallel route definition:
+
+- 16 critical ES/EN routes covering home, employee/team indexes, collaboration, Team Builder, Process Analyzer, ROI and lead conversion;
+- 7 commercial families in both ES and EN;
+- each commercial family audits its index plus one representative detail route discovered from the rendered index;
+- Axe blocks critical/serious violations using WCAG 2.x A/AA tags including WCAG 2.2 AA where supported;
+- each audited page must return successfully, expose the expected document language, render a main landmark and expose exactly one visible H1.
+
+This tranche is a discovery and blocking gate, not the whole Phase 8B closure. Any violations found by CI must be fixed and documented before moving to the keyboard/preference/form/image acceptance tranche.
 
 ## Phase 8C — Motion and animation finalization
 
@@ -217,7 +241,7 @@ Before launch-ready status:
 
 Phase 8 closes only when all are true:
 
-- [ ] full route responsive matrix green;
+- [x] full route responsive matrix green;
 - [ ] site-wide critical accessibility audit green;
 - [ ] keyboard/reflow/reduced-motion acceptance green;
 - [ ] final animation/motion polish green;
