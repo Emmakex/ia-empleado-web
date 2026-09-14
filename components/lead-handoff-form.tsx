@@ -45,6 +45,8 @@ type LeadHandoffFormProps = {
 };
 
 type SubmitState = "idle" | "submitting" | "success" | "fallback";
+type ValidationField = "name" | "email" | "need" | "consent";
+type ValidationErrors = Partial<Record<ValidationField, string>>;
 
 const emailCapability: LeadIntakeCapability = { mode: "email", configured: false };
 
@@ -56,6 +58,19 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
   const [consent, setConsent] = useState(false);
   const [capability, setCapability] = useState<LeadIntakeCapability>(emailCapability);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
+
+  const validationCopy = locale === "es"
+    ? {
+        required: "Completa este campo.",
+        email: "Introduce un correo válido.",
+        consent: "Acepta la información de privacidad para continuar.",
+      }
+    : {
+        required: "Complete this field.",
+        email: "Enter a valid email address.",
+        consent: "Accept the privacy information to continue.",
+      };
 
   const mailto = useMemo(
     () => buildLeadMailto(locale, context, { name, email, company, need }),
@@ -88,10 +103,25 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
     };
   }, []);
 
+  function setValidationError(field: ValidationField, message: string) {
+    setValidationErrors((current) => current[field] === message ? current : { ...current, [field]: message });
+  }
+
+  function clearValidationError(field: ValidationField) {
+    setValidationErrors((current) => {
+      if (!current[field]) return current;
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
+
+    setValidationErrors({});
 
     if (capability.mode !== "direct" || !capability.configured || !capability.privacyNoticeUrl) {
       window.location.href = mailto;
@@ -169,8 +199,15 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
               maxLength={100}
               value={name}
               disabled={formLocked}
-              onChange={(event) => setName(event.target.value)}
+              aria-invalid={validationErrors.name ? true : undefined}
+              aria-describedby={validationErrors.name ? "lead-error-name" : undefined}
+              onInvalid={() => setValidationError("name", validationCopy.required)}
+              onChange={(event) => {
+                setName(event.target.value);
+                clearValidationError("name");
+              }}
             />
+            {validationErrors.name ? <span className="lead-handoff-field-error" id="lead-error-name" role="alert">{validationErrors.name}</span> : null}
           </label>
           <label>
             <span>{labels.fields.email}</span>
@@ -182,8 +219,18 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
               maxLength={160}
               value={email}
               disabled={formLocked}
-              onChange={(event) => setEmail(event.target.value)}
+              aria-invalid={validationErrors.email ? true : undefined}
+              aria-describedby={validationErrors.email ? "lead-error-email" : undefined}
+              onInvalid={(event) => setValidationError(
+                "email",
+                event.currentTarget.validity.typeMismatch ? validationCopy.email : validationCopy.required,
+              )}
+              onChange={(event) => {
+                setEmail(event.target.value);
+                clearValidationError("email");
+              }}
             />
+            {validationErrors.email ? <span className="lead-handoff-field-error" id="lead-error-email" role="alert">{validationErrors.email}</span> : null}
           </label>
         </div>
 
@@ -209,8 +256,15 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
             maxLength={1400}
             value={need}
             disabled={formLocked}
-            onChange={(event) => setNeed(event.target.value)}
+            aria-invalid={validationErrors.need ? true : undefined}
+            aria-describedby={validationErrors.need ? "lead-error-need" : undefined}
+            onInvalid={() => setValidationError("need", validationCopy.required)}
+            onChange={(event) => {
+              setNeed(event.target.value);
+              clearValidationError("need");
+            }}
           />
+          {validationErrors.need ? <span className="lead-handoff-field-error" id="lead-error-need" role="alert">{validationErrors.need}</span> : null}
         </label>
 
         <label className="lead-handoff-honeypot" aria-hidden="true">
@@ -226,13 +280,22 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
               required
               checked={consent}
               disabled={formLocked}
-              onChange={(event) => setConsent(event.target.checked)}
+              aria-invalid={validationErrors.consent ? true : undefined}
+              aria-describedby={validationErrors.consent ? "lead-error-consent" : undefined}
+              onInvalid={() => setValidationError("consent", validationCopy.consent)}
+              onChange={(event) => {
+                setConsent(event.target.checked);
+                clearValidationError("consent");
+              }}
             />
             <span>
-              {labels.consent}{" "}
-              <a href={capability.privacyNoticeUrl} target="_blank" rel="noreferrer">
-                {labels.privacyLink}
-              </a>
+              <span>
+                {labels.consent}{" "}
+                <a href={capability.privacyNoticeUrl} target="_blank" rel="noreferrer">
+                  {labels.privacyLink}
+                </a>
+              </span>
+              {validationErrors.consent ? <span className="lead-handoff-field-error" id="lead-error-consent" role="alert">{validationErrors.consent}</span> : null}
             </span>
           </label>
         ) : null}
