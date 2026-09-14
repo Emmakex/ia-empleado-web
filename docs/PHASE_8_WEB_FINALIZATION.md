@@ -16,6 +16,7 @@ The web already has a substantial foundation:
 - responsive navigation and reflow hardening;
 - full Phase 8A responsive/interaction browser matrix;
 - Phase 8B accessibility closure completed in CI and exact-marker production verification;
+- Phase 8C motion and animation closure completed in CI and exact-marker production verification;
 - Playwright browser QA;
 - lead capture and Hostinger SMTP delivery verified in production;
 - sitemap and robots generation;
@@ -25,9 +26,8 @@ The repository also exposes important remaining gaps that prevent declaring the 
 
 1. **No finished website video assets are present.** `public/branding/media` currently contains framing SVGs, not production MP4/WebM/video deliverables.
 2. **Performance is not a release gate yet.** There is no Lighthouse/Core Web Vitals budget in the package scripts or CI.
-3. **Motion is contract-tested but still needs final production UX acceptance** on real devices/preferences, including reduced motion and mobile simplification.
-4. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
-5. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
+3. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
+4. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
 
 ## Finish-before-advance rule
 
@@ -88,7 +88,7 @@ Phase 8A closed on 2026-09-13 after the hydration correction completed the full 
 - the previously failing ROI keyboard synchronization test passed;
 - final production result: **108/108 tests passed**.
 
-Phase 8A is complete. Phase 8B is also complete; Phase 8C is now the active phase.
+Phase 8A is complete. Phase 8B and Phase 8C are also complete; Phase 8D is now the active phase.
 
 ## Phase 8B — Accessibility closure
 
@@ -198,9 +198,11 @@ The hydration hotfix completed the full release chain on 2026-09-14:
 - final production result: **148/148 tests passed in 7.7 minutes**;
 - no production diagnostic artifact was required because the verification job completed successfully.
 
-**Phase 8B is complete. Phase 8C — Motion and animation finalization — is now the active phase.**
+**Phase 8B is complete. Phase 8C is also complete; Phase 8D — Website video system — is now the active phase.**
 
 ## Phase 8C — Motion and animation finalization
+
+**Status: COMPLETE — closed on 2026-09-14 after exact-marker production verification.**
 
 Keep the approved principle: motion explains coordination, handoff, system activity and human control; it is not decoration for its own sake.
 
@@ -215,6 +217,26 @@ Acceptance:
 - no fake live status or misleading runtime implication;
 - animation does not delay access to core content or CTA;
 - motion performance remains smooth on representative mid-range mobile hardware.
+
+### Phase 8C closure evidence
+
+Phase 8C completed the full implementation, integration and exact-marker production chain on 2026-09-14:
+
+- PR #78 delivered the Phase 8C motion acceptance tranche and merged to `main` as `a0344856718d95b63b450627842f246a595e2689`;
+- PR Web CI #197 passed **152/152 tests** with build **103/103 static pages**;
+- main Web CI #198 repeated **152/152 tests in 6.8 minutes** with build **103/103 static pages**;
+- PR #79 (`ci: bind Phase 8C motion acceptance to production`) advanced the release marker to `web-phase-8c-motion-acceptance`, added `tests/phase8c-motion.spec.ts` to Production Verification and hardened the permanent release-gate contract;
+- PR Web CI #199 passed **152/152 tests in 6.9 minutes** and generated **103/103 static pages**;
+- PR #79 merged to `main` as `2ba2086cfa43057608c9be97e7fb79403c9a2078`;
+- main Web CI #200 repeated **152/152 tests in 6.8 minutes** and generated **103/103 static pages**;
+- Hostinger served the exact release marker `web-phase-8c-motion-acceptance` before production browser acceptance began;
+- Production Verification #35 (`34851307129`) checked out exact `main` SHA `2ba2086cfa43057608c9be97e7fb79403c9a2078`;
+- the production matrix executed all four Phase 8C motion cases: immediate homepage CTA/layout stability, consistent scene motion vocabulary, mobile continuous-motion simplification and reduced-motion disabling of non-essential animation;
+- the permanent Phase 8A hydration, Phase 8B accessibility/hydration, conversion/lead, responsive and visual geometry regressions all remained green;
+- final production result: **152/152 tests passed in 7.2 minutes**;
+- no production diagnostic artifact was required because the exact-marker production verification completed successfully.
+
+**Phase 8C is complete. Phase 8D — Website video system — is now the active phase.**
 
 ## Phase 8D — Website video system
 
@@ -322,7 +344,7 @@ Phase 8 closes only when all are true:
 - [x] full route responsive matrix green;
 - [x] site-wide critical accessibility audit green;
 - [x] keyboard/reflow/reduced-motion acceptance green;
-- [ ] final animation/motion polish green;
+- [x] final animation/motion polish green;
 - [ ] production website videos delivered and integrated;
 - [ ] video accessibility and fallback behavior green;
 - [ ] performance/Core Web Vitals budget measured and accepted;
