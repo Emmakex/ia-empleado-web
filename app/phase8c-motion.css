@@ -7,15 +7,12 @@
 
 @media (prefers-reduced-motion: no-preference) {
   /* Core copy and CTAs are available from first paint. Motion adds direction,
-   * never visibility gating, so users do not wait for essential content. */
-  .brand-home-hero .hero-copy > .eyebrow,
-  .brand-home-hero .hero-copy > h1,
-  .brand-home-hero .hero-copy > .hero-description,
-  .brand-home-hero .hero-copy > .hero-actions,
-  .brand-home-hero .hero-copy > .hero-note,
-  .brand-home-hero .hero-copy > .brand-hero-signature {
+   * never visibility gating, so users do not wait for essential content.
+   * Match the canonical :is(...) selector specificity so this later layer wins
+   * without !important and keeps the cascade deterministic. */
+  .brand-home-hero .hero-copy > :is(.eyebrow, h1, .hero-description, .hero-actions, .hero-note, .brand-hero-signature) {
     opacity: 1;
-    animation: phase8c-home-copy-enter var(--brand-motion-reveal) var(--brand-motion-ease-out) both;
+    animation: phase8c-home-copy-enter var(--brand-motion-reveal) var(--brand-motion-ease) both;
   }
 
   .brand-home-hero .hero-copy > .eyebrow { animation-delay: 0ms; }
@@ -76,9 +73,9 @@
   .brand-collaboration-human,
   .brand-sector-art-human {
     transition:
-      translate var(--brand-motion-normal) var(--brand-motion-ease-out),
-      box-shadow var(--brand-motion-normal) var(--brand-motion-ease-out),
-      border-color var(--brand-motion-normal) var(--brand-motion-ease-out);
+      translate var(--brand-motion-normal) var(--brand-motion-ease),
+      box-shadow var(--brand-motion-normal) var(--brand-motion-ease),
+      border-color var(--brand-motion-normal) var(--brand-motion-ease);
   }
 }
 
