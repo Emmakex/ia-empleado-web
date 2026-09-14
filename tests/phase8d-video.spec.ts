@@ -29,18 +29,21 @@ test.describe("Phase 8D homepage video acceptance", () => {
       await expect(video).toBeVisible();
       await expect(sources).toHaveCount(2);
 
-      const state = await video.evaluate((element) => ({
-        poster: element.getAttribute("poster"),
-        preload: element.preload,
-        controls: element.controls,
-        autoplay: element.autoplay,
-        muted: element.muted,
-        loop: element.loop,
-        playsInline: element.playsInline,
-        paused: element.paused,
-        width: element.getAttribute("width"),
-        height: element.getAttribute("height"),
-      }));
+      const state = await video.evaluate((element) => {
+        const media = element as HTMLVideoElement;
+        return {
+          poster: media.getAttribute("poster"),
+          preload: media.preload,
+          controls: media.controls,
+          autoplay: media.autoplay,
+          muted: media.muted,
+          loop: media.loop,
+          playsInline: media.playsInline,
+          paused: media.paused,
+          width: media.getAttribute("width"),
+          height: media.getAttribute("height"),
+        };
+      });
 
       expect(state.poster).toBe(poster);
       expect(state.preload).toBe("none");
