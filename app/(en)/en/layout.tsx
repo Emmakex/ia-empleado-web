@@ -25,6 +25,7 @@ import "../../brand-interactive-content.css";
 import "../../brand-comparison-proof.css";
 import "../../brand-motion.css";
 import "../../phase8c-motion.css";
+import "../../brand-video.css";
 import "../../ux-accessibility.css";
 import "../../reflow-hardening.css";
 import "../../brand-visual-polish.css";
