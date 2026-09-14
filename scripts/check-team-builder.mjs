@@ -45,6 +45,18 @@ if (!client.includes('"use client"') || !client.includes("aria-live") || !client
 }
 
 for (const token of [
+  "useEffect",
+  "setIsHydrated(true)",
+  'data-team-builder-hydrated={isHydrated ? "true" : "false"}',
+  'data-team-builder-release="phase8b-hydration-sync"',
+  "aria-busy={!isHydrated}",
+  "disabled={!isHydrated}",
+  "disabled={!isHydrated || !hasSelection}",
+]) {
+  if (!client.includes(token)) throw new Error(`Team Builder hydration guard missing token: ${token}`);
+}
+
+for (const token of [
   "requestDemoPath",
   'intent: "team"',
   'source: "team-builder"',
@@ -75,4 +87,4 @@ if (!header.includes("teamBuilderPath")) {
   throw new Error("Team Builder must remain reachable from global navigation");
 }
 
-console.log("Team Builder contract OK");
+console.log("Team Builder contract OK: interactive controls stay disabled until hydration and contextual recommendation behavior remains protected.");
