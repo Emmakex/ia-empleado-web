@@ -32,8 +32,10 @@ for (const marker of [
   'playsInline',
   'controls={!isAmbientLoop}',
   'kind="captions"',
+  'captionsLang',
   'transcriptHref',
-  'preload={isAmbientLoop ? "metadata" : "none"}',
+  'const preload = shouldPlayAmbientLoop ? "metadata" : "none"',
+  'preload={preload}',
 ]) {
   if (!component.includes(marker)) throw new Error(`BrandVideo component missing contract marker: ${marker}`);
 }
