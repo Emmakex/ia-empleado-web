@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type {
   ProcessAnalyzerPageContent,
   ProcessPainKey,
@@ -21,9 +21,14 @@ type ProcessAnalyzerProps = {
 };
 
 export function ProcessAnalyzer({ locale, content, templates, painOptions }: ProcessAnalyzerProps) {
+  const [isHydrated, setIsHydrated] = useState(false);
   const [processKey, setProcessKey] = useState<ProcessTemplateKey>(templates[0]?.key ?? "customer-issue");
   const [selectedPains, setSelectedPains] = useState<ProcessPainKey[]>([]);
   const [bottlenecks, setBottlenecks] = useState<string[]>([]);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   const process = useMemo(
     () => templates.find((template) => template.key === processKey) ?? templates[0],
@@ -74,7 +79,12 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
   });
 
   return (
-    <div className="process-analyzer-shell brand-process-analyzer-shell">
+    <div
+      className="process-analyzer-shell brand-process-analyzer-shell"
+      data-process-analyzer-hydrated={isHydrated ? "true" : "false"}
+      data-process-analyzer-release="phase8b-hydration-sync"
+      aria-busy={!isHydrated}
+    >
       <div className="process-analyzer-controls" aria-labelledby="process-analyzer-controls-title">
         <div className="process-control-heading">
           <p className="eyebrow">{content.analyzerEyebrow}</p>
@@ -93,6 +103,7 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
                 aria-pressed={template.key === process.key}
                 onClick={() => changeProcess(template.key)}
                 key={template.key}
+                disabled={!isHydrated}
               >
                 <strong>{template.label}</strong>
                 <span>{template.description}</span>
@@ -112,6 +123,7 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
                 aria-pressed={selectedPains.includes(option.value)}
                 onClick={() => togglePain(option.value)}
                 key={option.value}
+                disabled={!isHydrated}
               >
                 <span aria-hidden="true">{selectedPains.includes(option.value) ? "✓" : "+"}</span>
                 {option.label}
@@ -164,7 +176,7 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
                   </div>
                   <h4>{step.currentTitle}</h4>
                   <p>{step.currentText}</p>
-                  <button type="button" className="process-bottleneck-button" aria-pressed={marked} onClick={() => toggleBottleneck(step.id)}>
+                  <button type="button" className="process-bottleneck-button" aria-pressed={marked} onClick={() => toggleBottleneck(step.id)} disabled={!isHydrated}>
                     <span aria-hidden="true">{marked ? "●" : "○"}</span>
                     {marked ? content.bottleneckMarked : content.markBottleneck}
                   </button>
@@ -238,7 +250,7 @@ export function ProcessAnalyzer({ locale, content, templates, painOptions }: Pro
         </div>
         <div className="process-summary-actions">
           <Link className="button" href={handoffHref} data-contextual-result-handoff="process-analyzer">{content.emailLabel}</Link>
-          <button type="button" className="button button-ghost" onClick={() => { setSelectedPains([]); setBottlenecks([]); }}>{content.resetLabel}</button>
+          <button type="button" className="button button-ghost" onClick={() => { setSelectedPains([]); setBottlenecks([]); }} disabled={!isHydrated}>{content.resetLabel}</button>
         </div>
         <p className="process-privacy-note">{locale === "es"
           ? "El análisis permanece en tu navegador. Al continuar solo se transfiere a la solicitud de demo el patrón elegido, hasta dos fricciones predefinidas y el número de pasos marcados; no se envían datos personales ni texto libre."
