@@ -51,7 +51,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Verify production geometry, brand systems, conversion, accessibility, motion and canonical visual fidelity
+      - name: Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity and performance
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
         run: >-
@@ -72,6 +72,7 @@ jobs:
           tests/phase8b-interaction-accessibility.spec.ts
           tests/phase8c-motion.spec.ts
           tests/phase8d-canonical-visual.spec.ts
+          tests/phase8e-performance-budget.spec.ts
           tests/ux-visual.spec.ts
 
       - name: Upload production QA diagnostics
