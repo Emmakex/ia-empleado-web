@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SectorDetailPage } from "../../../../components/sector-detail-page";
 import { getSectorBySlug, sectorDetailPath, sectorRecords } from "../../../../lib/sector-use-cases";
+import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: record.seoTitle.es,
     description: record.seoDescription.es,
     alternates: { canonical, languages: { "es-ES": canonical, en: alternate, "x-default": canonical } },
-    openGraph: { type: "website", url: canonical, siteName: "IA Empleado", locale: "es_ES", alternateLocale: ["en_US"], title: record.seoTitle.es, description: record.seoDescription.es },
+    ...buildRouteSocialMetadata({ locale: "es", surface: "sectors", title: record.seoTitle.es, description: record.seoDescription.es, canonical }),
   };
 }
 

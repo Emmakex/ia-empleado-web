@@ -14,6 +14,7 @@ const files = {
   motion: "tests/phase8c-motion.spec.ts",
   canonicalVisual: "tests/phase8d-canonical-visual.spec.ts",
   performance: "tests/phase8e-performance-budget.spec.ts",
+  seoRuntime: "tests/phase8f-seo-runtime.spec.ts",
   lighthouseConfig: "config/lighthouse-launch.json",
   lighthouseRunner: "scripts/run-phase8e-lighthouse.mjs",
   lighthouseContract: "scripts/check-phase8e-lighthouse.mjs",
@@ -43,6 +44,7 @@ const accessibilityInteraction = read(files.accessibilityInteraction);
 const motion = read(files.motion);
 const canonicalVisual = read(files.canonicalVisual);
 const performance = read(files.performance);
+const seoRuntime = read(files.seoRuntime);
 const lighthouseConfig = read(files.lighthouseConfig);
 const lighthouseRunner = read(files.lighthouseRunner);
 const lighthouseContract = read(files.lighthouseContract);
@@ -54,15 +56,15 @@ const brandCharacters = read(files.brandCharacters);
 const brandCharacterImage = read(files.brandCharacterImage);
 const header = read(files.header);
 
-const marker = "web-phase-8e-lighthouse-gate";
+const marker = "web-phase-8f-runtime-seo";
 const metadataMarker = `"ia-web-release": "${marker}"`;
 
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
-  throw new Error(`ES/EN layouts are not marked for the active Web Phase 8E release: ${marker}`);
+  throw new Error(`ES/EN layouts are not marked for the active Web Phase 8F release: ${marker}`);
 }
 
 if (!production.includes(`EXPECTED_RELEASE: ${marker}`)) {
-  throw new Error(`Production verification is not waiting for the active Web Phase 8E release: ${marker}`);
+  throw new Error(`Production verification is not waiting for the active Web Phase 8F release: ${marker}`);
 }
 
 for (const testPath of [
@@ -73,6 +75,7 @@ for (const testPath of [
   "tests/phase8c-motion.spec.ts",
   "tests/phase8d-canonical-visual.spec.ts",
   "tests/phase8e-performance-budget.spec.ts",
+  "tests/phase8f-seo-runtime.spec.ts",
 ]) {
   if (!production.includes(testPath)) {
     throw new Error(`Production verification is missing required Phase 8 browser coverage: ${testPath}`);
@@ -201,6 +204,17 @@ for (const phrase of [
 }
 
 for (const phrase of [
+  'test.describe("Phase 8F runtime SEO matrix"',
+  "PHASE8F_SEO_ROUTE",
+  "PHASE8F_INTERNAL_INDEX_POLICY",
+  "not-found responses are 404 and explicitly non-indexable",
+]) {
+  if (!seoRuntime.includes(phrase)) {
+    throw new Error(`Phase 8F SEO production gate missing phrase: ${phrase}`);
+  }
+}
+
+for (const phrase of [
   "video experiment rejected",
   "canonical WebP",
   "CSS/SVG motion",
@@ -271,8 +285,9 @@ for (const phrase of [
   "Phase 8D — Canonical visual fidelity closure",
   "Phase 8E — Performance & Core Web Vitals",
   "stable Lighthouse launch score gate",
+  "Phase 8F — SEO, metadata and sharing",
 ]) {
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
 
-console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions, production performance budgets and the Lighthouse launch-score gate remain protected.`);
+console.log(`Web Phase 8F release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8E regressions, Lighthouse and the Phase 8F runtime SEO matrix remain protected.`);

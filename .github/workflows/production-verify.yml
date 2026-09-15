@@ -27,10 +27,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Web Phase 8E Lighthouse gate on Hostinger
+      - name: Wait for Web Phase 8F runtime SEO gate on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-          EXPECTED_RELEASE: web-phase-8e-lighthouse-gate
+          EXPECTED_RELEASE: web-phase-8f-runtime-seo
         run: |
           set -euo pipefail
           for attempt in $(seq 1 40); do
@@ -51,7 +51,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity and performance
+      - name: Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity, performance and SEO
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
         run: >-
@@ -73,6 +73,7 @@ jobs:
           tests/phase8c-motion.spec.ts
           tests/phase8d-canonical-visual.spec.ts
           tests/phase8e-performance-budget.spec.ts
+          tests/phase8f-seo-runtime.spec.ts
           tests/ux-visual.spec.ts
 
       - name: Build exact release for Lighthouse lab
@@ -82,7 +83,7 @@ jobs:
 
       - name: Start exact release for Lighthouse lab
         env:
-          EXPECTED_RELEASE: web-phase-8e-lighthouse-gate
+          EXPECTED_RELEASE: web-phase-8f-runtime-seo
           NEXT_TELEMETRY_DISABLED: 1
         run: |
           set -euo pipefail
