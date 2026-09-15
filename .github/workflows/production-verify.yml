@@ -27,10 +27,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Web Phase 8F runtime SEO gate on Hostinger
+      - name: Wait for Web Phase 8F structured navigation gate on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-          EXPECTED_RELEASE: web-phase-8f-runtime-seo
+          EXPECTED_RELEASE: web-phase-8f-structured-navigation
         run: |
           set -euo pipefail
           for attempt in $(seq 1 40); do
@@ -74,6 +74,7 @@ jobs:
           tests/phase8d-canonical-visual.spec.ts
           tests/phase8e-performance-budget.spec.ts
           tests/phase8f-seo-runtime.spec.ts
+          tests/phase8f-structured-navigation.spec.ts
           tests/ux-visual.spec.ts
 
       - name: Build exact release for Lighthouse lab
@@ -83,7 +84,7 @@ jobs:
 
       - name: Start exact release for Lighthouse lab
         env:
-          EXPECTED_RELEASE: web-phase-8f-runtime-seo
+          EXPECTED_RELEASE: web-phase-8f-structured-navigation
           NEXT_TELEMETRY_DISABLED: 1
         run: |
           set -euo pipefail
