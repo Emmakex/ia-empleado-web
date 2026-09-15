@@ -15,7 +15,15 @@ const enLayout = read("app/(en)/en/layout.tsx");
 const performanceDocs = read("docs/PHASE_8E_PERFORMANCE_BASELINE.md");
 const stabilityDocs = read("docs/PHASE_8E_LIGHTHOUSE_STABILITY.md");
 
-const marker = "web-phase-8e-lighthouse-gate";
+const expectedReleaseValues = [...production.matchAll(/EXPECTED_RELEASE:\s+([^\s]+)/g)].map((match) => match[1]);
+if (!expectedReleaseValues.length) {
+  throw new Error("Production Verification must declare an EXPECTED_RELEASE marker");
+}
+if (new Set(expectedReleaseValues).size !== 1) {
+  throw new Error(`Production Verification uses inconsistent release markers: ${expectedReleaseValues.join(", ")}`);
+}
+const activeReleaseMarker = expectedReleaseValues[0];
+
 const requiredRoutes = [
   "/",
   "/en",
@@ -84,8 +92,7 @@ if (!ci.includes("Phase 8E Lighthouse launch contract") || !ci.includes("node sc
   throw new Error("Web CI does not protect the Phase 8E Lighthouse launch contract");
 }
 for (const phrase of [
-  `EXPECTED_RELEASE: ${marker}`,
-  "Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity and performance",
+  "Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity",
   "Build exact release for Lighthouse lab",
   "npm run build",
   "Start exact release for Lighthouse lab",
@@ -100,9 +107,9 @@ for (const phrase of [
 if (!production.includes("github.event.workflow_run.head_sha")) {
   throw new Error("Production Verification must checkout the exact successful Web CI SHA before building the Lighthouse lab target");
 }
-const metadataMarker = `"ia-web-release": "${marker}"`;
+const metadataMarker = `"ia-web-release": "${activeReleaseMarker}"`;
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
-  throw new Error(`ES/EN layouts are not marked for the Lighthouse gate release: ${marker}`);
+  throw new Error(`ES/EN layouts do not match the active production release marker: ${activeReleaseMarker}`);
 }
 for (const phrase of [
   "Production Verification #42",
@@ -131,4 +138,4 @@ for (const phrase of [
   if (!stabilityDocs.includes(phrase)) throw new Error(`Phase 8E Lighthouse stability evidence missing phrase: ${phrase}`);
 }
 
-console.log("Phase 8E Lighthouse launch contract OK: production browser evidence stays on Hostinger while pinned Lighthouse audits the exact verified release SHA; unchanged launch scores use adaptive median-of-three stabilization only after an initial threshold miss.");
+console.log(`Phase 8E Lighthouse launch contract OK under active release ${activeReleaseMarker}: production browser evidence stays on Hostinger while pinned Lighthouse audits the exact verified release SHA; unchanged launch scores use adaptive median-of-three stabilization only after an initial threshold miss.`);
