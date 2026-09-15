@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "tool": {
+    "package": "lighthouse",
+    "version": "13.4.1"
+  },
+  "formFactor": "mobile",
+  "categories": {
+    "performance": 0.9,
+    "accessibility": 0.95,
+    "best-practices": 0.95,
+    "seo": 0.95
+  },
+  "routes": [
+    "/",
+    "/en",
+    "/disena-tu-equipo-ia",
+    "/en/design-your-ai-team",
+    "/calculadora-roi",
+    "/en/roi-calculator"
+  ]
+}

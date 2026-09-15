@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "web-phase-8e-static-image-cache" },
+  other: { "ia-web-release": "web-phase-8e-lighthouse-gate" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };

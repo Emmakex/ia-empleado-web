@@ -2,13 +2,13 @@
 
 ## Status
 
-ACTIVE — the measurable production budget is integrated. Production Verification #41 confirmed the lazy-loading remediation and every representative route budget, while isolating the remaining cache problem to Hostinger's raw `/public` static-asset delivery layer.
+ACTIVE — the production performance budget, lazy-loading remediation and hashed canonical-image cache delivery are accepted in production. Production Verification #42 closed the cache blocker with 163/163 tests green. The active remaining Phase 8E gate is now the Lighthouse launch-score gate.
 
 ## Objective
 
 Turn performance from an informal visual check into an explicit release contract for `iaempleado.com`.
 
-The first Phase 8E tranches deliberately use the existing Playwright production stack so the same deployment verification can emit actionable per-route measurements without adding a parallel browser harness.
+The Phase 8E gates use the existing production-verification chain so deployment identity, browser acceptance, Core Web Vitals/resource budgets and Lighthouse launch scores are all checked against the exact Hostinger release before the phase can close.
 
 ## Representative production routes
 
@@ -43,7 +43,7 @@ Initial production limits:
 - `document.fonts` must settle to `loaded`;
 - the browser-delivered canonical Clara image must stay <= 500 KB and expose at least 604800 seconds of reusable cache lifetime.
 
-These are launch guardrails, not aspirational final numbers. They remain unchanged while the delivery implementation is corrected.
+These are launch guardrails, not aspirational final numbers. They have not been weakened during remediation.
 
 ## Production baseline — Verification #40
 
@@ -69,7 +69,7 @@ Web CI #213 passed on the PR. After merge, Web CI #214 passed on `main` at SHA `
 
 Production Verification #41 (`34912068747`) verified the exact marker `web-phase-8e-cache-lazy-loading` and executed 163 production tests. Final result: **162 passed, 1 failed**.
 
-The lazy-loading remediation is fully accepted in production. Every representative route reported `belowFoldEagerImages: []`, with no broken images, no third-party requests and fonts loaded. Measured results remained comfortably inside budget:
+The lazy-loading remediation was fully accepted in production. Every representative route reported `belowFoldEagerImages: []`, with no broken images, no third-party requests and fonts loaded. Measured results remained comfortably inside budget:
 
 - LCP: **460–764 ms**;
 - CLS: **0** on all six routes;
@@ -81,23 +81,70 @@ The lazy-loading remediation is fully accepted in production. Every representati
 - third-party requests: **0**;
 - below-fold eager images: **0** on all six routes.
 
-The sole remaining failure was the raw file `/branding/characters/clara-canonical.webp`: payload **6,430 bytes**, but `Cache-Control` remained an empty string even after the Next `headers()` rule. The repeated result proves that the Hostinger-managed static delivery path for this `/public` asset is not honoring the application-level header rule used in PR #85.
+The sole remaining failure was the raw file `/branding/characters/clara-canonical.webp`: payload **6,430 bytes**, but `Cache-Control` remained an empty string even after the Next `headers()` rule. The repeated result proved that the Hostinger-managed static delivery path for this `/public` asset was not honoring the application-level header rule used in PR #85.
 
 ## Static-image cache remediation after #41
 
-The release contract now follows the image request that the browser actually uses instead of the mutable raw `/public` URL.
+The release contract follows the image request that the browser actually uses instead of the mutable raw `/public` URL.
 
 The approved character WebPs are unchanged. `lib/brand-characters.ts` remains a pure data/source-path catalog for server-side consumers such as campaign rendering. `components/brand-character-image.tsx` alone imports Clara, Alex, Sofía and Javier as Next static image modules and maps the character IDs to those `StaticImageData` assets for browser delivery. That keeps campaign/test code independent of binary module loaders while making the Next build emit content-hashed assets under `/_next/static/media/...` for the public renderer.
 
-`next.config.ts` sets `images.minimumCacheTTL` to **604800 seconds (7 days)** for optimized image delivery. The Phase 8D canonical-fidelity test now requires the four canonical character identities to resolve through hashed `/_next/static/media/...` sources. The Phase 8E production test discovers Clara's real `currentSrc`, verifies that its underlying source is the hashed canonical WebP, requests the actual browser URL and requires:
+`next.config.ts` sets `images.minimumCacheTTL` to **604800 seconds (7 days)** for optimized image delivery. The Phase 8D canonical-fidelity test requires the four canonical character identities to resolve through hashed `/_next/static/media/...` sources. The Phase 8E production test discovers Clara's real `currentSrc`, verifies that its underlying source is the hashed canonical WebP, requests the actual browser URL and requires:
 
 - payload <= 500 KB;
 - no `no-store` directive;
 - reusable `max-age` or `s-maxage` >= 604800 seconds.
 
-This is not a relaxed cache requirement. It removes an implementation-specific assertion against an unused mutable source path and replaces it with a stronger assertion against the actual browser-delivered canonical image.
+This is not a relaxed cache requirement. It replaces an assertion against an unused mutable source path with a stronger assertion against the actual browser-delivered canonical image.
 
-The exact release marker for this remediation is `web-phase-8e-static-image-cache`, so Production Verification cannot approve the earlier #41 deployment.
+PR #86 completed this remediation and merged to `main` as `f29001f7922dc44fd61b3a4bf867e549c57658a8`. Web CI #224 passed on the final PR SHA and Web CI #225 passed again on `main`.
+
+## Production Verification #42 — cache closure
+
+Production Verification #42 (`34915450760`) verified the exact marker `web-phase-8e-static-image-cache` and finished **163/163 tests passed** against `https://iaempleado.com`.
+
+Final production evidence:
+
+- Home ES LCP **360 ms**, CLS **0**, TTFB approximately **36.1 ms**;
+- Home EN LCP **348 ms**, CLS **0**, TTFB approximately **36.2 ms**;
+- Team Builder ES LCP **344 ms**, CLS **0**;
+- Team Builder EN LCP **392 ms**, CLS **0**;
+- ROI ES LCP **344 ms**, CLS **0**;
+- ROI EN LCP **520 ms**, CLS **0**, longest observed long task **56 ms**;
+- `belowFoldEagerImages: []` on all six representative routes;
+- broken images **0**;
+- third-party requests **0**;
+- fonts status `loaded` throughout.
+
+The canonical Clara request resolved to `/_next/static/media/clara-canonical.3zljg6zeigl6e.webp`, payload **6,430 bytes**, with `Cache-Control: public, max-age=315360000, immutable`. The computed reusable cache lifetime was **315360000 seconds**, far above the 604800-second minimum.
+
+The cache/lazy-loading remediation is therefore closed.
+
+## Lighthouse launch-score gate
+
+The final Phase 8E tranche adds a reproducible Lighthouse gate on top of the accepted Playwright production budget; it does not replace or weaken it.
+
+Machine-readable source of truth: `config/lighthouse-launch.json`.
+
+Pinned tooling and launch thresholds:
+
+- Lighthouse **13.4.1**;
+- mobile form factor;
+- Performance >= **0.90**;
+- Accessibility >= **0.95**;
+- Best Practices >= **0.95**;
+- SEO >= **0.95**;
+- the same six bilingual representative routes used by the production performance budget.
+
+`scripts/run-phase8e-lighthouse.mjs` discovers Chrome/Chromium explicitly, runs the pinned Lighthouse CLI, stores one JSON report per route under `.artifacts/lighthouse/`, writes a combined `summary.json` and emits structured diagnostics:
+
+- `PHASE8E_LIGHTHOUSE { ... }` for every completed route;
+- `LIGHTHOUSE_THRESHOLD_FAILURE { ... }` for any category below its minimum;
+- `LIGHTHOUSE_EXECUTION_FAILURE { ... }` if the audit itself cannot execute.
+
+Production Verification uploads the Lighthouse JSON reports even when the gate is green, preserving launch evidence. The exact release marker for this tranche is `web-phase-8e-lighthouse-gate`.
+
+No category threshold may be reduced merely to make CI pass. A failure must first be mapped to the responsible audit, route and implementation cause; any documented exception must be explicit and justified as nondeterministic or externally controlled.
 
 ## Diagnostics
 
@@ -113,13 +160,16 @@ The canonical image delivery check prints:
 
 That record includes `browserUrl`, decoded `sourceUrl`, payload bytes, received `cacheControl` and computed `cacheSeconds`.
 
+The Lighthouse gate adds `PHASE8E_LIGHTHOUSE`, `LIGHTHOUSE_THRESHOLD_FAILURE` and `LIGHTHOUSE_EXECUTION_FAILURE` records and retains the full JSON reports as workflow artifacts.
+
 ## Execution model
 
-- ordinary Web CI runs `scripts/check-phase8e-performance-budget.mjs` to protect the budget, renderer-scoped static imports, optimized-image TTL and lazy-loading contracts;
-- numeric network and Core Web Vitals budgets run only when `PRODUCTION_BASE_URL` is set;
-- Production Verification includes `tests/phase8e-performance-budget.spec.ts` against `https://iaempleado.com`;
-- `npm run qa:performance:production` provides the same focused production check when needed manually.
+- ordinary Web CI runs `scripts/check-phase8e-performance-budget.mjs` and `scripts/check-phase8e-lighthouse.mjs` to protect both Phase 8E contracts without running network-sensitive production audits on pull requests;
+- numeric network/Core Web Vitals budgets run when `PRODUCTION_BASE_URL` is set;
+- Production Verification continues the full Playwright production matrix against `https://iaempleado.com`;
+- after the browser matrix is green, Production Verification runs `npm run qa:lighthouse:production` against the same exact deployment;
+- `npm run qa:performance:production` remains the focused Playwright performance command.
 
 ## Remaining Phase 8E work
 
-Phase 8E remains open. The immediate acceptance gate is a green exact-marker production verification of `web-phase-8e-static-image-cache`. Only after that gate is green may Phase 8E advance to the Lighthouse launch-score gate for performance, accessibility, best practices and SEO, with documented exceptions only where a score cannot be made deterministic.
+Phase 8E remains open until `web-phase-8e-lighthouse-gate` is deployed and Production Verification passes the existing **163/163** browser suite plus all Lighthouse category thresholds on all six representative routes. Only then may Phase 8E close and Phase 8F — SEO/metadata/sharing finalization — become active.

@@ -14,6 +14,9 @@ const files = {
   motion: "tests/phase8c-motion.spec.ts",
   canonicalVisual: "tests/phase8d-canonical-visual.spec.ts",
   performance: "tests/phase8e-performance-budget.spec.ts",
+  lighthouseConfig: "config/lighthouse-launch.json",
+  lighthouseRunner: "scripts/run-phase8e-lighthouse.mjs",
+  lighthouseContract: "scripts/check-phase8e-lighthouse.mjs",
   roi: "components/roi-estimator.tsx",
   teamBuilder: "components/team-builder.tsx",
   processAnalyzer: "components/process-analyzer.tsx",
@@ -40,6 +43,9 @@ const accessibilityInteraction = read(files.accessibilityInteraction);
 const motion = read(files.motion);
 const canonicalVisual = read(files.canonicalVisual);
 const performance = read(files.performance);
+const lighthouseConfig = read(files.lighthouseConfig);
+const lighthouseRunner = read(files.lighthouseRunner);
+const lighthouseContract = read(files.lighthouseContract);
 const roi = read(files.roi);
 const teamBuilder = read(files.teamBuilder);
 const processAnalyzer = read(files.processAnalyzer);
@@ -48,7 +54,7 @@ const brandCharacters = read(files.brandCharacters);
 const brandCharacterImage = read(files.brandCharacterImage);
 const header = read(files.header);
 
-const marker = "web-phase-8e-static-image-cache";
+const marker = "web-phase-8e-lighthouse-gate";
 const metadataMarker = `"ia-web-release": "${marker}"`;
 
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
@@ -71,6 +77,30 @@ for (const testPath of [
   if (!production.includes(testPath)) {
     throw new Error(`Production verification is missing required Phase 8 browser coverage: ${testPath}`);
   }
+}
+
+for (const phrase of [
+  "npm run qa:lighthouse:production",
+  "phase8e-lighthouse-reports",
+  ".artifacts/lighthouse/",
+]) {
+  if (!production.includes(phrase)) throw new Error(`Production verification is missing Lighthouse launch coverage: ${phrase}`);
+}
+
+for (const phrase of [
+  '"performance": 0.9',
+  '"accessibility": 0.95',
+  '"best-practices": 0.95',
+  '"seo": 0.95',
+  '"version": "13.4.1"',
+]) {
+  if (!lighthouseConfig.includes(phrase)) throw new Error(`Lighthouse launch configuration missing phrase: ${phrase}`);
+}
+for (const phrase of ["PHASE8E_LIGHTHOUSE", "LIGHTHOUSE_THRESHOLD_FAILURE", "LIGHTHOUSE_EXECUTION_FAILURE"]) {
+  if (!lighthouseRunner.includes(phrase)) throw new Error(`Lighthouse runner diagnostics missing phrase: ${phrase}`);
+}
+if (!lighthouseContract.includes("Phase 8E Lighthouse launch contract OK")) {
+  throw new Error("Dedicated Phase 8E Lighthouse static contract is missing its success signature");
 }
 
 // Phase 8A ROI hydration remains a permanent regression gate after later markers advance.
@@ -240,8 +270,9 @@ for (const phrase of [
   "Phase 8C — Motion and animation finalization",
   "Phase 8D — Canonical visual fidelity closure",
   "Phase 8E — Performance & Core Web Vitals",
+  "stable Lighthouse launch score gate",
 ]) {
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
 
-console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions, Next-owned canonical browser delivery and the Phase 8E production performance budget remain protected.`);
+console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions, production performance budgets and the Lighthouse launch-score gate remain protected.`);
