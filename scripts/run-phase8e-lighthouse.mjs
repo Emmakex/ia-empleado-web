@@ -11,6 +11,10 @@ if (!baseUrl) {
   throw new Error("PRODUCTION_BASE_URL is required for the Phase 8E Lighthouse launch gate");
 }
 
+if (typeof config.emulatedUserAgent !== "string" || !config.emulatedUserAgent.includes("Chrome/")) {
+  throw new Error("LIGHTHOUSE_USER_AGENT_MISSING: config.emulatedUserAgent must be a normal Chrome browser user agent");
+}
+
 const artifactDir = path.join(root, ".artifacts", "lighthouse");
 fs.mkdirSync(artifactDir, { recursive: true });
 
@@ -29,6 +33,8 @@ const failures = [];
 const summary = [];
 const categories = Object.keys(config.categories);
 
+console.log(`LIGHTHOUSE_RUN_CONTEXT ${JSON.stringify({ chromePath, formFactor: config.formFactor, emulatedUserAgent: config.emulatedUserAgent })}`);
+
 for (const route of config.routes) {
   const url = new URL(route, baseUrl).toString();
   const slug = route === "/" ? "home-es" : route.replace(/^\//, "").replaceAll("/", "-") || "home";
@@ -42,6 +48,7 @@ for (const route of config.routes) {
     "--quiet",
     `--chrome-path=${chromePath}`,
     "--chrome-flags=--headless --no-sandbox --disable-dev-shm-usage",
+    `--emulatedUserAgent=${config.emulatedUserAgent}`,
     "--output=json",
     `--output-path=${reportPath}`,
     `--only-categories=${categories.join(",")}`,
@@ -61,6 +68,7 @@ for (const route of config.routes) {
       route,
       url,
       exitCode: result.status,
+      emulatedUserAgent: config.emulatedUserAgent,
       stdout: result.stdout?.slice(-4000) ?? "",
       stderr: result.stderr?.slice(-4000) ?? "",
     };
