@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ComparisonsIndexPage } from "../../../../components/comparisons-index-page";
 import { comparisonIndexContent, comparisonIndexPath } from "../../../../lib/comparison-content";
+import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
 const content = comparisonIndexContent.en;
 const canonical = comparisonIndexPath("en");
@@ -13,15 +14,13 @@ export const metadata: Metadata = {
     canonical,
     languages: { "es-ES": alternate, en: canonical, "x-default": alternate },
   },
-  openGraph: {
-    type: "website",
-    url: canonical,
-    siteName: "IA Empleado",
-    locale: "en_US",
-    alternateLocale: ["es_ES"],
+  ...buildRouteSocialMetadata({
+    locale: "en",
+    surface: "home",
     title: content.seoTitle,
     description: content.seoDescription,
-  },
+    canonical,
+  }),
 };
 
 export default function ComparisonsEnglishPage() {

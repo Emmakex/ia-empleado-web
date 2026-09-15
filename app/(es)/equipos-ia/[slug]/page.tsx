@@ -7,6 +7,7 @@ import {
   getTeamRecords,
   teamDetailPath,
 } from "../../../../lib/team-content-engine";
+import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -35,14 +36,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         "x-default": canonical,
       },
     },
-    openGraph: {
-      type: "website",
+    ...buildRouteSocialMetadata({
+      locale: "es",
+      surface: "teams",
       title: team.detail.seoTitle,
       description: team.detail.seoDescription,
-      url: canonical,
-      locale: "es_ES",
-      alternateLocale: ["en_US"],
-    },
+      canonical,
+    }),
   };
 }
 

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { EmployeeDetailPage } from "../../../../components/employee-detail-page";
 import { alternateEmployeePath, employeeDetailPath, getDetailedEmployeeRecords, getEmployeeBySlug } from "../../../../lib/employee-content-engine";
 import { getDictionary } from "../../../../lib/i18n";
+import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
 const dictionary = getDictionary("es");
 
@@ -34,14 +35,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         "x-default": canonical,
       },
     },
-    openGraph: {
-      type: "website",
+    ...buildRouteSocialMetadata({
+      locale: "es",
+      surface: "employees",
       title: content.seoTitle,
       description: content.seoDescription,
-      url: canonical,
-      locale: "es_ES",
-      alternateLocale: ["en_US"],
-    },
+      canonical,
+    }),
   };
 }
 

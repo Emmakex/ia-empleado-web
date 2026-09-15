@@ -6,6 +6,7 @@ import {
   comparisonRecords,
   getComparisonBySlug,
 } from "../../../../../lib/comparison-content";
+import { buildRouteSocialMetadata } from "../../../../../lib/seo-social-metadata";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -28,15 +29,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical,
       languages: { "es-ES": alternate, en: canonical, "x-default": alternate },
     },
-    openGraph: {
-      type: "website",
-      url: canonical,
-      siteName: "IA Empleado",
-      locale: "en_US",
-      alternateLocale: ["es_ES"],
+    ...buildRouteSocialMetadata({
+      locale: "en",
+      surface: "home",
       title: record.seoTitle.en,
       description: record.seoDescription.en,
-    },
+      canonical,
+    }),
   };
 }
 
