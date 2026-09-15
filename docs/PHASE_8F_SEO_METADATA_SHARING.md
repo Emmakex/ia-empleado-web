@@ -2,13 +2,13 @@
 
 ## Status
 
-**ACTIVE — runtime SEO accepted in Production Verification #48; structured data and navigation closure is the final tranche before Phase 8G.**
+**COMPLETE — closed on 2026-09-15 after exact-marker Production Verification #49. Phase 8G is the next gate.**
 
-Phase 8F finalizes how the public IA Empleado website is discovered, indexed, canonicalized, translated and shared. It must preserve the existing bilingual commercial architecture while making SEO behavior explicit and testable rather than relying on inherited Next.js defaults.
+Phase 8F finalizes how the public IA Empleado website is discovered, indexed, canonicalized, translated and shared. It preserves the bilingual commercial architecture while making SEO behavior explicit and testable rather than relying on inherited Next.js defaults.
 
 ## Entry state
 
-The repository already has a useful SEO foundation:
+The repository entered Phase 8F with a useful SEO foundation:
 
 - ES and EN root layouts define `metadataBase` for `https://iaempleado.com`;
 - Home metadata includes title, description, canonical URL, ES/EN/x-default alternates, Open Graph, Twitter card and index/follow policy;
@@ -18,7 +18,7 @@ The repository already has a useful SEO foundation:
 - social previews are generated through the existing `brandPreviewUrl` system;
 - structured data is audited only where it is actually emitted; Phase 8F does not add schema merely to satisfy a checklist.
 
-This foundation is not yet sufficient to close Phase 8F. Runtime metadata/indexing/sharing is now accepted in production; the remaining closure work is structured-data truthfulness plus internal-link/breadcrumb integrity.
+Phase 8F converted that foundation into permanent static, runtime and exact-production acceptance contracts.
 
 ## Phase 8F acceptance contract
 
@@ -114,11 +114,11 @@ Production Verification #48 (`34954576538`) accepted exact `main` SHA `17d3c3b6a
 - the other five Lighthouse routes passed on their first sample;
 - Lighthouse reports were uploaded as `phase8e-lighthouse-reports` (artifact ID `10391900933`).
 
-This closes the runtime metadata/indexing/sharing tranche without claiming all of Phase 8F complete.
+This closed the runtime metadata/indexing/sharing tranche without yet claiming all of Phase 8F complete.
 
 ## Tranche 3 — structured data and navigation closure
 
-The final Phase 8F tranche is intentionally evidence-first. `tests/phase8f-structured-navigation.spec.ts` audits:
+The final Phase 8F tranche is evidence-first. `tests/phase8f-structured-navigation.spec.ts` audits:
 
 - every JSON-LD block on critical routes and representative commercial details parses successfully;
 - unsupported review/rating/product claims are absent;
@@ -131,11 +131,33 @@ The final Phase 8F tranche is intentionally evidence-first. `tests/phase8f-struc
 - internal implementation endpoints are not exposed as customer navigation links;
 - breadcrumb links are validated wherever breadcrumb navigation is actually rendered.
 
-This tranche does **not** require adding JSON-LD or breadcrumbs to pages that do not semantically need them. Exact audit failures become the remediation backlog; the contract must not manufacture schema merely to make a test pass.
+This tranche does **not** require adding JSON-LD or breadcrumbs to pages that do not semantically need them. The contract must not manufacture schema merely to make a test pass.
 
-## Initial technical inventory
+### Tranche 3 production acceptance and Phase 8F closure
 
-### Already accepted
+PR #93 (`test: audit Phase 8F structured data and navigation`) passed Web CI #250 and merged to `main` as exact release SHA `3ad2abc9e86bfaa0ff94d5b753198942194865ca`. Main Web CI #251 then repeated all contracts, TypeScript, Chromium browser QA and build successfully.
+
+Production Verification #49 (`34960212929`) accepted that exact SHA on 2026-09-15:
+
+- Hostinger exposed `web-phase-8f-structured-navigation` on the first marker check;
+- the production Playwright matrix executed **228 cases** across geometry, branding, conversion, accessibility, motion, canonical fidelity, performance, runtime SEO and structured-navigation coverage;
+- **227 cases passed in the main run and 1 responsive Home 768 px case was recorded as flaky after the automatic retry recovered it**; the workflow conclusion remained `success`;
+- every audited structured-data block parsed and remained aligned with route canonical identity and rendered locale;
+- unsupported Review/AggregateRating/Rating/Product structured claims remained absent;
+- the public navigation audit discovered **100 unique same-origin public links from 16 seed routes** and found no broken or implementation-only destinations;
+- breadcrumb targets passed across the representative ES/EN employee, team, comparison, sector, use-case, department and integration detail routes;
+- the internal renderer/API `noindex, nofollow` policy and real 404 behavior remained green;
+- the exact release generated **103/103 static pages** successfully before the Lighthouse lab;
+- the real-production Phase 8E budget regression remained green with CLS 0 on all six representative routes, no third-party requests and no broken images;
+- Lighthouse 13.4.1 passed all **6 routes** at the unchanged **Performance 0.90 / Accessibility 0.95 / Best Practices 0.95 / SEO 0.95** thresholds;
+- Home ES stabilized from Performance **0.83 / 0.95 / 0.96 → median 0.95**, with 1.00 Accessibility / Best Practices / SEO;
+- ROI ES stabilized from Performance **0.88 / 0.97 / 0.96 → median 0.96**, with Accessibility 0.97 and Best Practices / SEO 1.00;
+- the remaining four Lighthouse routes passed their threshold decision without a persistent miss;
+- Lighthouse reports were uploaded as `phase8e-lighthouse-reports` (artifact ID `10393543463`).
+
+The single recovered 768 px Home geometry retry is **not an SEO/metadata/link blocker** and does not invalidate Phase 8F acceptance. It is carried forward explicitly into Phase 8G because Phase 8G owns cross-browser/device and responsive acceptance. Phase 8G must reproduce the 768 px state across the new browser matrix and either prove the event transient or remediate a real layout regression before cross-browser/device acceptance can close.
+
+## Final accepted technical state
 
 - ES Home canonical: `/`;
 - EN Home canonical: `/en`;
@@ -146,17 +168,14 @@ This tranche does **not** require adding JSON-LD or breadcrumbs to pages that do
 - global robots sitemap/host declaration;
 - explicit `noindex, nofollow` response policy for API and internal rendering surfaces;
 - real 404 + noindex behavior;
-- browser/runtime SEO matrix protected in CI and Production Verification.
+- browser/runtime SEO matrix protected in CI and Production Verification;
+- structured-data validity and canonical consistency protected where JSON-LD exists;
+- unsupported structured-data claims blocked by the Phase 8F contract;
+- same-origin public navigation link integrity protected;
+- representative breadcrumb targets protected;
+- implementation endpoints absent from customer-facing navigation.
 
-### Must still be accepted before closure
-
-- structured-data validity and canonical consistency wherever JSON-LD exists;
-- absence of unsupported structured-data claims;
-- broken internal-link audit across the public navigation graph;
-- breadcrumb target validity wherever breadcrumbs exist;
-- continued absence of implementation endpoints from customer-facing navigation.
-
-## Engineering rules
+## Engineering rules retained as permanent regression protection
 
 - EN/ES ship together for every customer-facing metadata change.
 - Canonical and hreflang mappings are server-authoritative; client state never determines index identity.
@@ -165,8 +184,9 @@ This tranche does **not** require adding JSON-LD or breadcrumbs to pages that do
 - A failing SEO contract produces the exact route, field and received value where possible.
 - Do not hide failures by removing routes from the audit matrix unless the route is explicitly documented as non-indexable.
 - Do not add structured data solely to satisfy an audit; schema must describe content actually rendered on the route.
-- Phase 8G cannot begin until Phase 8F implementation, required gates, acceptance, blockers and documentation are complete.
 
 ## Next gate
 
-Run the structured-data/internal-link/breadcrumb audit in Web CI. Remediate only reproducible failures, then promote the audit into Production Verification with a new exact release marker. Phase 8F can move to COMPLETE only after that production gate and final closure evidence are green.
+**Phase 8F is complete. Phase 8G — Production browser/device acceptance — is now the next permitted implementation gate.**
+
+Phase 8G must extend the current Chromium-only Playwright coverage to a controlled automated browser-engine/device-profile matrix and keep real Safari/iOS/Android device evidence distinct from emulation. The recovered Home 768 px retry from Production Verification #49 is an explicit entry risk and must be reproduced or resolved inside Phase 8G rather than hidden.
