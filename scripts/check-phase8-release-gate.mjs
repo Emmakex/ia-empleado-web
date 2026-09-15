@@ -19,6 +19,7 @@ const files = {
   processAnalyzer: "components/process-analyzer.tsx",
   homePage: "components/home-page.tsx",
   brandCharacters: "lib/brand-characters.ts",
+  brandCharacterImage: "components/brand-character-image.tsx",
   header: "components/site-header.tsx",
 };
 
@@ -44,6 +45,7 @@ const teamBuilder = read(files.teamBuilder);
 const processAnalyzer = read(files.processAnalyzer);
 const homePage = read(files.homePage);
 const brandCharacters = read(files.brandCharacters);
+const brandCharacterImage = read(files.brandCharacterImage);
 const header = read(files.header);
 
 const marker = "web-phase-8e-static-image-cache";
@@ -206,14 +208,17 @@ if (homePage.includes("HomeBrandStory") || homePage.includes("<video")) {
 }
 
 for (const phrase of [
-  'import type { StaticImageData } from "next/image"',
   'import claraCanonical from "../public/branding/characters/clara-canonical.webp"',
   'import alexCanonical from "../public/branding/characters/alex-canonical.webp"',
   'import sofiaCanonical from "../public/branding/characters/sofia-canonical.webp"',
   'import javierCanonical from "../public/branding/characters/javier-canonical.webp"',
-  "asset: StaticImageData",
+  "deliveryAsset: string",
+  "deliveryAsset: claraCanonical.src",
 ]) {
-  if (!brandCharacters.includes(phrase)) throw new Error(`Canonical character static-import contract missing phrase: ${phrase}`);
+  if (!brandCharacters.includes(phrase)) throw new Error(`Canonical character delivery contract missing phrase: ${phrase}`);
+}
+if (!brandCharacterImage.includes("src={character.deliveryAsset}")) {
+  throw new Error("Canonical browser renderer is not using the content-hashed delivery asset");
 }
 
 if (!header.includes("hrefLang={otherLocale}")) {
@@ -233,4 +238,4 @@ for (const phrase of [
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
 
-console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions, canonical static-image delivery and the Phase 8E production performance budget remain protected.`);
+console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions, canonical source/browser-delivery separation and the Phase 8E production performance budget remain protected.`);
