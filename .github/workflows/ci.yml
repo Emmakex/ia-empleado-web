@@ -116,8 +116,8 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Install Chromium, Firefox and WebKit for browser QA
-        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Install Chromium, Firefox, WebKit and Microsoft Edge for browser QA
+        run: npx playwright install --with-deps chromium firefox webkit msedge
 
       - name: Browser UX and accessibility QA
         run: npm run qa:browser
@@ -137,6 +137,9 @@ jobs:
       - name: Phase 8G Android Chromium emulation acceptance
         run: npm run qa:phase8g:android
 
+      - name: Phase 8G Microsoft Edge smoke acceptance
+        run: npm run qa:phase8g:edge
+
       - name: Upload browser QA diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
@@ -149,6 +152,7 @@ jobs:
             playwright-phase8g-webkit-report/
             playwright-phase8g-iphone-report/
             playwright-phase8g-android-report/
+            playwright-phase8g-edge-report/
             test-results/
           if-no-files-found: ignore
           retention-days: 7

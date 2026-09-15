@@ -2,23 +2,19 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
-  testIgnore: [
-    "**/phase8g-768-stability.spec.ts",
-    "**/phase8g-iphone-webkit-emulation.spec.ts",
-    "**/phase8g-android-chromium-emulation.spec.ts",
-    "**/phase8g-edge-smoke.spec.ts",
-  ],
+  testMatch: "**/phase8g-edge-smoke.spec.ts",
   timeout: 45_000,
   expect: { timeout: 8_000 },
   fullyParallel: false,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   reporter: process.env.CI
-    ? [["line"], ["html", { outputFolder: "playwright-report", open: "never" }]]
-    : [["list"], ["html", { outputFolder: "playwright-report", open: "never" }]],
+    ? [["line"], ["html", { outputFolder: "playwright-phase8g-edge-report", open: "never" }]]
+    : [["list"], ["html", { outputFolder: "playwright-phase8g-edge-report", open: "never" }]],
   use: {
     baseURL: "http://127.0.0.1:3100",
     browserName: "chromium",
+    channel: "msedge",
     colorScheme: "light",
     locale: "es-ES",
     reducedMotion: "reduce",

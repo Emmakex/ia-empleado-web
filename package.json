@@ -14,6 +14,7 @@
     "qa:phase8g:webkit": "playwright test --config=playwright.phase8g.webkit.config.ts tests/phase8g-webkit-smoke.spec.ts",
     "qa:phase8g:iphone": "playwright test --config=playwright.phase8g.iphone.config.ts",
     "qa:phase8g:android": "playwright test --config=playwright.phase8g.android.config.ts",
+    "qa:phase8g:edge": "playwright test --config=playwright.phase8g.edge.config.ts",
     "qa:performance:production": "playwright test --config=playwright.production.config.ts tests/phase8e-performance-budget.spec.ts",
     "qa:lighthouse:production": "node scripts/run-phase8e-lighthouse.mjs",
     "validate": "npm run i18n:check && npm run typecheck && npm run build"
