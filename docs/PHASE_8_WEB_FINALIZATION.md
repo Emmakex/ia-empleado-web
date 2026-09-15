@@ -18,6 +18,7 @@ The web already has a substantial foundation:
 - Phase 8B accessibility closure completed in CI and exact-marker production verification;
 - Phase 8C motion and animation closure completed in CI and exact-marker production verification;
 - Phase 8D canonical visual fidelity closure completed in CI and exact-marker production verification;
+- Phase 8E performance/Core Web Vitals closure completed with real Hostinger budgets plus exact-SHA Lighthouse acceptance;
 - Playwright browser QA;
 - lead capture and Hostinger SMTP delivery verified in production;
 - sitemap and robots generation;
@@ -25,10 +26,9 @@ The web already has a substantial foundation:
 
 The repository also exposes important remaining gaps that prevent declaring the public web finished:
 
-1. **Performance is now the active Phase 8E gate.** A measurable production budget is being introduced for Core Web Vitals, responsiveness, transfer size, images, fonts, third-party requests and static-media caching.
-2. **Final SEO/metadata/canonical/hreflang/schema review is still required** before launch readiness can be claimed.
-3. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
-4. **Final content/commercial acceptance remains required** before the public web can be declared launch-ready.
+1. **SEO, metadata and sharing is now the active Phase 8F gate.** The existing metadata/sitemap/robots/social-preview foundation must be audited across the complete bilingual route matrix and corrected where necessary.
+2. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
+3. **Final content/commercial acceptance remains required** before the public web can be declared launch-ready.
 
 ## Finish-before-advance rule
 
@@ -89,7 +89,7 @@ Phase 8A closed on 2026-09-13 after the hydration correction completed the full 
 - the previously failing ROI keyboard synchronization test passed;
 - final production result: **108/108 tests passed**.
 
-Phase 8A is complete. Phase 8B, Phase 8C and Phase 8D are also complete; Phase 8E is now the active phase.
+Phase 8A is complete. Phases 8B, 8C, 8D and 8E are also complete; Phase 8F is now the active phase.
 
 ## Phase 8B — Accessibility closure
 
@@ -199,7 +199,7 @@ The hydration hotfix completed the full release chain on 2026-09-14:
 - final production result: **148/148 tests passed in 7.7 minutes**;
 - no production diagnostic artifact was required because the verification job completed successfully.
 
-**Phase 8B is complete. Phase 8C and Phase 8D are also complete; Phase 8E — Performance & Core Web Vitals — is now the active phase.**
+**Phase 8B is complete. Phases 8C, 8D and 8E are also complete; Phase 8F — SEO, metadata and sharing — is now the active phase.**
 
 ## Phase 8C — Motion and animation finalization
 
@@ -237,7 +237,7 @@ Phase 8C completed the full implementation, integration and exact-marker product
 - final production result: **152/152 tests passed in 7.2 minutes**;
 - no production diagnostic artifact was required because the exact-marker production verification completed successfully.
 
-**Phase 8C is complete. Phase 8D is also complete; Phase 8E — Performance & Core Web Vitals — is now the active phase.**
+**Phase 8C is complete. Phase 8D and Phase 8E are also complete; Phase 8F — SEO, metadata and sharing — is now the active phase.**
 
 ## Phase 8D — Canonical visual fidelity closure
 
@@ -280,7 +280,7 @@ The detailed product decision and future policy live in `docs/PHASE_8D_CANONICAL
 
 ## Phase 8E — Performance & Core Web Vitals
 
-**Status: ACTIVE — first measurable production-budget tranche in progress.**
+**Status: COMPLETE — closed on 2026-09-15 after exact-SHA Production Verification #46.**
 
 Add measurable launch budgets rather than relying only on visual QA.
 
@@ -315,13 +315,32 @@ The initial contract introduces:
 
 The detailed baseline and initial limits live in `docs/PHASE_8E_PERFORMANCE_BASELINE.md`.
 
-Initial target: Lighthouse performance/accessibility/best-practices/SEO scores suitable for a production commercial site, with explicit exceptions documented rather than hidden.
+The final gate adds pinned Lighthouse 13.4.1 mobile audits with unchanged launch thresholds of Performance 0.90, Accessibility 0.95, Best Practices 0.95 and SEO 0.95. Real Hostinger performance evidence remains separate from the exact-SHA WAF-independent Lighthouse lab.
 
-Core Web Vitals regressions must become actionable diagnostics in CI/production verification where technically stable.
+### Phase 8E closure evidence
 
-Phase 8E remains open until production measurements are green, exceeded budgets are remediated, and a stable Lighthouse launch score gate is added and accepted.
+Production Verification #46 (`34930591064`) accepted exact `main` SHA `783cbf5888f26056fc808a7c1fba4bdf2049c6ee` after Web CI #233 passed:
+
+- Hostinger served `web-phase-8e-lighthouse-gate`;
+- the complete production browser matrix finished **163/163 green**;
+- real-production LCP across the six representative routes was **300–368 ms**;
+- CLS was **0** throughout;
+- longest observed production long task was **0 ms**;
+- TTFB was approximately **36–41.3 ms**;
+- no third-party requests, broken images or below-fold eager-image violations were observed;
+- the canonical Clara asset remained **6,430 bytes** with `public, max-age=315360000, immutable`;
+- the exact SHA built and started successfully for the local production Lighthouse lab;
+- all six Lighthouse route decisions satisfied the unchanged 90/95/95/95 thresholds;
+- Home ES was the only route requiring the adaptive retry: Performance **0.81 / 0.96 / 0.96**, final median **0.96**;
+- no persistent performance regression remained.
+
+Detailed closure evidence lives in `docs/PHASE_8E_CLOSURE.md` and `docs/PHASE_8E_LIGHTHOUSE_STABILITY.md`.
+
+**Phase 8E is complete. Phase 8F — SEO, metadata and sharing — is now the active phase.**
 
 ## Phase 8F — SEO, metadata and sharing
+
+**Status: ACTIVE — foundation contract opened on 2026-09-15 after Phase 8E closure.**
 
 Verify:
 
@@ -337,6 +356,8 @@ Verify:
 - 404/not-found behavior;
 - no broken internal links;
 - no placeholder copy or development-only routes discoverable from public navigation.
+
+The detailed acceptance model and initial technical inventory live in `docs/PHASE_8F_SEO_METADATA_SHARING.md`. Tranche 1 protects the existing bilingual metadata, sitemap/robots, social-preview and internal-renderer foundations in Web CI before browser/runtime route auditing begins.
 
 ## Phase 8G — Production browser/device acceptance
 
@@ -384,7 +405,7 @@ Phase 8 closes only when all are true:
 - [x] final animation/motion polish green;
 - [x] canonical visual rollback deployed and production verified;
 - [x] generated website video absent and canonical character fidelity green;
-- [ ] performance/Core Web Vitals budget measured and accepted;
+- [x] performance/Core Web Vitals budget measured and accepted;
 - [ ] SEO/metadata/link audit green;
 - [ ] cross-browser/device acceptance green;
 - [ ] ES/EN content parity green;
