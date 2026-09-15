@@ -46,7 +46,7 @@ const homePage = read(files.homePage);
 const brandCharacters = read(files.brandCharacters);
 const header = read(files.header);
 
-const marker = "web-phase-8e-cache-lazy-loading";
+const marker = "web-phase-8e-static-image-cache";
 const metadataMarker = `"ia-web-release": "${marker}"`;
 
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
@@ -143,10 +143,11 @@ for (const phrase of [
 for (const phrase of [
   'test.describe("Phase 8D canonical visual fidelity"',
   'locator("video")',
-  'clara-canonical.webp',
-  'alex-canonical.webp',
-  'sofia-canonical.webp',
-  'javier-canonical.webp',
+  "clara-canonical",
+  "alex-canonical",
+  "sofia-canonical",
+  "javier-canonical",
+  "/_next/static/media/",
   'reducedMotion: "reduce"',
 ]) {
   if (!canonicalVisual.includes(phrase)) {
@@ -159,6 +160,8 @@ for (const phrase of [
   "PHASE8E_METRICS",
   "PHASE8E_STATIC_ASSET",
   "belowFoldEagerImages",
+  "browserUrl",
+  "reusableCacheSeconds",
 ]) {
   if (!performance.includes(phrase)) {
     throw new Error(`Phase 8E performance production gate missing phrase: ${phrase}`);
@@ -202,13 +205,15 @@ if (homePage.includes("HomeBrandStory") || homePage.includes("<video")) {
   throw new Error("Homepage reintroduced the rejected video surface");
 }
 
-for (const asset of [
-  "/branding/characters/clara-canonical.webp",
-  "/branding/characters/alex-canonical.webp",
-  "/branding/characters/sofia-canonical.webp",
-  "/branding/characters/javier-canonical.webp",
+for (const phrase of [
+  'import type { StaticImageData } from "next/image"',
+  'import claraCanonical from "../public/branding/characters/clara-canonical.webp"',
+  'import alexCanonical from "../public/branding/characters/alex-canonical.webp"',
+  'import sofiaCanonical from "../public/branding/characters/sofia-canonical.webp"',
+  'import javierCanonical from "../public/branding/characters/javier-canonical.webp"',
+  "asset: StaticImageData",
 ]) {
-  if (!brandCharacters.includes(asset)) throw new Error(`Canonical character source missing: ${asset}`);
+  if (!brandCharacters.includes(phrase)) throw new Error(`Canonical character static-import contract missing phrase: ${phrase}`);
 }
 
 if (!header.includes("hrefLang={otherLocale}")) {
@@ -228,4 +233,4 @@ for (const phrase of [
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
 
-console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions and the Phase 8E production performance budget remain protected.`);
+console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions, canonical static-image delivery and the Phase 8E production performance budget remain protected.`);
