@@ -315,7 +315,7 @@ The initial contract introduces:
 
 The detailed baseline and initial limits live in `docs/PHASE_8E_PERFORMANCE_BASELINE.md`.
 
-The final gate adds pinned Lighthouse 13.4.1 mobile audits with unchanged launch thresholds of Performance 0.90, Accessibility 0.95, Best Practices 0.95 and SEO 0.95. Real Hostinger performance evidence remains separate from the exact-SHA WAF-independent Lighthouse lab.
+The final gate adds pinned Lighthouse 13.4.1 mobile audits with unchanged launch thresholds of Performance 0.90, Accessibility 0.95, Best Practices 0.95 and SEO 0.95. Real Hostinger performance evidence remains separate from the exact-SHA WAF-independent Lighthouse lab. The **stable Lighthouse launch score gate** is now accepted and remains permanent regression protection.
 
 ### Phase 8E closure evidence
 
