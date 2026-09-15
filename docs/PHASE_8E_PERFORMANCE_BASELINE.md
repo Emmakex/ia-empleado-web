@@ -2,7 +2,7 @@
 
 ## Status
 
-ACTIVE — the production performance budget, lazy-loading remediation and hashed canonical-image cache delivery are accepted in production. Production Verification #42 closed the cache blocker with 163/163 tests green. The active remaining Phase 8E gate is now the Lighthouse launch-score gate.
+ACTIVE — the production performance budget, lazy-loading remediation and hashed canonical-image cache delivery are accepted in production. Production Verification #42 closed the cache blocker with 163/163 tests green. Production Verification #43 then passed the full 163/163 browser matrix again but exposed a Lighthouse-specific Hostinger/WAF 403 before category scores could be calculated. The active Phase 8E work is therefore an audit-harness remediation, not a relaxation of launch thresholds.
 
 ## Objective
 
@@ -142,9 +142,32 @@ Pinned tooling and launch thresholds:
 - `LIGHTHOUSE_THRESHOLD_FAILURE { ... }` for any category below its minimum;
 - `LIGHTHOUSE_EXECUTION_FAILURE { ... }` if the audit itself cannot execute.
 
-Production Verification uploads the Lighthouse JSON reports even when the gate is green, preserving launch evidence. The exact release marker for this tranche is `web-phase-8e-lighthouse-gate`.
+Production Verification uploads the Lighthouse JSON reports even when the gate is green, preserving launch evidence. The exact website release marker for this tranche is `web-phase-8e-lighthouse-gate`.
 
 No category threshold may be reduced merely to make CI pass. A failure must first be mapped to the responsible audit, route and implementation cause; any documented exception must be explicit and justified as nondeterministic or externally controlled.
+
+## Production Verification #43 — Lighthouse/WAF execution blocker
+
+Production Verification #43 (`34919207771`) checked out exact `main` SHA `4f09f5e5e7d01c4aba2d8b4d917225655acc74c4`, confirmed Hostinger was serving `web-phase-8e-lighthouse-gate`, and then completed the normal production suite **163/163 green**.
+
+The Playwright performance evidence in that same run remained excellent:
+
+- LCP across the six representative routes: **236–308 ms**;
+- CLS: **0** on every route;
+- TTFB: approximately **16.6–18.2 ms**;
+- longest observed long task: **54 ms**;
+- third-party requests: **0**;
+- broken images: **0**;
+- `belowFoldEagerImages: []` throughout;
+- canonical Clara remained **6,430 bytes** with `public, max-age=315360000, immutable`.
+
+Lighthouse itself never reached category scoring. All six routes produced the same structured execution error: `Lighthouse was unable to reliably load the page ... (Status code: 403)`. There were **zero `LIGHTHOUSE_THRESHOLD_FAILURE` records**; the failure class was exclusively `LIGHTHOUSE_EXECUTION_FAILURE`.
+
+Because the exact same GitHub runner had already reached and exercised all six routes through Playwright, the repeated 403 is classified as an auditor-identity/WAF compatibility problem rather than a product availability or performance regression. The first harness remediation therefore keeps Lighthouse 13.4.1, the six routes and all four 90/95/95/95 thresholds unchanged, while setting a versioned normal mobile Chrome `emulatedUserAgent` before Lighthouse navigation.
+
+The runner now emits `LIGHTHOUSE_RUN_CONTEXT` with the resolved Chrome path, form factor and emulated browser identity. Any execution failure also includes that user-agent context. The static Lighthouse contract prevents this remediation from being silently removed.
+
+The website runtime did not change for this harness-only correction, so the already exact `web-phase-8e-lighthouse-gate` marker remains intentional. A new merge is still required so Production Verification checks out the corrected runner before the Lighthouse audit is retried.
 
 ## Diagnostics
 
@@ -160,7 +183,7 @@ The canonical image delivery check prints:
 
 That record includes `browserUrl`, decoded `sourceUrl`, payload bytes, received `cacheControl` and computed `cacheSeconds`.
 
-The Lighthouse gate adds `PHASE8E_LIGHTHOUSE`, `LIGHTHOUSE_THRESHOLD_FAILURE` and `LIGHTHOUSE_EXECUTION_FAILURE` records and retains the full JSON reports as workflow artifacts.
+The Lighthouse gate adds `LIGHTHOUSE_RUN_CONTEXT`, `PHASE8E_LIGHTHOUSE`, `LIGHTHOUSE_THRESHOLD_FAILURE` and `LIGHTHOUSE_EXECUTION_FAILURE` records and retains the full JSON reports as workflow artifacts.
 
 ## Execution model
 
@@ -172,4 +195,4 @@ The Lighthouse gate adds `PHASE8E_LIGHTHOUSE`, `LIGHTHOUSE_THRESHOLD_FAILURE` an
 
 ## Remaining Phase 8E work
 
-Phase 8E remains open until `web-phase-8e-lighthouse-gate` is deployed and Production Verification passes the existing **163/163** browser suite plus all Lighthouse category thresholds on all six representative routes. Only then may Phase 8E close and Phase 8F — SEO/metadata/sharing finalization — become active.
+Phase 8E remains open until the corrected Lighthouse browser identity can audit the production release and all six routes satisfy the unchanged category thresholds. Only then may Phase 8E close and Phase 8F — SEO/metadata/sharing finalization — become active.

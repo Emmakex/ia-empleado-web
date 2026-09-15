@@ -29,11 +29,15 @@ const expectedScores = {
   "best-practices": 0.95,
   seo: 0.95,
 };
+const expectedUserAgent = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36";
 
 if (config.tool?.package !== "lighthouse" || config.tool?.version !== "13.4.1") {
   throw new Error("Phase 8E Lighthouse tool/version is not pinned to lighthouse@13.4.1");
 }
 if (config.formFactor !== "mobile") throw new Error("Phase 8E Lighthouse launch gate must run with the mobile form factor");
+if (config.emulatedUserAgent !== expectedUserAgent) {
+  throw new Error("Phase 8E Lighthouse browser UA remediation drifted from the approved normal mobile Chrome identity");
+}
 if (JSON.stringify(config.routes) !== JSON.stringify(requiredRoutes)) {
   throw new Error(`Unexpected Phase 8E Lighthouse route matrix: ${JSON.stringify(config.routes)}`);
 }
@@ -45,6 +49,9 @@ for (const [category, minimum] of Object.entries(expectedScores)) {
 
 for (const phrase of [
   "PRODUCTION_BASE_URL is required",
+  "LIGHTHOUSE_USER_AGENT_MISSING",
+  "LIGHTHOUSE_RUN_CONTEXT",
+  "--emulatedUserAgent=${config.emulatedUserAgent}",
   "PHASE8E_LIGHTHOUSE",
   "LIGHTHOUSE_THRESHOLD_FAILURE",
   "LIGHTHOUSE_EXECUTION_FAILURE",
@@ -76,11 +83,13 @@ if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
 }
 for (const phrase of [
   "Production Verification #42",
+  "Production Verification #43",
   "163/163",
   "315360000",
+  "Status code: 403",
   "Lighthouse launch-score gate",
 ]) {
   if (!performanceDocs.includes(phrase)) throw new Error(`Phase 8E performance evidence missing phrase: ${phrase}`);
 }
 
-console.log("Phase 8E Lighthouse launch contract OK: pinned Lighthouse, bilingual route matrix, launch scores, diagnostics, exact marker and report artifacts are protected.");
+console.log("Phase 8E Lighthouse launch contract OK: pinned Lighthouse, bilingual route matrix, launch scores, normal mobile Chrome UA remediation, diagnostics, exact marker and report artifacts are protected.");
