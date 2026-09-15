@@ -138,6 +138,7 @@ jobs:
           name: playwright-report
           path: |
             playwright-report/
+            playwright-phase8g-768-report/
             playwright-phase8g-firefox-report/
             playwright-phase8g-webkit-report/
             test-results/
