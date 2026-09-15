@@ -5,10 +5,11 @@ import { spawnSync } from "node:child_process";
 const root = process.cwd();
 const configPath = path.join(root, "config/lighthouse-launch.json");
 const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
-const baseUrl = process.env.PRODUCTION_BASE_URL;
+const lighthouseBaseUrl = process.env.LIGHTHOUSE_BASE_URL ?? process.env.PRODUCTION_BASE_URL;
+const baseUrlSource = process.env.LIGHTHOUSE_BASE_URL ? "LIGHTHOUSE_BASE_URL" : "PRODUCTION_BASE_URL";
 
-if (!baseUrl) {
-  throw new Error("PRODUCTION_BASE_URL is required for the Phase 8E Lighthouse launch gate");
+if (!lighthouseBaseUrl) {
+  throw new Error("LIGHTHOUSE_BASE_URL or PRODUCTION_BASE_URL is required for the Phase 8E Lighthouse launch gate");
 }
 
 if (typeof config.emulatedUserAgent !== "string" || !config.emulatedUserAgent.includes("Chrome/")) {
@@ -33,10 +34,10 @@ const failures = [];
 const summary = [];
 const categories = Object.keys(config.categories);
 
-console.log(`LIGHTHOUSE_RUN_CONTEXT ${JSON.stringify({ chromePath, formFactor: config.formFactor, emulatedUserAgent: config.emulatedUserAgent })}`);
+console.log(`LIGHTHOUSE_RUN_CONTEXT ${JSON.stringify({ chromePath, formFactor: config.formFactor, emulatedUserAgent: config.emulatedUserAgent, baseUrl: lighthouseBaseUrl, baseUrlSource })}`);
 
 for (const route of config.routes) {
-  const url = new URL(route, baseUrl).toString();
+  const url = new URL(route, lighthouseBaseUrl).toString();
   const slug = route === "/" ? "home-es" : route.replace(/^\//, "").replaceAll("/", "-") || "home";
   const reportPath = path.join(artifactDir, `${slug}.json`);
   const packageSpec = `${config.tool.package}@${config.tool.version}`;
@@ -68,6 +69,7 @@ for (const route of config.routes) {
       route,
       url,
       exitCode: result.status,
+      baseUrlSource,
       emulatedUserAgent: config.emulatedUserAgent,
       stdout: result.stdout?.slice(-4000) ?? "",
       stderr: result.stderr?.slice(-4000) ?? "",
@@ -113,7 +115,7 @@ for (const route of config.routes) {
 
 fs.writeFileSync(
   path.join(artifactDir, "summary.json"),
-  `${JSON.stringify({ config, baseUrl, chromePath, summary, failures }, null, 2)}\n`,
+  `${JSON.stringify({ config, lighthouseBaseUrl, baseUrlSource, chromePath, summary, failures }, null, 2)}\n`,
 );
 
 if (failures.length) {
