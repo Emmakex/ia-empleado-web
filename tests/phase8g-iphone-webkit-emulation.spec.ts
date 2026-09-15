@@ -13,11 +13,16 @@ const criticalRoutes = [
   "/en/request-demo",
 ];
 
-test("iPhone WebKit emulation renders critical mobile routes without runtime errors or overflow", async ({ page }) => {
+test("iPhone WebKit emulation renders critical mobile routes without runtime errors or overflow", async ({
+  browserName,
+  page,
+}) => {
   const pageErrors: string[] = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
 
-  expect(await page.evaluate(() => navigator.maxTouchPoints)).toBeGreaterThan(0);
+  expect(browserName).toBe("webkit");
+  expect(page.viewportSize()).toEqual({ width: 390, height: 844 });
+  expect(await page.evaluate(() => navigator.userAgent)).toContain("iPhone");
 
   for (const route of criticalRoutes) {
     await test.step(route, async () => {
