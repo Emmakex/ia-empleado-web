@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit",
     "i18n:check": "node scripts/check-i18n.mjs",
     "qa:browser": "playwright test",
-    "qa:phase8g:768": "playwright test tests/phase8g-768-stability.spec.ts --retries=0",
+    "qa:phase8g:768": "playwright test --config=playwright.phase8g.768.config.ts",
     "qa:phase8g:firefox": "playwright test --config=playwright.phase8g.firefox.config.ts tests/phase8g-firefox-smoke.spec.ts",
     "qa:phase8g:webkit": "playwright test --config=playwright.phase8g.webkit.config.ts tests/phase8g-webkit-smoke.spec.ts",
     "qa:performance:production": "playwright test --config=playwright.production.config.ts tests/phase8e-performance-budget.spec.ts",
