@@ -87,7 +87,7 @@ The sole remaining failure was the raw file `/branding/characters/clara-canonica
 
 The release contract now follows the image request that the browser actually uses instead of the mutable raw `/public` URL.
 
-The approved character WebPs are unchanged. `lib/brand-characters.ts` imports Clara, Alex, Sofía and Javier as Next static image modules (`StaticImageData`). That makes the build emit content-hashed assets under `/_next/static/media/...` while preserving the approved source binaries and visual identity.
+The approved character WebPs are unchanged. `lib/brand-characters.ts` remains a pure data/source-path catalog for server-side consumers such as campaign rendering. `components/brand-character-image.tsx` alone imports Clara, Alex, Sofía and Javier as Next static image modules and maps the character IDs to those `StaticImageData` assets for browser delivery. That keeps campaign/test code independent of binary module loaders while making the Next build emit content-hashed assets under `/_next/static/media/...` for the public renderer.
 
 `next.config.ts` sets `images.minimumCacheTTL` to **604800 seconds (7 days)** for optimized image delivery. The Phase 8D canonical-fidelity test now requires the four canonical character identities to resolve through hashed `/_next/static/media/...` sources. The Phase 8E production test discovers Clara's real `currentSrc`, verifies that its underlying source is the hashed canonical WebP, requests the actual browser URL and requires:
 
@@ -115,7 +115,7 @@ That record includes `browserUrl`, decoded `sourceUrl`, payload bytes, received 
 
 ## Execution model
 
-- ordinary Web CI runs `scripts/check-phase8e-performance-budget.mjs` to protect the budget, static-import, optimized-image TTL and lazy-loading contracts;
+- ordinary Web CI runs `scripts/check-phase8e-performance-budget.mjs` to protect the budget, renderer-scoped static imports, optimized-image TTL and lazy-loading contracts;
 - numeric network and Core Web Vitals budgets run only when `PRODUCTION_BASE_URL` is set;
 - Production Verification includes `tests/phase8e-performance-budget.spec.ts` against `https://iaempleado.com`;
 - `npm run qa:performance:production` provides the same focused production check when needed manually.
