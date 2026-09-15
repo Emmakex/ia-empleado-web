@@ -10,6 +10,7 @@ const files = {
   footer: "components/site-footer.tsx",
   teamBuilder: "components/team-builder.tsx",
   brandCharacters: "lib/brand-characters.ts",
+  brandCharacterImage: "components/brand-character-image.tsx",
 };
 
 for (const filePath of Object.values(files)) {
@@ -26,6 +27,7 @@ const nextConfig = fs.readFileSync(files.nextConfig, "utf8");
 const footer = fs.readFileSync(files.footer, "utf8");
 const teamBuilder = fs.readFileSync(files.teamBuilder, "utf8");
 const brandCharacters = fs.readFileSync(files.brandCharacters, "utf8");
+const brandCharacterImage = fs.readFileSync(files.brandCharacterImage, "utf8");
 
 if (budget.version !== 1) throw new Error(`Unsupported Phase 8E budget version: ${budget.version}`);
 if (!Array.isArray(budget.routes) || budget.routes.length < 6) {
@@ -84,21 +86,25 @@ for (const phrase of [
   if (!testSource.includes(phrase)) throw new Error(`Phase 8E performance test missing phrase: ${phrase}`);
 }
 
-for (const phrase of [
-  "minimumCacheTTL: 604800",
-]) {
-  if (!nextConfig.includes(phrase)) throw new Error(`Phase 8E optimized-image cache policy missing phrase: ${phrase}`);
+if (!nextConfig.includes("minimumCacheTTL: 604800")) {
+  throw new Error("Phase 8E optimized-image cache policy is not protected");
 }
 
 for (const phrase of [
-  'import type { StaticImageData } from "next/image"',
   'import claraCanonical from "../public/branding/characters/clara-canonical.webp"',
   'import alexCanonical from "../public/branding/characters/alex-canonical.webp"',
   'import sofiaCanonical from "../public/branding/characters/sofia-canonical.webp"',
   'import javierCanonical from "../public/branding/characters/javier-canonical.webp"',
-  "asset: StaticImageData",
+  "deliveryAsset: string",
+  "deliveryAsset: claraCanonical.src",
+  "deliveryAsset: alexCanonical.src",
+  "deliveryAsset: sofiaCanonical.src",
+  "deliveryAsset: javierCanonical.src",
 ]) {
-  if (!brandCharacters.includes(phrase)) throw new Error(`Phase 8E canonical static-import contract missing phrase: ${phrase}`);
+  if (!brandCharacters.includes(phrase)) throw new Error(`Phase 8E canonical delivery-asset contract missing phrase: ${phrase}`);
+}
+if (!brandCharacterImage.includes("src={character.deliveryAsset}")) {
+  throw new Error("Canonical browser renderer is not using the content-hashed delivery asset");
 }
 
 for (const [surface, source] of [["footer", footer], ["Team Builder", teamBuilder]]) {
@@ -119,4 +125,4 @@ if (!canonicalDecision.includes("COMPLETE")) {
   throw new Error("Phase 8D documentation must be closed before Phase 8E advances");
 }
 
-console.log(`Phase 8E performance contract OK: ${budget.routes.length} representative routes, explicit CWV/resource budgets, static-import canonical media, optimized-image TTL, below-fold lazy loading and actionable URL diagnostics are protected.`);
+console.log(`Phase 8E performance contract OK: ${budget.routes.length} representative routes, explicit CWV/resource budgets, hashed canonical browser delivery, optimized-image TTL, below-fold lazy loading and actionable URL diagnostics are protected.`);
