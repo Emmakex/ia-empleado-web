@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "tool": {
     "package": "lighthouse",
     "version": "13.4.1"
@@ -11,6 +11,10 @@
     "accessibility": 0.95,
     "best-practices": 0.95,
     "seo": 0.95
+  },
+  "stability": {
+    "samplesOnThresholdFailure": 3,
+    "decision": "median"
   },
   "routes": [
     "/",
