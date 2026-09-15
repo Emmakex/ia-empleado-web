@@ -128,8 +128,8 @@ requirePhrases("Phase 8E closure evidence", phase8eClosure, [
   "Phase 8F — SEO, metadata and sharing — is now ACTIVE",
 ]);
 
-requirePhrases("Phase 8F activation and runtime evidence", phase8f, [
-  "ACTIVE",
+requirePhrases("Phase 8F closure evidence", phase8f, [
+  "COMPLETE",
   "Titles and descriptions",
   "Canonical URLs and language alternates",
   "Sitemap",
@@ -143,7 +143,15 @@ requirePhrases("Phase 8F activation and runtime evidence", phase8f, [
   "196/196 green",
   "web-phase-8f-runtime-seo",
   "0.80 / 0.96 / 0.96",
-  "structured data and navigation closure",
+  "Production Verification #49",
+  "34960212929",
+  "web-phase-8f-structured-navigation",
+  "228 cases",
+  "100 unique same-origin public links",
+  "103/103 static pages",
+  "10393543463",
+  "Phase 8F is complete",
+  "Phase 8G",
 ]);
 
 requirePhrases("Phase 8F runtime SEO matrix", runtimeSeoMatrix, [
@@ -183,4 +191,4 @@ if (pageRouteLeaks.length) {
   throw new Error(`Internal rendering endpoints became customer-facing pages: ${pageRouteLeaks.join(", ")}`);
 }
 
-console.log(`Phase 8F SEO foundation OK: ${marker} protects bilingual metadata, sitemap/robots, governed social previews, explicit internal noindex policy, runtime SEO and structured-data/navigation production coverage.`);
+console.log(`Phase 8F SEO closure OK: ${marker} protects bilingual metadata, sitemap/robots, governed social previews, explicit internal noindex policy, runtime SEO, structured-data/navigation production coverage and exact Production Verification #49 closure evidence.`);
