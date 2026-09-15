@@ -15,7 +15,7 @@ jobs:
   verify-production:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
@@ -27,10 +27,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Web Phase 8E static-image cache remediation on Hostinger
+      - name: Wait for Web Phase 8E Lighthouse gate on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-          EXPECTED_RELEASE: web-phase-8e-static-image-cache
+          EXPECTED_RELEASE: web-phase-8e-lighthouse-gate
         run: |
           set -euo pipefail
           for attempt in $(seq 1 40); do
@@ -74,6 +74,20 @@ jobs:
           tests/phase8d-canonical-visual.spec.ts
           tests/phase8e-performance-budget.spec.ts
           tests/ux-visual.spec.ts
+
+      - name: Run Phase 8E Lighthouse launch gate
+        env:
+          PRODUCTION_BASE_URL: https://iaempleado.com
+        run: npm run qa:lighthouse:production
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase8e-lighthouse-reports
+          path: .artifacts/lighthouse/
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Upload production QA diagnostics
         if: failure()
