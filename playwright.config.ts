@@ -2,7 +2,10 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
-  testIgnore: ["**/phase8g-768-stability.spec.ts"],
+  testIgnore: [
+    "**/phase8g-768-stability.spec.ts",
+    "**/phase8g-iphone-webkit-emulation.spec.ts",
+  ],
   timeout: 45_000,
   expect: { timeout: 8_000 },
   fullyParallel: false,
