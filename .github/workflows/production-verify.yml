@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Checkout main
+      - name: Checkout verified release SHA
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
 
       - name: Use Node.js
         uses: actions/setup-node@v4
@@ -75,10 +75,43 @@ jobs:
           tests/phase8e-performance-budget.spec.ts
           tests/ux-visual.spec.ts
 
+      - name: Build exact release for Lighthouse lab
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+        run: npm run build
+
+      - name: Start exact release for Lighthouse lab
+        env:
+          EXPECTED_RELEASE: web-phase-8e-lighthouse-gate
+          NEXT_TELEMETRY_DISABLED: 1
+        run: |
+          set -euo pipefail
+          mkdir -p .artifacts/lighthouse
+          nohup npm run start -- -H 127.0.0.1 -p 3000 > .artifacts/lighthouse/server.log 2>&1 &
+          echo $! > /tmp/phase8e-lighthouse-next.pid
+          for attempt in $(seq 1 30); do
+            html="$(curl -fsS --max-time 5 http://127.0.0.1:3000/ || true)"
+            if printf '%s' "$html" | grep -q 'ia-web-release' && printf '%s' "$html" | grep -q "$EXPECTED_RELEASE"; then
+              echo "Exact release is ready for WAF-independent Lighthouse lab audit"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Local production server did not become ready"
+          cat .artifacts/lighthouse/server.log || true
+          exit 1
+
       - name: Run Phase 8E Lighthouse launch gate
         env:
-          PRODUCTION_BASE_URL: https://iaempleado.com
+          LIGHTHOUSE_BASE_URL: http://127.0.0.1:3000
         run: npm run qa:lighthouse:production
+
+      - name: Stop Lighthouse lab server
+        if: always()
+        run: |
+          if [ -f /tmp/phase8e-lighthouse-next.pid ]; then
+            kill "$(cat /tmp/phase8e-lighthouse-next.pid)" 2>/dev/null || true
+          fi
 
       - name: Upload Lighthouse reports
         if: always()

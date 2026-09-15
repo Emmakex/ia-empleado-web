@@ -36,7 +36,7 @@ if (config.tool?.package !== "lighthouse" || config.tool?.version !== "13.4.1") 
 }
 if (config.formFactor !== "mobile") throw new Error("Phase 8E Lighthouse launch gate must run with the mobile form factor");
 if (config.emulatedUserAgent !== expectedUserAgent) {
-  throw new Error("Phase 8E Lighthouse browser UA remediation drifted from the approved normal mobile Chrome identity");
+  throw new Error("Phase 8E Lighthouse browser identity drifted from the approved normal mobile Chrome identity");
 }
 if (JSON.stringify(config.routes) !== JSON.stringify(requiredRoutes)) {
   throw new Error(`Unexpected Phase 8E Lighthouse route matrix: ${JSON.stringify(config.routes)}`);
@@ -48,9 +48,10 @@ for (const [category, minimum] of Object.entries(expectedScores)) {
 }
 
 for (const phrase of [
-  "PRODUCTION_BASE_URL is required",
+  "LIGHTHOUSE_BASE_URL or PRODUCTION_BASE_URL is required",
   "LIGHTHOUSE_USER_AGENT_MISSING",
   "LIGHTHOUSE_RUN_CONTEXT",
+  "baseUrlSource",
   "--emulatedUserAgent=${config.emulatedUserAgent}",
   "PHASE8E_LIGHTHOUSE",
   "LIGHTHOUSE_THRESHOLD_FAILURE",
@@ -71,11 +72,20 @@ if (!ci.includes("Phase 8E Lighthouse launch contract") || !ci.includes("node sc
 }
 for (const phrase of [
   `EXPECTED_RELEASE: ${marker}`,
+  "Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity and performance",
+  "Build exact release for Lighthouse lab",
+  "npm run build",
+  "Start exact release for Lighthouse lab",
+  "npm run start -- -H 127.0.0.1 -p 3000",
+  "LIGHTHOUSE_BASE_URL: http://127.0.0.1:3000",
   "npm run qa:lighthouse:production",
   "phase8e-lighthouse-reports",
   ".artifacts/lighthouse/",
 ]) {
-  if (!production.includes(phrase)) throw new Error(`Production Lighthouse gate missing phrase: ${phrase}`);
+  if (!production.includes(phrase)) throw new Error(`Production/Lighthouse split gate missing phrase: ${phrase}`);
+}
+if (!production.includes("github.event.workflow_run.head_sha")) {
+  throw new Error("Production Verification must checkout the exact successful Web CI SHA before building the Lighthouse lab target");
 }
 const metadataMarker = `"ia-web-release": "${marker}"`;
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
@@ -84,12 +94,14 @@ if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
 for (const phrase of [
   "Production Verification #42",
   "Production Verification #43",
+  "Production Verification #44",
   "163/163",
   "315360000",
   "Status code: 403",
+  "WAF-independent",
   "Lighthouse launch-score gate",
 ]) {
   if (!performanceDocs.includes(phrase)) throw new Error(`Phase 8E performance evidence missing phrase: ${phrase}`);
 }
 
-console.log("Phase 8E Lighthouse launch contract OK: pinned Lighthouse, bilingual route matrix, launch scores, normal mobile Chrome UA remediation, diagnostics, exact marker and report artifacts are protected.");
+console.log("Phase 8E Lighthouse launch contract OK: production browser evidence stays on Hostinger while pinned Lighthouse audits the exact verified release SHA in a WAF-independent local production lab with unchanged launch scores.");
