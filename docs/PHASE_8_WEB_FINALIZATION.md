@@ -19,6 +19,7 @@ The web already has a substantial foundation:
 - Phase 8C motion and animation closure completed in CI and exact-marker production verification;
 - Phase 8D canonical visual fidelity closure completed in CI and exact-marker production verification;
 - Phase 8E performance/Core Web Vitals closure completed with real Hostinger budgets plus exact-SHA Lighthouse acceptance;
+- Phase 8F SEO, metadata, sharing, structured-data and navigation closure completed in CI and exact-marker production verification;
 - Playwright browser QA;
 - lead capture and Hostinger SMTP delivery verified in production;
 - sitemap and robots generation;
@@ -26,9 +27,8 @@ The web already has a substantial foundation:
 
 The repository also exposes important remaining gaps that prevent declaring the public web finished:
 
-1. **SEO, metadata and sharing is now the active Phase 8F gate.** The existing metadata/sitemap/robots/social-preview foundation must be audited across the complete bilingual route matrix and corrected where necessary.
-2. **Cross-browser and real-device acceptance remains required** even where source contracts and Playwright are green.
-3. **Final content/commercial acceptance remains required** before the public web can be declared launch-ready.
+1. **Cross-browser and real-device acceptance is now the active Phase 8G gate.** The existing Chromium-heavy coverage must be expanded into a controlled browser-engine/device-profile matrix while keeping real-device evidence distinct from emulation.
+2. **Final content/commercial acceptance remains required** before the public web can be declared launch-ready.
 
 ## Finish-before-advance rule
 
@@ -340,7 +340,7 @@ Detailed closure evidence lives in `docs/PHASE_8E_CLOSURE.md` and `docs/PHASE_8E
 
 ## Phase 8F — SEO, metadata and sharing
 
-**Status: ACTIVE — foundation contract opened on 2026-09-15 after Phase 8E closure.**
+**Status: COMPLETE — closed on 2026-09-15 after exact-marker Production Verification #49.**
 
 Verify:
 
@@ -357,9 +357,24 @@ Verify:
 - no broken internal links;
 - no placeholder copy or development-only routes discoverable from public navigation.
 
-The detailed acceptance model and initial technical inventory live in `docs/PHASE_8F_SEO_METADATA_SHARING.md`. Tranche 1 protects the existing bilingual metadata, sitemap/robots, social-preview and internal-renderer foundations in Web CI before browser/runtime route auditing begins.
+The detailed acceptance model and full closure evidence live in `docs/PHASE_8F_SEO_METADATA_SHARING.md`.
+
+### Phase 8F closure evidence
+
+Production Verification #49 (`34960212929`) accepted exact `main` SHA `3ad2abc9e86bfaa0ff94d5b753198942194865ca` after Web CI #251 passed:
+
+- Hostinger served `web-phase-8f-structured-navigation`;
+- the production matrix executed 228 cases, with 227 passing on the main attempt and one recovered 768 px Home geometry retry recorded explicitly as flaky;
+- runtime SEO, structured-data validity, internal-link integrity, breadcrumb targets, internal noindex policy and real 404 behavior passed;
+- 100 unique same-origin public links discovered from 16 seed routes were audited without broken or implementation-only destinations;
+- the exact release generated 103/103 static pages;
+- Lighthouse 13.4.1 passed all six launch routes at the unchanged 90/95/95/95 thresholds.
+
+The recovered 768 px Home geometry retry is carried into Phase 8G as an explicit boundary-breakpoint risk and must be reproduced or remediated there rather than hidden.
 
 ## Phase 8G — Production browser/device acceptance
+
+**Status: ACTIVE — opened on 2026-09-15 after Phase 8F closure.**
 
 Minimum acceptance browsers:
 
@@ -381,6 +396,8 @@ Validate:
 - keyboard/focus behavior;
 - responsive layouts;
 - no console/runtime errors affecting user flows.
+
+Automated browser-engine/device-profile evidence must remain distinct from real Safari/iOS/Android/Edge device acceptance. The 768 px Home boundary case from Production Verification #49 is an explicit Phase 8G entry risk.
 
 ## Phase 8H — Final content/commercial review
 
@@ -406,7 +423,7 @@ Phase 8 closes only when all are true:
 - [x] canonical visual rollback deployed and production verified;
 - [x] generated website video absent and canonical character fidelity green;
 - [x] performance/Core Web Vitals budget measured and accepted;
-- [ ] SEO/metadata/link audit green;
+- [x] SEO/metadata/link audit green;
 - [ ] cross-browser/device acceptance green;
 - [ ] ES/EN content parity green;
 - [ ] conversion/SMTP regression green;
