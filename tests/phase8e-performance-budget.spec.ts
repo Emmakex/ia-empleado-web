@@ -12,7 +12,7 @@ type Phase8eMetrics = {
   imageTransferBytes: number;
   thirdPartyRequests: number;
   brokenImages: number;
-  belowFoldNotLazy: number;
+  belowFoldEagerImages: string[];
   fontsStatus: FontFaceSetLoadStatus;
 };
 
@@ -87,10 +87,12 @@ test.describe("Phase 8E production performance budget", () => {
 
         const images = Array.from(document.images);
         const brokenImages = images.filter((image) => image.complete && image.naturalWidth === 0).length;
-        const belowFoldNotLazy = images.filter((image) => {
-          const documentTop = image.getBoundingClientRect().top + window.scrollY;
-          return documentTop > window.innerHeight * 1.5 && image.loading !== "lazy";
-        }).length;
+        const belowFoldEagerImages = images
+          .filter((image) => {
+            const documentTop = image.getBoundingClientRect().top + window.scrollY;
+            return documentTop > window.innerHeight * 1.5 && image.loading !== "lazy";
+          })
+          .map((image) => image.currentSrc || image.src);
 
         return {
           cls: state.cls,
@@ -109,7 +111,7 @@ test.describe("Phase 8E production performance budget", () => {
             .reduce((total, entry) => total + resourceBytes(entry), 0),
           thirdPartyRequests,
           brokenImages,
-          belowFoldNotLazy,
+          belowFoldEagerImages,
           fontsStatus: document.fonts.status,
         };
       });
@@ -127,7 +129,7 @@ test.describe("Phase 8E production performance budget", () => {
       expect(metrics.imageTransferBytes, `${route} image transfer`).toBeLessThanOrEqual(budgets.production.imageTransferBytes);
       expect(metrics.thirdPartyRequests, `${route} third-party requests`).toBeLessThanOrEqual(budgets.production.thirdPartyRequests);
       expect(metrics.brokenImages, `${route} broken images`).toBe(0);
-      expect(metrics.belowFoldNotLazy, `${route} below-fold eager images`).toBe(0);
+      expect(metrics.belowFoldEagerImages, `${route} below-fold eager image URLs`).toEqual([]);
       expect(metrics.fontsStatus, `${route} font loading`).toBe("loaded");
     });
   }

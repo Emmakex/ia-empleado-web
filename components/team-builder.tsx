@@ -215,7 +215,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
 
         {!hasSelection ? (
           <div className="builder-empty-state brand-builder-empty-state">
-            <img src="/branding/ia-empleado-mark.svg" alt="" width={58} height={58} aria-hidden="true" />
+            <img src="/branding/ia-empleado-mark.svg" alt="" width={58} height={58} loading="lazy" decoding="async" aria-hidden="true" />
             <h3>{content.emptyTitle}</h3>
             <p>{content.emptyText}</p>
           </div>
@@ -223,7 +223,7 @@ export function TeamBuilder({ locale, content, options, presets }: TeamBuilderPr
           <>
             <div className="builder-brand-team-map" aria-hidden="true">
               <div className="builder-brand-team-core">
-                <img src="/branding/ia-empleado-mark.svg" alt="" width={48} height={48} />
+                <img src="/branding/ia-empleado-mark.svg" alt="" width={48} height={48} loading="lazy" decoding="async" />
                 <span>{locale === "es" ? "Composición sugerida" : "Suggested composition"}</span>
               </div>
               <div className="builder-brand-roster">

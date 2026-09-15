@@ -6,6 +6,9 @@ const files = {
   packageJson: "package.json",
   production: ".github/workflows/production-verify.yml",
   canonicalDecision: "docs/PHASE_8D_CANONICAL_VISUAL_FIDELITY.md",
+  nextConfig: "next.config.ts",
+  footer: "components/site-footer.tsx",
+  teamBuilder: "components/team-builder.tsx",
 };
 
 for (const filePath of Object.values(files)) {
@@ -18,6 +21,9 @@ const testSource = fs.readFileSync(files.test, "utf8");
 const packageJson = JSON.parse(fs.readFileSync(files.packageJson, "utf8"));
 const production = fs.readFileSync(files.production, "utf8");
 const canonicalDecision = fs.readFileSync(files.canonicalDecision, "utf8");
+const nextConfig = fs.readFileSync(files.nextConfig, "utf8");
+const footer = fs.readFileSync(files.footer, "utf8");
+const teamBuilder = fs.readFileSync(files.teamBuilder, "utf8");
 
 if (budget.version !== 1) throw new Error(`Unsupported Phase 8E budget version: ${budget.version}`);
 if (!Array.isArray(budget.routes) || budget.routes.length < 6) {
@@ -55,12 +61,27 @@ for (const phrase of [
   "cssTransferBytes",
   "imageTransferBytes",
   "thirdPartyRequests",
-  "belowFoldNotLazy",
+  "belowFoldEagerImages",
+  "image.currentSrc || image.src",
   "document.fonts.ready",
   "PHASE8E_METRICS",
   "PHASE8E_STATIC_ASSET",
 ]) {
   if (!testSource.includes(phrase)) throw new Error(`Phase 8E performance test missing phrase: ${phrase}`);
+}
+
+for (const phrase of [
+  'source: "/branding/:path*"',
+  'key: "Cache-Control"',
+  "public, max-age=604800, stale-while-revalidate=86400",
+]) {
+  if (!nextConfig.includes(phrase)) throw new Error(`Phase 8E branding cache policy missing phrase: ${phrase}`);
+}
+
+for (const [surface, source] of [["footer", footer], ["Team Builder", teamBuilder]]) {
+  if (!source.includes('loading="lazy"') || !source.includes('decoding="async"')) {
+    throw new Error(`Phase 8E ${surface} below-fold image policy is not protected`);
+  }
 }
 
 if (packageJson.scripts?.["qa:performance:production"] !== "playwright test --config=playwright.production.config.ts tests/phase8e-performance-budget.spec.ts") {
@@ -75,4 +96,4 @@ if (!canonicalDecision.includes("COMPLETE")) {
   throw new Error("Phase 8D documentation must be closed before Phase 8E advances");
 }
 
-console.log(`Phase 8E performance contract OK: ${budget.routes.length} representative routes, explicit CWV/resource budgets, production execution and actionable metric diagnostics are wired.`);
+console.log(`Phase 8E performance contract OK: ${budget.routes.length} representative routes, explicit CWV/resource budgets, branding cache policy, below-fold lazy loading and actionable URL diagnostics are protected.`);
