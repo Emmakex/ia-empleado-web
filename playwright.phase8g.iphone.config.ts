@@ -1,22 +1,19 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
-  testIgnore: [
-    "**/phase8g-768-stability.spec.ts",
-    "**/phase8g-iphone-webkit-emulation.spec.ts",
-  ],
-  timeout: 45_000,
+  testMatch: ["**/phase8g-iphone-webkit-emulation.spec.ts"],
+  timeout: 60_000,
   expect: { timeout: 8_000 },
   fullyParallel: false,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   reporter: process.env.CI
-    ? [["line"], ["html", { outputFolder: "playwright-report", open: "never" }]]
-    : [["list"], ["html", { outputFolder: "playwright-report", open: "never" }]],
+    ? [["line"], ["html", { outputFolder: "playwright-phase8g-iphone-report", open: "never" }]]
+    : [["list"], ["html", { outputFolder: "playwright-phase8g-iphone-report", open: "never" }]],
   use: {
+    ...devices["iPhone 13"],
     baseURL: "http://127.0.0.1:3100",
-    browserName: "chromium",
     colorScheme: "light",
     locale: "es-ES",
     reducedMotion: "reduce",

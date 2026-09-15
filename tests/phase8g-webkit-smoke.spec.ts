@@ -19,7 +19,7 @@ test("WebKit renders critical ES/EN commercial routes without page errors", asyn
 
   for (const route of criticalRoutes) {
     await test.step(route, async () => {
-      const response = await page.goto(route, { waitUntil: "domcontentloaded" });
+      const response = await page.goto(route, { waitUntil: "networkidle" });
       expect(response?.ok(), `${route} must return success in WebKit`).toBeTruthy();
       await expect(page.locator("main"), `${route} must render main content`).toBeVisible();
       await expect(page.locator("h1").first(), `${route} must render a visible H1`).toBeVisible();
