@@ -1,5 +1,10 @@
+import type { StaticImageData } from "next/image";
 import type { EmployeeKey } from "./employee-catalog";
 import type { Locale } from "./i18n";
+import claraCanonical from "../public/branding/characters/clara-canonical.webp";
+import alexCanonical from "../public/branding/characters/alex-canonical.webp";
+import sofiaCanonical from "../public/branding/characters/sofia-canonical.webp";
+import javierCanonical from "../public/branding/characters/javier-canonical.webp";
 
 export type BrandRoleMotif = "conversation" | "operations" | "ledger" | "pipeline";
 
@@ -14,7 +19,7 @@ export type BrandCharacter = {
   id: "clara" | "alex" | "sofia" | "javier";
   employeeKey: EmployeeKey;
   name: string;
-  asset: string;
+  asset: StaticImageData;
   role: string;
   shortRole: string;
   accent: "blue" | "violet" | "teal" | "amber";
@@ -28,7 +33,7 @@ const characters = {
       id: "clara",
       employeeKey: "customer-support",
       name: "Clara",
-      asset: "/branding/characters/clara-canonical.webp",
+      asset: claraCanonical,
       role: "Atención al Cliente IA",
       shortRole: "Atención al Cliente",
       accent: "blue",
@@ -44,7 +49,7 @@ const characters = {
       id: "alex",
       employeeKey: "administrative",
       name: "Alex",
-      asset: "/branding/characters/alex-canonical.webp",
+      asset: alexCanonical,
       role: "Administrativo IA",
       shortRole: "Administración",
       accent: "violet",
@@ -60,7 +65,7 @@ const characters = {
       id: "sofia",
       employeeKey: "accounting-billing",
       name: "Sofía",
-      asset: "/branding/characters/sofia-canonical.webp",
+      asset: sofiaCanonical,
       role: "Contabilidad y Facturación IA",
       shortRole: "Contabilidad",
       accent: "teal",
@@ -76,7 +81,7 @@ const characters = {
       id: "javier",
       employeeKey: "sales-sdr",
       name: "Javier",
-      asset: "/branding/characters/javier-canonical.webp",
+      asset: javierCanonical,
       role: "Comercial / SDR IA",
       shortRole: "Comercial / SDR",
       accent: "amber",
@@ -94,7 +99,7 @@ const characters = {
       id: "clara",
       employeeKey: "customer-support",
       name: "Clara",
-      asset: "/branding/characters/clara-canonical.webp",
+      asset: claraCanonical,
       role: "AI Customer Support",
       shortRole: "Customer Support",
       accent: "blue",
@@ -110,7 +115,7 @@ const characters = {
       id: "alex",
       employeeKey: "administrative",
       name: "Alex",
-      asset: "/branding/characters/alex-canonical.webp",
+      asset: alexCanonical,
       role: "AI Administrative",
       shortRole: "Administration",
       accent: "violet",
@@ -126,7 +131,7 @@ const characters = {
       id: "sofia",
       employeeKey: "accounting-billing",
       name: "Sofía",
-      asset: "/branding/characters/sofia-canonical.webp",
+      asset: sofiaCanonical,
       role: "AI Accounting & Billing",
       shortRole: "Accounting & Billing",
       accent: "teal",
@@ -142,7 +147,7 @@ const characters = {
       id: "javier",
       employeeKey: "sales-sdr",
       name: "Javier",
-      asset: "/branding/characters/javier-canonical.webp",
+      asset: javierCanonical,
       role: "AI Sales / SDR",
       shortRole: "Sales / SDR",
       accent: "amber",
