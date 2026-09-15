@@ -11,9 +11,12 @@ const esLayout = read("app/(es)/layout.tsx");
 const enLayout = read("app/(en)/en/layout.tsx");
 const sitemap = read("app/sitemap.ts");
 const robots = read("app/robots.ts");
+const nextConfig = read("next.config.ts");
 const socialPreviews = read("lib/brand-social-previews.tsx");
+const socialMetadata = read("lib/seo-social-metadata.ts");
 const previewRoute = read("app/brand-preview/[locale]/[surface]/route.tsx");
 const campaignRoute = read("app/brand-campaign/[locale]/[format]/[surface]/route.tsx");
+const production = read(".github/workflows/production-verify.yml");
 const phase8eClosure = read("docs/PHASE_8E_CLOSURE.md");
 const phase8f = read("docs/PHASE_8F_SEO_METADATA_SHARING.md");
 const runtimeSeoMatrix = read("tests/phase8f-seo-runtime.spec.ts");
@@ -35,6 +38,7 @@ requirePhrases("Spanish root metadata", esLayout, [
   'twitter:',
   'robots: { index: true, follow: true }',
   'brandPreviewUrl("es", "home")',
+  '"ia-web-release": "web-phase-8f-runtime-seo"',
 ]);
 
 requirePhrases("English root metadata", enLayout, [
@@ -48,6 +52,7 @@ requirePhrases("English root metadata", enLayout, [
   'twitter:',
   'robots: { index: true, follow: true }',
   'brandPreviewUrl("en", "home")',
+  '"ia-web-release": "web-phase-8f-runtime-seo"',
 ]);
 
 requirePhrases("Sitemap", sitemap, [
@@ -74,10 +79,26 @@ requirePhrases("Robots", robots, [
   'host: "https://iaempleado.com"',
 ]);
 
+requirePhrases("Internal endpoint noindex headers", nextConfig, [
+  'key: "X-Robots-Tag"',
+  'value: "noindex, nofollow"',
+  'source: "/brand-preview/:path*"',
+  'source: "/brand-campaign/:path*"',
+  'source: "/api/:path*"',
+]);
+
 requirePhrases("Social preview system", socialPreviews, [
   'brandPreviewUrl',
   '1200',
   '630',
+]);
+
+requirePhrases("Route social metadata helper", socialMetadata, [
+  'buildRouteSocialMetadata',
+  'brandPreviewUrl(locale, surface)',
+  'card: "summary_large_image"',
+  'width: 1200',
+  'height: 630',
 ]);
 
 for (const [label, routeSource] of [
@@ -88,6 +109,12 @@ for (const [label, routeSource] of [
     throw new Error(`${label} must remain a route handler rather than a customer-facing page`);
   }
 }
+
+requirePhrases("Production Phase 8F gate", production, [
+  'EXPECTED_RELEASE: web-phase-8f-runtime-seo',
+  'tests/phase8f-seo-runtime.spec.ts',
+  'Wait for Web Phase 8F runtime SEO gate on Hostinger',
+]);
 
 requirePhrases("Phase 8E closure evidence", phase8eClosure, [
   "COMPLETE",
@@ -132,4 +159,4 @@ if (pageRouteLeaks.length) {
   throw new Error(`Internal rendering endpoints became customer-facing pages: ${pageRouteLeaks.join(", ")}`);
 }
 
-console.log("Phase 8F SEO foundation OK: bilingual root metadata, sitemap/robots generation, social-preview infrastructure, internal renderer boundaries, the runtime SEO matrix and the Phase 8E→8F transition are protected.");
+console.log("Phase 8F SEO foundation OK: bilingual metadata, sitemap/robots generation, governed social previews, explicit internal noindex policy, the runtime SEO matrix and its production release gate are protected.");
