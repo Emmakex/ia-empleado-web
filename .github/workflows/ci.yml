@@ -122,6 +122,9 @@ jobs:
       - name: Browser UX and accessibility QA
         run: npm run qa:browser
 
+      - name: Phase 8G 768px stability stress acceptance
+        run: npm run qa:phase8g:768
+
       - name: Phase 8G Firefox smoke acceptance
         run: npm run qa:phase8g:firefox
 
@@ -135,6 +138,7 @@ jobs:
           name: playwright-report
           path: |
             playwright-report/
+            playwright-phase8g-768-report/
             playwright-phase8g-firefox-report/
             playwright-phase8g-webkit-report/
             test-results/
