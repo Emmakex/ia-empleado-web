@@ -22,6 +22,8 @@ const phase8f = read("docs/PHASE_8F_SEO_METADATA_SHARING.md");
 const runtimeSeoMatrix = read("tests/phase8f-seo-runtime.spec.ts");
 const structuredNavigation = read("tests/phase8f-structured-navigation.spec.ts");
 
+const marker = "web-phase-8f-structured-navigation";
+
 const requirePhrases = (label, source, phrases) => {
   for (const phrase of phrases) {
     if (!source.includes(phrase)) throw new Error(`${label} missing required phrase: ${phrase}`);
@@ -39,7 +41,7 @@ requirePhrases("Spanish root metadata", esLayout, [
   'twitter:',
   'robots: { index: true, follow: true }',
   'brandPreviewUrl("es", "home")',
-  '"ia-web-release": "web-phase-8f-runtime-seo"',
+  `"ia-web-release": "${marker}"`,
 ]);
 
 requirePhrases("English root metadata", enLayout, [
@@ -53,7 +55,7 @@ requirePhrases("English root metadata", enLayout, [
   'twitter:',
   'robots: { index: true, follow: true }',
   'brandPreviewUrl("en", "home")',
-  '"ia-web-release": "web-phase-8f-runtime-seo"',
+  `"ia-web-release": "${marker}"`,
 ]);
 
 requirePhrases("Sitemap", sitemap, [
@@ -112,9 +114,10 @@ for (const [label, routeSource] of [
 }
 
 requirePhrases("Production Phase 8F gate", production, [
-  'EXPECTED_RELEASE: web-phase-8f-runtime-seo',
+  `EXPECTED_RELEASE: ${marker}`,
   'tests/phase8f-seo-runtime.spec.ts',
-  'Wait for Web Phase 8F runtime SEO gate on Hostinger',
+  'tests/phase8f-structured-navigation.spec.ts',
+  'Wait for Web Phase 8F structured navigation gate on Hostinger',
 ]);
 
 requirePhrases("Phase 8E closure evidence", phase8eClosure, [
@@ -180,4 +183,4 @@ if (pageRouteLeaks.length) {
   throw new Error(`Internal rendering endpoints became customer-facing pages: ${pageRouteLeaks.join(", ")}`);
 }
 
-console.log("Phase 8F SEO foundation OK: bilingual metadata, sitemap/robots, governed social previews, explicit internal noindex policy, the production runtime SEO gate and the structured-data/navigation closure audit are protected.");
+console.log(`Phase 8F SEO foundation OK: ${marker} protects bilingual metadata, sitemap/robots, governed social previews, explicit internal noindex policy, runtime SEO and structured-data/navigation production coverage.`);
