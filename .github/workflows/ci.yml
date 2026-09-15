@@ -110,6 +110,9 @@ jobs:
       - name: Phase 8E Lighthouse launch contract
         run: node scripts/check-phase8e-lighthouse.mjs
 
+      - name: Phase 8F SEO foundation contract
+        run: node scripts/check-phase8f-seo-foundation.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
