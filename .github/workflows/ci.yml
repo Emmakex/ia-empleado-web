@@ -134,6 +134,9 @@ jobs:
       - name: Phase 8G iPhone WebKit emulation acceptance
         run: npm run qa:phase8g:iphone
 
+      - name: Phase 8G Android Chromium emulation acceptance
+        run: npm run qa:phase8g:android
+
       - name: Upload browser QA diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
@@ -145,6 +148,7 @@ jobs:
             playwright-phase8g-firefox-report/
             playwright-phase8g-webkit-report/
             playwright-phase8g-iphone-report/
+            playwright-phase8g-android-report/
             test-results/
           if-no-files-found: ignore
           retention-days: 7
