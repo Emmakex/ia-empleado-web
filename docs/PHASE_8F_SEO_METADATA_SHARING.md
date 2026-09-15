@@ -2,7 +2,7 @@
 
 ## Status
 
-**ACTIVE — opened on 2026-09-15 after Phase 8E closed in Production Verification #46.**
+**ACTIVE — runtime SEO accepted in Production Verification #48; structured data and navigation closure is the final tranche before Phase 8G.**
 
 Phase 8F finalizes how the public IA Empleado website is discovered, indexed, canonicalized, translated and shared. It must preserve the existing bilingual commercial architecture while making SEO behavior explicit and testable rather than relying on inherited Next.js defaults.
 
@@ -16,9 +16,9 @@ The repository already has a useful SEO foundation:
 - `app/sitemap.ts` generates the bilingual public route inventory, including dynamic employee, team, comparison, sector, use-case, department and integration detail routes;
 - `app/robots.ts` declares the sitemap and canonical host;
 - social previews are generated through the existing `brandPreviewUrl` system;
-- Home and product surfaces already expose semantically scoped JSON-LD where implemented.
+- structured data is audited only where it is actually emitted; Phase 8F does not add schema merely to satisfy a checklist.
 
-This foundation is not yet sufficient to close Phase 8F. The remaining work is to prove correctness and consistency across the complete public route matrix.
+This foundation is not yet sufficient to close Phase 8F. Runtime metadata/indexing/sharing is now accepted in production; the remaining closure work is structured-data truthfulness plus internal-link/breadcrumb integrity.
 
 ## Phase 8F acceptance contract
 
@@ -70,7 +70,7 @@ Phase 8F closes only when all of the following are verified in ES and EN where a
 
 ## Tranche 1 — SEO foundation contract
 
-The first tranche is intentionally static and non-destructive. It establishes CI protection for the existing foundation before route-by-route remediation begins.
+The first tranche established static CI protection for the bilingual metadata, sitemap/robots, social-preview and internal-renderer foundations before route-by-route remediation.
 
 It protects:
 
@@ -84,34 +84,77 @@ It protects:
 
 The static contract lives in `scripts/check-phase8f-seo-foundation.mjs` and runs in ordinary Web CI.
 
-This first tranche does **not** claim the entire route matrix is already correct. It creates a stable baseline so the next tranche can add browser-level route auditing and then remediate exact failures rather than changing metadata speculatively.
+## Tranche 2 — browser/runtime SEO matrix
+
+The browser/runtime SEO matrix lives in `tests/phase8f-seo-runtime.spec.ts`. It verifies the critical ES/EN route set plus representative commercial index/detail families for:
+
+- title and description;
+- canonical URL;
+- reciprocal `es-ES`, `en` and `x-default` alternates;
+- public indexability;
+- route-appropriate Open Graph and Twitter metadata;
+- governed social-preview delivery;
+- sitemap and robots behavior;
+- explicit `X-Robots-Tag: noindex, nofollow` on implementation endpoints;
+- real 404 + noindex behavior.
+
+### Tranche 2 production acceptance
+
+Production Verification #48 (`34954576538`) accepted exact `main` SHA `17d3c3b6a37ea8c874a1a88ebf834f9c4bf8497e` after Web CI #244 passed:
+
+- Hostinger served release marker `web-phase-8f-runtime-seo` immediately;
+- the complete production browser matrix finished **196/196 green**;
+- all **16 critical ES/EN routes** emitted intentional metadata, canonical URLs, reciprocal language alternates and governed social previews;
+- all **7 commercial families in both languages** passed index + representative-detail SEO checks;
+- `/brand-preview/es/home`, `/brand-campaign/es/landscape/home` and `/api/lead-intake` returned `X-Robots-Tag: noindex, nofollow`;
+- sitemap, robots and intentional 404 behavior passed;
+- real-production Phase 8E budgets remained green: CLS 0 on all six performance routes, no third-party requests, no broken images and canonical static media caching unchanged;
+- Lighthouse 13.4.1 remained green at the unchanged 90/95/95/95 thresholds;
+- Home ES had one noisy first sample at Performance 0.80 and stabilized to **0.80 / 0.96 / 0.96 → median 0.96**;
+- the other five Lighthouse routes passed on their first sample;
+- Lighthouse reports were uploaded as `phase8e-lighthouse-reports` (artifact ID `10391900933`).
+
+This closes the runtime metadata/indexing/sharing tranche without claiming all of Phase 8F complete.
+
+## Tranche 3 — structured data and navigation closure
+
+The final Phase 8F tranche is intentionally evidence-first. `tests/phase8f-structured-navigation.spec.ts` audits:
+
+- every JSON-LD block on critical routes and representative commercial details parses successfully;
+- unsupported review/rating/product claims are absent;
+- Organization schema, if present, identifies the actual IA Empleado brand;
+- WebPage structured-data URLs, if present, agree with canonical identity;
+- `inLanguage`, if present, agrees with the rendered locale;
+- FAQPage questions, if present, also exist as visible page content;
+- structured data never identifies `/api/*`, `/brand-preview/*` or `/brand-campaign/*` as public entities;
+- internal public links discovered from the main ES/EN navigation surfaces resolve without HTTP errors;
+- internal implementation endpoints are not exposed as customer navigation links;
+- breadcrumb links are validated wherever breadcrumb navigation is actually rendered.
+
+This tranche does **not** require adding JSON-LD or breadcrumbs to pages that do not semantically need them. Exact audit failures become the remediation backlog; the contract must not manufacture schema merely to make a test pass.
 
 ## Initial technical inventory
 
-### Already present
+### Already accepted
 
 - ES Home canonical: `/`;
 - EN Home canonical: `/en`;
-- reciprocal ES/EN Home alternates;
-- `x-default` pointing to the Spanish root;
-- Home Open Graph and Twitter large-card metadata;
-- route-specific Team Builder metadata in both languages;
+- reciprocal ES/EN alternates and consistent Spanish `x-default` policy;
+- route-specific title/description across the runtime matrix;
+- Open Graph and Twitter large-card metadata across audited public routes;
 - dynamic sitemap generation across the commercial content families;
 - global robots sitemap/host declaration;
-- internal brand preview/campaign rendering implemented as route handlers rather than customer-facing `page.tsx` routes.
+- explicit `noindex, nofollow` response policy for API and internal rendering surfaces;
+- real 404 + noindex behavior;
+- browser/runtime SEO matrix protected in CI and Production Verification.
 
-### Must still be audited before closure
+### Must still be accepted before closure
 
-- complete route-by-route title/description uniqueness;
-- canonical and reciprocal hreflang coverage for every commercial detail family;
-- final `x-default` policy outside Home;
-- sitemap parity against the actual built route matrix;
-- explicit crawl policy for implementation endpoints;
-- OG/Twitter presence and preview resolution across all indexable commercial routes;
-- structured-data validity and canonical consistency;
-- broken internal links and breadcrumb targets;
-- real 404 status behavior;
-- absence of development-only discoverable routes.
+- structured-data validity and canonical consistency wherever JSON-LD exists;
+- absence of unsupported structured-data claims;
+- broken internal-link audit across the public navigation graph;
+- breadcrumb target validity wherever breadcrumbs exist;
+- continued absence of implementation endpoints from customer-facing navigation.
 
 ## Engineering rules
 
@@ -121,8 +164,9 @@ This first tranche does **not** claim the entire route matrix is already correct
 - Social-preview assets must use approved IA Empleado branding and canonical character fidelity rules.
 - A failing SEO contract produces the exact route, field and received value where possible.
 - Do not hide failures by removing routes from the audit matrix unless the route is explicitly documented as non-indexable.
+- Do not add structured data solely to satisfy an audit; schema must describe content actually rendered on the route.
 - Phase 8G cannot begin until Phase 8F implementation, required gates, acceptance, blockers and documentation are complete.
 
-## Next tranche
+## Next gate
 
-Add a browser/runtime SEO matrix that visits the built ES/EN commercial route set and verifies canonical, hreflang, title, description, index policy, OG/Twitter metadata, sitemap membership, internal links and 404 behavior. Exact failures from that audit become the remediation backlog for Phase 8F.
+Run the structured-data/internal-link/breadcrumb audit in Web CI. Remediate only reproducible failures, then promote the audit into Production Verification with a new exact release marker. Phase 8F can move to COMPLETE only after that production gate and final closure evidence are green.

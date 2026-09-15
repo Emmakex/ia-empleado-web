@@ -20,6 +20,9 @@ const production = read(".github/workflows/production-verify.yml");
 const phase8eClosure = read("docs/PHASE_8E_CLOSURE.md");
 const phase8f = read("docs/PHASE_8F_SEO_METADATA_SHARING.md");
 const runtimeSeoMatrix = read("tests/phase8f-seo-runtime.spec.ts");
+const structuredNavigation = read("tests/phase8f-structured-navigation.spec.ts");
+
+const marker = "web-phase-8f-structured-navigation";
 
 const requirePhrases = (label, source, phrases) => {
   for (const phrase of phrases) {
@@ -38,7 +41,7 @@ requirePhrases("Spanish root metadata", esLayout, [
   'twitter:',
   'robots: { index: true, follow: true }',
   'brandPreviewUrl("es", "home")',
-  '"ia-web-release": "web-phase-8f-runtime-seo"',
+  `"ia-web-release": "${marker}"`,
 ]);
 
 requirePhrases("English root metadata", enLayout, [
@@ -52,7 +55,7 @@ requirePhrases("English root metadata", enLayout, [
   'twitter:',
   'robots: { index: true, follow: true }',
   'brandPreviewUrl("en", "home")',
-  '"ia-web-release": "web-phase-8f-runtime-seo"',
+  `"ia-web-release": "${marker}"`,
 ]);
 
 requirePhrases("Sitemap", sitemap, [
@@ -111,9 +114,10 @@ for (const [label, routeSource] of [
 }
 
 requirePhrases("Production Phase 8F gate", production, [
-  'EXPECTED_RELEASE: web-phase-8f-runtime-seo',
+  `EXPECTED_RELEASE: ${marker}`,
   'tests/phase8f-seo-runtime.spec.ts',
-  'Wait for Web Phase 8F runtime SEO gate on Hostinger',
+  'tests/phase8f-structured-navigation.spec.ts',
+  'Wait for Web Phase 8F structured navigation gate on Hostinger',
 ]);
 
 requirePhrases("Phase 8E closure evidence", phase8eClosure, [
@@ -124,7 +128,7 @@ requirePhrases("Phase 8E closure evidence", phase8eClosure, [
   "Phase 8F — SEO, metadata and sharing — is now ACTIVE",
 ]);
 
-requirePhrases("Phase 8F activation", phase8f, [
+requirePhrases("Phase 8F activation and runtime evidence", phase8f, [
   "ACTIVE",
   "Titles and descriptions",
   "Canonical URLs and language alternates",
@@ -134,6 +138,12 @@ requirePhrases("Phase 8F activation", phase8f, [
   "Structured data",
   "Navigation, breadcrumbs and errors",
   "browser/runtime SEO matrix",
+  "Production Verification #48",
+  "34954576538",
+  "196/196 green",
+  "web-phase-8f-runtime-seo",
+  "0.80 / 0.96 / 0.96",
+  "structured data and navigation closure",
 ]);
 
 requirePhrases("Phase 8F runtime SEO matrix", runtimeSeoMatrix, [
@@ -151,6 +161,20 @@ requirePhrases("Phase 8F runtime SEO matrix", runtimeSeoMatrix, [
   "not-found responses are 404 and explicitly non-indexable",
 ]);
 
+requirePhrases("Phase 8F structured/navigation matrix", structuredNavigation, [
+  "PHASE8F_STRUCTURED_DATA",
+  "PHASE8F_INTERNAL_LINK_AUDIT",
+  "PHASE8F_BREADCRUMB_AUDIT",
+  "forbiddenClaimTypes",
+  "FAQPage",
+  "Organization",
+  "WebPage",
+  "representativeDetails",
+  "internalPrefixes",
+  "public navigation exposes no broken or internal implementation links",
+  "breadcrumbs, when rendered, point only to resolvable public routes",
+]);
+
 const pageRouteLeaks = [
   "app/brand-preview/[locale]/[surface]/page.tsx",
   "app/brand-campaign/[locale]/[format]/[surface]/page.tsx",
@@ -159,4 +183,4 @@ if (pageRouteLeaks.length) {
   throw new Error(`Internal rendering endpoints became customer-facing pages: ${pageRouteLeaks.join(", ")}`);
 }
 
-console.log("Phase 8F SEO foundation OK: bilingual metadata, sitemap/robots generation, governed social previews, explicit internal noindex policy, the runtime SEO matrix and its production release gate are protected.");
+console.log(`Phase 8F SEO foundation OK: ${marker} protects bilingual metadata, sitemap/robots, governed social previews, explicit internal noindex policy, runtime SEO and structured-data/navigation production coverage.`);
