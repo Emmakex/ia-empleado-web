@@ -1,5 +1,9 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import type { BrandCharacter } from "../lib/brand-characters";
+import claraCanonical from "../public/branding/characters/clara-canonical.webp";
+import alexCanonical from "../public/branding/characters/alex-canonical.webp";
+import sofiaCanonical from "../public/branding/characters/sofia-canonical.webp";
+import javierCanonical from "../public/branding/characters/javier-canonical.webp";
 
 type BrandCharacterImageProps = {
   character: BrandCharacter;
@@ -10,13 +14,20 @@ type BrandCharacterImageProps = {
   fetchPriority?: "high" | "low" | "auto";
 };
 
+const deliveryAssets: Record<BrandCharacter["id"], StaticImageData> = {
+  clara: claraCanonical,
+  alex: alexCanonical,
+  sofia: sofiaCanonical,
+  javier: javierCanonical,
+};
+
 /**
  * Canonical character renderer for the public IA Empleado website.
  *
- * The approved WebP remains the single identity source. next/image generates
- * responsive srcsets from that source so high-DPR displays receive the most
- * appropriate available derivative without every surface shipping the same
- * payload. Width/height keep the canonical 4:5 intrinsic ratio for CLS safety.
+ * The data model keeps the stable approved source path for server-side media
+ * generation. This Next-owned renderer maps the same identity to a static image
+ * import so the browser receives content-hashed build media and responsive
+ * derivatives. Width/height keep the canonical 4:5 intrinsic ratio for CLS safety.
  */
 export function BrandCharacterImage({
   character,
@@ -28,7 +39,7 @@ export function BrandCharacterImage({
 }: BrandCharacterImageProps) {
   return (
     <Image
-      src={character.asset}
+      src={deliveryAssets[character.id]}
       alt={alt}
       className={className}
       width={420}

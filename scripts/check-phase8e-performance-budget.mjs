@@ -9,6 +9,8 @@ const files = {
   nextConfig: "next.config.ts",
   footer: "components/site-footer.tsx",
   teamBuilder: "components/team-builder.tsx",
+  brandCharacters: "lib/brand-characters.ts",
+  brandCharacterImage: "components/brand-character-image.tsx",
 };
 
 for (const filePath of Object.values(files)) {
@@ -24,6 +26,8 @@ const canonicalDecision = fs.readFileSync(files.canonicalDecision, "utf8");
 const nextConfig = fs.readFileSync(files.nextConfig, "utf8");
 const footer = fs.readFileSync(files.footer, "utf8");
 const teamBuilder = fs.readFileSync(files.teamBuilder, "utf8");
+const brandCharacters = fs.readFileSync(files.brandCharacters, "utf8");
+const brandCharacterImage = fs.readFileSync(files.brandCharacterImage, "utf8");
 
 if (budget.version !== 1) throw new Error(`Unsupported Phase 8E budget version: ${budget.version}`);
 if (!Array.isArray(budget.routes) || budget.routes.length < 6) {
@@ -49,6 +53,14 @@ for (const key of numericBudgets) {
     throw new Error(`Invalid Phase 8E production budget: ${key}`);
   }
 }
+for (const key of ["maxEncodedBytes", "minimumCacheSeconds"]) {
+  if (typeof budget.staticMedia?.[key] !== "number" || budget.staticMedia[key] <= 0) {
+    throw new Error(`Invalid Phase 8E static-media budget: ${key}`);
+  }
+}
+if (budget.staticMedia?.canonicalBasename !== "clara-canonical") {
+  throw new Error("Phase 8E static-media baseline must track the canonical Clara asset");
+}
 
 for (const phrase of [
   'test.describe("Phase 8E production performance budget"',
@@ -66,16 +78,36 @@ for (const phrase of [
   "document.fonts.ready",
   "PHASE8E_METRICS",
   "PHASE8E_STATIC_ASSET",
+  "browserUrl",
+  "sourceUrl",
+  "reusableCacheSeconds",
+  "/_next/static/media/",
 ]) {
   if (!testSource.includes(phrase)) throw new Error(`Phase 8E performance test missing phrase: ${phrase}`);
 }
 
-for (const phrase of [
-  'source: "/branding/:path*"',
-  'key: "Cache-Control"',
-  "public, max-age=604800, stale-while-revalidate=86400",
+if (!nextConfig.includes("minimumCacheTTL: 604800")) {
+  throw new Error("Phase 8E optimized-image cache policy is not protected");
+}
+
+for (const sourcePath of [
+  "/branding/characters/clara-canonical.webp",
+  "/branding/characters/alex-canonical.webp",
+  "/branding/characters/sofia-canonical.webp",
+  "/branding/characters/javier-canonical.webp",
 ]) {
-  if (!nextConfig.includes(phrase)) throw new Error(`Phase 8E branding cache policy missing phrase: ${phrase}`);
+  if (!brandCharacters.includes(sourcePath)) throw new Error(`Canonical approved source path missing: ${sourcePath}`);
+}
+for (const phrase of [
+  'import Image, { type StaticImageData } from "next/image"',
+  'import claraCanonical from "../public/branding/characters/clara-canonical.webp"',
+  'import alexCanonical from "../public/branding/characters/alex-canonical.webp"',
+  'import sofiaCanonical from "../public/branding/characters/sofia-canonical.webp"',
+  'import javierCanonical from "../public/branding/characters/javier-canonical.webp"',
+  'const deliveryAssets: Record<BrandCharacter["id"], StaticImageData>',
+  "src={deliveryAssets[character.id]}",
+]) {
+  if (!brandCharacterImage.includes(phrase)) throw new Error(`Phase 8E canonical browser-delivery contract missing phrase: ${phrase}`);
 }
 
 for (const [surface, source] of [["footer", footer], ["Team Builder", teamBuilder]]) {
@@ -96,4 +128,4 @@ if (!canonicalDecision.includes("COMPLETE")) {
   throw new Error("Phase 8D documentation must be closed before Phase 8E advances");
 }
 
-console.log(`Phase 8E performance contract OK: ${budget.routes.length} representative routes, explicit CWV/resource budgets, branding cache policy, below-fold lazy loading and actionable URL diagnostics are protected.`);
+console.log(`Phase 8E performance contract OK: ${budget.routes.length} representative routes, explicit CWV/resource budgets, Next-owned hashed canonical browser delivery, optimized-image TTL, below-fold lazy loading and actionable URL diagnostics are protected.`);

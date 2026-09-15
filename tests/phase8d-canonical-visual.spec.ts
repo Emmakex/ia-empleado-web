@@ -3,11 +3,11 @@ import path from "node:path";
 import { expect, test } from "@playwright/test";
 
 const routes = ["/", "/en"] as const;
-const canonicalAssets = [
-  "clara-canonical.webp",
-  "alex-canonical.webp",
-  "sofia-canonical.webp",
-  "javier-canonical.webp",
+const canonicalAssetStems = [
+  "clara-canonical",
+  "alex-canonical",
+  "sofia-canonical",
+  "javier-canonical",
 ] as const;
 
 const listFiles = (directory: string): string[] => fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -33,9 +33,12 @@ test.describe("Phase 8D canonical visual fidelity", () => {
       const portraits = hero.locator(".brand-character-node img");
       await expect(portraits).toHaveCount(4);
 
-      const sources = await portraits.evaluateAll((images) => images.map((image) => image.getAttribute("src") ?? ""));
-      for (const asset of canonicalAssets) {
-        expect(sources.some((source) => source.includes(asset))).toBe(true);
+      const sources = await portraits.evaluateAll((images) => images.map((image) => {
+        const element = image as HTMLImageElement;
+        return decodeURIComponent(element.currentSrc || element.src || "");
+      }));
+      for (const stem of canonicalAssetStems) {
+        expect(sources.some((source) => source.includes("/_next/static/media/") && source.includes(`${stem}.`) && source.includes(".webp"))).toBe(true);
       }
     });
   }

@@ -18,6 +18,11 @@ type Phase8eMetrics = {
 
 const productionBaseUrl = process.env.PRODUCTION_BASE_URL;
 
+function reusableCacheSeconds(cacheControl: string) {
+  const values = Array.from(cacheControl.matchAll(/(?:s-maxage|max-age)=(\d+)/gi), (match) => Number(match[1]));
+  return values.length ? Math.max(...values) : 0;
+}
+
 async function installPerformanceObservers(page: import("@playwright/test").Page) {
   await page.addInitScript(() => {
     const state = { cls: 0, lcpMs: 0, longTaskMaxMs: 0 };
@@ -134,21 +139,41 @@ test.describe("Phase 8E production performance budget", () => {
     });
   }
 
-  test("canonical static media has a reusable cache policy and bounded payload", async ({ request }) => {
-    const response = await request.get(budgets.staticMedia.asset);
+  test("canonical character browser delivery is hashed, bounded and reusable", async ({ page, request }) => {
+    await page.goto("/", { waitUntil: "networkidle" });
+
+    const clara = page.locator(".brand-character-node img").first();
+    await expect(clara).toBeVisible();
+    const browserUrl = await clara.evaluate((image) => {
+      const element = image as HTMLImageElement;
+      return element.currentSrc || element.src;
+    });
+
+    const parsedBrowserUrl = new URL(browserUrl);
+    const sourceUrl = parsedBrowserUrl.searchParams.get("url") ?? browserUrl;
+    const decodedSourceUrl = decodeURIComponent(sourceUrl);
+
+    expect(decodedSourceUrl, "canonical source should use a hashed Next static-media asset").toContain("/_next/static/media/");
+    expect(decodedSourceUrl, "canonical source should preserve the approved Clara asset identity").toContain(`${budgets.staticMedia.canonicalBasename}.`);
+    expect(decodedSourceUrl, "canonical source should stay WebP").toMatch(/\.webp(?:\?|$)/i);
+
+    const response = await request.get(browserUrl);
     expect(response.ok()).toBeTruthy();
 
     const body = await response.body();
     const cacheControl = response.headers()["cache-control"] ?? "";
+    const cacheSeconds = reusableCacheSeconds(cacheControl);
 
     console.log(`PHASE8E_STATIC_ASSET ${JSON.stringify({
-      asset: budgets.staticMedia.asset,
+      browserUrl,
+      sourceUrl: decodedSourceUrl,
       bytes: body.byteLength,
       cacheControl,
+      cacheSeconds,
     })}`);
 
-    expect(body.byteLength, "canonical static media payload").toBeLessThanOrEqual(budgets.staticMedia.maxEncodedBytes);
-    expect(cacheControl.toLowerCase(), "static media must not disable caching").not.toContain("no-store");
-    expect(cacheControl, "static media should expose an explicit reusable cache policy").toMatch(/(?:max-age|s-maxage|public|immutable)/i);
+    expect(body.byteLength, "canonical browser-delivered image payload").toBeLessThanOrEqual(budgets.staticMedia.maxEncodedBytes);
+    expect(cacheControl.toLowerCase(), "canonical image delivery must not disable caching").not.toContain("no-store");
+    expect(cacheSeconds, "canonical image delivery cache TTL").toBeGreaterThanOrEqual(budgets.staticMedia.minimumCacheSeconds);
   });
 });
