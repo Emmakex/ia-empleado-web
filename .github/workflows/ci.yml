@@ -107,6 +107,9 @@ jobs:
       - name: Phase 8E performance budget contract
         run: node scripts/check-phase8e-performance-budget.mjs
 
+      - name: Phase 8E Lighthouse launch contract
+        run: node scripts/check-phase8e-lighthouse.mjs
+
       - name: Typecheck
         run: npm run typecheck
 
