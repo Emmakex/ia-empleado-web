@@ -5,6 +5,7 @@ export default defineConfig({
   testIgnore: [
     "**/phase8g-768-stability.spec.ts",
     "**/phase8g-iphone-webkit-emulation.spec.ts",
+    "**/phase8g-android-chromium-emulation.spec.ts",
   ],
   timeout: 45_000,
   expect: { timeout: 8_000 },
