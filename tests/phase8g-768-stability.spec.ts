@@ -2,25 +2,45 @@ import { expect, test } from "@playwright/test";
 
 const STRESS_ITERATIONS = 5;
 
-async function settleLayout(page: import("@playwright/test").Page) {
+async function settleTargetLayout(page: import("@playwright/test").Page) {
   await page.evaluate(async () => {
     await document.fonts.ready;
+  });
 
-    await Promise.all(
-      Array.from(document.images).map(async (image) => {
-        if (!image.complete) {
-          await new Promise<void>((resolve) => {
-            image.addEventListener("load", () => resolve(), { once: true });
-            image.addEventListener("error", () => resolve(), { once: true });
-          });
+  const cards = page.locator(".brand-character-card");
+  await expect(cards).toHaveCount(4);
+
+  for (let cardIndex = 0; cardIndex < 4; cardIndex += 1) {
+    const card = cards.nth(cardIndex);
+    await card.scrollIntoViewIfNeeded();
+
+    const images = card.locator("img");
+    const imageCount = await images.count();
+
+    for (let imageIndex = 0; imageIndex < imageCount; imageIndex += 1) {
+      const image = images.nth(imageIndex);
+
+      await expect
+        .poll(
+          () => image.evaluate((node) => (node as HTMLImageElement).complete),
+          {
+            timeout: 8_000,
+            message: `card ${cardIndex + 1} image ${imageIndex + 1} must finish loading`,
+          },
+        )
+        .toBe(true);
+
+      await image.evaluate(async (node) => {
+        const element = node as HTMLImageElement;
+        if (typeof element.decode === "function" && element.naturalWidth > 0) {
+          await element.decode().catch(() => undefined);
         }
+      });
+    }
+  }
 
-        if (typeof image.decode === "function") {
-          await image.decode().catch(() => undefined);
-        }
-      }),
-    );
-
+  await page.evaluate(async () => {
+    window.scrollTo(0, 0);
     await new Promise<void>((resolve) =>
       requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
     );
@@ -43,10 +63,9 @@ test("Home 768x1024 remains overflow-free across repeated cold browser contexts"
       try {
         const response = await page.goto("/", { waitUntil: "networkidle" });
         expect(response?.ok(), `cold load ${iteration} must return success`).toBeTruthy();
-        await settleLayout(page);
 
         await expect(page.locator(".brand-home-hero")).toBeVisible();
-        await expect(page.locator(".brand-character-card")).toHaveCount(4);
+        await settleTargetLayout(page);
 
         const metrics = await page.evaluate(() => ({
           clientWidth: document.documentElement.clientWidth,
