@@ -16,6 +16,7 @@ const previewRoute = read("app/brand-preview/[locale]/[surface]/route.tsx");
 const campaignRoute = read("app/brand-campaign/[locale]/[format]/[surface]/route.tsx");
 const phase8eClosure = read("docs/PHASE_8E_CLOSURE.md");
 const phase8f = read("docs/PHASE_8F_SEO_METADATA_SHARING.md");
+const runtimeSeoMatrix = read("tests/phase8f-seo-runtime.spec.ts");
 
 const requirePhrases = (label, source, phrases) => {
   for (const phrase of phrases) {
@@ -108,6 +109,21 @@ requirePhrases("Phase 8F activation", phase8f, [
   "browser/runtime SEO matrix",
 ]);
 
+requirePhrases("Phase 8F runtime SEO matrix", runtimeSeoMatrix, [
+  "PHASE8F_SEO_ROUTE",
+  "PHASE8F_INTERNAL_INDEX_POLICY",
+  'link[rel=\\"canonical\\"]',
+  'hreflang=\\"es-ES\\"',
+  'hreflang=\\"en\\"',
+  'hreflang=\\"x-default\\"',
+  'meta[property=\\"og:image\\"]',
+  'meta[name=\\"twitter:image\\"]',
+  "/sitemap.xml",
+  "/robots.txt",
+  "x-robots-tag",
+  "not-found responses are 404 and explicitly non-indexable",
+]);
+
 const pageRouteLeaks = [
   "app/brand-preview/[locale]/[surface]/page.tsx",
   "app/brand-campaign/[locale]/[format]/[surface]/page.tsx",
@@ -116,4 +132,4 @@ if (pageRouteLeaks.length) {
   throw new Error(`Internal rendering endpoints became customer-facing pages: ${pageRouteLeaks.join(", ")}`);
 }
 
-console.log("Phase 8F SEO foundation OK: bilingual root metadata, sitemap/robots generation, social-preview infrastructure, internal renderer boundaries and Phase 8E→8F phase transition are protected before runtime route auditing begins.");
+console.log("Phase 8F SEO foundation OK: bilingual root metadata, sitemap/robots generation, social-preview infrastructure, internal renderer boundaries, the runtime SEO matrix and the Phase 8E→8F transition are protected.");
