@@ -1,0 +1,119 @@
+import fs from "node:fs";
+
+const read = (filePath) => {
+  if (!fs.existsSync(filePath)) throw new Error(`Missing Phase 8F foundation file: ${filePath}`);
+  const value = fs.readFileSync(filePath, "utf8");
+  if (!value.trim()) throw new Error(`Empty Phase 8F foundation file: ${filePath}`);
+  return value;
+};
+
+const esLayout = read("app/(es)/layout.tsx");
+const enLayout = read("app/(en)/en/layout.tsx");
+const sitemap = read("app/sitemap.ts");
+const robots = read("app/robots.ts");
+const socialPreviews = read("lib/brand-social-previews.tsx");
+const previewRoute = read("app/brand-preview/[locale]/[surface]/route.tsx");
+const campaignRoute = read("app/brand-campaign/[locale]/[format]/[surface]/route.tsx");
+const phase8eClosure = read("docs/PHASE_8E_CLOSURE.md");
+const phase8f = read("docs/PHASE_8F_SEO_METADATA_SHARING.md");
+
+const requirePhrases = (label, source, phrases) => {
+  for (const phrase of phrases) {
+    if (!source.includes(phrase)) throw new Error(`${label} missing required phrase: ${phrase}`);
+  }
+};
+
+requirePhrases("Spanish root metadata", esLayout, [
+  'metadataBase: new URL("https://iaempleado.com")',
+  'alternates:',
+  'canonical: "/"',
+  '"es-ES": "/"',
+  'en: "/en"',
+  '"x-default": "/"',
+  'openGraph:',
+  'twitter:',
+  'robots: { index: true, follow: true }',
+  'brandPreviewUrl("es", "home")',
+]);
+
+requirePhrases("English root metadata", enLayout, [
+  'metadataBase: new URL("https://iaempleado.com")',
+  'alternates:',
+  'canonical: "/en"',
+  '"es-ES": "/"',
+  'en: "/en"',
+  '"x-default": "/"',
+  'openGraph:',
+  'twitter:',
+  'robots: { index: true, follow: true }',
+  'brandPreviewUrl("en", "home")',
+]);
+
+requirePhrases("Sitemap", sitemap, [
+  'MetadataRoute.Sitemap',
+  'https://iaempleado.com/',
+  'alternates: { languages:',
+  'getDetailedEmployeeRecords()',
+  'getTeamRecords()',
+  'comparisonRecords',
+  'sectorRecords',
+  'useCaseRecords',
+  'departmentRecords',
+  'integrationRecords',
+  'teamBuilderPath',
+  'processAnalyzerPath',
+  'roiEstimatorPath',
+  'requestDemoPath',
+]);
+
+requirePhrases("Robots", robots, [
+  'userAgent: "*"',
+  'allow: "/"',
+  'sitemap: "https://iaempleado.com/sitemap.xml"',
+  'host: "https://iaempleado.com"',
+]);
+
+requirePhrases("Social preview system", socialPreviews, [
+  'brandPreviewUrl',
+  '1200',
+  '630',
+]);
+
+for (const [label, routeSource] of [
+  ["brand preview route", previewRoute],
+  ["brand campaign route", campaignRoute],
+]) {
+  if (!routeSource.includes("export async function GET") && !routeSource.includes("export function GET")) {
+    throw new Error(`${label} must remain a route handler rather than a customer-facing page`);
+  }
+}
+
+requirePhrases("Phase 8E closure evidence", phase8eClosure, [
+  "COMPLETE",
+  "Production Verification #46",
+  "163/163",
+  "0.81 / 0.96 / 0.96",
+  "Phase 8F — SEO, metadata and sharing — is now ACTIVE",
+]);
+
+requirePhrases("Phase 8F activation", phase8f, [
+  "ACTIVE",
+  "titles and descriptions",
+  "Canonical URLs and language alternates",
+  "Sitemap",
+  "Robots and index policy",
+  "Open Graph and Twitter sharing",
+  "Structured data",
+  "Navigation, breadcrumbs and errors",
+  "browser/runtime SEO matrix",
+]);
+
+const pageRouteLeaks = [
+  "app/brand-preview/[locale]/[surface]/page.tsx",
+  "app/brand-campaign/[locale]/[format]/[surface]/page.tsx",
+].filter((filePath) => fs.existsSync(filePath));
+if (pageRouteLeaks.length) {
+  throw new Error(`Internal rendering endpoints became customer-facing pages: ${pageRouteLeaks.join(", ")}`);
+}
+
+console.log("Phase 8F SEO foundation OK: bilingual root metadata, sitemap/robots generation, social-preview infrastructure, internal renderer boundaries and Phase 8E→8F phase transition are protected before runtime route auditing begins.");
