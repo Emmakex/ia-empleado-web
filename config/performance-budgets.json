@@ -20,7 +20,8 @@
     "thirdPartyRequests": 0
   },
   "staticMedia": {
-    "asset": "/branding/characters/clara-canonical.webp",
-    "maxEncodedBytes": 500000
+    "canonicalBasename": "clara-canonical",
+    "maxEncodedBytes": 500000,
+    "minimumCacheSeconds": 604800
   }
 }
