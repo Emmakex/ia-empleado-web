@@ -70,7 +70,7 @@ for (const phrase of [
 ]) {
   if (!production.includes(phrase)) throw new Error(`Production Lighthouse gate missing phrase: ${phrase}`);
 }
-const metadataMarker = `\"ia-web-release\": \"${marker}\"`;
+const metadataMarker = `"ia-web-release": "${marker}"`;
 if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
   throw new Error(`ES/EN layouts are not marked for the Lighthouse gate release: ${marker}`);
 }
