@@ -90,21 +90,24 @@ if (!nextConfig.includes("minimumCacheTTL: 604800")) {
   throw new Error("Phase 8E optimized-image cache policy is not protected");
 }
 
+for (const sourcePath of [
+  "/branding/characters/clara-canonical.webp",
+  "/branding/characters/alex-canonical.webp",
+  "/branding/characters/sofia-canonical.webp",
+  "/branding/characters/javier-canonical.webp",
+]) {
+  if (!brandCharacters.includes(sourcePath)) throw new Error(`Canonical approved source path missing: ${sourcePath}`);
+}
 for (const phrase of [
+  'import Image, { type StaticImageData } from "next/image"',
   'import claraCanonical from "../public/branding/characters/clara-canonical.webp"',
   'import alexCanonical from "../public/branding/characters/alex-canonical.webp"',
   'import sofiaCanonical from "../public/branding/characters/sofia-canonical.webp"',
   'import javierCanonical from "../public/branding/characters/javier-canonical.webp"',
-  "deliveryAsset: string",
-  "deliveryAsset: claraCanonical.src",
-  "deliveryAsset: alexCanonical.src",
-  "deliveryAsset: sofiaCanonical.src",
-  "deliveryAsset: javierCanonical.src",
+  'const deliveryAssets: Record<BrandCharacter["id"], StaticImageData>',
+  "src={deliveryAssets[character.id]}",
 ]) {
-  if (!brandCharacters.includes(phrase)) throw new Error(`Phase 8E canonical delivery-asset contract missing phrase: ${phrase}`);
-}
-if (!brandCharacterImage.includes("src={character.deliveryAsset}")) {
-  throw new Error("Canonical browser renderer is not using the content-hashed delivery asset");
+  if (!brandCharacterImage.includes(phrase)) throw new Error(`Phase 8E canonical browser-delivery contract missing phrase: ${phrase}`);
 }
 
 for (const [surface, source] of [["footer", footer], ["Team Builder", teamBuilder]]) {
@@ -125,4 +128,4 @@ if (!canonicalDecision.includes("COMPLETE")) {
   throw new Error("Phase 8D documentation must be closed before Phase 8E advances");
 }
 
-console.log(`Phase 8E performance contract OK: ${budget.routes.length} representative routes, explicit CWV/resource budgets, hashed canonical browser delivery, optimized-image TTL, below-fold lazy loading and actionable URL diagnostics are protected.`);
+console.log(`Phase 8E performance contract OK: ${budget.routes.length} representative routes, explicit CWV/resource budgets, Next-owned hashed canonical browser delivery, optimized-image TTL, below-fold lazy loading and actionable URL diagnostics are protected.`);
