@@ -98,7 +98,7 @@ requirePhrases("Phase 8E closure evidence", phase8eClosure, [
 
 requirePhrases("Phase 8F activation", phase8f, [
   "ACTIVE",
-  "titles and descriptions",
+  "Titles and descriptions",
   "Canonical URLs and language alternates",
   "Sitemap",
   "Robots and index policy",
