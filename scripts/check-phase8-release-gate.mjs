@@ -270,7 +270,7 @@ for (const phrase of [
   "Phase 8C — Motion and animation finalization",
   "Phase 8D — Canonical visual fidelity closure",
   "Phase 8E — Performance & Core Web Vitals",
-  "Lighthouse launch-score gate",
+  "stable Lighthouse launch score gate",
 ]) {
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
