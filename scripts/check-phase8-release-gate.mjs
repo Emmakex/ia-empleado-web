@@ -207,18 +207,24 @@ if (homePage.includes("HomeBrandStory") || homePage.includes("<video")) {
   throw new Error("Homepage reintroduced the rejected video surface");
 }
 
+for (const sourcePath of [
+  "/branding/characters/clara-canonical.webp",
+  "/branding/characters/alex-canonical.webp",
+  "/branding/characters/sofia-canonical.webp",
+  "/branding/characters/javier-canonical.webp",
+]) {
+  if (!brandCharacters.includes(sourcePath)) throw new Error(`Canonical character source missing: ${sourcePath}`);
+}
 for (const phrase of [
+  'import Image, { type StaticImageData } from "next/image"',
   'import claraCanonical from "../public/branding/characters/clara-canonical.webp"',
   'import alexCanonical from "../public/branding/characters/alex-canonical.webp"',
   'import sofiaCanonical from "../public/branding/characters/sofia-canonical.webp"',
   'import javierCanonical from "../public/branding/characters/javier-canonical.webp"',
-  "deliveryAsset: string",
-  "deliveryAsset: claraCanonical.src",
+  'const deliveryAssets: Record<BrandCharacter["id"], StaticImageData>',
+  "src={deliveryAssets[character.id]}",
 ]) {
-  if (!brandCharacters.includes(phrase)) throw new Error(`Canonical character delivery contract missing phrase: ${phrase}`);
-}
-if (!brandCharacterImage.includes("src={character.deliveryAsset}")) {
-  throw new Error("Canonical browser renderer is not using the content-hashed delivery asset");
+  if (!brandCharacterImage.includes(phrase)) throw new Error(`Canonical browser-delivery contract missing phrase: ${phrase}`);
 }
 
 if (!header.includes("hrefLang={otherLocale}")) {
@@ -238,4 +244,4 @@ for (const phrase of [
   if (!docs.includes(phrase)) throw new Error(`Phase 8 finalization documentation missing phrase: ${phrase}`);
 }
 
-console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions, canonical source/browser-delivery separation and the Phase 8E production performance budget remain protected.`);
+console.log(`Web Phase 8E release gate OK: ${marker} is active in ES/EN; permanent Phase 8A-8D regressions, Next-owned canonical browser delivery and the Phase 8E production performance budget remain protected.`);
