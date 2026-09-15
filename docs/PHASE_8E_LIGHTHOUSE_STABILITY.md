@@ -42,7 +42,7 @@ The bilingual pairs use effectively the same application/runtime bundles, yet th
 
 That pattern did not reproduce in the real Hostinger browser budget, where the same six routes showed no main-thread long task in #45 and sub-430 ms LCP. The evidence therefore supported CPU-throttle variance in a single Lighthouse sample, not a coherent language-specific product regression.
 
-This did **not** justify weakening the launch requirement. The protected category thresholds remained exactly **90/95/95/95**, and **no threshold was lowered**.
+This does **not** justify weakening the launch requirement. The protected category thresholds remain exactly **90/95/95/95**, and **no threshold is lowered**.
 
 ## Adaptive median-of-three contract
 
