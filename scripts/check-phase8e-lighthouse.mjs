@@ -13,6 +13,7 @@ const packageJson = JSON.parse(read("package.json"));
 const esLayout = read("app/(es)/layout.tsx");
 const enLayout = read("app/(en)/en/layout.tsx");
 const performanceDocs = read("docs/PHASE_8E_PERFORMANCE_BASELINE.md");
+const stabilityDocs = read("docs/PHASE_8E_LIGHTHOUSE_STABILITY.md");
 
 const marker = "web-phase-8e-lighthouse-gate";
 const requiredRoutes = [
@@ -31,12 +32,16 @@ const expectedScores = {
 };
 const expectedUserAgent = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36";
 
+if (config.version !== 2) throw new Error(`Phase 8E Lighthouse config version must be 2, received ${config.version}`);
 if (config.tool?.package !== "lighthouse" || config.tool?.version !== "13.4.1") {
   throw new Error("Phase 8E Lighthouse tool/version is not pinned to lighthouse@13.4.1");
 }
 if (config.formFactor !== "mobile") throw new Error("Phase 8E Lighthouse launch gate must run with the mobile form factor");
 if (config.emulatedUserAgent !== expectedUserAgent) {
   throw new Error("Phase 8E Lighthouse browser identity drifted from the approved normal mobile Chrome identity");
+}
+if (config.stability?.samplesOnThresholdFailure !== 3 || config.stability?.decision !== "median") {
+  throw new Error("Phase 8E Lighthouse stability contract must use 3 samples and a median decision after an initial threshold miss");
 }
 if (JSON.stringify(config.routes) !== JSON.stringify(requiredRoutes)) {
   throw new Error(`Unexpected Phase 8E Lighthouse route matrix: ${JSON.stringify(config.routes)}`);
@@ -50,18 +55,26 @@ for (const [category, minimum] of Object.entries(expectedScores)) {
 for (const phrase of [
   "LIGHTHOUSE_BASE_URL or PRODUCTION_BASE_URL is required",
   "LIGHTHOUSE_USER_AGENT_MISSING",
+  "LIGHTHOUSE_STABILITY_CONFIG_INVALID",
+  "samplesOnThresholdFailure",
+  "const median =",
+  "PHASE8E_LIGHTHOUSE_SAMPLE",
+  "LIGHTHOUSE_SAMPLE_THRESHOLD_MISS",
+  "LIGHTHOUSE_STABILITY_RETRY",
+  "median-of-3",
   "LIGHTHOUSE_RUN_CONTEXT",
   "baseUrlSource",
   "--emulatedUserAgent=${config.emulatedUserAgent}",
   "PHASE8E_LIGHTHOUSE",
   "LIGHTHOUSE_THRESHOLD_FAILURE",
   "LIGHTHOUSE_EXECUTION_FAILURE",
+  ".sample-${sample}.json",
   ".artifacts",
   "lighthouseVersion",
   "largestContentfulPaintMs",
   "totalBlockingTimeMs",
 ]) {
-  if (!runner.includes(phrase)) throw new Error(`Lighthouse runner missing diagnostic contract phrase: ${phrase}`);
+  if (!runner.includes(phrase)) throw new Error(`Lighthouse runner missing diagnostic/stability contract phrase: ${phrase}`);
 }
 
 if (packageJson.scripts?.["qa:lighthouse:production"] !== "node scripts/run-phase8e-lighthouse.mjs") {
@@ -103,5 +116,19 @@ for (const phrase of [
 ]) {
   if (!performanceDocs.includes(phrase)) throw new Error(`Phase 8E performance evidence missing phrase: ${phrase}`);
 }
+for (const phrase of [
+  "Production Verification #45",
+  "34928413477",
+  "6e237d68f356f1d2ba9981b5df7da51456455cb6",
+  "163/163",
+  "284–428 ms",
+  "0.82",
+  "0.85",
+  "median-of-three",
+  "90/95/95/95",
+  "no threshold is lowered",
+]) {
+  if (!stabilityDocs.includes(phrase)) throw new Error(`Phase 8E Lighthouse stability evidence missing phrase: ${phrase}`);
+}
 
-console.log("Phase 8E Lighthouse launch contract OK: production browser evidence stays on Hostinger while pinned Lighthouse audits the exact verified release SHA in a WAF-independent local production lab with unchanged launch scores.");
+console.log("Phase 8E Lighthouse launch contract OK: production browser evidence stays on Hostinger while pinned Lighthouse audits the exact verified release SHA; unchanged launch scores use adaptive median-of-three stabilization only after an initial threshold miss.");
