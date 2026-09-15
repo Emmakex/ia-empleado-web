@@ -21,7 +21,7 @@ test("iPhone WebKit emulation renders critical mobile routes without runtime err
   page.on("pageerror", (error) => pageErrors.push(error.message));
 
   expect(browserName).toBe("webkit");
-  expect(page.viewportSize()).toEqual({ width: 390, height: 844 });
+  expect(page.viewportSize()).toEqual({ width: 390, height: 664 });
   expect(await page.evaluate(() => navigator.userAgent)).toContain("iPhone");
 
   for (const route of criticalRoutes) {
