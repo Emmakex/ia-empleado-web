@@ -116,11 +116,14 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Install Chromium for browser QA
-        run: npx playwright install --with-deps chromium
+      - name: Install Chromium and Firefox for browser QA
+        run: npx playwright install --with-deps chromium firefox
 
       - name: Browser UX and accessibility QA
         run: npm run qa:browser
+
+      - name: Phase 8G Firefox smoke acceptance
+        run: npm run qa:phase8g:firefox
 
       - name: Upload browser QA diagnostics
         if: failure()
@@ -129,6 +132,7 @@ jobs:
           name: playwright-report
           path: |
             playwright-report/
+            playwright-phase8g-firefox-report/
             test-results/
           if-no-files-found: ignore
           retention-days: 7
