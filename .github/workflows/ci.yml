@@ -123,10 +123,14 @@ jobs:
       - name: Build
         run: npm run build
 
-  chromium:
-    name: Chromium browser acceptance
+  chromium-qa:
+    name: Chromium browser QA shard ${{ matrix.shard }}/3
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -142,8 +146,38 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Browser UX and accessibility QA
-        run: npm run qa:browser
+      - name: Browser UX and accessibility QA shard ${{ matrix.shard }}/3
+        run: npm run qa:browser -- --shard=${{ matrix.shard }}/3
+
+      - name: Upload Chromium shard diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-chromium-shard-${{ matrix.shard }}-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  chromium-phase8g:
+    name: Chromium Phase 8G acceptance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Phase 8G 768px stability stress acceptance
         run: npm run qa:phase8g:768
@@ -151,13 +185,12 @@ jobs:
       - name: Phase 8G Android Chromium emulation acceptance
         run: npm run qa:phase8g:android
 
-      - name: Upload Chromium diagnostics
+      - name: Upload Chromium Phase 8G diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-chromium-report
+          name: playwright-chromium-phase8g-report
           path: |
-            playwright-report/
             playwright-phase8g-768-report/
             playwright-phase8g-android-report/
             test-results/
