@@ -4,6 +4,7 @@ import type { EmployeeKey, LocalizedEmployeeDetail } from "../lib/employee-catal
 import { alternateEmployeePath, employeeIndexPath } from "../lib/employee-content-engine";
 import { getRelatedDiscoveryProfiles } from "../lib/employee-discovery";
 import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
+import { requestDemoPath } from "../lib/conversion-handoff";
 import { BrandRoleFamilyScene } from "./brand-role-family-scene";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -26,7 +27,11 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
   const alternateHref = alternateEmployeePath(employeeKey, locale);
   const indexHref = employeeIndexPath(locale);
   const canonicalPath = locale === "es" ? `/empleados-ia/${content.slug}` : `/en/ai-employees/${content.slug}`;
-  const contactSubject = encodeURIComponent(`IA Empleado - ${content.shortName}`);
+  const demoHref = requestDemoPath(locale, {
+    intent: "employee",
+    source: "employee-detail",
+    context: content.shortName,
+  });
   const relatedProfiles = getRelatedDiscoveryProfiles(employeeKey, locale);
   const character = getBrandCharacterByEmployeeKey(employeeKey, locale);
 
@@ -119,7 +124,7 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
 
         <section className="content-section section-panel" aria-labelledby="employee-faq-title"><div className="container faq-layout"><div className="faq-heading"><p className="eyebrow">FAQ</p><h2 id="employee-faq-title">{content.faqTitle}</h2></div><div className="faq-list">{content.faq.map((item, index) => <details className="faq-item" key={item.question} open={index === 0}><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}</div></div></section>
 
-        <section className="content-section final-cta"><div className="container cta-panel"><div><p className="eyebrow">{content.ctaEyebrow}</p><h2>{content.ctaTitle}</h2><p>{content.ctaText}</p></div><div className="cta-actions"><a className="button" href={`mailto:hola@iaempleado.com?subject=${contactSubject}`}>{content.ctaPrimary}</a><Link className="button button-ghost" href={indexHref}>{content.ctaSecondary}</Link></div></div></section>
+        <section className="content-section final-cta"><div className="container cta-panel"><div><p className="eyebrow">{content.ctaEyebrow}</p><h2>{content.ctaTitle}</h2><p>{content.ctaText}</p></div><div className="cta-actions"><a className="button" href={demoHref}>{content.ctaPrimary}</a><Link className="button button-ghost" href={indexHref}>{content.ctaSecondary}</Link></div></div></section>
       </main>
       <SiteFooter locale={locale} dictionary={dictionary} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
