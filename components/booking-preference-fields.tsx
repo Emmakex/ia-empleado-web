@@ -82,7 +82,7 @@ export function BookingPreferenceFields({
         </div>
       </div>
 
-      <fieldset className="lead-booking-time-fieldset">
+      <fieldset className="lead-booking-time-fieldset" aria-describedby="lead-booking-time-help">
         <legend>{labels.timeLabel}</legend>
         <div className="lead-booking-time-grid" data-booking-time-grid>
           {BOOKING_SLOT_TIMES.map((slot) => (
@@ -95,11 +95,7 @@ export function BookingPreferenceFields({
                 checked={time === slot}
                 disabled={disabled}
                 aria-label={`${labels.timeLabel} ${slot}`}
-                onInvalid={(event) => {
-                  if (!time) event.currentTarget.setCustomValidity(labels.timeError);
-                }}
                 onChange={(event) => {
-                  event.currentTarget.setCustomValidity("");
                   if (event.currentTarget.checked) onTimeChange(slot);
                 }}
               />
@@ -107,6 +103,7 @@ export function BookingPreferenceFields({
             </label>
           ))}
         </div>
+        <p className="sr-only" id="lead-booking-time-help">{labels.timeError}</p>
       </fieldset>
 
       <p className="lead-booking-pending" role="note">
