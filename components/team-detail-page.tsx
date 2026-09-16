@@ -3,6 +3,7 @@ import { employeeDetailPath } from "../lib/employee-content-engine";
 import { getDictionary, localeHref, type Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey } from "../lib/brand-characters";
 import { alternateTeamPath, getTeamRecords, teamIndexPath, type TeamKey } from "../lib/team-content-engine";
+import { teamBuilderPath } from "../lib/team-builder";
 import { BrandCharacterImage } from "./brand-character-image";
 import { BrandCollaborationComposition } from "./brand-collaboration-composition";
 import { SiteFooter } from "./site-footer";
@@ -18,6 +19,7 @@ export function TeamDetailPage({ locale, teamKey }: TeamDetailPageProps) {
   const detail = team.locales[locale];
   const homeHref = localeHref(locale);
   const indexHref = teamIndexPath(locale);
+  const builderHref = teamBuilderPath(locale);
   const canonical = `https://iaempleado.com${indexHref}/${detail.slug}`;
   const brandedMembers = detail.members.map((member) => member.employeeKey ? getBrandCharacterForProfileKey(member.employeeKey, locale) : undefined);
   const collaborationParticipants = detail.members.map((member, index) => ({
@@ -43,7 +45,7 @@ export function TeamDetailPage({ locale, teamKey }: TeamDetailPageProps) {
             <div>
               <nav className="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumbs"}><Link href={homeHref}>{locale === "es" ? "Inicio" : "Home"}</Link><span aria-hidden="true">/</span><Link href={indexHref}>{locale === "es" ? "Equipos IA" : "AI Teams"}</Link><span aria-hidden="true">/</span><span>{detail.shortName}</span></nav>
               <p className="eyebrow">{detail.eyebrow}</p><span className="status-pill">{detail.statusLabel}</span><h1 id="team-detail-title">{detail.heroTitle}</h1><p className="hero-description">{detail.heroDescription}</p>
-              <div className="hero-actions"><a className="button" href="#flujo-equipo">{locale === "es" ? "Ver el flujo" : "See the workflow"}</a><Link className="button button-ghost" href={`${homeHref}#disena-tu-equipo`}>{detail.ctaPrimary}</Link></div>
+              <div className="hero-actions"><a className="button" href="#flujo-equipo">{locale === "es" ? "Ver el flujo" : "See the workflow"}</a><Link className="button button-ghost" href={builderHref}>{detail.ctaPrimary}</Link></div>
             </div>
             <aside className="team-outcome-card brand-team-outcome-card" aria-label={detail.outcomeLabel}>
               <BrandCollaborationComposition
@@ -84,7 +86,7 @@ export function TeamDetailPage({ locale, teamKey }: TeamDetailPageProps) {
 
         <section className="content-section section-panel" aria-labelledby="team-faq-title"><div className="container faq-layout"><div className="faq-heading"><p className="eyebrow">FAQ</p><h2 id="team-faq-title">{detail.faqTitle}</h2></div><div className="faq-list">{detail.faq.map((item, index) => <details className="faq-item" key={item.question} open={index === 0}><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}</div></div></section>
 
-        <section className="content-section final-cta" aria-labelledby="team-cta-title"><div className="container cta-panel"><div><p className="eyebrow">{detail.ctaEyebrow}</p><h2 id="team-cta-title">{detail.ctaTitle}</h2><p>{detail.ctaText}</p></div><div className="cta-actions"><Link className="button" href={`${homeHref}#disena-tu-equipo`}>{detail.ctaPrimary}</Link><Link className="button button-ghost" href={indexHref}>{detail.ctaSecondary}</Link></div></div></section>
+        <section className="content-section final-cta" aria-labelledby="team-cta-title"><div className="container cta-panel"><div><p className="eyebrow">{detail.ctaEyebrow}</p><h2 id="team-cta-title">{detail.ctaTitle}</h2><p>{detail.ctaText}</p></div><div className="cta-actions"><Link className="button" href={builderHref}>{detail.ctaPrimary}</Link><Link className="button button-ghost" href={indexHref}>{detail.ctaSecondary}</Link></div></div></section>
       </main>
       <SiteFooter locale={locale} dictionary={dictionary} />
       {schemas.map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />)}

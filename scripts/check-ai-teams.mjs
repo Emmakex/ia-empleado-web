@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 const requiredFiles = [
   "lib/team-content-engine.ts",
+  "lib/team-builder.ts",
   "components/team-index-page.tsx",
   "components/team-detail-page.tsx",
   "app/team-content.css",
@@ -59,6 +60,29 @@ if (!header.includes("teamIndexPath(locale)")) {
   throw new Error("Global navigation does not link to the AI Team index");
 }
 
+const teamBuilder = fs.readFileSync("lib/team-builder.ts", "utf8");
+for (const canonicalPath of ["/disena-tu-equipo-ia", "/en/design-your-ai-team"]) {
+  if (!teamBuilder.includes(canonicalPath)) {
+    throw new Error(`Team Builder helper lost canonical path: ${canonicalPath}`);
+  }
+}
+
+for (const page of ["components/team-index-page.tsx", "components/team-detail-page.tsx"]) {
+  const content = fs.readFileSync(page, "utf8");
+  if (!content.includes('import { teamBuilderPath } from "../lib/team-builder"')) {
+    throw new Error(`${page} does not import the canonical Team Builder path helper`);
+  }
+  if (!content.includes("const builderHref = teamBuilderPath(locale)")) {
+    throw new Error(`${page} does not resolve the localized Team Builder CTA destination`);
+  }
+  if (!content.includes("href={builderHref}")) {
+    throw new Error(`${page} does not route its commercial CTA to Team Builder`);
+  }
+  if (content.includes("#disena-tu-equipo")) {
+    throw new Error(`${page} still bounces Team Builder intent through the homepage anchor`);
+  }
+}
+
 const sitemap = fs.readFileSync("app/sitemap.ts", "utf8");
 if (!sitemap.includes("getTeamRecords") || !sitemap.includes("teamDetailPath")) {
   throw new Error("AI Team pages are missing from sitemap generation");
@@ -71,4 +95,4 @@ for (const layout of ["app/(es)/layout.tsx", "app/(en)/en/layout.tsx"]) {
   }
 }
 
-console.log("AI Teams content contract OK");
+console.log("AI Teams content contract OK: localized content, truthfulness controls and direct Team Builder CTA routing are protected.");
