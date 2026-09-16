@@ -55,6 +55,16 @@ jobs:
       - name: Enable native Safari WebDriver
         run: sudo /usr/bin/safaridriver --enable
 
+      - name: Enable full keyboard navigation for Safari acceptance
+        run: |
+          defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
+          defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
+          defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
+          killall cfprefsd || true
+          sleep 3
+          defaults read NSGlobalDomain AppleKeyboardUIMode | tee artifacts/native-safari/keyboard-navigation-setting.txt
+          defaults read com.apple.Safari WebKitTabToLinksPreferenceKey | tee artifacts/native-safari/safari-tab-navigation-setting.txt
+
       - name: Install Selenium client in isolated environment
         run: |
           python3 -m venv .venv-safari
@@ -69,6 +79,22 @@ jobs:
           . .venv-safari/bin/activate
           python scripts/phase8g-native-safari-smoke.py
 
+      - name: Enable macOS Reduce Motion for native Safari
+        run: |
+          defaults write com.apple.Accessibility ReduceMotionEnabled -bool true
+          killall cfprefsd || true
+          sleep 3
+          defaults read com.apple.Accessibility ReduceMotionEnabled | tee artifacts/native-safari/reduce-motion-setting.txt
+
+      - name: Run native Safari reduced-motion acceptance
+        env:
+          BASE_URL: http://127.0.0.1:3100
+          SAFARI_ARTIFACT_DIR: artifacts/native-safari
+          SAFARI_REDUCED_MOTION_ONLY: "1"
+        run: |
+          . .venv-safari/bin/activate
+          python scripts/phase8g-native-safari-smoke.py
+
       - name: Collect server log and stop exact candidate
         if: always()
         run: |
@@ -79,6 +105,11 @@ jobs:
           if [ -f /tmp/ia-empleado-safari-next.pid ]; then
             kill "$(cat /tmp/ia-empleado-safari-next.pid)" || true
           fi
+          defaults delete com.apple.Accessibility ReduceMotionEnabled || true
+          defaults delete NSGlobalDomain AppleKeyboardUIMode || true
+          defaults delete com.apple.Safari WebKitTabToLinksPreferenceKey || true
+          defaults delete com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks || true
+          killall cfprefsd || true
 
       - name: Upload native Safari evidence
         if: always()
