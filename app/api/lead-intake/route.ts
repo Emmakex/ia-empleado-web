@@ -167,6 +167,14 @@ async function deliverLeadViaWebhook(
           source: payload.source,
           context: payload.context,
           need: payload.need,
+          bookingPreference: payload.preferredDate && payload.preferredTime
+            ? {
+                date: payload.preferredDate,
+                time: payload.preferredTime,
+                timeZone: payload.preferredTimeZone,
+                status: "pending_confirmation",
+              }
+            : undefined,
         },
         consent: {
           accepted: true,
