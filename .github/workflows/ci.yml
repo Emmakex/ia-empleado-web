@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
   validate:
+    name: Contracts, typecheck and build
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -119,8 +120,27 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Install Chromium, Firefox, WebKit and Microsoft Edge for browser QA
-        run: npx playwright install --with-deps chromium firefox webkit msedge
+      - name: Build
+        run: npm run build
+
+  chromium:
+    name: Chromium browser acceptance
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Browser UX and accessibility QA
         run: npm run qa:browser
@@ -128,8 +148,73 @@ jobs:
       - name: Phase 8G 768px stability stress acceptance
         run: npm run qa:phase8g:768
 
+      - name: Phase 8G Android Chromium emulation acceptance
+        run: npm run qa:phase8g:android
+
+      - name: Upload Chromium diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-chromium-report
+          path: |
+            playwright-report/
+            playwright-phase8g-768-report/
+            playwright-phase8g-android-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  firefox:
+    name: Firefox browser acceptance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install Firefox
+        run: npx playwright install --with-deps firefox
+
       - name: Phase 8G Firefox smoke acceptance
         run: npm run qa:phase8g:firefox
+
+      - name: Upload Firefox diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-firefox-report
+          path: |
+            playwright-phase8g-firefox-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  webkit:
+    name: WebKit browser acceptance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install WebKit
+        run: npx playwright install --with-deps webkit
 
       - name: Phase 8G WebKit smoke acceptance
         run: npm run qa:phase8g:webkit
@@ -137,28 +222,47 @@ jobs:
       - name: Phase 8G iPhone WebKit emulation acceptance
         run: npm run qa:phase8g:iphone
 
-      - name: Phase 8G Android Chromium emulation acceptance
-        run: npm run qa:phase8g:android
-
-      - name: Phase 8G Microsoft Edge smoke acceptance
-        run: npm run qa:phase8g:edge
-
-      - name: Upload browser QA diagnostics
+      - name: Upload WebKit diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-webkit-report
           path: |
-            playwright-report/
-            playwright-phase8g-768-report/
-            playwright-phase8g-firefox-report/
             playwright-phase8g-webkit-report/
             playwright-phase8g-iphone-report/
-            playwright-phase8g-android-report/
-            playwright-phase8g-edge-report/
             test-results/
           if-no-files-found: ignore
           retention-days: 7
 
-      - name: Build
-        run: npm run build
+  edge:
+    name: Microsoft Edge browser acceptance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install Microsoft Edge
+        run: npx playwright install --with-deps msedge
+
+      - name: Phase 8G Microsoft Edge smoke acceptance
+        run: npm run qa:phase8g:edge
+
+      - name: Upload Edge diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-edge-report
+          path: |
+            playwright-phase8g-edge-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
