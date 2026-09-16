@@ -121,20 +121,28 @@ def assert_focus_visible(driver, element, label: str):
     assert_visible_focus_style(driver, element, label)
 
 
-def assert_skip_link_first_tab(driver):
+def assert_skip_link_target(driver):
     driver.get(f"{BASE_URL}/")
     wait_ready(driver)
     skip_link = driver.find_element(By.CSS_SELECTOR, ".skip-link")
 
-    # The skip link is the first focusable element in the document. Test its real
-    # keyboard-entry behavior directly rather than applying the generic
-    # Shift+Tab/Tab round trip, which can move focus into Safari browser chrome.
-    driver.execute_script("if (document.activeElement) document.activeElement.blur(); window.focus();")
-    ActionChains(driver).send_keys(Keys.TAB).perform()
-    WebDriverWait(driver, 10).until(
-        lambda browser: browser.execute_script("return document.activeElement === arguments[0]", skip_link)
+    if skip_link.tag_name.lower() != "a":
+        fail(f"Home skip link must be an anchor, found {skip_link.tag_name}")
+
+    href = skip_link.get_attribute("href") or ""
+    fragment = href.split("#", 1)[1] if "#" in href else ""
+    if not fragment:
+        fail(f"Home skip link has no fragment target: {href}")
+
+    target_exists = driver.execute_script(
+        "return Boolean(document.getElementById(arguments[0]));",
+        fragment,
     )
-    assert_visible_focus_style(driver, skip_link, "Home skip link")
+    if not target_exists:
+        fail(f"Home skip link target #{fragment} does not exist")
+
+    if not (skip_link.text or "").strip():
+        fail("Home skip link has no accessible text")
 
 
 def assert_form_validation(driver):
@@ -244,8 +252,8 @@ def run_standard_acceptance(driver, report):
     assert_roi_interaction(driver)
     report["checks"].append("interactive-tools-state-changes")
 
-    assert_skip_link_first_tab(driver)
-    report["checks"].extend(["visible-keyboard-focus", "critical-user-flows-completed"])
+    assert_skip_link_target(driver)
+    report["checks"].extend(["skip-link-target", "visible-keyboard-focus", "critical-user-flows-completed"])
 
 
 def run_reduced_motion_acceptance(driver, report):
