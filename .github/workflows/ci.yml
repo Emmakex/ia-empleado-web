@@ -114,8 +114,11 @@ jobs:
       - name: Phase 8F SEO foundation contract
         run: node scripts/check-phase8f-seo-foundation.mjs
 
-      - name: Phase 8H commercial readiness pre-audit contract
+      - name: Phase 8H commercial and legal readiness contract
         run: node scripts/check-phase8h-commercial-readiness.mjs
+
+      - name: Phase 8H commercial parity contract
+        run: node scripts/check-phase8h-commercial-parity.mjs
 
       - name: Typecheck
         run: npm run typecheck
