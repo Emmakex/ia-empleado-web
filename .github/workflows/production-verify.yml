@@ -27,6 +27,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
       # Historical Phase 8F regression reference only: EXPECTED_RELEASE: web-phase-8f-structured-navigation
       - name: Compute exact web release fingerprint
         id: release
@@ -50,9 +53,6 @@ jobs:
           done
           echo "Exact production release fingerprint did not appear within the verification window"
           exit 1
-
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
