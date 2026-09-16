@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { BOOKING_TIME_ZONE, getBookingDateBounds, isBookingDateAllowed } from "../lib/booking-preference";
 import { LEAD_CONSENT_VERSION } from "../lib/lead-intake";
 
 const directCapability = {
@@ -7,6 +8,17 @@ const directCapability = {
   transport: "smtp",
   privacyNoticeUrl: "https://example.com/privacy",
 };
+
+function nextBookableDate(): string {
+  const { min } = getBookingDateBounds();
+  const date = new Date(`${min}T12:00:00Z`);
+  let value = min;
+  while (!isBookingDateAllowed(value)) {
+    date.setUTCDate(date.getUTCDate() + 1);
+    value = date.toISOString().slice(0, 10);
+  }
+  return value;
+}
 
 function validPayload(locale: "es" | "en" = "es") {
   return {
@@ -18,6 +30,9 @@ function validPayload(locale: "es" | "en" = "es") {
     intent: "team",
     source: "team-builder-result",
     context: "Ventas: SDR + Reporting",
+    preferredDate: nextBookableDate(),
+    preferredTime: "09:00",
+    preferredTimeZone: BOOKING_TIME_ZONE,
     consent: true,
     consentVersion: LEAD_CONSENT_VERSION,
     website: "",
@@ -53,6 +68,12 @@ test.describe("Web Phase 7C lead intake", () => {
     expect(invalid.status()).toBe(400);
     expect(await invalid.json()).toEqual({ ok: false, code: "validation_error" });
 
+    const invalidBooking = await request.post("/api/lead-intake", {
+      data: { ...validPayload(), preferredTime: "23:45" },
+    });
+    expect(invalidBooking.status()).toBe(400);
+    expect(await invalidBooking.json()).toEqual({ ok: false, code: "validation_error" });
+
     const unconfigured = await request.post("/api/lead-intake", { data: validPayload() });
     expect(unconfigured.status()).toBe(503);
     expect(await unconfigured.json()).toEqual({
@@ -84,17 +105,21 @@ test.describe("Web Phase 7C lead intake", () => {
 
     const form = page.locator("[data-lead-handoff-form]");
     await expect(form).toHaveAttribute("data-lead-intake-mode", "direct");
-    await expect(page.getByText(/destino de recepción real/i)).toBeVisible();
+    await expect(page.getByText(/fecha y hora preferidas/i)).toBeVisible();
     await expect(page.getByRole("link", { name: "Ver información de privacidad" })).toHaveAttribute("href", directCapability.privacyNoticeUrl);
 
+    const date = nextBookableDate();
     await page.getByLabel("Nombre").fill("Ana Pérez");
     await page.getByLabel("Email de contacto").fill("ana@example.com");
     await page.getByLabel("Empresa (opcional)").fill("Acme");
     await page.getByLabel("¿Qué proceso, equipo o necesidad quieres evaluar?").fill("Evaluar seguimiento comercial con aprobación humana");
+    await page.getByLabel("Fecha preferida").fill(date);
+    await page.getByRole("radio", { name: "Hora preferida 09:00" }).check();
     await page.getByRole("checkbox").check();
-    await page.getByRole("button", { name: "Enviar solicitud" }).click();
+    await page.getByRole("button", { name: "Enviar y solicitar cita" }).click();
 
     await expect(page.locator("[data-lead-intake-success]")).toContainText("Solicitud recibida");
+    await expect(page.locator("[data-lead-intake-success]")).toContainText("confirmaremos por email");
     expect(deliveredPayload).toMatchObject({
       locale: "es",
       name: "Ana Pérez",
@@ -104,6 +129,9 @@ test.describe("Web Phase 7C lead intake", () => {
       intent: "team",
       source: "team-builder-result",
       context: "Ventas: SDR + Reporting",
+      preferredDate: date,
+      preferredTime: "09:00",
+      preferredTimeZone: BOOKING_TIME_ZONE,
       consent: true,
       consentVersion: LEAD_CONSENT_VERSION,
       website: "",
@@ -118,12 +146,15 @@ test.describe("Web Phase 7C lead intake", () => {
       "locale",
       "name",
       "need",
+      "preferredDate",
+      "preferredTime",
+      "preferredTimeZone",
       "source",
       "website",
     ].sort());
   });
 
-  test("English direct mode keeps the prepared email fallback when delivery is not confirmed", async ({ page }) => {
+  test("English direct mode keeps the prepared email fallback with meeting preference", async ({ page }) => {
     await page.route("**/api/lead-intake", async (route) => {
       if (route.request().method() === "GET") {
         await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(directCapability) });
@@ -136,20 +167,25 @@ test.describe("Web Phase 7C lead intake", () => {
       });
     });
 
+    const date = nextBookableDate();
     await page.goto("/en/request-demo?intent=process&source=process-analyzer-result&context=Order%20operations");
     await expect(page.locator("[data-lead-handoff-form]")).toHaveAttribute("data-lead-intake-mode", "direct");
 
     await page.getByLabel("Name").fill("Alex Doe");
     await page.getByLabel("Contact email").fill("alex@example.com");
     await page.getByLabel("Which process, team or need do you want to evaluate?").fill("Order operations and exception handling");
+    await page.getByLabel("Preferred date").fill(date);
+    await page.getByRole("radio", { name: "Preferred time 10:00" }).check();
     await page.getByRole("checkbox").check();
-    await page.getByRole("button", { name: "Send request" }).click();
+    await page.getByRole("button", { name: "Send and request meeting" }).click();
 
     const fallback = page.locator("[data-lead-intake-fallback]");
     await expect(fallback).toContainText("could not deliver");
     const mailto = fallback.getByRole("link", { name: "Prepare fallback email" });
     await expect(mailto).toHaveAttribute("href", /mailto:hola@iaempleado\.com/);
     await expect(mailto).toHaveAttribute("href", /alex%40example\.com/);
+    await expect(mailto).toHaveAttribute("href", new RegExp(encodeURIComponent(date)));
+    await expect(mailto).toHaveAttribute("href", /10%3A00/);
   });
 
   test("direct mode reflows at 390px without horizontal overflow", async ({ page }) => {
@@ -160,7 +196,8 @@ test.describe("Web Phase 7C lead intake", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/solicitar-demo?intent=demo&source=mobile-7c2");
     await expect(page.locator("[data-lead-handoff-form]")).toHaveAttribute("data-lead-intake-mode", "direct");
-    await expect(page.getByRole("button", { name: "Enviar solicitud" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Enviar y solicitar cita" })).toBeVisible();
+    await expect(page.locator("[data-booking-time-grid]")).toBeVisible();
 
     const geometry = await page.evaluate(() => ({
       scrollWidth: document.documentElement.scrollWidth,

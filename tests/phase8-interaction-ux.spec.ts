@@ -1,4 +1,5 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
+import { getBookingDateBounds, isBookingDateAllowed } from "../lib/booking-preference";
 
 const directCapability = {
   mode: "direct",
@@ -6,6 +7,17 @@ const directCapability = {
   transport: "smtp",
   privacyNoticeUrl: "https://example.com/privacy",
 };
+
+function nextBookableDate(): string {
+  const { min } = getBookingDateBounds();
+  const date = new Date(`${min}T12:00:00Z`);
+  let value = min;
+  while (!isBookingDateAllowed(value)) {
+    date.setUTCDate(date.getUTCDate() + 1);
+    value = date.toISOString().slice(0, 10);
+  }
+  return value;
+}
 
 async function assertMinimumTarget(locator: Locator, label: string) {
   const count = await locator.count();
@@ -205,6 +217,8 @@ test.describe("Phase 8A interaction UX", () => {
     const name = page.getByLabel("Nombre");
     const email = page.getByLabel("Email de contacto");
     const need = page.getByLabel("¿Qué proceso, equipo o necesidad quieres evaluar?");
+    const preferredDate = page.getByLabel("Fecha preferida");
+    const preferredTime = page.getByRole("radio", { name: "Hora preferida 09:00" });
     const consent = page.getByRole("checkbox");
     const submit = page.locator("[data-lead-submit]");
     const form = page.locator(".lead-handoff-form");
@@ -217,6 +231,8 @@ test.describe("Phase 8A interaction UX", () => {
     await name.fill("Ana Pérez");
     await email.fill("ana@example.com");
     await need.fill("Revisar un proceso comercial con control humano");
+    await preferredDate.fill(nextBookableDate());
+    await preferredTime.check();
     await consent.check();
     await submit.click();
 

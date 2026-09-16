@@ -1,8 +1,14 @@
 import type { Locale } from "./i18n";
+import {
+  BOOKING_TIME_ZONE,
+  isBookingDateAllowed,
+  isBookingSlotTime,
+  type BookingSlotTime,
+} from "./booking-preference";
 import { isLeadIntent, type LeadIntent } from "./conversion-handoff";
 
 export const LEAD_INTAKE_ENDPOINT = "/api/lead-intake";
-export const LEAD_INTAKE_SCHEMA_VERSION = 1;
+export const LEAD_INTAKE_SCHEMA_VERSION = 2;
 export const LEAD_CONSENT_VERSION = "lead-intake-v1";
 
 export type LeadIntakeMode = "direct" | "email";
@@ -24,6 +30,9 @@ export type LeadIntakePayload = {
   intent: LeadIntent;
   source: string;
   context?: string;
+  preferredDate?: string;
+  preferredTime?: BookingSlotTime;
+  preferredTimeZone?: typeof BOOKING_TIME_ZONE;
   consent: boolean;
   consentVersion: string;
   website?: string;
@@ -89,6 +98,9 @@ export function validateLeadIntakePayload(input: unknown): ValidationResult {
   const rawIntent = cleanText(candidate.intent, 40);
   const source = cleanText(candidate.source, 80);
   const context = cleanText(candidate.context, 160);
+  const preferredDate = cleanText(candidate.preferredDate, 10);
+  const preferredTime = cleanText(candidate.preferredTime, 5);
+  const preferredTimeZone = cleanText(candidate.preferredTimeZone, 40);
   const consent = candidate.consent === true;
   const consentVersion = cleanText(candidate.consentVersion, 40);
   const website = cleanText(candidate.website, 200);
@@ -97,6 +109,20 @@ export function validateLeadIntakePayload(input: unknown): ValidationResult {
     return { ok: false };
   }
   if (!source || !consent || consentVersion !== LEAD_CONSENT_VERSION) {
+    return { ok: false };
+  }
+
+  const hasBookingPreference = Boolean(preferredDate || preferredTime || preferredTimeZone);
+  if (
+    hasBookingPreference
+    && (
+      !preferredDate
+      || !preferredTime
+      || preferredTimeZone !== BOOKING_TIME_ZONE
+      || !isBookingDateAllowed(preferredDate)
+      || !isBookingSlotTime(preferredTime)
+    )
+  ) {
     return { ok: false };
   }
 
@@ -111,6 +137,9 @@ export function validateLeadIntakePayload(input: unknown): ValidationResult {
       intent: rawIntent,
       source,
       context: context || undefined,
+      preferredDate: preferredDate || undefined,
+      preferredTime: isBookingSlotTime(preferredTime) ? preferredTime : undefined,
+      preferredTimeZone: preferredDate && preferredTime ? BOOKING_TIME_ZONE : undefined,
       consent,
       consentVersion,
       website: website || undefined,

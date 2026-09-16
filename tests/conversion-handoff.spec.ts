@@ -1,5 +1,17 @@
 import { expect, test } from "@playwright/test";
+import { getBookingDateBounds, isBookingDateAllowed } from "../lib/booking-preference";
 import { buildLeadMailto } from "../lib/conversion-handoff";
+
+function nextBookableDate(): string {
+  const { min } = getBookingDateBounds();
+  const date = new Date(`${min}T12:00:00Z`);
+  let value = min;
+  while (!isBookingDateAllowed(value)) {
+    date.setUTCDate(date.getUTCDate() + 1);
+    value = date.toISOString().slice(0, 10);
+  }
+  return value;
+}
 
 test.describe("Web Phase 7A conversion handoff", () => {
   test("Spanish route preserves bounded team context and exposes truthful local form", async ({ page }) => {
@@ -13,13 +25,25 @@ test.describe("Web Phase 7A conversion handoff", () => {
     await expect(page.getByLabel("Nombre")).toBeVisible();
     await expect(page.getByLabel("Email de contacto")).toHaveAttribute("type", "email");
     await expect(page.getByLabel("¿Qué proceso, equipo o necesidad quieres evaluar?")).toBeVisible();
+    await expect(page.getByLabel("Fecha preferida")).toHaveAttribute("type", "date");
+    await expect(page.locator("[data-booking-time-grid]")).toBeVisible();
     await expect(page.getByText(/no almacena ni transmite estos datos a un CRM/i)).toBeVisible();
-    await expect(page.getByRole("button", { name: "Preparar correo" })).toBeVisible();
+    await expect(page.getByText(/pendiente de confirmación/i)).toBeVisible();
+    await expect(page.getByRole("button", { name: "Preparar solicitud de cita" })).toBeVisible();
 
+    const date = nextBookableDate();
     const mailto = buildLeadMailto(
       "es",
       { intent: "team", source: "header", context: "Equipo Ventas" },
-      { name: "Ana Pérez", email: "ana@example.com", company: "Acme", need: "Seguimiento comercial con aprobación humana" },
+      {
+        name: "Ana Pérez",
+        email: "ana@example.com",
+        company: "Acme",
+        need: "Seguimiento comercial con aprobación humana",
+        preferredDate: date,
+        preferredTime: "09:00",
+        preferredTimeZone: "Europe/Madrid",
+      },
     );
     const decoded = decodeURIComponent(mailto);
     expect(mailto).toContain("mailto:hola@iaempleado.com?");
@@ -27,9 +51,12 @@ test.describe("Web Phase 7A conversion handoff", () => {
     expect(decoded).toContain("Origen: header");
     expect(decoded).toContain("Contexto: Equipo Ventas");
     expect(decoded).toContain("Ana Pérez");
+    expect(decoded).toContain(`Fecha preferida: ${date}`);
+    expect(decoded).toContain("Hora preferida: 09:00");
+    expect(decoded).toContain("Estado de cita: pendiente de confirmación");
   });
 
-  test("English route preserves process context", async ({ page }) => {
+  test("English route preserves process context and meeting preference controls", async ({ page }) => {
     await page.goto("/en/request-demo?intent=process&source=home-final&context=Order%20operations");
 
     const form = page.locator("[data-lead-handoff-form]");
@@ -39,7 +66,9 @@ test.describe("Web Phase 7A conversion handoff", () => {
     await expect(page.locator("[data-lead-context]")).toContainText("Order operations");
     await expect(page.getByLabel("Name")).toBeVisible();
     await expect(page.getByLabel("Contact email")).toHaveAttribute("type", "email");
-    await expect(page.getByRole("button", { name: "Prepare email" })).toBeVisible();
+    await expect(page.getByLabel("Preferred date")).toHaveAttribute("type", "date");
+    await expect(page.getByRole("radio", { name: "Preferred time 09:00" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Prepare meeting request" })).toBeVisible();
     await expect(page.getByText(/does not currently store or transmit these details to a CRM/i)).toBeVisible();
   });
 
@@ -58,7 +87,8 @@ test.describe("Web Phase 7A conversion handoff", () => {
     await page.goto("/solicitar-demo?intent=demo&source=mobile-test");
 
     await expect(page.locator("[data-lead-handoff-form]")).toBeVisible();
-    await expect(page.getByRole("button", { name: "Preparar correo" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Preparar solicitud de cita" })).toBeVisible();
+    await expect(page.locator("[data-booking-time-grid]")).toBeVisible();
 
     const naturalOverflow = await page.evaluate(() => ({
       scrollWidth: document.documentElement.scrollWidth,

@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { formatBookingPreference } from "./booking-preference";
 import { getLeadIntentLabel } from "./conversion-handoff";
 import type { LeadIntakePayload } from "./lead-intake";
 
@@ -137,6 +138,14 @@ function safeDiagnostic(value: unknown, fallback = "none", maxLength = 160): str
 export function buildLeadNotification(input: LeadSmtpDeliveryInput, _config: LeadSmtpConfig) {
   const { payload, leadId } = input;
   const interest = getLeadIntentLabel("es", payload.intent);
+  const bookingLines = payload.preferredDate && payload.preferredTime
+    ? [
+        "",
+        "Cita solicitada:",
+        formatBookingPreference("es", payload.preferredDate, payload.preferredTime),
+        "Estado: pendiente de confirmación",
+      ]
+    : [];
 
   // Diagnostic profile: keep the automated message intentionally close to a
   // normal human-to-human mailbox message while Hostinger's spam trigger is
@@ -151,6 +160,7 @@ export function buildLeadNotification(input: LeadSmtpDeliveryInput, _config: Lea
     `Email: ${payload.email}`,
     `Empresa: ${display(payload.company)}`,
     `Interés: ${interest}`,
+    ...bookingLines,
     "",
     "Necesidad:",
     payload.need,
