@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { BOOKING_TIME_ZONE } from "../lib/booking-preference";
 import type { Locale } from "../lib/i18n";
 import {
   buildLeadMailto,
@@ -13,6 +14,7 @@ import {
   type LeadIntakeCapability,
   type LeadIntakeResponse,
 } from "../lib/lead-intake";
+import { BookingPreferenceFields } from "./booking-preference-fields";
 
 type LeadHandoffFormProps = {
   locale: Locale;
@@ -26,6 +28,16 @@ type LeadHandoffFormProps = {
       email: string;
       company: string;
       need: string;
+      preferredDate: string;
+      preferredTime: string;
+    };
+    booking: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      pending: string;
+      weekdayError: string;
+      timeError: string;
     };
     submit: string;
     directSubmit: string;
@@ -55,6 +67,8 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [need, setNeed] = useState("");
+  const [preferredDate, setPreferredDate] = useState("");
+  const [preferredTime, setPreferredTime] = useState("");
   const [consent, setConsent] = useState(false);
   const [capability, setCapability] = useState<LeadIntakeCapability>(emailCapability);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
@@ -73,8 +87,16 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
       };
 
   const mailto = useMemo(
-    () => buildLeadMailto(locale, context, { name, email, company, need }),
-    [locale, context, name, email, company, need],
+    () => buildLeadMailto(locale, context, {
+      name,
+      email,
+      company,
+      need,
+      preferredDate,
+      preferredTime,
+      preferredTimeZone: BOOKING_TIME_ZONE,
+    }),
+    [locale, context, name, email, company, need, preferredDate, preferredTime],
   );
 
   useEffect(() => {
@@ -148,6 +170,9 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
           intent: context.intent,
           source: context.source,
           context: context.context,
+          preferredDate,
+          preferredTime,
+          preferredTimeZone: BOOKING_TIME_ZONE,
           consent,
           consentVersion: LEAD_CONSENT_VERSION,
           website: typeof honeypot === "string" ? honeypot : "",
@@ -266,6 +291,19 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
           />
           {validationErrors.need ? <span className="lead-handoff-field-error" id="lead-error-need" role="alert">{validationErrors.need}</span> : null}
         </label>
+
+        <BookingPreferenceFields
+          date={preferredDate}
+          time={preferredTime}
+          disabled={formLocked}
+          onDateChange={setPreferredDate}
+          onTimeChange={setPreferredTime}
+          labels={{
+            ...labels.booking,
+            dateLabel: labels.fields.preferredDate,
+            timeLabel: labels.fields.preferredTime,
+          }}
+        />
 
         <label className="lead-handoff-honeypot" aria-hidden="true">
           <span>Website</span>
