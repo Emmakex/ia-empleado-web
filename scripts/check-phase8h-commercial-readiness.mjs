@@ -8,14 +8,22 @@ const files = {
   requestDemo: "components/request-demo-page.tsx",
   leadForm: "components/lead-handoff-form.tsx",
   conversion: "lib/conversion-handoff.ts",
+  legalContent: "lib/legal-content.ts",
+  legalPage: "components/legal-document-page.tsx",
+  legalEs: "app/(es)/aviso-legal/page.tsx",
+  privacyEs: "app/(es)/politica-de-privacidad/page.tsx",
+  legalEn: "app/(en)/en/legal-notice/page.tsx",
+  privacyEn: "app/(en)/en/privacy-policy/page.tsx",
+  sitemap: "app/sitemap.ts",
+  envExample: ".env.example",
   esContent: "content/es.json",
   enContent: "content/en.json",
-  preAudit: "docs/PHASE_8H_PRE_AUDIT.md",
+  phase8h: "docs/PHASE_8H_FINAL_COMMERCIAL_READINESS.md",
 };
 
 for (const file of Object.values(files)) {
-  if (!fs.existsSync(file)) throw new Error(`Missing Phase 8H pre-audit contract file: ${file}`);
-  if (fs.statSync(file).size === 0) throw new Error(`Empty Phase 8H pre-audit contract file: ${file}`);
+  if (!fs.existsSync(file)) throw new Error(`Missing Phase 8H readiness file: ${file}`);
+  if (fs.statSync(file).size === 0) throw new Error(`Empty Phase 8H readiness file: ${file}`);
 }
 
 const read = (file) => fs.readFileSync(file, "utf8");
@@ -25,15 +33,20 @@ const footer = read(files.footer);
 const requestDemo = read(files.requestDemo);
 const leadForm = read(files.leadForm);
 const conversion = read(files.conversion);
+const legalContent = read(files.legalContent);
+const legalPage = read(files.legalPage);
+const legalRoutes = [files.legalEs, files.privacyEs, files.legalEn, files.privacyEn].map(read);
+const sitemap = read(files.sitemap);
+const envExample = read(files.envExample);
 const es = JSON.parse(read(files.esContent));
 const en = JSON.parse(read(files.enContent));
-const preAudit = read(files.preAudit);
+const phase8h = read(files.phase8h);
 
 const assert = (condition, message) => {
   if (!condition) throw new Error(message);
 };
 
-// Keep the three principal commercial intents explicit and semantically aligned.
+// Keep principal commercial intents explicit and aligned across languages.
 assert(es.nav.cta === "Solicitar demo", "ES navigation CTA drifted from demo intent");
 assert(en.nav.cta === "Request demo", "EN navigation CTA drifted from demo intent");
 assert(es.cta.primary === "Solicitar una demo", "ES final primary CTA drifted from demo intent");
@@ -61,12 +74,39 @@ for (const token of [
   assert(conversion.includes(token), `Conversion contract missing canonical token: ${token}`);
 }
 
-// The current "Privacy & control" footer destination is a product/security section,
-// not a legal privacy notice. Preserve that truthful distinction until dedicated legal
-// routes are intentionally published in Phase 8H.
-assert(footer.includes('`${homeHref}#seguridad`'), "Footer product privacy/control link no longer points to the security section");
-assert(footer.includes("dictionary.footer.links.slice(2)"), "Footer resource mapping drifted from bilingual dictionary contract");
-assert(!footer.includes("/privacy-policy") && !footer.includes("/politica-de-privacidad"), "Footer introduced a privacy-policy route before the dedicated legal surface exists");
+// Phase 8H legal identity and privacy surfaces are now production-intentional.
+for (const token of [
+  'LEGAL_OWNER_NAME = "Eduardo Jose Yauri Luna"',
+  'LEGAL_OWNER_TAX_ID = "60281451S"',
+  'LEGAL_CONTACT_EMAIL = "info@iaempleado.com"',
+  'LEGAL_OWNER_ADDRESS = "Reina Amalia 8, 4 2, Barcelona, España"',
+  'return locale === "es" ? "/aviso-legal" : "/en/legal-notice"',
+  'return locale === "es" ? "/politica-de-privacidad" : "/en/privacy-policy"',
+]) {
+  assert(legalContent.includes(token), `Legal identity/surface contract missing token: ${token}`);
+}
+
+for (const token of ["legalNoticePath", "privacyPolicyPath", "footer-legal-nav"]) {
+  assert(footer.includes(token), `Footer legal navigation missing token: ${token}`);
+}
+assert(footer.includes('`${homeHref}#seguridad`'), "Footer product security/privacy-control link no longer points to the product security section");
+
+for (const route of legalRoutes) {
+  for (const token of ["LegalDocumentPage", "isLegalIdentityComplete", "robots: { index: ready, follow: true }"]) {
+    assert(route.includes(token), `Legal route missing publication readiness token: ${token}`);
+  }
+}
+for (const token of ["getLegalDocumentContent", "isLegalIdentityComplete", "SiteFooter", "SiteHeader"]) {
+  assert(legalPage.includes(token), `Shared legal page missing governed token: ${token}`);
+}
+for (const token of ["privacyPolicyPath", "legalNoticePath"]) {
+  assert(sitemap.includes(token), `Sitemap does not publish legal route helper: ${token}`);
+}
+assert(
+  envExample.includes("LEAD_PRIVACY_NOTICE_URL=https://iaempleado.com/politica-de-privacidad"),
+  "Lead privacy configuration does not point to the first-party published Spanish privacy notice",
+);
+assert(phase8h.includes("ACTIVE — opened on 2026-09-16"), "Phase 8H master document no longer records the active final gate");
 
 // No public surface should bypass the governed handoff with a literal mailto link,
 // empty CTA, fake anchor, javascript pseudo-link or obvious launch placeholder.
@@ -99,9 +139,6 @@ const violations = [];
 for (const file of publicFiles) {
   const source = read(file);
   for (const rule of forbidden) {
-    // lead-handoff-form.tsx owns the intentionally governed email fallback. It may
-    // contain exactly one literal mailto URI for the public contact address; all
-    // other commercial surfaces must route through requestDemoPath/buildLeadMailto.
     if (rule.label === "literal mailto bypass" && file === files.leadForm) continue;
     if (rule.pattern.test(source)) {
       violations.push(`Public commercial surface contains ${rule.label}: ${file}`);
@@ -119,18 +156,6 @@ if (violations.length > 0) {
   throw new Error(`Phase 8H commercial readiness violations (${violations.length}):\n- ${violations.join("\n- ")}`);
 }
 
-// Protect the pre-audit boundary: this gate prepares 8H but must not claim it is active
-// or that the unresolved legal/privacy work is complete.
-for (const phrase of [
-  "PRE-AUDIT ONLY. Phase 8H is not active yet.",
-  "Phase 8G remains active until the real-device acceptance tracked in issue #103 is complete.",
-  "public legal/privacy surface is incomplete",
-  "Do not invent legal identity data.",
-  "Current `Privacidad y control` is a product/security section link, not a legal privacy notice.",
-]) {
-  assert(preAudit.includes(phrase), `Phase 8H pre-audit boundary missing phrase: ${phrase}`);
-}
-
 // The lead form may use buildLeadMailto as a truthful fallback, but it must not hard-code
 // arbitrary mailto destinations or store lead data in browser persistence.
 assert(leadForm.includes("buildLeadMailto"), "Lead form lost truthful email fallback helper");
@@ -141,4 +166,4 @@ for (const forbiddenStorage of ["localStorage", "sessionStorage"]) {
   assert(!leadForm.includes(forbiddenStorage), `Lead form introduced unapproved browser persistence: ${forbiddenStorage}`);
 }
 
-console.log(`Phase 8H commercial readiness pre-audit OK: ${publicFiles.length} public source files scanned; CTA intent, governed handoff and placeholder hygiene remain protected without claiming Phase 8H activation.`);
+console.log(`Phase 8H commercial/legal readiness OK: ${publicFiles.length} public source files scanned; bilingual legal identity, footer navigation, privacy handoff, CTA intent and placeholder hygiene are protected.`);
