@@ -81,6 +81,16 @@ The Team Builder / Process Analyzer pre-hydration lost-click regression was fixe
 
 Closure evidence includes PR #76, main SHA `fd787292d400c999fdb95b7d554ff2c584e9269e` and Production Verification #32 with **148/148 tests passed**.
 
+### Phase 8B final production closure gate — retained historical regression evidence
+
+This historical evidence remains intentionally present because the permanent Phase 8 release contract uses it to prevent accidental removal of the production-verified hydration safeguards.
+
+- Production Verification #31 exposed the Team Builder / Process Analyzer pre-hydration interaction loss against the then-current production candidate.
+- The corrected release marker advanced to `web-phase-8b-hydration-sync` so the failed deployment could not be mistaken for the accepted one.
+- Production Verification #32 then accepted the corrected exact release with **148/148 tests passed**.
+
+These anchors are historical regression evidence, not the current active release marker.
+
 ## Phase 8C — Motion and animation finalization
 
 **Status: COMPLETE — closed on 2026-09-14 after exact-marker production verification.**
@@ -128,6 +138,8 @@ Accepted launch gates include:
 - thresholds of Performance 0.90, Accessibility 0.95, Best Practices 0.95 and SEO 0.95.
 
 Production Verification #46 accepted exact main SHA `783cbf5888f26056fc808a7c1fba4bdf2049c6ee`; the complete production matrix finished **163/163 green** and all Lighthouse route decisions passed the launch thresholds.
+
+The **stable Lighthouse launch score gate** remains permanent regression protection.
 
 Detailed evidence:
 
