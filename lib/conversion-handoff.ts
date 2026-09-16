@@ -21,6 +21,9 @@ export type LeadMailFields = {
   email: string;
   company?: string;
   need: string;
+  preferredDate?: string;
+  preferredTime?: string;
+  preferredTimeZone?: string;
 };
 
 export type SearchParamRecord = Record<string, string | string[] | undefined>;
@@ -62,26 +65,36 @@ const pageContent = {
     description: "Comparte el contexto mínimo para que la conversación empiece por tu operación, tus sistemas y los límites de autoridad que necesitas.",
     contextTitle: "Contexto conservado",
     contextFallback: "Solicitud general de demo",
-    formTitle: "Prepara tu solicitud",
-    formDescription: "Por ahora la web no almacena ni transmite estos datos a un CRM. Al continuar se abrirá tu aplicación de correo con la información preparada para enviarla a IA Empleado.",
-    directFormDescription: "Envía la solicitud directamente al equipo de IA Empleado. Solo activamos esta vía cuando existe un destino de recepción real y una información de privacidad publicada.",
+    formTitle: "Prepara tu solicitud y elige cuándo hablar",
+    formDescription: "Por ahora la web no almacena ni transmite estos datos a un CRM. Al continuar se abrirá tu aplicación de correo con la información y la preferencia de cita preparadas para enviarlas a IA Empleado.",
+    directFormDescription: "Envía la solicitud directamente al equipo de IA Empleado y elige una fecha y hora preferidas para la conversación. Hasta conectar la agenda en tiempo real, la cita queda pendiente de confirmación por email.",
     fields: {
       name: "Nombre",
       email: "Email de contacto",
       company: "Empresa (opcional)",
       need: "¿Qué proceso, equipo o necesidad quieres evaluar?",
+      preferredDate: "Fecha preferida",
+      preferredTime: "Hora preferida",
     },
-    submit: "Preparar correo",
-    directSubmit: "Enviar solicitud",
+    booking: {
+      eyebrow: "PREFERENCIA DE CITA",
+      title: "Elige una fecha y una hora",
+      description: "Selecciona un día laborable y una franja orientativa. La zona horaria es Europe/Madrid.",
+      pending: "Esta selección todavía no bloquea la agenda. Confirmaremos la cita por email hasta que conectemos disponibilidad en tiempo real.",
+      weekdayError: "Elige un día laborable dentro de los próximos 90 días.",
+      timeError: "Elige una hora para continuar.",
+    },
+    submit: "Preparar solicitud de cita",
+    directSubmit: "Enviar y solicitar cita",
     sending: "Enviando solicitud…",
     privacy: "Tus datos permanecen en este navegador hasta que decidas enviarlos desde tu aplicación de correo.",
-    directPrivacy: "Los datos se transmitirán únicamente para gestionar esta solicitud de contacto.",
-    consent: "Acepto que los datos introducidos se utilicen para responder a esta solicitud y confirmo que he podido consultar la información de privacidad.",
+    directPrivacy: "Los datos, incluida tu preferencia de fecha y hora, se transmitirán únicamente para gestionar esta solicitud de contacto y cita.",
+    consent: "Acepto que los datos introducidos se utilicen para responder a esta solicitud y gestionar la preferencia de cita, y confirmo que he podido consultar la información de privacidad.",
     privacyLink: "Ver información de privacidad",
     successTitle: "Solicitud recibida",
-    successBody: "La solicitud se ha entregado al canal configurado de IA Empleado. Conserva este navegador abierto si quieres seguir explorando la web.",
+    successBody: "Hemos recibido tu solicitud y tu preferencia de cita. Te confirmaremos por email la fecha y hora antes de considerarla reservada.",
     fallbackTitle: "No hemos podido entregar la solicitud directamente",
-    fallbackBody: "No se ha confirmado la entrega al canal directo. Puedes enviar ahora el mismo contenido desde tu aplicación de correo.",
+    fallbackBody: "No se ha confirmado la entrega al canal directo. Puedes enviar ahora el mismo contenido y la preferencia de cita desde tu aplicación de correo.",
     fallbackAction: "Preparar correo alternativo",
     retry: "Reintentar envío",
     fallback: "También puedes escribir directamente a",
@@ -95,26 +108,36 @@ const pageContent = {
     description: "Share the minimum context so the conversation starts with your operation, systems and the authority boundaries you need.",
     contextTitle: "Context preserved",
     contextFallback: "General demo request",
-    formTitle: "Prepare your request",
-    formDescription: "The website does not currently store or transmit these details to a CRM. Continuing opens your email application with the information prepared for you to send to IA Empleado.",
-    directFormDescription: "Send the request directly to the IA Empleado team. This path is enabled only when a real receiving destination and published privacy information are configured.",
+    formTitle: "Prepare your request and choose when to talk",
+    formDescription: "The website does not currently store or transmit these details to a CRM. Continuing opens your email application with the request and meeting preference prepared for you to send to IA Empleado.",
+    directFormDescription: "Send the request directly to the IA Empleado team and choose a preferred date and time for the conversation. Until live calendar availability is connected, the meeting remains pending email confirmation.",
     fields: {
       name: "Name",
       email: "Contact email",
       company: "Company (optional)",
       need: "Which process, team or need do you want to evaluate?",
+      preferredDate: "Preferred date",
+      preferredTime: "Preferred time",
     },
-    submit: "Prepare email",
-    directSubmit: "Send request",
+    booking: {
+      eyebrow: "MEETING PREFERENCE",
+      title: "Choose a date and time",
+      description: "Select a weekday and an indicative slot. The timezone is Europe/Madrid.",
+      pending: "This selection does not block the calendar yet. We will confirm the meeting by email until live availability is connected.",
+      weekdayError: "Choose a weekday within the next 90 days.",
+      timeError: "Choose a time to continue.",
+    },
+    submit: "Prepare meeting request",
+    directSubmit: "Send and request meeting",
     sending: "Sending request…",
     privacy: "Your details stay in this browser until you choose to send them from your email application.",
-    directPrivacy: "The details will be transmitted only to handle this contact request.",
-    consent: "I agree that the details entered may be used to respond to this request and confirm that I have been able to review the privacy information.",
+    directPrivacy: "The details, including your preferred date and time, will be transmitted only to handle this contact and meeting request.",
+    consent: "I agree that the details entered may be used to respond to this request and manage the meeting preference, and confirm that I have been able to review the privacy information.",
     privacyLink: "View privacy information",
     successTitle: "Request received",
-    successBody: "The request has been delivered to the configured IA Empleado channel. You can keep this browser open if you want to continue exploring the website.",
+    successBody: "We received your request and meeting preference. We will confirm the date and time by email before treating the meeting as booked.",
     fallbackTitle: "We could not deliver the request directly",
-    fallbackBody: "Delivery to the direct channel was not confirmed. You can send the same content now from your email application.",
+    fallbackBody: "Delivery to the direct channel was not confirmed. You can send the same content and meeting preference now from your email application.",
     fallbackAction: "Prepare fallback email",
     retry: "Retry submission",
     fallback: "You can also email us directly at",
@@ -177,9 +200,24 @@ export function buildLeadMailto(
   fields: LeadMailFields,
 ): string {
   const intentLabel = getLeadIntentLabel(locale, context.intent);
-  const subject = locale === "es"
-    ? `IA Empleado — ${intentLabel}${fields.company?.trim() ? ` — ${fields.company.trim()}` : ""}`
-    : `IA Empleado — ${intentLabel}${fields.company?.trim() ? ` — ${fields.company.trim()}` : ""}`;
+  const subject = `IA Empleado — ${intentLabel}${fields.company?.trim() ? ` — ${fields.company.trim()}` : ""}`;
+  const bookingLines = fields.preferredDate && fields.preferredTime
+    ? locale === "es"
+      ? [
+          "",
+          `Fecha preferida: ${fields.preferredDate}`,
+          `Hora preferida: ${fields.preferredTime}`,
+          `Zona horaria: ${fields.preferredTimeZone || "Europe/Madrid"}`,
+          "Estado de cita: pendiente de confirmación",
+        ]
+      : [
+          "",
+          `Preferred date: ${fields.preferredDate}`,
+          `Preferred time: ${fields.preferredTime}`,
+          `Timezone: ${fields.preferredTimeZone || "Europe/Madrid"}`,
+          "Meeting status: pending confirmation",
+        ]
+    : [];
 
   const lines = locale === "es"
     ? [
@@ -189,6 +227,7 @@ export function buildLeadMailto(
         `Interés: ${intentLabel}`,
         `Origen: ${context.source}`,
         `Contexto: ${context.context || "No especificado"}`,
+        ...bookingLines,
         "",
         "Necesidad / proceso:",
         fields.need.trim(),
@@ -202,6 +241,7 @@ export function buildLeadMailto(
         `Interest: ${intentLabel}`,
         `Source: ${context.source}`,
         `Context: ${context.context || "Not specified"}`,
+        ...bookingLines,
         "",
         "Need / process:",
         fields.need.trim(),
