@@ -2,10 +2,13 @@ import fs from "node:fs";
 
 const files = {
   intake: "lib/lead-intake.ts",
+  booking: "lib/booking-preference.ts",
   route: "app/api/lead-intake/route.ts",
   form: "components/lead-handoff-form.tsx",
+  bookingForm: "components/booking-preference-fields.tsx",
   conversion: "lib/conversion-handoff.ts",
   css: "app/conversion-handoff.css",
+  bookingCss: "app/booking-preference.css",
   env: ".env.example",
   test: "tests/lead-intake.spec.ts",
   phase: "docs/PHASE_7C_LEAD_INTAKE_PIPELINE.md",
@@ -19,10 +22,13 @@ for (const path of Object.values(files)) {
 
 const read = (path) => fs.readFileSync(path, "utf8");
 const intake = read(files.intake);
+const booking = read(files.booking);
 const route = read(files.route);
 const form = read(files.form);
+const bookingForm = read(files.bookingForm);
 const conversion = read(files.conversion);
 const css = read(files.css);
+const bookingCss = read(files.bookingCss);
 const env = read(files.env);
 const test = read(files.test);
 const phase = read(files.phase);
@@ -35,8 +41,24 @@ for (const token of [
   "consentVersion !== LEAD_CONSENT_VERSION",
   "EMAIL_PATTERN",
   "cleanMultiline",
+  "preferredDate",
+  "preferredTime",
+  "preferredTimeZone",
+  "isBookingDateAllowed",
+  "isBookingSlotTime",
 ]) {
   if (!intake.includes(token)) throw new Error(`Lead intake validation contract missing token: ${token}`);
+}
+
+for (const token of [
+  'BOOKING_TIME_ZONE = "Europe/Madrid"',
+  "BOOKING_SLOT_TIMES",
+  "BOOKING_WINDOW_DAYS = 90",
+  "getBookingDateBounds",
+  "isBookingDateAllowed",
+  "isBookingSlotTime",
+]) {
+  if (!booking.includes(token)) throw new Error(`Booking preference contract missing token: ${token}`);
 }
 
 for (const token of [
@@ -52,6 +74,8 @@ for (const token of [
   'code: "transport_unconfigured"',
   'code: "delivery_failed"',
   "privacyNoticeUrl: config.privacyNoticeUrl",
+  "bookingPreference:",
+  'status: "pending_confirmation"',
 ]) {
   if (!route.includes(token)) throw new Error(`Lead intake route missing safety/delivery token: ${token}`);
 }
@@ -74,10 +98,25 @@ for (const token of [
   "capability.privacyNoticeUrl",
   'name="consent"',
   'name="website"',
+  "BookingPreferenceFields",
+  "preferredDate",
+  "preferredTime",
+  "BOOKING_TIME_ZONE",
   "buildLeadMailto",
   "window.location.href = mailto",
 ]) {
   if (!form.includes(token)) throw new Error(`Lead intake form missing progressive-enhancement token: ${token}`);
+}
+
+for (const token of [
+  'type="date"',
+  'name="preferredTime"',
+  "BOOKING_SLOT_TIMES",
+  "Europe/Madrid",
+  "data-booking-preference",
+  "data-booking-time-grid",
+]) {
+  if (!bookingForm.includes(token)) throw new Error(`Booking preference UI missing token: ${token}`);
 }
 
 for (const token of [
@@ -86,6 +125,9 @@ for (const token of [
   "directPrivacy",
   "successTitle",
   "fallbackAction",
+  "preferredDate",
+  "preferredTime",
+  "pendiente de confirmación",
 ]) {
   if (!conversion.includes(token)) throw new Error(`Conversion copy missing lead intake token: ${token}`);
 }
@@ -98,6 +140,14 @@ for (const token of [
   "@media (max-width: 760px)",
 ]) {
   if (!css.includes(token)) throw new Error(`Lead intake CSS missing token: ${token}`);
+}
+for (const token of [
+  ".lead-booking-preference",
+  ".lead-booking-time-grid",
+  ".lead-booking-timezone",
+  "@media (max-width: 760px)",
+]) {
+  if (!bookingCss.includes(token)) throw new Error(`Booking preference CSS missing token: ${token}`);
 }
 
 for (const token of [
@@ -113,8 +163,10 @@ for (const token of [
   'mode: "direct"',
   "transport_unconfigured",
   "validation_error",
-  "Enviar solicitud",
+  "Enviar y solicitar cita",
   "Prepare fallback email",
+  "preferredDate",
+  "preferredTime",
   "390",
 ]) {
   if (!test.includes(token)) throw new Error(`Lead intake browser/API QA missing token: ${token}`);
@@ -135,4 +187,4 @@ if (!production.includes("tests/lead-intake.spec.ts")) {
   throw new Error("Production verification does not include lead intake QA");
 }
 
-console.log("Lead intake contract OK: validation, consent, safe transport selection, truthful fallback and production QA coverage protected independently of the active release marker.");
+console.log("Lead intake contract OK: validation, consent, booking preference, safe transport selection, truthful fallback and production QA coverage protected independently of the active release marker.");
