@@ -32,7 +32,7 @@
     {"title": "Especializados", "text": "Cada Empleado IA tiene un trabajo definido, no un prompt genérico."},
     {"title": "Conectados", "text": "Pueden trabajar con CRM, ERP, email, calendarios, ecommerce y documentos."},
     {"title": "Gobernados", "text": "Permisos, políticas y aprobaciones humanas delimitan lo que pueden hacer."},
-    {"title": "Privados", "text": "La arquitectura está pensada para despliegues privados adaptados a cada empresa."}
+    {"title": "Privados", "text": "La arquitectura admite opciones de despliegue privado o dedicado adaptadas a cada empresa."}
   ],
   "definition": {
     "eyebrow": "QUÉ ES IA EMPLEADO",
@@ -64,7 +64,7 @@
   },
   "employees": {
     "eyebrow": "SUITE DE REFERENCIA",
-    "title": "Cuatro perfiles para demostrar necesidades empresariales universales.",
+    "title": "Cuatro perfiles de referencia para representar necesidades empresariales frecuentes.",
     "description": "La primera suite de referencia cubre atención, operaciones internas, finanzas y ventas. El catálogo se ampliará progresivamente sin convertir todos los perfiles en promesas de disponibilidad inmediata.",
     "items": [
       {"title": "Atención al Cliente IA", "text": "Consultas, incidencias, pedidos y escalado de excepciones.", "tag": "Referencia"},
@@ -101,7 +101,7 @@
   "security": {
     "eyebrow": "PRIVACIDAD, CONTROL Y SUPERVISIÓN",
     "title": "La autonomía no significa autoridad ilimitada.",
-    "description": "IA Empleado está diseñado alrededor de permisos explícitos, políticas deterministas, aprobaciones humanas y despliegues privados. Una capacidad técnica no concede por sí sola permiso para ejecutar una acción empresarial.",
+    "description": "IA Empleado está diseñado alrededor de permisos explícitos, políticas deterministas, aprobaciones humanas y opciones de despliegue privado. Una capacidad técnica no concede por sí sola permiso para ejecutar una acción empresarial.",
     "items": [
       {"title": "Límites explícitos", "text": "Cada rol dispone solo de capacidades y herramientas autorizadas."},
       {"title": "Aprobación humana", "text": "Las acciones sensibles pueden detenerse antes de ejecutarse."},
