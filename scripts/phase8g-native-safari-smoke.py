@@ -98,12 +98,7 @@ def wait_hydrated(driver, selector: str, attribute: str):
     )
 
 
-def assert_focus_visible(driver, element, label: str):
-    driver.execute_script("arguments[0].scrollIntoView({block:'center'}); arguments[0].focus();", element)
-    ActionChains(driver).key_down(Keys.SHIFT).send_keys(Keys.TAB).key_up(Keys.SHIFT).send_keys(Keys.TAB).perform()
-    WebDriverWait(driver, 10).until(
-        lambda browser: browser.execute_script("return document.activeElement === arguments[0]", element)
-    )
+def assert_visible_focus_style(driver, element, label: str):
     focus_visible = driver.execute_script("return arguments[0].matches(':focus-visible')", element)
     style = driver.execute_script(
         """
@@ -115,6 +110,31 @@ def assert_focus_visible(driver, element, label: str):
     visible = (style["outlineStyle"] != "none" and style["outlineWidth"] >= 2) or style["boxShadow"] != "none"
     if not focus_visible or not visible:
         fail(f"{label}: keyboard focus is not visibly exposed: focusVisible={focus_visible}, style={style}")
+
+
+def assert_focus_visible(driver, element, label: str):
+    driver.execute_script("arguments[0].scrollIntoView({block:'center'}); arguments[0].focus();", element)
+    ActionChains(driver).key_down(Keys.SHIFT).send_keys(Keys.TAB).key_up(Keys.SHIFT).send_keys(Keys.TAB).perform()
+    WebDriverWait(driver, 10).until(
+        lambda browser: browser.execute_script("return document.activeElement === arguments[0]", element)
+    )
+    assert_visible_focus_style(driver, element, label)
+
+
+def assert_skip_link_first_tab(driver):
+    driver.get(f"{BASE_URL}/")
+    wait_ready(driver)
+    skip_link = driver.find_element(By.CSS_SELECTOR, ".skip-link")
+
+    # The skip link is the first focusable element in the document. Test its real
+    # keyboard-entry behavior directly rather than applying the generic
+    # Shift+Tab/Tab round trip, which can move focus into Safari browser chrome.
+    driver.execute_script("if (document.activeElement) document.activeElement.blur(); window.focus();")
+    ActionChains(driver).send_keys(Keys.TAB).perform()
+    WebDriverWait(driver, 10).until(
+        lambda browser: browser.execute_script("return document.activeElement === arguments[0]", skip_link)
+    )
+    assert_visible_focus_style(driver, skip_link, "Home skip link")
 
 
 def assert_form_validation(driver):
@@ -224,9 +244,7 @@ def run_standard_acceptance(driver, report):
     assert_roi_interaction(driver)
     report["checks"].append("interactive-tools-state-changes")
 
-    driver.get(f"{BASE_URL}/")
-    wait_ready(driver)
-    assert_focus_visible(driver, driver.find_element(By.CSS_SELECTOR, ".skip-link"), "Home skip link")
+    assert_skip_link_first_tab(driver)
     report["checks"].extend(["visible-keyboard-focus", "critical-user-flows-completed"])
 
 
