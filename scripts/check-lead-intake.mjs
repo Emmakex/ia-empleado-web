@@ -112,7 +112,7 @@ for (const token of [
   'type="date"',
   'name="preferredTime"',
   "BOOKING_SLOT_TIMES",
-  "Europe/Madrid",
+  "BOOKING_TIME_ZONE",
   "data-booking-preference",
   "data-booking-time-grid",
 ]) {
