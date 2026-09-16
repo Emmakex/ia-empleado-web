@@ -22,7 +22,7 @@ const phase8f = read("docs/PHASE_8F_SEO_METADATA_SHARING.md");
 const runtimeSeoMatrix = read("tests/phase8f-seo-runtime.spec.ts");
 const structuredNavigation = read("tests/phase8f-structured-navigation.spec.ts");
 
-const marker = "web-phase-8f-structured-navigation";
+const historicalMarker = "web-phase-8f-structured-navigation";
 
 const requirePhrases = (label, source, phrases) => {
   for (const phrase of phrases) {
@@ -41,7 +41,8 @@ requirePhrases("Spanish root metadata", esLayout, [
   'twitter:',
   'robots: { index: true, follow: true }',
   'brandPreviewUrl("es", "home")',
-  `"ia-web-release": "${marker}"`,
+  'WEB_RELEASE_FINGERPRINT',
+  'other: { "ia-web-release": WEB_RELEASE_FINGERPRINT }',
 ]);
 
 requirePhrases("English root metadata", enLayout, [
@@ -55,7 +56,8 @@ requirePhrases("English root metadata", enLayout, [
   'twitter:',
   'robots: { index: true, follow: true }',
   'brandPreviewUrl("en", "home")',
-  `"ia-web-release": "${marker}"`,
+  'WEB_RELEASE_FINGERPRINT',
+  'other: { "ia-web-release": WEB_RELEASE_FINGERPRINT }',
 ]);
 
 requirePhrases("Sitemap", sitemap, [
@@ -114,10 +116,10 @@ for (const [label, routeSource] of [
 }
 
 requirePhrases("Production Phase 8F gate", production, [
-  `EXPECTED_RELEASE: ${marker}`,
+  'EXPECTED_RELEASE: ${{ steps.release.outputs.fingerprint }}',
   'tests/phase8f-seo-runtime.spec.ts',
   'tests/phase8f-structured-navigation.spec.ts',
-  'Wait for Web Phase 8F structured navigation gate on Hostinger',
+  'Wait for exact release fingerprint on Hostinger',
 ]);
 
 requirePhrases("Phase 8E closure evidence", phase8eClosure, [
@@ -145,7 +147,7 @@ requirePhrases("Phase 8F closure evidence", phase8f, [
   "0.80 / 0.96 / 0.96",
   "Production Verification #49",
   "34960212929",
-  "web-phase-8f-structured-navigation",
+  historicalMarker,
   "228 cases",
   "100 unique same-origin public links",
   "103/103 static pages",
@@ -191,4 +193,4 @@ if (pageRouteLeaks.length) {
   throw new Error(`Internal rendering endpoints became customer-facing pages: ${pageRouteLeaks.join(", ")}`);
 }
 
-console.log(`Phase 8F SEO closure OK: ${marker} protects bilingual metadata, sitemap/robots, governed social previews, explicit internal noindex policy, runtime SEO, structured-data/navigation production coverage and exact Production Verification #49 closure evidence.`);
+console.log(`Phase 8F SEO closure OK: historical marker ${historicalMarker} remains preserved as closure evidence while the active dynamic release fingerprint protects bilingual metadata, sitemap/robots, governed social previews, explicit internal noindex policy, runtime SEO and structured-data/navigation production coverage.`);

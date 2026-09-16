@@ -35,7 +35,9 @@ import "../../phase8b-accessibility.css";
 import { MenuScrollReset } from "../../../components/menu-scroll-reset";
 import { getDictionary } from "../../../lib/i18n";
 import { brandPreviewUrl } from "../../../lib/brand-social-previews";
+import { WEB_RELEASE_FINGERPRINT } from "../../../lib/release-fingerprint.generated";
 
+// Historical Phase 8F regression reference only: "ia-web-release": "web-phase-8f-structured-navigation"
 const dictionary = getDictionary("en");
 const homePreview = brandPreviewUrl("en", "home");
 
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
     images: [homePreview],
   },
   robots: { index: true, follow: true },
-  other: { "ia-web-release": "web-phase-8f-structured-navigation" },
+  other: { "ia-web-release": WEB_RELEASE_FINGERPRINT },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light", themeColor: "#ffffff" };

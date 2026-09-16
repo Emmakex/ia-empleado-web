@@ -15,14 +15,19 @@ const enLayout = read("app/(en)/en/layout.tsx");
 const performanceDocs = read("docs/PHASE_8E_PERFORMANCE_BASELINE.md");
 const stabilityDocs = read("docs/PHASE_8E_LIGHTHOUSE_STABILITY.md");
 
-const expectedReleaseValues = [...production.matchAll(/EXPECTED_RELEASE:\s+([^\s]+)/g)].map((match) => match[1]);
-if (!expectedReleaseValues.length) {
-  throw new Error("Production Verification must declare an EXPECTED_RELEASE marker");
+const dynamicReleaseToken = 'EXPECTED_RELEASE: ${{ steps.release.outputs.fingerprint }}';
+const dynamicReleaseUses = production.split(dynamicReleaseToken).length - 1;
+if (dynamicReleaseUses !== 2) {
+  throw new Error(`Production Verification must use the exact computed fingerprint for production and local Lighthouse readiness; found ${dynamicReleaseUses} uses`);
 }
-if (new Set(expectedReleaseValues).size !== 1) {
-  throw new Error(`Production Verification uses inconsistent release markers: ${expectedReleaseValues.join(", ")}`);
+for (const phrase of [
+  "Compute exact web release fingerprint",
+  'id: release',
+  'node scripts/generate-release-fingerprint.mjs --print',
+  "Wait for exact release fingerprint on Hostinger",
+]) {
+  if (!production.includes(phrase)) throw new Error(`Production Verification missing exact fingerprint phrase: ${phrase}`);
 }
-const activeReleaseMarker = expectedReleaseValues[0];
 
 const requiredRoutes = [
   "/",
@@ -107,9 +112,13 @@ for (const phrase of [
 if (!production.includes("github.event.workflow_run.head_sha")) {
   throw new Error("Production Verification must checkout the exact successful Web CI SHA before building the Lighthouse lab target");
 }
-const metadataMarker = `"ia-web-release": "${activeReleaseMarker}"`;
-if (!esLayout.includes(metadataMarker) || !enLayout.includes(metadataMarker)) {
-  throw new Error(`ES/EN layouts do not match the active production release marker: ${activeReleaseMarker}`);
+for (const [label, layout] of [["ES", esLayout], ["EN", enLayout]]) {
+  if (!layout.includes("WEB_RELEASE_FINGERPRINT")) {
+    throw new Error(`${label} layout does not import the generated exact release fingerprint`);
+  }
+  if (!layout.includes('other: { "ia-web-release": WEB_RELEASE_FINGERPRINT }')) {
+    throw new Error(`${label} layout does not publish the exact release fingerprint in metadata`);
+  }
 }
 for (const phrase of [
   "Production Verification #42",
@@ -138,4 +147,4 @@ for (const phrase of [
   if (!stabilityDocs.includes(phrase)) throw new Error(`Phase 8E Lighthouse stability evidence missing phrase: ${phrase}`);
 }
 
-console.log(`Phase 8E Lighthouse launch contract OK under active release ${activeReleaseMarker}: production browser evidence stays on Hostinger while pinned Lighthouse audits the exact verified release SHA; unchanged launch scores use adaptive median-of-three stabilization only after an initial threshold miss.`);
+console.log("Phase 8E Lighthouse launch contract OK under the dynamic exact release fingerprint: production browser evidence stays on Hostinger while pinned Lighthouse audits the same verified build inputs; unchanged launch scores use adaptive median-of-three stabilization only after an initial threshold miss.");
