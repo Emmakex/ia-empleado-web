@@ -67,6 +67,23 @@ def assert_loaded_images(driver, selector: str, expected_minimum: int, label: st
     images = driver.find_elements(By.CSS_SELECTOR, selector)
     if len(images) < expected_minimum:
         fail(f"{label}: expected at least {expected_minimum} images, found {len(images)}")
+
+    # Canonical cards are intentionally lazy below the fold. Bring every image into
+    # Safari's viewport before requiring a completed decode, mirroring a real user scroll.
+    for image in images:
+        driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", image)
+        time.sleep(0.15)
+
+    WebDriverWait(driver, 20).until(
+        lambda browser: browser.execute_script(
+            """
+            return Array.from(document.querySelectorAll(arguments[0]))
+              .every((image) => image.complete && image.naturalWidth > 0);
+            """,
+            selector,
+        )
+    )
+
     unloaded = driver.execute_script(
         """
         return Array.from(document.querySelectorAll(arguments[0]))
@@ -76,7 +93,7 @@ def assert_loaded_images(driver, selector: str, expected_minimum: int, label: st
         selector,
     )
     if unloaded:
-        fail(f"{label}: unloaded images: {unloaded}")
+        fail(f"{label}: unloaded images after viewport activation: {unloaded}")
 
 
 def assert_interactive_surface(driver, route: str, root_selector: str):
