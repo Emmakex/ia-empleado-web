@@ -69,6 +69,17 @@ jobs:
           . .venv-safari/bin/activate
           python scripts/phase8g-native-safari-smoke.py
 
+      - name: Collect server log and stop exact candidate
+        if: always()
+        run: |
+          mkdir -p artifacts/native-safari
+          if [ -f /tmp/ia-empleado-safari-next.log ]; then
+            cp /tmp/ia-empleado-safari-next.log artifacts/native-safari/next-server.log || true
+          fi
+          if [ -f /tmp/ia-empleado-safari-next.pid ]; then
+            kill "$(cat /tmp/ia-empleado-safari-next.pid)" || true
+          fi
+
       - name: Upload native Safari evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -77,13 +88,3 @@ jobs:
           path: artifacts/native-safari/
           if-no-files-found: warn
           retention-days: 14
-
-      - name: Stop exact candidate
-        if: always()
-        run: |
-          if [ -f /tmp/ia-empleado-safari-next.pid ]; then
-            kill "$(cat /tmp/ia-empleado-safari-next.pid)" || true
-          fi
-          if [ -f /tmp/ia-empleado-safari-next.log ]; then
-            cp /tmp/ia-empleado-safari-next.log artifacts/native-safari/next-server.log || true
-          fi
