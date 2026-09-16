@@ -3,6 +3,7 @@ import type { Locale, SiteDictionary } from "../lib/i18n";
 import { employeeIndexPath } from "../lib/employee-content-engine";
 import { getDiscoveryFilterOptions, getDiscoveryProfiles } from "../lib/employee-discovery";
 import { getBrandCharacters } from "../lib/brand-characters";
+import { requestDemoPath } from "../lib/conversion-handoff";
 import { BrandCharacterImage } from "./brand-character-image";
 import { EmployeeCatalogExplorer } from "./employee-catalog-explorer";
 import { SiteFooter } from "./site-footer";
@@ -51,6 +52,11 @@ export function EmployeeIndexPage({ locale, dictionary }: EmployeeIndexPageProps
   const characters = getBrandCharacters(locale);
   const alternateHref = employeeIndexPath(locale === "es" ? "en" : "es");
   const homeHref = locale === "es" ? "/" : "/en";
+  const processCtaHref = requestDemoPath(locale, {
+    intent: "process",
+    source: "employee-index",
+    context: locale === "es" ? "Catálogo de Empleados IA" : "AI Employee catalog",
+  });
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -98,7 +104,7 @@ export function EmployeeIndexPage({ locale, dictionary }: EmployeeIndexPageProps
 
         <section className="content-section" aria-labelledby="architecture-title"><div className="container employee-architecture-grid"><div><p className="eyebrow">{locale === "es" ? "DEL ROL AL EQUIPO" : "FROM ROLE TO TEAM"}</p><h2 id="architecture-title">{t.whyTitle}</h2><p className="section-lead">{t.whyBody}</p></div><div className="employee-architecture-steps">{t.architecture.map(([number, title, text]) => <article key={number}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></div></section>
 
-        <section className="content-section final-cta"><div className="container cta-panel"><div><p className="eyebrow">{locale === "es" ? "EMPIEZA POR EL PROCESO" : "START WITH THE PROCESS"}</p><h2>{t.ctaTitle}</h2><p>{t.ctaText}</p></div><div className="cta-actions"><a className="button" href="mailto:hola@iaempleado.com?subject=IA%20Empleado%20-%20Analisis%20de%20proceso">{t.cta}</a><Link className="button button-ghost" href={homeHref}>{locale === "es" ? "Volver al inicio" : "Back to home"}</Link></div></div></section>
+        <section className="content-section final-cta"><div className="container cta-panel"><div><p className="eyebrow">{locale === "es" ? "EMPIEZA POR EL PROCESO" : "START WITH THE PROCESS"}</p><h2>{t.ctaTitle}</h2><p>{t.ctaText}</p></div><div className="cta-actions"><Link className="button" href={processCtaHref}>{t.cta}</Link><Link className="button button-ghost" href={homeHref}>{locale === "es" ? "Volver al inicio" : "Back to home"}</Link></div></div></section>
       </main>
       <SiteFooter locale={locale} dictionary={dictionary} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
