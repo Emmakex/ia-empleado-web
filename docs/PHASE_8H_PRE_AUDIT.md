@@ -2,145 +2,59 @@
 
 ## Status
 
-**PRE-AUDIT ONLY. Phase 8H is not active yet.**
+**COMPLETE — historical pre-audit, superseded by `PHASE_8H_FINAL_COMMERCIAL_READINESS.md`.**
 
-Phase 8G remains active until the real-device acceptance tracked in issue #103 is complete. This document prepares the final commercial/content review so work can continue without misrepresenting the Phase 8G state.
+Phase 8G closed on 2026-09-16 after automated/native browser coverage and manual physical-device validation were recorded. Phase 8H is now active.
 
-Baseline reviewed: `b1d5acc7971efeb4a17844ecd283cb4b967300f5`.
+The pre-audit correctly identified the public legal/privacy surface as the principal P0 launch blocker. The required owner/controller data has since been explicitly confirmed by the project owner and is no longer inferred or left as a placeholder.
 
-## What is already in good shape
+## Confirmed legal identity for the Phase 8H implementation
 
-- ES/EN structural parity is enforced in CI.
-- Conversion routes exist in both locales (`/solicitar-demo`, `/en/request-demo`).
-- Lead intake supports truthful email fallback and direct SMTP/webhook delivery only when configured.
-- Direct lead submission requires consent and a valid published privacy-notice URL.
-- Commercial copy already uses useful scope qualifiers such as illustrative/reference scenarios, per-client validation, configured authority and human approval.
-- The public site currently has no baseline non-essential advertising/marketing tracker dependency.
-- Canonical visual identity, accessibility, motion, performance, SEO and automated browser coverage are already protected by earlier Phase 8 gates.
+- Owner / controller: Eduardo Jose Yauri Luna
+- NIF: 60281451S
+- Publishable address: Reina Amalia 8, 4 2, Barcelona, España
+- Public legal/privacy contact: info@iaempleado.com
 
-## P0 launch blocker — public legal/privacy surface is incomplete
+Commercial lead fallback remains a separate role-specific address (`hola@iaempleado.com`); the legal/privacy contact is `info@iaempleado.com`.
 
-The repository does not currently expose dedicated public routes for:
+## Findings carried into active Phase 8H
 
-- privacy policy / privacy notice;
-- legal notice / site ownership information;
-- cookie policy, if/when non-essential cookies or consent-managed tracking are introduced.
+The pre-audit established that:
 
-`components/site-footer.tsx` currently shows only the product disclaimer (`IA Empleado is a product metaphor...`) and product/resource links. It does not expose legal/privacy navigation.
+- ES/EN structural parity is enforced in CI;
+- conversion routes exist in both locales (`/solicitar-demo`, `/en/request-demo`);
+- lead intake supports truthful email fallback and direct SMTP/webhook delivery only when configured;
+- direct lead submission requires consent and a valid published privacy-notice URL;
+- commercial copy uses scope qualifiers and avoids treating illustrative workflows as guaranteed outcomes;
+- the public site has no baseline non-essential advertising/marketing tracker dependency;
+- canonical visual identity, accessibility, motion, performance, SEO and automated browser coverage are protected by earlier Phase 8 gates.
 
-The direct lead intake architecture expects `LEAD_PRIVACY_NOTICE_URL` to point to a published privacy notice. SMTP/webhook direct submission is intentionally disabled unless that URL is valid. This is the correct technical safeguard, but final launch readiness requires the notice itself to be intentionally published and linked from the public site.
+## P0 legal/privacy implementation resulting from this audit
 
-### Required decision/input before implementation
+The active Phase 8H implementation now requires and protects:
 
-Do not invent legal identity data. Before publishing the legal notice/privacy controller section, confirm the real legal owner/controller of `iaempleado.com` and the production contact details that must appear publicly. Depending on the final owner and jurisdiction, this may include:
+- bilingual Privacy Policy routes (`/politica-de-privacidad`, `/en/privacy-policy`);
+- bilingual Legal Notice routes (`/aviso-legal`, `/en/legal-notice`);
+- canonical/hreflang metadata for those routes;
+- footer links to the real legal/privacy destinations in both locales;
+- a first-party privacy URL for direct lead consent (`https://iaempleado.com/politica-de-privacidad`);
+- legal identity consistency across the public documents;
+- a browser regression covering the four public legal routes;
+- a CI contract that fails if the confirmed legal identity, legal links or privacy handoff disappear.
 
-- legal entity / controller name;
-- tax/VAT identifier where required;
-- registered/contact address where required;
-- public contact email;
-- company registry details where applicable;
-- data-protection contact channel;
-- hosting/processor or relevant vendor disclosure where required;
-- retention and lawful-basis wording for commercial lead handling.
+## Cookie / tracking posture
 
-Until those facts are confirmed, legal pages must not ship with placeholders or invented entity information.
+The current baseline intentionally loads no non-essential advertising or marketing tracking by default. A cookie banner must not be added merely as decoration.
 
-## P0 launch blocker — footer/legal navigation
+If non-essential analytics or marketing technology is introduced later, the project must first inventory the provider and purpose, then add the consent mechanism and disclosures required by the actual implementation.
 
-Final footer acceptance should include intentional ES/EN links for the published legal/privacy surfaces. Current `Privacidad y control` is a product/security section link, not a legal privacy notice.
+## Remaining active Phase 8H work
 
-Recommended final footer grouping:
+The pre-audit is no longer the source of truth for closure. Continue in `PHASE_8H_FINAL_COMMERCIAL_READINESS.md` with:
 
-- Privacy / Privacidad
-- Legal notice / Aviso legal
-- Cookie policy / Política de cookies only when applicable
-- Contact (`hola@iaempleado.com`) where commercially appropriate
-
-The product-metaphor disclaimer should remain separate from legal navigation.
-
-## P0 launch blocker — direct lead privacy notice consistency
-
-Current direct submission behavior is sound:
-
-- direct mode is enabled only when transport + privacy notice URL are configured;
-- the form requires explicit consent;
-- the selected privacy notice URL is recorded with the lead payload;
-- otherwise the form falls back to preparing an email and does not pretend a direct submission occurred.
-
-Final 8H acceptance must verify that the configured production `LEAD_PRIVACY_NOTICE_URL` resolves to the exact current public privacy notice and that the consent wording matches the published notice.
-
-## P1 commercial review — claims and proof language
-
-Current homepage copy is generally cautious and should be preserved:
-
-- workflow examples are described as educational/illustrative;
-- authority depends on configuration, integrations and policies;
-- team examples are described as reference commercial models;
-- catalogue copy avoids presenting every profile as immediately available;
-- private deployment is described as an architectural option rather than a universal deployment guarantee.
-
-8H should still perform a route-by-route claim audit, especially on employee, team, integration, sector, use-case and comparison detail pages. Any absolute or measurable claim must either have evidence or be rewritten as capability/scope language.
-
-## P1 commercial review — CTA intent consistency
-
-Primary conversion intent is currently coherent around:
-
-- design an AI team;
-- improve a process;
-- request a demo;
-- evaluate an employee/integration/private deployment.
-
-8H must verify every visible CTA resolves to one of the intentional public destinations and preserves useful handoff context. No CTA should point to an unfinished/internal renderer route.
-
-## P1 content review — ES/EN parity beyond schema parity
-
-CI protects structural parity, but final commercial acceptance must review meaning, not only keys.
-
-Verify:
-
-- equivalent commercial promises in ES and EN;
-- consistent naming for Employee / Team / Department / Integration / Use case concepts;
-- equivalent qualifiers and disclaimers;
-- privacy/legal pages published in both languages or with an intentional documented language policy;
-- no stale temporary wording from earlier build phases.
-
-## P1 privacy/cookie posture
-
-Current analytics baseline intentionally loads no non-essential advertising/marketing tracking by default. Therefore a consent banner should not be added merely for decoration.
-
-If a non-essential analytics or marketing provider is introduced before launch, 8H must reopen consent scope and require:
-
-- vendor/purpose inventory;
-- consent-gated initialization where required;
-- withdrawal/change mechanism;
-- ES/EN accessible consent UI;
-- updated privacy/cookie disclosures;
-- performance regression review.
-
-## P1 unfinished/public-surface review
-
-The final audit must verify there are no customer-visible placeholders, debug labels, development-only claims or orphaned sections.
-
-Special attention:
-
-- internal brand preview/campaign renderer routes remain non-indexed/internal and absent from navigation;
-- demo/interactive scenes remain clearly illustrative, not represented as live customer integrations;
-- contact success/failure wording must match actual delivery guarantees;
-- footer, legal and contact coverage must remain usable on mobile and keyboard.
-
-## Proposed Phase 8H implementation order after 8G closes
-
-1. Confirm legal owner/controller and public legal contact details.
-2. Implement bilingual privacy + legal routes with proper metadata/canonical/hreflang.
-3. Connect footer legal navigation and production `LEAD_PRIVACY_NOTICE_URL`.
-4. Add static/runtime tests for legal routes, footer links and lead privacy URL consistency.
-5. Audit all CTAs and conversion context.
-6. Audit claims/disclaimers across all commercial families.
-7. Review ES/EN content meaning and naming consistency.
-8. Run full Web CI + exact-SHA Production Verification.
-9. Perform final manual visual/content acceptance.
-10. Close Phase 8 and only then unblock implementation of `kairoseth.iaempleado.com`.
-
-## Closure rule
-
-This pre-audit does not close any Phase 8 gate. Phase 8H may only be marked active after Phase 8G real-device acceptance is complete. Phase 8 may only close after the final commercial/content, legal/privacy, CI, production and manual visual gates are all green.
+1. route-by-route claims and proof-language audit;
+2. CTA and conversion-context audit;
+3. semantic ES/EN content review beyond schema parity;
+4. final desktop/iPhone/Android visual acceptance;
+5. full Web CI and Production Verification on the exact release candidate;
+6. final Phase 8 release gate before `kairoseth.iaempleado.com` is unblocked.

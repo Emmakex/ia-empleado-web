@@ -9,6 +9,7 @@ import { roiEstimatorPath } from "../lib/roi-estimator";
 import { comparisonIndexPath } from "../lib/comparison-content";
 import { sectorIndexPath, useCaseIndexPath } from "../lib/sector-use-cases";
 import { departmentIndexPath, integrationIndexPath } from "../lib/organization-map";
+import { legalNoticePath, privacyPolicyPath } from "../lib/legal-content";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -18,6 +19,8 @@ type SiteFooterProps = {
 export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   const homeHref = localeHref(locale);
   const links = [employeeIndexPath(locale), teamIndexPath(locale), collaborationDemoPath(locale), `${homeHref}#seguridad`];
+  const privacyHref = privacyPolicyPath(locale);
+  const legalHref = legalNoticePath(locale);
 
   return (
     <footer className="site-footer">
@@ -64,6 +67,10 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
       </div>
       <div className="container footer-bottom">
         <p>© {new Date().getFullYear()} IA Empleado</p>
+        <nav className="footer-legal-nav" aria-label={locale === "es" ? "Información legal" : "Legal information"}>
+          <Link href={privacyHref}>{locale === "es" ? "Política de privacidad" : "Privacy policy"}</Link>
+          <Link href={legalHref}>{locale === "es" ? "Aviso legal" : "Legal notice"}</Link>
+        </nav>
         <p>{dictionary.footer.legal}</p>
       </div>
     </footer>

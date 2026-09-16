@@ -6,6 +6,7 @@ import { teamBuilderPath } from "../lib/team-builder";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
 import { requestDemoPath } from "../lib/conversion-handoff";
+import { legalNoticePath, privacyPolicyPath } from "../lib/legal-content";
 import { comparisonDetailPath, comparisonIndexPath, comparisonRecords } from "../lib/comparison-content";
 import {
   sectorDetailPath,
@@ -138,6 +139,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.78,
       alternates: { languages: { es: `https://iaempleado.com${requestDemoPath("es")}`, en: `https://iaempleado.com${requestDemoPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${privacyPolicyPath("es")}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.45,
+      alternates: { languages: { es: `https://iaempleado.com${privacyPolicyPath("es")}`, en: `https://iaempleado.com${privacyPolicyPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${privacyPolicyPath("en")}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.4,
+      alternates: { languages: { es: `https://iaempleado.com${privacyPolicyPath("es")}`, en: `https://iaempleado.com${privacyPolicyPath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${legalNoticePath("es")}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.4,
+      alternates: { languages: { es: `https://iaempleado.com${legalNoticePath("es")}`, en: `https://iaempleado.com${legalNoticePath("en")}` } },
+    },
+    {
+      url: `https://iaempleado.com${legalNoticePath("en")}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.35,
+      alternates: { languages: { es: `https://iaempleado.com${legalNoticePath("es")}`, en: `https://iaempleado.com${legalNoticePath("en")}` } },
     },
     {
       url: `https://iaempleado.com${comparisonIndexPath("es")}`,

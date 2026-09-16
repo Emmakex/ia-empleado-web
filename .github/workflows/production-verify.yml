@@ -51,7 +51,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity, performance and SEO
+      - name: Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity, performance, SEO and Phase 8H legal surfaces
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
         run: >-
@@ -75,6 +75,7 @@ jobs:
           tests/phase8e-performance-budget.spec.ts
           tests/phase8f-seo-runtime.spec.ts
           tests/phase8f-structured-navigation.spec.ts
+          tests/phase8h-legal-readiness.spec.ts
           tests/ux-visual.spec.ts
 
       - name: Build exact release for Lighthouse lab
