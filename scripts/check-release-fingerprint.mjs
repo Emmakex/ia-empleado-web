@@ -35,10 +35,13 @@ assert(
 for (const token of [
   'const generatedRelativePath = "lib/release-fingerprint.generated.ts"',
   'const sourceRoots = ["app", "components", "config", "content", "lib", "public"]',
+  'execFileSync("git", ["rev-parse", "HEAD"]',
+  'return `web-${commit.slice(0, 24)}`;',
   'crypto.createHash("sha256")',
   'slice(0, 24)',
   'process.argv.includes("--print")',
   'file !== generatedRelativePath',
+  'computeGitReleaseFingerprint() ?? computeSourceFallbackFingerprint()',
 ]) {
   assert(generator.includes(token), `Release fingerprint generator missing token: ${token}`);
 }
@@ -83,6 +86,12 @@ assert(
 const fingerprintA = execFileSync(process.execPath, [files.generator, "--print"], { encoding: "utf8" }).trim();
 const fingerprintB = execFileSync(process.execPath, [files.generator, "--print"], { encoding: "utf8" }).trim();
 assert(/^web-[a-f0-9]{24}$/.test(fingerprintA), `Unexpected release fingerprint format: ${fingerprintA}`);
-assert(fingerprintA === fingerprintB, "Release fingerprint is not deterministic across identical source inputs");
+assert(fingerprintA === fingerprintB, "Release fingerprint is not deterministic across identical release inputs");
 
-console.log(`Exact web release fingerprint contract OK: ${fingerprintA}; production and local release gates use the same deterministic source fingerprint.`);
+const gitCommit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim().toLowerCase();
+assert(
+  fingerprintA === `web-${gitCommit.slice(0, 24)}`,
+  `Git-backed release fingerprint must match the checked-out commit: expected web-${gitCommit.slice(0, 24)}, got ${fingerprintA}`,
+);
+
+console.log(`Exact web release fingerprint contract OK: ${fingerprintA}; Git-backed deployments and production verification use the same checked-out commit identity.`);
