@@ -105,6 +105,9 @@ jobs:
       - name: Phase 8B release gate contract
         run: node scripts/check-phase8-release-gate.mjs
 
+      - name: Exact release fingerprint contract
+        run: node scripts/check-release-fingerprint.mjs
+
       - name: Phase 8E performance budget contract
         run: node scripts/check-phase8e-performance-budget.mjs
 
