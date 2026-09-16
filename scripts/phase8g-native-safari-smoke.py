@@ -7,6 +7,7 @@ from pathlib import Path
 
 from selenium import webdriver
 from selenium.common.exceptions import SessionNotCreatedException, TimeoutException
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -136,9 +137,16 @@ def wait_hydrated(driver, selector: str, attribute: str):
 
 def assert_focus_visible(driver, element, label: str):
     driver.execute_script("arguments[0].scrollIntoView({block: 'center'}); arguments[0].focus();", element)
-    active = driver.execute_script("return document.activeElement === arguments[0]", element)
-    if not active:
-        fail(f"{label}: control did not receive focus")
+
+    # Programmatic focus does not necessarily activate :focus-visible in Safari.
+    # Match the established keyboard acceptance pattern: move away with Shift+Tab,
+    # return with Tab, then assert both focus ownership and a visible indicator.
+    ActionChains(driver).key_down(Keys.SHIFT).send_keys(Keys.TAB).key_up(Keys.SHIFT).send_keys(Keys.TAB).perform()
+    WebDriverWait(driver, 10).until(
+        lambda browser: browser.execute_script("return document.activeElement === arguments[0]", element)
+    )
+
+    focus_visible = driver.execute_script("return arguments[0].matches(':focus-visible')", element)
     focus_style = driver.execute_script(
         """
         const style = getComputedStyle(arguments[0]);
@@ -152,8 +160,11 @@ def assert_focus_visible(driver, element, label: str):
     )
     has_outline = focus_style["outlineStyle"] != "none" and focus_style["outlineWidth"] >= 2
     has_shadow = focus_style["boxShadow"] != "none"
-    if not (has_outline or has_shadow):
-        fail(f"{label}: focused control has no visible focus indicator: {focus_style}")
+    if not focus_visible or not (has_outline or has_shadow):
+        fail(
+            f"{label}: keyboard-focused control has no visible focus indicator: "
+            f"focusVisible={focus_visible}, style={focus_style}"
+        )
 
 
 def assert_team_builder_interaction(driver):
