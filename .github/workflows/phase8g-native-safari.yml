@@ -1,0 +1,90 @@
+name: Phase 8G Native Safari macOS
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: phase8g-native-safari-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  native-safari:
+    name: Native Safari acceptance
+    runs-on: macos-15
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build exact candidate
+        run: npm run build
+
+      - name: Start exact candidate
+        run: |
+          npm run start -- -p 3100 > /tmp/ia-empleado-safari-next.log 2>&1 &
+          echo $! > /tmp/ia-empleado-safari-next.pid
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:3100/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/ia-empleado-safari-next.log
+          exit 1
+
+      - name: Record macOS and native Safari versions
+        run: |
+          mkdir -p artifacts/native-safari
+          sw_vers | tee artifacts/native-safari/macos-version.txt
+          defaults read /Applications/Safari.app/Contents/Info CFBundleShortVersionString | tee artifacts/native-safari/safari-version.txt
+          /usr/bin/safaridriver --version | tee artifacts/native-safari/safaridriver-version.txt
+
+      - name: Enable native Safari WebDriver
+        run: sudo /usr/bin/safaridriver --enable
+
+      - name: Install Selenium client in isolated environment
+        run: |
+          python3 -m venv .venv-safari
+          . .venv-safari/bin/activate
+          python -m pip install --disable-pip-version-check --quiet "selenium>=4.30,<5"
+
+      - name: Run native Safari Phase 8G smoke
+        env:
+          BASE_URL: http://127.0.0.1:3100
+          SAFARI_ARTIFACT_DIR: artifacts/native-safari
+        run: |
+          . .venv-safari/bin/activate
+          python scripts/phase8g-native-safari-smoke.py
+
+      - name: Collect server log and stop exact candidate
+        if: always()
+        run: |
+          mkdir -p artifacts/native-safari
+          if [ -f /tmp/ia-empleado-safari-next.log ]; then
+            cp /tmp/ia-empleado-safari-next.log artifacts/native-safari/next-server.log || true
+          fi
+          if [ -f /tmp/ia-empleado-safari-next.pid ]; then
+            kill "$(cat /tmp/ia-empleado-safari-next.pid)" || true
+          fi
+
+      - name: Upload native Safari evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase8g-native-safari-evidence
+          path: artifacts/native-safari/
+          if-no-files-found: warn
+          retention-days: 14
