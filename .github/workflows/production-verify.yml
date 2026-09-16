@@ -35,27 +35,16 @@ jobs:
         id: release
         run: echo "fingerprint=$(node scripts/generate-release-fingerprint.mjs --print)" >> "$GITHUB_OUTPUT"
 
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Wait for exact release fingerprint on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
           EXPECTED_RELEASE: ${{ steps.release.outputs.fingerprint }}
-        run: |
-          set -euo pipefail
-          echo "Waiting for production release fingerprint: $EXPECTED_RELEASE"
-          for attempt in $(seq 1 40); do
-            html="$(curl -fsSL --retry 2 --retry-delay 2 --max-time 20 "$PRODUCTION_BASE_URL/" || true)"
-            if printf '%s' "$html" | grep -q 'ia-web-release' && printf '%s' "$html" | grep -q "$EXPECTED_RELEASE"; then
-              echo "Production is serving exact release fingerprint: $EXPECTED_RELEASE"
-              exit 0
-            fi
-            echo "Attempt $attempt/40: production has not published exact fingerprint $EXPECTED_RELEASE yet"
-            sleep 15
-          done
-          echo "Exact production release fingerprint did not appear within the verification window"
-          exit 1
-
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+          RELEASE_CHECK_ATTEMPTS: 30
+          RELEASE_CHECK_DELAY_MS: 10000
+        run: node scripts/wait-for-production-release.mjs
 
       - name: Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity, performance, SEO and Phase 8H legal surfaces
         env:
