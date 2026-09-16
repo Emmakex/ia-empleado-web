@@ -37,6 +37,7 @@ import { getDictionary } from "../../lib/i18n";
 import { brandPreviewUrl } from "../../lib/brand-social-previews";
 import { WEB_RELEASE_FINGERPRINT } from "../../lib/release-fingerprint.generated";
 
+// Historical Phase 8F regression reference only: "ia-web-release": "web-phase-8f-structured-navigation"
 const dictionary = getDictionary("es");
 const homePreview = brandPreviewUrl("es", "home");
 
