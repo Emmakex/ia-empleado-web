@@ -13,6 +13,7 @@ import "../../comparison-content.css";
 import "../../sector-use-cases.css";
 import "../../organization-map.css";
 import "../../conversion-handoff.css";
+import "../../legal-content.css";
 import "../../brand-system.css";
 import "../../brand-fidelity.css";
 import "../../brand-content.css";
