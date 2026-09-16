@@ -27,22 +27,27 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Web Phase 8F structured navigation gate on Hostinger
+      - name: Compute exact web release fingerprint
+        id: release
+        run: echo "fingerprint=$(node scripts/generate-release-fingerprint.mjs --print)" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for exact release fingerprint on Hostinger
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-          EXPECTED_RELEASE: web-phase-8f-structured-navigation
+          EXPECTED_RELEASE: ${{ steps.release.outputs.fingerprint }}
         run: |
           set -euo pipefail
+          echo "Waiting for production release fingerprint: $EXPECTED_RELEASE"
           for attempt in $(seq 1 40); do
             html="$(curl -fsSL --retry 2 --retry-delay 2 --max-time 20 "$PRODUCTION_BASE_URL/" || true)"
             if printf '%s' "$html" | grep -q 'ia-web-release' && printf '%s' "$html" | grep -q "$EXPECTED_RELEASE"; then
-              echo "Production is serving release marker: $EXPECTED_RELEASE"
+              echo "Production is serving exact release fingerprint: $EXPECTED_RELEASE"
               exit 0
             fi
-            echo "Attempt $attempt/40: production has not published $EXPECTED_RELEASE yet"
+            echo "Attempt $attempt/40: production has not published exact fingerprint $EXPECTED_RELEASE yet"
             sleep 15
           done
-          echo "Production release marker did not appear within the verification window"
+          echo "Exact production release fingerprint did not appear within the verification window"
           exit 1
 
       - name: Install dependencies
@@ -85,7 +90,7 @@ jobs:
 
       - name: Start exact release for Lighthouse lab
         env:
-          EXPECTED_RELEASE: web-phase-8f-structured-navigation
+          EXPECTED_RELEASE: ${{ steps.release.outputs.fingerprint }}
           NEXT_TELEMETRY_DISABLED: 1
         run: |
           set -euo pipefail
@@ -95,12 +100,12 @@ jobs:
           for attempt in $(seq 1 30); do
             html="$(curl -fsS --max-time 5 http://127.0.0.1:3000/ || true)"
             if printf '%s' "$html" | grep -q 'ia-web-release' && printf '%s' "$html" | grep -q "$EXPECTED_RELEASE"; then
-              echo "Exact release is ready for WAF-independent Lighthouse lab audit"
+              echo "Exact release $EXPECTED_RELEASE is ready for WAF-independent Lighthouse lab audit"
               exit 0
             fi
             sleep 2
           done
-          echo "Local production server did not become ready"
+          echo "Local production server did not become ready with exact release fingerprint $EXPECTED_RELEASE"
           cat .artifacts/lighthouse/server.log || true
           exit 1
 
