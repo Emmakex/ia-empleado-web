@@ -2,89 +2,97 @@
 
 ## Status
 
-**ACTIVE — automated browser acceptance is green; real Safari/iOS/Android device evidence is still required.**
+**ACTIVE — automated browser acceptance and native Safari on macOS are green; physical iPhone Safari and physical Android Chrome evidence are still required.**
 
-Phase 8G must not be declared complete until the evidence types below remain clearly separated. Playwright WebKit and mobile device descriptors are useful regression gates, but they are not equivalent to a physical Apple or Android device.
+Phase 8G must not be declared complete until the remaining physical mobile-device evidence is recorded. Playwright WebKit and mobile device descriptors remain useful regression gates, but they are not equivalent to a physical iPhone or Android device.
 
 Production target: `https://iaempleado.com`
 
-Current accepted repository baseline: `5f5e418313e4ab4eba6c643ad49da0af791309e3`
+Latest accepted native Safari baseline: `647b94866e477f94bebe7c25d10706343a3156c2`.
 
-Post-merge release evidence for that baseline:
+Current CI orchestration baseline after Chromium sharding: `6ced0af649981a61d4cd341e7375f36820363163`.
 
-- Web CI #278: **success**;
-- Production Verification #57: **success**;
-- exact production verification covered geometry, brand systems, conversion, accessibility, motion, canonical fidelity, performance and SEO;
-- exact release build and Lighthouse launch gate also passed.
+Native Safari evidence for `647b94866e477f94bebe7c25d10706343a3156c2`:
+
+- PR #108 merged the hardened native Safari acceptance into `main`;
+- Phase 8G Native Safari macOS run #13: **success**;
+- Web CI #302 on the same `main` SHA: **success**;
+- the Safari gate uses native `safaridriver` on a macOS GitHub Actions runner rather than Playwright WebKit on Linux;
+- the gate records macOS/Safari/safaridriver versions and preserves screenshots/reports as artifacts;
+- Team Builder, Process Analyzer, ROI synchronization, ES/EN lead-form validation, keyboard focus/skip-link behavior, canonical imagery/layout and reduced-motion behavior are covered;
+- successful native macOS Safari evidence does **not** substitute for physical iPhone Safari or physical Android Chrome acceptance.
+
+CI optimization evidence after PR #110:
+
+- base Chromium browser QA is split into three Playwright shards;
+- all three Chromium shards passed before merge;
+- Chromium Phase 8G, Firefox, WebKit/iPhone emulation, Microsoft Edge, contracts, typecheck and build also passed;
+- browser assertions, retries and product acceptance criteria were not weakened.
 
 ## Evidence contract
 
 Use these labels consistently:
 
-- **Browser CI** — a real browser engine/binary executed by Playwright in GitHub Actions. This is valid browser regression evidence for that CI platform, but not physical-device evidence.
-- **Engine proxy** — WebKit running under Playwright on Linux. This gives strong WebKit compatibility coverage but is not desktop Safari on macOS.
+- **Browser CI** — a real browser engine/binary executed by Playwright in GitHub Actions. This is valid browser regression evidence for that CI platform.
+- **Native browser CI** — the actual browser for its operating system executed on a matching CI runner. The current Safari desktop gate uses native Safari + `safaridriver` on macOS and is valid desktop Safari acceptance evidence.
+- **Engine proxy** — WebKit running under Playwright on Linux. This gives strong WebKit compatibility coverage but is not Safari on macOS.
 - **Device emulation** — a Playwright device descriptor supplying representative viewport, user agent and input behavior. This is not a physical phone or tablet.
-- **Real device** — a physical device, or a browser-cloud session explicitly backed by a real device/OS/browser combination.
+- **Physical device** — a real phone/tablet executing its native browser environment, or an explicitly real-device browser-cloud session.
 
-Never promote an engine proxy or emulation result to real-device acceptance.
+Never promote an engine proxy or emulation result to physical-device acceptance.
 
 ## Current acceptance matrix
 
-| Target | Automated evidence | Current decision | Remaining evidence |
+| Target | Evidence | Current decision | Remaining evidence |
 | --- | --- | --- | --- |
-| Chrome/Chromium desktop | Chromium Playwright browser QA and production verification | **Accepted for CI browser coverage** | No additional Phase 8G CI work required |
-| Firefox desktop | Dedicated Firefox smoke gate from PR #95 | **Accepted for CI browser coverage** | No additional Phase 8G CI work required |
-| Microsoft Edge desktop | Dedicated `channel: msedge` gate from PR #100 | **Accepted for Edge browser coverage on Linux CI** | Optional Windows-specific manual sanity check; not required to claim the Edge binary gate itself passed |
-| Safari desktop | Dedicated Playwright WebKit smoke gate from PR #96 | **Proxy only** | **Real Safari on macOS still required** |
-| iOS Safari | iPhone 13 + WebKit emulation gate from PR #98 | **Emulation only** | **Real iPhone/iOS Safari still required** |
-| Android Chrome | Pixel 5 + Chromium emulation gate from PR #99 | **Emulation only** | **Real Android/Chrome still required** |
-| 768px tablet geometry | Dedicated five-context no-retry stability gate from PR #97 | **Accepted automated stability evidence** | Physical tablet review only if used as final manual visual acceptance |
+| Chrome/Chromium desktop | Chromium Playwright browser QA + production verification | **Accepted for CI browser coverage** | None for Phase 8G |
+| Firefox desktop | Dedicated Firefox smoke gate from PR #95 | **Accepted for CI browser coverage** | None for Phase 8G |
+| Microsoft Edge desktop | Dedicated `channel: msedge` gate from PR #100 | **Accepted for Edge browser coverage on Linux CI** | Optional Windows sanity check only |
+| Safari desktop | Native Safari + `safaridriver` on macOS from PR #108; main run #13 green | **Accepted for native desktop Safari coverage** | None for Phase 8G |
+| iOS Safari | iPhone 13 + WebKit emulation gate from PR #98 | **Emulation only** | **Physical iPhone/iOS Safari still required** |
+| Android Chrome | Pixel 5 + Chromium emulation gate from PR #99 | **Emulation only** | **Physical Android/Chrome still required** |
+| 768px tablet geometry | Dedicated five-context no-retry stability gate from PR #97 | **Accepted automated stability evidence** | Physical tablet review only if used in final manual visual acceptance |
 
 ## Permanent automated gates now in CI
 
 The Web CI chain currently preserves all of the following:
 
-1. base Chromium browser UX/accessibility QA;
+1. Chromium browser UX/accessibility QA split across three shards;
 2. 768×1024 stability stress acceptance;
-3. Firefox smoke acceptance;
-4. WebKit smoke acceptance;
-5. iPhone WebKit emulation acceptance;
-6. Android Chromium emulation acceptance;
+3. Android Chromium emulation acceptance;
+4. Firefox smoke acceptance;
+5. WebKit smoke acceptance;
+6. iPhone WebKit emulation acceptance;
 7. Microsoft Edge smoke acceptance;
-8. production build.
+8. contracts, ES/EN parity, TypeScript and production build.
 
-The CI job timeout was increased from 15 to 25 minutes in PR #101 after the expanded browser matrix legitimately exceeded the previous global limit during the final Build step. No browser assertions or product behavior were weakened.
+A separate permanent macOS workflow additionally runs native Safari acceptance with `safaridriver`, including a reduced-motion session.
 
-## Real-device acceptance checklist
+## Accepted Safari desktop — macOS
 
-Run these checks against the production URL, not a local build. Capture device/OS/browser version plus pass/fail notes.
+Native Safari desktop acceptance is now green on the hardened Phase 8G gate.
 
-### A. Safari desktop — macOS
+Covered checks:
 
-Minimum session:
+- [x] ES and EN critical routes render without horizontal overflow;
+- [x] navigation and language switch are usable;
+- [x] canonical character imagery loads and remains bounded;
+- [x] Team Builder state changes correctly;
+- [x] Process Analyzer state changes correctly;
+- [x] ROI numeric/range controls remain synchronized after interaction;
+- [x] ES/EN Request Demo fields and required-field validation are usable;
+- [x] keyboard focus behavior and skip-link structure are verified;
+- [x] macOS full keyboard navigation is enabled explicitly for acceptance evidence;
+- [x] macOS Reduce Motion is enabled in a second native Safari session and `prefers-reduced-motion: reduce` is verified;
+- [x] no acceptance assertion was weakened to obtain the passing result.
 
-- current supported macOS Safari;
-- production Home in ES and EN;
-- one employee/team index;
-- Team Builder;
-- Process Analyzer;
-- ROI calculator;
-- demo/contact conversion route.
+Evidence baseline: `647b94866e477f94bebe7c25d10706343a3156c2`, native Safari workflow run #13, result **PASS**.
 
-Required checks:
+## Remaining physical-device acceptance checklist
 
-- [ ] navigation and language switch work;
-- [ ] hero and canonical character art remain inside layout bounds;
-- [ ] no horizontal overflow at representative desktop width;
-- [ ] Team Builder state changes correctly;
-- [ ] Process Analyzer state changes correctly;
-- [ ] ROI controls remain synchronized after interaction;
-- [ ] demo/contact form is usable and validation feedback is visible;
-- [ ] keyboard focus remains visible and ordered;
-- [ ] reduced-motion preference does not hide content;
-- [ ] no user-flow-blocking console/runtime error is observed.
+Run these checks against the production URL. Capture device/OS/browser version plus pass/fail notes and screenshots/video where practical.
 
-### B. iOS Safari — physical iPhone
+### A. iOS Safari — physical iPhone
 
 Minimum session:
 
@@ -93,18 +101,23 @@ Minimum session:
 
 Required checks:
 
+- [ ] record iPhone model and iOS/Safari version context;
+- [ ] Home ES and EN render without horizontal overflow;
 - [ ] mobile menu opens by touch and traps/restores focus correctly;
 - [ ] menu CTA reaches the demo/contact route;
 - [ ] body scroll lock releases after navigation;
+- [ ] language switch works;
 - [ ] Home canonical Clara, Alex, Sofía and Javier cards remain visible and bounded;
-- [ ] no horizontal overflow on critical routes;
-- [ ] Team Builder, Process Analyzer and ROI controls respond after page load;
-- [ ] form fields, native keyboard and validation remain usable;
+- [ ] Team Builder works by touch;
+- [ ] Process Analyzer works by touch;
+- [ ] ROI controls remain synchronized;
+- [ ] form fields, software keyboard and validation remain usable;
 - [ ] orientation change does not leave clipped/overlapping content;
 - [ ] reduced-motion behavior remains readable and complete;
-- [ ] no user-flow-blocking runtime failure is observed.
+- [ ] no user-flow-blocking runtime failure is observed;
+- [ ] attach screenshot(s) or screen recording.
 
-### C. Android Chrome — physical Android phone
+### B. Android Chrome — physical Android phone
 
 Minimum session:
 
@@ -113,19 +126,24 @@ Minimum session:
 
 Required checks:
 
-- [ ] mobile navigation works by touch;
+- [ ] record device model, Android version and Chrome version;
+- [ ] Home ES and EN render without horizontal overflow;
+- [ ] mobile navigation works by touch and restores coherent state;
+- [ ] language switch works;
 - [ ] Home canonical character cards remain visible and bounded;
-- [ ] no horizontal overflow on critical routes;
-- [ ] Team Builder, Process Analyzer and ROI controls work after load;
+- [ ] Team Builder works by touch;
+- [ ] Process Analyzer works by touch;
+- [ ] ROI controls remain synchronized;
 - [ ] form fields and validation remain usable with the native keyboard;
 - [ ] back navigation returns to a coherent page state;
 - [ ] orientation change does not leave clipped/overlapping content;
-- [ ] reduced-motion behavior remains readable and complete when enabled at OS level;
-- [ ] no user-flow-blocking runtime failure is observed.
+- [ ] reduced-motion behavior remains readable and complete where supported;
+- [ ] no user-flow-blocking runtime failure is observed;
+- [ ] attach screenshot(s) or screen recording.
 
 ## Evidence record template
 
-For each real-device session, record:
+For each physical-device session, record:
 
 ```text
 Target:
@@ -146,10 +164,19 @@ A PASS may be recorded only when all required checks for that target are complet
 
 ## Closure rule
 
-Phase 8G closes only when all three currently outstanding rows are green with real-device evidence:
+Phase 8G now has **two** outstanding physical-device rows:
 
-- Safari desktop on macOS;
 - iOS Safari on a physical iPhone;
 - Android Chrome on a physical Android device.
 
-After those three pass, update `docs/PHASE_8_WEB_FINALIZATION.md` to mark cross-browser/device acceptance green and record the exact evidence. Until then, the automated browser gates remain permanent regression protection but **Phase 8G stays ACTIVE**.
+Safari desktop on macOS is no longer an outstanding row because native Safari acceptance is green on the hardened macOS gate.
+
+After both remaining physical mobile targets pass:
+
+1. update this document with the exact device evidence and release SHA;
+2. update `docs/PHASE_8_WEB_FINALIZATION.md` to mark cross-browser/device acceptance green and correct stale Phase 8F/8G status text;
+3. close issue #103;
+4. activate Phase 8H final commercial/content/legal review;
+5. keep `kairoseth.iaempleado.com` implementation blocked until Phase 8H and the final Phase 8 release gate are green.
+
+Until then, **Phase 8G stays ACTIVE**.
