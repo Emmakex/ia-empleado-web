@@ -32,7 +32,7 @@
     {"title": "Specialized", "text": "Each AI Employee has a defined job, not a generic prompt."},
     {"title": "Connected", "text": "They can work with CRM, ERP, email, calendars, ecommerce and documents."},
     {"title": "Governed", "text": "Permissions, policies and human approvals define what they can do."},
-    {"title": "Private", "text": "The architecture is designed for private deployments adapted to each company."}
+    {"title": "Private", "text": "The architecture supports private or dedicated deployment options adapted to each company."}
   ],
   "definition": {
     "eyebrow": "WHAT IS IA EMPLEADO",
@@ -64,7 +64,7 @@
   },
   "employees": {
     "eyebrow": "REFERENCE SUITE",
-    "title": "Four profiles covering universal business needs.",
+    "title": "Four reference profiles illustrating common business needs.",
     "description": "The first reference suite covers support, internal operations, finance and sales. The catalog will expand progressively without turning every profile into an immediate availability promise.",
     "items": [
       {"title": "Customer Support AI Employee", "text": "Questions, incidents, orders and escalation of exceptions.", "tag": "Reference"},
@@ -101,7 +101,7 @@
   "security": {
     "eyebrow": "PRIVACY, CONTROL AND OVERSIGHT",
     "title": "Autonomy does not mean unlimited authority.",
-    "description": "IA Empleado is designed around explicit permissions, deterministic policies, human approvals and private deployments. A technical capability never grants business authority by itself.",
+    "description": "IA Empleado is designed around explicit permissions, deterministic policies, human approvals and private-deployment options. A technical capability never grants business authority by itself.",
     "items": [
       {"title": "Explicit boundaries", "text": "Each role receives only the approved capabilities and tools."},
       {"title": "Human approval", "text": "Sensitive actions can pause before they are executed."},
@@ -130,7 +130,7 @@
     "tagline": "Specialized AI Employees working with people, systems and real business processes.",
     "product": "Product",
     "resources": "Explore",
-    "legal": "AI Employee is a product metaphor; it does not imply an employment relationship.",
+    "legal": "IA Empleado is a product metaphor; it does not imply an employment relationship.",
     "links": ["AI Employees", "AI Teams", "How it works", "Privacy & control"]
   }
 }
