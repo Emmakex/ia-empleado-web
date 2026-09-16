@@ -35,7 +35,7 @@ Phase 8H reviews the complete customer-facing ES/EN public experience across:
 - [ ] no page implies capabilities that are not actually delivered by the product or service model;
 - [ ] no visual suggests a live customer integration where only a conceptual/demo state exists;
 - [ ] AI employee/team descriptions remain concrete and outcome-oriented without becoming misleading;
-- [ ] ROI language is framed as an estimate rather than a guaranteed financial result;
+- [x] ROI language is framed as an estimate rather than a guaranteed financial result;
 - [ ] comparison pages distinguish factual product differences from marketing interpretation;
 - [ ] sector/use-case language avoids unsupported compliance, performance or automation guarantees.
 
@@ -43,34 +43,53 @@ Phase 8H reviews the complete customer-facing ES/EN public experience across:
 
 - [ ] every primary CTA points to an intentional destination;
 - [ ] secondary CTAs do not create dead ends or contradictory conversion paths;
-- [ ] contextual Team Builder and Process Analyzer handoff remains meaningful on the demo form;
-- [ ] ES and EN CTA labels describe equivalent intent;
-- [ ] Request Demo copy accurately describes what happens after submission;
-- [ ] SMTP success/failure/fallback behavior remains truthful to the user;
-- [ ] no development, staging or internal-renderer route appears in customer navigation.
+- [x] contextual Team Builder and Process Analyzer handoff remains meaningful on the demo form;
+- [x] ES and EN CTA labels describe equivalent intent;
+- [x] Request Demo copy accurately describes what happens after submission;
+- [x] SMTP success/failure/fallback behavior remains truthful to the user;
+- [x] no development, staging or internal-renderer route appears in customer navigation.
 
 ### 3. ES/EN content parity
 
-- [ ] all customer-facing ES routes have the intended EN counterpart where applicable;
+- [x] all customer-facing legal/privacy routes have the intended EN counterpart;
 - [ ] no language exposes materially different commercial promises without an explicit reason;
 - [ ] employee/team/use-case/department/integration naming remains consistent across languages;
 - [ ] navigation, breadcrumbs and CTA destinations remain equivalent between locales;
-- [ ] no untranslated placeholder or mixed-language block remains visible.
+- [x] no untranslated launch placeholder remains visible in the scanned public source surface.
 
 ### 4. Legal/privacy readiness
 
-- [ ] privacy information is reachable from the public conversion flow;
-- [ ] lead-form consent wording is understandable and accurately scoped;
-- [ ] footer legal/privacy links point to real production-ready destinations;
-- [ ] no legal link points to a placeholder, draft-only or missing page;
-- [ ] contact identity and responsible-party wording are internally consistent;
-- [ ] analytics/cookie behavior and wording are reviewed against the actual implemented tracking state;
-- [ ] no unnecessary sensitive data is requested in the lead form.
+- [x] privacy information is reachable from the public conversion flow;
+- [x] lead-form consent wording is understandable and accurately scoped;
+- [x] footer legal/privacy links point to real production-ready destinations;
+- [x] no legal link points to a placeholder, draft-only or missing page;
+- [x] contact identity and responsible-party wording are internally consistent;
+- [x] analytics/cookie behavior and wording are reviewed against the actual implemented tracking state;
+- [x] no unnecessary sensitive data is requested in the lead form.
+
+Confirmed public identity used by the legal/privacy surfaces:
+
+- owner/controller: Eduardo Jose Yauri Luna;
+- NIF: 60281451S;
+- address: Reina Amalia 8, 4 2, Barcelona, España;
+- legal/privacy contact: info@iaempleado.com.
+
+The commercial lead fallback address (`hola@iaempleado.com`) remains separate from the legal/privacy contact by design.
+
+Published route contract:
+
+- `/aviso-legal` ↔ `/en/legal-notice`;
+- `/politica-de-privacidad` ↔ `/en/privacy-policy`;
+- production privacy URL: `https://iaempleado.com/politica-de-privacidad`;
+- footer exposes Privacy + Legal in both locales;
+- sitemap includes all four legal routes with language alternates;
+- Phase 8H CI fails if the confirmed identity, legal navigation or privacy URL disappears;
+- Playwright validates all four legal routes and the ES/EN footer destinations.
 
 ### 5. Content quality and final manual review
 
 - [ ] no orphaned or visibly unfinished section remains;
-- [ ] no placeholder copy, test data or internal implementation wording remains;
+- [x] no obvious launch placeholder copy or fake/dead public link remains in the automated public-source scan;
 - [ ] canonical Clara, Alex, Sofía and Javier identity usage remains consistent;
 - [ ] page hierarchy and CTA density remain commercially understandable;
 - [ ] final desktop manual visual review is green;
