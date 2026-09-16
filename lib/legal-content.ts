@@ -3,12 +3,7 @@ import type { Locale } from "./i18n";
 export const LEGAL_OWNER_NAME = "Eduardo Jose Yauri Luna";
 export const LEGAL_OWNER_TAX_ID = "60281451S";
 export const LEGAL_CONTACT_EMAIL = "info@iaempleado.com";
-
-// Phase 8H blocker: do not invent or infer a private postal address.
-// Populate this value only after the project owner explicitly confirms the
-// address that should be published under the LSSI legal-notice requirements.
-export const LEGAL_OWNER_ADDRESS = "";
-
+export const LEGAL_OWNER_ADDRESS = "Reina Amalia 8, 4 2, Barcelona, España";
 export const LEGAL_LAST_UPDATED = "2026-09-16";
 
 export type LegalDocumentKind = "legal-notice" | "privacy-policy";
@@ -47,13 +42,15 @@ export function isLegalIdentityComplete(): boolean {
 
 const identityEs = [
   `Titular: ${LEGAL_OWNER_NAME}`,
-  `NIF/CIF: ${LEGAL_OWNER_TAX_ID}`,
+  `NIF: ${LEGAL_OWNER_TAX_ID}`,
+  `Domicilio: ${LEGAL_OWNER_ADDRESS}`,
   `Correo de contacto: ${LEGAL_CONTACT_EMAIL}`,
 ];
 
 const identityEn = [
   `Website owner: ${LEGAL_OWNER_NAME}`,
   `Tax identification number: ${LEGAL_OWNER_TAX_ID}`,
+  `Address: ${LEGAL_OWNER_ADDRESS}`,
   `Contact email: ${LEGAL_CONTACT_EMAIL}`,
 ];
 
@@ -63,15 +60,12 @@ const content: Record<Locale, Record<LegalDocumentKind, LegalDocumentContent>> =
       eyebrow: "INFORMACIÓN LEGAL",
       title: "Aviso legal",
       description: "Información sobre el titular de iaempleado.com, las condiciones de acceso al sitio y el marco básico de responsabilidad aplicable.",
-      draftLabel: "Dato pendiente antes de publicación definitiva",
-      draftBody: "El domicilio o residencia publicable del titular todavía no ha sido confirmado. Este documento no debe considerarse cerrado para lanzamiento comercial hasta incorporar ese dato.",
+      draftLabel: "Identidad legal incompleta",
+      draftBody: "Este documento no debe publicarse como definitivo mientras falte alguno de los datos obligatorios del titular.",
       sections: [
         {
           title: "1. Titular del sitio",
           bullets: identityEs,
-          paragraphs: [
-            "El domicilio o residencia del titular se incorporará cuando haya sido confirmado expresamente para su publicación. No se infiere a partir de otros proyectos, empresas o datos privados.",
-          ],
         },
         {
           title: "2. Objeto",
@@ -121,15 +115,12 @@ const content: Record<Locale, Record<LegalDocumentKind, LegalDocumentContent>> =
       eyebrow: "PRIVACIDAD",
       title: "Política de privacidad",
       description: "Explica qué datos personales puede tratar IA Empleado a través de iaempleado.com y cómo ejercer tus derechos.",
-      draftLabel: "Identidad del responsable todavía incompleta",
-      draftBody: "Nombre, NIF/CIF y correo ya están confirmados. Falta incorporar el domicilio o residencia publicable del responsable antes de considerar esta política cerrada para lanzamiento comercial.",
+      draftLabel: "Identidad del responsable incompleta",
+      draftBody: "Esta política no debe publicarse como definitiva mientras falte alguno de los datos obligatorios del responsable.",
       sections: [
         {
           title: "1. Responsable del tratamiento",
           bullets: identityEs,
-          paragraphs: [
-            "El domicilio o residencia publicable del responsable se añadirá cuando haya sido confirmado expresamente. Mientras ese dato falte, esta política permanece en estado de preparación para el cierre de Phase 8H.",
-          ],
         },
         {
           title: "2. Datos que podemos tratar",
@@ -160,8 +151,8 @@ const content: Record<Locale, Record<LegalDocumentKind, LegalDocumentContent>> =
         {
           title: "5. Destinatarios y proveedores",
           paragraphs: [
-            "Los datos podrán ser tratados por proveedores técnicos estrictamente necesarios para alojar el sitio, gestionar infraestructura o entregar comunicaciones cuando esos servicios estén configurados. No vendemos los datos personales de las personas que contactan con IA Empleado.",
-            "Si un proveedor implicara una transferencia internacional de datos, se aplicarán las garantías exigibles antes de utilizarlo para ese tratamiento.",
+            "Los datos podrán ser tratados por proveedores técnicos estrictamente necesarios para alojar el sitio, gestionar infraestructura o entregar comunicaciones. Cuando se active el envío directo por correo, Hostinger podrá intervenir como proveedor técnico del servicio SMTP configurado para IA Empleado.",
+            "No vendemos los datos personales de las personas que contactan con IA Empleado. Si un proveedor implicara una transferencia internacional de datos, se aplicarán las garantías exigibles antes de utilizarlo para ese tratamiento.",
           ],
         },
         {
@@ -203,15 +194,12 @@ const content: Record<Locale, Record<LegalDocumentKind, LegalDocumentContent>> =
       eyebrow: "LEGAL INFORMATION",
       title: "Legal notice",
       description: "Information about the owner of iaempleado.com, the conditions of access to the website and the basic responsibility framework that applies.",
-      draftLabel: "Required detail pending before final publication",
-      draftBody: "The website owner's publishable residence or address has not yet been confirmed. This document must not be treated as launch-ready until that detail is added.",
+      draftLabel: "Legal identity incomplete",
+      draftBody: "This document must not be treated as final while any required owner detail is missing.",
       sections: [
         {
           title: "1. Website owner",
           bullets: identityEn,
-          paragraphs: [
-            "The owner's publishable residence or address will be added only after it has been explicitly confirmed for publication. It is not inferred from other projects, companies or private information.",
-          ],
         },
         {
           title: "2. Purpose of the website",
@@ -261,15 +249,12 @@ const content: Record<Locale, Record<LegalDocumentKind, LegalDocumentContent>> =
       eyebrow: "PRIVACY",
       title: "Privacy policy",
       description: "Explains which personal data IA Empleado may process through iaempleado.com and how to exercise your rights.",
-      draftLabel: "Controller identity is not yet complete",
-      draftBody: "Name, tax ID and email are confirmed. The controller's publishable residence or address must still be added before this policy is treated as launch-ready.",
+      draftLabel: "Controller identity incomplete",
+      draftBody: "This policy must not be treated as final while any required controller detail is missing.",
       sections: [
         {
           title: "1. Data controller",
           bullets: identityEn,
-          paragraphs: [
-            "The controller's publishable residence or address will be added after explicit confirmation. Until then, this policy remains in preparation for the Phase 8H closure gate.",
-          ],
         },
         {
           title: "2. Data we may process",
@@ -300,8 +285,8 @@ const content: Record<Locale, Record<LegalDocumentKind, LegalDocumentContent>> =
         {
           title: "5. Recipients and providers",
           paragraphs: [
-            "Personal data may be processed by technical providers strictly required to host the website, operate infrastructure or deliver communications when those services are configured. We do not sell the personal data of people who contact IA Empleado.",
-            "If a provider involves an international data transfer, the safeguards required by applicable law will be put in place before that provider is used for the relevant processing.",
+            "Personal data may be processed by technical providers strictly required to host the website, operate infrastructure or deliver communications. When direct email submission is enabled, Hostinger may act as the technical SMTP service provider configured for IA Empleado.",
+            "We do not sell the personal data of people who contact IA Empleado. If a provider involves an international data transfer, the safeguards required by applicable law will be put in place before that provider is used for the relevant processing.",
           ],
         },
         {
