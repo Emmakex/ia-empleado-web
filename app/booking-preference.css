@@ -1,6 +1,11 @@
 .lead-booking-preference {
   display: grid;
   gap: 1rem;
+  width: 100%;
+  min-width: 0;
+  min-inline-size: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 0.35rem 0 0;
   padding: clamp(1rem, 3vw, 1.35rem);
   border: 1px solid #d9ddff;
@@ -13,6 +18,8 @@
 .lead-booking-heading {
   display: grid;
   gap: 0.35rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .lead-booking-heading .eyebrow {
@@ -23,12 +30,14 @@
   margin: 0;
   color: #202633;
   font-size: clamp(1.15rem, 2vw, 1.35rem);
+  overflow-wrap: anywhere;
 }
 
 .lead-booking-heading p:last-child {
   margin: 0;
   color: #626b7a;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .lead-booking-date-row {
@@ -36,14 +45,22 @@
   grid-template-columns: minmax(0, 1fr) minmax(12rem, auto);
   gap: 1rem;
   align-items: end;
+  min-width: 0;
+  max-width: 100%;
 }
 
+.lead-booking-date-row > *,
 .lead-booking-date-row label {
   min-width: 0;
+  max-width: 100%;
 }
 
 .lead-booking-date-row input[type="date"] {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 3.15rem;
+  box-sizing: border-box;
   color-scheme: light;
 }
 
@@ -51,10 +68,13 @@
   display: flex;
   gap: 0.7rem;
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
   min-height: 3.15rem;
   padding: 0.65rem 0.8rem;
   border: 1px solid #dfe3eb;
   border-radius: 0.85rem;
+  box-sizing: border-box;
   background: #ffffff;
   color: #3b4250;
 }
@@ -62,6 +82,7 @@
 .lead-booking-timezone > span {
   display: grid;
   place-items: center;
+  flex: 0 0 auto;
   width: 1.8rem;
   height: 1.8rem;
   border-radius: 999px;
@@ -73,6 +94,12 @@
 .lead-booking-timezone div {
   display: grid;
   gap: 0.05rem;
+  min-width: 0;
+}
+
+.lead-booking-timezone strong,
+.lead-booking-timezone small {
+  overflow-wrap: anywhere;
 }
 
 .lead-booking-timezone strong {
@@ -80,55 +107,69 @@
 }
 
 .lead-booking-timezone small {
-  color: #7a8494;
-  font-size: 0.73rem;
+  color: #4b5563;
+  font-size: 0.78rem;
 }
 
 .lead-booking-time-fieldset {
   display: grid;
   gap: 0.65rem;
+  min-width: 0;
+  min-inline-size: 0;
+  max-width: 100%;
   margin: 0;
   padding: 0;
   border: 0;
 }
 
 .lead-booking-time-fieldset > legend {
+  max-width: 100%;
   margin-bottom: 0.15rem;
   color: #202633;
   font-size: 0.95rem;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .lead-booking-time-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.65rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .lead-booking-time-grid label {
   position: relative;
   display: block;
   min-width: 0;
+  max-width: 100%;
+  min-height: 2.8rem;
   cursor: pointer;
 }
 
 .lead-booking-time-grid input {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  min-height: 1px;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  min-width: 44px;
+  min-height: 44px;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .lead-booking-time-grid label > span {
   display: grid;
   place-items: center;
+  width: 100%;
+  min-width: 0;
   min-height: 2.8rem;
+  box-sizing: border-box;
   padding: 0.55rem 0.65rem;
   border: 1px solid #d5d9e4;
   border-radius: 0.8rem;
@@ -136,6 +177,7 @@
   color: #333b49;
   font-size: 0.92rem;
   font-weight: 750;
+  overflow-wrap: anywhere;
   transition: border-color 140ms ease, background 140ms ease, color 140ms ease, box-shadow 140ms ease;
 }
 
@@ -157,22 +199,29 @@
   box-shadow: inset 0 0 0 1px rgba(91, 95, 245, 0.16);
 }
 
+.lead-booking-time-grid input:disabled {
+  cursor: not-allowed;
+}
+
 .lead-booking-time-grid input:disabled + span {
   cursor: not-allowed;
   background: #f5f6f8;
-  color: #8b93a1;
+  color: #697384;
 }
 
 .lead-booking-pending {
   display: flex;
   gap: 0.6rem;
   align-items: flex-start;
+  min-width: 0;
+  max-width: 100%;
   margin: 0;
   padding-top: 0.85rem;
   border-top: 1px solid #e2e5ef;
   color: #626b7a;
   font-size: 0.88rem;
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .lead-booking-pending > span {
@@ -191,7 +240,7 @@
 
 @media (max-width: 760px) {
   .lead-booking-date-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .lead-booking-time-grid {
