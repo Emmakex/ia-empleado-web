@@ -69,6 +69,22 @@ jobs:
           . .venv-safari/bin/activate
           python scripts/phase8g-native-safari-smoke.py
 
+      - name: Enable macOS Reduce Motion for native Safari
+        run: |
+          defaults write com.apple.Accessibility ReduceMotionEnabled -bool true
+          killall cfprefsd || true
+          sleep 3
+          defaults read com.apple.Accessibility ReduceMotionEnabled | tee artifacts/native-safari/reduce-motion-setting.txt
+
+      - name: Run native Safari reduced-motion acceptance
+        env:
+          BASE_URL: http://127.0.0.1:3100
+          SAFARI_ARTIFACT_DIR: artifacts/native-safari
+          SAFARI_REDUCED_MOTION_ONLY: "1"
+        run: |
+          . .venv-safari/bin/activate
+          python scripts/phase8g-native-safari-smoke.py
+
       - name: Collect server log and stop exact candidate
         if: always()
         run: |
@@ -79,6 +95,8 @@ jobs:
           if [ -f /tmp/ia-empleado-safari-next.pid ]; then
             kill "$(cat /tmp/ia-empleado-safari-next.pid)" || true
           fi
+          defaults delete com.apple.Accessibility ReduceMotionEnabled || true
+          killall cfprefsd || true
 
       - name: Upload native Safari evidence
         if: always()
