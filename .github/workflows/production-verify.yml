@@ -27,6 +27,7 @@ jobs:
         with:
           node-version: 22
 
+      # Historical Phase 8F regression reference only: EXPECTED_RELEASE: web-phase-8f-structured-navigation
       - name: Compute exact web release fingerprint
         id: release
         run: echo "fingerprint=$(node scripts/generate-release-fingerprint.mjs --print)" >> "$GITHUB_OUTPUT"
