@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getDictionary, localeHref, type Locale } from "../lib/i18n";
 import { getBrandCharacterForProfileKey, getBrandCharacters } from "../lib/brand-characters";
 import { getLocalizedTeams, getTeamIndexContent, teamDetailPath, teamIndexPath } from "../lib/team-content-engine";
+import { teamBuilderPath } from "../lib/team-builder";
 import { BrandCharacterImage } from "./brand-character-image";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -15,6 +16,7 @@ export function TeamIndexPage({ locale }: TeamIndexPageProps) {
   const characters = getBrandCharacters(locale);
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const homeHref = localeHref(locale);
+  const builderHref = teamBuilderPath(locale);
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -38,7 +40,7 @@ export function TeamIndexPage({ locale }: TeamIndexPageProps) {
               <p className="eyebrow">{content.eyebrow}</p>
               <h1 id="team-index-title">{content.title}</h1>
               <p className="hero-description">{content.description}</p>
-              <div className="hero-actions"><a className="button" href="#equipos-disponibles">{locale === "es" ? "Explorar equipos" : "Explore teams"}</a><Link className="button button-ghost" href={`${homeHref}#disena-tu-equipo`}>{content.ctaPrimary}</Link></div>
+              <div className="hero-actions"><a className="button" href="#equipos-disponibles">{locale === "es" ? "Explorar equipos" : "Explore teams"}</a><Link className="button button-ghost" href={builderHref}>{content.ctaPrimary}</Link></div>
             </div>
             <aside className="brand-team-hero-art" aria-labelledby="team-definition-title">
               <div className="brand-team-hero-people" aria-hidden="true">{characters.map((character, index) => <div className="brand-team-hero-person" data-accent={character.accent} key={character.id}><BrandCharacterImage character={character} sizes="(max-width: 760px) 138px, 190px" eager fetchPriority={index < 2 ? "high" : "auto"} /><span>{character.name}</span></div>)}</div>
@@ -63,7 +65,7 @@ export function TeamIndexPage({ locale }: TeamIndexPageProps) {
 
         <section className="content-section" aria-labelledby="team-principles-title"><div className="container"><div className="section-heading compact-heading"><p className="eyebrow">{locale === "es" ? "COORDINACIÓN, NO SOLO AUTOMATIZACIÓN" : "COORDINATION, NOT JUST AUTOMATION"}</p><h2 id="team-principles-title">{content.principlesTitle}</h2></div><div className="team-principles-grid">{content.principles.map((principle, index) => <article className="team-principle-card" key={principle.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{principle.title}</h3><p>{principle.text}</p></article>)}</div></div></section>
 
-        <section className="content-section final-cta" id="disena-tu-equipo" aria-labelledby="team-index-cta-title"><div className="container cta-panel"><div><p className="eyebrow">{content.ctaEyebrow}</p><h2 id="team-index-cta-title">{content.ctaTitle}</h2><p>{content.ctaText}</p></div><div className="cta-actions"><Link className="button" href={`${homeHref}#disena-tu-equipo`}>{content.ctaPrimary}</Link><Link className="button button-ghost" href={locale === "es" ? "/empleados-ia" : "/en/ai-employees"}>{locale === "es" ? "Explorar Empleados IA" : "Explore AI Employees"}</Link></div></div></section>
+        <section className="content-section final-cta" id="disena-tu-equipo" aria-labelledby="team-index-cta-title"><div className="container cta-panel"><div><p className="eyebrow">{content.ctaEyebrow}</p><h2 id="team-index-cta-title">{content.ctaTitle}</h2><p>{content.ctaText}</p></div><div className="cta-actions"><Link className="button" href={builderHref}>{content.ctaPrimary}</Link><Link className="button button-ghost" href={locale === "es" ? "/empleados-ia" : "/en/ai-employees"}>{locale === "es" ? "Explorar Empleados IA" : "Explore AI Employees"}</Link></div></div></section>
       </main>
       <SiteFooter locale={locale} dictionary={dictionary} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
