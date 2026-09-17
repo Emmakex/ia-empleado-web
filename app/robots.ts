@@ -6,7 +6,10 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://iaempleado.com/sitemap.xml",
+    sitemap: [
+      "https://iaempleado.com/sitemap.xml",
+      "https://iaempleado.com/growth-sitemap.xml",
+    ],
     host: "https://iaempleado.com",
   };
 }
