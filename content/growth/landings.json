@@ -448,5 +448,161 @@
     "relatedArticleKey": "automate-administrative-tasks-human-approval",
     "publishedAt": "2026-09-17",
     "updatedAt": "2026-09-17"
+  },
+  {
+    "key": "ai-invoicing-accounting-automation",
+    "slugs": {
+      "es": "automatizacion-facturacion-contabilidad-ia",
+      "en": "ai-invoicing-accounting-automation"
+    },
+    "seoTitle": {
+      "es": "Automatización de facturación y contabilidad con IA y revisión humana | IA Empleado",
+      "en": "AI invoicing and accounting automation with human review | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Cómo usar IA para preparar facturas, clasificar documentos, conciliar datos y detectar excepciones con permisos mínimos, trazabilidad y revisión humana.",
+      "en": "How to use AI to prepare invoices, classify documents, reconcile data and flag exceptions with least-privilege access, traceability and human review."
+    },
+    "eyebrow": {
+      "es": "FACTURACIÓN Y CONTABILIDAD CON IA",
+      "en": "AI INVOICING AND ACCOUNTING"
+    },
+    "title": {
+      "es": "Automatiza facturación y tareas contables repetitivas sin delegar el control financiero.",
+      "en": "Automate repetitive invoicing and accounting work without delegating financial control."
+    },
+    "lead": {
+      "es": "La IA puede reducir trabajo manual en la recepción de documentos, preparación de facturas, clasificación, comprobaciones y conciliaciones. El diseño seguro separa la preparación automática de las decisiones contables, fiscales o de pago que necesitan reglas explícitas y, cuando corresponda, revisión humana.",
+      "en": "AI can reduce manual work in document intake, invoice preparation, classification, checks and reconciliations. A safe design separates automated preparation from accounting, tax or payment decisions that need explicit rules and, where appropriate, human review."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Empieza por captura, clasificación y preparación de datos",
+          "en": "Start with data capture, classification and preparation"
+        },
+        "paragraphs": {
+          "es": [
+            "Los primeros casos de uso pueden centrarse en leer facturas recibidas, extraer campos, asociar documentos a proveedores o clientes, comprobar datos obligatorios, preparar borradores y señalar información incompleta antes de que una persona intervenga.",
+            "Estas tareas son repetitivas y fáciles de auditar. Automatizarlas no exige que la IA decida por sí sola cómo contabilizar una operación excepcional ni que autorice un pago."
+          ],
+          "en": [
+            "Early use cases can focus on reading incoming invoices, extracting fields, matching documents to suppliers or customers, checking required data, preparing drafts and flagging missing information before a person intervenes.",
+            "These tasks are repetitive and auditable. Automating them does not require AI to decide how an exceptional transaction should be accounted for or to authorise a payment."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Usa conciliación asistida y gestión de excepciones",
+          "en": "Use assisted reconciliation and exception handling"
+        },
+        "paragraphs": {
+          "es": [
+            "Un Empleado IA puede comparar importes, referencias, fechas o estados entre fuentes autorizadas y proponer coincidencias. Cuando los datos no cuadran, el resultado útil no es forzar una respuesta, sino crear una excepción explicada para revisión.",
+            "Esto permite concentrar el tiempo del equipo en discrepancias reales: duplicados, documentos incompletos, referencias ausentes, diferencias de importe o movimientos que no encajan con las reglas configuradas."
+          ],
+          "en": [
+            "An AI Employee can compare amounts, references, dates or statuses across authorised sources and propose matches. When data does not align, the useful outcome is not to force a decision but to create an explained exception for review.",
+            "This lets the team focus on genuine discrepancies: duplicates, incomplete documents, missing references, amount differences or transactions that do not fit configured rules."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Separa preparación, contabilización y autorización de pagos",
+          "en": "Separate preparation, posting and payment authorisation"
+        },
+        "paragraphs": {
+          "es": [
+            "El hecho de que un agente pueda preparar una factura o proponer una categoría no significa que deba tener permiso para contabilizar cualquier asiento o iniciar pagos. Cada acción necesita un nivel de autoridad independiente y permisos mínimos en el ERP, software contable o plataforma bancaria.",
+            "Las operaciones sensibles pueden quedar en modo propuesta: el agente reúne documentos, explica las comprobaciones realizadas y deja la confirmación final a la persona responsable."
+          ],
+          "en": [
+            "Being able to prepare an invoice or suggest a category does not mean an agent should be allowed to post any journal entry or initiate payments. Each action needs its own authority level and least-privilege permissions in the ERP, accounting software or banking platform.",
+            "Sensitive operations can remain in proposal mode: the agent gathers documents, explains the checks performed and leaves final confirmation to the responsible person."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Mantén trazabilidad y revisión profesional cuando sea necesaria",
+          "en": "Keep traceability and professional review where required"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada extracción, cambio propuesto, coincidencia y excepción debería quedar registrado para poder reconstruir qué datos utilizó la automatización y qué persona aprobó una acción sensible.",
+            "La IA puede asistir procesos contables, pero no sustituye las obligaciones de control interno, la validación profesional ni los requisitos fiscales o regulatorios aplicables a cada empresa y jurisdicción."
+          ],
+          "en": [
+            "Each extraction, proposed change, match and exception should be recorded so the organisation can reconstruct which data the automation used and who approved a sensitive action.",
+            "AI can assist accounting workflows, but it does not replace internal controls, professional validation or tax and regulatory requirements applicable to each business and jurisdiction."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Ejemplo de flujo de facturación y conciliación con IA",
+        "en": "Example AI invoicing and reconciliation workflow"
+      },
+      "steps": {
+        "es": [
+          "Llega una factura o documento por una fuente autorizada.",
+          "El Empleado IA extrae los campos necesarios y comprueba formato e información mínima.",
+          "Consulta proveedor, cliente, pedido u otros registros permitidos para validar el contexto.",
+          "Prepara el borrador o propone una coincidencia siguiendo reglas predefinidas.",
+          "Si detecta discrepancias o una acción sensible, crea una excepción para revisión humana.",
+          "Tras la aprobación correspondiente, registra el resultado y conserva la trazabilidad."
+        ],
+        "en": [
+          "An invoice or document arrives through an authorised source.",
+          "The AI Employee extracts required fields and checks format and minimum information.",
+          "It consults permitted supplier, customer, order or other records to validate context.",
+          "It prepares a draft or proposes a match according to predefined rules.",
+          "If it detects a discrepancy or sensitive action, it creates an exception for human review.",
+          "After the appropriate approval, it records the outcome and preserves traceability."
+        ]
+      }
+    },
+    "metrics": {
+      "es": ["Tiempo de procesamiento por documento", "Porcentaje de campos corregidos", "Coincidencias propuestas aceptadas", "Excepciones por tipo", "Duplicados o discrepancias detectadas", "Tiempo hasta revisión humana"],
+      "en": ["Processing time per document", "Fields requiring correction", "Proposed matches accepted", "Exceptions by type", "Duplicates or discrepancies detected", "Time to human review"]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Puede la IA contabilizar facturas automáticamente?",
+          "en": "Can AI automatically post invoices to the accounts?"
+        },
+        "answer": {
+          "es": "Puede automatizar acciones acotadas cuando las reglas, integraciones y controles de la empresa lo permiten, pero no conviene asumir autonomía general. Los casos ambiguos, excepcionales o sensibles pueden mantenerse en modo propuesta y revisión humana.",
+          "en": "It can automate bounded actions when business rules, integrations and controls allow it, but broad autonomy should not be assumed. Ambiguous, exceptional or sensitive cases can remain in proposal mode with human review."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Un Empleado IA puede autorizar pagos?",
+          "en": "Can an AI Employee authorise payments?"
+        },
+        "answer": {
+          "es": "La preparación y la autorización deben tratarse como capacidades separadas. Para operaciones financieras sensibles es recomendable mantener controles de autorización definidos por la empresa y no conceder permisos bancarios amplios al agente.",
+          "en": "Preparation and authorisation should be treated as separate capabilities. For sensitive financial operations, keep the company's defined approval controls and avoid granting broad banking permissions to the agent."
+        }
+      },
+      {
+        "question": {
+          "es": "¿La IA sustituye al asesor contable o fiscal?",
+          "en": "Does AI replace an accountant or tax adviser?"
+        },
+        "answer": {
+          "es": "No. Puede ayudar a preparar información, comprobar datos y organizar excepciones, pero la interpretación contable o fiscal y el cumplimiento de obligaciones aplicables deben mantenerse bajo la responsabilidad y revisión profesional que corresponda.",
+          "en": "No. It can help prepare information, check data and organise exceptions, but accounting or tax interpretation and compliance obligations should remain under the appropriate professional responsibility and review."
+        }
+      }
+    ],
+    "relatedArticleKey": "automate-invoicing-accounting-human-review",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
   }
 ]
