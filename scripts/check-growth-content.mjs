@@ -1,7 +1,16 @@
 import { readFile } from "node:fs/promises";
 
-const landings = JSON.parse(await readFile(new URL("../content/growth/landings.json", import.meta.url), "utf8"));
-const articles = JSON.parse(await readFile(new URL("../content/growth/articles.json", import.meta.url), "utf8"));
+const readJson = async (relativePath) =>
+  JSON.parse(await readFile(new URL(relativePath, import.meta.url), "utf8"));
+
+const landings = [
+  ...(await readJson("../content/growth/landings.json")),
+  ...(await readJson("../content/growth/incremental-landings.json")),
+];
+const articles = [
+  ...(await readJson("../content/growth/articles.json")),
+  ...(await readJson("../content/growth/incremental-articles.json")),
+];
 
 const errors = [];
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
