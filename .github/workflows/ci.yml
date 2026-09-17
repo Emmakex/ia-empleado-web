@@ -3,8 +3,12 @@ name: Web CI
 on:
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "content/growth/**"
   push:
     branches: [main]
+    paths-ignore:
+      - "content/growth/**"
 
 concurrency:
   group: web-ci-${{ github.workflow }}-${{ github.ref }}
@@ -122,6 +126,9 @@ jobs:
 
       - name: Phase 8H commercial parity contract
         run: node scripts/check-phase8h-commercial-parity.mjs
+
+      - name: Growth content SEO contract
+        run: node scripts/check-growth-content.mjs
 
       - name: Typecheck
         run: npm run typecheck

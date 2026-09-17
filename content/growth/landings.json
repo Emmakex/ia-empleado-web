@@ -1,0 +1,140 @@
+[
+  {
+    "key": "ai-employees-smb",
+    "slugs": {
+      "es": "empleados-ia-para-pymes",
+      "en": "ai-employees-for-small-business"
+    },
+    "seoTitle": {
+      "es": "Empleados IA para pymes: automatiza procesos con control humano | IA Empleado",
+      "en": "AI Employees for small businesses: automate processes with human control | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Descubre cómo una pyme puede incorporar Empleados IA para atención, administración, ventas y operaciones sin perder control humano ni dar permisos ilimitados.",
+      "en": "See how a small business can use AI Employees for support, administration, sales and operations without losing human control or granting unlimited permissions."
+    },
+    "eyebrow": {
+      "es": "EMPLEADOS IA PARA PYMES",
+      "en": "AI EMPLOYEES FOR SMALL BUSINESSES"
+    },
+    "title": {
+      "es": "Empleados IA para pymes: automatiza trabajo repetitivo sin perder el control.",
+      "en": "AI Employees for small businesses: automate repetitive work without losing control."
+    },
+    "lead": {
+      "es": "Un Empleado IA puede encargarse de tareas concretas, consultar sistemas y preparar acciones dentro de límites definidos. La clave para una pyme no es automatizarlo todo, sino empezar por procesos repetitivos, medibles y con reglas claras de aprobación humana.",
+      "en": "An AI Employee can handle specific tasks, consult business systems and prepare actions within defined boundaries. For a small business, the goal is not to automate everything, but to start with repetitive, measurable processes and clear human approval rules."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Qué puede aportar un Empleado IA a una pyme",
+          "en": "What an AI Employee can add to a small business"
+        },
+        "paragraphs": {
+          "es": [
+            "Las pymes suelen concentrar muchas tareas operativas en pocas personas. Eso convierte la clasificación de correos, el seguimiento comercial, la preparación de respuestas, la actualización de información y la gestión de incidencias en buenos candidatos para automatización asistida.",
+            "El objetivo no es sustituir decisiones sensibles. Un diseño responsable separa las tareas que la IA puede ejecutar, las que debe proponer y las que siempre requieren revisión humana."
+          ],
+          "en": [
+            "Small businesses often concentrate many operational tasks in a small team. Email classification, sales follow-up, response preparation, data updates and issue handling are therefore strong candidates for assisted automation.",
+            "The goal is not to replace sensitive decisions. A responsible design separates tasks the AI can execute, tasks it should only propose, and tasks that always require human review."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Procesos por los que conviene empezar",
+          "en": "Processes worth starting with"
+        },
+        "paragraphs": {
+          "es": [
+            "Los mejores primeros casos suelen tener volumen suficiente, pasos repetibles y una salida fácil de revisar: atención de primer nivel, clasificación y preparación de emails, seguimiento de oportunidades, recopilación de documentación, preparación de datos para facturación o coordinación de reservas.",
+            "Antes de automatizar, conviene medir el tiempo actual, definir qué información puede consultar el agente y establecer cuándo debe escalar a una persona."
+          ],
+          "en": [
+            "The best first use cases usually have enough volume, repeatable steps and outputs that are easy to review: first-line support, email classification and drafting, opportunity follow-up, document collection, invoice-data preparation or booking coordination.",
+            "Before automating, measure the current effort, define which information the agent may access and establish when it must escalate to a person."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Cómo implantarlo sin dar acceso ilimitado",
+          "en": "How to implement it without unlimited access"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada integración debe partir del principio de mínimo privilegio. El Empleado IA necesita solo los permisos indispensables para el proceso que realiza, con trazabilidad de acciones y límites claros sobre operaciones irreversibles.",
+            "Para una primera implantación es preferible conectar pocos sistemas, probar con un proceso acotado y ampliar únicamente después de validar calidad, tiempos y excepciones reales."
+          ],
+          "en": [
+            "Each integration should follow least privilege. The AI Employee only needs the permissions required for its process, with action traceability and clear boundaries around irreversible operations.",
+            "For a first implementation, it is better to connect a small number of systems, test a bounded process and expand only after validating quality, timing and real-world exceptions."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Ejemplo de flujo para una pyme",
+        "en": "Example workflow for a small business"
+      },
+      "steps": {
+        "es": [
+          "Entra una consulta por email o formulario.",
+          "El Empleado IA clasifica el motivo y consulta la información autorizada.",
+          "Prepara una respuesta o una acción según las reglas del proceso.",
+          "Si supera el nivel de autoridad definido, solicita aprobación humana.",
+          "Registra el resultado para que el equipo pueda revisar qué ocurrió."
+        ],
+        "en": [
+          "A request arrives by email or form.",
+          "The AI Employee classifies the request and checks the authorised information.",
+          "It prepares a response or action according to process rules.",
+          "If the request exceeds its authority level, it asks for human approval.",
+          "It records the outcome so the team can review what happened."
+        ]
+      }
+    },
+    "metrics": {
+      "es": ["Tiempo medio por tarea", "Porcentaje de casos resueltos sin retrabajo", "Escalados a una persona", "Errores o excepciones detectadas", "Tiempo liberado para el equipo"],
+      "en": ["Average time per task", "Cases completed without rework", "Escalations to a person", "Errors or exceptions detected", "Team time released"]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Una pyme necesita cambiar todo su software para usar Empleados IA?",
+          "en": "Does a small business need to replace all its software to use AI Employees?"
+        },
+        "answer": {
+          "es": "No necesariamente. La implantación puede empezar conectando los sistemas existentes mediante APIs, correo, CRM, ERP u otros mecanismos disponibles. La viabilidad depende de cada sistema y de los permisos que permita.",
+          "en": "Not necessarily. Implementation can begin by connecting existing systems through APIs, email, CRM, ERP or other available mechanisms. Feasibility depends on each system and the permissions it exposes."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué proceso debería automatizar primero una pyme?",
+          "en": "Which process should a small business automate first?"
+        },
+        "answer": {
+          "es": "Normalmente conviene empezar por una tarea frecuente, repetitiva, con reglas claras y cuyo resultado pueda revisarse fácilmente antes de ampliar el nivel de autonomía.",
+          "en": "A good first process is usually frequent, repetitive, governed by clear rules and easy to review before increasing autonomy."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Puede un Empleado IA tomar decisiones por sí solo?",
+          "en": "Can an AI Employee make decisions on its own?"
+        },
+        "answer": {
+          "es": "Puede automatizar decisiones acotadas si la empresa lo define así, pero las decisiones sensibles, excepcionales o de alto impacto deben mantenerse bajo reglas de escalado y aprobación humana.",
+          "en": "It can automate bounded decisions when the business defines that authority, while sensitive, exceptional or high-impact decisions should remain under escalation and human approval rules."
+        }
+      }
+    ],
+    "relatedArticleKey": "what-is-an-ai-employee",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
+  }
+]

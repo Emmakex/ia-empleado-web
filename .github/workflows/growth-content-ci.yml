@@ -1,0 +1,41 @@
+name: Growth Content CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "content/growth/**"
+  push:
+    branches: [main]
+    paths:
+      - "content/growth/**"
+
+concurrency:
+  group: growth-content-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-growth-content:
+    name: Growth content, typecheck and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Growth content SEO contract
+        run: node scripts/check-growth-content.mjs
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
