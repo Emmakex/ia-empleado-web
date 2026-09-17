@@ -3,8 +3,12 @@ name: Phase 8G Native Safari macOS
 on:
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "content/growth/**"
   push:
     branches: [main]
+    paths-ignore:
+      - "content/growth/**"
   workflow_dispatch:
 
 concurrency:
