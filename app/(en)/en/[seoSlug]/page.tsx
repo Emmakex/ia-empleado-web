@@ -5,6 +5,8 @@ import { getGrowthLandingBySlug, growthLandingPath, growthLandingRecords } from 
 
 type PageProps = { params: Promise<{ seoSlug: string }> };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return growthLandingRecords.map((record) => ({ seoSlug: record.slugs.en }));
 }
