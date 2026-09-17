@@ -222,5 +222,117 @@
     "relatedLandingKey": "ai-customer-support-automation",
     "publishedAt": "2026-09-17",
     "updatedAt": "2026-09-17"
+  },
+  {
+    "key": "automate-administrative-tasks-human-approval",
+    "slugs": {
+      "es": "como-automatizar-tareas-administrativas-con-ia-y-aprobacion-humana",
+      "en": "how-to-automate-administrative-tasks-with-ai-and-human-approval"
+    },
+    "seoTitle": {
+      "es": "Cómo automatizar tareas administrativas con IA y aprobación humana | IA Empleado",
+      "en": "How to automate administrative tasks with AI and human approval | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía para automatizar tareas administrativas con IA: documentos, correo, validaciones, actualizaciones y aprobaciones humanas sin dar acceso ilimitado.",
+      "en": "A guide to automating administrative tasks with AI: documents, email, validation, updates and human approvals without granting unlimited access."
+    },
+    "title": {
+      "es": "Cómo automatizar tareas administrativas con IA y mantener la aprobación humana",
+      "en": "How to automate administrative tasks with AI while keeping human approval"
+    },
+    "excerpt": {
+      "es": "La automatización administrativa funciona mejor cuando la IA prepara, valida y coordina el trabajo rutinario, mientras las excepciones y cambios sensibles conservan puntos claros de aprobación humana.",
+      "en": "Administrative automation works best when AI prepares, validates and coordinates routine work while exceptions and sensitive changes retain clear human approval points."
+    },
+    "intro": {
+      "es": "Muchas tareas administrativas no son difíciles, pero sí fragmentadas: revisar una bandeja, localizar datos, comprobar documentos, copiar información a otro sistema y perseguir una aprobación. La IA puede reducir ese trabajo repetitivo sin convertir el proceso en una caja negra si cada paso tiene permisos, evidencias y límites definidos.",
+      "en": "Many administrative tasks are not difficult, but fragmented: checking an inbox, finding data, validating documents, copying information into another system and chasing an approval. AI can reduce this repetitive work without turning the process into a black box when every step has defined permissions, evidence and boundaries."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Divide el proceso en tareas que la IA puede preparar, ejecutar o escalar",
+          "en": "Split the process into tasks AI can prepare, execute or escalate"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de automatizar conviene separar tres niveles. La IA puede preparar tareas como extraer datos o redactar documentos; puede ejecutar acciones de bajo riesgo si están expresamente autorizadas; y debe escalar decisiones sensibles o excepcionales.",
+            "Esta separación evita un error común: dar autonomía completa porque una parte del proceso parece sencilla. El nivel de autoridad debe definirse por acción, no por el nombre general del proceso."
+          ],
+          "en": [
+            "Before automating, separate three levels. AI can prepare tasks such as extracting data or drafting documents; it can execute low-risk actions when explicitly authorised; and it should escalate sensitive or exceptional decisions.",
+            "This avoids a common mistake: granting full autonomy because one part of the process looks simple. Authority should be defined per action, not by the general name of the process."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Usa permisos mínimos y fuentes de datos concretas",
+          "en": "Use least-privilege permissions and specific data sources"
+        },
+        "paragraphs": {
+          "es": [
+            "Un agente que clasifica facturas entrantes puede necesitar leer una bandeja específica y consultar determinados proveedores, pero no acceso completo a todas las cuentas o funciones del ERP. Del mismo modo, preparar un alta no implica poder aprobarla.",
+            "Reducir el alcance hace que las pruebas sean más fiables y permite detectar con claridad qué sistema, regla o dato provocó una excepción."
+          ],
+          "en": [
+            "An agent classifying incoming invoices may need to read a specific mailbox and look up certain suppliers, but not full access to every ERP account or function. Likewise, preparing an onboarding record does not imply authority to approve it.",
+            "Narrowing scope makes testing more reliable and makes it clearer which system, rule or data point caused an exception."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Diseña aprobaciones que ahorren trabajo en lugar de duplicarlo",
+          "en": "Design approvals that save work instead of duplicating it"
+        },
+        "paragraphs": {
+          "es": [
+            "Si una persona debe revisar todo el expediente desde cero, la automatización solo ha desplazado el trabajo. Una aprobación útil debe resumir la solicitud, mostrar los datos relevantes, indicar qué validaciones pasaron y señalar cualquier excepción.",
+            "Así la persona decide sobre el punto sensible y el agente puede continuar el flujo después de recibir la autorización, manteniendo un registro de quién aprobó y qué se ejecutó."
+          ],
+          "en": [
+            "If a person must review the whole file from scratch, automation has merely moved the work. A useful approval should summarise the request, show relevant data, indicate which checks passed and highlight exceptions.",
+            "The person can then decide the sensitive point and the agent can continue after authorisation, keeping a record of who approved and what was executed."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Revisa excepciones para mejorar el proceso",
+          "en": "Review exceptions to improve the process"
+        },
+        "paragraphs": {
+          "es": [
+            "Las excepciones no son solo fallos: revelan dónde el proceso real se aparta de las reglas previstas. Documentación incompleta, formatos inesperados, datos contradictorios o solicitudes fuera de política deberían quedar registradas y clasificadas.",
+            "Con ese historial se pueden ajustar reglas, mejorar integraciones o decidir que determinados casos sigan siendo humanos. La mejora viene de ampliar la automatización con evidencia, no de reducir controles por presión de velocidad."
+          ],
+          "en": [
+            "Exceptions are not only failures: they reveal where real work differs from expected rules. Missing documents, unexpected formats, conflicting data or out-of-policy requests should be recorded and classified.",
+            "That history can be used to adjust rules, improve integrations or decide that certain cases should stay human. Improvement comes from expanding automation with evidence, not from removing controls for speed."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Separa preparación, ejecución y aprobación antes de automatizar.",
+        "Concede solo los permisos necesarios para cada acción.",
+        "Mantén aprobación humana en cambios sensibles o difíciles de revertir.",
+        "Entrega contexto completo para que aprobar no signifique repetir el trabajo.",
+        "Registra excepciones y úsalas para decidir dónde ampliar la autonomía."
+      ],
+      "en": [
+        "Separate preparation, execution and approval before automating.",
+        "Grant only the permissions required for each action.",
+        "Keep human approval for sensitive or hard-to-reverse changes.",
+        "Provide complete context so approval does not mean repeating the work.",
+        "Record exceptions and use them to decide where autonomy can safely expand."
+      ]
+    },
+    "relatedLandingKey": "ai-administrative-automation",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
   }
 ]
