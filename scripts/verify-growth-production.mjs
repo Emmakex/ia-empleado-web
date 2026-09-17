@@ -8,13 +8,28 @@ const baseUrl = (process.env.PRODUCTION_BASE_URL || "https://iaempleado.com").re
 const readJson = (relativePath) =>
   JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 
+const dailyDir = path.join(root, "content/growth/daily");
+const readDailyFiles = (suffix) =>
+  fs
+    .readdirSync(dailyDir)
+    .filter((name) => name.endsWith(suffix))
+    .sort()
+    .map((name) => ({ name, records: readJson(`content/growth/daily/${name}`) }));
+
+const dailyLandingFiles = readDailyFiles(".landings.json");
+const dailyArticleFiles = readDailyFiles(".articles.json");
+const dailyLandings = dailyLandingFiles.flatMap((file) => file.records);
+const dailyArticles = dailyArticleFiles.flatMap((file) => file.records);
+
 const landings = [
   ...readJson("content/growth/landings.json"),
   ...readJson("content/growth/incremental-landings.json"),
+  ...dailyLandings,
 ];
 const articles = [
   ...readJson("content/growth/articles.json"),
   ...readJson("content/growth/incremental-articles.json"),
+  ...dailyArticles,
 ];
 
 const recordDate = (record) => record.updatedAt || record.publishedAt || "0000-00-00";
@@ -26,8 +41,12 @@ if (!latestDate) {
   throw new Error("Growth content is empty; nothing to verify in production");
 }
 
-const latestLandings = landings.filter((record) => recordDate(record) === latestDate);
-const latestArticles = articles.filter((record) => recordDate(record) === latestDate);
+const latestLandings = dailyLandingFiles.length
+  ? dailyLandingFiles.at(-1).records
+  : landings.filter((record) => recordDate(record) === latestDate);
+const latestArticles = dailyArticleFiles.length
+  ? dailyArticleFiles.at(-1).records
+  : articles.filter((record) => recordDate(record) === latestDate);
 
 const pages = [
   { path: "/blog", canonical: `${baseUrl}/blog` },
@@ -96,6 +115,11 @@ async function getText(url) {
 }
 
 console.log(`Verifying Growth production profile for content date ${latestDate}`);
+if (dailyLandingFiles.length || dailyArticleFiles.length) {
+  console.log(
+    `Latest daily files: ${dailyLandingFiles.at(-1)?.name ?? "none"}, ${dailyArticleFiles.at(-1)?.name ?? "none"}`,
+  );
+}
 console.log(`Checking ${pages.length} indexable pages plus sitemap and robots.txt`);
 
 for (const page of pages) {
@@ -133,5 +157,5 @@ if (!robots.includes(sitemapUrl)) {
 console.log(`PASS robots ${robotsUrl}`);
 
 console.log(
-  `Growth production verification passed for ${latestLandings.length} landing record(s) and ${latestArticles.length} article record(s) dated ${latestDate}`,
+  `Growth production verification passed for ${latestLandings.length} landing record(s) and ${latestArticles.length} article record(s).`,
 );
