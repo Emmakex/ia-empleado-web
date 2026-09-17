@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+// Phase 8F primary sitemap invariant: sitemap: "https://iaempleado.com/sitemap.xml"
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
