@@ -10,6 +10,7 @@ import { comparisonIndexPath } from "../lib/comparison-content";
 import { sectorIndexPath, useCaseIndexPath } from "../lib/sector-use-cases";
 import { departmentIndexPath, integrationIndexPath } from "../lib/organization-map";
 import { legalNoticePath, privacyPolicyPath } from "../lib/legal-content";
+import { blogIndexPath } from "../lib/growth-content";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -58,6 +59,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             {dictionary.footer.links.slice(2).map((label, index) => (
               <li key={label}><Link href={links[index + 2]}>{label}</Link></li>
             ))}
+            <li><Link href={blogIndexPath(locale)}>Blog</Link></li>
             <li><Link href={integrationIndexPath(locale)}>{locale === "es" ? "Integraciones" : "Integrations"}</Link></li>
             <li><Link href={processAnalyzerPath(locale)}>{locale === "es" ? "Mejora tu proceso" : "Improve your process"}</Link></li>
             <li><Link href={roiEstimatorPath(locale)}>{locale === "es" ? "Calculadora ROI" : "ROI calculator"}</Link></li>
