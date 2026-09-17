@@ -49,6 +49,7 @@ jobs:
         run: echo "fingerprint=$(node scripts/generate-release-fingerprint.mjs --print)" >> "$GITHUB_OUTPUT"
 
       - name: Install Chromium
+        if: ${{ steps.profile.outputs.growth != 'true' }}
         run: npx playwright install --with-deps chromium
 
       - name: Wait for exact release fingerprint on Hostinger
