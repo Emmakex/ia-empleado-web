@@ -22,6 +22,19 @@ jobs:
         with:
           ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
 
+      - name: Select verification profile
+        id: profile
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_run" && "${{ github.event.workflow_run.name }}" == "Growth Content CI" ]]; then
+            echo "growth=true" >> "$GITHUB_OUTPUT"
+            echo "profile=growth" >> "$GITHUB_OUTPUT"
+            echo "Using lightweight Growth production profile"
+          else
+            echo "growth=false" >> "$GITHUB_OUTPUT"
+            echo "profile=full" >> "$GITHUB_OUTPUT"
+            echo "Using full production regression profile"
+          fi
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
@@ -46,7 +59,14 @@ jobs:
           RELEASE_CHECK_DELAY_MS: 10000
         run: node scripts/wait-for-production-release.mjs
 
+      - name: Verify Growth pages, canonical indexability, sitemap and robots
+        if: ${{ steps.profile.outputs.growth == 'true' }}
+        env:
+          PRODUCTION_BASE_URL: https://iaempleado.com
+        run: node scripts/verify-growth-production.mjs
+
       - name: Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity, performance, SEO and Phase 8H legal surfaces
+        if: ${{ steps.profile.outputs.growth != 'true' }}
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
         run: >-
@@ -74,11 +94,13 @@ jobs:
           tests/ux-visual.spec.ts
 
       - name: Build exact release for Lighthouse lab
+        if: ${{ steps.profile.outputs.growth != 'true' }}
         env:
           NEXT_TELEMETRY_DISABLED: 1
         run: npm run build
 
       - name: Start exact release for Lighthouse lab
+        if: ${{ steps.profile.outputs.growth != 'true' }}
         env:
           EXPECTED_RELEASE: ${{ steps.release.outputs.fingerprint }}
           NEXT_TELEMETRY_DISABLED: 1
@@ -100,19 +122,20 @@ jobs:
           exit 1
 
       - name: Run Phase 8E Lighthouse launch gate
+        if: ${{ steps.profile.outputs.growth != 'true' }}
         env:
           LIGHTHOUSE_BASE_URL: http://127.0.0.1:3000
         run: npm run qa:lighthouse:production
 
       - name: Stop Lighthouse lab server
-        if: always()
+        if: ${{ always() && steps.profile.outputs.growth != 'true' }}
         run: |
           if [ -f /tmp/phase8e-lighthouse-next.pid ]; then
             kill "$(cat /tmp/phase8e-lighthouse-next.pid)" 2>/dev/null || true
           fi
 
       - name: Upload Lighthouse reports
-        if: always()
+        if: ${{ always() && steps.profile.outputs.growth != 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: phase8e-lighthouse-reports
@@ -121,7 +144,7 @@ jobs:
           retention-days: 14
 
       - name: Upload production QA diagnostics
-        if: failure()
+        if: ${{ failure() && steps.profile.outputs.growth != 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: production-playwright-report
