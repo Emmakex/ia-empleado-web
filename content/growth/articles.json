@@ -1,0 +1,114 @@
+[
+  {
+    "key": "what-is-an-ai-employee",
+    "slugs": {
+      "es": "que-es-un-empleado-ia-y-como-se-diferencia-de-un-chatbot",
+      "en": "what-is-an-ai-employee-and-how-is-it-different-from-a-chatbot"
+    },
+    "seoTitle": {
+      "es": "Qué es un Empleado IA y cómo se diferencia de un chatbot | IA Empleado",
+      "en": "What is an AI Employee and how is it different from a chatbot? | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía práctica para entender qué es un Empleado IA, qué tareas puede realizar, cómo se conecta a sistemas y en qué se diferencia de un chatbot tradicional.",
+      "en": "A practical guide to AI Employees: what they do, how they connect to business systems and how they differ from traditional chatbots."
+    },
+    "title": {
+      "es": "Qué es un Empleado IA y cómo se diferencia de un chatbot",
+      "en": "What is an AI Employee and how is it different from a chatbot?"
+    },
+    "excerpt": {
+      "es": "Un chatbot conversa. Un Empleado IA puede participar en un proceso: consultar información, preparar acciones, coordinar herramientas y escalar cuando necesita intervención humana.",
+      "en": "A chatbot converses. An AI Employee can participate in a process: retrieve information, prepare actions, coordinate tools and escalate when human intervention is needed."
+    },
+    "intro": {
+      "es": "La diferencia importante no está en que ambos usen inteligencia artificial, sino en el alcance operativo. Un chatbot suele responder dentro de una conversación. Un Empleado IA está diseñado alrededor de un trabajo concreto y puede combinar conversación, datos, herramientas, reglas de negocio y aprobaciones.",
+      "en": "The important difference is not that both use artificial intelligence, but their operational scope. A chatbot usually answers inside a conversation. An AI Employee is designed around a specific job and can combine conversation, data, tools, business rules and approvals."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Un chatbot responde; un Empleado IA trabaja dentro de un proceso",
+          "en": "A chatbot responds; an AI Employee works inside a process"
+        },
+        "paragraphs": {
+          "es": [
+            "Un chatbot tradicional suele recibir una pregunta y devolver una respuesta. Puede ser muy útil para preguntas frecuentes, orientación inicial o autoservicio, pero normalmente su responsabilidad termina en la conversación.",
+            "Un Empleado IA se diseña con un objetivo operativo. Puede recibir una solicitud, consultar un CRM o ERP autorizado, aplicar reglas, preparar una actualización y pedir aprobación antes de ejecutar una acción sensible."
+          ],
+          "en": [
+            "A traditional chatbot usually receives a question and returns an answer. It can be useful for FAQs, initial guidance or self-service, but its responsibility normally ends with the conversation.",
+            "An AI Employee is designed around an operational objective. It can receive a request, consult an authorised CRM or ERP, apply rules, prepare an update and ask for approval before a sensitive action is executed."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "La diferencia está en herramientas, contexto y autoridad",
+          "en": "The difference is tools, context and authority"
+        },
+        "paragraphs": {
+          "es": [
+            "Para actuar sobre un proceso real, el agente necesita saber qué información puede consultar, qué herramientas puede utilizar y qué decisiones tiene permitido tomar. Esa autoridad no debería ser implícita ni ilimitada.",
+            "Por eso un buen diseño de Empleado IA incluye permisos mínimos, registro de acciones, reglas de escalado y controles humanos. Cuanto más irreversible sea una acción, mayor debe ser el nivel de control."
+          ],
+          "en": [
+            "To operate on a real process, the agent needs to know which information it may access, which tools it may use and which decisions it is allowed to make. That authority should never be implicit or unlimited.",
+            "That is why a good AI Employee design includes least-privilege permissions, action logs, escalation rules and human controls. The more irreversible an action is, the stronger the control should be."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Cuándo basta un chatbot y cuándo tiene sentido un Empleado IA",
+          "en": "When a chatbot is enough and when an AI Employee makes sense"
+        },
+        "paragraphs": {
+          "es": [
+            "Si el objetivo es responder preguntas sobre información estable y no hace falta consultar ni modificar sistemas, un chatbot puede ser suficiente.",
+            "Si el problema incluye pasos de trabajo, diferentes sistemas, seguimiento, clasificación, preparación de acciones o coordinación entre personas y herramientas, tiene más sentido plantear un Empleado IA o un equipo de agentes especializados."
+          ],
+          "en": [
+            "If the goal is to answer questions about stable information and no system access or modification is required, a chatbot may be enough.",
+            "If the problem includes workflow steps, multiple systems, follow-up, classification, action preparation or coordination between people and tools, an AI Employee or a specialised agent team is more appropriate."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Un ejemplo sencillo",
+          "en": "A simple example"
+        },
+        "paragraphs": {
+          "es": [
+            "Ante un cliente que pregunta por el estado de un pedido, un chatbot podría explicar cómo consultar pedidos. Un Empleado IA, si tiene permiso, podría identificar al cliente, consultar el pedido, detectar una incidencia, preparar una respuesta y abrir una tarea interna si hace falta intervención humana.",
+            "La diferencia no es responder con un texto más inteligente. Es participar de forma gobernada en el proceso que resuelve la necesidad."
+          ],
+          "en": [
+            "When a customer asks about an order, a chatbot might explain how to check order status. An AI Employee, when authorised, could identify the customer, retrieve the order, detect an issue, prepare a response and create an internal task when human intervention is needed.",
+            "The difference is not a smarter answer. It is governed participation in the process that resolves the need."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Chatbot: conversación y autoservicio.",
+        "Empleado IA: trabajo dentro de un proceso definido.",
+        "La autonomía debe estar limitada por permisos y reglas.",
+        "Las acciones sensibles necesitan escalado o aprobación humana.",
+        "El mejor primer caso de uso es repetitivo, medible y fácil de revisar."
+      ],
+      "en": [
+        "Chatbot: conversation and self-service.",
+        "AI Employee: work inside a defined process.",
+        "Autonomy should be bounded by permissions and rules.",
+        "Sensitive actions need escalation or human approval.",
+        "The best first use case is repetitive, measurable and easy to review."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
+  }
+]
