@@ -1,0 +1,158 @@
+[
+  {
+    "key": "ai-sales-sdr-automation",
+    "slugs": {
+      "es": "automatizacion-ventas-sdr-ia",
+      "en": "ai-sales-sdr-automation"
+    },
+    "seoTitle": {
+      "es": "Automatización de ventas y SDR con IA y control humano | IA Empleado",
+      "en": "AI sales and SDR automation with human control | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Automatiza prospección, cualificación, seguimiento y CRM con IA sin perder control sobre mensajes, oportunidades, datos ni decisiones comerciales sensibles.",
+      "en": "Automate prospecting, qualification, follow-up and CRM work with AI while keeping human control over messages, opportunities, data and sensitive sales decisions."
+    },
+    "eyebrow": {
+      "es": "AUTOMATIZACIÓN DE VENTAS Y SDR CON IA",
+      "en": "AI SALES AND SDR AUTOMATION"
+    },
+    "title": {
+      "es": "Automatiza tareas de SDR y ventas con IA sin convertir la prospección en una caja negra.",
+      "en": "Automate SDR and sales work with AI without turning prospecting into a black box."
+    },
+    "lead": {
+      "es": "Un Empleado IA puede investigar cuentas, clasificar leads, preparar mensajes, actualizar el CRM y recordar seguimientos dentro de reglas claras. El objetivo no es automatizar presión comercial, sino reducir trabajo repetitivo y dar al equipo mejor contexto para decidir cuándo y cómo avanzar una oportunidad.",
+      "en": "An AI Employee can research accounts, classify leads, prepare messages, update the CRM and coordinate follow-ups within clear rules. The goal is not to automate sales pressure, but to reduce repetitive work and give the team better context for deciding when and how to advance an opportunity."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Qué tareas comerciales se pueden automatizar primero",
+          "en": "Which sales tasks to automate first"
+        },
+        "paragraphs": {
+          "es": [
+            "Los primeros casos deberían ser verificables y de bajo riesgo: enriquecer información de una cuenta con fuentes autorizadas, clasificar formularios entrantes, detectar datos incompletos, preparar un resumen de la oportunidad, sugerir el siguiente paso o generar un borrador de seguimiento.",
+            "Conviene mantener bajo decisión humana la estrategia de cuenta, las condiciones comerciales, las excepciones, los compromisos contractuales y cualquier comunicación sensible que pueda afectar la relación con el cliente."
+          ],
+          "en": [
+            "Early use cases should be verifiable and low risk: enriching account information from authorised sources, classifying inbound forms, detecting missing data, preparing opportunity summaries, suggesting next steps or drafting follow-up messages.",
+            "Account strategy, commercial terms, exceptions, contractual commitments and sensitive communications that may affect the customer relationship should remain under human decision-making."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Usar el CRM como sistema de trabajo, no como permiso ilimitado",
+          "en": "Use the CRM as a work system, not as unlimited permission"
+        },
+        "paragraphs": {
+          "es": [
+            "El agente puede necesitar leer determinados campos, crear una tarea o proponer una actualización de estado, pero no necesita acceso general a todas las cuentas, descuentos o funciones administrativas. Separar lectura, escritura y acciones sensibles reduce riesgo y facilita auditar cambios.",
+            "También conviene registrar de dónde salen los datos utilizados para cualificar una oportunidad y distinguir información confirmada de inferencias o propuestas generadas por la IA."
+          ],
+          "en": [
+            "The agent may need to read specific fields, create a task or propose a stage update, but it does not need broad access to every account, discount or administrative function. Separating read, write and sensitive actions reduces risk and makes changes easier to audit.",
+            "It is also useful to record where qualification data came from and distinguish confirmed information from AI-generated inferences or suggestions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Controlar mensajes, frecuencia y excepciones",
+          "en": "Control messages, frequency and exceptions"
+        },
+        "paragraphs": {
+          "es": [
+            "La automatización comercial debe respetar las políticas de la empresa y las reglas aplicables sobre privacidad y comunicaciones comerciales. Por eso conviene definir canales permitidos, frecuencia máxima, listas de exclusión, criterios de escalado y casos que requieren revisión antes de enviar.",
+            "Un flujo útil puede preparar mensajes personalizados y dejar el envío bajo aprobación humana durante la fase inicial. Solo después de medir calidad y excepciones tiene sentido aumentar autonomía en casos de bajo riesgo."
+          ],
+          "en": [
+            "Sales automation should follow company policy and applicable privacy and direct-marketing rules. Define allowed channels, maximum frequency, exclusion lists, escalation criteria and cases that require review before sending.",
+            "A useful workflow can prepare personalised messages while keeping sending under human approval during the initial phase. Autonomy should increase only after quality and exceptions have been measured in low-risk cases."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Medir calidad de oportunidad, no solo volumen de actividad",
+          "en": "Measure opportunity quality, not only activity volume"
+        },
+        "paragraphs": {
+          "es": [
+            "Más emails, tareas o contactos no significan necesariamente mejores ventas. Conviene observar respuesta útil, reuniones cualificadas, oportunidades aceptadas por ventas, correcciones humanas, razones de descarte y tiempo hasta el siguiente paso.",
+            "Estas métricas ayudan a identificar qué parte del trabajo comercial puede automatizarse y dónde la intervención humana sigue siendo esencial para interpretar contexto, negociar o construir confianza."
+          ],
+          "en": [
+            "More emails, tasks or contacts do not automatically mean better sales. Track meaningful replies, qualified meetings, sales-accepted opportunities, human corrections, disqualification reasons and time to next step.",
+            "These metrics reveal which parts of sales work can be automated and where human involvement remains essential for interpreting context, negotiating or building trust."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Ejemplo de flujo SDR con IA",
+        "en": "Example AI SDR workflow"
+      },
+      "steps": {
+        "es": [
+          "Entra un lead por formulario, evento, CRM u otra fuente autorizada.",
+          "El Empleado IA valida datos básicos y reúne contexto permitido sobre la cuenta.",
+          "Clasifica la oportunidad según criterios definidos por el equipo comercial.",
+          "Prepara un resumen y un borrador de siguiente contacto o tarea.",
+          "Si el caso necesita criterio comercial, precio, excepción o mensaje sensible, lo pasa a una persona.",
+          "Registra el resultado y el siguiente paso en el CRM con trazabilidad."
+        ],
+        "en": [
+          "A lead enters through a form, event, CRM or another authorised source.",
+          "The AI Employee validates basic data and gathers permitted account context.",
+          "It classifies the opportunity using criteria defined by the sales team.",
+          "It prepares a summary and a draft next contact or task.",
+          "If the case needs commercial judgement, pricing, an exception or sensitive messaging, it hands the case to a person.",
+          "It records the outcome and next step in the CRM with traceability."
+        ]
+      }
+    },
+    "metrics": {
+      "es": ["Tiempo hasta primer seguimiento", "Leads cualificados aceptados por ventas", "Reuniones cualificadas", "Correcciones humanas", "Razones de descarte", "Oportunidades sin siguiente paso"],
+      "en": ["Time to first follow-up", "Sales-accepted qualified leads", "Qualified meetings", "Human corrections", "Disqualification reasons", "Opportunities without a next step"]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Un Empleado IA puede hacer prospección comercial por sí solo?",
+          "en": "Can an AI Employee prospect on its own?"
+        },
+        "answer": {
+          "es": "Puede automatizar tareas acotadas de investigación, clasificación, preparación y seguimiento cuando existen reglas, fuentes y permisos definidos. La autonomía de envío y contacto debe ajustarse al riesgo, a las políticas de la empresa y a las reglas aplicables de privacidad y comunicaciones comerciales.",
+          "en": "It can automate bounded research, classification, preparation and follow-up tasks when rules, sources and permissions are defined. Sending and contact autonomy should match risk, company policy and applicable privacy and direct-marketing rules."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Puede actualizar automáticamente el CRM?",
+          "en": "Can it update the CRM automatically?"
+        },
+        "answer": {
+          "es": "Sí, para campos y acciones expresamente autorizados. Cambios sensibles, descuentos, cierres, datos críticos o excepciones pueden mantenerse bajo aprobación humana y con registro de quién cambió qué información.",
+          "en": "Yes, for explicitly authorised fields and actions. Sensitive changes, discounts, closing decisions, critical data or exceptions can remain under human approval with a record of what changed and why."
+        }
+      },
+      {
+        "question": {
+          "es": "¿La IA sustituye al SDR o al comercial?",
+          "en": "Does AI replace the SDR or salesperson?"
+        },
+        "answer": {
+          "es": "El enfoque de esta automatización es reducir investigación repetitiva, preparación, actualización y seguimiento operativo. La relación, negociación, interpretación de contexto y decisiones comerciales siguen necesitando responsabilidad humana según el proceso.",
+          "en": "This approach focuses on reducing repetitive research, preparation, updates and operational follow-up. Relationship building, negotiation, context interpretation and commercial decisions still require human responsibility according to the process."
+        }
+      }
+    ],
+    "relatedArticleKey": "automate-sales-prospecting-human-control",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
+  }
+]
