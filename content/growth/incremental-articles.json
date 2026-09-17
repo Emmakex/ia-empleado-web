@@ -1,0 +1,114 @@
+[
+  {
+    "key": "automate-sales-prospecting-human-control",
+    "slugs": {
+      "es": "como-automatizar-prospeccion-ventas-con-ia-sin-perder-control-humano",
+      "en": "how-to-automate-sales-prospecting-with-ai-without-losing-human-control"
+    },
+    "seoTitle": {
+      "es": "Cómo automatizar prospección y ventas con IA sin perder control humano | IA Empleado",
+      "en": "How to automate sales prospecting with AI without losing human control | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía práctica para automatizar prospección, cualificación, seguimiento y CRM con IA manteniendo revisión humana, permisos mínimos y trazabilidad.",
+      "en": "A practical guide to automating prospecting, qualification, follow-up and CRM work with AI while keeping human review, least privilege and traceability."
+    },
+    "title": {
+      "es": "Cómo automatizar prospección y ventas con IA sin perder control humano",
+      "en": "How to automate sales prospecting with AI without losing human control"
+    },
+    "excerpt": {
+      "es": "La IA puede reducir investigación, clasificación, preparación de mensajes y seguimiento comercial, pero la autonomía debe crecer por etapas y mantenerse dentro de reglas claras sobre datos, contacto y decisiones sensibles.",
+      "en": "AI can reduce research, classification, message preparation and sales follow-up, but autonomy should grow in stages and remain within clear rules around data, contact and sensitive decisions."
+    },
+    "intro": {
+      "es": "La prospección comercial mezcla tareas repetitivas con decisiones que necesitan contexto. Investigar una cuenta, ordenar leads o preparar un resumen puede automatizarse con bastante claridad; decidir cómo abordar una relación, negociar condiciones o manejar una excepción requiere más control. Un buen diseño separa ambos niveles desde el principio.",
+      "en": "Sales prospecting mixes repetitive tasks with decisions that require context. Researching an account, organising leads or preparing a summary can be automated relatively clearly; deciding how to approach a relationship, negotiate terms or handle an exception needs stronger control. A good design separates those levels from the start."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Empieza por investigación, clasificación y preparación",
+          "en": "Start with research, classification and preparation"
+        },
+        "paragraphs": {
+          "es": [
+            "Un primer flujo puede validar datos básicos, enriquecer información desde fuentes autorizadas, identificar huecos en el CRM, clasificar leads con criterios definidos y preparar un resumen para el comercial.",
+            "Estas tareas reducen trabajo manual sin dar al agente autoridad sobre precios, compromisos, excepciones o decisiones de cierre. El objetivo inicial es mejorar contexto y velocidad, no reemplazar criterio comercial."
+          ],
+          "en": [
+            "An initial workflow can validate basic data, enrich information from authorised sources, identify CRM gaps, classify leads using defined criteria and prepare a summary for the salesperson.",
+            "These tasks reduce manual work without giving the agent authority over pricing, commitments, exceptions or closing decisions. The initial goal is better context and speed, not replacing commercial judgement."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Define qué puede leer y escribir en el CRM",
+          "en": "Define what the AI may read and write in the CRM"
+        },
+        "paragraphs": {
+          "es": [
+            "No todos los campos ni acciones del CRM tienen el mismo riesgo. Consultar sector, origen del lead o última actividad es distinto de modificar una oportunidad, cambiar condiciones o registrar información sensible.",
+            "Separar permisos de lectura, propuesta y escritura permite que el agente prepare trabajo sin asumir una autoridad mayor de la necesaria. También facilita revisar qué datos utilizó y qué cambios realizó."
+          ],
+          "en": [
+            "Not every CRM field or action carries the same risk. Reading industry, lead source or last activity is different from changing an opportunity, commercial terms or sensitive information.",
+            "Separating read, proposal and write permissions lets the agent prepare work without assuming more authority than necessary. It also makes it easier to review which data it used and what it changed."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Mantén revisión humana sobre mensajes y excepciones",
+          "en": "Keep human review over messages and exceptions"
+        },
+        "paragraphs": {
+          "es": [
+            "Durante la fase inicial, la IA puede redactar seguimientos personalizados y sugerir el siguiente paso mientras una persona revisa antes de enviar. Esto permite detectar tono inadecuado, contexto incompleto, información desactualizada o casos que requieren una estrategia diferente.",
+            "Con suficiente evidencia, algunas comunicaciones de bajo riesgo pueden automatizarse bajo reglas claras de canal, frecuencia, exclusión y escalado. La autonomía no debería aumentar solo porque técnicamente sea posible."
+          ],
+          "en": [
+            "During the initial phase, AI can draft personalised follow-ups and suggest next steps while a person reviews before sending. This helps catch poor tone, missing context, outdated information or cases that need a different strategy.",
+            "With enough evidence, some low-risk communications can be automated under clear channel, frequency, exclusion and escalation rules. Autonomy should not increase simply because it is technically possible."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Usa métricas comerciales que midan calidad",
+          "en": "Use sales metrics that measure quality"
+        },
+        "paragraphs": {
+          "es": [
+            "El número de mensajes enviados es una métrica de actividad, no de calidad. Para evaluar la automatización conviene observar respuestas útiles, reuniones cualificadas, oportunidades aceptadas, correcciones humanas, razones de descarte y tiempo hasta siguiente acción.",
+            "Si aumenta el volumen pero también suben las correcciones o los descartes por mala cualificación, el flujo necesita ajustes antes de ganar autonomía."
+          ],
+          "en": [
+            "The number of messages sent is an activity metric, not a quality metric. Evaluate meaningful replies, qualified meetings, accepted opportunities, human corrections, disqualification reasons and time to next action.",
+            "If volume rises while corrections or poor-qualification disqualifications also increase, the workflow needs adjustment before gaining autonomy."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Automatiza primero investigación, clasificación y preparación de contexto.",
+        "Separa permisos de lectura, propuesta y escritura en el CRM.",
+        "Mantén revisión humana para mensajes sensibles, precios y excepciones.",
+        "Define reglas de frecuencia, exclusión y escalado antes de automatizar contacto.",
+        "Mide calidad de oportunidad y correcciones, no solo volumen de actividad."
+      ],
+      "en": [
+        "Automate research, classification and context preparation first.",
+        "Separate read, proposal and write permissions in the CRM.",
+        "Keep human review for sensitive messaging, pricing and exceptions.",
+        "Define frequency, exclusion and escalation rules before automating contact.",
+        "Measure opportunity quality and corrections, not only activity volume."
+      ]
+    },
+    "relatedLandingKey": "ai-sales-sdr-automation",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
+  }
+]
