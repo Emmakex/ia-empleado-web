@@ -1,11 +1,21 @@
 import { readFile } from "node:fs/promises";
 
-const landings = JSON.parse(await readFile(new URL("../content/growth/landings.json", import.meta.url), "utf8"));
-const articles = JSON.parse(await readFile(new URL("../content/growth/articles.json", import.meta.url), "utf8"));
+const readJson = async (relativePath) =>
+  JSON.parse(await readFile(new URL(relativePath, import.meta.url), "utf8"));
+
+const legacyLandings = await readJson("../content/growth/landings.json");
+const incrementalLandings = await readJson("../content/growth/incremental-landings.json");
+const legacyArticles = await readJson("../content/growth/articles.json");
+const incrementalArticles = await readJson("../content/growth/incremental-articles.json");
+
+const landings = [...legacyLandings, ...incrementalLandings];
+const articles = [...legacyArticles, ...incrementalArticles];
 
 const errors = [];
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const MIN_INCREMENTAL_LANDING_WORDS = 900;
+const MIN_INCREMENTAL_ARTICLE_WORDS = 1200;
 
 function requireText(value, label) {
   if (typeof value !== "string" || !value.trim()) errors.push(`${label} must be non-empty text`);
@@ -23,6 +33,45 @@ function validateUnique(records, selector, label) {
     if (seen.has(value)) errors.push(`Duplicate ${label}: ${value}`);
     seen.add(value);
   }
+}
+
+function wordCount(value) {
+  return String(value ?? "")
+    .trim()
+    .split(/\s+/u)
+    .filter(Boolean).length;
+}
+
+function landingEditorialCopy(record, locale) {
+  return [
+    record.title?.[locale],
+    record.lead?.[locale],
+    ...(record.sections ?? []).flatMap((section) => [
+      section.title?.[locale],
+      ...(section.paragraphs?.[locale] ?? []),
+    ]),
+    record.workflow?.title?.[locale],
+    ...(record.workflow?.steps?.[locale] ?? []),
+    ...(record.metrics?.[locale] ?? []),
+    ...(record.faq ?? []).flatMap((item) => [item.question?.[locale], item.answer?.[locale]]),
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
+function articleEditorialCopy(record, locale) {
+  return [
+    record.title?.[locale],
+    record.excerpt?.[locale],
+    record.intro?.[locale],
+    ...(record.sections ?? []).flatMap((section) => [
+      section.title?.[locale],
+      ...(section.paragraphs?.[locale] ?? []),
+    ]),
+    ...(record.takeaways?.[locale] ?? []),
+  ]
+    .filter(Boolean)
+    .join(" ");
 }
 
 if (!Array.isArray(landings) || landings.length === 0) errors.push("At least one growth landing is required");
@@ -64,6 +113,28 @@ for (const article of articles) {
   requireText(article.relatedLandingKey, `${article.key}.relatedLandingKey`);
 }
 
+for (const landing of incrementalLandings) {
+  for (const locale of ["es", "en"]) {
+    const words = wordCount(landingEditorialCopy(landing, locale));
+    if (words < MIN_INCREMENTAL_LANDING_WORDS) {
+      errors.push(
+        `${landing.key}.${locale} needs at least ${MIN_INCREMENTAL_LANDING_WORDS} editorial words; found ${words}`,
+      );
+    }
+  }
+}
+
+for (const article of incrementalArticles) {
+  for (const locale of ["es", "en"]) {
+    const words = wordCount(articleEditorialCopy(article, locale));
+    if (words < MIN_INCREMENTAL_ARTICLE_WORDS) {
+      errors.push(
+        `${article.key}.${locale} needs at least ${MIN_INCREMENTAL_ARTICLE_WORDS} editorial words; found ${words}`,
+      );
+    }
+  }
+}
+
 validateUnique(landings, (item) => item.key, "landing key");
 validateUnique(landings, (item) => item.slugs.es, "Spanish landing slug");
 validateUnique(landings, (item) => item.slugs.en, "English landing slug");
@@ -86,4 +157,6 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s).`);
+console.log(
+  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Incremental minimums: ${MIN_INCREMENTAL_LANDING_WORDS} words/landing/locale, ${MIN_INCREMENTAL_ARTICLE_WORDS} words/article/locale.`,
+);

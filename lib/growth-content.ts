@@ -1,6 +1,8 @@
 import type { Locale } from "./i18n";
 import landingsJson from "../content/growth/landings.json";
 import articlesJson from "../content/growth/articles.json";
+import incrementalLandingsJson from "../content/growth/incremental-landings.json";
+import incrementalArticlesJson from "../content/growth/incremental-articles.json";
 
 type LocalizedText = Record<Locale, string>;
 type LocalizedList = Record<Locale, string[]>;
@@ -50,8 +52,15 @@ export type BlogArticleRecord = {
   updatedAt: string;
 };
 
-export const growthLandingRecords = landingsJson as GrowthLandingRecord[];
-export const blogArticleRecords = articlesJson as BlogArticleRecord[];
+export const growthLandingRecords = [
+  ...(landingsJson as GrowthLandingRecord[]),
+  ...(incrementalLandingsJson as GrowthLandingRecord[]),
+];
+
+export const blogArticleRecords = [
+  ...(articlesJson as BlogArticleRecord[]),
+  ...(incrementalArticlesJson as BlogArticleRecord[]),
+];
 
 export function getGrowthLandingByKey(key: string) {
   return growthLandingRecords.find((record) => record.key === key);

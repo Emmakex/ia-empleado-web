@@ -8,8 +8,14 @@ const baseUrl = (process.env.PRODUCTION_BASE_URL || "https://iaempleado.com").re
 const readJson = (relativePath) =>
   JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 
-const landings = readJson("content/growth/landings.json");
-const articles = readJson("content/growth/articles.json");
+const landings = [
+  ...readJson("content/growth/landings.json"),
+  ...readJson("content/growth/incremental-landings.json"),
+];
+const articles = [
+  ...readJson("content/growth/articles.json"),
+  ...readJson("content/growth/incremental-articles.json"),
+];
 
 const recordDate = (record) => record.updatedAt || record.publishedAt || "0000-00-00";
 const latestDate = [...landings, ...articles]
