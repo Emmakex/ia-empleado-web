@@ -110,5 +110,117 @@
     "relatedLandingKey": "ai-employees-smb",
     "publishedAt": "2026-09-17",
     "updatedAt": "2026-09-17"
+  },
+  {
+    "key": "automate-customer-service-human-control",
+    "slugs": {
+      "es": "como-automatizar-atencion-al-cliente-con-ia-sin-perder-control-humano",
+      "en": "how-to-automate-customer-service-with-ai-without-losing-human-control"
+    },
+    "seoTitle": {
+      "es": "Cómo automatizar atención al cliente con IA sin perder control humano | IA Empleado",
+      "en": "How to automate customer service with AI without losing human control | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía práctica para automatizar atención al cliente con IA manteniendo permisos mínimos, escalado humano, trazabilidad y métricas de calidad.",
+      "en": "A practical guide to automating customer service with AI while keeping least-privilege access, human escalation, traceability and quality metrics."
+    },
+    "title": {
+      "es": "Cómo automatizar atención al cliente con IA sin perder control humano",
+      "en": "How to automate customer service with AI without losing human control"
+    },
+    "excerpt": {
+      "es": "Automatizar soporte no significa dejar a la IA decidirlo todo. El diseño útil separa tareas repetitivas, acciones permitidas, excepciones y puntos de aprobación humana.",
+      "en": "Automating support does not mean letting AI decide everything. A useful design separates repetitive tasks, permitted actions, exceptions and human approval points."
+    },
+    "intro": {
+      "es": "La atención al cliente combina volumen, repetición y excepciones. Por eso puede beneficiarse mucho de la IA, pero también necesita límites claros. El objetivo no es eliminar a las personas del proceso, sino reservar su tiempo para los casos donde aportan criterio, empatía o autoridad.",
+      "en": "Customer service combines volume, repetition and exceptions. That makes it a strong use case for AI, but also one that needs clear boundaries. The goal is not to remove people from the process, but to reserve their time for cases that need judgement, empathy or authority."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Empieza por clasificar y preparar, no por automatizar todas las decisiones",
+          "en": "Start with classification and preparation, not every decision"
+        },
+        "paragraphs": {
+          "es": [
+            "Un primer flujo puede identificar el motivo de contacto, resumir el caso, localizar información autorizada y preparar una respuesta. Estas tareas reducen trabajo manual sin obligar a conceder autonomía sobre decisiones sensibles.",
+            "Cuando el comportamiento es estable, pueden añadirse acciones de bajo riesgo. La autonomía debería crecer por etapas y con evidencia de calidad, no por defecto."
+          ],
+          "en": [
+            "An initial workflow can identify the contact reason, summarise the case, retrieve authorised information and draft a reply. These tasks reduce manual work without granting authority over sensitive decisions.",
+            "Once behaviour is stable, low-risk actions can be added. Autonomy should grow in stages and on evidence of quality, not by default."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Define qué información puede consultar la IA",
+          "en": "Define which information the AI may access"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de conectar un CRM, ecommerce, sistema de tickets o correo, conviene decidir qué campos necesita realmente el agente. Consultar el estado de un pedido no implica necesitar acceso completo a todo el historial o a operaciones administrativas no relacionadas.",
+            "El principio de mínimo privilegio reduce riesgo y también simplifica las pruebas: cuanto más acotado es el acceso, más fácil es entender y auditar el comportamiento del flujo."
+          ],
+          "en": [
+            "Before connecting a CRM, ecommerce platform, ticketing system or email, decide which fields the agent actually needs. Looking up an order status does not require complete access to every history field or unrelated administrative operation.",
+            "Least privilege reduces risk and also makes testing simpler: the narrower the access, the easier it is to understand and audit the workflow's behaviour."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Convierte el escalado en una parte del diseño",
+          "en": "Make escalation part of the design"
+        },
+        "paragraphs": {
+          "es": [
+            "Un buen sistema sabe cuándo dejar de intentar resolver el caso. Baja confianza, solicitudes fuera de política, clientes prioritarios, impacto económico o necesidad de una excepción pueden activar el escalado.",
+            "La transferencia debe incluir contexto: resumen, datos consultados, acciones ya realizadas y siguiente paso sugerido. Así la persona continúa el trabajo en lugar de empezar desde cero."
+          ],
+          "en": [
+            "A good system knows when to stop trying to resolve a case. Low confidence, out-of-policy requests, priority customers, financial impact or a required exception can trigger escalation.",
+            "The handoff should include context: summary, data checked, actions already taken and a suggested next step. That lets the person continue the work instead of starting over."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Mide errores y retrabajo, no solo velocidad",
+          "en": "Measure errors and rework, not just speed"
+        },
+        "paragraphs": {
+          "es": [
+            "Una automatización que responde rápido pero obliga al equipo a corregir muchos casos no está funcionando bien. Además del tiempo de respuesta, mide reaperturas, correcciones, escalados, resolución en primer contacto y motivos de excepción.",
+            "Estas señales ayudan a decidir qué parte del flujo puede ganar autonomía y dónde conviene mantener revisión humana permanente."
+          ],
+          "en": [
+            "Automation that responds quickly but forces the team to correct many cases is not working well. Alongside response time, measure reopenings, corrections, escalations, first-contact resolution and exception reasons.",
+            "These signals help decide which parts of the workflow can gain autonomy and where permanent human review remains appropriate."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Automatiza primero tareas frecuentes, verificables y de bajo riesgo.",
+        "Limita el acceso a los datos y acciones realmente necesarios.",
+        "Define reglas de escalado antes de aumentar la autonomía.",
+        "Entrega contexto completo cuando el caso pasa a una persona.",
+        "Mide calidad, correcciones y excepciones además de tiempos."
+      ],
+      "en": [
+        "Automate frequent, verifiable, low-risk tasks first.",
+        "Limit access to the data and actions genuinely required.",
+        "Define escalation rules before increasing autonomy.",
+        "Provide complete context when handing a case to a person.",
+        "Measure quality, corrections and exceptions as well as speed."
+      ]
+    },
+    "relatedLandingKey": "ai-customer-support-automation",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
   }
 ]

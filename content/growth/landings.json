@@ -136,5 +136,161 @@
     "relatedArticleKey": "what-is-an-ai-employee",
     "publishedAt": "2026-09-17",
     "updatedAt": "2026-09-17"
+  },
+  {
+    "key": "ai-customer-support-automation",
+    "slugs": {
+      "es": "automatizacion-atencion-cliente-ia",
+      "en": "ai-customer-service-automation"
+    },
+    "seoTitle": {
+      "es": "Automatización de atención al cliente con IA y control humano | IA Empleado",
+      "en": "AI customer service automation with human control | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Cómo automatizar atención al cliente con IA: clasificación, respuestas, consulta de sistemas, escalado humano, métricas y límites de seguridad.",
+      "en": "How to automate customer service with AI: triage, replies, system lookups, human escalation, metrics and safe operating boundaries."
+    },
+    "eyebrow": {
+      "es": "AUTOMATIZACIÓN DE ATENCIÓN AL CLIENTE CON IA",
+      "en": "AI CUSTOMER SERVICE AUTOMATION"
+    },
+    "title": {
+      "es": "Automatiza la atención al cliente con IA sin convertir cada excepción en un riesgo.",
+      "en": "Automate customer service with AI without turning every exception into a risk."
+    },
+    "lead": {
+      "es": "La atención al cliente es un buen candidato para automatización cuando se separan claramente las consultas repetitivas, las acciones permitidas y los casos que necesitan una persona. Un Empleado IA puede clasificar solicitudes, consultar datos autorizados, preparar respuestas y escalar excepciones con contexto.",
+      "en": "Customer service is a strong automation candidate when repetitive requests, permitted actions and human-only cases are clearly separated. An AI Employee can classify requests, retrieve authorised data, prepare replies and escalate exceptions with context."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Qué partes de atención al cliente se pueden automatizar primero",
+          "en": "Which parts of customer service to automate first"
+        },
+        "paragraphs": {
+          "es": [
+            "Los primeros casos de uso deberían centrarse en tareas frecuentes y verificables: identificar el motivo de contacto, priorizar tickets, localizar información de pedidos o cuentas, preparar respuestas y recopilar datos antes de pasar el caso a una persona.",
+            "No todas las consultas deben cerrarse automáticamente. Reclamaciones sensibles, compensaciones, incidencias complejas o decisiones con impacto económico pueden requerir aprobación humana según las reglas de la empresa."
+          ],
+          "en": [
+            "Early use cases should focus on frequent, verifiable tasks: identifying contact reasons, prioritising tickets, retrieving order or account information, drafting replies and collecting context before handing a case to a person.",
+            "Not every request should be closed automatically. Sensitive complaints, compensation, complex incidents or decisions with financial impact may require human approval under the company's rules."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Conectar CRM, ecommerce, ticketing y correo con permisos mínimos",
+          "en": "Connect CRM, ecommerce, ticketing and email with least privilege"
+        },
+        "paragraphs": {
+          "es": [
+            "El Empleado IA solo necesita acceso a la información indispensable para resolver su parte del proceso. Una integración responsable limita qué registros puede consultar, qué campos puede modificar y qué acciones quedan siempre fuera de su autoridad.",
+            "La trazabilidad es igual de importante: cada consulta, propuesta, actualización y escalado debería poder revisarse para entender qué información utilizó el agente y por qué tomó una determinada ruta."
+          ],
+          "en": [
+            "The AI Employee only needs access to the information required for its part of the process. A responsible integration limits which records it can read, which fields it can change and which actions always remain outside its authority.",
+            "Traceability matters just as much: each lookup, proposal, update and escalation should be reviewable so the team can understand what information the agent used and why it followed a particular path."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Diseñar el escalado humano antes de aumentar la autonomía",
+          "en": "Design human escalation before increasing autonomy"
+        },
+        "paragraphs": {
+          "es": [
+            "Un flujo útil define desde el principio señales de escalado: baja confianza, cliente identificado como prioritario, solicitud fuera de política, riesgo económico, lenguaje conflictivo o necesidad de una excepción que la IA no puede autorizar.",
+            "El valor del escalado no es solo transferir el caso. El Empleado IA debería entregar a la persona un resumen, los datos ya consultados y la acción propuesta para reducir retrabajo y tiempo de resolución."
+          ],
+          "en": [
+            "A useful workflow defines escalation signals from the start: low confidence, priority customers, out-of-policy requests, financial risk, conflict language or any exception the AI is not authorised to approve.",
+            "Escalation should do more than transfer the case. The AI Employee should provide the person with a summary, the data already checked and the proposed next action to reduce rework and resolution time."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Medir calidad además de velocidad",
+          "en": "Measure quality as well as speed"
+        },
+        "paragraphs": {
+          "es": [
+            "Reducir tiempos no sirve si aumenta el retrabajo o baja la calidad. Conviene medir resolución en el primer contacto, reaperturas, correcciones humanas, escalados, tiempos de respuesta y motivos de excepción.",
+            "Estas métricas permiten ampliar la automatización solo donde los resultados son estables y mantener control humano donde el proceso todavía tiene demasiada variabilidad."
+          ],
+          "en": [
+            "Faster handling is not useful if rework rises or quality falls. Track first-contact resolution, reopenings, human corrections, escalations, response times and exception reasons.",
+            "These metrics make it possible to expand automation only where outcomes are stable and retain human control where the process still has too much variability."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Ejemplo de flujo de atención al cliente con IA",
+        "en": "Example AI customer service workflow"
+      },
+      "steps": {
+        "es": [
+          "Llega una consulta por email, formulario, chat o ticket.",
+          "El Empleado IA identifica el motivo, prioridad y datos necesarios.",
+          "Consulta únicamente los sistemas y campos autorizados para ese caso.",
+          "Prepara una respuesta o una acción permitida por las reglas del proceso.",
+          "Si detecta una excepción, escala a una persona con resumen y contexto.",
+          "Registra el resultado para medir calidad, tiempos y causas de escalado."
+        ],
+        "en": [
+          "A request arrives through email, form, chat or ticket.",
+          "The AI Employee identifies the reason, priority and required context.",
+          "It checks only the systems and fields authorised for that case.",
+          "It prepares a reply or an action allowed by the process rules.",
+          "If it detects an exception, it escalates to a person with a summary and context.",
+          "It records the outcome so quality, timing and escalation reasons can be measured."
+        ]
+      }
+    },
+    "metrics": {
+      "es": ["Tiempo hasta primera respuesta", "Resolución en primer contacto", "Casos reabiertos", "Correcciones humanas", "Porcentaje y motivo de escalados", "Tiempo medio de resolución"],
+      "en": ["Time to first response", "First-contact resolution", "Reopened cases", "Human corrections", "Escalation rate and reason", "Average resolution time"]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿La IA debe responder automáticamente a todos los clientes?",
+          "en": "Should AI automatically reply to every customer?"
+        },
+        "answer": {
+          "es": "No. Conviene automatizar primero casos frecuentes y de bajo riesgo. Las solicitudes sensibles, ambiguas, excepcionales o con impacto económico pueden quedar sujetas a revisión o aprobación humana.",
+          "en": "No. Start with frequent, low-risk cases. Sensitive, ambiguous, exceptional or financially significant requests can remain subject to human review or approval."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Puede un Empleado IA consultar pedidos o datos de clientes?",
+          "en": "Can an AI Employee look up orders or customer data?"
+        },
+        "answer": {
+          "es": "Puede hacerlo cuando existe una integración autorizada y se le conceden permisos limitados al proceso. El principio recomendable es acceso mínimo, trazabilidad y separación entre consultar información y ejecutar acciones sensibles.",
+          "en": "It can when an authorised integration exists and permissions are limited to the process. A good default is least-privilege access, traceability and separation between retrieving information and carrying out sensitive actions."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo se evita perder control humano al automatizar soporte?",
+          "en": "How do you keep human control when automating support?"
+        },
+        "answer": {
+          "es": "Definiendo niveles de autoridad, reglas de escalado, acciones que requieren aprobación, permisos mínimos y métricas de calidad. La autonomía debe crecer después de validar el comportamiento del flujo, no antes.",
+          "en": "Define authority levels, escalation rules, actions that require approval, least-privilege permissions and quality metrics. Autonomy should increase after the workflow has been validated, not before."
+        }
+      }
+    ],
+    "relatedArticleKey": "automate-customer-service-human-control",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
   }
 ]
