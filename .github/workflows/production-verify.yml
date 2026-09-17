@@ -45,6 +45,7 @@ jobs:
 
       # Historical Phase 8F regression reference only: EXPECTED_RELEASE: web-phase-8f-structured-navigation
       - name: Compute exact web release fingerprint
+        if: ${{ steps.profile.outputs.growth != 'true' }}
         id: release
         run: echo "fingerprint=$(node scripts/generate-release-fingerprint.mjs --print)" >> "$GITHUB_OUTPUT"
 
@@ -53,6 +54,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Wait for exact release fingerprint on Hostinger
+        if: ${{ steps.profile.outputs.growth != 'true' }}
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
           EXPECTED_RELEASE: ${{ steps.release.outputs.fingerprint }}
@@ -60,11 +62,24 @@ jobs:
           RELEASE_CHECK_DELAY_MS: 10000
         run: node scripts/wait-for-production-release.mjs
 
-      - name: Verify Growth pages, canonical indexability, sitemap and robots
+      - name: Wait for Growth sitemap and pages on Hostinger
         if: ${{ steps.profile.outputs.growth == 'true' }}
         env:
           PRODUCTION_BASE_URL: https://iaempleado.com
-        run: node scripts/verify-growth-production.mjs
+        run: |
+          set -u
+          for attempt in $(seq 1 30); do
+            echo "Growth production check $attempt/30"
+            if node scripts/verify-growth-production.mjs; then
+              echo "Growth sitemap and latest public pages are live"
+              exit 0
+            fi
+            if [[ "$attempt" -lt 30 ]]; then
+              sleep 10
+            fi
+          done
+          echo "Latest Growth sitemap/pages did not become visible within the verification window"
+          exit 1
 
       - name: Verify production geometry, brand systems, conversion, accessibility, motion, canonical fidelity, performance, SEO and Phase 8H legal surfaces
         if: ${{ steps.profile.outputs.growth != 'true' }}
