@@ -1,4 +1,5 @@
 import { readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
 import type { Locale } from "./i18n";
 import landingsJson from "../content/growth/landings.json";
 import articlesJson from "../content/growth/articles.json";
@@ -53,14 +54,14 @@ export type BlogArticleRecord = {
   updatedAt: string;
 };
 
-const dailyDirectory = new URL("../content/growth/daily/", import.meta.url);
+const dailyDirectory = path.join(process.cwd(), "content", "growth", "daily");
 
 function readDailyRecords<T>(suffix: string): T[] {
   return readdirSync(dailyDirectory)
     .filter((name) => name.endsWith(suffix))
     .sort()
     .flatMap((name) => {
-      const value = JSON.parse(readFileSync(new URL(name, dailyDirectory), "utf8"));
+      const value = JSON.parse(readFileSync(path.join(dailyDirectory, name), "utf8"));
       return Array.isArray(value) ? (value as T[]) : [];
     });
 }
