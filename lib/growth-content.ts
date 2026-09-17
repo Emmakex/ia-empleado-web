@@ -1,3 +1,4 @@
+import { readFileSync, readdirSync } from "node:fs";
 import type { Locale } from "./i18n";
 import landingsJson from "../content/growth/landings.json";
 import articlesJson from "../content/growth/articles.json";
@@ -52,14 +53,31 @@ export type BlogArticleRecord = {
   updatedAt: string;
 };
 
+const dailyDirectory = new URL("../content/growth/daily/", import.meta.url);
+
+function readDailyRecords<T>(suffix: string): T[] {
+  return readdirSync(dailyDirectory)
+    .filter((name) => name.endsWith(suffix))
+    .sort()
+    .flatMap((name) => {
+      const value = JSON.parse(readFileSync(new URL(name, dailyDirectory), "utf8"));
+      return Array.isArray(value) ? (value as T[]) : [];
+    });
+}
+
+const dailyLandings = readDailyRecords<GrowthLandingRecord>(".landings.json");
+const dailyArticles = readDailyRecords<BlogArticleRecord>(".articles.json");
+
 export const growthLandingRecords = [
   ...(landingsJson as GrowthLandingRecord[]),
   ...(incrementalLandingsJson as GrowthLandingRecord[]),
+  ...dailyLandings,
 ];
 
 export const blogArticleRecords = [
   ...(articlesJson as BlogArticleRecord[]),
   ...(incrementalArticlesJson as BlogArticleRecord[]),
+  ...dailyArticles,
 ];
 
 export function getGrowthLandingByKey(key: string) {
