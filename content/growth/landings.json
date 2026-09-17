@@ -292,5 +292,161 @@
     "relatedArticleKey": "automate-customer-service-human-control",
     "publishedAt": "2026-09-17",
     "updatedAt": "2026-09-17"
+  },
+  {
+    "key": "ai-administrative-automation",
+    "slugs": {
+      "es": "automatizacion-administrativa-ia",
+      "en": "ai-administrative-automation"
+    },
+    "seoTitle": {
+      "es": "Automatización administrativa con IA y aprobaciones humanas | IA Empleado",
+      "en": "AI administrative automation with human approvals | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Automatiza tareas administrativas con IA: correo, documentos, altas, seguimiento y actualización de sistemas con permisos mínimos y aprobaciones humanas.",
+      "en": "Automate administrative work with AI: email, documents, onboarding, follow-up and system updates with least-privilege access and human approvals."
+    },
+    "eyebrow": {
+      "es": "AUTOMATIZACIÓN ADMINISTRATIVA CON IA",
+      "en": "AI ADMINISTRATIVE AUTOMATION"
+    },
+    "title": {
+      "es": "Automatiza tareas administrativas con IA sin perder trazabilidad ni control.",
+      "en": "Automate administrative work with AI without losing traceability or control."
+    },
+    "lead": {
+      "es": "Los procesos administrativos concentran correos, documentos, validaciones, copias de datos y seguimientos que consumen tiempo sin requerir criterio humano en cada paso. Un Empleado IA puede preparar y ejecutar tareas acotadas, siempre que los permisos, excepciones y puntos de aprobación estén definidos antes de aumentar la autonomía.",
+      "en": "Administrative processes concentrate email, documents, validations, data entry and follow-up that consume time without requiring human judgement at every step. An AI Employee can prepare and execute bounded tasks when permissions, exceptions and approval points are defined before autonomy is increased."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Qué tareas administrativas conviene automatizar primero",
+          "en": "Which administrative tasks to automate first"
+        },
+        "paragraphs": {
+          "es": [
+            "Los mejores candidatos suelen ser frecuentes, repetibles y fáciles de comprobar: clasificar correos y solicitudes, extraer datos de documentos, preparar altas, recopilar documentación pendiente, crear borradores, actualizar estados o recordar próximos pasos.",
+            "Conviene evitar empezar por decisiones excepcionales o procesos donde una equivocación provoque una acción difícil de revertir. Primero se automatiza la preparación y el movimiento de información; después, si los resultados son estables, se amplía la capacidad de ejecución."
+          ],
+          "en": [
+            "Strong first candidates are frequent, repeatable and easy to verify: classifying email and requests, extracting document data, preparing onboarding records, collecting missing documentation, drafting documents, updating statuses or reminding people about next steps.",
+            "Avoid starting with exceptional decisions or workflows where an error creates an action that is hard to reverse. Automate information preparation and movement first, then expand execution authority only after results are stable."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Conectar correo, documentos, CRM y ERP con permisos mínimos",
+          "en": "Connect email, documents, CRM and ERP with least privilege"
+        },
+        "paragraphs": {
+          "es": [
+            "La automatización administrativa suele cruzar varias herramientas. El agente puede necesitar leer una bandeja concreta, consultar una carpeta autorizada, crear un registro o proponer una actualización, pero no por ello debe recibir acceso general a todos los datos de la empresa.",
+            "Separar permisos de lectura, escritura y aprobación reduce riesgo y facilita auditar el flujo. Una tarea de recopilación documental, por ejemplo, puede consultar el expediente y solicitar archivos pendientes sin tener autoridad para aprobar el expediente."
+          ],
+          "en": [
+            "Administrative automation often crosses several tools. The agent may need to read a specific mailbox, access an authorised folder, create a record or propose an update, but that does not justify broad access to all company data.",
+            "Separating read, write and approval permissions reduces risk and makes the workflow easier to audit. A document-collection task, for example, can review a file and request missing documents without having authority to approve the file."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Mantener aprobaciones humanas en cambios sensibles",
+          "en": "Keep human approvals for sensitive changes"
+        },
+        "paragraphs": {
+          "es": [
+            "Pagos, cambios contractuales, altas definitivas, cancelaciones, modificaciones contables o decisiones fuera de política deberían tener un nivel de autoridad explícito. El Empleado IA puede preparar la acción y reunir el contexto, dejando la confirmación final a una persona cuando corresponda.",
+            "Una aprobación útil muestra qué se va a cambiar, de dónde salen los datos y qué excepciones detectó el agente. Así el control humano no se convierte en revisar el proceso completo desde cero."
+          ],
+          "en": [
+            "Payments, contract changes, final onboarding, cancellations, accounting changes or out-of-policy decisions should have an explicit authority level. The AI Employee can prepare the action and gather context while leaving final confirmation to a person when appropriate.",
+            "A useful approval shows what will change, where the data came from and which exceptions the agent detected. Human control should not require rebuilding the whole process from scratch."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Medir retrabajo, excepciones y tiempo de ciclo",
+          "en": "Measure rework, exceptions and cycle time"
+        },
+        "paragraphs": {
+          "es": [
+            "La velocidad por sí sola no demuestra que un proceso administrativo esté mejorando. Hay que medir cuántas tareas necesitan corrección, cuántas quedan bloqueadas por información incompleta, cuánto tardan las aprobaciones y qué pasos siguen generando trabajo manual.",
+            "Estas métricas ayudan a decidir dónde ampliar la automatización, qué reglas necesitan ajuste y qué tareas deben permanecer bajo supervisión humana."
+          ],
+          "en": [
+            "Speed alone does not prove that an administrative process is improving. Track how many tasks need correction, how many are blocked by missing information, how long approvals take and which steps still generate manual work.",
+            "These metrics help decide where to expand automation, which rules need adjustment and which tasks should remain under human supervision."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Ejemplo de flujo administrativo con IA",
+        "en": "Example AI administrative workflow"
+      },
+      "steps": {
+        "es": [
+          "Llega una solicitud por correo, formulario o sistema interno.",
+          "El Empleado IA clasifica la tarea y comprueba qué datos o documentos faltan.",
+          "Consulta únicamente las fuentes autorizadas y reúne la información necesaria.",
+          "Prepara el registro, documento o actualización siguiendo las reglas del proceso.",
+          "Si la acción necesita autorización, genera una aprobación con contexto para una persona.",
+          "Tras la aprobación, ejecuta solo las acciones permitidas y registra el resultado."
+        ],
+        "en": [
+          "A request arrives through email, a form or an internal system.",
+          "The AI Employee classifies the task and checks which data or documents are missing.",
+          "It retrieves information only from authorised sources.",
+          "It prepares the record, document or update according to process rules.",
+          "If the action needs authorisation, it creates an approval with context for a person.",
+          "After approval, it executes only permitted actions and records the outcome."
+        ]
+      }
+    },
+    "metrics": {
+      "es": ["Tiempo de ciclo por trámite", "Tareas que requieren corrección", "Solicitudes bloqueadas por información incompleta", "Tiempo medio hasta aprobación", "Porcentaje de excepciones", "Trabajo manual evitado"],
+      "en": ["Cycle time per request", "Tasks requiring correction", "Requests blocked by missing information", "Average approval time", "Exception rate", "Manual work avoided"]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Qué tareas administrativas puede hacer un Empleado IA?",
+          "en": "Which administrative tasks can an AI Employee perform?"
+        },
+        "answer": {
+          "es": "Puede clasificar solicitudes, extraer y validar datos, recopilar documentación, preparar borradores, actualizar estados y coordinar pasos entre sistemas cuando dispone de integraciones y permisos adecuados. El alcance debe definirse proceso por proceso.",
+          "en": "It can classify requests, extract and validate data, collect documentation, prepare drafts, update statuses and coordinate steps between systems when suitable integrations and permissions exist. Scope should be defined process by process."
+        }
+      },
+      {
+        "question": {
+          "es": "¿La IA debería aprobar trámites o cambios administrativos por sí sola?",
+          "en": "Should AI approve administrative requests or changes on its own?"
+        },
+        "answer": {
+          "es": "Solo en decisiones acotadas que la empresa haya definido expresamente. Cambios sensibles, excepciones, operaciones económicas o acciones difíciles de revertir pueden mantenerse bajo aprobación humana aunque la IA prepare todo el trabajo previo.",
+          "en": "Only for bounded decisions the business has explicitly authorised. Sensitive changes, exceptions, financial operations or hard-to-reverse actions can remain under human approval even when AI prepares the preceding work."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Hace falta sustituir el ERP o el software administrativo actual?",
+          "en": "Do we need to replace our ERP or current administrative software?"
+        },
+        "answer": {
+          "es": "No necesariamente. La automatización puede apoyarse en APIs, correo, formularios y conectores disponibles. La viabilidad concreta depende de las capacidades de integración y seguridad de cada sistema existente.",
+          "en": "Not necessarily. Automation can use available APIs, email, forms and connectors. The exact feasibility depends on the integration and security capabilities of each existing system."
+        }
+      }
+    ],
+    "relatedArticleKey": "automate-administrative-tasks-human-approval",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
   }
 ]
