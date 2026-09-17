@@ -334,5 +334,117 @@
     "relatedLandingKey": "ai-administrative-automation",
     "publishedAt": "2026-09-17",
     "updatedAt": "2026-09-17"
+  },
+  {
+    "key": "automate-invoicing-accounting-human-review",
+    "slugs": {
+      "es": "como-automatizar-facturacion-contabilidad-con-ia-y-revision-humana",
+      "en": "how-to-automate-invoicing-and-accounting-with-ai-and-human-review"
+    },
+    "seoTitle": {
+      "es": "Cómo automatizar facturación y contabilidad con IA y revisión humana | IA Empleado",
+      "en": "How to automate invoicing and accounting with AI and human review | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía práctica para automatizar preparación de facturas, clasificación, comprobaciones y conciliaciones con IA, trazabilidad y revisión humana.",
+      "en": "A practical guide to automating invoice preparation, classification, checks and reconciliation with AI, traceability and human review."
+    },
+    "title": {
+      "es": "Cómo automatizar facturación y contabilidad con IA sin perder la revisión humana",
+      "en": "How to automate invoicing and accounting with AI without losing human review"
+    },
+    "excerpt": {
+      "es": "La IA puede quitar trabajo repetitivo de facturación y contabilidad sin asumir decisiones financieras sensibles: prepara, comprueba, concilia y explica excepciones para que una persona revise donde realmente importa.",
+      "en": "AI can remove repetitive invoicing and accounting work without taking over sensitive financial decisions: it prepares, checks, reconciles and explains exceptions so people review where it matters."
+    },
+    "intro": {
+      "es": "Facturación y contabilidad combinan volumen documental, reglas repetitivas y excepciones que sí necesitan criterio. Esa mezcla encaja bien con una automatización por niveles: la IA puede capturar y preparar información, proponer coincidencias y detectar anomalías, mientras la contabilización excepcional, los pagos y la interpretación fiscal permanecen bajo los controles definidos por la empresa.",
+      "en": "Invoicing and accounting combine document volume, repetitive rules and exceptions that still need judgement. That mix fits staged automation well: AI can capture and prepare information, propose matches and detect anomalies while exceptional postings, payments and tax interpretation remain under the controls defined by the business."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Automatiza primero el trabajo que precede a la decisión",
+          "en": "Automate the work that comes before the decision first"
+        },
+        "paragraphs": {
+          "es": [
+            "Extraer campos de una factura, localizar el proveedor, comprobar referencias, detectar un posible duplicado o preparar un borrador son tareas que pueden reducir mucho el trabajo manual sin trasladar a la IA la responsabilidad de una decisión contable sensible.",
+            "Separar preparación y decisión permite probar calidad con casos reales y ampliar el alcance únicamente cuando los resultados son consistentes."
+          ],
+          "en": [
+            "Extracting invoice fields, finding the supplier, checking references, detecting a possible duplicate or preparing a draft can reduce manual work without transferring responsibility for a sensitive accounting decision to AI.",
+            "Separating preparation from decision-making lets the team test quality on real cases and expand scope only when results are consistent."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Trata la conciliación como una propuesta explicable",
+          "en": "Treat reconciliation as an explainable proposal"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando dos registros coinciden por importe, referencia, proveedor y fecha, el agente puede proponer una conciliación y mostrar por qué considera que corresponden. Si faltan datos o existe una discrepancia, debe marcarla en lugar de ocultarla.",
+            "Este enfoque convierte la automatización en un filtro de trabajo: los casos claros avanzan y las excepciones llegan al equipo con el contexto necesario para resolverlas."
+          ],
+          "en": [
+            "When two records match on amount, reference, supplier and date, the agent can propose a reconciliation and show why it believes they correspond. If data is missing or there is a discrepancy, it should flag it rather than hide it.",
+            "This turns automation into a work filter: clear cases move forward and exceptions reach the team with the context needed to resolve them."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "No mezcles lectura, escritura y autorización financiera",
+          "en": "Do not mix read, write and financial authorisation permissions"
+        },
+        "paragraphs": {
+          "es": [
+            "Leer una factura, crear un borrador, registrar un asiento y autorizar un pago son capacidades distintas. Un diseño de mínimo privilegio concede únicamente lo necesario para cada paso y mantiene las acciones de mayor impacto detrás de controles adicionales.",
+            "La revisión humana puede ser selectiva: no tiene sentido repetir todo el proceso, pero sí revisar excepciones, propuestas fuera de reglas, importes relevantes o acciones con consecuencias difíciles de revertir."
+          ],
+          "en": [
+            "Reading an invoice, creating a draft, posting an entry and authorising a payment are different capabilities. A least-privilege design grants only what each step requires and keeps higher-impact actions behind additional controls.",
+            "Human review can be selective: there is no value in repeating the whole process, but exceptions, out-of-rule proposals, material amounts or hard-to-reverse actions should receive appropriate review."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Usa el historial de excepciones para mejorar reglas y controles",
+          "en": "Use exception history to improve rules and controls"
+        },
+        "paragraphs": {
+          "es": [
+            "Si el agente registra por qué un documento no pudo procesarse, qué campo necesitó corrección o qué discrepancia bloqueó una conciliación, el equipo obtiene un mapa real de los puntos débiles del proceso.",
+            "Ese historial sirve para mejorar plantillas, integraciones y reglas, pero también para identificar casos que deberían permanecer bajo criterio profesional. La automatización debe respetar siempre las obligaciones contables, fiscales y regulatorias aplicables."
+          ],
+          "en": [
+            "If the agent records why a document could not be processed, which field required correction or which discrepancy blocked a reconciliation, the team gets a real map of process weaknesses.",
+            "That history can improve templates, integrations and rules, while also identifying cases that should remain under professional judgement. Automation must always respect applicable accounting, tax and regulatory obligations."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Automatiza captura, clasificación y preparación antes de decisiones sensibles.",
+        "Haz que las conciliaciones propuestas expliquen por qué coinciden los datos.",
+        "Separa permisos de lectura, escritura y autorización financiera.",
+        "Escala discrepancias y operaciones sensibles con contexto suficiente.",
+        "Mantén revisión profesional y cumplimiento aplicable donde corresponda."
+      ],
+      "en": [
+        "Automate capture, classification and preparation before sensitive decisions.",
+        "Make proposed reconciliations explain why the data matches.",
+        "Separate read, write and financial authorisation permissions.",
+        "Escalate discrepancies and sensitive operations with sufficient context.",
+        "Keep appropriate professional review and applicable compliance controls."
+      ]
+    },
+    "relatedLandingKey": "ai-invoicing-accounting-automation",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-09-17"
   }
 ]
