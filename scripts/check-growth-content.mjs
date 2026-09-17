@@ -1,21 +1,37 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 
 const readJson = async (relativePath) =>
   JSON.parse(await readFile(new URL(relativePath, import.meta.url), "utf8"));
 
+const readDailyRecords = async (suffix) => {
+  const directory = new URL("../content/growth/daily/", import.meta.url);
+  const files = (await readdir(directory)).filter((name) => name.endsWith(suffix)).sort();
+  const records = await Promise.all(
+    files.map(async (name) => {
+      const value = JSON.parse(await readFile(new URL(name, directory), "utf8"));
+      return Array.isArray(value) ? value : [];
+    }),
+  );
+  return records.flat();
+};
+
 const legacyLandings = await readJson("../content/growth/landings.json");
 const incrementalLandings = await readJson("../content/growth/incremental-landings.json");
+const dailyLandings = await readDailyRecords(".landings.json");
 const legacyArticles = await readJson("../content/growth/articles.json");
 const incrementalArticles = await readJson("../content/growth/incremental-articles.json");
+const dailyArticles = await readDailyRecords(".articles.json");
 
-const landings = [...legacyLandings, ...incrementalLandings];
-const articles = [...legacyArticles, ...incrementalArticles];
+const landings = [...legacyLandings, ...incrementalLandings, ...dailyLandings];
+const articles = [...legacyArticles, ...incrementalArticles, ...dailyArticles];
+const editorialLandings = [...incrementalLandings, ...dailyLandings];
+const editorialArticles = [...incrementalArticles, ...dailyArticles];
 
 const errors = [];
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const MIN_INCREMENTAL_LANDING_WORDS = 900;
-const MIN_INCREMENTAL_ARTICLE_WORDS = 1200;
+const MIN_EDITORIAL_LANDING_WORDS = 900;
+const MIN_EDITORIAL_ARTICLE_WORDS = 1200;
 
 function requireText(value, label) {
   if (typeof value !== "string" || !value.trim()) errors.push(`${label} must be non-empty text`);
@@ -113,23 +129,23 @@ for (const article of articles) {
   requireText(article.relatedLandingKey, `${article.key}.relatedLandingKey`);
 }
 
-for (const landing of incrementalLandings) {
+for (const landing of editorialLandings) {
   for (const locale of ["es", "en"]) {
     const words = wordCount(landingEditorialCopy(landing, locale));
-    if (words < MIN_INCREMENTAL_LANDING_WORDS) {
+    if (words < MIN_EDITORIAL_LANDING_WORDS) {
       errors.push(
-        `${landing.key}.${locale} needs at least ${MIN_INCREMENTAL_LANDING_WORDS} editorial words; found ${words}`,
+        `${landing.key}.${locale} needs at least ${MIN_EDITORIAL_LANDING_WORDS} editorial words; found ${words}`,
       );
     }
   }
 }
 
-for (const article of incrementalArticles) {
+for (const article of editorialArticles) {
   for (const locale of ["es", "en"]) {
     const words = wordCount(articleEditorialCopy(article, locale));
-    if (words < MIN_INCREMENTAL_ARTICLE_WORDS) {
+    if (words < MIN_EDITORIAL_ARTICLE_WORDS) {
       errors.push(
-        `${article.key}.${locale} needs at least ${MIN_INCREMENTAL_ARTICLE_WORDS} editorial words; found ${words}`,
+        `${article.key}.${locale} needs at least ${MIN_EDITORIAL_ARTICLE_WORDS} editorial words; found ${words}`,
       );
     }
   }
@@ -158,5 +174,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Incremental minimums: ${MIN_INCREMENTAL_LANDING_WORDS} words/landing/locale, ${MIN_INCREMENTAL_ARTICLE_WORDS} words/article/locale.`,
+  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s).`,
 );
