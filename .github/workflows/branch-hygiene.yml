@@ -42,18 +42,22 @@ jobs:
           BRANCH: ${{ github.event.pull_request.head.ref }}
         run: |
           set -euo pipefail
+
           if [[ -z "$BRANCH" || "$BRANCH" == "main" ]]; then
             exit 0
           fi
+
           if ! git ls-remote --exit-code --heads origin "refs/heads/$BRANCH" > /dev/null 2>&1; then
             echo "Merged PR branch is already absent: $BRANCH"
             exit 0
           fi
 
           echo "Deleting merged PR branch: $BRANCH"
-          git push origin --delete "$BRANCH"
+          if ! git push origin --delete "$BRANCH"; then
+            echo "Could not delete $BRANCH (possibly protected); keeping it."
+          fi
 
-      - name: Prune branches already contained in main
+      - name: Prune branches safely merged into main
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -62,7 +66,17 @@ jobs:
 
           git fetch origin '+refs/heads/*:refs/remotes/origin/*' --prune
 
-          gh pr list             --repo "$GITHUB_REPOSITORY"             --state open             --json headRefName             --jq '.[].headRefName' > /tmp/open-pr-heads.txt
+          gh pr list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --limit 1000 \
+            --json headRefName \
+            --jq '.[].headRefName' > /tmp/open-pr-heads.txt
+
+          gh api --paginate \
+            "repos/$GITHUB_REPOSITORY/pulls?state=closed&per_page=100" \
+            --jq '.[] | select(.merged_at != null and .head.repo.full_name == .base.repo.full_name) | [.head.ref, .head.sha] | @tsv' \
+            > /tmp/merged-pr-heads.tsv
 
           deleted=0
           skipped=0
@@ -80,14 +94,28 @@ jobs:
               continue
             fi
 
+            current_sha="$(git rev-parse "$ref")"
+            delete_reason=""
+
             if git merge-base --is-ancestor "$ref" origin/main; then
-              echo "Deleting fully merged branch: $branch"
+              delete_reason="tip is contained in main"
+            elif awk -F '\t' -v branch="$branch" -v sha="$current_sha" \
+              '$1 == branch && $2 == sha { found=1 } END { exit found ? 0 : 1 }' \
+              /tmp/merged-pr-heads.tsv; then
+              delete_reason="tip exactly matches a merged PR head"
+            fi
+
+            if [[ -n "$delete_reason" ]]; then
+              echo "Deleting safely merged branch: $branch ($delete_reason)"
               if git push origin --delete "$branch"; then
                 deleted=$((deleted + 1))
               else
                 echo "Could not delete $branch (possibly protected); keeping it."
                 skipped=$((skipped + 1))
               fi
+            else
+              echo "Keeping divergent/unverified branch: $branch"
+              skipped=$((skipped + 1))
             fi
           done < <(git for-each-ref --format='%(refname:short)' refs/remotes/origin/ | sort)
 
