@@ -232,3 +232,11 @@ Phase 2D preserves the production-verified `1200 × 630` Open Graph/share render
 The system uses canonical characters only where semantically relevant, keeps ROI campaign media character-neutral, validates unknown formats/surfaces with 404, and protects the generator with static contracts plus browser dimension tests. The route runs on Node.js and uses Sharp only to rasterize the approved canonical WebP/SVG sources in memory for `ImageResponse` compatibility; normal website portrait delivery remains unchanged.
 
 PR #51 was validated by Web CI #128 and squash-merged to `main` as `745d3d1f6371cdb8200afd7a7aa98cb8ff8cc702`. Web CI #129 (`34744316003`) passed on `main`; Hostinger served `branding-phase-2d-campaign-social-variants`; Production Verification #9 (`34744481711`) passed directly against `iaempleado.com`, including campaign media, geometry, role families, collaboration compositions, sector hero art, responsive UX and accessibility. Full evidence is recorded in [`branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md`](branding/PHASE_2D_CAMPAIGN_SOCIAL_VARIANTS.md).
+
+## License
+
+IA Empleado Web is **proprietary software and commercial content**. Public repository visibility does not make this project open source and does not grant permission to reuse, modify, redistribute, deploy or commercially exploit the original code, documentation, SEO content, branding, characters, artwork or other project materials.
+
+Copyright (c) 2026 **Eduardo Jose Yauri Luna** — NIF 60281451S. All rights reserved.
+
+See [LICENSE](LICENSE) for the complete terms and [NOTICE](NOTICE) for the repository notice. Third-party dependencies remain subject to their respective licences and terms.
