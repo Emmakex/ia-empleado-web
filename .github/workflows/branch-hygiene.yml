@@ -43,6 +43,11 @@ jobs:
           if [[ -z "$BRANCH" || "$BRANCH" == "main" ]]; then
             exit 0
           fi
+          if ! git ls-remote --exit-code --heads origin "refs/heads/$BRANCH" > /dev/null 2>&1; then
+            echo "Merged PR branch is already absent: $BRANCH"
+            exit 0
+          fi
+
           echo "Deleting merged PR branch: $BRANCH"
           git push origin --delete "$BRANCH"
 
