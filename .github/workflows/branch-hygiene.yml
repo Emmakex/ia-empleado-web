@@ -3,6 +3,8 @@ name: Branch Hygiene
 on:
   push:
     branches: [main]
+    paths:
+      - ".github/workflows/branch-hygiene.yml"
   pull_request:
     types: [closed]
     branches: [main]
