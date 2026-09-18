@@ -1,0 +1,87 @@
+name: Branch Hygiene
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: branch-hygiene
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    name: Delete safely merged branches
+    if: >-
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Delete merged same-repository PR head
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.merged == true &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$BRANCH" || "$BRANCH" == "main" ]]; then
+            exit 0
+          fi
+          echo "Deleting merged PR branch: $BRANCH"
+          git push origin --delete "$BRANCH"
+
+      - name: Prune branches already contained in main
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' --prune
+
+          gh pr list             --repo "$GITHUB_REPOSITORY"             --state open             --json headRefName             --jq '.[].headRefName' > /tmp/open-pr-heads.txt
+
+          deleted=0
+          skipped=0
+
+          while IFS= read -r ref; do
+            branch="${ref#origin/}"
+
+            if [[ -z "$branch" || "$branch" == "main" || "$branch" == "HEAD" ]]; then
+              continue
+            fi
+
+            if grep -Fxq "$branch" /tmp/open-pr-heads.txt; then
+              echo "Keeping branch with open PR: $branch"
+              skipped=$((skipped + 1))
+              continue
+            fi
+
+            if git merge-base --is-ancestor "$ref" origin/main; then
+              echo "Deleting fully merged branch: $branch"
+              if git push origin --delete "$branch"; then
+                deleted=$((deleted + 1))
+              else
+                echo "Could not delete $branch (possibly protected); keeping it."
+                skipped=$((skipped + 1))
+              fi
+            fi
+          done < <(git for-each-ref --format='%(refname:short)' refs/remotes/origin/ | sort)
+
+          echo "Branch hygiene complete: deleted=$deleted skipped=$skipped"
