@@ -1,0 +1,326 @@
+[
+  {
+    "key": "ai-erp-automation",
+    "slugs": {
+      "es": "automatizacion-erp-ia",
+      "en": "ai-erp-automation"
+    },
+    "seoTitle": {
+      "es": "Automatización ERP con IA y control humano | IA Empleado",
+      "en": "AI ERP automation with human control | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Automatiza tareas de ERP, compras, pedidos, stock, facturación y datos con IA, permisos mínimos, trazabilidad y aprobación humana.",
+      "en": "Automate ERP tasks, purchasing, orders, inventory, invoicing and data with AI, least-privilege access, traceability and human approval."
+    },
+    "eyebrow": {
+      "es": "AUTOMATIZACIÓN ERP CON IA",
+      "en": "AI ERP AUTOMATION"
+    },
+    "title": {
+      "es": "Automatiza tu ERP con IA sin perder control sobre operaciones, datos y aprobaciones.",
+      "en": "Automate your ERP with AI without losing control of operations, data and approvals."
+    },
+    "lead": {
+      "es": "Un Empleado IA conectado a un ERP puede reducir trabajo repetitivo en pedidos, compras, inventario, facturación, conciliaciones, datos maestros y tareas administrativas. El valor no está en dejar que la IA modifique el sistema sin límites, sino en crear una capa operativa que lea información autorizada, prepare acciones verificables, ejecute solo cambios permitidos y escale excepciones a una persona. Así la automatización ERP con IA puede mejorar velocidad y calidad sin convertir el sistema central de la empresa en una caja negra.",
+      "en": "An AI Employee connected to an ERP can reduce repetitive work across orders, purchasing, inventory, invoicing, reconciliations, master data and administrative tasks. The value does not come from allowing AI to change the system without limits, but from creating an operational layer that reads authorised information, prepares verifiable actions, executes only permitted changes and escalates exceptions to a person. This allows AI ERP automation to improve speed and quality without turning the company's core system into a black box."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Qué significa automatizar un ERP con IA",
+          "en": "What AI ERP automation actually means"
+        },
+        "paragraphs": {
+          "es": [
+            "Automatizar un ERP con IA significa conectar un agente a procesos concretos del sistema para que pueda interpretar solicitudes, consultar datos, preparar registros, ejecutar acciones autorizadas y dejar trazabilidad. No implica sustituir el ERP ni permitir que un modelo generativo escriba libremente en contabilidad, stock o compras. El ERP sigue siendo la fuente de verdad de la operación y la IA actúa como una capa de trabajo que acelera tareas repetitivas, organiza información y ayuda a las personas a gestionar excepciones.",
+            "Los primeros casos de uso suelen estar en tareas de alta frecuencia y reglas relativamente claras: crear borradores de pedidos, comprobar datos de proveedores, detectar documentos incompletos, preparar solicitudes de compra, clasificar incidencias, resumir movimientos o avisar de desviaciones. A partir de ahí puede aumentarse autonomía si las métricas demuestran estabilidad. La regla práctica es sencilla: cuanto mayor sea el impacto financiero, legal, fiscal o de inventario, mayor debe ser el nivel de control humano."
+          ],
+          "en": [
+            "AI ERP automation means connecting an agent to specific system processes so it can interpret requests, read data, prepare records, perform authorised actions and preserve an audit trail. It does not mean replacing the ERP or allowing a generative model to write freely into accounting, inventory or purchasing records. The ERP remains the operational source of truth while AI works as a controlled execution layer that accelerates repetitive tasks, organises information and helps people manage exceptions.",
+            "The first use cases are usually high-frequency tasks governed by relatively clear rules: creating order drafts, checking supplier data, detecting incomplete documents, preparing purchase requests, classifying incidents, summarising movements or flagging deviations. Autonomy can then increase when metrics show stable performance. A practical rule is simple: the greater the financial, legal, tax or inventory impact, the stronger the human control should be."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Compras y proveedores: menos administración y más control",
+          "en": "Purchasing and suppliers: less administration, more control"
+        },
+        "paragraphs": {
+          "es": [
+            "En compras, la IA puede leer solicitudes internas, identificar producto o servicio, comprobar si existe proveedor homologado, recuperar condiciones disponibles y preparar una solicitud de compra. También puede comparar campos de presupuestos, detectar ausencia de referencias, fechas o impuestos y presentar a la persona responsable una propuesta estructurada antes de crear el documento definitivo. Esto reduce tareas de copia y pega sin convertir la selección de proveedor en una decisión automática.",
+            "Las aprobaciones económicas deben seguir las políticas de la empresa. Un agente puede validar que el centro de coste sea correcto, comprobar límites, localizar contratos o alertar de una desviación, pero no debería saltarse niveles de autorización ni reinterpretar una política de gasto por su cuenta. La automatización útil es la que elimina fricción alrededor de la decisión y mantiene visible quién aprueba, con qué información y bajo qué regla."
+          ],
+          "en": [
+            "In purchasing, AI can read internal requests, identify the product or service, check whether an approved supplier exists, retrieve available terms and prepare a purchase request. It can also compare quote fields, detect missing references, dates or taxes and present a structured proposal to the responsible person before the final document is created. This reduces copy-and-paste work without turning supplier selection into an automatic decision.",
+            "Financial approvals should continue to follow company policy. An agent can validate the cost centre, check limits, locate contracts or flag a deviation, but it should not bypass approval levels or reinterpret spending policy on its own. Useful automation removes friction around the decision while keeping visible who approves, with which information and under which rule."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Pedidos, ventas y operaciones conectadas",
+          "en": "Orders, sales and connected operations"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando los pedidos llegan por email, formularios, ecommerce, CRM o documentos, un Empleado IA puede ayudar a normalizar la información antes de que entre al ERP. Puede identificar cliente, referencias, cantidades, direcciones, condiciones pactadas y fechas solicitadas, contrastarlas con datos existentes y crear un borrador. Si falta información o existe una contradicción, el flujo debe detenerse y pedir revisión en lugar de inventar una respuesta.",
+            "En el sentido inverso, la IA puede consultar el estado del pedido, disponibilidad, expedición o factura y preparar una respuesta para el equipo o el cliente sin alterar la operación. Esta separación entre lectura, propuesta y escritura ayuda a desplegar por fases: primero se automatiza la consulta y el borrador; después, cuando el proceso demuestra calidad, se permiten acciones de bajo riesgo como crear tareas o actualizar campos previamente definidos."
+          ],
+          "en": [
+            "When orders arrive through email, forms, ecommerce, CRM systems or documents, an AI Employee can help normalise information before it enters the ERP. It can identify the customer, references, quantities, addresses, agreed terms and requested dates, compare them with existing records and create a draft. If information is missing or contradictory, the flow should stop for review rather than invent an answer.",
+            "In the opposite direction, AI can read order status, availability, shipment or invoice information and prepare a response for the team or customer without changing the operation. This separation between reading, proposing and writing supports phased deployment: first automate lookup and drafting; later, once quality is proven, allow low-risk actions such as creating tasks or updating pre-authorised fields."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Inventario y stock: detectar señales sin inventar disponibilidad",
+          "en": "Inventory and stock: detect signals without inventing availability"
+        },
+        "paragraphs": {
+          "es": [
+            "El inventario es un área donde una automatización aparentemente pequeña puede tener consecuencias importantes. La IA puede resumir rotación, identificar referencias con movimientos atípicos, revisar pedidos pendientes, agrupar incidencias o avisar de posibles roturas de stock a partir de los datos disponibles. Sin embargo, la cantidad real debe proceder del ERP o del sistema logístico autorizado; una estimación nunca debe presentarse como stock confirmado.",
+            "También puede asistir en recuentos y ajustes preparando listas de discrepancias, cruzando ubicaciones, lotes o números de serie y priorizando casos para revisión. Los ajustes de inventario deben quedar sometidos a permisos específicos, porque afectan valoración, disponibilidad y, en algunos sectores, trazabilidad regulatoria. La IA puede acelerar la investigación, pero la fuente y la acción final deben quedar perfectamente registradas."
+          ],
+          "en": [
+            "Inventory is an area where a seemingly small automation can have significant consequences. AI can summarise turnover, identify items with unusual movements, review pending orders, group incidents or flag potential stock-outs based on available data. However, the real quantity must come from the ERP or authorised logistics system; an estimate should never be presented as confirmed stock.",
+            "It can also assist with counts and adjustments by preparing discrepancy lists, cross-checking locations, lots or serial numbers and prioritising cases for review. Inventory adjustments should remain behind specific permissions because they affect valuation, availability and, in some sectors, regulated traceability. AI can accelerate investigation, but the source and final action must remain fully recorded."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Facturación, cobros y conciliación con reglas claras",
+          "en": "Invoicing, collections and reconciliation with clear rules"
+        },
+        "paragraphs": {
+          "es": [
+            "En facturación, el agente puede comprobar que un pedido tenga datos suficientes, localizar albaranes, identificar diferencias entre pedido y factura, preparar borradores o clasificar incidencias. También puede ayudar a relacionar cobros con documentos cuando existen referencias fiables. El objetivo es reducir el tiempo que una persona dedica a buscar información dispersa y señalar rápidamente qué casos cumplen las reglas y cuáles necesitan intervención.",
+            "La creación definitiva de facturas, cambios de base imponible, impuestos, abonos, devoluciones o cancelaciones requiere controles más estrictos. La automatización debe respetar la lógica fiscal y contable configurada en el ERP, registrar qué datos se utilizaron y exigir aprobación cuando el impacto lo justifique. La IA no sustituye las reglas del sistema ni el criterio profesional; las utiliza como límites para operar de forma segura."
+          ],
+          "en": [
+            "In invoicing, an agent can check whether an order has sufficient data, locate delivery notes, identify differences between order and invoice, prepare drafts or classify exceptions. It can also help match payments to documents when reliable references exist. The objective is to reduce the time people spend searching scattered information and quickly identify which cases meet the rules and which require intervention.",
+            "Final invoice creation, tax-base changes, tax handling, credit notes, refunds or cancellations require stronger controls. Automation should respect the accounting and tax logic configured in the ERP, record which data was used and require approval when the impact warrants it. AI does not replace system rules or professional judgement; it uses them as operational boundaries."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Datos maestros: clientes, proveedores, productos y cuentas",
+          "en": "Master data: customers, suppliers, products and accounts"
+        },
+        "paragraphs": {
+          "es": [
+            "Los datos maestros determinan la calidad de casi todos los procesos posteriores. Una dirección duplicada, un proveedor mal identificado o una unidad de medida incorrecta puede multiplicar errores. La IA puede detectar posibles duplicados, proponer normalizaciones, localizar campos vacíos, comparar información con fuentes autorizadas y preparar altas o cambios. Para datos críticos conviene mantener un modo propuesta que obligue a validar antes de guardar.",
+            "También es importante diferenciar hechos de inferencias. Si el sistema conoce el NIF, la dirección fiscal o el código de producto desde una fuente verificada, el agente puede reutilizarlo. Si intenta deducir una categoría o relación a partir de texto ambiguo, esa conclusión debe marcarse como propuesta y no convertirse automáticamente en dato maestro. Esta disciplina evita que la automatización acelere la propagación de errores."
+          ],
+          "en": [
+            "Master data determines the quality of almost every downstream process. A duplicated address, incorrectly identified supplier or wrong unit of measure can multiply errors. AI can detect possible duplicates, propose normalisation, locate missing fields, compare information against authorised sources and prepare new records or changes. Critical data should often remain in proposal mode so a person validates it before saving.",
+            "It is also important to distinguish facts from inference. If the system knows a tax identifier, registered address or product code from a verified source, the agent can reuse it. If it infers a category or relationship from ambiguous text, that conclusion should be marked as a proposal rather than automatically becoming master data. This discipline prevents automation from accelerating the spread of errors."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "ERP, CRM, ecommerce y helpdesk sin crear otra isla de datos",
+          "en": "ERP, CRM, ecommerce and helpdesk without creating another data island"
+        },
+        "paragraphs": {
+          "es": [
+            "La mayor parte del valor aparece cuando el ERP deja de ser un sistema aislado y se coordina con CRM, ecommerce, email, helpdesk, almacén o herramientas de proyectos. El agente puede recuperar el contexto necesario de cada fuente y ejecutar el proceso sin copiar todos los datos en una base paralela. Para ello hay que definir qué sistema es propietario de cada tipo de información y evitar que dos aplicaciones compitan por escribir el mismo campo.",
+            "Un ejemplo es una incidencia de cliente que requiere conocer pedido, factura y conversación comercial. El agente puede consultar el CRM para el contexto, el ERP para los documentos y el helpdesk para el estado del caso. Después prepara una respuesta o tarea, pero no modifica importes ni condiciones sin autorización. El diseño por fuentes de verdad reduce inconsistencias y facilita auditoría."
+          ],
+          "en": [
+            "Much of the value appears when the ERP stops acting as an isolated system and coordinates with CRM, ecommerce, email, helpdesk, warehouse or project tools. An agent can retrieve the necessary context from each source and execute the process without copying all data into a parallel database. This requires defining which system owns each type of information and preventing two applications from competing to write the same field.",
+            "For example, a customer issue may require order, invoice and commercial-conversation context. The agent can read the CRM for relationship history, the ERP for documents and the helpdesk for case status. It then prepares a response or task but does not change amounts or terms without authorisation. Designing around sources of truth reduces inconsistency and improves auditability."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Integraciones con SAP, Dynamics, Odoo, NetSuite, Sage y otros ERP",
+          "en": "Integrations with SAP, Dynamics, Odoo, NetSuite, Sage and other ERPs"
+        },
+        "paragraphs": {
+          "es": [
+            "La arquitectura concreta depende del ERP y de las interfaces disponibles. En algunos entornos la integración se hace mediante API; en otros mediante webhooks, colas, conectores, servicios intermedios, exportaciones controladas o automatización sobre interfaces existentes. Productos como SAP, Microsoft Dynamics 365, Odoo, Oracle NetSuite, Sage y otros sistemas empresariales pueden requerir aproximaciones diferentes según versión, configuración, licencias y módulos instalados.",
+            "Por eso una automatización ERP con IA debe empezar inventariando qué operaciones se pueden leer y escribir de forma soportada. Es preferible utilizar interfaces documentadas y permisos dedicados antes que depender de automatizaciones frágiles. Cuando un sistema legacy obliga a trabajar con archivos o pantallas, conviene encapsular esa complejidad detrás de un conector y mantener validaciones adicionales."
+          ],
+          "en": [
+            "The exact architecture depends on the ERP and the interfaces available. Some environments integrate through APIs; others use webhooks, queues, connectors, middleware, controlled exports or automation around existing interfaces. Products such as SAP, Microsoft Dynamics 365, Odoo, Oracle NetSuite, Sage and other enterprise systems can require different approaches depending on version, configuration, licensing and installed modules.",
+            "That is why an AI ERP automation project should begin by inventorying which operations can be read and written through supported mechanisms. Documented interfaces and dedicated permissions are preferable to fragile automation. When a legacy system requires files or user-interface interaction, that complexity should be encapsulated behind a connector with additional validation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Permisos mínimos, segregación de funciones y auditoría",
+          "en": "Least privilege, segregation of duties and auditability"
+        },
+        "paragraphs": {
+          "es": [
+            "Un agente no debería heredar permisos de administrador por comodidad. Debe disponer únicamente de las capacidades necesarias para cada proceso: por ejemplo leer pedidos, crear borradores y consultar stock, sin poder modificar cuentas bancarias o cerrar periodos contables. Esta separación reduce el radio de impacto de un error y facilita saber exactamente qué puede hacer la automatización.",
+            "También conviene aplicar segregación de funciones. El mismo agente que propone un alta de proveedor no debería autorizar un cambio bancario sensible sin una segunda validación. Cada acción debe registrar quién o qué la inició, qué fuente se consultó, qué regla permitió el paso y cuál fue el resultado. La trazabilidad convierte la automatización en un proceso gobernable y no en una secuencia opaca de decisiones."
+          ],
+          "en": [
+            "An agent should not inherit administrator permissions for convenience. It should receive only the capabilities required for each process: for example reading orders, creating drafts and checking stock without being able to change bank accounts or close accounting periods. This separation reduces the blast radius of errors and makes it clear exactly what the automation can do.",
+            "Segregation of duties also matters. The same agent that proposes a supplier record should not approve a sensitive bank-detail change without a second validation. Every action should record who or what initiated it, which source was consulted, which rule allowed the step and what the result was. Traceability turns automation into a governable process rather than an opaque sequence of decisions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Cómo medir el ROI de automatizar un ERP con IA",
+          "en": "How to measure the ROI of AI ERP automation"
+        },
+        "paragraphs": {
+          "es": [
+            "El retorno no debe medirse únicamente por el número de tareas ejecutadas. Una automatización ERP útil reduce tiempo administrativo, errores de transcripción, expedientes incompletos y retrasos, pero también puede mejorar consistencia y visibilidad. Antes de automatizar conviene medir una línea base: minutos por pedido, porcentaje de documentos que requieren corrección, tiempo de aprobación, incidencias por datos incompletos y volumen de tareas repetitivas.",
+            "Después del despliegue hay que comparar ahorro con calidad. Si el agente procesa rápido pero genera más correcciones, el beneficio puede ser aparente. Por eso resulta útil medir tasa de intervención humana, errores detectados, excepciones, tiempo hasta resolución y porcentaje de acciones completadas sin retrabajo. El objetivo no es maximizar autonomía, sino mejorar el proceso total con riesgo controlado."
+          ],
+          "en": [
+            "Return should not be measured only by the number of tasks executed. Useful ERP automation reduces administrative time, transcription errors, incomplete cases and delays, while also improving consistency and visibility. Before automating, establish a baseline: minutes per order, percentage of documents requiring correction, approval time, incidents caused by missing data and volume of repetitive tasks.",
+            "After deployment, compare savings with quality. If the agent processes work quickly but creates more corrections, the benefit may be misleading. Useful metrics therefore include human-intervention rate, detected errors, exceptions, time to resolution and percentage of actions completed without rework. The objective is not maximum autonomy but a better end-to-end process with controlled risk."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Empieza por un flujo concreto y amplía con evidencia",
+          "en": "Start with one concrete workflow and expand with evidence"
+        },
+        "paragraphs": {
+          "es": [
+            "Un proyecto de automatización ERP con IA funciona mejor cuando comienza con un proceso acotado. Puede ser revisar pedidos recibidos por email, preparar solicitudes de compra, clasificar facturas pendientes, completar borradores de alta de proveedor o detectar pedidos bloqueados. Se documentan entradas, reglas, excepciones, permisos y responsables antes de dar acceso al sistema.",
+            "Durante las primeras semanas conviene operar con mucha observabilidad: registrar decisiones, revisar muestras, medir correcciones y analizar los casos que el agente no pudo resolver. Si los resultados son estables se amplía alcance de forma gradual. Este enfoque evita desplegar una automatización generalista difícil de controlar y permite construir un Empleado IA realmente adaptado a la operativa de la empresa."
+          ],
+          "en": [
+            "An AI ERP automation project works best when it starts with a bounded process. It might review orders received by email, prepare purchase requests, classify pending invoices, complete supplier-onboarding drafts or detect blocked orders. Inputs, rules, exceptions, permissions and owners are documented before system access is granted.",
+            "During the first weeks, operate with strong observability: record decisions, review samples, measure corrections and analyse cases the agent could not resolve. If results remain stable, expand scope gradually. This approach avoids deploying a general-purpose automation that is difficult to govern and helps build an AI Employee genuinely adapted to the company's operations."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Ejemplo de flujo de automatización ERP con IA",
+        "en": "Example AI ERP automation workflow"
+      },
+      "steps": {
+        "es": [
+          "Entra una solicitud desde email, formulario, CRM, ecommerce o sistema interno.",
+          "El agente identifica el tipo de proceso y extrae únicamente los datos necesarios.",
+          "Consulta el ERP y las fuentes autorizadas para validar cliente, proveedor, producto, pedido o documento.",
+          "Aplica reglas deterministas y separa datos confirmados de inferencias.",
+          "Prepara un borrador, tarea, alerta o actualización dentro de los permisos concedidos.",
+          "Si la acción supera un límite económico, fiscal, contable o de inventario, solicita aprobación humana.",
+          "Registra fuentes, cambios, aprobación y resultado para mantener trazabilidad completa.",
+          "Las métricas de corrección, excepciones y ahorro alimentan revisiones periódicas antes de aumentar autonomía."
+        ],
+        "en": [
+          "A request arrives from email, a form, CRM, ecommerce or an internal system.",
+          "The agent identifies the process type and extracts only the data required.",
+          "It reads the ERP and authorised sources to validate the customer, supplier, product, order or document.",
+          "It applies deterministic rules and separates confirmed data from inference.",
+          "It prepares a draft, task, alert or update within the permissions granted.",
+          "If the action exceeds a financial, tax, accounting or inventory threshold, it requests human approval.",
+          "It records sources, changes, approval and outcome to preserve a complete audit trail.",
+          "Correction, exception and savings metrics feed periodic reviews before autonomy is increased."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Tiempo administrativo por pedido o documento",
+        "Documentos procesados sin retrabajo",
+        "Correcciones humanas por cada 100 acciones",
+        "Tiempo medio de aprobación",
+        "Incidencias por datos incompletos",
+        "Pedidos o compras bloqueadas",
+        "Discrepancias de inventario detectadas",
+        "Excepciones escaladas correctamente",
+        "Ahorro de horas por equipo",
+        "Errores evitados antes de contabilizar o expedir"
+      ],
+      "en": [
+        "Administrative time per order or document",
+        "Documents processed without rework",
+        "Human corrections per 100 actions",
+        "Average approval time",
+        "Incidents caused by incomplete data",
+        "Blocked orders or purchases",
+        "Inventory discrepancies detected",
+        "Exceptions correctly escalated",
+        "Hours saved per team",
+        "Errors prevented before posting or shipment"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Qué tareas de un ERP se pueden automatizar con IA?",
+          "en": "Which ERP tasks can be automated with AI?"
+        },
+        "answer": {
+          "es": "Se pueden automatizar tareas como lectura y clasificación de solicitudes, creación de borradores, validación de campos, seguimiento de pedidos, preparación de compras, detección de documentos incompletos, resúmenes de inventario, conciliaciones asistidas y actualización de campos previamente autorizados. Las acciones sensibles deben conservar reglas y aprobación humana.",
+          "en": "Tasks such as request reading and classification, draft creation, field validation, order follow-up, purchase preparation, incomplete-document detection, inventory summaries, assisted reconciliation and updates to pre-authorised fields can be automated. Sensitive actions should remain behind rules and human approval."
+        }
+      },
+      {
+        "question": {
+          "es": "¿La IA puede escribir directamente en el ERP?",
+          "en": "Can AI write directly into the ERP?"
+        },
+        "answer": {
+          "es": "Sí, pero solo conviene permitirlo en operaciones delimitadas, con permisos mínimos y validaciones. Una estrategia segura empieza con lectura y modo propuesta, después habilita escrituras de bajo riesgo y mantiene aprobación para cambios financieros, fiscales, contables, bancarios o de inventario relevantes.",
+          "en": "Yes, but direct writes should be limited to clearly bounded operations with least-privilege permissions and validation. A safer approach starts with read and proposal mode, then enables low-risk writes while preserving approval for significant financial, tax, accounting, banking or inventory changes."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Se puede integrar un Empleado IA con SAP, Dynamics, Odoo o NetSuite?",
+          "en": "Can an AI Employee integrate with SAP, Dynamics, Odoo or NetSuite?"
+        },
+        "answer": {
+          "es": "Puede integrarse cuando el entorno dispone de una interfaz soportada, como API, webhook, conector, servicio intermedio o intercambio de archivos controlado. La viabilidad exacta depende de versión, configuración, licencias y módulos, por lo que primero se revisan las interfaces disponibles.",
+          "en": "Integration is possible when the environment exposes a supported interface such as an API, webhook, connector, middleware service or controlled file exchange. Exact feasibility depends on version, configuration, licensing and modules, so the available interfaces should be reviewed first."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo evitar que la IA cause errores en stock o contabilidad?",
+          "en": "How do you prevent AI from causing inventory or accounting errors?"
+        },
+        "answer": {
+          "es": "Separando lectura, propuesta y ejecución; utilizando reglas deterministas para validaciones críticas; limitando los permisos; exigiendo aprobación para ajustes sensibles; y registrando fuentes, cambios y excepciones. Además deben medirse correcciones humanas y retrabajo para detectar degradaciones pronto.",
+          "en": "By separating reading, proposing and executing; using deterministic rules for critical validation; limiting permissions; requiring approval for sensitive adjustments; and recording sources, changes and exceptions. Human corrections and rework should also be measured to detect degradation early."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Hace falta cambiar de ERP para usar IA?",
+          "en": "Do we need to replace our ERP to use AI?"
+        },
+        "answer": {
+          "es": "No necesariamente. Muchas automatizaciones se construyen como una capa externa conectada al ERP existente. Cuando el sistema es legacy pueden utilizarse conectores, middleware, archivos estructurados o automatización de interfaz, aunque cuanto más limitada sea la integración disponible, mayores deben ser los controles.",
+          "en": "Not necessarily. Many automations are built as an external layer connected to the existing ERP. Legacy systems can use connectors, middleware, structured files or interface automation, although weaker integration options generally require stronger controls."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cuál es un buen primer caso de uso para automatización ERP con IA?",
+          "en": "What is a good first use case for AI ERP automation?"
+        },
+        "answer": {
+          "es": "Un proceso frecuente, medible y de bajo riesgo, como preparar pedidos desde emails, revisar documentos incompletos, crear borradores de solicitudes de compra o resumir pedidos bloqueados. Se define una línea base, se limita el acceso y se aumenta autonomía solo cuando las métricas demuestran calidad estable.",
+          "en": "A frequent, measurable, low-risk process such as preparing orders from emails, checking incomplete documents, creating purchase-request drafts or summarising blocked orders. Establish a baseline, restrict access and increase autonomy only when metrics show stable quality."
+        }
+      }
+    ],
+    "relatedArticleKey": "how-to-automate-erp-with-ai-without-losing-control",
+    "publishedAt": "2026-09-18",
+    "updatedAt": "2026-09-18"
+  }
+]
