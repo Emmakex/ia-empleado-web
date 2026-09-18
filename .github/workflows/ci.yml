@@ -8,13 +8,13 @@ on:
       - "**/*.md"
       - "LICENSE"
       - "NOTICE"
-      - "**/*.md"
-      - "LICENSE"
-      - "NOTICE"
   push:
     branches: [main]
     paths-ignore:
       - "content/growth/**"
+      - "**/*.md"
+      - "LICENSE"
+      - "NOTICE"
 
 concurrency:
   group: web-ci-${{ github.workflow }}-${{ github.ref }}
