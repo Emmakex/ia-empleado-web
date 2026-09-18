@@ -5,6 +5,12 @@ on:
     branches: [main]
     paths-ignore:
       - "content/growth/**"
+      - "**/*.md"
+      - "LICENSE"
+      - "NOTICE"
+      - "**/*.md"
+      - "LICENSE"
+      - "NOTICE"
   push:
     branches: [main]
     paths-ignore:
