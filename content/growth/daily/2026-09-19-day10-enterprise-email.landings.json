@@ -1,0 +1,310 @@
+[
+  {
+    "key": "ai-enterprise-email-automation",
+    "slugs": {
+      "es": "automatizacion-email-empresarial-ia",
+      "en": "ai-enterprise-email-automation"
+    },
+    "seoTitle": {
+      "es": "Automatización de email empresarial con IA | IA Empleado",
+      "en": "AI enterprise email automation | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Automatiza email empresarial, bandejas compartidas, clasificación, borradores, adjuntos y seguimiento con IA, trazabilidad y control humano.",
+      "en": "Automate enterprise email, shared inboxes, classification, drafts, attachments and follow-up with AI, traceability and human control."
+    },
+    "eyebrow": {
+      "es": "EMAIL EMPRESARIAL CON IA",
+      "en": "AI ENTERPRISE EMAIL"
+    },
+    "title": {
+      "es": "Automatiza el email empresarial con IA sin perder control sobre clientes, datos y decisiones.",
+      "en": "Automate enterprise email with AI without losing control of customers, data and decisions."
+    },
+    "lead": {
+      "es": "Un Empleado IA conectado al correo corporativo puede clasificar mensajes, detectar intención, resumir hilos, preparar respuestas, localizar documentación, crear tareas y escalar excepciones. La automatización del email empresarial con IA aporta valor cuando reduce trabajo repetitivo sin convertir la bandeja de entrada en un sistema autónomo que responde, reenvía o comparte información sensible sin límites.",
+      "en": "An AI Employee connected to corporate email can classify messages, detect intent, summarise threads, prepare replies, locate documentation, create tasks and escalate exceptions. AI enterprise email automation creates value when it reduces repetitive work without turning the inbox into an autonomous system that replies, forwards or shares sensitive information without boundaries."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Qué significa automatizar el correo empresarial con IA",
+          "en": "What AI enterprise email automation actually means"
+        },
+        "paragraphs": {
+          "es": [
+            "Automatizar el correo empresarial con IA no significa delegar una cuenta completa a un modelo. Significa diseñar flujos concretos alrededor de bandejas personales o compartidas para interpretar mensajes, extraer datos, buscar contexto y preparar acciones. El correo sigue siendo un canal de entrada y salida; la autoridad para ejecutar cambios en CRM, ERP, facturación, soporte o calendario debe seguir las reglas de cada sistema.",
+            "Los mejores primeros casos de uso son repetitivos y verificables: clasificar solicitudes, resumir conversaciones largas, detectar mensajes urgentes, preparar borradores, identificar adjuntos, extraer referencias de pedido o localizar el responsable correcto. Cuando existe riesgo comercial, financiero, contractual, legal o de privacidad, la acción final debe permanecer detrás de reglas deterministas o aprobación humana."
+          ],
+          "en": [
+            "AI enterprise email automation does not mean handing an entire mailbox to a model. It means designing specific workflows around personal or shared inboxes so messages can be interpreted, data extracted, context retrieved and actions prepared. Email remains an input and output channel; authority to change CRM, ERP, invoicing, support or calendar systems should continue to follow each system's rules.",
+            "The best first use cases are repetitive and verifiable: classifying requests, summarising long threads, detecting urgent messages, preparing drafts, identifying attachments, extracting order references or finding the right owner. When commercial, financial, contractual, legal or privacy risk exists, the final action should remain behind deterministic rules or human approval."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Bandejas compartidas: soporte, ventas, administración y operaciones",
+          "en": "Shared inboxes across support, sales, administration and operations"
+        },
+        "paragraphs": {
+          "es": [
+            "Las bandejas compartidas concentran gran parte del trabajo operativo de una empresa: soporte@, ventas@, administracion@, reservas@ o compras@ reciben mensajes que deben clasificarse y asignarse rápidamente. Un agente puede identificar tema, idioma, cliente, prioridad y sistema relacionado para proponer una cola o responsable sin necesidad de que una persona abra todos los mensajes.",
+            "La clasificación debe ser explicable y reversible. Si un mensaje parece una incidencia crítica, el agente puede elevarlo, pero debe registrar qué señales utilizó. Si no tiene suficiente contexto, debe asignar una categoría genérica o pedir revisión en lugar de forzar una clasificación. Esta disciplina evita que una bandeja aparentemente ordenada esconda errores de routing."
+          ],
+          "en": [
+            "Shared inboxes concentrate a large part of company operations: support@, sales@, admin@, reservations@ or purchasing@ receive messages that need to be classified and assigned quickly. An agent can identify topic, language, customer, priority and related system to propose a queue or owner without requiring a person to open every message.",
+            "Classification should be explainable and reversible. If a message appears to be a critical incident, the agent can escalate it but should record which signals led to that decision. If context is insufficient, it should use a generic category or request review instead of forcing a classification. This prevents a seemingly tidy inbox from hiding routing errors."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Resúmenes de hilos largos y contexto antes de responder",
+          "en": "Summarising long threads before responding"
+        },
+        "paragraphs": {
+          "es": [
+            "Los hilos empresariales pueden acumular decenas de respuestas, adjuntos y cambios de criterio. La IA puede resumir qué se pidió, qué se confirmó, qué sigue pendiente y qué documentos se mencionaron. Ese resumen reduce el tiempo de lectura, pero debe conservar enlaces o referencias al mensaje original para que una persona pueda verificar rápidamente cualquier punto relevante.",
+            "También conviene diferenciar hechos confirmados de interpretaciones. «El cliente confirmó entrega el viernes» no es equivalente a «parece preferir viernes». Un buen sistema etiqueta información verificada y deja las inferencias como hipótesis. Esta distinción es especialmente importante cuando el correo contiene compromisos comerciales, fechas, importes o datos personales."
+          ],
+          "en": [
+            "Business email threads can accumulate dozens of replies, attachments and changing decisions. AI can summarise what was requested, what was confirmed, what remains pending and which documents were mentioned. This reduces reading time but should preserve links or references to the original messages so a person can quickly verify anything important.",
+            "Confirmed facts should also be separated from interpretation. 'The customer confirmed Friday delivery' is not the same as 'the customer appears to prefer Friday'. A robust system labels verified information and keeps inference as a hypothesis. This distinction matters especially when email contains commercial commitments, dates, amounts or personal data."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Borradores de respuesta con fuentes y límites",
+          "en": "Reply drafts with sources and boundaries"
+        },
+        "paragraphs": {
+          "es": [
+            "Preparar borradores es uno de los casos de uso más útiles porque acelera trabajo sin necesidad de otorgar autonomía total. El agente puede utilizar plantillas, conocimiento autorizado, datos de CRM o estado de un pedido para redactar una respuesta. Cuando la información no existe o hay contradicciones, el borrador debe indicar la duda y pedir revisión en lugar de rellenar huecos.",
+            "Las respuestas automáticas completas deberían reservarse para escenarios muy acotados: confirmaciones simples, recepción de documentos o información puramente factual con una fuente fiable. Descuentos, reclamaciones, compromisos de entrega, cambios contractuales, devoluciones, datos bancarios o conflictos requieren un nivel superior de control."
+          ],
+          "en": [
+            "Draft preparation is one of the most useful use cases because it accelerates work without requiring full autonomy. An agent can use templates, authorised knowledge, CRM data or order status to draft a response. When information is missing or contradictory, the draft should expose the uncertainty and request review rather than fill gaps.",
+            "Fully automatic replies should be reserved for tightly bounded scenarios such as simple confirmations, document receipt or purely factual information from a reliable source. Discounts, complaints, delivery commitments, contractual changes, refunds, bank details or disputes require a stronger level of control."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Adjuntos, documentos y extracción de datos",
+          "en": "Attachments, documents and data extraction"
+        },
+        "paragraphs": {
+          "es": [
+            "Gran parte del valor del correo está en los adjuntos. Facturas, pedidos, presupuestos, contratos, CV, formularios o documentos de proveedor pueden requerir lectura y extracción. La IA puede identificar el tipo de documento y extraer campos para preparar un registro estructurado, pero la validación de importes, impuestos, firmas, cuentas bancarias o datos regulatorios debe apoyarse en reglas y fuentes verificables.",
+            "También es necesario aplicar controles de seguridad a los adjuntos. El hecho de que un archivo llegue por correo no significa que deba procesarse sin filtros. El flujo puede exigir comprobaciones de tipo, tamaño, antivirus, remitente y política antes de que el contenido se utilice. El agente debe limitarse a los documentos que la organización autorice."
+          ],
+          "en": [
+            "Much of email's value sits in attachments. Invoices, orders, quotes, contracts, CVs, forms or supplier documents may need reading and extraction. AI can identify the document type and extract fields to prepare a structured record, but validation of amounts, taxes, signatures, bank details or regulated data should rely on rules and verifiable sources.",
+            "Attachments also require security controls. A file arriving by email should not automatically be processed without filtering. The workflow can require checks for file type, size, malware, sender and policy before content is used. The agent should only process documents the organisation authorises."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Seguimiento de conversaciones y próximos pasos",
+          "en": "Conversation follow-up and next actions"
+        },
+        "paragraphs": {
+          "es": [
+            "Una de las pérdidas más comunes en ventas y operaciones es que un hilo quede sin siguiente paso. El agente puede detectar mensajes pendientes de respuesta, compromisos de seguimiento, fechas mencionadas o tareas que deberían existir. Puede entonces proponer una tarea, recordatorio o actualización en CRM sin enviar automáticamente una comunicación.",
+            "Para evitar ruido, el seguimiento debe basarse en reglas de negocio. No todo mensaje sin respuesta necesita un recordatorio. Conviene considerar estado de oportunidad, prioridad del cliente, SLA, último contacto y si existe otra tarea abierta. Esta combinación de contexto evita convertir la automatización en una máquina de notificaciones."
+          ],
+          "en": [
+            "One of the most common losses in sales and operations is a thread that ends without a next action. An agent can detect messages awaiting reply, follow-up commitments, dates mentioned or tasks that should exist. It can then propose a task, reminder or CRM update without automatically sending a communication.",
+            "To avoid noise, follow-up should be grounded in business rules. Not every unanswered message needs a reminder. Opportunity stage, customer priority, SLA, last contact and existing tasks should be considered. This combination of context prevents automation from becoming a notification machine."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Integración con Microsoft 365, Outlook, Gmail y Google Workspace",
+          "en": "Integration with Microsoft 365, Outlook, Gmail and Google Workspace"
+        },
+        "paragraphs": {
+          "es": [
+            "La integración técnica depende del entorno de correo y de los permisos disponibles. Microsoft 365 y Outlook pueden ofrecer acceso mediante Microsoft Graph en configuraciones adecuadas; Gmail y Google Workspace disponen de APIs y controles de autorización propios. La implementación concreta depende de la cuenta, políticas del tenant, consentimiento, licencias y alcance que el administrador permita.",
+            "El principio recomendado es privilegio mínimo. Si el agente solo necesita leer una bandeja compartida y crear borradores, no debería recibir permisos para borrar mensajes, acceder a todas las cuentas o enviar en nombre de cualquier usuario. La identidad técnica y el alcance de acceso deben diseñarse específicamente para cada caso."
+          ],
+          "en": [
+            "Technical integration depends on the email environment and available permissions. Microsoft 365 and Outlook can provide access through Microsoft Graph in suitable configurations; Gmail and Google Workspace expose their own APIs and authorisation controls. The exact implementation depends on account setup, tenant policies, consent, licensing and the scope administrators allow.",
+            "Least privilege is the recommended principle. If an agent only needs to read a shared inbox and create drafts, it should not receive permission to delete messages, access every account or send as any user. Technical identity and access scope should be designed specifically for each use case."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Email, CRM, ERP y helpdesk como un mismo flujo",
+          "en": "Email, CRM, ERP and helpdesk as one workflow"
+        },
+        "paragraphs": {
+          "es": [
+            "El correo rara vez contiene todo el contexto necesario. Una solicitud puede mencionar un pedido que está en ERP, una oportunidad en CRM y una incidencia abierta en helpdesk. Un Empleado IA puede consultar esas fuentes para preparar una respuesta coherente sin copiar toda la información en una base paralela.",
+            "Cada sistema debe conservar su autoridad. El correo registra conversación, el CRM relación comercial, el ERP operación y el helpdesk la incidencia. El agente coordina el proceso, pero no debería modificar datos sensibles en un sistema solo porque un mensaje lo solicita. Antes de cualquier cambio relevante debe validar identidad, permisos y reglas del sistema destino."
+          ],
+          "en": [
+            "Email rarely contains all required context. A request may refer to an order in the ERP, an opportunity in the CRM and an open helpdesk incident. An AI Employee can consult those sources to prepare a coherent reply without copying everything into a parallel database.",
+            "Each system should retain its authority. Email records conversation, CRM the commercial relationship, ERP operations and helpdesk the incident. The agent coordinates the process but should not change sensitive data in a system merely because an email asks for it. Before any relevant change it should validate identity, permissions and destination-system rules."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Privacidad, phishing y acciones sensibles",
+          "en": "Privacy, phishing and sensitive actions"
+        },
+        "paragraphs": {
+          "es": [
+            "El correo es también un vector habitual de suplantación y fraude. Una automatización no debe asumir que una instrucción es legítima solo porque parece proceder de un contacto conocido. Cambios de cuenta bancaria, solicitudes de información confidencial, pagos, exportaciones de datos o modificaciones de credenciales requieren verificación adicional fuera del contenido libre del mensaje.",
+            "La privacidad exige limitar qué bandejas y mensajes puede procesar el agente, cuánto contexto conserva y dónde se registra. Deben existir políticas para datos personales, confidenciales y categorías especialmente sensibles. El objetivo es que la IA vea solo la información necesaria para ejecutar el proceso autorizado."
+          ],
+          "en": [
+            "Email is also a common channel for impersonation and fraud. Automation should not assume an instruction is legitimate merely because it appears to come from a known contact. Bank-detail changes, requests for confidential information, payments, data exports or credential changes require additional verification outside the free-form message content.",
+            "Privacy requires limiting which inboxes and messages the agent can process, how much context it retains and where activity is recorded. Policies should cover personal, confidential and especially sensitive data. The objective is for AI to see only the information required for the authorised process."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Cómo medir el ROI de automatizar el email empresarial",
+          "en": "How to measure the ROI of enterprise email automation"
+        },
+        "paragraphs": {
+          "es": [
+            "La mejora se puede medir con indicadores operativos: tiempo medio de primera clasificación, minutos dedicados a leer hilos, porcentaje de mensajes correctamente asignados, borradores aceptados sin grandes cambios, SLA incumplidos y tareas de seguimiento creadas a tiempo. También conviene medir correcciones y escalados para saber si el ahorro es real.",
+            "Una automatización que responde rápido pero genera retrabajo no está mejorando el proceso. Por eso deben compararse velocidad y calidad. Si el equipo reduce tiempo de gestión, disminuye mensajes olvidados y mantiene baja la tasa de corrección, existe una base objetiva para ampliar el alcance. Si no, se ajusta el flujo antes de añadir autonomía."
+          ],
+          "en": [
+            "Improvement can be measured with operational indicators: average time to first classification, minutes spent reading threads, percentage of correctly assigned messages, drafts accepted without major edits, missed SLAs and follow-up tasks created on time. Corrections and escalations should also be measured to determine whether savings are real.",
+            "Automation that responds quickly but creates rework is not improving the process. Speed and quality should therefore be evaluated together. If the team reduces handling time, misses fewer messages and keeps correction rates low, there is an objective basis for expanding scope. If not, the workflow should be adjusted before autonomy increases."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Ejemplo de flujo de automatización de email empresarial con IA",
+        "en": "Example AI enterprise email automation workflow"
+      },
+      "steps": {
+        "es": [
+          "Llega un mensaje a una bandeja personal o compartida autorizada.",
+          "El agente identifica remitente, idioma, intención, prioridad y referencias relevantes.",
+          "Consulta únicamente CRM, ERP, helpdesk o conocimiento autorizado cuando necesita contexto.",
+          "Clasifica el mensaje y separa hechos confirmados de inferencias.",
+          "Prepara un resumen, borrador, tarea o propuesta de actualización.",
+          "Si detecta riesgo, contradicción, información sensible o una acción fuera de permisos, escala a una persona.",
+          "Las acciones de bajo riesgo se ejecutan solo dentro de los permisos concedidos.",
+          "Se registra fuente, decisión, aprobación y resultado para mantener trazabilidad."
+        ],
+        "en": [
+          "A message arrives in an authorised personal or shared inbox.",
+          "The agent identifies sender, language, intent, priority and relevant references.",
+          "It consults only authorised CRM, ERP, helpdesk or knowledge sources when context is required.",
+          "It classifies the message and separates confirmed facts from inference.",
+          "It prepares a summary, draft, task or proposed update.",
+          "If it detects risk, contradiction, sensitive information or an action outside permissions, it escalates to a person.",
+          "Low-risk actions execute only within the permissions granted.",
+          "Source, decision, approval and outcome are recorded for traceability."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Tiempo medio de clasificación",
+        "Tiempo medio de primera respuesta",
+        "Mensajes sin responsable",
+        "Hilos sin siguiente paso",
+        "Borradores aceptados sin cambios sustanciales",
+        "Correcciones humanas",
+        "Escalados correctos",
+        "SLA incumplidos",
+        "Tiempo administrativo por bandeja",
+        "Mensajes procesados sin retrabajo"
+      ],
+      "en": [
+        "Average classification time",
+        "Average first-response time",
+        "Messages without an owner",
+        "Threads without a next action",
+        "Drafts accepted without major edits",
+        "Human corrections",
+        "Correct escalations",
+        "Missed SLAs",
+        "Administrative time per inbox",
+        "Messages processed without rework"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Qué tareas de email puede automatizar un Empleado IA?",
+          "en": "Which email tasks can an AI Employee automate?"
+        },
+        "answer": {
+          "es": "Puede clasificar mensajes, resumir hilos, detectar prioridad, preparar borradores, identificar adjuntos, extraer referencias, crear tareas y proponer actualizaciones en sistemas autorizados. Las acciones sensibles deben conservar controles y aprobación.",
+          "en": "It can classify messages, summarise threads, detect priority, prepare drafts, identify attachments, extract references, create tasks and propose updates in authorised systems. Sensitive actions should remain behind controls and approval."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Puede responder correos automáticamente?",
+          "en": "Can it reply to emails automatically?"
+        },
+        "answer": {
+          "es": "Sí en escenarios muy delimitados y de bajo riesgo. Para reclamaciones, descuentos, contratos, pagos, cambios de cuenta, devoluciones o compromisos comerciales conviene mantener revisión humana o reglas explícitas.",
+          "en": "Yes, in tightly bounded low-risk scenarios. Complaints, discounts, contracts, payments, account changes, refunds or commercial commitments should generally remain behind human review or explicit rules."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Se integra con Microsoft 365, Outlook, Gmail o Google Workspace?",
+          "en": "Can it integrate with Microsoft 365, Outlook, Gmail or Google Workspace?"
+        },
+        "answer": {
+          "es": "Puede hacerlo cuando la configuración y las APIs del entorno lo permiten. La integración concreta depende de permisos, consentimiento, tenant, licencias y políticas del administrador, por lo que primero se revisa el alcance disponible.",
+          "en": "It can where the environment configuration and APIs allow it. Exact integration depends on permissions, consent, tenant settings, licensing and administrator policies, so available scope should be reviewed first."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo evita compartir información sensible por error?",
+          "en": "How do you prevent sensitive information from being shared accidentally?"
+        },
+        "answer": {
+          "es": "Aplicando privilegio mínimo, clasificación de datos, listas de acciones prohibidas, validación de destinatarios y aprobación humana antes de enviar información sensible. El agente no debe asumir que una instrucción recibida por email es suficiente autorización.",
+          "en": "By applying least privilege, data classification, prohibited-action rules, recipient validation and human approval before sensitive information is sent. The agent should not assume that an instruction received by email is sufficient authorisation."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Sirve para bandejas compartidas?",
+          "en": "Does it work with shared inboxes?"
+        },
+        "answer": {
+          "es": "Sí. Las bandejas compartidas son uno de los casos más útiles para clasificación, asignación, resúmenes, SLA y seguimiento, siempre que se definan permisos y criterios de escalado adecuados.",
+          "en": "Yes. Shared inboxes are one of the strongest use cases for classification, assignment, summaries, SLAs and follow-up, provided permissions and escalation criteria are clearly defined."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cuál es un buen primer caso de uso?",
+          "en": "What is a good first use case?"
+        },
+        "answer": {
+          "es": "Clasificar una bandeja compartida o preparar borradores para un tipo de solicitud frecuente y fácil de verificar. Se mide una línea base, se limita el acceso y se aumenta autonomía solo si la tasa de corrección se mantiene baja.",
+          "en": "Classifying a shared inbox or preparing drafts for a frequent, easy-to-verify request type is a strong starting point. Establish a baseline, restrict access and increase autonomy only if correction rates remain low."
+        }
+      }
+    ],
+    "relatedArticleKey": "how-to-automate-enterprise-email-with-ai-without-losing-control",
+    "publishedAt": "2026-09-19",
+    "updatedAt": "2026-09-19"
+  }
+]
