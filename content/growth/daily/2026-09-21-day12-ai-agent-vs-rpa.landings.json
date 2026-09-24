@@ -1,0 +1,284 @@
+[
+  {
+    "key": "ai-agent-vs-rpa",
+    "slugs": {
+      "es": "agente-ia-vs-rpa",
+      "en": "ai-agent-vs-rpa"
+    },
+    "seoTitle": {
+      "es": "Agente IA vs RPA: diferencias, usos y combinación | IA Empleado",
+      "en": "AI agent vs RPA: differences, use cases and combination | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Compara agentes de IA y RPA: flexibilidad, reglas, interfaces, documentos, excepciones, trazabilidad y cuándo conviene combinar ambos.",
+      "en": "Compare AI agents and RPA: flexibility, rules, interfaces, documents, exceptions, traceability and when combining both makes sense."
+    },
+    "eyebrow": {
+      "es": "AGENTE IA VS RPA",
+      "en": "AI AGENT VS RPA"
+    },
+    "title": {
+      "es": "Agente IA vs RPA: flexibilidad para entender, determinismo para ejecutar.",
+      "en": "AI agent vs RPA: flexibility to understand, determinism to execute."
+    },
+    "lead": {
+      "es": "RPA y agentes de IA automatizan trabajo, pero parten de fortalezas diferentes. RPA destaca en secuencias previsibles sobre reglas e interfaces conocidas. Un agente IA puede interpretar lenguaje, documentos y situaciones menos estructuradas, elegir herramientas y gestionar excepciones. En muchos procesos empresariales la mejor arquitectura no enfrenta ambas tecnologías: combina IA para comprender y RPA o APIs para ejecutar pasos deterministas.",
+      "en": "RPA and AI agents both automate work, but their strengths differ. RPA excels at predictable sequences over known rules and interfaces. An AI agent can interpret language, documents and less structured situations, choose tools and manage exceptions. In many enterprise processes the best architecture does not oppose the technologies: it combines AI for understanding with RPA or APIs for deterministic execution."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Qué hace bien RPA",
+          "en": "1. What RPA does well"
+        },
+        "paragraphs": {
+          "es": [
+            "La automatización robótica de procesos funciona especialmente bien cuando los pasos son repetibles, las entradas están estructuradas y la aplicación se comporta de forma predecible. Abrir una aplicación, copiar un valor, completar un formulario, descargar un archivo o mover datos entre sistemas son ejemplos clásicos.",
+            "Su fortaleza es el determinismo: si la condición A ocurre, se ejecuta la secuencia B. Esto facilita pruebas y control. El problema aparece cuando cambian pantallas, formatos o lenguaje, o cuando el proceso necesita interpretar una excepción que no estaba prevista en las reglas."
+          ],
+          "en": [
+            "Robotic process automation works especially well when steps are repeatable, inputs are structured and the application behaves predictably. Opening an application, copying a value, completing a form, downloading a file or moving data between systems are classic examples.",
+            "Its strength is determinism: when condition A occurs, sequence B executes. This simplifies testing and control. Problems appear when screens, formats or language change, or when the process needs to interpret an exception that was not anticipated in the rules."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Qué aporta un agente IA",
+          "en": "2. What an AI agent adds"
+        },
+        "paragraphs": {
+          "es": [
+            "Un agente IA puede trabajar con texto libre, documentos, conversaciones y contexto incompleto. Puede clasificar una solicitud, extraer intención, decidir qué herramienta consultar y preparar una acción. Esta flexibilidad permite abordar procesos donde escribir todas las reglas por adelantado sería costoso.",
+            "La flexibilidad no elimina la necesidad de reglas. Un agente puede decidir que una factura parece válida, pero el cálculo de impuestos o un límite de aprobación debe seguir lógica determinista. La arquitectura más segura utiliza IA para interpretar y reglas para controlar aquello que no debe variar."
+          ],
+          "en": [
+            "An AI agent can work with free text, documents, conversations and incomplete context. It can classify a request, extract intent, decide which tool to query and prepare an action. This flexibility addresses processes where encoding every rule in advance would be expensive.",
+            "Flexibility does not eliminate the need for rules. An agent may decide an invoice appears valid, but tax calculations or approval limits should follow deterministic logic. Safer architecture uses AI for interpretation and rules for controls that must not vary."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. RPA automatiza pasos; un agente puede coordinar decisiones",
+          "en": "3. RPA automates steps; an agent can coordinate decisions"
+        },
+        "paragraphs": {
+          "es": [
+            "Un robot RPA suele recibir una instrucción clara y ejecutar una secuencia. Un agente puede evaluar el estado del proceso y elegir entre varias herramientas o rutas. Por ejemplo, ante un correo de proveedor puede decidir si corresponde consultar ERP, crear una incidencia o pedir información adicional.",
+            "Esa capacidad de selección necesita límites. Las herramientas disponibles, condiciones y acciones prohibidas deben definirse explícitamente. El agente no debería inventar una nueva ruta operacional fuera del catálogo autorizado solo porque el lenguaje recibido lo sugiera."
+          ],
+          "en": [
+            "An RPA bot usually receives a clear instruction and executes a sequence. An agent can evaluate process state and choose between multiple tools or routes. For example, when a supplier email arrives it may decide whether to query ERP, create an incident or request additional information.",
+            "That selection capability needs boundaries. Available tools, conditions and prohibited actions should be explicitly defined. The agent should not invent a new operational route outside the authorised catalogue merely because incoming language suggests it."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Interfaces frágiles frente a APIs estables",
+          "en": "4. Fragile interfaces versus stable APIs"
+        },
+        "paragraphs": {
+          "es": [
+            "RPA se utiliza a menudo cuando una aplicación no ofrece API. En ese contexto puede ser una solución práctica, pero depende de botones, campos y pantallas que pueden cambiar. La automatización necesita monitorización para detectar cuándo la interfaz deja de coincidir con lo esperado.",
+            "Si existe una API estable, suele ser preferible para acciones críticas. Un agente IA puede llamar a esa API directamente o activar un robot RPA únicamente cuando el sistema legacy lo exige. Separar la capa de decisión de la capa de ejecución permite sustituir el conector sin rediseñar toda la lógica."
+          ],
+          "en": [
+            "RPA is often used when an application does not provide an API. In that context it can be practical, but it depends on buttons, fields and screens that may change. Automation needs monitoring to detect when the interface no longer matches expectations.",
+            "When a stable API exists, it is usually preferable for critical actions. An AI agent can call that API directly or trigger an RPA bot only when a legacy system requires it. Separating the decision layer from the execution layer allows the connector to change without redesigning the entire logic."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Documentos y lenguaje no estructurado",
+          "en": "5. Documents and unstructured language"
+        },
+        "paragraphs": {
+          "es": [
+            "Facturas, correos, contratos, notas y formularios incompletos contienen variabilidad que RPA tradicional no interpreta bien sin reglas adicionales. La IA puede extraer campos, resumir contenido y clasificar intención antes de entregar una estructura al robot o al sistema destino.",
+            "La extracción debe validar campos de alto impacto. Un modelo puede proponer un número de factura o una cuenta bancaria, pero reglas deterministas y fuentes autorizadas deben decidir si el valor es aceptable. La combinación permite manejar variabilidad sin perder control."
+          ],
+          "en": [
+            "Invoices, emails, contracts, notes and incomplete forms contain variability that traditional RPA does not interpret well without additional rules. AI can extract fields, summarise content and classify intent before handing a structured payload to the bot or destination system.",
+            "High-impact fields should be validated. A model can propose an invoice number or bank account, but deterministic rules and authorised sources should decide whether the value is acceptable. The combination handles variability without giving up control."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Gestión de excepciones",
+          "en": "6. Exception handling"
+        },
+        "paragraphs": {
+          "es": [
+            "Un flujo RPA puede detenerse cuando encuentra un caso fuera de reglas. Un agente IA puede analizar la excepción, reunir contexto y decidir si existe una ruta autorizada para continuar o si debe escalar a una persona. Esto reduce colas manuales sin forzar una solución automática para todo.",
+            "La escalada debe ser parte del diseño. El sistema registra por qué el caso salió del camino estándar, qué intentó y qué información necesita el responsable. Una excepción bien empaquetada puede ahorrar tiempo incluso cuando la decisión final sigue siendo humana."
+          ],
+          "en": [
+            "An RPA flow may stop when it encounters a case outside its rules. An AI agent can analyse the exception, gather context and determine whether an authorised route exists or a person should take over. This reduces manual queues without forcing every case into automatic resolution.",
+            "Escalation should be designed explicitly. The system records why the case left the standard path, what it attempted and what information the owner needs. A well-packaged exception can save time even when the final decision remains human."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Auditoría y explicabilidad operativa",
+          "en": "7. Auditability and operational explainability"
+        },
+        "paragraphs": {
+          "es": [
+            "RPA ofrece trazabilidad clara de los pasos ejecutados. En un agente IA hay que añadir trazabilidad sobre decisiones: qué contexto consultó, qué herramienta eligió, qué regla permitió avanzar y qué salida produjo. Sin esta capa resulta difícil investigar errores.",
+            "Una arquitectura híbrida puede conservar lo mejor de ambos mundos: el agente registra intención y decisión, mientras el robot registra la secuencia exacta ejecutada. Los identificadores de proceso conectan ambos historiales para reconstruir el caso de principio a fin."
+          ],
+          "en": [
+            "RPA provides clear traceability of executed steps. An AI agent also needs traceability around decisions: what context it read, which tool it selected, which rule allowed progress and what output it produced. Without this layer, errors are difficult to investigate.",
+            "A hybrid architecture can preserve the strengths of both: the agent records intent and decision while the bot records the exact execution sequence. Process identifiers connect both histories so the case can be reconstructed end to end."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Costes y mantenimiento",
+          "en": "8. Cost and maintenance"
+        },
+        "paragraphs": {
+          "es": [
+            "RPA puede ser económico para procesos estables, pero el mantenimiento crece cuando hay muchas interfaces y cambios frecuentes. Los agentes IA reducen parte de la rigidez, aunque añaden costes de modelos, observabilidad, pruebas y gobierno. Ninguna tecnología es automáticamente más barata en todos los casos.",
+            "El coste debe calcularse por proceso: horas ahorradas, frecuencia de cambios, volumen, coste de excepciones y criticidad. Una automatización híbrida puede parecer más compleja, pero resultar más sostenible si cada componente se utiliza únicamente donde aporta ventaja."
+          ],
+          "en": [
+            "RPA can be economical for stable processes, but maintenance grows when many interfaces change frequently. AI agents reduce some rigidity while adding model, observability, testing and governance costs. Neither technology is automatically cheaper in every situation.",
+            "Cost should be calculated per process: hours saved, change frequency, volume, exception cost and criticality. A hybrid automation may appear more complex but be more sustainable when each component is used only where it provides an advantage."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Cuándo combinar agente IA y RPA",
+          "en": "9. When to combine AI agents and RPA"
+        },
+        "paragraphs": {
+          "es": [
+            "La combinación es especialmente útil cuando la entrada es variable pero la ejecución final es repetible. El agente interpreta un correo o documento, convierte la información a un esquema validado y activa el robot que completa una tarea en una aplicación legacy.",
+            "También puede ocurrir al revés: RPA recopila datos de varios sistemas sin API y el agente los resume o decide qué caso necesita atención. El punto clave es definir una interfaz clara entre ambos componentes para evitar que errores de interpretación se propaguen silenciosamente."
+          ],
+          "en": [
+            "The combination is especially useful when input is variable but final execution is repeatable. The agent interprets an email or document, converts information into a validated schema and triggers the bot that completes a task in a legacy application.",
+            "The reverse can also happen: RPA gathers data from systems without APIs and the agent summarises it or decides which case needs attention. The key is defining a clear interface between components so interpretation errors do not propagate silently."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Migración progresiva desde RPA",
+          "en": "10. Gradual migration from RPA"
+        },
+        "paragraphs": {
+          "es": [
+            "Una empresa con robots existentes no necesita reemplazarlos para adoptar agentes IA. Puede mantener las automatizaciones estables y añadir una capa de IA delante de los puntos que generan excepciones o trabajo manual. Esto protege la inversión existente.",
+            "Con el tiempo, algunas tareas pueden moverse a APIs o herramientas más robustas. El agente conserva la lógica de coordinación mientras cambia el ejecutor. Esta separación reduce dependencia de una tecnología concreta y permite modernizar por etapas."
+          ],
+          "en": [
+            "A company with existing bots does not need to replace them to adopt AI agents. Stable automations can remain while an AI layer is added before the points that generate exceptions or manual work. This protects existing investment.",
+            "Over time, some tasks can move to APIs or more robust tools. The agent keeps coordination logic while the executor changes. This separation reduces dependence on one technology and supports staged modernisation."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Marco para elegir RPA, agente IA o ambos",
+        "en": "Framework for choosing RPA, AI agent or both"
+      },
+      "steps": {
+        "es": [
+          "Mapea entradas, decisiones y acciones del proceso.",
+          "Separa datos estructurados de lenguaje y documentos variables.",
+          "Identifica sistemas con API y sistemas que requieren interfaz.",
+          "Asigna reglas deterministas a controles críticos.",
+          "Usa IA para clasificación, interpretación y manejo de excepciones.",
+          "Utiliza RPA solo donde una secuencia de interfaz aporte valor.",
+          "Mide mantenimiento, errores, excepciones y tiempo ahorrado."
+        ],
+        "en": [
+          "Map process inputs, decisions and actions.",
+          "Separate structured data from variable language and documents.",
+          "Identify systems with APIs and systems requiring interface automation.",
+          "Assign deterministic rules to critical controls.",
+          "Use AI for classification, interpretation and exception handling.",
+          "Use RPA where interface sequences provide real value.",
+          "Measure maintenance, errors, exceptions and time saved."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Horas de ejecución manual",
+        "Tasa de excepciones",
+        "Roturas por cambio de interfaz",
+        "Correcciones humanas",
+        "Tiempo de resolución de excepciones",
+        "Coste de mantenimiento por flujo",
+        "Acciones completadas sin retrabajo",
+        "Disponibilidad del proceso"
+      ],
+      "en": [
+        "Manual execution hours",
+        "Exception rate",
+        "Breakages caused by interface changes",
+        "Human corrections",
+        "Exception resolution time",
+        "Maintenance cost per workflow",
+        "Actions completed without rework",
+        "Process availability"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Un agente IA sustituye a RPA?",
+          "en": "Does an AI agent replace RPA?"
+        },
+        "answer": {
+          "es": "No necesariamente. RPA sigue siendo útil para secuencias deterministas y sistemas legacy. Un agente IA puede añadir interpretación, coordinación y gestión de excepciones encima de esos robots.",
+          "en": "Not necessarily. RPA remains useful for deterministic sequences and legacy systems. An AI agent can add interpretation, coordination and exception handling around those bots."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué es más estable, API o RPA?",
+          "en": "Which is more stable, an API or RPA?"
+        },
+        "answer": {
+          "es": "Cuando existe una API soportada y bien diseñada suele ser más estable que automatizar una interfaz gráfica. RPA es valioso cuando no existe otra integración práctica.",
+          "en": "When a supported, well-designed API exists, it is usually more stable than automating a graphical interface. RPA is valuable when no practical integration alternative exists."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Pueden trabajar juntos?",
+          "en": "Can they work together?"
+        },
+        "answer": {
+          "es": "Sí. Un patrón habitual es usar IA para interpretar entradas variables y RPA para ejecutar pasos repetibles en aplicaciones legacy, conectando ambos mediante datos estructurados y controles.",
+          "en": "Yes. A common pattern uses AI to interpret variable inputs and RPA to execute repeatable steps in legacy applications, connecting both through structured data and controls."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo evitar errores de un agente en un robot?",
+          "en": "How do you prevent an agent error from propagating into a bot?"
+        },
+        "answer": {
+          "es": "Validando el payload entre ambos, aplicando reglas deterministas a campos críticos, usando umbrales de confianza y escalando contradicciones antes de ejecutar.",
+          "en": "By validating the payload between them, applying deterministic rules to critical fields, using confidence thresholds and escalating contradictions before execution."
+        }
+      }
+    ],
+    "relatedArticleKey": "when-to-use-ai-agent-rpa-or-both",
+    "publishedAt": "2026-09-21",
+    "updatedAt": "2026-09-21"
+  }
+]

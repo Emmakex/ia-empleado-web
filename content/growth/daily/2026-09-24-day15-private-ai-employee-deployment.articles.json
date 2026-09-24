@@ -1,0 +1,332 @@
+[
+  {
+    "key": "how-to-deploy-ai-employee-privately",
+    "slugs": {
+      "es": "como-desplegar-empleado-ia-infraestructura-privada",
+      "en": "how-to-deploy-ai-employee-in-private-infrastructure"
+    },
+    "seoTitle": {
+      "es": "Cómo desplegar un Empleado IA en infraestructura privada | IA Empleado",
+      "en": "How to deploy an AI Employee in private infrastructure | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía de despliegue privado y on-premise: red, SSO, secretos, datos, modelos, logs, backups, actualizaciones y operación.",
+      "en": "Private and on-premise deployment guide covering networking, SSO, secrets, data, models, logs, backups, updates and operations."
+    },
+    "title": {
+      "es": "Cómo desplegar un Empleado IA en infraestructura privada paso a paso",
+      "en": "How to deploy an AI Employee in private infrastructure step by step"
+    },
+    "excerpt": {
+      "es": "Arquitectura práctica para nube privada, entorno dedicado u on-premise con seguridad, auditabilidad y operación mantenible.",
+      "en": "A practical architecture for private cloud, dedicated or on-premise deployment with security, auditability and maintainable operations."
+    },
+    "intro": {
+      "es": "Desplegar un Empleado IA en infraestructura privada no consiste únicamente en ejecutar un contenedor dentro de la red del cliente. Para que el sistema sea útil y gobernable hay que diseñar identidad, conectividad, secretos, datos, modelos, observabilidad, backups, actualizaciones y responsabilidades. El objetivo es reducir exposición y dependencia sin crear un entorno imposible de mantener. Esta guía propone una secuencia de diseño que sirve tanto para nube privada como para instalaciones dedicadas u on-premise.",
+      "en": "Deploying an AI Employee in private infrastructure is not simply running a container inside the customer's network. A useful, governable system needs identity, connectivity, secrets, data, models, observability, backups, updates and responsibilities to be designed explicitly. The objective is to reduce exposure and dependency without creating an environment that is impossible to maintain. This guide provides a design sequence for private cloud, dedicated and on-premise installations."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Define requisitos de datos",
+          "en": "1. Define data requirements"
+        },
+        "paragraphs": {
+          "es": [
+            "Clasifica información, residencia, retención y sistemas implicados antes de elegir tecnología. No todos los datos necesitan el mismo nivel de aislamiento. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir categorías de datos y restricciones por categoría, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Classify information, residency, retention and involved systems before selecting technology. Not all data requires the same level of isolation. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring data categories and restrictions by category, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Elige patrón de despliegue",
+          "en": "2. Choose the deployment pattern"
+        },
+        "paragraphs": {
+          "es": [
+            "Compara on-premise, nube privada y entorno dedicado por control, coste, conectividad y capacidad operativa del cliente. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir coste, aislamiento y esfuerzo operativo, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Compare on-premise, private cloud and dedicated environments by control, cost, connectivity and customer operational capability. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring cost, isolation and operational effort, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Diseña identidades",
+          "en": "3. Design identities"
+        },
+        "paragraphs": {
+          "es": [
+            "Separa usuarios, servicios y agentes. Integra SSO cuando sea necesario y evita credenciales compartidas que dificulten auditoría. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir identidades únicas y accesos privilegiados, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Separate users, services and agents. Integrate SSO where needed and avoid shared credentials that weaken auditability. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring unique identities and privileged access, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Aplica privilegio mínimo",
+          "en": "4. Apply least privilege"
+        },
+        "paragraphs": {
+          "es": [
+            "Define operaciones concretas por herramienta. Un agente que consulta stock no necesita permiso para modificar cuentas bancarias. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir permisos concedidos frente a permisos utilizados, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Define specific operations per tool. An agent that reads stock does not need permission to modify bank details. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring granted permissions versus permissions actually used, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Segmenta la red",
+          "en": "5. Segment the network"
+        },
+        "paragraphs": {
+          "es": [
+            "Ubica componentes según sensibilidad y limita tráfico lateral. Conectores a sistemas internos pueden ejecutarse cerca de las fuentes sin exponerlas públicamente. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir segmentos, reglas y conexiones permitidas, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Place components according to sensitivity and limit lateral traffic. Connectors to internal systems can run close to sources without exposing them publicly. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring segments, rules and permitted connections, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Controla salida a Internet",
+          "en": "6. Control Internet egress"
+        },
+        "paragraphs": {
+          "es": [
+            "Si el agente necesita modelos o APIs externas, utiliza destinos explícitos, proxies y políticas de salida. No concedas acceso abierto por comodidad. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir destinos externos y volumen de salida, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "If the agent needs external models or APIs, use explicit destinations, proxies and egress policies. Do not grant unrestricted Internet access for convenience. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring external destinations and egress volume, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Gestiona secretos",
+          "en": "7. Manage secrets"
+        },
+        "paragraphs": {
+          "es": [
+            "Centraliza claves, tokens y certificados en un gestor con rotación y control de acceso. Evita secretos en variables permanentes compartidas o repositorios. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir edad de secretos y rotaciones completadas, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Centralise keys, tokens and certificates in a manager with rotation and access control. Avoid secrets in shared long-lived variables or repositories. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring secret age and completed rotations, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Cifra datos",
+          "en": "8. Encrypt data"
+        },
+        "paragraphs": {
+          "es": [
+            "Aplica cifrado en tránsito y reposo de acuerdo con el riesgo. Define también quién administra claves y qué ocurre durante recuperación. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir cobertura de cifrado y pruebas de recuperación, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Apply encryption in transit and at rest according to risk. Define who manages keys and what happens during recovery. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring encryption coverage and recovery tests, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Minimiza contexto enviado a modelos",
+          "en": "9. Minimise context sent to models"
+        },
+        "paragraphs": {
+          "es": [
+            "Envía solo los campos necesarios para la tarea. Redacción, seudonimización o procesamiento local pueden reducir datos externos. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir datos por solicitud y campos eliminados, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Send only the fields required for the task. Redaction, pseudonymisation or local processing can reduce external data exposure. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring data per request and removed fields, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Diseña registros de auditoría",
+          "en": "10. Design audit logs"
+        },
+        "paragraphs": {
+          "es": [
+            "Registra quién inició una tarea, qué herramientas se usaron, qué aprobación existió y qué resultado se produjo. Evita registrar secretos o contenido innecesario. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir eventos auditables y calidad de registros, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Record who initiated a task, which tools were used, which approval existed and what outcome occurred. Avoid logging secrets or unnecessary content. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring auditable events and log quality, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Configura observabilidad",
+          "en": "11. Configure observability"
+        },
+        "paragraphs": {
+          "es": [
+            "Métricas, trazas y alertas deben mostrar latencia, errores, consumo y excepciones. Un entorno privado sin observabilidad solo desplaza el problema. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir alertas útiles, disponibilidad y latencia, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Metrics, traces and alerts should show latency, errors, usage and exceptions. A private environment without observability merely moves the problem. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring useful alerts, availability and latency, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Diseña backups",
+          "en": "12. Design backups"
+        },
+        "paragraphs": {
+          "es": [
+            "Determina qué componentes necesitan copia y con qué frecuencia. No todos los datos temporales deben persistir, pero configuraciones y estados críticos sí. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir éxito de backups y cobertura de activos, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Determine which components need backup and at what frequency. Not all temporary data must persist, but critical configuration and state should. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring backup success and asset coverage, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Prueba restauración",
+          "en": "13. Test restoration"
+        },
+        "paragraphs": {
+          "es": [
+            "Un backup no probado es una hipótesis. Ejecuta restauraciones periódicas y mide cuánto tarda el servicio en volver a operar. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir RTO, RPO y porcentaje de restauraciones correctas, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "An untested backup is only a hypothesis. Run periodic restores and measure how long the service takes to return to operation. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring RTO, RPO and successful restore percentage, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Gobierna actualizaciones",
+          "en": "14. Govern updates"
+        },
+        "paragraphs": {
+          "es": [
+            "Versiona modelos, prompts, imágenes y conectores. Prueba cambios en un entorno controlado y mantén rollback. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir cambios fallidos y tiempo de rollback, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Version models, prompts, images and connectors. Test changes in a controlled environment and preserve rollback capability. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring failed changes and rollback time, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Define responsabilidades",
+          "en": "15. Define responsibilities"
+        },
+        "paragraphs": {
+          "es": [
+            "Documenta quién mantiene host, aplicación, secretos, backups, conectores y modelos. Los límites entre cliente y proveedor deben ser explícitos. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir incidentes sin propietario y tiempo de escalado, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Document who maintains hosts, application, secrets, backups, connectors and models. Boundaries between customer and provider should be explicit. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring ownerless incidents and escalation time, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Planifica capacidad",
+          "en": "16. Plan capacity"
+        },
+        "paragraphs": {
+          "es": [
+            "CPU, memoria, almacenamiento, colas y límites de API deben dimensionarse para volumen normal y picos. La privacidad no sustituye la planificación de rendimiento. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir utilización, saturación y colas, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "CPU, memory, storage, queues and API limits should be sized for normal volume and peaks. Privacy does not replace performance planning. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring utilisation, saturation and queues, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "17. Revisa arquitectura periódicamente",
+          "en": "17. Review architecture periodically"
+        },
+        "paragraphs": {
+          "es": [
+            "Requisitos y proveedores cambian. Una revisión periódica confirma si el nivel de aislamiento sigue siendo adecuado y si puede simplificarse sin aumentar riesgo. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir hallazgos, deuda técnica y costes operativos, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Requirements and providers change. Periodic review confirms whether the isolation level remains appropriate and whether architecture can be simplified without increasing risk. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring findings, technical debt and operating cost, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Privado no significa simplemente instalar un servidor.",
+        "Clasifica datos antes de elegir arquitectura.",
+        "Separa identidades y aplica privilegio mínimo.",
+        "Controla red y salida a Internet.",
+        "Centraliza secretos y cifrado.",
+        "Minimiza contexto enviado a modelos externos.",
+        "Registra decisiones sin duplicar datos sensibles.",
+        "Prueba backups y restauración.",
+        "Versiona y gobierna actualizaciones.",
+        "Define claramente responsabilidades operativas."
+      ],
+      "en": [
+        "Private does not simply mean installing a server.",
+        "Classify data before choosing architecture.",
+        "Separate identities and apply least privilege.",
+        "Control networking and Internet egress.",
+        "Centralise secrets and encryption.",
+        "Minimise context sent to external models.",
+        "Record decisions without duplicating sensitive data.",
+        "Test backups and restoration.",
+        "Version and govern updates.",
+        "Define operational responsibilities clearly."
+      ]
+    },
+    "relatedLandingKey": "private-ai-employee-deployment",
+    "publishedAt": "2026-09-24",
+    "updatedAt": "2026-09-24"
+  }
+]

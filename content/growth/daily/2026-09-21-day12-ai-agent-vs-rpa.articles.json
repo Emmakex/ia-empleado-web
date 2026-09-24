@@ -1,0 +1,284 @@
+[
+  {
+    "key": "when-to-use-ai-agent-rpa-or-both",
+    "slugs": {
+      "es": "cuando-usar-agente-ia-rpa-o-ambos",
+      "en": "when-to-use-ai-agent-rpa-or-both"
+    },
+    "seoTitle": {
+      "es": "Cuándo usar agente IA, RPA o ambos | IA Empleado",
+      "en": "When to use an AI agent, RPA or both | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía práctica para elegir agente IA, RPA o una arquitectura híbrida según reglas, documentos, interfaces, excepciones, riesgo y mantenimiento.",
+      "en": "Practical guide to choosing an AI agent, RPA or a hybrid architecture based on rules, documents, interfaces, exceptions, risk and maintenance."
+    },
+    "title": {
+      "es": "Agente IA, RPA o ambos: cómo elegir por tipo de proceso",
+      "en": "AI agent, RPA or both: how to choose by process type"
+    },
+    "excerpt": {
+      "es": "RPA no ha quedado obsoleto y los agentes IA no deben ejecutar todo. La clave está en separar interpretación, decisión y ejecución.",
+      "en": "RPA is not obsolete and AI agents should not execute everything. The key is separating interpretation, decision and execution."
+    },
+    "intro": {
+      "es": "La llegada de agentes de IA ha llevado a algunas empresas a plantear una sustitución completa de RPA. Esa lectura pierde de vista que ambas tecnologías resuelven problemas diferentes. RPA es fuerte cuando el mundo es predecible; los agentes son fuertes cuando hay lenguaje, contexto y excepciones. En lugar de elegir por tendencia, conviene descomponer cada proceso en entradas, decisiones y acciones, y asignar a cada parte la herramienta con mejor combinación de estabilidad, control y coste.",
+      "en": "The arrival of AI agents has led some companies to consider replacing RPA entirely. That view misses the fact that the technologies solve different problems. RPA is strong when the world is predictable; agents are strong when language, context and exceptions matter. Instead of choosing by trend, each process should be decomposed into inputs, decisions and actions, assigning each part the tool with the best combination of stability, control and cost."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Clasifica el proceso antes de elegir tecnología",
+          "en": "1. Classify the process before choosing technology"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza separando pasos completamente deterministas de pasos que requieren interpretación. Descargar un informe y copiar tres columnas puede ser determinista. Entender un correo de proveedor y decidir a qué expediente pertenece requiere más contexto. Mezclar ambos en una única categoría oculta dónde está realmente la complejidad.",
+            "También identifica frecuencia y variabilidad. Un proceso ejecutado miles de veces con entradas estables puede justificar RPA. Un flujo de menor volumen pero con documentos y excepciones diversas puede beneficiarse de un agente. La decisión debe seguir el patrón de trabajo, no una preferencia tecnológica."
+          ],
+          "en": [
+            "Begin by separating fully deterministic steps from steps requiring interpretation. Downloading a report and copying three columns may be deterministic. Understanding a supplier email and deciding which case it belongs to requires more context. Treating both as one category hides where complexity actually lives.",
+            "Also identify frequency and variability. A process executed thousands of times with stable inputs may justify RPA. A lower-volume workflow with diverse documents and exceptions may benefit from an agent. The decision should follow the work pattern, not a technology preference."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Usa RPA para secuencias repetibles en interfaces",
+          "en": "2. Use RPA for repeatable interface sequences"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando no existe API y una aplicación exige interacción por pantalla, RPA puede ofrecer una automatización razonable. Los pasos deben ser claros, las pantallas relativamente estables y los errores detectables. El robot funciona como un usuario rápido y consistente.",
+            "La disciplina está en no pedirle que interprete aquello para lo que no fue diseñado. Si aparece un documento inesperado o una instrucción ambigua, el proceso debe salir por una ruta de excepción. Añadir cientos de reglas para imitar comprensión puede hacer que el robot sea más frágil que el trabajo original."
+          ],
+          "en": [
+            "When no API exists and an application requires screen interaction, RPA can provide reasonable automation. Steps should be clear, screens relatively stable and errors detectable. The bot behaves like a fast, consistent user.",
+            "Discipline means not asking it to interpret what it was not designed for. If an unexpected document or ambiguous instruction appears, the process should leave through an exception path. Adding hundreds of rules to imitate understanding can make the bot more fragile than the original work."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Usa agentes IA para lenguaje y contexto variable",
+          "en": "3. Use AI agents for variable language and context"
+        },
+        "paragraphs": {
+          "es": [
+            "Correos, chats, contratos y notas no siguen siempre la misma estructura. Un agente puede identificar intención, extraer entidades, resumir contexto y seleccionar una herramienta. Esta capacidad reduce la necesidad de crear una regla para cada variante lingüística.",
+            "Sin embargo, interpretar no equivale a autorizar. El agente puede concluir que un correo solicita cambiar una cuenta bancaria, pero la política debe impedir ejecutar el cambio sin verificación. Las decisiones de seguridad viven fuera del lenguaje libre del modelo."
+          ],
+          "en": [
+            "Emails, chats, contracts and notes do not always follow the same structure. An agent can identify intent, extract entities, summarise context and select a tool. This reduces the need to encode a rule for every linguistic variation.",
+            "However, interpretation does not equal authorisation. The agent may conclude that an email requests a bank-detail change, but policy should prevent execution without verification. Security decisions live outside the model's free-form language."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Prefiere API cuando exista",
+          "en": "4. Prefer APIs when available"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de automatizar una pantalla, comprueba si el sistema ofrece API, webhook o integración soportada. Las interfaces programáticas suelen ser más estables, estructuradas y fáciles de auditar que hacer clic en una pantalla diseñada para humanos.",
+            "RPA debe ser una herramienta, no la opción por defecto. Si más adelante aparece una API, conviene poder cambiar el ejecutor sin modificar la lógica de decisión. Una capa de herramientas bien definida permite esa sustitución."
+          ],
+          "en": [
+            "Before automating a screen, check whether the system offers an API, webhook or supported integration. Programmatic interfaces are usually more stable, structured and auditable than clicking through a screen designed for humans.",
+            "RPA should be a tool, not the default option. If an API later becomes available, the executor should be replaceable without changing decision logic. A well-defined tool layer supports that substitution."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Crea un contrato estructurado entre IA y RPA",
+          "en": "5. Create a structured contract between AI and RPA"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando un agente activa un robot, no debería enviarle texto libre. Conviene transformar la decisión en un payload estructurado con campos obligatorios, valores permitidos y validaciones. El robot recibe instrucciones inequívocas.",
+            "Este contrato también facilita pruebas. Se pueden generar casos válidos, inválidos y límites sin ejecutar todo el sistema. Si el agente produce un valor fuera de esquema, el flujo se detiene antes de tocar la aplicación destino."
+          ],
+          "en": [
+            "When an agent triggers a bot, it should not send free text. The decision should be transformed into a structured payload with required fields, allowed values and validation. The bot receives unambiguous instructions.",
+            "This contract also simplifies testing. Valid, invalid and boundary cases can be generated without running the whole system. If the agent produces a value outside the schema, the workflow stops before touching the destination application."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Separa extracción de validación",
+          "en": "6. Separate extraction from validation"
+        },
+        "paragraphs": {
+          "es": [
+            "La IA puede leer una factura y proponer proveedor, importe, fecha y referencia. Después reglas deterministas comparan esos valores con ERP, tolerancias y políticas. Solo cuando la validación pasa se activa el siguiente paso.",
+            "Esta separación evita usar el modelo como calculadora de verdad. La IA resuelve ambigüedad del documento; el sistema empresarial decide si el dato es aceptable. El patrón es aplicable a contratos, pedidos, formularios y correos."
+          ],
+          "en": [
+            "AI can read an invoice and propose supplier, amount, date and reference. Deterministic rules then compare those values against ERP data, tolerances and policy. Only when validation passes does the next step execute.",
+            "This separation avoids using the model as the source of truth. AI resolves document ambiguity; the business system decides whether the value is acceptable. The pattern applies to contracts, orders, forms and emails."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Diseña una cola de excepciones útil",
+          "en": "7. Design a useful exception queue"
+        },
+        "paragraphs": {
+          "es": [
+            "Una excepción no debería ser simplemente «robot falló». El sistema debe entregar al equipo el contexto: qué caso es, qué paso se completó, qué dato generó conflicto, qué evidencias existen y qué decisión falta. Esto reduce el tiempo humano necesario para resolverla.",
+            "Con el tiempo, las excepciones recurrentes pueden convertirse en nuevas reglas o nuevas capacidades del agente. La cola se convierte así en una fuente de mejora del proceso, no en un cementerio de automatizaciones rotas."
+          ],
+          "en": [
+            "An exception should not simply say 'bot failed'. The system should give the team context: which case, which step completed, which value conflicted, what evidence exists and what decision is missing. This reduces the human time required to resolve it.",
+            "Over time, recurring exceptions can become new rules or new agent capabilities. The queue becomes a source of process improvement rather than a graveyard of broken automation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Evalúa la fragilidad de la interfaz",
+          "en": "8. Evaluate interface fragility"
+        },
+        "paragraphs": {
+          "es": [
+            "Una aplicación que cambia diseño con frecuencia puede hacer costoso mantener RPA. Antes de automatizar, revisa estabilidad del frontend, selectores, ventanas emergentes, autenticación y pasos manuales. El coste de mantenimiento debe formar parte del ROI.",
+            "En algunos casos una automatización parcial es mejor: el agente prepara la información y una persona completa el último paso. Esto evita invertir en un robot frágil para una interacción poco frecuente."
+          ],
+          "en": [
+            "An application that changes design frequently can make RPA expensive to maintain. Before automating, review frontend stability, selectors, popups, authentication and manual steps. Maintenance cost should be included in ROI.",
+            "In some cases partial automation is better: the agent prepares the information and a person completes the final step. This avoids investing in a fragile bot for an infrequent interaction."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Aplica permisos por herramienta",
+          "en": "9. Apply permissions per tool"
+        },
+        "paragraphs": {
+          "es": [
+            "Un agente no necesita acceso directo a todo lo que puede hacer un robot. Las herramientas pueden exponer funciones específicas: crear borrador, consultar estado, registrar incidencia. Cada función valida parámetros y permisos antes de ejecutar.",
+            "Este diseño reduce el radio de impacto. Incluso si el agente interpreta mal una solicitud, solo puede utilizar operaciones previamente autorizadas. Las acciones sensibles pueden requerir un token de aprobación humana o permanecer fuera del catálogo automático."
+          ],
+          "en": [
+            "An agent does not need direct access to everything a bot can do. Tools can expose specific functions: create draft, check status, register incident. Each function validates parameters and permissions before execution.",
+            "This reduces the blast radius. Even if the agent misinterprets a request, it can only use pre-authorised operations. Sensitive actions can require a human approval token or remain outside the automatic tool catalogue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Observa costes por cambio, no solo por ejecución",
+          "en": "10. Measure change cost, not only execution cost"
+        },
+        "paragraphs": {
+          "es": [
+            "Un robot que cuesta poco por ejecución puede resultar caro si rompe cada vez que cambia una pantalla. Un agente puede tener mayor coste variable, pero reducir reglas y excepciones. Comparar únicamente coste por transacción no refleja la realidad.",
+            "Registra horas de mantenimiento, incidencias, retrabajo y tiempo de adaptación a nuevos formatos. El coste total de propiedad permite decidir cuándo mantener RPA, cuándo sustituirlo y cuándo añadir IA encima."
+          ],
+          "en": [
+            "A bot that is cheap per execution can become expensive if it breaks whenever a screen changes. An agent may have higher variable cost but reduce rules and exceptions. Comparing only cost per transaction misses the real picture.",
+            "Track maintenance hours, incidents, rework and time required to adapt to new formats. Total cost of ownership helps determine when to keep RPA, when to replace it and when to add AI on top."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Migra por capas, no con un big bang",
+          "en": "11. Migrate in layers, not with a big bang"
+        },
+        "paragraphs": {
+          "es": [
+            "Si existen decenas de robots estables, reemplazarlos todos rara vez tiene sentido. Identifica cuáles generan más excepciones o mantenimiento y añade IA primero en esos puntos. Los robots que funcionan bien pueden permanecer sin cambios.",
+            "Esta estrategia también facilita comparar resultados. Se puede medir antes y después en un subconjunto y decidir con evidencia. La modernización deja de ser un proyecto de sustitución tecnológica y se convierte en mejora continua del proceso."
+          ],
+          "en": [
+            "If dozens of stable bots already exist, replacing all of them rarely makes sense. Identify the ones producing the most exceptions or maintenance and add AI there first. Bots that work well can remain unchanged.",
+            "This strategy also makes results easier to compare. Teams can measure before and after on a subset and decide with evidence. Modernisation becomes continuous process improvement rather than a technology replacement project."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Usa cada tecnología donde tenga ventaja",
+          "en": "12. Use each technology where it has an advantage"
+        },
+        "paragraphs": {
+          "es": [
+            "La pregunta no es qué tecnología ganará, sino qué combinación reduce tiempo, errores y mantenimiento manteniendo control. RPA es excelente ejecutando secuencias conocidas. Los agentes son útiles interpretando y coordinando. Las APIs ofrecen una ejecución más robusta cuando están disponibles.",
+            "Un buen diseño empresarial puede contener las tres. La capa de decisión se mantiene independiente de los conectores. Así se puede cambiar una herramienta sin rehacer el proceso y evolucionar a medida que los sistemas ofrecen mejores integraciones."
+          ],
+          "en": [
+            "The question is not which technology will win, but which combination reduces time, errors and maintenance while preserving control. RPA is excellent at known sequences. Agents are useful for interpretation and coordination. APIs provide more robust execution where available.",
+            "A strong enterprise design can contain all three. The decision layer remains independent of connectors. This allows a tool to change without rebuilding the process and supports evolution as systems expose better integrations."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Controla versiones y cambios en el proceso",
+          "en": "13. Control versions and process changes"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando IA y RPA colaboran, cada cambio debe poder rastrearse. Una nueva versión del prompt, una regla de validación o una modificación de la pantalla pueden alterar el resultado. Registrar versiones ayuda a saber qué configuración produjo cada ejecución.",
+            "Los despliegues graduales reducen riesgo. Una nueva lógica puede probarse con una parte del volumen, comparar métricas y ampliar solo cuando no aumenta errores o excepciones. Esta práctica convierte la automatización en un sistema mantenible y no en una colección de scripts difíciles de gobernar."
+          ],
+          "en": [
+            "When AI and RPA collaborate, every change should be traceable. A new prompt version, validation rule or screen modification can alter outcomes. Recording versions makes it possible to identify which configuration produced each execution.",
+            "Gradual releases reduce risk. New logic can be tested on part of the volume, metrics compared and scope expanded only when errors or exceptions do not increase. This turns automation into a maintainable system rather than a collection of scripts that are difficult to govern."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Documenta por qué elegiste cada tecnología",
+          "en": "14. Document why each technology was chosen"
+        },
+        "paragraphs": {
+          "es": [
+            "Registrar la decisión arquitectónica evita que unos meses después nadie recuerde por qué un paso utiliza RPA, otro una API y otro un agente. El documento debe indicar restricciones del sistema, nivel de variabilidad, riesgo, volumen y motivo económico. Cuando cambien esas condiciones, la decisión puede revisarse con datos en lugar de preferencias.",
+            "Este registro también ayuda en auditorías y mantenimiento. Si aparece una nueva API o la interfaz legacy deja de ser estable, el equipo sabe qué supuesto dejó de cumplirse y puede sustituir solo el ejecutor afectado. La arquitectura se mantiene evolutiva y cada cambio conserva una justificación técnica y empresarial."
+          ],
+          "en": [
+            "Recording the architecture decision prevents teams from forgetting why one step uses RPA, another an API and another an AI agent. The record should state system constraints, variability, risk, volume and the economic reason for the choice. When those conditions change, the decision can be reviewed using evidence rather than preference.",
+            "This record also supports audits and maintenance. If a new API appears or a legacy interface becomes unstable, the team can identify which assumption no longer holds and replace only the affected executor. The architecture remains evolvable, and every change preserves both a technical and business justification."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "RPA sigue siendo útil para secuencias previsibles y aplicaciones legacy.",
+        "Los agentes IA aportan valor en lenguaje, documentos, contexto y excepciones.",
+        "Prefiere APIs soportadas cuando existan.",
+        "Conecta IA y RPA mediante payloads estructurados y validados.",
+        "Separa extracción flexible de validación determinista.",
+        "Diseña excepciones como parte normal del flujo.",
+        "Incluye fragilidad de interfaz en el coste total.",
+        "Aplica permisos por herramienta y acción.",
+        "No reemplaces robots estables sin un caso de negocio.",
+        "Migra por capas y mide resultados antes de ampliar."
+      ],
+      "en": [
+        "RPA remains useful for predictable sequences and legacy applications.",
+        "AI agents add value around language, documents, context and exceptions.",
+        "Prefer supported APIs where available.",
+        "Connect AI and RPA through structured, validated payloads.",
+        "Separate flexible extraction from deterministic validation.",
+        "Design exceptions as a normal part of the workflow.",
+        "Include interface fragility in total cost.",
+        "Apply permissions per tool and action.",
+        "Do not replace stable bots without a business case.",
+        "Migrate in layers and measure results before expanding."
+      ]
+    },
+    "relatedLandingKey": "ai-agent-vs-rpa",
+    "publishedAt": "2026-09-21",
+    "updatedAt": "2026-09-21"
+  }
+]

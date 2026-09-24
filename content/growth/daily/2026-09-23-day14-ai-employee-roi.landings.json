@@ -1,0 +1,316 @@
+[
+  {
+    "key": "ai-employee-roi",
+    "slugs": {
+      "es": "roi-empleado-ia",
+      "en": "ai-employee-roi"
+    },
+    "seoTitle": {
+      "es": "ROI de un Empleado IA: cómo medir retorno | IA Empleado",
+      "en": "AI Employee ROI: how to measure return | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Calcula el ROI de un Empleado IA con horas recuperadas, errores evitados, capacidad, coste total, calidad, payback y escenarios.",
+      "en": "Calculate AI Employee ROI using recovered hours, avoided errors, capacity, total cost, quality, payback and scenarios."
+    },
+    "eyebrow": {
+      "es": "ROI DE UN EMPLEADO IA",
+      "en": "AI EMPLOYEE ROI"
+    },
+    "title": {
+      "es": "ROI de un Empleado IA: mide ahorro, capacidad y calidad, no solo tareas ejecutadas.",
+      "en": "AI Employee ROI: measure savings, capacity and quality, not just tasks executed."
+    },
+    "lead": {
+      "es": "El retorno de un Empleado IA no debería justificarse con una cifra genérica de productividad. Para saber si genera valor hay que comparar el proceso antes y después: horas humanas, tiempos de espera, errores, retrabajo, capacidad, conversión o SLA según el caso, y restar el coste total de implantación y operación. Un ROI sólido se construye con métricas observables y escenarios, no con promesas de automatización.",
+      "en": "AI Employee return should not be justified with a generic productivity percentage. To know whether it creates value, compare the process before and after: human hours, waiting time, errors, rework, capacity, conversion or SLA depending on the case, and subtract total implementation and operating cost. Strong ROI is built from observable metrics and scenarios, not automation promises."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Línea base antes de automatizar",
+          "en": "1. Baseline before automation"
+        },
+        "paragraphs": {
+          "es": [
+            "El ROI comienza midiendo el proceso actual antes de introducir IA. Sin esa referencia no se puede saber cuánto cambio pertenece realmente a la automatización. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir horas, errores, tiempos y volumen de la línea base. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "ROI begins by measuring the current process before AI is introduced. Without that reference it is impossible to know how much change truly belongs to automation. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure baseline hours, errors, timings and volume. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Horas humanas recuperadas",
+          "en": "2. Human hours recovered"
+        },
+        "paragraphs": {
+          "es": [
+            "La automatización puede liberar tiempo distribuido entre varias funciones. Conviene medir minutos por caso y no asumir que cada tarea automatizada equivale a una hora ahorrada. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir minutos antes y después por tipo de caso. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Automation can free time distributed across several roles. Measure minutes per case rather than assuming every automated task equals a full hour saved. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure minutes before and after by case type. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Errores y retrabajo",
+          "en": "3. Errors and rework"
+        },
+        "paragraphs": {
+          "es": [
+            "Reducir errores puede generar retorno incluso cuando el tiempo de ejecución cambia poco. Correcciones, duplicados y datos incompletos tienen un coste que debe hacerse visible. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir errores por cien casos y minutos de corrección. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Reducing errors can create return even when execution time changes little. Corrections, duplicates and incomplete data carry a cost that should be made visible. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure errors per one hundred cases and correction minutes. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Tiempo de ciclo",
+          "en": "4. Cycle time"
+        },
+        "paragraphs": {
+          "es": [
+            "Esperas entre equipos, búsquedas y aprobaciones pueden ser más costosas que la tarea principal. Un Empleado IA puede coordinar pasos y reducir tiempo total hasta resolución. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir tiempo desde entrada hasta cierre y tiempo en espera. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Waiting between teams, searches and approvals can be more expensive than the core task. An AI Employee can coordinate steps and reduce end-to-end resolution time. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure time from intake to closure and waiting time. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Capacidad adicional",
+          "en": "5. Additional capacity"
+        },
+        "paragraphs": {
+          "es": [
+            "El retorno puede aparecer porque el equipo procesa más volumen sin aumentar plantilla. Esa capacidad debe medirse con calidad constante para no confundir velocidad con productividad. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir casos por persona y porcentaje sin retrabajo. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Return can appear because the team handles more volume without increasing headcount. That capacity should be measured at constant quality so speed is not confused with productivity. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure cases per person and percentage without rework. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Ingresos y conversión",
+          "en": "6. Revenue and conversion"
+        },
+        "paragraphs": {
+          "es": [
+            "En ventas o atención, responder antes puede mejorar conversión, pero la atribución debe ser prudente. Compara cohortes o periodos y evita asignar todo el crecimiento a la IA. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir conversión, tiempo de respuesta y valor por oportunidad. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "In sales or service, faster response may improve conversion, but attribution should be cautious. Compare cohorts or periods and avoid assigning all growth to AI. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure conversion, response time and value per opportunity. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. SLA y experiencia",
+          "en": "7. SLA and experience"
+        },
+        "paragraphs": {
+          "es": [
+            "Cumplir SLA, reducir mensajes olvidados o dar respuestas más consistentes mejora operación aunque parte del beneficio sea difícil de monetizar. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir SLA cumplidos, tiempos de respuesta y escalados. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Meeting SLAs, reducing forgotten messages or delivering more consistent responses improves operations even when part of the benefit is difficult to monetise. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure met SLAs, response times and escalations. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Coste total",
+          "en": "8. Total cost"
+        },
+        "paragraphs": {
+          "es": [
+            "El denominador del ROI debe incluir implantación, modelos, APIs, infraestructura, mantenimiento, seguridad y tiempo humano residual. Ignorar costes produce un retorno artificialmente alto. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir coste total mensual y coste por proceso. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "The ROI denominator should include implementation, models, APIs, infrastructure, maintenance, security and residual human time. Ignoring costs produces artificially high return. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure total monthly cost and process cost. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Payback",
+          "en": "9. Payback"
+        },
+        "paragraphs": {
+          "es": [
+            "El periodo de retorno muestra cuántos meses necesita el ahorro neto para recuperar la inversión inicial. Es especialmente útil cuando se comparan proyectos distintos. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir meses hasta recuperar inversión. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Payback shows how many months net savings need to recover initial investment. It is particularly useful when comparing different projects. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure months to recover investment. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Escenarios",
+          "en": "10. Scenarios"
+        },
+        "paragraphs": {
+          "es": [
+            "Un único escenario oculta incertidumbre. Conservador, base y alto permiten ver qué ocurre si la automatización, volumen o costes resultan distintos de lo esperado. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir sensibilidad de ROI y payback. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "A single scenario hides uncertainty. Conservative, base and high cases show what happens when automation, volume or costs differ from expectations. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure ROI and payback sensitivity. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Atribución",
+          "en": "11. Attribution"
+        },
+        "paragraphs": {
+          "es": [
+            "Si al mismo tiempo cambian equipo, precios o campañas, no todo el resultado puede atribuirse al Empleado IA. Documentar cambios paralelos mejora la interpretación. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir diferencias por cohorte y cambios concurrentes. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "If team structure, pricing or campaigns change at the same time, not all results can be attributed to the AI Employee. Documenting parallel changes improves interpretation. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure cohort differences and concurrent changes. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Revisión continua",
+          "en": "12. Continuous review"
+        },
+        "paragraphs": {
+          "es": [
+            "El ROI evoluciona con volumen, coste de modelos, calidad y nuevos flujos. Revisarlo periódicamente permite decidir dónde ampliar, optimizar o retirar automatización. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir tendencia mensual de ahorro, calidad y coste. También hay que revisar la atribución incorrecta, el retrabajo oculto y los beneficios difíciles de monetizar. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el ROI de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "ROI changes with volume, model cost, quality and new workflows. Periodic review helps decide where to expand, optimise or remove automation. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure monthly trend in savings, quality and cost. It is also necessary to review incorrect attribution, hidden rework and benefits that are difficult to monetise. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee ROI to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Cómo construir un modelo de ROI",
+        "en": "How to build an ROI model"
+      },
+      "steps": {
+        "es": [
+          "Define el proceso y periodo de análisis.",
+          "Mide línea base de horas, errores y tiempos.",
+          "Calcula coste total de la automatización.",
+          "Mide resultados después del despliegue.",
+          "Monetiza ahorro y capacidad con supuestos explícitos.",
+          "Construye escenarios conservador, base y alto.",
+          "Revisa ROI y payback periódicamente."
+        ],
+        "en": [
+          "Define the process and analysis period.",
+          "Measure baseline hours, errors and timings.",
+          "Calculate total automation cost.",
+          "Measure results after deployment.",
+          "Monetise savings and capacity with explicit assumptions.",
+          "Build conservative, base and high scenarios.",
+          "Review ROI and payback periodically."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Horas recuperadas",
+        "Coste por caso",
+        "Errores evitados",
+        "Retrabajo",
+        "Tiempo de resolución",
+        "Capacidad adicional",
+        "Ahorro neto",
+        "ROI y payback"
+      ],
+      "en": [
+        "Hours recovered",
+        "Cost per case",
+        "Errors avoided",
+        "Rework",
+        "Resolution time",
+        "Additional capacity",
+        "Net savings",
+        "ROI and payback"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Cómo se calcula el ROI de un Empleado IA?",
+          "en": "How is AI Employee ROI calculated?"
+        },
+        "answer": {
+          "es": "Una fórmula básica compara beneficio neto con inversión: beneficios monetizados menos coste total, dividido por coste total. Debe acompañarse de payback y métricas operativas para evitar conclusiones incompletas.",
+          "en": "A basic formula compares net benefit with investment: monetised benefits minus total cost, divided by total cost. It should be paired with payback and operational metrics to avoid incomplete conclusions."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué beneficios se pueden monetizar?",
+          "en": "Which benefits can be monetised?"
+        },
+        "answer": {
+          "es": "Horas recuperadas, retrabajo evitado, errores reducidos, capacidad adicional, menores tiempos de espera y, cuando exista evidencia, mejora en conversión o retención.",
+          "en": "Recovered hours, avoided rework, fewer errors, additional capacity, reduced waiting time and, where evidence exists, improvements in conversion or retention."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cuándo medir ROI?",
+          "en": "When should ROI be measured?"
+        },
+        "answer": {
+          "es": "Define la línea base antes del despliegue y revisa resultados tras un periodo suficiente para estabilizar el flujo. Después conviene actualizarlo periódicamente.",
+          "en": "Define the baseline before deployment and review results after enough time for the workflow to stabilise. It should then be updated periodically."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué pasa si un beneficio no puede monetizarse?",
+          "en": "What if a benefit cannot be monetised?"
+        },
+        "answer": {
+          "es": "Mantén la métrica separada como beneficio operativo. No es necesario asignar un valor económico artificial a cada mejora para tomar una buena decisión.",
+          "en": "Keep it separate as an operational benefit. Not every improvement needs an artificial financial value to support a sound decision."
+        }
+      }
+    ],
+    "relatedArticleKey": "how-to-calculate-ai-employee-roi",
+    "publishedAt": "2026-09-23",
+    "updatedAt": "2026-09-23"
+  }
+]

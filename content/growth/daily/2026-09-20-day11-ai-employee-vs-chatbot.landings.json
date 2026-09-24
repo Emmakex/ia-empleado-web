@@ -1,0 +1,284 @@
+[
+  {
+    "key": "ai-employee-vs-chatbot",
+    "slugs": {
+      "es": "empleado-ia-vs-chatbot",
+      "en": "ai-employee-vs-chatbot"
+    },
+    "seoTitle": {
+      "es": "Empleado IA vs chatbot: diferencias y casos de uso | IA Empleado",
+      "en": "AI Employee vs chatbot: differences and use cases | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Compara Empleado IA y chatbot: alcance, autonomía, integraciones, procesos, control humano, costes y cuándo conviene cada enfoque.",
+      "en": "Compare AI Employees and chatbots: scope, autonomy, integrations, processes, human control, costs and when each approach fits."
+    },
+    "eyebrow": {
+      "es": "EMPLEADO IA VS CHATBOT",
+      "en": "AI EMPLOYEE VS CHATBOT"
+    },
+    "title": {
+      "es": "Empleado IA vs chatbot: no resuelven el mismo problema.",
+      "en": "AI Employee vs chatbot: they do not solve the same problem."
+    },
+    "lead": {
+      "es": "Un chatbot está diseñado principalmente para conversar. Un Empleado IA puede conversar, pero su valor aparece cuando además consulta sistemas autorizados, prepara acciones, ejecuta tareas dentro de permisos definidos y mantiene trazabilidad. Elegir entre ambos no depende de cuál suena más avanzado, sino del problema real: responder preguntas, coordinar procesos o completar trabajo operativo con control humano.",
+      "en": "A chatbot is designed primarily for conversation. An AI Employee can converse too, but its value appears when it also reads authorised systems, prepares actions, executes tasks within defined permissions and preserves traceability. Choosing between them is not about which sounds more advanced, but about the real problem: answering questions, coordinating processes or completing operational work with human control."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. La diferencia principal: conversación frente a ejecución",
+          "en": "1. The core difference: conversation versus execution"
+        },
+        "paragraphs": {
+          "es": [
+            "Un chatbot recibe una pregunta y devuelve una respuesta. Puede consultar una base de conocimiento, recuperar información o guiar a una persona por un flujo. Un Empleado IA añade una capa operativa: además de comprender el mensaje, puede consultar CRM, ERP, correo, calendario, helpdesk u otras herramientas y preparar o ejecutar una acción permitida.",
+            "La diferencia no es que uno use IA y el otro no. Ambos pueden utilizar modelos similares. Lo que cambia es la arquitectura alrededor del modelo: permisos, herramientas, memoria operativa, reglas de negocio, validaciones, auditoría y mecanismos de escalado. Esa infraestructura es la que convierte una conversación en trabajo empresarial verificable."
+          ],
+          "en": [
+            "A chatbot receives a question and returns an answer. It may search a knowledge base, retrieve information or guide someone through a flow. An AI Employee adds an operational layer: beyond understanding the message, it can read CRM, ERP, email, calendar, helpdesk or other tools and prepare or execute a permitted action.",
+            "The difference is not that one uses AI and the other does not. Both may use similar models. What changes is the architecture around the model: permissions, tools, operational memory, business rules, validation, auditability and escalation mechanisms. That infrastructure turns conversation into verifiable business work."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Un chatbot es suficiente cuando la respuesta es el producto",
+          "en": "2. A chatbot is enough when the answer is the product"
+        },
+        "paragraphs": {
+          "es": [
+            "Si el objetivo es resolver preguntas frecuentes, explicar un servicio, orientar sobre documentación o filtrar una consulta antes de derivarla, un chatbot puede ser la solución correcta. En estos casos el valor está en reducir tiempo de espera y ofrecer información consistente, no en modificar sistemas internos.",
+            "Añadir herramientas, permisos y automatizaciones complejas a un caso puramente informativo puede aumentar coste y riesgo sin aportar beneficio proporcional. La mejor arquitectura es la más simple que resuelve el problema. Un chatbot bien diseñado puede ser más adecuado que un agente operativo cuando no existe una tarea posterior que automatizar."
+          ],
+          "en": [
+            "If the objective is to answer frequently asked questions, explain a service, guide users through documentation or triage a request before handoff, a chatbot may be the right solution. In these cases value comes from reducing waiting time and delivering consistent information, not from changing internal systems.",
+            "Adding tools, permissions and complex automation to a purely informational case can increase cost and risk without proportional benefit. The best architecture is the simplest one that solves the problem. A well-designed chatbot can be more appropriate than an operational agent when no downstream task needs automation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Un Empleado IA encaja cuando hay trabajo después de la conversación",
+          "en": "3. An AI Employee fits when work continues after the conversation"
+        },
+        "paragraphs": {
+          "es": [
+            "Muchas consultas empresariales no terminan al responder. Un cliente pide cambiar una cita, un proveedor envía una factura, una oportunidad solicita presupuesto o un pedido presenta una incidencia. Después del mensaje alguien debe buscar datos, comprobar reglas, actualizar un sistema, crear una tarea y dejar constancia.",
+            "Un Empleado IA puede coordinar esos pasos dentro de límites explícitos. Puede preparar un borrador de presupuesto, consultar disponibilidad, registrar una incidencia o actualizar un campo permitido. Las acciones sensibles siguen detrás de aprobación humana. El objetivo es reducir la cadena de trabajo manual, no simplemente añadir una interfaz conversacional."
+          ],
+          "en": [
+            "Many business requests do not end when an answer is given. A customer asks to change an appointment, a supplier sends an invoice, a prospect requests a quote or an order has an incident. After the message, someone must find data, check rules, update a system, create a task and leave a record.",
+            "An AI Employee can coordinate those steps within explicit boundaries. It can prepare a quote draft, check availability, register an incident or update an allowed field. Sensitive actions remain behind human approval. The objective is to reduce the manual work chain, not simply add a conversational interface."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Integraciones: consultar no es lo mismo que actuar",
+          "en": "4. Integrations: reading is not the same as acting"
+        },
+        "paragraphs": {
+          "es": [
+            "Un chatbot puede estar conectado a una API y seguir siendo un chatbot si utiliza esa conexión para responder. Por ejemplo, consultar el estado de un pedido y mostrarlo. La transición hacia un Empleado IA aparece cuando el sistema tiene autoridad limitada para crear, modificar o coordinar tareas entre aplicaciones.",
+            "Esta distinción ayuda a diseñar permisos. Leer un pedido requiere un nivel de riesgo diferente a cancelar un pedido. Consultar una agenda no equivale a crear una cita. Un Empleado IA debe separar herramientas de lectura, propuesta y ejecución para que cada caso tenga el control apropiado."
+          ],
+          "en": [
+            "A chatbot can connect to an API and still remain a chatbot if the connection is used only to answer. For example, it may look up order status and display it. The transition toward an AI Employee appears when the system receives limited authority to create, modify or coordinate tasks across applications.",
+            "This distinction helps design permissions. Reading an order carries a different risk from cancelling it. Viewing a calendar is not equivalent to creating an appointment. An AI Employee should separate read, proposal and execution tools so each case receives the appropriate control."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Memoria y contexto operativo",
+          "en": "5. Memory and operational context"
+        },
+        "paragraphs": {
+          "es": [
+            "Un chatbot suele necesitar contexto suficiente para mantener una conversación coherente. Un Empleado IA necesita además contexto de proceso: qué tarea está abierta, qué pasos ya se completaron, qué excepción apareció, qué aprobación falta y cuál es el sistema de verdad. Esa memoria debe ser estructurada y auditable, no depender solo del historial textual.",
+            "Guardar todo indiscriminadamente tampoco es correcto. El sistema debe definir qué información necesita conservar, durante cuánto tiempo y con qué finalidad. Datos personales, comerciales o confidenciales requieren políticas claras. La memoria útil es la que permite continuar un proceso sin convertir cada conversación en un archivo permanente e innecesario."
+          ],
+          "en": [
+            "A chatbot usually needs enough context to maintain a coherent conversation. An AI Employee also needs process context: which task is open, which steps are complete, which exception occurred, which approval is missing and which system is the source of truth. That memory should be structured and auditable rather than relying only on chat history.",
+            "Keeping everything indefinitely is not appropriate either. The system should define what information needs to be retained, for how long and for what purpose. Personal, commercial or confidential data requires clear policies. Useful memory allows a process to continue without turning every conversation into an unnecessary permanent archive."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Control humano y niveles de autonomía",
+          "en": "6. Human control and levels of autonomy"
+        },
+        "paragraphs": {
+          "es": [
+            "En un chatbot, el principal riesgo suele estar en la calidad de la respuesta. En un Empleado IA aparece además riesgo de acción. Por eso conviene definir niveles: solo lectura, propuesta, ejecución de bajo riesgo y aprobación obligatoria para acciones sensibles. La autonomía no tiene por qué ser uniforme en todos los procesos.",
+            "Un mismo agente puede responder automáticamente a una pregunta simple, preparar un cambio de dirección para revisión y bloquear una solicitud de cambio bancario hasta que una persona la valide por otro canal. El control humano no es una alternativa a la automatización; es parte de una arquitectura de automatización empresarial responsable."
+          ],
+          "en": [
+            "With a chatbot, the main risk is often answer quality. With an AI Employee, action risk also appears. It is therefore useful to define levels: read-only, proposal, low-risk execution and mandatory approval for sensitive actions. Autonomy does not need to be uniform across every process.",
+            "The same agent may answer a simple question automatically, prepare an address change for review and block a bank-detail request until a person verifies it through another channel. Human control is not an alternative to automation; it is part of a responsible enterprise automation architecture."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Coste: interfaz conversacional frente a sistema operativo",
+          "en": "7. Cost: conversational interface versus operational system"
+        },
+        "paragraphs": {
+          "es": [
+            "Un chatbot informativo suele requerir menos integración, permisos y observabilidad que un Empleado IA. Su coste puede concentrarse en conocimiento, experiencia conversacional y volumen de uso. Un Empleado IA necesita además conectores, identidad técnica, reglas, auditoría, tratamiento de excepciones, pruebas y mantenimiento operativo.",
+            "Comparar únicamente el precio de las llamadas al modelo lleva a conclusiones equivocadas. El coste real incluye construcción, integración, supervisión y soporte. A cambio, un Empleado IA puede automatizar horas de trabajo que un chatbot no toca. La decisión debe analizar coste total y valor del proceso, no una tarifa aislada por mensaje."
+          ],
+          "en": [
+            "An informational chatbot usually needs less integration, permission design and observability than an AI Employee. Its cost may focus on knowledge, conversational experience and usage volume. An AI Employee also needs connectors, technical identity, rules, auditability, exception handling, testing and operational maintenance.",
+            "Comparing only model-call pricing leads to misleading conclusions. Real cost includes implementation, integration, supervision and support. In return, an AI Employee can automate hours of work that a chatbot never touches. The decision should compare total cost and process value rather than an isolated price per message."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Casos de uso donde pueden convivir",
+          "en": "8. Use cases where both can coexist"
+        },
+        "paragraphs": {
+          "es": [
+            "No es necesario elegir una única tecnología para toda la empresa. Un chatbot puede actuar como puerta de entrada pública y un Empleado IA gestionar procesos internos detrás. El usuario conversa con una interfaz sencilla mientras el sistema operativo consulta herramientas, prepara acciones y pide aprobación cuando corresponde.",
+            "En atención al cliente, por ejemplo, el chatbot puede responder preguntas frecuentes y recoger contexto. Si detecta una incidencia de pedido, transfiere el caso al Empleado IA, que consulta ERP y helpdesk, prepara una solución y devuelve el resultado a la conversación. Cada capa hace el trabajo para el que está diseñada."
+          ],
+          "en": [
+            "A company does not need to choose one technology for every need. A chatbot can serve as the public entry point while an AI Employee manages internal processes behind it. The user sees a simple conversation while the operational system reads tools, prepares actions and requests approval when necessary.",
+            "In customer service, for example, the chatbot can answer common questions and gather context. If it detects an order incident, the case can move to the AI Employee, which checks ERP and helpdesk, prepares a resolution and returns the outcome to the conversation. Each layer performs the job it is designed for."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Qué medir para decidir si necesitas dar el salto",
+          "en": "9. What to measure before moving beyond a chatbot"
+        },
+        "paragraphs": {
+          "es": [
+            "Si la mayoría de conversaciones terminan con una respuesta y pocos casos exigen trabajo posterior, probablemente un chatbot cubre gran parte del valor. Si el equipo dedica tiempo después de cada conversación a copiar datos, consultar sistemas, crear tareas o perseguir aprobaciones, existe una oportunidad clara para un Empleado IA.",
+            "Mide porcentaje de conversaciones con acción posterior, minutos de trabajo administrativo por caso, número de sistemas consultados, retrabajo, tiempos de espera y frecuencia de excepciones. Estas métricas muestran si el cuello de botella está en conversar o en ejecutar. La arquitectura debería responder a esa evidencia."
+          ],
+          "en": [
+            "If most conversations end with an answer and only a few cases require downstream work, a chatbot probably captures much of the available value. If the team spends time after each conversation copying data, checking systems, creating tasks or chasing approvals, there is a clear opportunity for an AI Employee.",
+            "Measure the percentage of conversations requiring follow-up action, administrative minutes per case, number of systems consulted, rework, waiting time and exception frequency. These metrics reveal whether the bottleneck is conversation or execution. Architecture should follow that evidence."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Cómo evolucionar sin rehacer todo",
+          "en": "10. How to evolve without rebuilding everything"
+        },
+        "paragraphs": {
+          "es": [
+            "Una estrategia práctica es comenzar con una interfaz conversacional y separar desde el principio conocimiento, herramientas y políticas. Así, cuando aparece un caso operativo, se puede añadir una capacidad de propuesta o ejecución sin convertir todo el chatbot en un agente con permisos amplios.",
+            "La evolución puede hacerse por flujos: primero consulta de estado, después borrador, luego actualización de bajo riesgo. Cada nueva capacidad se prueba y mide de forma independiente. Este diseño modular permite que el producto crezca desde chatbot hacia Empleado IA solo donde existe una razón empresarial clara."
+          ],
+          "en": [
+            "A practical strategy is to begin with a conversational interface while separating knowledge, tools and policies from the start. When an operational use case appears, proposal or execution capability can then be added without turning the entire chatbot into an agent with broad permissions.",
+            "Evolution can happen workflow by workflow: first status lookup, then drafting, then low-risk updates. Each new capability is tested and measured independently. This modular design allows the product to grow from chatbot toward AI Employee only where there is a clear business reason."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Cómo elegir entre chatbot y Empleado IA",
+        "en": "How to choose between a chatbot and an AI Employee"
+      },
+      "steps": {
+        "es": [
+          "Define el resultado empresarial que quieres mejorar.",
+          "Mide cuánto trabajo ocurre después de la conversación.",
+          "Identifica los sistemas que una persona consulta o modifica.",
+          "Separa necesidades de información, propuesta y ejecución.",
+          "Clasifica acciones por impacto y necesidad de aprobación.",
+          "Empieza con la arquitectura más simple que cubra el caso.",
+          "Añade autonomía únicamente cuando el ahorro y la calidad lo justifiquen."
+        ],
+        "en": [
+          "Define the business outcome you want to improve.",
+          "Measure how much work happens after the conversation.",
+          "Identify the systems a person reads or changes.",
+          "Separate information, proposal and execution needs.",
+          "Classify actions by impact and approval requirements.",
+          "Start with the simplest architecture that covers the case.",
+          "Add autonomy only when savings and quality justify it."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Conversaciones que requieren acción posterior",
+        "Minutos administrativos por conversación",
+        "Tasa de resolución informativa",
+        "Acciones completadas sin retrabajo",
+        "Escalados humanos",
+        "Correcciones por cada 100 casos",
+        "Número de sistemas implicados",
+        "Tiempo total hasta resolución"
+      ],
+      "en": [
+        "Conversations requiring downstream action",
+        "Administrative minutes per conversation",
+        "Informational resolution rate",
+        "Actions completed without rework",
+        "Human escalations",
+        "Corrections per 100 cases",
+        "Number of systems involved",
+        "End-to-end resolution time"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Un Empleado IA sustituye a un chatbot?",
+          "en": "Does an AI Employee replace a chatbot?"
+        },
+        "answer": {
+          "es": "No necesariamente. Un chatbot puede seguir siendo la interfaz conversacional mientras un Empleado IA gestiona procesos y herramientas detrás. Son capas complementarias cuando el caso lo requiere.",
+          "en": "Not necessarily. A chatbot can remain the conversational interface while an AI Employee manages processes and tools behind it. They can be complementary layers when the use case requires both."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cuál es más barato?",
+          "en": "Which one is cheaper?"
+        },
+        "answer": {
+          "es": "Un chatbot informativo suele tener menos coste de integración y gobierno. Un Empleado IA requiere más arquitectura, pero puede automatizar tareas operativas y generar un retorno mayor. La comparación correcta es coste total frente a valor del proceso.",
+          "en": "An informational chatbot usually has lower integration and governance cost. An AI Employee requires more architecture but can automate operational work and create greater return. The right comparison is total cost versus process value."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Puede un chatbot conectarse a un CRM?",
+          "en": "Can a chatbot connect to a CRM?"
+        },
+        "answer": {
+          "es": "Sí. La conexión por sí sola no lo convierte en Empleado IA. La diferencia aparece cuando el sistema coordina trabajo, mantiene estado de proceso y ejecuta acciones bajo permisos y políticas.",
+          "en": "Yes. A connection alone does not make it an AI Employee. The difference appears when the system coordinates work, maintains process state and executes actions under permissions and policies."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cuándo conviene empezar con chatbot?",
+          "en": "When should a company start with a chatbot?"
+        },
+        "answer": {
+          "es": "Cuando el principal problema es responder preguntas, orientar usuarios o reducir carga informativa. Si el cuello de botella está en tareas posteriores a la conversación, conviene evaluar directamente un flujo de Empleado IA.",
+          "en": "When the main problem is answering questions, guiding users or reducing informational workload. If the bottleneck is downstream work after the conversation, an AI Employee workflow should be evaluated directly."
+        }
+      }
+    ],
+    "relatedArticleKey": "when-to-choose-ai-employee-or-chatbot",
+    "publishedAt": "2026-09-20",
+    "updatedAt": "2026-09-20"
+  }
+]
