@@ -233,6 +233,22 @@
             "Gradual releases reduce risk. New logic can be tested on part of the volume, metrics compared and scope expanded only when errors or exceptions do not increase. This turns automation into a maintainable system rather than a collection of scripts that are difficult to govern."
           ]
         }
+      },
+      {
+        "title": {
+          "es": "14. Documenta por qué elegiste cada tecnología",
+          "en": "14. Document why each technology was chosen"
+        },
+        "paragraphs": {
+          "es": [
+            "Registrar la decisión arquitectónica evita que unos meses después nadie recuerde por qué un paso utiliza RPA, otro una API y otro un agente. El documento debe indicar restricciones del sistema, nivel de variabilidad, riesgo, volumen y motivo económico. Cuando cambien esas condiciones, la decisión puede revisarse con datos en lugar de preferencias.",
+            "Este registro también ayuda en auditorías y mantenimiento. Si aparece una nueva API o la interfaz legacy deja de ser estable, el equipo sabe qué supuesto dejó de cumplirse y puede sustituir solo el ejecutor afectado. La arquitectura se mantiene evolutiva y cada cambio conserva una justificación técnica y empresarial."
+          ],
+          "en": [
+            "Recording the architecture decision prevents teams from forgetting why one step uses RPA, another an API and another an AI agent. The record should state system constraints, variability, risk, volume and the economic reason for the choice. When those conditions change, the decision can be reviewed using evidence rather than preference.",
+            "This record also supports audits and maintenance. If a new API appears or a legacy interface becomes unstable, the team can identify which assumption no longer holds and replace only the affected executor. The architecture remains evolvable, and every change preserves both a technical and business justification."
+          ]
+        }
       }
     ],
     "takeaways": {
