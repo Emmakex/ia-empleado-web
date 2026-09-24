@@ -1,0 +1,252 @@
+[
+  {
+    "key": "when-to-choose-ai-employee-or-chatbot",
+    "slugs": {
+      "es": "cuando-elegir-empleado-ia-o-chatbot",
+      "en": "when-to-choose-ai-employee-or-chatbot"
+    },
+    "seoTitle": {
+      "es": "Cuándo elegir Empleado IA o chatbot: guía práctica | IA Empleado",
+      "en": "When to choose an AI Employee or chatbot: practical guide | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía para decidir entre chatbot y Empleado IA según intención, tareas, integraciones, riesgo, autonomía, costes y retorno.",
+      "en": "A practical guide to choosing between a chatbot and an AI Employee based on intent, tasks, integrations, risk, autonomy, cost and return."
+    },
+    "title": {
+      "es": "¿Chatbot o Empleado IA? 12 señales para elegir la arquitectura correcta",
+      "en": "Chatbot or AI Employee? 12 signals for choosing the right architecture"
+    },
+    "excerpt": {
+      "es": "No todas las empresas necesitan un agente operativo y no todos los problemas se resuelven con un chatbot. Estas señales ayudan a elegir según el trabajo real.",
+      "en": "Not every company needs an operational agent and not every problem is solved by a chatbot. These signals help choose based on the actual work."
+    },
+    "intro": {
+      "es": "La comparación entre chatbot y Empleado IA se vuelve confusa cuando se reduce a una lista de funciones. Ambos pueden usar lenguaje natural, consultar información y mantener una conversación. La decisión correcta aparece al observar el proceso completo: qué ocurre antes del mensaje, qué trabajo aparece después, qué sistemas participan, qué riesgos existen y cuánto valor genera automatizar la ejecución. Esta guía propone un marco práctico para decidir sin comprar complejidad innecesaria ni quedarse corto con una interfaz que solo conversa.",
+      "en": "The comparison between a chatbot and an AI Employee becomes confusing when reduced to a feature list. Both can use natural language, retrieve information and maintain a conversation. The right decision appears when the complete process is examined: what happens before the message, what work follows it, which systems are involved, which risks exist and how much value execution automation creates. This guide provides a practical framework for deciding without buying unnecessary complexity or settling for an interface that only talks."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Si el objetivo es responder, empieza por chatbot",
+          "en": "1. If the objective is answering, start with a chatbot"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando una empresa recibe preguntas repetidas sobre horarios, servicios, requisitos, documentación o funcionamiento, el problema principal es acceso a información. Un chatbot con una base de conocimiento bien gobernada puede reducir tiempos de respuesta y descargar al equipo sin necesidad de integraciones operativas complejas.",
+            "El diseño debe centrarse en calidad de conocimiento, fuentes, actualización y escalado. Añadir permisos para modificar sistemas no aporta valor si la conversación termina en una respuesta. Cada capacidad extra crea superficie de riesgo y mantenimiento, por lo que la simplicidad es una ventaja cuando cubre el resultado."
+          ],
+          "en": [
+            "When a company receives repeated questions about opening hours, services, requirements, documentation or procedures, the primary problem is access to information. A chatbot with a well-governed knowledge base can reduce response time and workload without complex operational integrations.",
+            "Design should focus on knowledge quality, sources, updates and escalation. Adding permission to modify systems creates no value if the conversation ends with an answer. Every additional capability adds risk and maintenance, so simplicity is an advantage when it covers the desired outcome."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Si la conversación siempre genera una tarea, mira más allá del chatbot",
+          "en": "2. If every conversation creates a task, look beyond the chatbot"
+        },
+        "paragraphs": {
+          "es": [
+            "Muchas empresas descubren que el tiempo no se pierde respondiendo, sino ejecutando lo que viene después. Una solicitud comercial genera seguimiento; una incidencia obliga a consultar un pedido; una factura exige registrar datos; una reserva requiere comprobar disponibilidad y crear un evento.",
+            "Si la mayoría de los casos terminan en CRM, ERP, helpdesk, correo o calendario, una interfaz conversacional solo automatiza la primera parte. Un Empleado IA puede coordinar el proceso posterior, siempre con herramientas y permisos específicos. Esa diferencia suele explicar dónde aparece el retorno real."
+          ],
+          "en": [
+            "Many companies discover that time is not lost in answering but in executing what comes next. A sales request creates follow-up; an incident requires checking an order; an invoice requires data entry; a booking requires checking availability and creating an event.",
+            "If most cases end in CRM, ERP, helpdesk, email or calendar, a conversational interface automates only the first part. An AI Employee can coordinate the downstream process with specific tools and permissions. That difference often explains where the real return appears."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Cuenta sistemas, no mensajes",
+          "en": "3. Count systems, not messages"
+        },
+        "paragraphs": {
+          "es": [
+            "Una forma rápida de evaluar complejidad es observar cuántas aplicaciones toca una persona para cerrar un caso. Si basta con una base de conocimiento, probablemente el chatbot es suficiente. Si hay que abrir CRM, ERP, correo y calendario, existe un problema de coordinación que una capa operativa puede resolver.",
+            "El número de sistemas tampoco implica automatizar todo. Puede ser suficiente con dar acceso de lectura a dos fuentes y mantener ejecución humana. El diseño debe seguir el mínimo privilegio: conectar solo lo necesario para resolver el cuello de botella actual."
+          ],
+          "en": [
+            "A quick way to evaluate complexity is to observe how many applications a person touches to close a case. If a knowledge base is enough, a chatbot is probably sufficient. If CRM, ERP, email and calendar must all be opened, there is a coordination problem that an operational layer can address.",
+            "The number of systems does not mean everything should be automated. Read access to two sources may be enough while execution remains human. Design should follow least privilege: connect only what is necessary to solve the current bottleneck."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Evalúa si el proceso necesita estado",
+          "en": "4. Evaluate whether the process needs state"
+        },
+        "paragraphs": {
+          "es": [
+            "Una conversación puede ser efímera. Un proceso no. Una solicitud puede quedar esperando documentos, aprobación, respuesta de proveedor o una fecha futura. Si el sistema necesita recordar qué etapa está activa y retomar trabajo horas o días después, ya estamos ante un problema de gestión de proceso.",
+            "Ese estado debe vivir en estructuras verificables y no depender únicamente de mensajes anteriores. El agente necesita saber qué tarea está abierta, quién es responsable y qué condición permite avanzar. Esta capacidad diferencia una experiencia conversacional de un sistema que realmente gestiona trabajo."
+          ],
+          "en": [
+            "A conversation can be temporary. A process cannot. A request may wait for documents, approval, supplier feedback or a future date. If the system needs to remember the active stage and resume work hours or days later, the problem has become process management.",
+            "That state should live in verifiable structures rather than depending only on previous messages. The agent needs to know which task is open, who owns it and what condition allows progress. This capability separates a conversational experience from a system that genuinely manages work."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Identifica acciones irreversibles",
+          "en": "5. Identify irreversible actions"
+        },
+        "paragraphs": {
+          "es": [
+            "Enviar una respuesta informativa es distinto a emitir una factura, cancelar un pedido, cambiar una cuenta bancaria o confirmar una reserva no reembolsable. Antes de dar autonomía hay que clasificar acciones por impacto y reversibilidad.",
+            "Los casos de alto impacto pueden seguir aprovechando IA en modo propuesta: recopilar datos, preparar el cambio y presentar evidencia. La persona conserva la aprobación. Así se obtiene gran parte del ahorro sin convertir la automatización en una fuente de riesgo innecesario."
+          ],
+          "en": [
+            "Sending an informational reply is different from issuing an invoice, cancelling an order, changing bank details or confirming a non-refundable booking. Before autonomy is granted, actions should be classified by impact and reversibility.",
+            "High-impact cases can still benefit from AI in proposal mode: gather data, prepare the change and present evidence. A person retains approval. This captures much of the efficiency without turning automation into an unnecessary source of risk."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Mide el trabajo administrativo que queda después",
+          "en": "6. Measure the administrative work that remains afterwards"
+        },
+        "paragraphs": {
+          "es": [
+            "Después de desplegar un chatbot, algunas empresas siguen viendo la misma carga interna porque el equipo recibe conversaciones ya clasificadas pero debe completar manualmente el proceso. Esa situación indica que el cuello de botella no era únicamente atención al usuario.",
+            "Mide minutos desde que termina la conversación hasta que el caso queda realmente resuelto. Incluye búsquedas, copia de datos, actualizaciones, aprobaciones y seguimiento. Si ese tramo domina el tiempo total, un Empleado IA puede tener un caso de negocio más fuerte que seguir optimizando únicamente la capa conversacional."
+          ],
+          "en": [
+            "After deploying a chatbot, some companies still see the same internal workload because the team receives pre-classified conversations but must manually complete the process. This indicates that the bottleneck was not only customer interaction.",
+            "Measure the minutes from the end of the conversation until the case is actually resolved. Include searches, data copying, updates, approvals and follow-up. If this segment dominates total time, an AI Employee may have a stronger business case than continuing to optimise only the conversational layer."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. No confundas integración con autonomía",
+          "en": "7. Do not confuse integration with autonomy"
+        },
+        "paragraphs": {
+          "es": [
+            "Un chatbot conectado a CRM puede consultar información y mostrarla. Eso no significa que deba modificar oportunidades, crear descuentos o cerrar tareas. La integración proporciona contexto; la autonomía define qué puede hacer el sistema con ese contexto.",
+            "Esta separación permite una evolución gradual. Primero se habilita lectura, después borradores y finalmente acciones concretas cuando existe evidencia de calidad. El mismo componente puede funcionar como chatbot en un flujo y como Empleado IA en otro."
+          ],
+          "en": [
+            "A chatbot connected to CRM can retrieve information and display it. That does not mean it should modify opportunities, create discounts or close tasks. Integration provides context; autonomy defines what the system may do with that context.",
+            "This separation supports gradual evolution. Read access comes first, then drafts, and finally specific actions when quality evidence exists. The same component can behave like a chatbot in one workflow and an AI Employee in another."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Considera el coste de gobierno",
+          "en": "8. Consider governance cost"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuanta más capacidad de acción tiene el sistema, más importante es invertir en permisos, auditoría, pruebas, observabilidad y gestión de excepciones. Ese coste es razonable cuando automatiza trabajo valioso, pero sería excesivo para una FAQ simple.",
+            "Por eso el análisis económico debe incluir complejidad operativa. No se trata de elegir siempre la opción más barata, sino de evitar arquitectura que no produce retorno. Un Empleado IA se justifica cuando el valor de coordinar y ejecutar supera el coste adicional de gobernarlo."
+          ],
+          "en": [
+            "The more action capability a system has, the more important permissions, auditability, testing, observability and exception management become. That cost is reasonable when valuable work is automated, but excessive for a simple FAQ.",
+            "Economic analysis should therefore include operational complexity. The goal is not always to choose the cheapest option, but to avoid architecture that does not generate return. An AI Employee is justified when the value of coordination and execution exceeds the additional governance cost."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Revisa privacidad y sensibilidad de datos",
+          "en": "9. Review privacy and data sensitivity"
+        },
+        "paragraphs": {
+          "es": [
+            "Un chatbot público puede trabajar con información general. Un Empleado IA suele acceder a datos internos, clientes, pedidos o documentos. Ese cambio obliga a revisar identidad, acceso, retención, trazabilidad y tratamiento de información sensible.",
+            "La arquitectura puede reducir exposición manteniendo cada fuente en su sistema y consultando solo los campos necesarios. No es necesario copiar todo el CRM en memoria ni enviar documentos completos al modelo si el proceso requiere únicamente un identificador y un estado."
+          ],
+          "en": [
+            "A public chatbot can operate on general information. An AI Employee often accesses internal data, customers, orders or documents. That change requires reviewing identity, access, retention, traceability and sensitive-data handling.",
+            "Architecture can reduce exposure by keeping each source in its own system and retrieving only the fields required. There is no need to copy the entire CRM into memory or send complete documents to the model when the process only needs an identifier and a status."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Observa el papel de las excepciones",
+          "en": "10. Look at the role of exceptions"
+        },
+        "paragraphs": {
+          "es": [
+            "Procesos con muchas excepciones no están descartados para IA, pero necesitan una estrategia distinta. El agente puede resolver el camino estándar y escalar los casos que no cumplen reglas. El valor aparece aunque no alcance una automatización del cien por cien.",
+            "La métrica importante es cuántas excepciones se identifican correctamente y cuánto trabajo ahorra el camino estándar. Forzar al agente a resolver todos los casos suele reducir calidad. Una arquitectura híbrida puede ser más eficiente que perseguir autonomía total."
+          ],
+          "en": [
+            "Processes with many exceptions are not excluded from AI, but they require a different strategy. The agent can handle the standard path and escalate cases that do not meet the rules. Value appears even without one hundred percent automation.",
+            "The important metric is how accurately exceptions are identified and how much work the standard path saves. Forcing the agent to resolve every case often reduces quality. A hybrid architecture can be more efficient than pursuing total autonomy."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Prueba el caso con modo propuesta",
+          "en": "11. Test the case in proposal mode"
+        },
+        "paragraphs": {
+          "es": [
+            "Si existe duda entre chatbot y Empleado IA, una prueba en modo propuesta ofrece evidencia. El agente recibe la conversación, consulta las mismas fuentes que usaría en producción y prepara la acción, pero una persona decide si la ejecuta.",
+            "Durante esta fase se mide precisión, correcciones, tiempo ahorrado y tipos de excepción. Si el resultado es estable, se automatizan acciones de bajo riesgo. Si no, se mantiene como asistente o se reduce el alcance. La decisión deja de ser teórica."
+          ],
+          "en": [
+            "If there is uncertainty between a chatbot and an AI Employee, proposal mode provides evidence. The agent receives the conversation, reads the same sources it would use in production and prepares the action, but a person decides whether it executes.",
+            "During this phase, teams measure accuracy, corrections, time saved and exception types. If results are stable, low-risk actions can be automated. If not, the system remains an assistant or scope is reduced. The decision stops being theoretical."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Elige por proceso, no por etiqueta",
+          "en": "12. Choose by process, not by label"
+        },
+        "paragraphs": {
+          "es": [
+            "Una empresa puede tener chatbots, copilotos y Empleados IA al mismo tiempo. El nombre del producto importa menos que la combinación de herramientas, permisos y objetivos. Lo útil es definir claramente qué resultado debe conseguir cada componente.",
+            "Para una FAQ, conversación. Para preparar un presupuesto, propuesta. Para actualizar un estado estándar, ejecución limitada. Para un cambio financiero, aprobación. Esta matriz permite construir un sistema coherente sin convertir toda la organización en un único agente monolítico."
+          ],
+          "en": [
+            "A company can use chatbots, copilots and AI Employees at the same time. The product label matters less than the combination of tools, permissions and objectives. What matters is clearly defining the outcome each component must achieve.",
+            "For an FAQ, conversation. For preparing a quote, proposal. For updating a standard status, limited execution. For a financial change, approval. This matrix creates a coherent system without turning the entire organisation into one monolithic agent."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "El chatbot encaja cuando la respuesta es el resultado principal.",
+        "El Empleado IA encaja cuando existe trabajo operativo posterior.",
+        "Cuenta sistemas, pasos y minutos de ejecución, no solo mensajes.",
+        "Separa integración de autonomía: consultar no significa poder modificar.",
+        "Utiliza modo propuesta para validar casos antes de dar permisos de escritura.",
+        "Mantén aprobación humana para acciones de alto impacto.",
+        "Incluye gobierno, auditoría y mantenimiento en el coste total.",
+        "Puedes combinar chatbot y Empleado IA dentro del mismo recorrido.",
+        "Mide excepciones y retrabajo además de velocidad.",
+        "Elige arquitectura por proceso y evidencia, no por tendencia tecnológica."
+      ],
+      "en": [
+        "A chatbot fits when the answer is the primary outcome.",
+        "An AI Employee fits when operational work follows the conversation.",
+        "Count systems, steps and execution minutes, not just messages.",
+        "Separate integration from autonomy: reading does not imply permission to modify.",
+        "Use proposal mode to validate cases before granting write access.",
+        "Keep human approval for high-impact actions.",
+        "Include governance, auditability and maintenance in total cost.",
+        "Chatbots and AI Employees can coexist in the same journey.",
+        "Measure exceptions and rework as well as speed.",
+        "Choose architecture based on process and evidence, not technology trends."
+      ]
+    },
+    "relatedLandingKey": "ai-employee-vs-chatbot",
+    "publishedAt": "2026-09-20",
+    "updatedAt": "2026-09-20"
+  }
+]
