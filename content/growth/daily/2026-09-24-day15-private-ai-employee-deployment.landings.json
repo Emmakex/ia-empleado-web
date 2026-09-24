@@ -1,0 +1,316 @@
+[
+  {
+    "key": "private-ai-employee-deployment",
+    "slugs": {
+      "es": "despliegue-privado-empleado-ia",
+      "en": "private-ai-employee-deployment"
+    },
+    "seoTitle": {
+      "es": "Empleado IA privado y on-premise: despliegue seguro | IA Empleado",
+      "en": "Private and on-premise AI Employee deployment | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Despliega Empleados IA en nube privada u on-premise con aislamiento, SSO, secretos, redes, auditoría, datos y control de actualizaciones.",
+      "en": "Deploy AI Employees in private cloud or on-premise with isolation, SSO, secrets, networking, auditability, data controls and update governance."
+    },
+    "eyebrow": {
+      "es": "DESPLIEGUE PRIVADO DE EMPLEADOS IA",
+      "en": "PRIVATE AI EMPLOYEE DEPLOYMENT"
+    },
+    "title": {
+      "es": "Empleado IA en infraestructura privada: control de datos, red, identidades y operación.",
+      "en": "AI Employee in private infrastructure: control data, network, identities and operations."
+    },
+    "lead": {
+      "es": "No todas las empresas quieren que una automatización empresarial dependa de una infraestructura compartida. Un Empleado IA puede desplegarse en nube privada, entorno dedicado o infraestructura del cliente, integrándose con sus sistemas sin convertir el modelo en propietario de los datos. El diseño debe cubrir aislamiento, red, identidad, secretos, registros, actualizaciones, backups y responsabilidades operativas.",
+      "en": "Not every company wants enterprise automation to depend on shared infrastructure. An AI Employee can be deployed in private cloud, a dedicated environment or customer infrastructure, integrating with existing systems without making the model the owner of business data. Design must cover isolation, networking, identity, secrets, logs, updates, backups and operational responsibilities."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Elección del modelo de despliegue",
+          "en": "1. Choosing the deployment model"
+        },
+        "paragraphs": {
+          "es": [
+            "On-premise, nube privada y entorno dedicado ofrecen combinaciones distintas de control, coste y operación. La elección debe partir de requisitos reales de datos y conectividad. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir coste operativo, latencia y nivel de aislamiento. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "On-premise, private cloud and dedicated environments provide different combinations of control, cost and operations. The choice should start from real data and connectivity requirements. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure operating cost, latency and isolation level. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Clasificación de datos",
+          "en": "2. Data classification"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de decidir dónde ejecutar el agente hay que saber qué datos procesa, cuáles son sensibles y qué sistemas contienen las fuentes de verdad. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir categorías de datos y flujos autorizados. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Before deciding where the agent runs, identify which data it processes, which are sensitive and which systems hold the sources of truth. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure data categories and authorised flows. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Identidad y SSO",
+          "en": "3. Identity and SSO"
+        },
+        "paragraphs": {
+          "es": [
+            "Usuarios y agentes necesitan identidades diferenciadas. SSO, roles y cuentas de servicio permiten saber quién accede y con qué permisos. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir cuentas técnicas, roles y accesos privilegiados. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Users and agents need separate identities. SSO, roles and service accounts make it possible to know who accesses what and with which permissions. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure technical accounts, roles and privileged access. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Privilegio mínimo",
+          "en": "4. Least privilege"
+        },
+        "paragraphs": {
+          "es": [
+            "El agente debe acceder solo a las operaciones necesarias. Separar lectura, propuesta y ejecución limita el impacto de errores y facilita auditoría. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir permisos por herramienta y acciones bloqueadas. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "The agent should access only the operations it needs. Separating read, proposal and execution permissions limits error impact and improves auditability. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure permissions per tool and blocked actions. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Red y conectividad",
+          "en": "5. Network and connectivity"
+        },
+        "paragraphs": {
+          "es": [
+            "Las conexiones a ERP, correo, modelos y APIs deben pasar por rutas conocidas. Firewalls, proxies y listas de salida reducen exposición innecesaria. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir destinos permitidos, fallos de red y latencia. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Connections to ERP, email, models and APIs should use known paths. Firewalls, proxies and egress allowlists reduce unnecessary exposure. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure allowed destinations, network failures and latency. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Gestión de secretos",
+          "en": "6. Secret management"
+        },
+        "paragraphs": {
+          "es": [
+            "Tokens, claves y certificados no deben vivir en código o prompts. Un gestor de secretos permite rotación, control de acceso y registro. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir secretos rotados, expiraciones y accesos. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Tokens, keys and certificates should not live in code or prompts. A secret manager enables rotation, access control and logging. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure rotated secrets, expirations and accesses. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Cifrado",
+          "en": "7. Encryption"
+        },
+        "paragraphs": {
+          "es": [
+            "Datos en tránsito y almacenamiento temporal necesitan cifrado acorde al riesgo. Las claves también requieren un ciclo de vida gobernado. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir cobertura de cifrado y gestión de claves. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Data in transit and temporary storage need encryption appropriate to risk. Encryption keys also require a governed lifecycle. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure encryption coverage and key management. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Modelos y salida de datos",
+          "en": "8. Models and data egress"
+        },
+        "paragraphs": {
+          "es": [
+            "Si se utilizan modelos externos, hay que definir qué campos pueden enviarse y qué información debe permanecer local. Minimizar contexto reduce exposición. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir datos enviados fuera y volumen por proveedor. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "When external models are used, define which fields may be sent and which information must remain local. Minimising context reduces exposure. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure data sent externally and volume by provider. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Logs y auditoría",
+          "en": "9. Logs and auditability"
+        },
+        "paragraphs": {
+          "es": [
+            "El entorno privado debe registrar accesos, decisiones, herramientas y cambios de configuración sin convertir los logs en una copia innecesaria de datos sensibles. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir cobertura de eventos y retención de logs. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "The private environment should record access, decisions, tools and configuration changes without turning logs into an unnecessary copy of sensitive data. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure event coverage and log retention. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Backups y recuperación",
+          "en": "10. Backups and recovery"
+        },
+        "paragraphs": {
+          "es": [
+            "Configuración, estados y datos necesarios para continuidad deben tener copias verificadas. Restaurar es tan importante como crear el backup. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir éxito de backups, pruebas de restauración y RTO. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Configuration, state and data needed for continuity should have verified backups. Restore capability matters as much as creating the backup. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure backup success, restore tests and RTO. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Actualizaciones controladas",
+          "en": "11. Controlled updates"
+        },
+        "paragraphs": {
+          "es": [
+            "Modelos, imágenes, conectores y políticas cambian. El entorno necesita versiones, pruebas, despliegue gradual y rollback. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir cambios por periodo, fallos y rollbacks. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Models, images, connectors and policies change. The environment needs versioning, testing, gradual deployment and rollback. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure changes per period, failures and rollbacks. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Responsabilidad operativa",
+          "en": "12. Operational responsibility"
+        },
+        "paragraphs": {
+          "es": [
+            "Debe quedar claro quién parchea, monitoriza, rota secretos, responde incidentes y aprueba cambios. La privacidad de infraestructura no elimina la necesidad de operación. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir SLA operativo, incidentes y tiempo de respuesta. También hay que revisar la exposición de datos, permisos excesivos, dependencia de red y actualizaciones sin control. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el despliegue privado de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "It must be clear who patches, monitors, rotates secrets, responds to incidents and approves changes. Private infrastructure does not remove the need for operations. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure operational SLA, incidents and response time. It is also necessary to review data exposure, excessive permissions, network dependencies and uncontrolled updates. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows private AI Employee deployment to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Cómo diseñar un despliegue privado",
+        "en": "How to design a private deployment"
+      },
+      "steps": {
+        "es": [
+          "Clasifica datos y sistemas implicados.",
+          "Elige on-premise, nube privada o entorno dedicado.",
+          "Define identidad, SSO y privilegio mínimo.",
+          "Diseña red, salida a Internet y conectores.",
+          "Gestiona secretos y cifrado.",
+          "Configura logs, backups y observabilidad.",
+          "Define proceso de actualización y recuperación."
+        ],
+        "en": [
+          "Classify data and involved systems.",
+          "Choose on-premise, private cloud or dedicated environment.",
+          "Define identity, SSO and least privilege.",
+          "Design networking, Internet egress and connectors.",
+          "Manage secrets and encryption.",
+          "Configure logs, backups and observability.",
+          "Define update and recovery processes."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Disponibilidad",
+        "Latencia",
+        "Incidentes de acceso",
+        "Cambios de configuración",
+        "Tiempo de recuperación",
+        "Cobertura de logs",
+        "Uso de recursos",
+        "Cumplimiento de backups"
+      ],
+      "en": [
+        "Availability",
+        "Latency",
+        "Access incidents",
+        "Configuration changes",
+        "Recovery time",
+        "Log coverage",
+        "Resource utilisation",
+        "Backup compliance"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Un Empleado IA puede instalarse on-premise?",
+          "en": "Can an AI Employee be installed on-premise?"
+        },
+        "answer": {
+          "es": "Sí cuando la arquitectura y los modelos utilizados lo permiten. También puede usarse nube privada o un entorno dedicado, según requisitos de datos, integración y operación.",
+          "en": "Yes when the architecture and selected models allow it. Private cloud or a dedicated environment can also be used depending on data, integration and operational requirements."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Privado significa sin Internet?",
+          "en": "Does private mean no Internet?"
+        },
+        "answer": {
+          "es": "No necesariamente. Puede existir salida controlada para modelos o APIs externas. También pueden diseñarse entornos con acceso muy restringido o componentes locales según necesidad.",
+          "en": "Not necessarily. Controlled egress may be allowed for external models or APIs. Highly restricted environments or local components can also be designed where required."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Quién administra el sistema?",
+          "en": "Who operates the system?"
+        },
+        "answer": {
+          "es": "Puede hacerlo el cliente, un proveedor gestionado o ambos. Las responsabilidades sobre parches, backups, secretos, monitorización y respuesta a incidentes deben quedar definidas.",
+          "en": "The customer, a managed provider or both can operate it. Responsibilities for patches, backups, secrets, monitoring and incident response should be explicit."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Los datos tienen que salir del entorno privado?",
+          "en": "Do data have to leave the private environment?"
+        },
+        "answer": {
+          "es": "Depende de modelos e integraciones. El diseño puede minimizar datos enviados fuera, utilizar proveedores con controles específicos o mantener determinadas funciones completamente locales.",
+          "en": "It depends on models and integrations. Design can minimise data sent outside, use providers with specific controls or keep selected functions fully local."
+        }
+      }
+    ],
+    "relatedArticleKey": "how-to-deploy-ai-employee-privately",
+    "publishedAt": "2026-09-24",
+    "updatedAt": "2026-09-24"
+  }
+]
