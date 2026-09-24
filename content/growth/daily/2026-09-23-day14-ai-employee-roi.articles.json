@@ -1,0 +1,332 @@
+[
+  {
+    "key": "how-to-calculate-ai-employee-roi",
+    "slugs": {
+      "es": "como-calcular-roi-empleado-ia",
+      "en": "how-to-calculate-ai-employee-roi"
+    },
+    "seoTitle": {
+      "es": "Cómo calcular el ROI de un Empleado IA paso a paso | IA Empleado",
+      "en": "How to calculate AI Employee ROI step by step | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía práctica para calcular ROI, payback, ahorro, capacidad, errores y coste total de un Empleado IA con escenarios y métricas.",
+      "en": "Practical guide to calculating ROI, payback, savings, capacity, errors and total AI Employee cost using scenarios and metrics."
+    },
+    "title": {
+      "es": "Cómo calcular el ROI de un Empleado IA paso a paso",
+      "en": "How to calculate AI Employee ROI step by step"
+    },
+    "excerpt": {
+      "es": "Construye un modelo de retorno basado en línea base, ahorro neto, calidad, coste total y escenarios, sin inflar beneficios.",
+      "en": "Build a return model based on baseline, net savings, quality, total cost and scenarios without inflating benefits."
+    },
+    "intro": {
+      "es": "El ROI de automatización con IA puede parecer extraordinario si se cuentan todas las tareas ejecutadas como ahorro y se ignoran mantenimiento, excepciones o revisión humana. Un modelo útil hace lo contrario: empieza por una línea base, monetiza solo beneficios defendibles, incorpora el coste total y conserva por separado las mejoras que todavía no pueden traducirse a euros. Esta guía propone un método replicable para comparar procesos y tomar decisiones de inversión con más rigor.",
+      "en": "AI automation ROI can look extraordinary when every executed task is counted as savings while maintenance, exceptions and human review are ignored. A useful model does the opposite: it starts with a baseline, monetises only defensible benefits, includes total cost and keeps improvements that cannot yet be translated into money as separate operational metrics. This guide provides a repeatable method for comparing processes and making investment decisions more rigorously."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Define el alcance",
+          "en": "1. Define scope"
+        },
+        "paragraphs": {
+          "es": [
+            "Selecciona un proceso concreto, una población de casos y un periodo. Mezclar múltiples procesos dificulta saber dónde se genera o destruye valor. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir volumen incluido y porcentaje cubierto, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Select one concrete process, a case population and a period. Mixing multiple processes makes it difficult to identify where value is created or destroyed. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring included volume and coverage percentage, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Captura la línea base",
+          "en": "2. Capture the baseline"
+        },
+        "paragraphs": {
+          "es": [
+            "Mide el proceso antes de cambiarlo: tiempo, errores, esperas, volumen y perfiles. Usa datos reales siempre que sea posible. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir promedios y distribución de la línea base, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Measure the process before changing it: time, errors, waiting, volume and roles. Use real data wherever possible. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring baseline averages and distribution, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Calcula coste humano actual",
+          "en": "3. Calculate current human cost"
+        },
+        "paragraphs": {
+          "es": [
+            "Convierte horas del proceso en coste cargado por rol e incluye retrabajo. No uses un único salario si participan perfiles diferentes. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir coste mensual por rol y por caso, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Convert process hours into loaded cost by role and include rework. Do not use one salary when different profiles participate. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring monthly cost by role and per case, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Mide ahorro de tiempo",
+          "en": "4. Measure time savings"
+        },
+        "paragraphs": {
+          "es": [
+            "Después del despliegue mide cuánto tiempo humano sigue siendo necesario. La diferencia con la línea base es ahorro bruto, no todavía beneficio neto. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir minutos ahorrados por caso, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "After deployment, measure how much human time remains necessary. The difference from baseline is gross savings, not yet net benefit. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring minutes saved per case, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Mide errores evitados",
+          "en": "5. Measure avoided errors"
+        },
+        "paragraphs": {
+          "es": [
+            "Los errores tienen coste de corrección, demoras y, en algunos casos, impacto comercial. Monetiza solo lo que pueda estimarse con evidencia. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir errores evitados y coste medio de corrección, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Errors create correction cost, delays and sometimes commercial impact. Monetise only what can be estimated with evidence. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring avoided errors and average correction cost, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Mide capacidad",
+          "en": "6. Measure capacity"
+        },
+        "paragraphs": {
+          "es": [
+            "Si el equipo procesa más casos con los mismos recursos, existe valor de capacidad. Evita contar a la vez la misma hora como ahorro y como capacidad adicional. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir volumen adicional sin aumento de plantilla, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "If the team processes more cases with the same resources, capacity value exists. Avoid counting the same hour both as savings and additional capacity. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring additional volume without headcount growth, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Mide tiempos y SLA",
+          "en": "7. Measure timing and SLA"
+        },
+        "paragraphs": {
+          "es": [
+            "Reducir ciclo y mejorar SLA puede tener valor aunque no elimine horas directas. Mantén estas métricas separadas cuando no exista una monetización fiable. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir tiempo de ciclo y cumplimiento de SLA, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Reducing cycle time and improving SLA can create value even without eliminating direct hours. Keep these metrics separate where reliable monetisation is unavailable. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring cycle time and SLA compliance, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Calcula coste de implantación",
+          "en": "8. Calculate implementation cost"
+        },
+        "paragraphs": {
+          "es": [
+            "Incluye descubrimiento, diseño, conectores, pruebas, seguridad y despliegue. Esta inversión se utiliza después para calcular payback. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir inversión inicial total, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Include discovery, design, connectors, testing, security and deployment. This investment is later used to calculate payback. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring total initial investment, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Calcula coste operativo",
+          "en": "9. Calculate operating cost"
+        },
+        "paragraphs": {
+          "es": [
+            "Suma modelos, APIs, infraestructura, soporte, mantenimiento y observabilidad. Añade tiempo humano residual para no sobrestimar el beneficio. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir coste operativo mensual, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Add models, APIs, infrastructure, support, maintenance and observability. Include residual human time so benefits are not overstated. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring monthly operating cost, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Calcula beneficio neto",
+          "en": "10. Calculate net benefit"
+        },
+        "paragraphs": {
+          "es": [
+            "Resta el coste operativo a los beneficios monetizados del periodo. Mantén fuera del numerador aquellas mejoras que no puedas valorar de manera defendible. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir beneficio neto mensual, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Subtract operating cost from monetised benefits for the period. Keep improvements that cannot be valued defensibly outside the numerator. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring monthly net benefit, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Calcula ROI",
+          "en": "11. Calculate ROI"
+        },
+        "paragraphs": {
+          "es": [
+            "Una fórmula habitual divide beneficio neto acumulado menos inversión entre la inversión total. Define claramente periodo y conceptos incluidos. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir ROI por periodo, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "A common formula divides accumulated net benefit minus investment by total investment. Clearly define the period and included components. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring ROI by period, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Calcula payback",
+          "en": "12. Calculate payback"
+        },
+        "paragraphs": {
+          "es": [
+            "Divide inversión inicial entre ahorro neto mensual estabilizado para estimar cuántos meses se necesitan para recuperar el desembolso. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir meses de recuperación, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Divide initial investment by stabilised monthly net savings to estimate how many months are needed to recover the outlay. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring payback months, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Construye escenarios",
+          "en": "13. Build scenarios"
+        },
+        "paragraphs": {
+          "es": [
+            "Varía volumen, tasa de automatización, coste y excepciones. Esto muestra si el proyecto sigue siendo atractivo cuando las hipótesis empeoran. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir ROI conservador, base y alto, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Vary volume, automation rate, cost and exceptions. This shows whether the project remains attractive when assumptions worsen. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring conservative, base and high ROI, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Evita doble conteo",
+          "en": "14. Avoid double counting"
+        },
+        "paragraphs": {
+          "es": [
+            "Una hora recuperada no puede contarse simultáneamente como ahorro salarial y como capacidad adicional completa si ambas cifras representan el mismo recurso. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir beneficios únicos por categoría, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "One recovered hour cannot be counted simultaneously as salary savings and full additional capacity if both values represent the same resource. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring unique benefits by category, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Controla atribución",
+          "en": "15. Control attribution"
+        },
+        "paragraphs": {
+          "es": [
+            "Documenta campañas, cambios de personal, estacionalidad o mejoras paralelas. Así reduces el riesgo de atribuir al agente resultados que tienen otra causa. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir cambios concurrentes y cohortes comparables, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Document campaigns, staffing changes, seasonality or parallel improvements. This reduces the risk of attributing unrelated outcomes to the agent. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring concurrent changes and comparable cohorts, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Revisa después de estabilizar",
+          "en": "16. Review after stabilisation"
+        },
+        "paragraphs": {
+          "es": [
+            "Las primeras semanas pueden contener aprendizaje, ajustes y excepciones inusuales. Recalcula ROI cuando el flujo alcance una operación más estable. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir tendencia de calidad y coste, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "The first weeks may contain learning, adjustments and unusual exceptions. Recalculate ROI once the workflow reaches more stable operation. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring quality and cost trend, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "17. Usa ROI para priorizar",
+          "en": "17. Use ROI to prioritise"
+        },
+        "paragraphs": {
+          "es": [
+            "Compara procesos con la misma metodología. El mejor candidato no siempre es el de mayor volumen, sino el que combina ahorro, estabilidad y riesgo controlable. Antes de automatizar conviene documentar el estado actual, quién interviene, qué datos utiliza y qué excepciones aparecen. Esta línea base evita atribuir a la IA mejoras que provienen de otro cambio y permite comparar el proceso antes y después con criterios consistentes. También ayuda a detectar tareas que pueden resolverse con reglas simples sin necesidad de introducir más complejidad.",
+            "La implantación debe separar interpretación, validación y ejecución. La IA puede ayudar a comprender contexto o preparar una propuesta, mientras reglas deterministas, permisos y aprobaciones controlan las acciones que tienen mayor impacto. Para este bloque recomendamos medir retorno ajustado por riesgo y esfuerzo, registrar correcciones humanas y revisar periódicamente si la automatización sigue produciendo ahorro neto y calidad estable."
+          ],
+          "en": [
+            "Compare processes using the same methodology. The best candidate is not always the highest-volume one, but the one combining savings, stability and manageable risk. Before automation, document the current state, the people involved, the data they use and the exceptions that occur. This baseline prevents improvements caused by unrelated changes from being attributed to AI and makes before-and-after comparison more consistent. It also identifies tasks that can be solved with simple deterministic rules without adding unnecessary complexity.",
+            "Implementation should separate interpretation, validation and execution. AI can help understand context or prepare a proposal, while deterministic rules, permissions and approvals control higher-impact actions. For this area we recommend measuring return adjusted for risk and effort, recording human corrections and reviewing regularly whether automation continues to produce net savings and stable quality."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Mide una línea base antes de desplegar.",
+        "Calcula ahorro con tiempo real, no tareas contadas.",
+        "Incluye errores y retrabajo.",
+        "No dobles beneficios entre ahorro y capacidad.",
+        "Incluye coste total de operación.",
+        "Calcula ROI y payback.",
+        "Usa escenarios.",
+        "Mantén beneficios no monetizables como métricas separadas.",
+        "Controla atribución.",
+        "Recalcula cuando el proceso se estabilice."
+      ],
+      "en": [
+        "Measure a baseline before deployment.",
+        "Calculate savings from real time, not task counts.",
+        "Include errors and rework.",
+        "Do not double count savings and capacity.",
+        "Include total operating cost.",
+        "Calculate ROI and payback.",
+        "Use scenarios.",
+        "Keep non-monetisable benefits as separate metrics.",
+        "Control attribution.",
+        "Recalculate when the process stabilises."
+      ]
+    },
+    "relatedLandingKey": "ai-employee-roi",
+    "publishedAt": "2026-09-23",
+    "updatedAt": "2026-09-23"
+  }
+]
