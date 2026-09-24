@@ -1,0 +1,316 @@
+[
+  {
+    "key": "ai-employee-cost",
+    "slugs": {
+      "es": "coste-empleado-ia",
+      "en": "ai-employee-cost"
+    },
+    "seoTitle": {
+      "es": "Coste de un Empleado IA: cómo calcularlo | IA Empleado",
+      "en": "AI Employee cost: how to calculate it | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Calcula el coste de un Empleado IA: implantación, integraciones, modelos, infraestructura, seguridad, mantenimiento, volumen y soporte.",
+      "en": "Calculate AI Employee cost across implementation, integrations, models, infrastructure, security, maintenance, volume and support."
+    },
+    "eyebrow": {
+      "es": "COSTE DE UN EMPLEADO IA",
+      "en": "AI EMPLOYEE COST"
+    },
+    "title": {
+      "es": "Coste de un Empleado IA: qué pagas realmente y cómo evitar una cifra engañosa.",
+      "en": "AI Employee cost: what you really pay for and how to avoid a misleading number."
+    },
+    "lead": {
+      "es": "El coste de un Empleado IA no es solo el precio del modelo ni una cuota mensual. Incluye descubrir el proceso, construir integraciones, diseñar permisos, probar excepciones, ejecutar infraestructura, monitorizar calidad y mantener el sistema cuando cambian APIs, reglas o modelos. La comparación correcta es coste total por proceso frente a horas recuperadas, errores evitados, capacidad adicional y tiempo de respuesta.",
+      "en": "AI Employee cost is not just model pricing or a monthly subscription. It includes process discovery, integrations, permission design, exception testing, infrastructure, quality monitoring and maintenance when APIs, rules or models change. The right comparison is total process cost versus recovered hours, avoided errors, additional capacity and faster response times."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Implantación y descubrimiento",
+          "en": "1. Implementation and discovery"
+        },
+        "paragraphs": {
+          "es": [
+            "El primer coste aparece antes de escribir código: entender cómo funciona realmente el proceso, qué tareas se repiten, qué decisiones toma el equipo y qué excepciones consumen más tiempo. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir horas de análisis, número de variantes y cambios de alcance. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "The first cost appears before code is written: understanding how the process actually works, which tasks repeat, which decisions the team makes and which exceptions consume the most time. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure analysis hours, number of variants and scope changes. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Integraciones y APIs",
+          "en": "2. Integrations and APIs"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada CRM, ERP, helpdesk, correo o sistema propio necesita autenticación, mapeo de datos, manejo de errores y pruebas. Una API estable suele reducir mantenimiento frente a automatizar pantallas. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir coste por conector, incidencias de integración y tiempo de mantenimiento. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Every CRM, ERP, helpdesk, email platform or custom system needs authentication, data mapping, error handling and testing. A stable API usually reduces maintenance compared with screen automation. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure cost per connector, integration incidents and maintenance time. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Sistemas legacy y RPA",
+          "en": "3. Legacy systems and RPA"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando no existe API puede ser necesario utilizar archivos, middleware o RPA. Esa capa aumenta desarrollo, observabilidad y riesgo de rotura si cambia la interfaz. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir roturas por cambio, horas de reparación y volumen procesado. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "When no API exists, files, middleware or RPA may be required. That layer increases development, observability and breakage risk when interfaces change. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure breakages after changes, repair hours and processed volume. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Consumo de modelos",
+          "en": "4. Model consumption"
+        },
+        "paragraphs": {
+          "es": [
+            "El coste de inferencia depende del volumen, longitud de contexto, modelo y frecuencia de herramientas. Clasificación simple y análisis documental profundo tienen perfiles económicos distintos. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir coste por ejecución, tokens por caso y precisión por modelo. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Inference cost depends on volume, context length, model choice and tool frequency. Simple classification and deep document analysis have very different economic profiles. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure cost per execution, tokens per case and accuracy by model. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Infraestructura",
+          "en": "5. Infrastructure"
+        },
+        "paragraphs": {
+          "es": [
+            "Servidores, bases de datos, colas, almacenamiento, secretos, copias y monitorización forman parte del coste recurrente aunque el modelo se facture por separado. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir coste fijo mensual, picos de capacidad y disponibilidad. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Servers, databases, queues, storage, secrets, backups and monitoring form part of recurring cost even when model usage is billed separately. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure monthly fixed cost, capacity peaks and availability. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Seguridad y gobierno",
+          "en": "6. Security and governance"
+        },
+        "paragraphs": {
+          "es": [
+            "Privilegio mínimo, segregación de funciones, identidad técnica, cifrado, auditoría y revisión de accesos aumentan el coste, pero reducen el impacto de errores e incidentes. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir número de permisos, aprobaciones y hallazgos de seguridad. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Least privilege, segregation of duties, technical identity, encryption, auditability and access review add cost but reduce the impact of errors and incidents. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure number of permissions, approvals and security findings. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Pruebas y evaluación",
+          "en": "7. Testing and evaluation"
+        },
+        "paragraphs": {
+          "es": [
+            "Casos normales, límites, idiomas, documentos y fallos de integración deben validarse antes de producción. La evaluación también se repite cuando cambian modelos o reglas. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir casos de prueba, regresiones detectadas y tasa de corrección. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Normal cases, boundaries, languages, documents and integration failures must be validated before production. Evaluation is repeated when models or rules change. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure test cases, detected regressions and correction rate. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Datos y conocimiento",
+          "en": "8. Data and knowledge"
+        },
+        "paragraphs": {
+          "es": [
+            "Bases duplicadas, campos vacíos y documentación inconsistente generan más excepciones. Preparar fuentes y mantener su calidad puede ser una parte significativa de la inversión. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir duplicados, campos incompletos y fallos causados por datos. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Duplicate records, missing fields and inconsistent documentation create more exceptions. Preparing sources and maintaining their quality can be a significant part of the investment. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure duplicates, missing fields and failures caused by data quality. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Excepciones y retrabajo",
+          "en": "9. Exceptions and rework"
+        },
+        "paragraphs": {
+          "es": [
+            "Una pequeña proporción de casos complejos puede consumir gran parte del tiempo humano. El coste real debe incluir cuánto tarda una persona en resolver lo que la automatización no puede cerrar. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir tasa de excepción, minutos por excepción y retrabajo. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "A small proportion of complex cases can consume much of the human effort. Real cost must include the time people spend resolving what automation cannot close. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure exception rate, minutes per exception and rework. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Mantenimiento y soporte",
+          "en": "10. Maintenance and support"
+        },
+        "paragraphs": {
+          "es": [
+            "APIs, credenciales, productos y políticas cambian. Presupuestar mantenimiento preventivo evita asumir que un sistema empresarial funcionará indefinidamente sin intervención. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir horas mensuales de soporte, incidentes y cambios. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "APIs, credentials, products and policies change. Budgeting preventive maintenance avoids assuming an enterprise system will operate indefinitely without intervention. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure monthly support hours, incidents and changes. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Volumen y economías de escala",
+          "en": "11. Volume and economies of scale"
+        },
+        "paragraphs": {
+          "es": [
+            "Parte del coste es fijo y puede repartirse entre más tareas. Sin embargo, más volumen también exige resiliencia, colas y límites para absorber picos sin degradar servicio. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir coste por tarea, utilización máxima y coste marginal. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "Part of the cost is fixed and can be spread across more tasks. Higher volume also requires resilience, queues and limits so peaks do not degrade service. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure cost per task, peak utilisation and marginal cost. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Escenarios y retorno",
+          "en": "12. Scenarios and return"
+        },
+        "paragraphs": {
+          "es": [
+            "Un presupuesto útil utiliza escenarios conservador, base y alto para mostrar cómo cambian coste y ahorro cuando varían volumen, calidad o intervención humana. En IA Empleado, este punto se plantea dentro de un proceso completo y no como una función aislada. Primero se identifica qué información es necesaria, qué sistema actúa como fuente de verdad y qué parte del trabajo puede automatizarse sin ocultar incertidumbre. La meta es mejorar el resultado empresarial manteniendo trazabilidad, control humano y reglas claras para las excepciones.",
+            "Para evaluar este bloque conviene medir ahorro neto, meses de retorno y sensibilidad de supuestos. También hay que revisar el coste de excepciones, sistemas legacy, datos deficientes y acciones sensibles. Cuando el flujo supera los límites definidos, el sistema debe detenerse, pedir aprobación o escalar a una persona. Esta disciplina permite que el coste de un Empleado IA crezca de forma gradual sin convertir una mejora de productividad en un problema de gobierno, seguridad o calidad."
+          ],
+          "en": [
+            "A useful budget uses conservative, base and high scenarios to show how cost and savings change as volume, quality or human intervention varies. In IA Empleado, this is treated as part of an end-to-end process rather than an isolated feature. The workflow first identifies the information required, the system that acts as the source of truth and the portion of work that can be automated without hiding uncertainty. The objective is to improve the business outcome while preserving traceability, human control and clear exception rules.",
+            "To evaluate this area, measure net savings, payback months and assumption sensitivity. It is also necessary to review the cost of exceptions, legacy systems, poor data and sensitive actions. When the workflow exceeds defined boundaries, the system should stop, request approval or escalate to a person. This discipline allows AI Employee cost to expand gradually without turning productivity improvements into governance, security or quality problems."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Cómo calcular el coste antes de implantar",
+        "en": "How to calculate cost before implementation"
+      },
+      "steps": {
+        "es": [
+          "Mapea el proceso actual y su volumen.",
+          "Lista integraciones y sistemas legacy.",
+          "Define autonomía, permisos y aprobaciones.",
+          "Separa inversión inicial de costes recurrentes.",
+          "Estima modelos, APIs, infraestructura y soporte.",
+          "Incluye excepciones, retrabajo y tiempo humano residual.",
+          "Calcula coste por caso y periodo de retorno."
+        ],
+        "en": [
+          "Map the current process and volume.",
+          "List integrations and legacy systems.",
+          "Define autonomy, permissions and approvals.",
+          "Separate initial investment from recurring costs.",
+          "Estimate models, APIs, infrastructure and support.",
+          "Include exceptions, rework and residual human time.",
+          "Calculate cost per case and payback period."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Coste mensual total",
+        "Coste por caso",
+        "Horas humanas recuperadas",
+        "Coste de excepciones",
+        "Consumo de modelos",
+        "Coste de APIs",
+        "Horas de mantenimiento",
+        "Periodo de retorno"
+      ],
+      "en": [
+        "Total monthly cost",
+        "Cost per case",
+        "Human hours recovered",
+        "Exception cost",
+        "Model usage",
+        "API cost",
+        "Maintenance hours",
+        "Payback period"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Existe un precio fijo para un Empleado IA?",
+          "en": "Is there a fixed price for an AI Employee?"
+        },
+        "answer": {
+          "es": "No para todos los casos. El coste cambia con el proceso, volumen, integraciones, autonomía, seguridad, infraestructura y soporte. Un flujo sencillo puede costar mucho menos que una automatización crítica con varios sistemas.",
+          "en": "Not across all cases. Cost changes with process, volume, integrations, autonomy, security, infrastructure and support. A simple workflow can cost far less than a critical multi-system automation."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Los tokens son el principal coste?",
+          "en": "Are tokens the main cost?"
+        },
+        "answer": {
+          "es": "No necesariamente. Integración, pruebas, seguridad, mantenimiento, soporte y excepciones pueden superar ampliamente el consumo del modelo.",
+          "en": "Not necessarily. Integration, testing, security, maintenance, support and exceptions can outweigh model consumption."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo bajar el coste por tarea?",
+          "en": "How can cost per task be reduced?"
+        },
+        "answer": {
+          "es": "Reutilizando conectores, reduciendo contexto, usando modelos adecuados por complejidad, evitando llamadas innecesarias y disminuyendo excepciones y retrabajo.",
+          "en": "By reusing connectors, reducing context, routing tasks to appropriate models, avoiding unnecessary calls and lowering exceptions and rework."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Conviene empezar por un piloto?",
+          "en": "Should you start with a pilot?"
+        },
+        "answer": {
+          "es": "Sí cuando existe incertidumbre sobre volumen, integración o excepciones. Un piloto acotado convierte hipótesis de coste en datos reales.",
+          "en": "Yes when volume, integration or exceptions are uncertain. A bounded pilot turns cost assumptions into measured data."
+        }
+      }
+    ],
+    "relatedArticleKey": "how-much-ai-employee-costs",
+    "publishedAt": "2026-09-22",
+    "updatedAt": "2026-09-22"
+  }
+]
