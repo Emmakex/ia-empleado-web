@@ -1,0 +1,320 @@
+[
+  {
+    "key": "how-to-choose-first-ai-process",
+    "slugs": {
+      "es": "como-elegir-primer-proceso-automatizar-ia",
+      "en": "how-to-choose-first-process-to-automate-with-ai"
+    },
+    "seoTitle": {
+      "es": "Cómo elegir el primer proceso para automatizar con IA | IA Empleado",
+      "en": "How to choose the first process to automate with AI | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía para priorizar el primer proceso con IA usando volumen, tiempo, datos, excepciones, riesgo, integraciones, ROI y un piloto medible.",
+      "en": "A guide to prioritising the first AI process using volume, time, data, exceptions, risk, integrations, ROI and a measurable pilot."
+    },
+    "title": {
+      "es": "Cómo elegir el primer proceso para automatizar con IA: una guía práctica de priorización",
+      "en": "How to choose the first process to automate with AI: a practical prioritisation guide"
+    },
+    "excerpt": {
+      "es": "El mejor primer proceso no es el más llamativo: es el que combina volumen, repetición, datos disponibles, verificación sencilla, riesgo controlable y retorno medible.",
+      "en": "The best first process is not the most impressive one: it combines volume, repetition, available data, easy verification, manageable risk and measurable return."
+    },
+    "intro": {
+      "es": "Muchas empresas empiezan un proyecto de IA preguntando qué modelo utilizar o qué agente construir. Esa pregunta llega demasiado pronto. Antes hay que decidir qué proceso merece ser automatizado primero. Una buena elección permite aprender con riesgo limitado, medir resultados y construir una base reutilizable. Una mala elección puede convertir un piloto técnicamente interesante en un proyecto difícil de validar, costoso de integrar y sin retorno claro. Esta guía propone un método concreto para seleccionar, puntuar y probar el primer proceso de automatización con IA.",
+      "en": "Many companies begin an AI project by asking which model to use or which agent to build. That question comes too early. The first decision should be which process deserves automation first. A strong choice allows learning with limited risk, measurable results and a reusable foundation. A poor choice can turn a technically interesting pilot into something difficult to validate, expensive to integrate and unclear in business value. This guide provides a concrete method for selecting, scoring and testing the first AI automation process."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Empieza por procesos, no por herramientas",
+          "en": "1. Start with processes, not tools"
+        },
+        "paragraphs": {
+          "es": [
+            "El inventario inicial debería describir trabajo real: recibir solicitudes, preparar presupuestos, clasificar facturas, actualizar CRM, revisar pedidos, responder incidencias o coordinar reservas. Hablar directamente de chatbot, agente, RPA o modelo puede sesgar la solución antes de entender el problema.",
+            "Para cada proceso, documenta entrada, salida, participantes, sistemas y excepciones. Esta descripción permite comparar alternativas y descubrir que algunas tareas se resuelven mejor con reglas simples, otras con IA y otras con una combinación. La herramienta se elige después de conocer la estructura del trabajo."
+          ],
+          "en": [
+            "The initial inventory should describe real work: receiving requests, preparing quotes, classifying invoices, updating CRM, reviewing orders, responding to incidents or coordinating reservations. Starting directly with chatbot, agent, RPA or model can bias the solution before the problem is understood.",
+            "For each process, document input, output, participants, systems and exceptions. This description makes alternatives comparable and reveals that some tasks are better solved with simple rules, others with AI and others with a combination. The tool should be selected after the work structure is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Mide frecuencia y volumen",
+          "en": "2. Measure frequency and volume"
+        },
+        "paragraphs": {
+          "es": [
+            "La frecuencia importa porque determina cuántas oportunidades existen para ahorrar tiempo y aprender. Un proceso que ocurre cien veces al día genera datos suficientes para detectar patrones, errores y excepciones mucho antes que uno que ocurre una vez al mes.",
+            "No obstante, volumen por sí solo no basta. Un proceso de alto volumen que tarda diez segundos puede ofrecer menos retorno que uno de menor frecuencia que consume veinte minutos. Por eso el volumen debe combinarse con tiempo humano y coste de retrabajo para estimar el potencial."
+          ],
+          "en": [
+            "Frequency matters because it determines how many opportunities exist to save time and learn. A process that occurs one hundred times per day produces enough data to detect patterns, errors and exceptions much faster than one that happens once a month.",
+            "Volume alone is not enough. A high-volume process taking ten seconds may create less return than a lower-frequency process taking twenty minutes. Volume should therefore be combined with human time and rework cost when estimating potential."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Calcula minutos humanos por caso",
+          "en": "3. Calculate human minutes per case"
+        },
+        "paragraphs": {
+          "es": [
+            "Observa cuánto tiempo activo necesita una persona para completar cada caso. Incluye lectura, búsqueda, copia de datos, redacción, cambios de sistema y seguimiento. No midas únicamente la acción principal si alrededor existen tareas administrativas que consumen más tiempo.",
+            "Multiplica minutos por volumen y tendrás una primera estimación de capacidad recuperable. Aún no es ahorro neto, porque después habrá que descontar excepciones, revisiones y coste de la automatización, pero sirve para comparar procesos con una unidad común."
+          ],
+          "en": [
+            "Observe how much active human time is required to complete each case. Include reading, searching, copying data, drafting, system changes and follow-up. Do not measure only the main action when surrounding administrative tasks consume more time.",
+            "Multiply minutes by volume and you have a first estimate of recoverable capacity. It is not yet net savings because exceptions, reviews and automation cost still need to be deducted, but it provides a common unit for comparing processes."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Separa tiempo activo de tiempo de espera",
+          "en": "4. Separate active time from waiting time"
+        },
+        "paragraphs": {
+          "es": [
+            "Un proceso puede tardar tres días aunque solo requiera quince minutos de trabajo humano. El resto puede ser espera de aprobación, respuesta de cliente o disponibilidad de otro sistema. Automatizar esos quince minutos no necesariamente reduce el ciclo completo.",
+            "Por eso conviene medir ambos tiempos. Si el problema principal es la espera entre pasos, un Empleado IA puede aportar más valor coordinando avisos, comprobando condiciones y moviendo el caso cuando se cumple una regla que simplemente acelerando una tarea ya corta."
+          ],
+          "en": [
+            "A process can take three days while requiring only fifteen minutes of human work. The rest may be waiting for approval, customer response or another system. Automating those fifteen minutes does not necessarily reduce the full cycle.",
+            "Both times should therefore be measured. If the main problem is waiting between steps, an AI Employee may create more value by coordinating alerts, checking conditions and moving the case when a rule is satisfied than by merely accelerating an already short task."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Evalúa la calidad y disponibilidad de los datos",
+          "en": "5. Evaluate data quality and availability"
+        },
+        "paragraphs": {
+          "es": [
+            "El agente necesita fuentes suficientes para tomar o preparar decisiones. Si el proceso depende de información que solo existe en la memoria de una persona, primero habrá que estructurarla. Si los datos están en CRM, ERP, documentos o correo, hay que comprobar que puedan consultarse de forma autorizada.",
+            "No se necesita perfección absoluta. Un buen piloto puede trabajar con reglas de ausencia: si falta un campo crítico, se escala. Lo importante es conocer qué datos son fiables, cuáles pueden inferirse solo como propuesta y cuáles nunca deben completarse sin una fuente verificada."
+          ],
+          "en": [
+            "The agent needs sufficient sources to make or prepare decisions. If the process depends on information that exists only in one person's memory, that knowledge may need to be structured first. If data lives in CRM, ERP, documents or email, authorised access must be available.",
+            "Absolute perfection is not required. A strong pilot can use missing-data rules: if a critical field is absent, escalate. What matters is knowing which data is reliable, which can only be inferred as a proposal and which should never be filled without a verified source."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Cuenta sistemas e integraciones",
+          "en": "6. Count systems and integrations"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada sistema adicional introduce autenticación, permisos, esquemas, errores y mantenimiento. Un proceso excelente sobre el papel puede ser un mal primer piloto si necesita coordinar siete aplicaciones legacy sin API.",
+            "Para el primer proyecto, favorece flujos donde el valor pueda demostrarse con pocas conexiones. Después, cuando identidad, observabilidad y políticas ya están probadas, añadir CRM, ERP, correo o helpdesk resulta más sencillo porque parte de la infraestructura es reutilizable."
+          ],
+          "en": [
+            "Every additional system introduces authentication, permissions, schemas, errors and maintenance. A process that looks excellent on paper may be a poor first pilot if it must coordinate seven legacy applications without APIs.",
+            "For the first project, favour workflows where value can be demonstrated with few connections. Later, once identity, observability and policies are proven, adding CRM, ERP, email or helpdesk becomes easier because part of the infrastructure is reusable."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Puntúa la facilidad de verificación",
+          "en": "7. Score ease of verification"
+        },
+        "paragraphs": {
+          "es": [
+            "Un resultado verificable acelera el aprendizaje. Si una persona puede comprobar rápidamente que el pedido, clasificación, extracción o borrador son correctos, el agente puede funcionar en modo propuesta y generar una muestra grande antes de recibir permisos de ejecución.",
+            "Los procesos donde no existe una respuesta claramente correcta requieren métricas diferentes y más revisión. Eso no los hace imposibles, pero sí peores candidatos iniciales. El primer piloto debería producir resultados que puedan auditarse sin una investigación larga."
+          ],
+          "en": [
+            "A verifiable outcome accelerates learning. If a person can quickly confirm that an order, classification, extraction or draft is correct, the agent can operate in proposal mode and generate a large sample before receiving execution permissions.",
+            "Processes without a clearly correct answer require different metrics and more review. That does not make them impossible, but it makes them weaker first candidates. The first pilot should produce outcomes that can be audited without lengthy investigation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Calcula la tasa y el coste de las excepciones",
+          "en": "8. Calculate exception rate and cost"
+        },
+        "paragraphs": {
+          "es": [
+            "Dos procesos con el mismo volumen pueden tener perfiles muy distintos. Uno puede resolver el noventa por ciento con reglas estables y otro generar una excepción en cada segundo caso. La tasa de excepción determina cuánto trabajo humano seguirá existiendo.",
+            "También importa cuánto cuesta cada excepción. Un caso escalado que se resuelve en dos minutos es diferente de uno que exige investigación durante una hora. Puntúa frecuencia y coste de excepción por separado para evitar elegir procesos aparentemente automatizables que esconden demasiado trabajo residual."
+          ],
+          "en": [
+            "Two processes with the same volume can have very different profiles. One may resolve ninety percent of cases with stable rules while another produces an exception every other case. Exception rate determines how much human work will remain.",
+            "The cost of each exception also matters. An escalated case resolved in two minutes is very different from one requiring an hour of investigation. Score exception frequency and exception cost separately so apparently automatable processes do not hide excessive residual work."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Clasifica el riesgo de las acciones",
+          "en": "9. Classify action risk"
+        },
+        "paragraphs": {
+          "es": [
+            "No es lo mismo recomendar una categoría que emitir una factura, cancelar un pedido o cambiar una cuenta bancaria. El impacto de un error debe formar parte de la priorización. Los primeros pilotos deberían privilegiar acciones reversibles o propuestas que una persona pueda aprobar.",
+            "Los procesos de alto impacto pueden automatizarse más adelante utilizando segregación de funciones, umbrales, doble validación y aprobación humana. Empezar por riesgo bajo permite demostrar la arquitectura sin convertir cada error inicial en un incidente operativo."
+          ],
+          "en": [
+            "Recommending a category is not the same as issuing an invoice, cancelling an order or changing bank details. The impact of an error should be part of prioritisation. Early pilots should favour reversible actions or proposals that a person can approve.",
+            "Higher-impact processes can be automated later using segregation of duties, thresholds, dual validation and human approval. Starting with lower risk allows the architecture to be proven without turning every early error into an operational incident."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Identifica dependencias organizativas",
+          "en": "10. Identify organisational dependencies"
+        },
+        "paragraphs": {
+          "es": [
+            "Algunos procesos dependen de reglas que varios departamentos interpretan de forma distinta. Antes de automatizar conviene acordar una política común. La IA no debería convertirse en el mecanismo que oculta una contradicción organizativa.",
+            "También hay que saber quién será propietario del proceso, quién aprobará cambios y quién resolverá excepciones. Un piloto sin responsable puede quedar técnicamente funcionando pero sin adopción. La gobernanza operativa debe existir desde el inicio."
+          ],
+          "en": [
+            "Some processes depend on rules that different departments interpret differently. Before automation, a common policy should be agreed. AI should not become the mechanism that hides an organisational contradiction.",
+            "It is also necessary to know who owns the process, who approves changes and who resolves exceptions. A pilot without ownership can work technically while failing to achieve adoption. Operational governance should exist from the beginning."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Construye una matriz de priorización",
+          "en": "11. Build a prioritisation matrix"
+        },
+        "paragraphs": {
+          "es": [
+            "Una matriz simple puede puntuar cada proceso de uno a cinco en volumen, tiempo humano, coste de error, calidad de datos, número de sistemas, verificabilidad, tasa de excepción, riesgo y valor empresarial. No pretende producir una verdad matemática, sino obligar a comparar criterios de forma consistente.",
+            "Puedes separar atractivo y dificultad. El atractivo aumenta con ahorro, volumen y valor; la dificultad aumenta con integraciones, excepciones, datos pobres y riesgo. Los mejores primeros pilotos suelen estar en alto atractivo y dificultad baja o media."
+          ],
+          "en": [
+            "A simple matrix can score each process from one to five across volume, human time, error cost, data quality, number of systems, verifiability, exception rate, risk and business value. It is not intended to create mathematical truth, but to force criteria to be compared consistently.",
+            "You can separate attractiveness and difficulty. Attractiveness increases with savings, volume and value; difficulty increases with integrations, exceptions, poor data and risk. The strongest first pilots are usually high-attractiveness and low-to-medium difficulty."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Elige un alcance mínimo de piloto",
+          "en": "12. Choose a minimum pilot scope"
+        },
+        "paragraphs": {
+          "es": [
+            "No intentes cubrir todas las variantes del proceso desde el primer día. Define un segmento: un tipo de cliente, una categoría documental, una bandeja concreta o casos que cumplan determinadas reglas. El resto queda fuera y continúa con el proceso actual.",
+            "Este límite reduce superficie de error y acelera pruebas. Si el segmento funciona, se amplía gradualmente. Si no, se aprende con un impacto contenido. Un piloto útil debe estar lo bastante limitado para gobernarse y lo bastante representativo para producir datos reales."
+          ],
+          "en": [
+            "Do not try to cover every process variant on day one. Define a segment: one customer type, document category, specific inbox or cases meeting certain rules. Everything else remains outside and continues through the current process.",
+            "This boundary reduces error surface and accelerates testing. If the segment works, scope expands gradually. If not, learning occurs with contained impact. A useful pilot should be limited enough to govern and representative enough to produce real data."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Empieza en modo observación o propuesta",
+          "en": "13. Start in observation or proposal mode"
+        },
+        "paragraphs": {
+          "es": [
+            "En modo observación, el agente procesa casos en paralelo pero no afecta producción. Esto permite comparar su decisión con la humana. En modo propuesta, prepara una acción que una persona acepta, corrige o rechaza.",
+            "Las correcciones forman un conjunto de evidencia. Puedes medir qué categorías fallan, qué datos faltan y qué reglas necesitan reforzarse. Solo cuando la calidad alcanza los criterios definidos conviene permitir ejecución automática de casos estándar."
+          ],
+          "en": [
+            "In observation mode, the agent processes cases in parallel without affecting production. This allows its decision to be compared with the human one. In proposal mode, it prepares an action that a person accepts, edits or rejects.",
+            "Corrections become an evidence set. You can measure which categories fail, which data are missing and which rules need strengthening. Automatic execution of standard cases should only begin when quality reaches the predefined criteria."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Define métricas de salida del piloto",
+          "en": "14. Define pilot exit metrics"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de empezar, fija qué tendría que ocurrir para considerar el piloto válido. Puede ser menos de un porcentaje concreto de correcciones, reducción de tiempo, escalados correctamente detectados, coste por caso o mejora de SLA.",
+            "También define condiciones de parada. Si aparece un tipo de error crítico, aumenta demasiado el retrabajo o una integración se vuelve inestable, el sistema debe volver a propuesta o desactivarse. Esto evita mantener una automatización solo porque ya se ha invertido en ella."
+          ],
+          "en": [
+            "Before starting, define what must happen for the pilot to be considered valid. This might be less than a specific correction rate, lower handling time, correctly detected escalations, cost per case or improved SLA.",
+            "Define stop conditions as well. If a critical error type appears, rework rises too much or an integration becomes unstable, the system should return to proposal mode or be disabled. This avoids keeping automation merely because money has already been invested in it."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Calcula el retorno con datos del piloto",
+          "en": "15. Calculate return using pilot data"
+        },
+        "paragraphs": {
+          "es": [
+            "Después de varias semanas ya no necesitas trabajar solo con estimaciones. Puedes medir coste de modelos, APIs, infraestructura, revisión humana y mantenimiento. Del otro lado tienes tiempo ahorrado, errores evitados, capacidad adicional y reducción de tiempos.",
+            "Calcula coste por caso, ahorro neto y periodo de retorno utilizando escenarios conservador, base y alto. Si el caso solo funciona en el escenario más optimista, quizá no sea el proceso adecuado para ampliar. Si produce valor incluso con supuestos conservadores, la decisión es más robusta."
+          ],
+          "en": [
+            "After several weeks, estimates are no longer the only source. Model, API, infrastructure, human review and maintenance costs can be measured. On the benefit side, you have time saved, errors avoided, additional capacity and reduced cycle time.",
+            "Calculate cost per case, net savings and payback using conservative, base and high scenarios. If the case works only in the most optimistic scenario, it may not be the right process to expand. If it creates value even under conservative assumptions, the decision is more robust."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Reutiliza lo aprendido para el segundo proceso",
+          "en": "16. Reuse what was learned for the second process"
+        },
+        "paragraphs": {
+          "es": [
+            "El verdadero valor del primer piloto no termina en su propio ROI. También crea conectores, identidad técnica, observabilidad, reglas de seguridad, mecanismos de aprobación, pruebas y conocimiento sobre cómo operar agentes dentro de la empresa.",
+            "El segundo proceso puede reutilizar esa base, reduciendo coste y tiempo. Aun así debe pasar por la misma priorización. La organización no debería automatizar procesos simplemente porque ya tiene una plataforma; cada nuevo flujo debe demostrar suficiente valor, datos, control y capacidad de medición."
+          ],
+          "en": [
+            "The value of the first pilot does not end with its own ROI. It also creates connectors, technical identity, observability, security rules, approval mechanisms, tests and organisational knowledge about operating agents.",
+            "The second process can reuse that foundation, reducing cost and time. It should still pass through the same prioritisation method. The organisation should not automate processes simply because a platform already exists; every new workflow should demonstrate enough value, data, control and measurability."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Empieza por inventariar procesos, no herramientas.",
+        "Combina volumen con minutos humanos por caso.",
+        "Mide también tiempos de espera y retrabajo.",
+        "Elige procesos con datos suficientes y resultados verificables.",
+        "Reduce sistemas e integraciones en el primer piloto.",
+        "Puntúa tasa y coste de excepciones por separado.",
+        "Prioriza acciones reversibles y riesgo controlable.",
+        "Usa una matriz de atractivo frente a dificultad.",
+        "Empieza en observación o propuesta antes de ejecutar.",
+        "Define métricas de éxito y condiciones de parada antes de lanzar.",
+        "Calcula ROI con datos reales del piloto.",
+        "Reutiliza la plataforma, pero vuelve a priorizar cada nuevo proceso."
+      ],
+      "en": [
+        "Start by inventorying processes, not tools.",
+        "Combine volume with human minutes per case.",
+        "Measure waiting time and rework as well.",
+        "Choose processes with sufficient data and verifiable outcomes.",
+        "Reduce systems and integrations in the first pilot.",
+        "Score exception rate and exception cost separately.",
+        "Prioritise reversible actions and manageable risk.",
+        "Use an attractiveness-versus-difficulty matrix.",
+        "Start in observation or proposal mode before execution.",
+        "Define success metrics and stop conditions before launch.",
+        "Calculate ROI using real pilot data.",
+        "Reuse the platform, but reprioritise every new process."
+      ]
+    },
+    "relatedLandingKey": "ai-business-process-automation",
+    "publishedAt": "2026-09-25",
+    "updatedAt": "2026-09-25"
+  }
+]
