@@ -24,6 +24,7 @@ test.describe("Web Phase 7A conversion handoff", () => {
     await expect(page.locator("[data-lead-context]")).toContainText("Equipo Ventas");
     await expect(page.getByLabel("Nombre")).toBeVisible();
     await expect(page.getByLabel("Email de contacto")).toHaveAttribute("type", "email");
+    await expect(page.getByLabel("Teléfono")).toHaveAttribute("type", "tel");
     await expect(page.getByLabel("¿Qué proceso, equipo o necesidad quieres evaluar?")).toBeVisible();
     await expect(page.getByLabel("Fecha preferida")).toHaveAttribute("type", "date");
     await expect(page.locator("[data-booking-time-grid]")).toBeVisible();
@@ -38,6 +39,7 @@ test.describe("Web Phase 7A conversion handoff", () => {
       {
         name: "Ana Pérez",
         email: "ana@example.com",
+        phone: "+34 600 123 456",
         company: "Acme",
         need: "Seguimiento comercial con aprobación humana",
         preferredDate: date,
@@ -51,6 +53,7 @@ test.describe("Web Phase 7A conversion handoff", () => {
     expect(decoded).toContain("Origen: header");
     expect(decoded).toContain("Contexto: Equipo Ventas");
     expect(decoded).toContain("Ana Pérez");
+    expect(decoded).toContain("Teléfono: +34 600 123 456");
     expect(decoded).toContain(`Fecha preferida: ${date}`);
     expect(decoded).toContain("Hora preferida: 09:00");
     expect(decoded).toContain("Estado de cita: pendiente de confirmación");
@@ -66,6 +69,7 @@ test.describe("Web Phase 7A conversion handoff", () => {
     await expect(page.locator("[data-lead-context]")).toContainText("Order operations");
     await expect(page.getByLabel("Name")).toBeVisible();
     await expect(page.getByLabel("Contact email")).toHaveAttribute("type", "email");
+    await expect(page.getByLabel("Phone")).toHaveAttribute("type", "tel");
     await expect(page.getByLabel("Preferred date")).toHaveAttribute("type", "date");
     await expect(page.getByRole("radio", { name: "Preferred time 09:00" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Prepare meeting request" })).toBeVisible();
