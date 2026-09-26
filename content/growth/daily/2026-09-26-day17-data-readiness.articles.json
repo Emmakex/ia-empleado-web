@@ -1,0 +1,320 @@
+[
+  {
+    "key": "data-readiness-checklist-before-ai",
+    "slugs": {
+      "es": "checklist-preparacion-datos-antes-conectar-ia",
+      "en": "data-readiness-checklist-before-connecting-ai"
+    },
+    "seoTitle": {
+      "es": "Checklist de datos antes de conectar IA a tus sistemas | IA Empleado",
+      "en": "Data readiness checklist before connecting AI to systems | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Checklist práctica para preparar datos antes de conectar IA a CRM, ERP, email y documentos: fuentes, calidad, permisos, privacidad, pruebas y trazabilidad.",
+      "en": "Practical checklist for preparing data before connecting AI to CRM, ERP, email and documents: sources, quality, permissions, privacy, testing and traceability."
+    },
+    "title": {
+      "es": "Checklist de preparación de datos antes de conectar una IA a tus sistemas empresariales",
+      "en": "Data readiness checklist before connecting AI to your business systems"
+    },
+    "excerpt": {
+      "es": "Una guía práctica para revisar fuentes de verdad, calidad, permisos, documentos, privacidad, contradicciones y pruebas antes de conectar IA a CRM, ERP, email o sistemas propios.",
+      "en": "A practical guide to reviewing sources of truth, quality, permissions, documents, privacy, contradictions and testing before connecting AI to CRM, ERP, email or custom systems."
+    },
+    "intro": {
+      "es": "Conectar IA a un CRM, ERP, correo o repositorio documental puede aportar mucho valor, pero también amplifica problemas que ya existen en los datos. Un campo desactualizado, un duplicado o una fuente contradictoria deja de ser solo una molestia cuando un sistema automatizado empieza a tomar decisiones o preparar acciones con esa información. La solución no es esperar a que todos los datos corporativos sean perfectos. Es definir el conjunto mínimo necesario para el proceso elegido, preparar ese conjunto y establecer reglas claras para aquello que siga siendo incompleto. Esta checklist ayuda a hacerlo de forma práctica.",
+      "en": "Connecting AI to CRM, ERP, email or document repositories can create substantial value, but it also amplifies existing data problems. An outdated field, duplicate record or contradictory source becomes more than an inconvenience when an automated system starts making decisions or preparing actions from that information. The solution is not to wait until every corporate data source is perfect. It is to define the minimum data set needed by the selected process, prepare that set and establish clear rules for what remains incomplete. This checklist provides a practical way to do that."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Define primero el proceso que vas a automatizar",
+          "en": "1. Define the process you are automating first"
+        },
+        "paragraphs": {
+          "es": [
+            "No empieces limpiando bases de datos sin un objetivo. Documenta qué inicia el proceso, qué decisión se toma, qué sistemas se consultan y cuál es el resultado esperado. Esa secuencia determina qué datos son realmente necesarios.",
+            "Por ejemplo, clasificar solicitudes comerciales puede necesitar remitente, empresa, producto, oportunidad y responsable; automatizar facturación necesitará campos completamente distintos. Preparar datos sin este alcance conduce a proyectos demasiado grandes y difíciles de justificar."
+          ],
+          "en": [
+            "Do not begin by cleaning databases without an objective. Document what starts the process, what decision is made, which systems are consulted and what outcome is expected. That sequence determines which data are genuinely necessary.",
+            "For example, classifying sales requests may require sender, company, product, opportunity and owner; automating invoicing will require entirely different fields. Preparing data without this scope leads to oversized projects that are difficult to justify."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Crea un inventario mínimo de datos",
+          "en": "2. Create a minimum data inventory"
+        },
+        "paragraphs": {
+          "es": [
+            "Lista cada campo, documento o referencia que el proceso utiliza. Marca si es obligatorio, opcional, derivado o sensible. Añade dónde está almacenado y qué sistema lo mantiene actualizado.",
+            "Este inventario evita enviar contexto innecesario al modelo y ayuda a diseñar permisos. También permite detectar datos que hoy viven en conversaciones, hojas de cálculo personales o conocimiento informal y que deberían estructurarse antes de automatizar."
+          ],
+          "en": [
+            "List every field, document or reference used by the process. Mark whether it is required, optional, derived or sensitive. Add where it is stored and which system keeps it current.",
+            "This inventory avoids sending unnecessary context to the model and helps design permissions. It also reveals data that currently lives in conversations, personal spreadsheets or informal knowledge and should be structured before automation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Asigna una fuente de verdad",
+          "en": "3. Assign a source of truth"
+        },
+        "paragraphs": {
+          "es": [
+            "Para cada dato crítico define qué sistema tiene autoridad. El estado de pedido puede pertenecer a ERP, la oportunidad a CRM, la incidencia a helpdesk y la disponibilidad a calendario o motor de reservas. Evita que el agente mezcle versiones sin una regla.",
+            "Cuando existen varias fuentes, documenta jerarquía y fecha de actualización. Si no puede resolverse automáticamente una contradicción, el resultado correcto es escalar. Elegir silenciosamente el dato más conveniente puede generar errores difíciles de detectar."
+          ],
+          "en": [
+            "For every critical value, define which system has authority. Order status may belong to ERP, opportunity state to CRM, incidents to helpdesk and availability to calendar or booking systems. Avoid allowing the agent to blend versions without a rule.",
+            "When multiple sources exist, document hierarchy and update timing. If a contradiction cannot be resolved automatically, escalation is the correct outcome. Silently choosing the most convenient value can create errors that are difficult to detect."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Mide completitud de campos críticos",
+          "en": "4. Measure critical-field completeness"
+        },
+        "paragraphs": {
+          "es": [
+            "Calcula qué porcentaje de registros tiene cada campo requerido. No todos los vacíos importan igual. Una dirección ausente puede ser irrelevante para clasificación de emails y bloquear completamente una entrega.",
+            "Define umbrales por proceso. Si un campo crítico falta con demasiada frecuencia, quizá convenga corregir el origen antes de automatizar. Si ocurre raramente, el flujo puede tratarlo como excepción y pedir información."
+          ],
+          "en": [
+            "Calculate the percentage of records containing each required field. Not every missing value matters equally. A missing address may be irrelevant for email classification and completely block a delivery.",
+            "Define thresholds by process. If a critical field is missing too often, the source may need to be fixed before automation. If it happens rarely, the workflow can treat it as an exception and request the missing information."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Busca duplicados y conflictos de identidad",
+          "en": "5. Find duplicates and identity conflicts"
+        },
+        "paragraphs": {
+          "es": [
+            "Clientes, proveedores y productos duplicados pueden provocar que el agente consulte o actualice el registro equivocado. Revisa identificadores únicos, reglas de coincidencia y casos donde nombres similares representan entidades distintas.",
+            "No confíes únicamente en similitud textual para fusionar registros. Los candidatos pueden agruparse y revisarse, pero los cambios definitivos deberían seguir reglas de datos maestros. Una automatización rápida sobre identidades ambiguas puede multiplicar el problema."
+          ],
+          "en": [
+            "Duplicate customers, suppliers and products can cause the agent to query or update the wrong record. Review unique identifiers, matching rules and cases where similar names represent different entities.",
+            "Do not rely only on textual similarity to merge records. Candidates may be grouped for review, but final changes should follow master-data rules. Fast automation over ambiguous identities can multiply the problem."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Normaliza fechas, monedas, teléfonos y categorías",
+          "en": "6. Normalise dates, currencies, phone numbers and categories"
+        },
+        "paragraphs": {
+          "es": [
+            "Los campos estructurados deberían llegar al agente en formatos consistentes. Fechas, importes, códigos de país, estados, SKU, identificadores y teléfonos son buenos candidatos para validación determinista antes de cualquier razonamiento.",
+            "La normalización reduce tokens, ambigüedad y errores. También facilita que las respuestas del agente puedan volver al sistema sin conversiones improvisadas. El modelo puede interpretar variaciones de entrada, pero el dato persistente debería seguir un esquema estable."
+          ],
+          "en": [
+            "Structured fields should reach the agent in consistent formats. Dates, amounts, country codes, statuses, SKUs, identifiers and phone numbers are good candidates for deterministic validation before any reasoning.",
+            "Normalisation reduces tokens, ambiguity and errors. It also makes agent outputs easier to write back into systems without improvised conversion. The model can interpret variable input, but persisted data should follow a stable schema."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Identifica datos desactualizados",
+          "en": "7. Identify stale data"
+        },
+        "paragraphs": {
+          "es": [
+            "Un dato completo puede seguir siendo incorrecto si está antiguo. Revisa fechas de modificación, catálogos vigentes, responsables que ya no pertenecen al equipo, productos retirados y documentos sustituidos.",
+            "Cuando la actualidad importa, incorpora una regla de frescura. Por ejemplo, una política puede necesitar versión vigente o una disponibilidad puede tener que consultarse en tiempo real. No toda información debería cargarse desde una copia estática."
+          ],
+          "en": [
+            "A complete value can still be wrong when it is old. Review modification dates, current catalogues, owners who have left the team, retired products and superseded documents.",
+            "Where freshness matters, add a recency rule. For example, policy may require the current version or availability may need a real-time lookup. Not every piece of information should be loaded from a static copy."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Clasifica información sensible",
+          "en": "8. Classify sensitive information"
+        },
+        "paragraphs": {
+          "es": [
+            "Marca datos personales, financieros, credenciales, secretos comerciales, documentación contractual y cualquier categoría que necesite controles especiales. Después decide si el agente necesita verla completa, parcialmente o nunca.",
+            "La minimización es una de las mejores medidas de seguridad. Si el proceso solo necesita un estado y un identificador, no envíes el expediente completo. Redacción, tokenización, seudonimización o procesamiento local pueden reducir exposición."
+          ],
+          "en": [
+            "Mark personal data, financial information, credentials, trade secrets, contractual documents and any category requiring special controls. Then decide whether the agent needs full, partial or no access.",
+            "Minimisation is one of the strongest security measures. If the process only needs a status and identifier, do not send the entire record. Redaction, tokenisation, pseudonymisation or local processing can reduce exposure."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Revisa permisos por sistema y operación",
+          "en": "9. Review permissions by system and operation"
+        },
+        "paragraphs": {
+          "es": [
+            "Define qué puede leer, crear, modificar o eliminar la identidad técnica del agente. Evita scopes amplios por comodidad. Una integración que solo consulta pedidos no debería disponer de permiso para cancelarlos.",
+            "También separa permisos del agente y del usuario. Que una persona pueda acceder a determinada información no significa necesariamente que todos los procesos automatizados deban heredar ese acceso. Las acciones sensibles pueden requerir aprobación vinculada a una identidad humana."
+          ],
+          "en": [
+            "Define what the agent's technical identity can read, create, modify or delete. Avoid broad scopes for convenience. An integration that only reads orders should not have permission to cancel them.",
+            "Also separate agent and user permissions. The fact that a person can access certain information does not necessarily mean every automated process should inherit that access. Sensitive actions may require approval linked to a human identity."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Ordena documentos y versiones",
+          "en": "10. Organise documents and versions"
+        },
+        "paragraphs": {
+          "es": [
+            "Si la IA consultará documentación, identifica qué archivos son vigentes, cuáles están duplicados y qué permisos deben respetarse. Las respuestas inconsistentes suelen venir de fuentes contradictorias más que del modelo.",
+            "Conserva metadatos como fecha, versión, propietario y categoría. Cuando una respuesta utiliza una política o contrato, poder mostrar la fuente facilita revisión y reduce el riesgo de utilizar un documento obsoleto."
+          ],
+          "en": [
+            "If AI will query documentation, identify which files are current, which are duplicated and which permissions must be respected. Inconsistent answers often originate from contradictory sources rather than the model.",
+            "Retain metadata such as date, version, owner and category. When an answer relies on a policy or contract, exposing the source makes review easier and reduces the risk of using an obsolete document."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Define qué puede inferir la IA",
+          "en": "11. Define what AI may infer"
+        },
+        "paragraphs": {
+          "es": [
+            "Algunos procesos permiten inferencias útiles: categoría probable, prioridad, idioma o intención. Otros campos, como cuenta bancaria, NIF, importe contractual o estado legal, deberían venir de una fuente confirmada.",
+            "Etiqueta las inferencias explícitamente. Una propuesta no debe convertirse en dato maestro solo porque el modelo tenga alta confianza. Decide qué umbral permite continuar y qué necesita validación humana o consulta a otra fuente."
+          ],
+          "en": [
+            "Some processes allow useful inference: likely category, priority, language or intent. Other fields, such as bank account, tax identifier, contractual amount or legal status, should come from a confirmed source.",
+            "Label inferences explicitly. A proposal should not become master data merely because the model has high confidence. Decide what threshold allows progress and what requires human validation or another source."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Diseña tratamiento para valores ausentes",
+          "en": "12. Design handling for missing values"
+        },
+        "paragraphs": {
+          "es": [
+            "Para cada campo obligatorio establece una acción: detener, pedir información, consultar otra fuente, aplicar un valor autorizado o escalar. Esto evita que el agente complete huecos de manera creativa.",
+            "La política puede variar por riesgo. Un código postal ausente quizá pueda solicitarse automáticamente; una cuenta bancaria ausente nunca debería inventarse. Las reglas de ausencia deben formar parte del contrato del proceso."
+          ],
+          "en": [
+            "For each required field, define an action: stop, request information, query another source, apply an authorised default or escalate. This prevents the agent from creatively filling gaps.",
+            "Policy can vary by risk. A missing postal code may be requested automatically; a missing bank account should never be invented. Missing-data rules should form part of the process contract."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Diseña tratamiento para contradicciones",
+          "en": "13. Design handling for contradictions"
+        },
+        "paragraphs": {
+          "es": [
+            "Documenta qué hacer cuando dos sistemas no coinciden. Algunas contradicciones pueden resolverse por jerarquía de fuentes; otras requieren una persona. El flujo debe conservar ambos valores y explicar el conflicto.",
+            "Las contradicciones frecuentes son una señal de calidad del proceso, no solo de IA. Regístralas y corrige la causa cuando sea posible. Automatizar el conflicto sin mejorar la fuente perpetúa deuda de datos."
+          ],
+          "en": [
+            "Document what to do when two systems disagree. Some contradictions can be resolved through source hierarchy; others require a person. The workflow should preserve both values and explain the conflict.",
+            "Frequent contradictions are a process-quality signal, not merely an AI issue. Record them and fix the cause where possible. Automating around the conflict without improving the source perpetuates data debt."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Construye un conjunto de pruebas representativo",
+          "en": "14. Build a representative test set"
+        },
+        "paragraphs": {
+          "es": [
+            "Incluye casos fáciles, límites y excepciones reales: duplicados, documentos largos, registros incompletos, idiomas distintos, valores antiguos y formatos inesperados. No entrenes tu confianza únicamente con ejemplos perfectos.",
+            "Para cada caso define el resultado esperado o el comportamiento correcto: responder, proponer, rechazar o escalar. Esto permite medir precisión y regresiones cuando cambian prompts, modelos, conectores o reglas."
+          ],
+          "en": [
+            "Include easy cases, boundaries and real exceptions: duplicates, long documents, incomplete records, multiple languages, stale values and unexpected formats. Do not build confidence using only perfect examples.",
+            "For each case, define the expected outcome or correct behaviour: answer, propose, reject or escalate. This allows accuracy and regressions to be measured when prompts, models, connectors or rules change."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Registra procedencia y transformaciones",
+          "en": "15. Record provenance and transformations"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando el sistema normaliza, combina o extrae datos, conserva suficiente información para reconstruir el camino. Debe ser posible saber qué fuente originó un valor y qué transformación ocurrió antes de que el agente lo utilizara.",
+            "Esta trazabilidad facilita depuración y auditoría. No requiere almacenar información sensible completa en logs; referencias, identificadores y eventos estructurados suelen ser suficientes para investigar un resultado."
+          ],
+          "en": [
+            "When the system normalises, combines or extracts data, retain enough information to reconstruct the path. It should be possible to know which source produced a value and which transformation occurred before the agent used it.",
+            "This traceability supports debugging and auditability. It does not require storing complete sensitive information in logs; references, identifiers and structured events are often enough to investigate an outcome."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Monitoriza calidad después del lanzamiento",
+          "en": "16. Monitor quality after launch"
+        },
+        "paragraphs": {
+          "es": [
+            "La preparación de datos no termina en producción. Nuevos campos, campañas, productos, integraciones y equipos cambian continuamente las fuentes. Mide excepciones causadas por datos, campos faltantes, errores de formato y correcciones humanas.",
+            "Cuando una métrica empeora, decide si la solución está en la fuente, la integración, la política o el agente. Este ciclo convierte la calidad de datos en una práctica continua y hace más fácil añadir nuevos procesos sin repetir una limpieza completa."
+          ],
+          "en": [
+            "Data readiness does not end in production. New fields, campaigns, products, integrations and teams continuously change the sources. Measure data-caused exceptions, missing fields, format errors and human corrections.",
+            "When a metric deteriorates, determine whether the solution belongs in the source, integration, policy or agent. This cycle turns data quality into a continuous practice and makes additional processes easier to add without repeating a complete cleanup."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Prepara solo los datos que necesita el primer proceso.",
+        "Define una fuente de verdad por cada dato crítico.",
+        "Mide completitud, duplicados, antigüedad y contradicciones.",
+        "Normaliza campos estructurados antes del razonamiento.",
+        "Minimiza datos personales y sensibles.",
+        "Aplica privilegio mínimo por sistema y operación.",
+        "Separa hechos confirmados de inferencias.",
+        "Define reglas explícitas para datos ausentes y contradictorios.",
+        "Prueba con excepciones reales, no solo ejemplos limpios.",
+        "Conserva procedencia y trazabilidad.",
+        "Monitoriza calidad después del lanzamiento.",
+        "Amplía el alcance solo cuando el conjunto mínimo funciona de forma estable."
+      ],
+      "en": [
+        "Prepare only the data required by the first process.",
+        "Define one source of truth for every critical data type.",
+        "Measure completeness, duplicates, staleness and contradictions.",
+        "Normalise structured fields before reasoning.",
+        "Minimise personal and sensitive data.",
+        "Apply least privilege by system and operation.",
+        "Separate confirmed facts from inference.",
+        "Define explicit rules for missing and contradictory data.",
+        "Test with real exceptions, not only clean examples.",
+        "Preserve provenance and traceability.",
+        "Monitor quality after launch.",
+        "Expand scope only when the minimum data set operates reliably."
+      ]
+    },
+    "relatedLandingKey": "ai-data-readiness",
+    "publishedAt": "2026-09-26",
+    "updatedAt": "2026-09-26"
+  }
+]
