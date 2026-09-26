@@ -158,6 +158,7 @@ export function buildLeadNotification(input: LeadSmtpDeliveryInput, _config: Lea
     "",
     `Nombre: ${payload.name}`,
     `Email: ${payload.email}`,
+    `Teléfono: ${payload.phone}`,
     `Empresa: ${display(payload.company)}`,
     `Interés: ${interest}`,
     ...bookingLines,
