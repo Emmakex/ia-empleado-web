@@ -8,7 +8,7 @@ import {
 import { isLeadIntent, type LeadIntent } from "./conversion-handoff";
 
 export const LEAD_INTAKE_ENDPOINT = "/api/lead-intake";
-export const LEAD_INTAKE_SCHEMA_VERSION = 2;
+export const LEAD_INTAKE_SCHEMA_VERSION = 3;
 export const LEAD_CONSENT_VERSION = "lead-intake-v1";
 
 export type LeadIntakeMode = "direct" | "email";
@@ -25,6 +25,7 @@ export type LeadIntakePayload = {
   locale: Locale;
   name: string;
   email: string;
+  phone: string;
   company?: string;
   need: string;
   intent: LeadIntent;
@@ -65,6 +66,7 @@ type ValidationResult =
   | { ok: false };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_PATTERN = /^\+?[0-9][0-9\s().-]{5,31}$/;
 
 function cleanText(value: unknown, maxLength: number): string {
   if (typeof value !== "string") return "";
@@ -84,6 +86,11 @@ function cleanMultiline(value: unknown, maxLength: number): string {
     .slice(0, maxLength);
 }
 
+function validPhone(value: string): boolean {
+  const digitCount = value.replace(/\D/g, "").length;
+  return PHONE_PATTERN.test(value) && digitCount >= 7 && digitCount <= 15;
+}
+
 export function validateLeadIntakePayload(input: unknown): ValidationResult {
   if (!input || typeof input !== "object" || Array.isArray(input)) return { ok: false };
 
@@ -93,6 +100,7 @@ export function validateLeadIntakePayload(input: unknown): ValidationResult {
     : undefined;
   const name = cleanText(candidate.name, 100);
   const email = cleanText(candidate.email, 160).toLowerCase();
+  const phone = cleanText(candidate.phone, 32);
   const company = cleanText(candidate.company, 140);
   const need = cleanMultiline(candidate.need, 1400);
   const rawIntent = cleanText(candidate.intent, 40);
@@ -105,7 +113,7 @@ export function validateLeadIntakePayload(input: unknown): ValidationResult {
   const consentVersion = cleanText(candidate.consentVersion, 40);
   const website = cleanText(candidate.website, 200);
 
-  if (!locale || !name || !EMAIL_PATTERN.test(email) || !need || !isLeadIntent(rawIntent)) {
+  if (!locale || !name || !EMAIL_PATTERN.test(email) || !validPhone(phone) || !need || !isLeadIntent(rawIntent)) {
     return { ok: false };
   }
   if (!source || !consent || consentVersion !== LEAD_CONSENT_VERSION) {
@@ -132,6 +140,7 @@ export function validateLeadIntakePayload(input: unknown): ValidationResult {
       locale,
       name,
       email,
+      phone,
       company: company || undefined,
       need,
       intent: rawIntent,

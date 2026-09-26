@@ -26,6 +26,7 @@ type LeadHandoffFormProps = {
     fields: {
       name: string;
       email: string;
+      phone: string;
       company: string;
       need: string;
       preferredDate: string;
@@ -57,7 +58,7 @@ type LeadHandoffFormProps = {
 };
 
 type SubmitState = "idle" | "submitting" | "success" | "fallback";
-type ValidationField = "name" | "email" | "need" | "consent";
+type ValidationField = "name" | "email" | "phone" | "need" | "consent";
 type ValidationErrors = Partial<Record<ValidationField, string>>;
 
 const emailCapability: LeadIntakeCapability = { mode: "email", configured: false };
@@ -65,6 +66,7 @@ const emailCapability: LeadIntakeCapability = { mode: "email", configured: false
 export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
   const [need, setNeed] = useState("");
   const [preferredDate, setPreferredDate] = useState("");
@@ -78,11 +80,13 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
     ? {
         required: "Completa este campo.",
         email: "Introduce un correo válido.",
+        phone: "Introduce un teléfono válido.",
         consent: "Acepta la información de privacidad para continuar.",
       }
     : {
         required: "Complete this field.",
         email: "Enter a valid email address.",
+        phone: "Enter a valid phone number.",
         consent: "Accept the privacy information to continue.",
       };
 
@@ -90,13 +94,14 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
     () => buildLeadMailto(locale, context, {
       name,
       email,
+      phone,
       company,
       need,
       preferredDate,
       preferredTime,
       preferredTimeZone: BOOKING_TIME_ZONE,
     }),
-    [locale, context, name, email, company, need, preferredDate, preferredTime],
+    [locale, context, name, email, phone, company, need, preferredDate, preferredTime],
   );
 
   useEffect(() => {
@@ -165,6 +170,7 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
           locale,
           name,
           email,
+          phone,
           company,
           need,
           intent: context.intent,
@@ -259,18 +265,45 @@ export function LeadHandoffForm({ locale, context, labels }: LeadHandoffFormProp
           </label>
         </div>
 
-        <label>
-          <span>{labels.fields.company}</span>
-          <input
-            type="text"
-            name="company"
-            autoComplete="organization"
-            maxLength={140}
-            value={company}
-            disabled={formLocked}
-            onChange={(event) => setCompany(event.target.value)}
-          />
-        </label>
+        <div className="lead-handoff-field-grid">
+          <label>
+            <span>{labels.fields.phone}</span>
+            <input
+              type="tel"
+              name="phone"
+              autoComplete="tel"
+              inputMode="tel"
+              required
+              maxLength={32}
+              pattern="[0-9+() .-]{7,32}"
+              value={phone}
+              disabled={formLocked}
+              aria-invalid={validationErrors.phone ? true : undefined}
+              aria-describedby={validationErrors.phone ? "lead-error-phone" : undefined}
+              onInvalid={(event) => setValidationError(
+                "phone",
+                event.currentTarget.validity.patternMismatch ? validationCopy.phone : validationCopy.required,
+              )}
+              onChange={(event) => {
+                setPhone(event.target.value);
+                clearValidationError("phone");
+              }}
+            />
+            {validationErrors.phone ? <span className="lead-handoff-field-error" id="lead-error-phone" role="alert">{validationErrors.phone}</span> : null}
+          </label>
+          <label>
+            <span>{labels.fields.company}</span>
+            <input
+              type="text"
+              name="company"
+              autoComplete="organization"
+              maxLength={140}
+              value={company}
+              disabled={formLocked}
+              onChange={(event) => setCompany(event.target.value)}
+            />
+          </label>
+        </div>
 
         <label>
           <span>{labels.fields.need}</span>

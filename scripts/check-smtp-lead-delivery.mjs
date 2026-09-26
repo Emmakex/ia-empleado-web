@@ -44,6 +44,7 @@ for (const token of [
   'minVersion: "TLSv1.2"',
   'const subject = "IA Empleado - nuevo contacto"',
   "Nuevo contacto desde IA Empleado.",
+  "Teléfono:",
   "info.accepted",
   "info.rejected",
   "info.pending",

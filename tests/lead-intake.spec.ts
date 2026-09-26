@@ -25,6 +25,7 @@ function validPayload(locale: "es" | "en" = "es") {
     locale,
     name: "Ana Pérez",
     email: "ana@example.com",
+    phone: "+34 600 123 456",
     company: "Acme",
     need: "Evaluar seguimiento comercial con aprobación humana",
     intent: "team",
@@ -74,6 +75,12 @@ test.describe("Web Phase 7C lead intake", () => {
     expect(invalidBooking.status()).toBe(400);
     expect(await invalidBooking.json()).toEqual({ ok: false, code: "validation_error" });
 
+    const invalidPhone = await request.post("/api/lead-intake", {
+      data: { ...validPayload(), phone: "123" },
+    });
+    expect(invalidPhone.status()).toBe(400);
+    expect(await invalidPhone.json()).toEqual({ ok: false, code: "validation_error" });
+
     const unconfigured = await request.post("/api/lead-intake", { data: validPayload() });
     expect(unconfigured.status()).toBe(503);
     expect(await unconfigured.json()).toEqual({
@@ -111,6 +118,7 @@ test.describe("Web Phase 7C lead intake", () => {
     const date = nextBookableDate();
     await page.getByLabel("Nombre").fill("Ana Pérez");
     await page.getByLabel("Email de contacto").fill("ana@example.com");
+    await page.getByLabel("Teléfono").fill("+34 600 123 456");
     await page.getByLabel("Empresa (opcional)").fill("Acme");
     await page.getByLabel("¿Qué proceso, equipo o necesidad quieres evaluar?").fill("Evaluar seguimiento comercial con aprobación humana");
     await page.getByLabel("Fecha preferida").fill(date);
@@ -124,6 +132,7 @@ test.describe("Web Phase 7C lead intake", () => {
       locale: "es",
       name: "Ana Pérez",
       email: "ana@example.com",
+      phone: "+34 600 123 456",
       company: "Acme",
       need: "Evaluar seguimiento comercial con aprobación humana",
       intent: "team",
@@ -146,6 +155,7 @@ test.describe("Web Phase 7C lead intake", () => {
       "locale",
       "name",
       "need",
+      "phone",
       "preferredDate",
       "preferredTime",
       "preferredTimeZone",
@@ -173,6 +183,7 @@ test.describe("Web Phase 7C lead intake", () => {
 
     await page.getByLabel("Name").fill("Alex Doe");
     await page.getByLabel("Contact email").fill("alex@example.com");
+    await page.getByLabel("Phone").fill("+44 20 7946 0958");
     await page.getByLabel("Which process, team or need do you want to evaluate?").fill("Order operations and exception handling");
     await page.getByLabel("Preferred date").fill(date);
     await page.getByRole("radio", { name: "Preferred time 10:00" }).check();
@@ -184,6 +195,7 @@ test.describe("Web Phase 7C lead intake", () => {
     const mailto = fallback.getByRole("link", { name: "Prepare fallback email" });
     await expect(mailto).toHaveAttribute("href", /mailto:hola@iaempleado\.com/);
     await expect(mailto).toHaveAttribute("href", /alex%40example\.com/);
+    await expect(mailto).toHaveAttribute("href", /%2B44%2020%207946%200958/);
     await expect(mailto).toHaveAttribute("href", new RegExp(encodeURIComponent(date)));
     await expect(mailto).toHaveAttribute("href", /10%3A00/);
   });

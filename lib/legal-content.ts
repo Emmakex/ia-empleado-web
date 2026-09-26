@@ -4,7 +4,7 @@ export const LEGAL_OWNER_NAME = "Eduardo Jose Yauri Luna";
 export const LEGAL_OWNER_TAX_ID = "60281451S";
 export const LEGAL_CONTACT_EMAIL = "info@iaempleado.com";
 export const LEGAL_OWNER_ADDRESS = "Reina Amalia 8, 4 2, Barcelona, España";
-export const LEGAL_LAST_UPDATED = "2026-09-16";
+export const LEGAL_LAST_UPDATED = "2026-09-26";
 
 export type LegalDocumentKind = "legal-notice" | "privacy-policy";
 
@@ -125,7 +125,7 @@ const content: Record<Locale, Record<LegalDocumentKind, LegalDocumentContent>> =
         {
           title: "2. Datos que podemos tratar",
           bullets: [
-            "Nombre y correo electrónico.",
+            "Nombre, correo electrónico y teléfono de contacto.",
             "Empresa, cuando la indiques voluntariamente.",
             "Contenido de la solicitud, proceso o necesidad que quieras evaluar.",
             "Contexto técnico mínimo asociado al envío, como origen de la solicitud y datos necesarios para seguridad, prevención de abuso o diagnóstico del servicio.",
@@ -259,7 +259,7 @@ const content: Record<Locale, Record<LegalDocumentKind, LegalDocumentContent>> =
         {
           title: "2. Data we may process",
           bullets: [
-            "Name and email address.",
+            "Name, email address and contact phone number.",
             "Company, when you provide it voluntarily.",
             "The content of the request, process or need you want to evaluate.",
             "Minimum technical context associated with the submission, such as request origin and data required for security, abuse prevention or service diagnostics.",

@@ -86,6 +86,7 @@ The browser may submit only:
 - locale (`es` / `en`);
 - name;
 - contact email;
+- contact phone;
 - optional company;
 - stated need/process;
 - allowlisted lead intent;
@@ -104,7 +105,7 @@ schemaVersion
 leadId
 receivedAt
 locale
-contact { name, email, company }
+contact { name, email, phone, company }
 request { intent, source, context, need }
 consent { accepted, version, privacyNoticeUrl }
 origin = iaempleado.com

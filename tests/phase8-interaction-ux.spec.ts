@@ -216,6 +216,7 @@ test.describe("Phase 8A interaction UX", () => {
 
     const name = page.getByLabel("Nombre");
     const email = page.getByLabel("Email de contacto");
+    const phone = page.getByLabel("Teléfono");
     const need = page.getByLabel("¿Qué proceso, equipo o necesidad quieres evaluar?");
     const preferredDate = page.getByLabel("Fecha preferida");
     const preferredTime = page.getByRole("radio", { name: "Hora preferida 09:00" });
@@ -230,6 +231,7 @@ test.describe("Phase 8A interaction UX", () => {
 
     await name.fill("Ana Pérez");
     await email.fill("ana@example.com");
+    await phone.fill("+34 600 123 456");
     await need.fill("Revisar un proceso comercial con control humano");
     await preferredDate.fill(nextBookableDate());
     await preferredTime.check();

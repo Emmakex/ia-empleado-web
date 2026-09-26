@@ -19,6 +19,7 @@ export type LeadHandoffContext = {
 export type LeadMailFields = {
   name: string;
   email: string;
+  phone: string;
   company?: string;
   need: string;
   preferredDate?: string;
@@ -71,6 +72,7 @@ const pageContent = {
     fields: {
       name: "Nombre",
       email: "Email de contacto",
+      phone: "Teléfono",
       company: "Empresa (opcional)",
       need: "¿Qué proceso, equipo o necesidad quieres evaluar?",
       preferredDate: "Fecha preferida",
@@ -114,6 +116,7 @@ const pageContent = {
     fields: {
       name: "Name",
       email: "Contact email",
+      phone: "Phone",
       company: "Company (optional)",
       need: "Which process, team or need do you want to evaluate?",
       preferredDate: "Preferred date",
@@ -223,6 +226,7 @@ export function buildLeadMailto(
     ? [
         `Nombre: ${fields.name.trim()}`,
         `Email: ${fields.email.trim()}`,
+        `Teléfono: ${fields.phone.trim()}`,
         `Empresa: ${fields.company?.trim() || "No indicada"}`,
         `Interés: ${intentLabel}`,
         `Origen: ${context.source}`,
@@ -237,6 +241,7 @@ export function buildLeadMailto(
     : [
         `Name: ${fields.name.trim()}`,
         `Email: ${fields.email.trim()}`,
+        `Phone: ${fields.phone.trim()}`,
         `Company: ${fields.company?.trim() || "Not provided"}`,
         `Interest: ${intentLabel}`,
         `Source: ${context.source}`,
