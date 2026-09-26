@@ -94,6 +94,8 @@ for (const token of [
   "data-lead-handoff-form",
   "data-lead-prepare-email",
   'type="email"',
+  'type="tel"',
+  'name="phone"',
   "required",
   "LEAD_CONTACT_EMAIL",
 ]) {
@@ -156,6 +158,8 @@ for (const token of [
   "/solicitar-demo?intent=team",
   "/en/request-demo?intent=process",
   "buildLeadMailto",
+  'getByLabel("Teléfono")',
+  'getByLabel("Phone")',
   "natural",
   "390",
   "scrollWidth",
