@@ -160,6 +160,7 @@ async function deliverLeadViaWebhook(
         contact: {
           name: payload.name,
           email: payload.email,
+          phone: payload.phone,
           company: payload.company,
         },
         request: {
