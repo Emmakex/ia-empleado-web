@@ -1,0 +1,342 @@
+[
+  {
+    "key": "ai-data-readiness",
+    "slugs": {
+      "es": "preparacion-datos-empresa-ia",
+      "en": "enterprise-ai-data-readiness"
+    },
+    "seoTitle": {
+      "es": "Preparación de datos para IA en empresas | IA Empleado",
+      "en": "Enterprise AI data readiness | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Prepara datos empresariales para conectar IA a CRM, ERP, email y documentos: calidad, permisos, fuentes de verdad, privacidad y validación.",
+      "en": "Prepare enterprise data for AI across CRM, ERP, email and documents: quality, permissions, sources of truth, privacy and validation."
+    },
+    "eyebrow": {
+      "es": "PREPARACIÓN DE DATOS PARA IA",
+      "en": "ENTERPRISE AI DATA READINESS"
+    },
+    "title": {
+      "es": "Preparación de datos para IA: conecta sistemas empresariales sin convertir datos imperfectos en errores automáticos.",
+      "en": "Enterprise AI data readiness: connect business systems without turning imperfect data into automated errors."
+    },
+    "lead": {
+      "es": "Una empresa no necesita datos perfectos para empezar con IA, pero sí necesita saber qué datos son fiables, dónde está cada fuente de verdad, qué información puede consultar un Empleado IA y qué debe ocurrir cuando falta un campo o dos sistemas se contradicen. Preparar datos para automatización con IA significa ordenar acceso, calidad, permisos, formatos, documentos, retención y reglas de validación antes de conceder capacidad de ejecución. El objetivo no es crear un gran proyecto de limpieza sin fin, sino dejar suficientemente preparado el conjunto mínimo de datos que necesita el primer proceso.",
+      "en": "A company does not need perfect data to begin using AI, but it does need to know which data is reliable, where each source of truth lives, what information an AI Employee may access and what should happen when a field is missing or two systems disagree. Preparing data for AI automation means organising access, quality, permissions, formats, documents, retention and validation rules before execution capability is granted. The goal is not an endless enterprise-wide cleanup project, but to make the minimum data set required by the first process sufficiently ready."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Empieza por el proceso y sus datos mínimos",
+          "en": "1. Start with the process and its minimum data set"
+        },
+        "paragraphs": {
+          "es": [
+            "La preparación de datos para IA debe comenzar por un proceso concreto. Si el objetivo es clasificar correos y actualizar CRM, quizá solo sean necesarios remitente, cliente, oportunidad, estado y responsable. Limpiar todo el histórico comercial, contable y documental antes de empezar sería costoso y retrasaría el aprendizaje.",
+            "Define qué campos son obligatorios, cuáles son opcionales y cuáles no deberían llegar al agente. Este inventario reduce contexto innecesario y facilita pruebas. Cuando un dato requerido no existe, el flujo debe tener una respuesta explícita: pedir información, consultar otra fuente, utilizar un valor permitido o escalar."
+          ],
+          "en": [
+            "AI data preparation should begin with a specific process. If the objective is to classify email and update CRM, the workflow may only need sender, customer, opportunity, status and owner. Cleaning the entire commercial, accounting and document history before starting would be expensive and would delay learning.",
+            "Define which fields are required, which are optional and which should never reach the agent. This inventory reduces unnecessary context and simplifies testing. When a required value is missing, the workflow needs an explicit response: request information, query another source, use an allowed default or escalate."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Define la fuente de verdad para cada dato",
+          "en": "2. Define the source of truth for each data type"
+        },
+        "paragraphs": {
+          "es": [
+            "Muchas empresas almacenan el mismo dato en varios sitios. El nombre del cliente puede aparecer en CRM, ERP, hojas de cálculo y correo; el estado de un pedido puede existir en ecommerce y logística. Antes de automatizar hay que decidir qué sistema tiene autoridad para cada categoría.",
+            "Un agente no debería resolver contradicciones importantes escogiendo el valor que parece más probable. Si CRM y ERP muestran direcciones fiscales diferentes, la política debe indicar cuál prevalece o exigir revisión. Esta jerarquía convierte una ambigüedad de datos en una regla operativa verificable."
+          ],
+          "en": [
+            "Many companies store the same value in several places. A customer name may exist in CRM, ERP, spreadsheets and email; order status may exist in ecommerce and logistics systems. Before automation, decide which system has authority for each category.",
+            "An agent should not resolve important contradictions by choosing the value that appears most likely. If CRM and ERP show different registered addresses, policy should state which source prevails or require review. This hierarchy turns data ambiguity into a verifiable operational rule."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Mide calidad de datos con métricas concretas",
+          "en": "3. Measure data quality with concrete metrics"
+        },
+        "paragraphs": {
+          "es": [
+            "Calidad no significa una percepción general de que los datos están bien. Conviene medir completitud, duplicados, formatos inválidos, valores fuera de catálogo, registros sin propietario, documentos caducados y contradicciones entre fuentes. Estas métricas muestran qué problemas afectan realmente al flujo.",
+            "No todos los defectos tienen la misma prioridad. Un teléfono vacío puede ser irrelevante para facturación y crítico para atención al cliente. Prioriza la calidad según el uso del dato. Así la inversión en limpieza se concentra donde una inconsistencia podría provocar una respuesta incorrecta o una acción fallida."
+          ],
+          "en": [
+            "Data quality should not be a vague belief that information is 'good enough'. Measure completeness, duplicates, invalid formats, out-of-catalogue values, ownerless records, expired documents and contradictions between sources. These metrics show which problems actually affect the workflow.",
+            "Not every defect has the same priority. A missing phone number may be irrelevant to invoicing and critical to customer service. Prioritise quality according to how the data is used. This focuses cleanup investment where inconsistency could produce a wrong answer or failed action."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Normaliza formatos antes de delegar decisiones",
+          "en": "4. Normalise formats before delegating decisions"
+        },
+        "paragraphs": {
+          "es": [
+            "Fechas, monedas, identificadores, teléfonos, países, estados y categorías deberían seguir formatos definidos. La IA puede interpretar variaciones, pero usarla continuamente para corregir datos estructurados aumenta coste y hace menos reproducible el proceso.",
+            "Siempre que sea posible, normaliza en la capa de integración. Por ejemplo, transforma estados distintos a un catálogo común y valida importes antes de entregarlos al modelo. La IA recibe entonces contexto más limpio y puede concentrarse en aquello que realmente requiere comprensión."
+          ],
+          "en": [
+            "Dates, currencies, identifiers, phone numbers, countries, statuses and categories should follow defined formats. AI can interpret variation, but continuously using it to repair structured data increases cost and makes the process less reproducible.",
+            "Whenever possible, normalise in the integration layer. For example, map different statuses into a common catalogue and validate amounts before passing them to the model. AI then receives cleaner context and can focus on what genuinely requires interpretation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Separa datos confirmados de inferencias",
+          "en": "5. Separate confirmed data from inference"
+        },
+        "paragraphs": {
+          "es": [
+            "Un modelo puede deducir que un correo corresponde a un cliente o que un documento parece pertenecer a una categoría, pero esa inferencia no debería almacenarse como hecho sin indicar su origen. Los sistemas empresariales necesitan distinguir valores confirmados, propuestos y pendientes de revisión.",
+            "Esta separación permite automatizar sin contaminar datos maestros. Una propuesta puede servir para completar un borrador o priorizar una cola, mientras la escritura definitiva en CRM o ERP se realiza únicamente cuando una regla o una persona valida el dato."
+          ],
+          "en": [
+            "A model may infer that an email belongs to a customer or that a document appears to match a category, but that inference should not be stored as fact without its origin being clear. Business systems need to distinguish confirmed, proposed and pending-review values.",
+            "This separation allows automation without contaminating master data. A proposal can help complete a draft or prioritise a queue, while the final write into CRM or ERP occurs only when a rule or person validates the value."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Diseña permisos de lectura y escritura por campo o acción",
+          "en": "6. Design read and write permissions by field or action"
+        },
+        "paragraphs": {
+          "es": [
+            "Conectar IA a un sistema no significa darle acceso completo. Un Empleado IA puede necesitar leer pedidos pero no modificar precios, consultar una ficha de cliente pero no exportar toda la base o crear un borrador sin capacidad de enviarlo automáticamente.",
+            "El principio de privilegio mínimo debe aplicarse también a datos. Cuanto menor sea el conjunto accesible, más fácil resulta demostrar cumplimiento y limitar el impacto de un error. Los permisos pueden ampliarse después, cuando existe una necesidad concreta y métricas que justifican esa capacidad."
+          ],
+          "en": [
+            "Connecting AI to a system does not mean granting full access. An AI Employee may need to read orders but not change prices, view one customer record without exporting the entire database, or create a draft without being allowed to send it automatically.",
+            "Least privilege should apply to data as well. The smaller the accessible set, the easier it is to demonstrate governance and limit the impact of an error. Permissions can expand later when a specific need exists and metrics justify the capability."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Clasifica datos personales, confidenciales y sensibles",
+          "en": "7. Classify personal, confidential and sensitive data"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de decidir qué información puede entrar en un prompt o salir hacia un proveedor externo, identifica categorías sensibles: datos personales, financieros, credenciales, secretos comerciales, contratos o información regulada. No todas requieren el mismo tratamiento.",
+            "El flujo puede minimizar contexto, redactar campos, utilizar identificadores en lugar de contenido completo o mantener ciertas operaciones en infraestructura privada. La preparación de datos incluye decidir dónde puede viajar cada categoría, cuánto tiempo se conserva y quién puede verla."
+          ],
+          "en": [
+            "Before deciding what information may enter a prompt or leave for an external provider, identify sensitive categories: personal data, financial information, credentials, trade secrets, contracts or regulated information. They do not all require the same treatment.",
+            "The workflow can minimise context, redact fields, use identifiers instead of full content or keep selected operations in private infrastructure. Data readiness includes deciding where each category may travel, how long it is retained and who may access it."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Prepara documentos para búsqueda y extracción",
+          "en": "8. Prepare documents for retrieval and extraction"
+        },
+        "paragraphs": {
+          "es": [
+            "Políticas, manuales, contratos, fichas y procedimientos suelen contener conocimiento necesario para el agente. No basta con subir carpetas completas: hay que identificar versiones vigentes, duplicados, permisos y documentos obsoletos. Una base de conocimiento puede responder mal aunque el modelo sea bueno si la fuente está desactualizada.",
+            "Para extracción documental, define tipos de archivo, campos esperados, validaciones y reglas cuando el contenido es ilegible o incompleto. Los datos extraídos deben mantener referencia al documento original para que una persona pueda verificar rápidamente aquello que tenga impacto."
+          ],
+          "en": [
+            "Policies, manuals, contracts, records and procedures often contain knowledge the agent needs. Uploading entire folders is not enough: current versions, duplicates, permissions and obsolete documents must be identified. A knowledge base can answer badly even with a strong model when the underlying source is outdated.",
+            "For document extraction, define file types, expected fields, validation and rules for unreadable or incomplete content. Extracted data should retain a reference to the original document so a person can quickly verify anything with meaningful impact."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Diseña reglas para datos ausentes o contradictorios",
+          "en": "9. Design rules for missing or contradictory data"
+        },
+        "paragraphs": {
+          "es": [
+            "Los datos reales siempre tendrán huecos. La arquitectura debe decidir qué puede continuar sin un campo, qué valor admite un fallback y qué obliga a detener el proceso. Pedir al modelo que complete aquello que desconoce es una mala estrategia cuando el dato afecta una acción real.",
+            "Las contradicciones también necesitan tratamiento. Si un cliente aparece activo en CRM pero bloqueado en ERP, el agente debe aplicar una regla empresarial documentada. Cuando no exista una regla, escalar con el contexto completo es preferible a improvisar."
+          ],
+          "en": [
+            "Real-world data will always contain gaps. Architecture must decide what can continue without a field, what value may use a fallback and what forces the process to stop. Asking a model to fill what it does not know is a poor strategy when the value affects a real action.",
+            "Contradictions also need handling. If a customer appears active in CRM but blocked in ERP, the agent should follow a documented business rule. When no rule exists, escalating with full context is better than improvising."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Registra procedencia, versión y trazabilidad",
+          "en": "10. Record provenance, version and traceability"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando una decisión depende de datos, conviene poder reconstruir de dónde salieron. Registra el sistema fuente, identificador, versión del documento o momento de consulta cuando sea relevante. Esto permite investigar errores y evita discutir después sobre qué información vio realmente el agente.",
+            "La trazabilidad no significa copiar todos los datos a los logs. Es mejor guardar referencias y eventos suficientes para reconstruir el proceso, minimizando contenido sensible. Un registro útil indica qué fuente se consultó, qué validación se aplicó, qué aprobación existió y qué resultado se produjo."
+          ],
+          "en": [
+            "When a decision depends on data, it should be possible to reconstruct where the information came from. Record the source system, identifier, document version or retrieval time where relevant. This makes errors easier to investigate and avoids later uncertainty about what the agent actually saw.",
+            "Traceability does not mean copying all data into logs. It is better to retain references and enough events to reconstruct the workflow while minimising sensitive content. A useful record shows which source was queried, which validation ran, which approval existed and what result was produced."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Prueba con un conjunto representativo antes de producción",
+          "en": "11. Test with a representative data set before production"
+        },
+        "paragraphs": {
+          "es": [
+            "Las pruebas deben incluir casos normales y también duplicados, campos vacíos, caracteres extraños, documentos largos, idiomas distintos, valores antiguos y contradicciones. Un piloto que solo utiliza ejemplos limpios no descubre cómo se comportará el sistema con datos reales.",
+            "Mide precisión por tipo de caso. Una media global puede parecer buena mientras una categoría crítica falla con frecuencia. Los resultados de prueba sirven para ajustar normalización, reglas, permisos y escalado antes de conceder autonomía."
+          ],
+          "en": [
+            "Tests should include normal cases as well as duplicates, missing fields, unusual characters, long documents, different languages, old values and contradictions. A pilot using only clean examples does not reveal how the system will behave with real data.",
+            "Measure accuracy by case type. A global average may look strong while a critical category fails frequently. Test results help refine normalisation, rules, permissions and escalation before autonomy is granted."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Convierte la preparación de datos en una práctica continua",
+          "en": "12. Make data readiness a continuous practice"
+        },
+        "paragraphs": {
+          "es": [
+            "La calidad cambia después del lanzamiento. Nuevos productos, campos, proveedores, equipos y políticas modifican las fuentes. Por eso conviene monitorizar completitud, duplicados, errores de integración y excepciones causadas por datos de forma continua.",
+            "Cada nuevo proceso debe revisar su propio conjunto mínimo de datos. La organización puede reutilizar catálogos, controles y conectores, pero no asumir que estar preparada para un caso significa estar preparada para todos. La preparación de datos para IA se convierte así en una capacidad operativa, no en un proyecto puntual."
+          ],
+          "en": [
+            "Quality changes after launch. New products, fields, suppliers, teams and policies modify the sources. Completeness, duplicates, integration errors and data-related exceptions should therefore be monitored continuously.",
+            "Each new process should review its own minimum data set. The organisation can reuse catalogues, controls and connectors, but should not assume that readiness for one use case means readiness for every use case. AI data readiness becomes an operational capability rather than a one-time project."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Checklist de preparación de datos antes de conectar un Empleado IA",
+        "en": "Data readiness checklist before connecting an AI Employee"
+      },
+      "steps": {
+        "es": [
+          "Define el proceso y el conjunto mínimo de datos que necesita.",
+          "Asigna una fuente de verdad a cada dato crítico.",
+          "Mide completitud, duplicados, formatos y contradicciones.",
+          "Normaliza campos estructurados en la capa de integración.",
+          "Clasifica datos personales, confidenciales y sensibles.",
+          "Configura permisos mínimos de lectura y escritura.",
+          "Define reglas para valores ausentes, inconsistentes o inferidos.",
+          "Prueba con casos representativos y excepciones reales.",
+          "Registra procedencia y decisiones sin duplicar datos sensibles.",
+          "Monitoriza calidad y excepciones después del lanzamiento."
+        ],
+        "en": [
+          "Define the process and its minimum required data set.",
+          "Assign a source of truth to each critical value.",
+          "Measure completeness, duplicates, formats and contradictions.",
+          "Normalise structured fields in the integration layer.",
+          "Classify personal, confidential and sensitive data.",
+          "Configure minimum read and write permissions.",
+          "Define rules for missing, inconsistent or inferred values.",
+          "Test with representative cases and real exceptions.",
+          "Record provenance and decisions without duplicating sensitive data.",
+          "Monitor quality and exceptions after launch."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Completitud de campos críticos",
+        "Tasa de duplicados",
+        "Errores de formato",
+        "Contradicciones entre fuentes",
+        "Excepciones causadas por datos",
+        "Porcentaje de inferencias corregidas",
+        "Registros sin propietario",
+        "Tiempo de resolución de incidencias de datos"
+      ],
+      "en": [
+        "Critical-field completeness",
+        "Duplicate rate",
+        "Format errors",
+        "Cross-source contradictions",
+        "Data-caused exceptions",
+        "Percentage of corrected inferences",
+        "Ownerless records",
+        "Data-incident resolution time"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Necesito limpiar todos los datos antes de usar IA?",
+          "en": "Do I need to clean all company data before using AI?"
+        },
+        "answer": {
+          "es": "No. Conviene preparar primero el conjunto mínimo de datos que necesita el proceso elegido. Limpiar toda la empresa antes de un piloto suele retrasar el aprendizaje sin aportar valor inmediato.",
+          "en": "No. Prepare the minimum data set required by the selected process first. Cleaning the entire company before a pilot usually delays learning without immediate value."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué es una fuente de verdad?",
+          "en": "What is a source of truth?"
+        },
+        "answer": {
+          "es": "Es el sistema o repositorio que tiene autoridad para un dato concreto. Por ejemplo, ERP puede ser fuente de verdad del estado de un pedido y CRM del responsable comercial.",
+          "en": "It is the system or repository with authority for a specific data type. For example, ERP may be the source of truth for order status and CRM for the sales owner."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Puede la IA completar datos que faltan?",
+          "en": "Can AI fill missing data?"
+        },
+        "answer": {
+          "es": "Puede proponer una inferencia en casos permitidos, pero debe quedar marcada como propuesta. Los datos críticos no deberían convertirse en hechos ni activar acciones sin fuente verificable o validación.",
+          "en": "It can propose an inference in allowed cases, but it should remain marked as a proposal. Critical data should not become fact or trigger actions without a verifiable source or validation."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué datos no debería ver un Empleado IA?",
+          "en": "Which data should an AI Employee not see?"
+        },
+        "answer": {
+          "es": "Cualquier dato que no sea necesario para el proceso. Además, información especialmente sensible puede requerir redacción, procesamiento local, controles específicos o exclusión completa según el caso.",
+          "en": "Any data not required for the process. Especially sensitive information may also require redaction, local processing, specific controls or complete exclusion depending on the case."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo preparo documentos para IA?",
+          "en": "How should documents be prepared for AI?"
+        },
+        "answer": {
+          "es": "Identifica versiones vigentes, elimina duplicados, respeta permisos, define tipos documentales y conserva referencias al original. Para extracción, valida campos críticos después de la lectura automática.",
+          "en": "Identify current versions, remove duplicates, preserve permissions, define document types and retain references to originals. For extraction, validate critical fields after automated reading."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo sé si mis datos están suficientemente preparados?",
+          "en": "How do I know whether my data is ready enough?"
+        },
+        "answer": {
+          "es": "Cuando el conjunto mínimo del proceso tiene fuentes claras, permisos definidos, calidad medible, reglas para ausencias y contradicciones y pruebas representativas que muestran una tasa de error aceptable.",
+          "en": "When the process's minimum data set has clear sources, defined permissions, measurable quality, rules for gaps and contradictions, and representative tests showing an acceptable error rate."
+        }
+      }
+    ],
+    "relatedArticleKey": "data-readiness-checklist-before-ai",
+    "publishedAt": "2026-09-26",
+    "updatedAt": "2026-09-26"
+  }
+]
