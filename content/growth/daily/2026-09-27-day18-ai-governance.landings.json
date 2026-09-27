@@ -1,0 +1,342 @@
+[
+  {
+    "key": "enterprise-ai-governance",
+    "slugs": {
+      "es": "gobernanza-ia-empresas",
+      "en": "enterprise-ai-governance"
+    },
+    "seoTitle": {
+      "es": "Gobernanza de IA en empresas: control y trazabilidad | IA Empleado",
+      "en": "Enterprise AI governance: control and traceability | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Gobernanza de IA empresarial para agentes y Empleados IA: permisos, aprobación humana, auditoría, políticas, responsables, riesgos y control operativo.",
+      "en": "Enterprise AI governance for agents and AI Employees: permissions, human approval, auditability, policies, ownership, risk and operational control."
+    },
+    "eyebrow": {
+      "es": "GOBERNANZA DE IA EMPRESARIAL",
+      "en": "ENTERPRISE AI GOVERNANCE"
+    },
+    "title": {
+      "es": "Gobernanza de IA en empresas: automatiza con reglas, responsables y evidencia.",
+      "en": "Enterprise AI governance: automate with rules, ownership and evidence."
+    },
+    "lead": {
+      "es": "La gobernanza de IA no consiste en llenar un documento de políticas. En una empresa, gobernar un Empleado IA significa decidir qué puede leer, qué puede proponer, qué puede ejecutar, quién aprueba acciones sensibles, qué datos quedan fuera de alcance y cómo se reconstruye una decisión después. La automatización empresarial necesita límites operativos tan concretos como sus integraciones. Una buena gobernanza permite aumentar autonomía sin perder trazabilidad, seguridad ni responsabilidad humana.",
+      "en": "AI governance is not about filling a policy document. In a company, governing an AI Employee means deciding what it may read, what it may propose, what it may execute, who approves sensitive actions, which data remain out of scope and how a decision can be reconstructed afterwards. Enterprise automation needs operational boundaries as concrete as its integrations. Good governance makes it possible to increase autonomy without losing traceability, security or human accountability."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. La gobernanza empieza por acciones concretas",
+          "en": "1. Governance starts with concrete actions"
+        },
+        "paragraphs": {
+          "es": [
+            "La primera pregunta no debería ser qué modelo utiliza el agente, sino qué acciones puede realizar dentro del proceso. Leer un pedido, crear un borrador, actualizar un estado o emitir una factura tienen niveles de impacto diferentes. Cada capacidad debe estar descrita como una operación concreta y no como un permiso genérico para actuar sobre un sistema completo.",
+            "Esta definición permite construir una matriz de autonomía. Algunas operaciones pueden ser de solo lectura, otras pueden producir propuestas y otras pueden ejecutarse automáticamente bajo condiciones muy específicas. Las acciones irreversibles, financieras, contractuales o con impacto relevante sobre clientes deberían incorporar controles adicionales o aprobación humana."
+          ],
+          "en": [
+            "The first question should not be which model the agent uses, but which actions it may perform inside the process. Reading an order, creating a draft, updating a status or issuing an invoice have different impact levels. Each capability should be described as a concrete operation rather than a generic permission to act across an entire system.",
+            "This definition makes it possible to build an autonomy matrix. Some operations can be read-only, others may produce proposals and others may execute automatically under tightly defined conditions. Irreversible, financial, contractual or customer-impacting actions should include stronger controls or human approval."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Separa lectura, propuesta, aprobación y ejecución",
+          "en": "2. Separate reading, proposal, approval and execution"
+        },
+        "paragraphs": {
+          "es": [
+            "Una arquitectura gobernable distingue claramente las fases del trabajo. El agente puede consultar una fuente, interpretar el caso y preparar una propuesta sin recibir automáticamente permiso para modificar el sistema. Esta separación reduce el radio de impacto y permite probar calidad antes de ampliar autonomía.",
+            "La aprobación humana tampoco debe ser una pantalla simbólica. Debe mostrar suficiente contexto para que la persona entienda qué se propone, qué datos se utilizaron, qué reglas se cumplieron y qué efecto tendrá la acción. Cuando la aprobación se registra junto con el resultado, la organización puede auditar decisiones y mejorar políticas con evidencia real."
+          ],
+          "en": [
+            "A governable architecture clearly separates stages of work. The agent can query a source, interpret a case and prepare a proposal without automatically receiving permission to modify the system. This separation reduces the blast radius and allows quality to be tested before autonomy expands.",
+            "Human approval should not be a symbolic screen either. It must show enough context for the person to understand what is proposed, which data were used, which rules passed and what effect the action will have. When approval is recorded alongside the outcome, the organisation can audit decisions and improve policy using real evidence."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Define propietarios de proceso, sistema y política",
+          "en": "3. Define owners for process, system and policy"
+        },
+        "paragraphs": {
+          "es": [
+            "Un Empleado IA atraviesa varias responsabilidades. Puede utilizar un CRM administrado por IT, ejecutar un proceso propiedad de operaciones y aplicar una política aprobada por dirección. Si algo falla, la organización necesita saber quién puede modificar cada capa y quién toma la decisión final.",
+            "Conviene asignar al menos un propietario del proceso, un responsable técnico y un responsable de política o riesgo cuando corresponda. Así se evita que una incidencia quede entre departamentos o que un cambio en la automatización se despliegue sin revisar su impacto sobre negocio, datos y controles."
+          ],
+          "en": [
+            "An AI Employee crosses multiple responsibilities. It may use a CRM administered by IT, execute a process owned by operations and apply a policy approved by management. If something fails, the organisation needs to know who can modify each layer and who makes the final decision.",
+            "At minimum, assign a process owner, a technical owner and a policy or risk owner where relevant. This prevents incidents from falling between departments and avoids automation changes being deployed without reviewing their impact on business, data and controls."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Aplica privilegio mínimo por herramienta",
+          "en": "4. Apply least privilege per tool"
+        },
+        "paragraphs": {
+          "es": [
+            "El agente no debería recibir credenciales con acceso amplio por comodidad. Cada herramienta debe exponer solo las operaciones necesarias para el caso de uso. Si un flujo consulta stock, no necesita permisos para modificar precios, borrar productos o exportar toda la base.",
+            "La identidad técnica debe poder revocarse, rotarse y auditarse. También conviene separar permisos entre entornos y procesos. Un agente de atención al cliente y uno de facturación pueden compartir infraestructura, pero no deberían compartir automáticamente el mismo alcance sobre ERP o datos financieros."
+          ],
+          "en": [
+            "The agent should not receive broadly privileged credentials for convenience. Each tool should expose only the operations required by the use case. If a workflow reads stock, it does not need permission to change prices, delete products or export the entire database.",
+            "Technical identity should be revocable, rotatable and auditable. Permissions should also be separated across environments and processes. A customer-service agent and an invoicing agent may share infrastructure, but they should not automatically share the same scope over ERP or financial data."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Convierte políticas en reglas ejecutables",
+          "en": "5. Turn policies into executable rules"
+        },
+        "paragraphs": {
+          "es": [
+            "Una política como “no aprobar descuentos elevados sin autorización” debe traducirse a condiciones que el sistema pueda aplicar: umbral, rol aprobador, datos necesarios y comportamiento cuando falta información. Las frases generales sirven como intención, pero la automatización necesita reglas concretas.",
+            "Las reglas críticas deberían ser deterministas cuando sea posible. El modelo puede interpretar intención o extraer contexto, pero límites económicos, estados válidos, requisitos documentales y condiciones de aprobación deben vivir en una capa controlable y verificable."
+          ],
+          "en": [
+            "A policy such as 'do not approve large discounts without authorisation' should be translated into conditions the system can apply: threshold, approving role, required data and behaviour when information is missing. Broad statements express intent, but automation needs concrete rules.",
+            "Critical controls should be deterministic whenever possible. The model may interpret intent or extract context, but financial thresholds, valid statuses, document requirements and approval conditions should live in a controllable and verifiable layer."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Define acciones prohibidas explícitamente",
+          "en": "6. Define prohibited actions explicitly"
+        },
+        "paragraphs": {
+          "es": [
+            "Gobernar también significa declarar qué no puede hacer el sistema. Puede estar prohibido cambiar datos bancarios, eliminar registros, conceder accesos, exportar bases completas o enviar documentación confidencial sin una aprobación concreta. Una lista explícita es más segura que confiar en que el agente deduzca los límites.",
+            "Las acciones prohibidas deben aplicarse en la capa de herramientas y permisos, no solo en instrucciones textuales. Si una operación nunca debería ejecutarse automáticamente, lo más robusto es que no exista una herramienta disponible para realizarla o que requiera una autorización externa."
+          ],
+          "en": [
+            "Governance also means declaring what the system may not do. It may be prohibited from changing bank details, deleting records, granting access, exporting full databases or sending confidential documentation without specific approval. An explicit list is safer than expecting the agent to infer the boundaries.",
+            "Prohibited actions should be enforced in the tool and permission layer, not only through textual instructions. If an operation should never execute automatically, the most robust design is for the tool not to be available at all or to require external authorisation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Registra decisiones y fuentes sin sobreexponer datos",
+          "en": "7. Record decisions and sources without overexposing data"
+        },
+        "paragraphs": {
+          "es": [
+            "Una organización debería poder reconstruir qué ocurrió en un caso importante: qué inició el proceso, qué fuentes se consultaron, qué reglas se aplicaron, qué propuesta generó el agente, quién aprobó y qué acción terminó ejecutándose.",
+            "Esto no implica copiar todo el contenido sensible a los logs. Es preferible registrar identificadores, referencias, versiones, decisiones y resultados. La trazabilidad debe ser suficiente para investigar, pero compatible con minimización de datos y políticas de retención."
+          ],
+          "en": [
+            "An organisation should be able to reconstruct what happened in an important case: what started the process, which sources were queried, which rules were applied, what proposal the agent produced, who approved it and which action ultimately executed.",
+            "This does not require copying all sensitive content into logs. It is better to record identifiers, references, versions, decisions and outcomes. Traceability should be sufficient for investigation while remaining compatible with data minimisation and retention policies."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Crea un sistema de excepciones y escalado",
+          "en": "8. Create an exception and escalation system"
+        },
+        "paragraphs": {
+          "es": [
+            "Un agente gobernado debe saber cuándo dejar de actuar. Falta de datos, contradicciones, baja confianza, petición fuera de política o error de integración son motivos para detener el flujo y escalar. La capacidad de no ejecutar es tan importante como la capacidad de automatizar.",
+            "La excepción debe llegar a una persona con contexto útil. Mostrar solo “fallo de IA” obliga a investigar desde cero. Un escalado bien diseñado incluye estado, fuentes, reglas incumplidas, acción propuesta y siguiente decisión necesaria."
+          ],
+          "en": [
+            "A governed agent should know when to stop acting. Missing data, contradictions, low confidence, out-of-policy requests or integration failures are reasons to halt the workflow and escalate. The ability not to execute is as important as the ability to automate.",
+            "The exception should reach a person with useful context. Showing only 'AI failure' forces investigation from the beginning. A well-designed escalation includes state, sources, failed rules, proposed action and the next decision required."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Versiona prompts, políticas, herramientas y modelos",
+          "en": "9. Version prompts, policies, tools and models"
+        },
+        "paragraphs": {
+          "es": [
+            "El comportamiento del sistema puede cambiar cuando se modifica un prompt, una regla, un conector o el modelo subyacente. Sin control de versiones resulta difícil saber qué configuración produjo un resultado concreto o volver a una versión estable.",
+            "Cada cambio relevante debería pasar por pruebas y dejar evidencia de quién lo aprobó. Los despliegues graduales permiten comparar comportamiento antes de ampliar tráfico. Si las métricas empeoran, el rollback debe ser una operación conocida y no una improvisación."
+          ],
+          "en": [
+            "System behaviour can change when a prompt, rule, connector or underlying model changes. Without version control, it becomes difficult to know which configuration produced a specific outcome or to return to a stable version.",
+            "Every meaningful change should pass through tests and leave evidence of who approved it. Gradual releases allow behaviour to be compared before traffic expands. If metrics deteriorate, rollback should be a known operation rather than an improvisation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Evalúa calidad por proceso y nivel de riesgo",
+          "en": "10. Evaluate quality by process and risk level"
+        },
+        "paragraphs": {
+          "es": [
+            "Una media global de precisión puede ocultar problemas. Un agente puede funcionar muy bien en solicitudes simples y fallar más en excepciones financieras o contractuales. Las métricas deben segmentarse por intención, acción, criticidad y etapa del proceso.",
+            "El criterio para aumentar autonomía también debería variar. Una clasificación informativa puede tolerar cierto nivel de corrección humana, mientras una acción con impacto económico necesita umbrales más estrictos. La gobernanza convierte esas diferencias en condiciones explícitas."
+          ],
+          "en": [
+            "A global accuracy average can hide problems. An agent may perform extremely well on simple requests and less reliably on financial or contractual exceptions. Metrics should be segmented by intent, action, criticality and process stage.",
+            "Criteria for increasing autonomy should vary as well. Informational classification may tolerate some human correction, while financially impactful actions require stricter thresholds. Governance turns those differences into explicit conditions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Revisa accesos y políticas periódicamente",
+          "en": "11. Review access and policies periodically"
+        },
+        "paragraphs": {
+          "es": [
+            "Los permisos válidos hoy pueden dejar de ser necesarios cuando cambia un proceso o una persona abandona el equipo. Las revisiones periódicas detectan accesos excesivos, herramientas sin uso y políticas que ya no reflejan la operación real.",
+            "También conviene revisar excepciones recurrentes y acciones que siempre terminan aprobadas. Algunas pueden convertirse en automatización de bajo riesgo; otras revelan una regla incompleta. La gobernanza no es estática: utiliza los datos de operación para ajustar controles."
+          ],
+          "en": [
+            "Permissions that are valid today may no longer be necessary when a process changes or a person leaves the team. Periodic reviews identify excessive access, unused tools and policies that no longer reflect real operations.",
+            "Recurring exceptions and actions that are always approved should also be reviewed. Some may become low-risk automation; others reveal an incomplete rule. Governance is not static: operational data should be used to refine controls."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Escala autonomía solo cuando existe evidencia",
+          "en": "12. Increase autonomy only when evidence exists"
+        },
+        "paragraphs": {
+          "es": [
+            "El objetivo no es llegar a autonomía total. El objetivo es automatizar tanto como resulte rentable y seguro. Un proceso puede quedarse permanentemente en modo propuesta y aun así ahorrar mucho tiempo si prepara contexto, verifica datos y reduce trabajo manual.",
+            "Cuando las métricas muestran baja tasa de corrección, excepciones bien detectadas y resultados estables, pueden ampliarse capacidades concretas. Este crecimiento por operación mantiene el control y evita que una sola decisión de despliegue conceda autonomía excesiva a todo el sistema."
+          ],
+          "en": [
+            "The objective is not to reach full autonomy. The objective is to automate as much as is valuable and safe. A process may remain permanently in proposal mode and still save substantial time by preparing context, validating data and reducing manual work.",
+            "When metrics show low correction rates, correctly detected exceptions and stable outcomes, specific capabilities can expand. Growing autonomy operation by operation preserves control and avoids one deployment decision granting excessive authority across the entire system."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Marco de gobernanza para un Empleado IA",
+        "en": "Governance framework for an AI Employee"
+      },
+      "steps": {
+        "es": [
+          "Define el proceso y las acciones que puede realizar el agente.",
+          "Clasifica cada acción como lectura, propuesta, ejecución o aprobación obligatoria.",
+          "Asigna propietarios de proceso, sistema y política.",
+          "Aplica privilegio mínimo y elimina operaciones innecesarias.",
+          "Convierte políticas críticas en reglas deterministas.",
+          "Declara acciones prohibidas y condiciones de escalado.",
+          "Versiona modelos, prompts, herramientas y reglas.",
+          "Registra fuentes, decisiones, aprobaciones y resultados.",
+          "Mide calidad por tipo de acción y nivel de riesgo.",
+          "Revisa periódicamente accesos, excepciones y autonomía."
+        ],
+        "en": [
+          "Define the process and the actions the agent may perform.",
+          "Classify each action as read, proposal, execution or mandatory approval.",
+          "Assign process, system and policy owners.",
+          "Apply least privilege and remove unnecessary operations.",
+          "Turn critical policies into deterministic rules.",
+          "Declare prohibited actions and escalation conditions.",
+          "Version models, prompts, tools and rules.",
+          "Record sources, decisions, approvals and outcomes.",
+          "Measure quality by action type and risk level.",
+          "Review access, exceptions and autonomy periodically."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Acciones automáticas por nivel de riesgo",
+        "Porcentaje de propuestas aprobadas sin cambios",
+        "Correcciones humanas",
+        "Excepciones correctamente escaladas",
+        "Intentos de acciones bloqueadas",
+        "Permisos no utilizados",
+        "Tiempo de aprobación",
+        "Incidentes por cambio de versión"
+      ],
+      "en": [
+        "Automatic actions by risk level",
+        "Proposals approved without changes",
+        "Human corrections",
+        "Correctly escalated exceptions",
+        "Blocked action attempts",
+        "Unused permissions",
+        "Approval time",
+        "Incidents after version changes"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Qué es la gobernanza de IA empresarial?",
+          "en": "What is enterprise AI governance?"
+        },
+        "answer": {
+          "es": "Es el conjunto de reglas, permisos, responsables, controles, métricas y registros que determinan cómo puede operar un sistema de IA dentro de la empresa y cómo se supervisan sus decisiones y acciones.",
+          "en": "It is the set of rules, permissions, owners, controls, metrics and records that determine how an AI system may operate inside a company and how its decisions and actions are supervised."
+        }
+      },
+      {
+        "question": {
+          "es": "¿La gobernanza reduce la automatización?",
+          "en": "Does governance reduce automation?"
+        },
+        "answer": {
+          "es": "No necesariamente. Una buena gobernanza permite automatizar más porque define límites y condiciones claras. Sin controles, la empresa suele mantener procesos en modo manual por miedo al riesgo.",
+          "en": "Not necessarily. Good governance can enable more automation because it defines clear boundaries and conditions. Without controls, companies often keep processes manual because of risk concerns."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué acciones deberían requerir aprobación humana?",
+          "en": "Which actions should require human approval?"
+        },
+        "answer": {
+          "es": "Depende del riesgo, pero normalmente las acciones financieras, contractuales, irreversibles, de acceso, cambios de datos sensibles o decisiones con impacto importante sobre clientes necesitan controles más estrictos.",
+          "en": "It depends on risk, but financial, contractual, irreversible, access-related, sensitive-data changes or decisions with significant customer impact generally require stronger controls."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Es suficiente poner instrucciones al modelo?",
+          "en": "Are model instructions enough?"
+        },
+        "answer": {
+          "es": "No. Los límites importantes deberían reforzarse mediante permisos, herramientas, reglas deterministas y aprobaciones externas. Las instrucciones textuales son una capa, no el único control.",
+          "en": "No. Important boundaries should be reinforced through permissions, tools, deterministic rules and external approvals. Text instructions are one layer, not the only control."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo se audita un Empleado IA?",
+          "en": "How is an AI Employee audited?"
+        },
+        "answer": {
+          "es": "Registrando fuentes, versiones, decisiones, herramientas utilizadas, aprobaciones y resultados de forma suficiente para reconstruir cada caso relevante sin almacenar datos sensibles innecesarios.",
+          "en": "By recording sources, versions, decisions, tools used, approvals and outcomes in enough detail to reconstruct relevant cases without storing unnecessary sensitive data."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cuándo puede aumentar la autonomía?",
+          "en": "When can autonomy increase?"
+        },
+        "answer": {
+          "es": "Cuando las métricas muestran resultados estables, baja tasa de corrección, excepciones bien detectadas y un nivel de riesgo compatible con la acción concreta. La autonomía debe ampliarse por operación, no de forma global.",
+          "en": "When metrics show stable outcomes, low correction rates, correctly detected exceptions and a risk level compatible with the specific action. Autonomy should expand operation by operation rather than globally."
+        }
+      }
+    ],
+    "relatedArticleKey": "enterprise-ai-governance-checklist",
+    "publishedAt": "2026-09-27",
+    "updatedAt": "2026-09-27"
+  }
+]
