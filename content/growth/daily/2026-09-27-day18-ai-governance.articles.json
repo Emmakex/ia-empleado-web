@@ -1,0 +1,328 @@
+[
+  {
+    "key": "enterprise-ai-governance-checklist",
+    "slugs": {
+      "es": "checklist-gobernanza-ia-empresas",
+      "en": "enterprise-ai-governance-checklist"
+    },
+    "seoTitle": {
+      "es": "Checklist de gobernanza de IA para empresas | IA Empleado",
+      "en": "Enterprise AI governance checklist | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Checklist práctica para gobernar agentes y Empleados IA: permisos, aprobaciones, políticas, auditoría, excepciones, versiones, métricas y revisión de accesos.",
+      "en": "Practical checklist for governing AI agents and AI Employees: permissions, approvals, policies, auditability, exceptions, versions, metrics and access reviews."
+    },
+    "title": {
+      "es": "Checklist de gobernanza de IA: 16 controles antes de dar autonomía a un Empleado IA",
+      "en": "AI governance checklist: 16 controls before giving an AI Employee autonomy"
+    },
+    "excerpt": {
+      "es": "Una guía práctica para convertir principios de gobernanza en permisos, reglas, aprobaciones, registros y métricas que se puedan aplicar en producción.",
+      "en": "A practical guide for turning governance principles into permissions, rules, approvals, records and metrics that can actually operate in production."
+    },
+    "intro": {
+      "es": "La gobernanza de IA suele describirse con conceptos amplios como supervisión, responsabilidad y transparencia. El problema aparece al llevarlos a un sistema real: ¿qué permiso se concede?, ¿quién aprueba?, ¿qué registra el sistema?, ¿qué ocurre cuando faltan datos?, ¿cómo se evita que una instrucción externa cambie una política interna? Una gobernanza útil necesita traducir principios a controles ejecutables. Esta checklist recorre los puntos que deberían revisarse antes de permitir que un agente pase de observar o proponer a ejecutar acciones dentro de procesos empresariales.",
+      "en": "AI governance is often described through broad concepts such as oversight, accountability and transparency. The challenge appears when those concepts must operate in a real system: which permission is granted, who approves, what is recorded, what happens when data is missing, and how do you prevent an external instruction from changing internal policy? Useful governance translates principles into executable controls. This checklist covers the areas that should be reviewed before an agent moves from observing or proposing to executing actions inside business processes."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Define el alcance exacto del proceso",
+          "en": "1. Define the exact process scope"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de hablar de autonomía hay que acotar qué proceso pertenece al agente y qué procesos quedan fuera. Describe el evento de entrada, las decisiones, las herramientas permitidas y el resultado esperado. Cuanto más ambiguo sea el alcance, más difícil será saber si una acción estaba autorizada.",
+            "También documenta límites organizativos. Un agente comercial puede consultar disponibilidad y CRM, pero no debería asumir funciones de facturación porque recibió una petición en lenguaje natural. La frontera de proceso debe existir fuera del modelo y reflejarse en las herramientas disponibles."
+          ],
+          "en": [
+            "Before discussing autonomy, define which process belongs to the agent and which processes remain outside its scope. Describe the triggering event, decisions, permitted tools and expected outcome. The more ambiguous the scope, the harder it becomes to determine whether an action was authorised.",
+            "Document organisational boundaries as well. A sales agent may read availability and CRM but should not assume invoicing functions merely because a request was expressed in natural language. Process boundaries should exist outside the model and be reflected in the available tools."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Inventaría todas las acciones disponibles",
+          "en": "2. Inventory every available action"
+        },
+        "paragraphs": {
+          "es": [
+            "Crea un catálogo de operaciones: consultar cliente, buscar pedido, crear tarea, preparar borrador, actualizar estado, enviar email, generar factura o solicitar aprobación. Para cada una indica sistema, parámetros, impacto y si es reversible.",
+            "Este inventario revela permisos excesivos y operaciones que no deberían estar accesibles. Es mucho más fácil gobernar una lista explícita de funciones que una credencial genérica con acceso a toda una API."
+          ],
+          "en": [
+            "Create a catalogue of operations: read customer, find order, create task, prepare draft, update status, send email, generate invoice or request approval. For each one, record the system, parameters, impact and whether it is reversible.",
+            "This inventory reveals excessive permissions and operations that should not be available. It is far easier to govern an explicit list of functions than a generic credential with access to an entire API."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Clasifica cada acción por riesgo",
+          "en": "3. Classify each action by risk"
+        },
+        "paragraphs": {
+          "es": [
+            "No todas las acciones necesitan el mismo control. Puedes utilizar categorías como informativa, operativa reversible, económica, contractual, acceso/seguridad o irreversible. El objetivo es que el nivel de supervisión dependa del impacto, no de si la acción la ejecuta una persona o una IA.",
+            "Para cada categoría define condiciones mínimas. Una consulta puede ser automática; un cambio de estado quizá necesite validación de reglas; un pago o cambio bancario puede requerir doble comprobación y aprobación humana."
+          ],
+          "en": [
+            "Not every action needs the same control. Categories may include informational, reversible operational, financial, contractual, access/security or irreversible. The objective is for oversight to depend on impact rather than on whether the action is performed by a person or AI.",
+            "Define minimum conditions for each category. A lookup may be automatic; a status change may require rule validation; a payment or bank-detail change may require dual verification and human approval."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Separa permisos de lectura y escritura",
+          "en": "4. Separate read and write permissions"
+        },
+        "paragraphs": {
+          "es": [
+            "Leer datos para preparar una recomendación no debería implicar permiso para modificarlos. Diseña scopes distintos para consulta y escritura y concede solo lo necesario para el nivel de autonomía actual.",
+            "Esta separación facilita pilotos seguros. El agente puede demostrar que interpreta casos correctamente antes de recibir permiso de ejecución. Si el proceso permanece en modo propuesta, no existe razón para mantener credenciales de escritura activas."
+          ],
+          "en": [
+            "Reading data to prepare a recommendation should not imply permission to modify it. Design separate scopes for read and write access and grant only what the current autonomy level requires.",
+            "This separation enables safer pilots. The agent can prove it interprets cases correctly before receiving execution permission. If the process remains in proposal mode, there is no reason to keep write credentials active."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Define quién puede aprobar qué",
+          "en": "5. Define who may approve what"
+        },
+        "paragraphs": {
+          "es": [
+            "La aprobación humana necesita una matriz clara. Un supervisor comercial puede aprobar un descuento hasta cierto límite, mientras cambios contractuales o financieros pueden necesitar otro rol. El sistema debe validar que la identidad aprobadora tenga autoridad suficiente.",
+            "También registra cuándo se produjo la aprobación, qué información estaba disponible y qué acción concreta autorizó. Una aprobación genérica al inicio de una sesión no debería utilizarse como permiso abierto para acciones posteriores diferentes."
+          ],
+          "en": [
+            "Human approval requires a clear matrix. A sales supervisor may approve a discount up to a threshold, while contractual or financial changes may require another role. The system should validate that the approving identity has sufficient authority.",
+            "Also record when approval occurred, which information was available and which specific action it authorised. A generic approval at the beginning of a session should not become open permission for later unrelated actions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Convierte políticas en reglas comprobables",
+          "en": "6. Turn policies into testable rules"
+        },
+        "paragraphs": {
+          "es": [
+            "Frases como “protege al cliente” o “actúa con prudencia” son útiles como principios, pero no bastan para controlar una operación. Las políticas deben traducirse a umbrales, listas permitidas, campos obligatorios, roles y condiciones de parada.",
+            "Cuando una política importante no puede expresarse de manera determinista, define al menos qué evidencia debe presentar el agente y qué persona decide. Lo crítico es evitar que la interpretación del modelo sea simultáneamente la regla y el juez de su cumplimiento."
+          ],
+          "en": [
+            "Statements such as 'protect the customer' or 'act cautiously' are useful principles, but they are not sufficient to control an operation. Policies should be translated into thresholds, allowlists, required fields, roles and stop conditions.",
+            "When an important policy cannot be expressed deterministically, define at least what evidence the agent must present and who makes the decision. The critical point is to avoid letting model interpretation become both the rule and the judge of its own compliance."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Bloquea acciones prohibidas en la capa técnica",
+          "en": "7. Block prohibited actions in the technical layer"
+        },
+        "paragraphs": {
+          "es": [
+            "Si una operación nunca debe ejecutarse automáticamente, elimínala del catálogo de herramientas o protégela con autorización externa. No confíes únicamente en un prompt que diga “no hagas esto”.",
+            "El bloqueo técnico ayuda frente a errores, instrucciones maliciosas y cambios inesperados de comportamiento. Un agente sin herramienta para borrar registros no puede borrar registros aunque interprete que una solicitud lo pide."
+          ],
+          "en": [
+            "If an operation should never execute automatically, remove it from the tool catalogue or protect it with external authorisation. Do not rely only on a prompt saying 'do not do this'.",
+            "Technical blocking protects against errors, malicious instructions and unexpected behavioural changes. An agent without a record-deletion tool cannot delete records even if it interprets a request as asking for it."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Define reglas de escalado",
+          "en": "8. Define escalation rules"
+        },
+        "paragraphs": {
+          "es": [
+            "Lista las situaciones en las que el agente debe detenerse: datos contradictorios, ausencia de campos críticos, baja confianza, solicitud fuera de catálogo, error de integración, acción sensible o política no aplicable.",
+            "Después define el destino del escalado y la información que debe acompañarlo. Una excepción útil contiene el caso, el estado del proceso, las fuentes consultadas, la razón del bloqueo y la decisión que necesita una persona."
+          ],
+          "en": [
+            "List the situations in which the agent must stop: contradictory data, missing critical fields, low confidence, out-of-catalogue requests, integration failures, sensitive actions or policies that cannot be applied.",
+            "Then define the escalation destination and the information that must accompany it. A useful exception contains the case, workflow state, sources queried, reason for blocking and the decision required from a person."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Protege políticas frente a instrucciones externas",
+          "en": "9. Protect policy from external instructions"
+        },
+        "paragraphs": {
+          "es": [
+            "Emails, documentos y mensajes de usuarios son datos de entrada, no autoridad para cambiar la política del sistema. Una instrucción dentro de un documento no debería poder modificar permisos, revelar secretos o desactivar controles.",
+            "Separa claramente instrucciones de sistema, políticas internas, herramientas y contenido no confiable. Cuando un documento incluye texto que parece una orden para el agente, debe tratarse como contenido del caso y no como una nueva regla operativa."
+          ],
+          "en": [
+            "Emails, documents and user messages are input data, not authority to change system policy. An instruction inside a document should not be able to modify permissions, reveal secrets or disable controls.",
+            "Clearly separate system instructions, internal policies, tools and untrusted content. When a document contains text that looks like a command to the agent, it should be treated as case content rather than a new operational rule."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Registra la cadena de decisión",
+          "en": "10. Record the decision chain"
+        },
+        "paragraphs": {
+          "es": [
+            "Para cada acción relevante debería poder reconstruirse el recorrido: evento inicial, datos consultados, versión de políticas, herramientas utilizadas, propuesta, validaciones, aprobación y resultado. Esto permite investigar errores sin depender de memoria humana.",
+            "Los registros deben ser estructurados y proporcionales al riesgo. No es necesario conservar todo el contenido textual. Referencias a fuentes, identificadores y eventos suelen ofrecer trazabilidad suficiente reduciendo exposición de datos sensibles."
+          ],
+          "en": [
+            "For every relevant action, the path should be reconstructable: triggering event, data queried, policy version, tools used, proposal, validations, approval and outcome. This allows errors to be investigated without relying on human memory.",
+            "Records should be structured and proportionate to risk. It is not necessary to retain every piece of text. Source references, identifiers and events usually provide sufficient traceability while reducing sensitive-data exposure."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Versiona todos los componentes que cambian comportamiento",
+          "en": "11. Version every component that changes behaviour"
+        },
+        "paragraphs": {
+          "es": [
+            "No solo el modelo afecta el resultado. Prompts, reglas, conectores, esquemas, bases de conocimiento y catálogos de herramientas también cambian comportamiento. Todos deberían tener una versión identificable.",
+            "Cuando aparece un incidente, conocer la combinación exacta permite reproducir el caso. También facilita pruebas A/B controladas y rollback si una actualización incrementa correcciones, errores o excepciones."
+          ],
+          "en": [
+            "The model is not the only component affecting outcomes. Prompts, rules, connectors, schemas, knowledge bases and tool catalogues also change behaviour. Each should have an identifiable version.",
+            "When an incident occurs, knowing the exact combination makes the case reproducible. It also enables controlled A/B testing and rollback when an update increases corrections, errors or exceptions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Define pruebas de regresión antes de cambiar autonomía",
+          "en": "12. Define regression tests before changing autonomy"
+        },
+        "paragraphs": {
+          "es": [
+            "Un cambio de modelo o regla no debería llegar directamente a producción. Mantén un conjunto representativo con casos normales, límites, excepciones y acciones prohibidas. El nuevo sistema debe demostrar que conserva los controles existentes.",
+            "Las pruebas de seguridad y gobernanza son tan importantes como la precisión. Incluye intentos de ejecutar operaciones fuera de permisos, datos contradictorios, ausencia de aprobación y contenido que intenta modificar instrucciones."
+          ],
+          "en": [
+            "A model or rule change should not move directly into production. Maintain a representative set containing normal cases, boundaries, exceptions and prohibited actions. The updated system should demonstrate that existing controls remain intact.",
+            "Security and governance tests are as important as accuracy. Include attempts to execute operations outside permissions, contradictory data, missing approvals and content that tries to modify instructions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Mide correcciones y aprobaciones",
+          "en": "13. Measure corrections and approvals"
+        },
+        "paragraphs": {
+          "es": [
+            "Si las personas corrigen constantemente las propuestas, la automatización quizá todavía no esté preparada para ejecutar. Registra porcentaje aprobado sin cambios, cambios menores, rechazos y motivo de cada corrección.",
+            "Estas métricas pueden segmentarse por intención y acción. Un agente puede estar listo para automatizar actualizaciones de bajo riesgo y seguir necesitando revisión en reclamaciones, descuentos o documentos complejos."
+          ],
+          "en": [
+            "If people constantly edit proposals, the automation may not be ready to execute. Record the percentage approved without changes, minor edits, rejections and the reason for each correction.",
+            "These metrics can be segmented by intent and action. An agent may be ready to automate low-risk updates while still requiring review for complaints, discounts or complex documents."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Revisa accesos y herramientas no utilizadas",
+          "en": "14. Review unused access and tools"
+        },
+        "paragraphs": {
+          "es": [
+            "Con el tiempo se acumulan permisos que ya no son necesarios. Revisa qué scopes, herramientas y conexiones utiliza realmente el proceso. Todo acceso sin uso aumenta superficie de riesgo sin generar valor.",
+            "Las revisiones pueden coincidir con cambios de proceso o realizarse periódicamente. Si una herramienta deja de utilizarse, retírala. Si una operación solo se usa en excepciones muy concretas, considera moverla detrás de aprobación."
+          ],
+          "en": [
+            "Permissions that are no longer needed accumulate over time. Review which scopes, tools and connections the process actually uses. Every unused access path increases risk without creating value.",
+            "Reviews can coincide with process changes or occur periodically. If a tool is no longer used, remove it. If an operation is used only in rare exceptions, consider moving it behind approval."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Define rollback y modo seguro",
+          "en": "15. Define rollback and safe mode"
+        },
+        "paragraphs": {
+          "es": [
+            "La gobernanza también necesita un plan cuando algo sale mal. Debe existir una forma rápida de reducir autonomía, desactivar una herramienta, volver a una versión anterior o pasar el proceso a modo propuesta.",
+            "Un modo seguro evita que la única respuesta a un incidente sea apagar todo el sistema. Mantener lectura y preparación mientras se bloquea ejecución puede permitir continuidad operativa durante la investigación."
+          ],
+          "en": [
+            "Governance also needs a plan for when something goes wrong. There should be a fast way to reduce autonomy, disable a tool, return to a previous version or move the workflow back into proposal mode.",
+            "A safe mode prevents the only response to an incident from being a complete shutdown. Keeping read and preparation capability while execution is blocked can preserve operational continuity during investigation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Aumenta autonomía operación por operación",
+          "en": "16. Increase autonomy operation by operation"
+        },
+        "paragraphs": {
+          "es": [
+            "No existe un único interruptor entre manual y autónomo. Cada operación puede evolucionar de observación a propuesta, ejecución condicionada y ejecución automática según sus métricas y riesgo.",
+            "Este enfoque mantiene la gobernanza alineada con evidencia. El sistema gana autonomía precisamente donde ha demostrado estabilidad y conserva control humano donde la calidad, el impacto o la incertidumbre todavía no justifican delegar."
+          ],
+          "en": [
+            "There is no single switch between manual and autonomous. Each operation can evolve from observation to proposal, approval-gated execution and automatic execution according to its metrics and risk.",
+            "This approach keeps governance aligned with evidence. The system gains autonomy exactly where it has demonstrated stability and retains human control where quality, impact or uncertainty do not yet justify delegation."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Define el proceso antes de definir autonomía.",
+        "Inventaría y clasifica todas las acciones disponibles.",
+        "Separa permisos de lectura y escritura.",
+        "Asigna aprobadores por nivel de impacto.",
+        "Convierte políticas críticas en reglas comprobables.",
+        "Bloquea técnicamente las acciones prohibidas.",
+        "Diseña escalados con contexto suficiente.",
+        "Trata contenido externo como datos, no como política.",
+        "Registra la cadena de decisión con trazabilidad proporcional.",
+        "Versiona modelos, prompts, reglas, herramientas y conocimiento.",
+        "Prueba regresiones de seguridad y gobernanza.",
+        "Mide aprobaciones, correcciones y rechazos.",
+        "Retira accesos que ya no aportan valor.",
+        "Mantén rollback y modo seguro.",
+        "Amplía autonomía operación por operación.",
+        "Revisa gobernanza como una práctica continua."
+      ],
+      "en": [
+        "Define the process before defining autonomy.",
+        "Inventory and classify every available action.",
+        "Separate read and write permissions.",
+        "Assign approvers by impact level.",
+        "Turn critical policies into testable rules.",
+        "Technically block prohibited actions.",
+        "Design escalations with sufficient context.",
+        "Treat external content as data, not policy.",
+        "Record the decision chain with proportionate traceability.",
+        "Version models, prompts, rules, tools and knowledge.",
+        "Test security and governance regressions.",
+        "Measure approvals, corrections and rejections.",
+        "Remove access that no longer creates value.",
+        "Maintain rollback and a safe mode.",
+        "Expand autonomy operation by operation.",
+        "Review governance as an ongoing practice."
+      ]
+    },
+    "relatedLandingKey": "enterprise-ai-governance",
+    "publishedAt": "2026-09-27",
+    "updatedAt": "2026-09-27"
+  }
+]
