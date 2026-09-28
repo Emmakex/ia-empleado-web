@@ -1,0 +1,328 @@
+[
+  {
+    "key": "how-to-connect-ai-employee-to-business-systems",
+    "slugs": {
+      "es": "como-conectar-empleado-ia-crm-erp-email-apis",
+      "en": "how-to-connect-ai-employee-to-crm-erp-email-apis"
+    },
+    "seoTitle": {
+      "es": "Cómo conectar un Empleado IA a CRM, ERP, email y APIs | IA Empleado",
+      "en": "How to connect an AI Employee to CRM, ERP, email and APIs | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía práctica para integrar un Empleado IA con CRM, ERP, email y APIs usando contratos, permisos, validaciones, idempotencia, trazabilidad y pruebas.",
+      "en": "Practical guide to integrating an AI Employee with CRM, ERP, email and APIs using contracts, permissions, validation, idempotency, traceability and testing."
+    },
+    "title": {
+      "es": "Cómo conectar un Empleado IA a CRM, ERP, email y APIs sin romper procesos",
+      "en": "How to connect an AI Employee to CRM, ERP, email and APIs without breaking processes"
+    },
+    "excerpt": {
+      "es": "Arquitectura práctica para integrar IA con sistemas empresariales sin crear permisos excesivos, duplicados, errores silenciosos ni dependencias imposibles de mantener.",
+      "en": "A practical architecture for integrating AI with business systems without excessive permissions, duplicates, silent errors or unmaintainable dependencies."
+    },
+    "intro": {
+      "es": "La diferencia entre una demo de IA y una automatización empresarial suele estar en las integraciones. Un agente puede redactar una respuesta excelente, pero si no sabe qué pedido consultar, cómo identificar al cliente, qué sistema tiene autoridad o cómo confirmar que una actualización se ejecutó, el proceso sigue dependiendo de una persona. Integrar bien significa convertir APIs y sistemas existentes en herramientas pequeñas, seguras y verificables. Esta guía describe cómo hacerlo sin dar al modelo acceso indiscriminado ni convertir cada conector en una pieza frágil.",
+      "en": "The difference between an AI demo and enterprise automation often lies in integrations. An agent may draft an excellent response, but if it does not know which order to query, how to identify the customer, which system has authority or how to confirm an update executed, the process still depends on a person. Good integration means turning existing APIs and systems into small, safe and verifiable tools. This guide explains how to do that without granting the model indiscriminate access or turning every connector into a fragile component."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Dibuja el recorrido de un caso real",
+          "en": "1. Draw the journey of a real case"
+        },
+        "paragraphs": {
+          "es": [
+            "Selecciona un caso representativo y recórrelo desde el inicio hasta el cierre. Anota qué sistema abre cada persona, qué busca, qué copia, qué decide y dónde registra el resultado. Esta secuencia revela las integraciones que realmente aportan valor.",
+            "Evita empezar con una lista genérica de aplicaciones corporativas. Que la empresa tenga CRM, ERP y varias bases no significa que todas deban conectarse al primer flujo. Cuantas menos dependencias tenga el piloto, más fácil será medir la calidad de la integración."
+          ],
+          "en": [
+            "Select a representative case and follow it from start to finish. Record which system each person opens, what they search for, what they copy, what they decide and where they record the result. This sequence reveals which integrations actually create value.",
+            "Avoid starting with a generic inventory of corporate applications. The fact that the company has CRM, ERP and several databases does not mean every one should connect to the first workflow. Fewer dependencies make integration quality easier to measure."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Define el identificador que conecta los sistemas",
+          "en": "2. Define the identifier that connects systems"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de consultar varias fuentes necesitas saber cómo relacionarlas. Puede ser ID de cliente, email, número de pedido, localizador o identificador interno. Los nombres visibles suelen ser insuficientes porque pueden repetirse o cambiar.",
+            "Si no existe una clave común, diseña una estrategia de resolución. Puede consultar CRM por email y recuperar el ID interno antes de ir a ERP. Cuando existan varias coincidencias, el flujo debe detenerse o pedir contexto en lugar de escoger una entidad al azar."
+          ],
+          "en": [
+            "Before querying multiple sources, you need to know how they relate. This may be customer ID, email, order number, booking reference or an internal identifier. Display names are often insufficient because they may repeat or change.",
+            "If no common key exists, design a resolution strategy. The workflow may query CRM by email and retrieve the internal ID before calling ERP. When multiple matches exist, it should stop or request context rather than choosing an entity at random."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Decide qué sistema manda sobre cada dato",
+          "en": "3. Decide which system owns each value"
+        },
+        "paragraphs": {
+          "es": [
+            "Crea una tabla sencilla: dato, sistema propietario y sistemas consumidores. Por ejemplo, estado de oportunidad puede pertenecer a CRM, saldo a ERP y última conversación a email o helpdesk. Esta claridad evita sincronizaciones circulares.",
+            "Cuando una operación necesita actualizar varias fuentes, define cuál se escribe primero y qué ocurre si la segunda falla. En algunos casos conviene que los demás sistemas reciban el cambio mediante eventos en lugar de permitir al agente escribir directamente en todos."
+          ],
+          "en": [
+            "Create a simple table: data type, owning system and consuming systems. Opportunity status may belong to CRM, account balance to ERP and last conversation to email or helpdesk. This clarity prevents circular synchronisation.",
+            "When an operation needs to update several sources, define which one is written first and what happens if the second fails. In some cases it is better for other systems to receive the change through events rather than allowing the agent to write directly into all of them."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Encapsula cada API detrás de funciones pequeñas",
+          "en": "4. Wrap each API behind small functions"
+        },
+        "paragraphs": {
+          "es": [
+            "En lugar de entregar al modelo una API completa, crea funciones como `get_order_status`, `create_support_ticket` o `draft_crm_note`. Cada función valida parámetros, autentica la llamada y devuelve solo los campos que el agente necesita.",
+            "Las funciones pequeñas hacen más fácil aplicar permisos, medir uso y escribir pruebas. También limitan errores: el agente no puede descubrir accidentalmente operaciones administrativas que nunca debían formar parte del proceso."
+          ],
+          "en": [
+            "Instead of exposing an entire API to the model, create functions such as `get_order_status`, `create_support_ticket` or `draft_crm_note`. Each function validates parameters, authenticates the call and returns only the fields the agent needs.",
+            "Small functions make permissions, usage measurement and testing easier. They also limit mistakes: the agent cannot accidentally discover administrative operations that were never meant to belong to the process."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Diseña esquemas estrictos de entrada y salida",
+          "en": "5. Design strict input and output schemas"
+        },
+        "paragraphs": {
+          "es": [
+            "Un conector debería rechazar campos faltantes, tipos incorrectos y valores fuera de catálogo antes de tocar el sistema destino. Los parámetros estructurados son una frontera entre lenguaje flexible y ejecución determinista.",
+            "La salida también debe ser compacta. En lugar de devolver cientos de campos del ERP, selecciona identificador, estado y valores necesarios. Esto reduce contexto, exposición y la posibilidad de que el modelo utilice información irrelevante."
+          ],
+          "en": [
+            "A connector should reject missing fields, incorrect types and out-of-catalogue values before touching the destination system. Structured parameters create a boundary between flexible language and deterministic execution.",
+            "Outputs should also remain compact. Instead of returning hundreds of ERP fields, select the identifier, status and values required. This reduces context, exposure and the chance that the model uses irrelevant information."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Empieza con lectura",
+          "en": "6. Start with read access"
+        },
+        "paragraphs": {
+          "es": [
+            "Durante el piloto, la mayor parte del valor puede demostrarse con lectura y propuestas. El agente consulta sistemas, prepara la acción y una persona la ejecuta o aprueba. Así se valida identificación, fuentes y lógica sin riesgo de modificar datos.",
+            "Cuando las métricas son estables, habilita escritura únicamente para operaciones reversibles y de bajo impacto. Cada permiso adicional debe corresponder a un caso probado y no a la posibilidad de que quizá sea útil en el futuro."
+          ],
+          "en": [
+            "During a pilot, much of the value can be demonstrated through reads and proposals. The agent queries systems, prepares the action and a person executes or approves it. This validates identification, sources and logic without the risk of modifying data.",
+            "When metrics are stable, enable writes only for reversible, low-impact operations. Every additional permission should correspond to a proven use case rather than the possibility that it may be useful later."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Valida reglas fuera del modelo",
+          "en": "7. Validate rules outside the model"
+        },
+        "paragraphs": {
+          "es": [
+            "Si una actualización depende de un límite, estado permitido o requisito documental, compruébalo en código o reglas deterministas. El modelo puede sugerir la acción, pero no debería decidir por sí solo si una condición crítica se cumple.",
+            "Esto es especialmente importante en precios, impuestos, descuentos, crédito, devoluciones y estados finales. Una capa de validación independiente mantiene consistencia aunque cambie el modelo o el lenguaje de la solicitud."
+          ],
+          "en": [
+            "If an update depends on a threshold, allowed status or document requirement, check it in code or deterministic rules. The model may suggest the action, but it should not decide by itself whether a critical condition is satisfied.",
+            "This is especially important for pricing, taxes, discounts, credit, refunds and final statuses. An independent validation layer preserves consistency even when the model or request wording changes."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Diseña idempotencia antes de activar escritura",
+          "en": "8. Design idempotency before enabling writes"
+        },
+        "paragraphs": {
+          "es": [
+            "Una llamada puede completarse en el sistema destino y perder la respuesta durante el camino de vuelta. Si el agente repite la operación sin comprobar, puede duplicar el efecto. Por eso la idempotencia debe existir antes de dar capacidad de escritura.",
+            "Utiliza una clave de operación basada en el caso y la acción. El sistema puede devolver el resultado existente si la misma petición se repite. Donde la API no soporte idempotencia, añade comprobaciones previas o una tabla de operaciones."
+          ],
+          "en": [
+            "A call can complete in the destination system while its response is lost on the way back. If the agent repeats the operation without checking, it may duplicate the effect. Idempotency should therefore exist before write capability is enabled.",
+            "Use an operation key derived from the case and action. The system can return the existing result when the same request repeats. Where the API does not support idempotency, add pre-checks or an operation ledger."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Clasifica errores por tipo",
+          "en": "9. Classify errors by type"
+        },
+        "paragraphs": {
+          "es": [
+            "Diferencia problemas de red, autenticación, límite de cuota, validación y negocio. Cada categoría necesita una respuesta distinta. Reintentar un timeout puede ser correcto; reintentar un pedido bloqueado no lo es.",
+            "Devuelve errores estructurados al agente. En lugar de un mensaje ambiguo, indica categoría, operación, código y si puede reintentarse. Esto permite que el orquestador tome decisiones predecibles."
+          ],
+          "en": [
+            "Separate network, authentication, quota, validation and business errors. Each category requires a different response. Retrying a timeout may be correct; retrying a blocked order is not.",
+            "Return structured errors to the agent. Instead of an ambiguous message, provide category, operation, code and whether retry is allowed. This enables predictable orchestration decisions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Protege secretos fuera del alcance del modelo",
+          "en": "10. Keep secrets outside model reach"
+        },
+        "paragraphs": {
+          "es": [
+            "El agente no necesita conocer el token de CRM para utilizar una herramienta de CRM. La capa de ejecución recupera el secreto, hace la llamada y devuelve el resultado. Esta separación reduce exposición y facilita rotación.",
+            "Evita que logs, mensajes de error o respuestas de herramientas incluyan credenciales. También revisa permisos del pipeline y del entorno de ejecución para que solo el servicio autorizado pueda obtener los secretos necesarios."
+          ],
+          "en": [
+            "The agent does not need to know the CRM token in order to use a CRM tool. The execution layer retrieves the secret, makes the call and returns the result. This separation reduces exposure and simplifies rotation.",
+            "Avoid including credentials in logs, error messages or tool responses. Also review pipeline and runtime permissions so only the authorised service can obtain the secrets it needs."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Añade correlación de extremo a extremo",
+          "en": "11. Add end-to-end correlation"
+        },
+        "paragraphs": {
+          "es": [
+            "Genera un identificador por caso y propágalo a cada herramienta, log y actualización. Cuando un cliente informa de un problema, ese identificador permite seguir el recorrido completo sin buscar manualmente por timestamps.",
+            "La correlación también facilita métricas por proceso. Puedes medir cuánto tiempo pasó en cada sistema, dónde ocurrieron reintentos y qué integración genera más excepciones."
+          ],
+          "en": [
+            "Generate one identifier per case and propagate it through every tool, log and update. When a customer reports a problem, that identifier allows the complete journey to be followed without manually searching timestamps.",
+            "Correlation also enables process-level metrics. You can measure how long the case spent in each system, where retries occurred and which integration generates the most exceptions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Monitoriza contratos además de infraestructura",
+          "en": "12. Monitor contracts as well as infrastructure"
+        },
+        "paragraphs": {
+          "es": [
+            "Que un endpoint responda 200 no garantiza que siga devolviendo el esquema esperado. Añade comprobaciones para campos críticos, tipos y catálogos. Los cambios silenciosos de una API pueden ser más peligrosos que una caída visible.",
+            "Combina monitorización técnica con tests programados de contrato cuando sea apropiado. Si un proveedor cambia una respuesta, detectarlo antes de que llegue a un flujo de negocio reduce incidentes."
+          ],
+          "en": [
+            "An endpoint returning HTTP 200 does not guarantee it still returns the expected schema. Add checks for critical fields, types and catalogues. Silent API changes can be more dangerous than a visible outage.",
+            "Combine technical monitoring with scheduled contract tests where appropriate. Detecting a provider response change before it reaches a business workflow reduces incidents."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Gestiona límites de API y picos de volumen",
+          "en": "13. Manage API limits and volume peaks"
+        },
+        "paragraphs": {
+          "es": [
+            "Los sistemas externos suelen imponer cuotas. Si muchos casos llegan al mismo tiempo, el agente no debería disparar llamadas sin control. Utiliza colas, límites de concurrencia y backoff para proteger tanto el proveedor como tu propio proceso.",
+            "Diferencia tareas urgentes de tareas que pueden esperar. Una incidencia crítica puede tener prioridad sobre una sincronización de enriquecimiento. Esta clasificación evita que trabajo de baja prioridad bloquee operaciones importantes."
+          ],
+          "en": [
+            "External systems often impose quotas. When many cases arrive at once, the agent should not fire uncontrolled calls. Use queues, concurrency limits and backoff to protect both the provider and your own process.",
+            "Separate urgent tasks from work that can wait. A critical incident may take priority over background enrichment. This classification prevents low-priority work from blocking important operations."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Prueba fallos parciales",
+          "en": "14. Test partial failures"
+        },
+        "paragraphs": {
+          "es": [
+            "Los casos más difíciles aparecen cuando una parte del proceso funciona y otra falla. Por ejemplo, CRM se actualiza pero el ticket no se crea. Decide si necesitas compensar la primera acción, reintentar la segunda o dejar una excepción manual.",
+            "Incluye estos escenarios en QA. Los flujos distribuidos necesitan una estrategia para estados intermedios; asumir que todo falla o todo funciona no refleja producción."
+          ],
+          "en": [
+            "The hardest cases appear when one part of a workflow succeeds and another fails. For example, CRM updates but the ticket is not created. Decide whether the first action should be compensated, the second retried or the case escalated manually.",
+            "Include these scenarios in QA. Distributed workflows need a strategy for intermediate states; assuming everything succeeds or everything fails does not reflect production."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Reutiliza conectores con políticas específicas por proceso",
+          "en": "15. Reuse connectors with process-specific policies"
+        },
+        "paragraphs": {
+          "es": [
+            "Un conector de CRM puede servir a ventas, soporte y administración, pero cada proceso necesita herramientas y scopes diferentes. Reutiliza autenticación, manejo de errores y observabilidad sin convertir el conector en un acceso universal.",
+            "Esta arquitectura reduce duplicación técnica y mantiene gobierno. Los nuevos Empleados IA pueden añadirse más rápido porque la infraestructura común ya está probada, mientras sus permisos siguen siendo específicos."
+          ],
+          "en": [
+            "A CRM connector can serve sales, support and administration, but each process needs different tools and scopes. Reuse authentication, error handling and observability without turning the connector into universal access.",
+            "This architecture reduces technical duplication while preserving governance. New AI Employees can be added faster because the shared infrastructure is already proven while their permissions remain process-specific."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Mide la integración como producto operativo",
+          "en": "16. Measure integration as an operational product"
+        },
+        "paragraphs": {
+          "es": [
+            "No evalúes una integración únicamente por si conecta. Mide disponibilidad, latencia, errores, coste, reintentos, cambios de esquema, excepciones y tiempo de recuperación. Una integración fiable es un servicio que necesita mantenimiento.",
+            "Estas métricas ayudan a decidir dónde invertir. Un conector que genera gran parte de los incidentes puede necesitar rediseño, mientras otro estable puede convertirse en pieza común para más procesos. La integración deja de ser código invisible y se gestiona como capacidad empresarial."
+          ],
+          "en": [
+            "Do not evaluate an integration only by whether it connects. Measure availability, latency, errors, cost, retries, schema changes, exceptions and recovery time. A reliable integration is a service that requires maintenance.",
+            "These metrics show where investment is needed. A connector responsible for many incidents may require redesign, while a stable one can become a shared capability for more workflows. Integration stops being invisible code and becomes an operational product."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Mapea un caso real antes de elegir conectores.",
+        "Usa identificadores estables para relacionar sistemas.",
+        "Define una fuente de verdad por cada dato.",
+        "Encapsula APIs como funciones pequeñas y estructuradas.",
+        "Empieza con lectura y habilita escritura gradualmente.",
+        "Valida reglas críticas fuera del modelo.",
+        "Implementa idempotencia antes de activar acciones.",
+        "Distingue errores técnicos de errores de negocio.",
+        "Mantén secretos fuera del alcance del modelo.",
+        "Usa correlación de extremo a extremo.",
+        "Monitoriza contratos, no solo disponibilidad.",
+        "Gestiona cuotas y picos mediante colas.",
+        "Prueba fallos parciales.",
+        "Reutiliza conectores manteniendo políticas por proceso.",
+        "Mide cada integración como un producto operativo.",
+        "Amplía solo cuando estabilidad y métricas lo justifican."
+      ],
+      "en": [
+        "Map a real case before choosing connectors.",
+        "Use stable identifiers to relate systems.",
+        "Define a source of truth for each data type.",
+        "Wrap APIs as small structured functions.",
+        "Start with reads and enable writes gradually.",
+        "Validate critical rules outside the model.",
+        "Implement idempotency before enabling actions.",
+        "Separate technical from business errors.",
+        "Keep secrets outside model reach.",
+        "Use end-to-end correlation.",
+        "Monitor contracts, not only availability.",
+        "Manage quotas and peaks through queues.",
+        "Test partial failures.",
+        "Reuse connectors while keeping process-specific policies.",
+        "Measure each integration as an operational product.",
+        "Expand only when stability and metrics justify it."
+      ]
+    },
+    "relatedLandingKey": "enterprise-ai-integration",
+    "publishedAt": "2026-09-28",
+    "updatedAt": "2026-09-28"
+  }
+]
