@@ -1,0 +1,378 @@
+[
+  {
+    "key": "human-in-the-loop-ai-automation",
+    "slugs": {
+      "es": "automatizacion-ia-supervision-humana-empresas",
+      "en": "human-in-the-loop-ai-automation-business"
+    },
+    "seoTitle": {
+      "es": "IA con supervisión humana para empresas | IA Empleado",
+      "en": "Human-in-the-loop AI automation for business | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Diseña automatización con IA y supervisión humana: niveles de autonomía, aprobaciones, límites, trazabilidad, escalado y métricas para procesos empresariales.",
+      "en": "Design human-in-the-loop AI automation with autonomy levels, approvals, limits, traceability, escalation and metrics for business processes."
+    },
+    "eyebrow": {
+      "es": "Automatización gobernada",
+      "en": "Governed automation"
+    },
+    "title": {
+      "es": "Automatización con IA y supervisión humana: escala sin perder las decisiones críticas.",
+      "en": "Human-in-the-loop AI automation: scale without giving up critical decisions."
+    },
+    "lead": {
+      "es": "Un Empleado IA no tiene que elegir entre ser útil o estar controlado. El diseño correcto automatiza lectura, clasificación, preparación y acciones de bajo riesgo, mientras reserva para una persona las decisiones con impacto financiero, legal, reputacional o difícil de revertir. La supervisión humana bien diseñada no es un freno: es una capa operativa que permite ampliar autonomía con evidencia.",
+      "en": "An AI Employee does not have to choose between being useful and being controlled. Good design automates reading, classification, preparation and low-risk actions while reserving financial, legal, reputational or hard-to-reverse decisions for a person. Well-designed human oversight is not a brake: it is an operating layer that allows autonomy to expand with evidence."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Empieza por decisiones, no por pantallas de aprobación",
+          "en": "1. Start with decisions, not approval screens"
+        },
+        "paragraphs": {
+          "es": [
+            "La primera pregunta no es dónde colocar un botón de aprobar, sino qué decisiones del proceso pueden ejecutarse sin intervención y cuáles necesitan criterio humano. Mapea cada paso por impacto, reversibilidad, sensibilidad del dato y coste de un error. Así la supervisión se concentra donde realmente reduce riesgo.",
+            "Si todo requiere aprobación, la automatización se convierte en una bandeja de tareas más. Si nada la requiere, se pierde control en excepciones. El objetivo es un reparto explícito: la IA prepara y ejecuta lo rutinario; la persona conserva autoridad sobre lo excepcional y significativo."
+          ],
+          "en": [
+            "The first question is not where to place an approve button, but which process decisions can execute without intervention and which require human judgment. Map each step by impact, reversibility, data sensitivity and error cost. Oversight then concentrates where it actually reduces risk.",
+            "If everything requires approval, automation becomes another task inbox. If nothing does, control disappears in exceptions. The goal is explicit allocation: AI prepares and executes routine work while people retain authority over exceptional and significant decisions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Define niveles de autonomía por acción",
+          "en": "2. Define autonomy levels per action"
+        },
+        "paragraphs": {
+          "es": [
+            "Una política útil distingue al menos entre leer, resumir, recomendar, preparar un borrador y ejecutar cambios. Consultar el estado de un pedido no tiene el mismo riesgo que modificar un IBAN, emitir un abono o cancelar una reserva. Cada herramienta debe heredar un nivel de autonomía coherente con su efecto.",
+            "Los niveles pueden evolucionar. Una acción empieza en modo propuesta, acumula resultados y, si cumple umbrales de calidad y seguridad, pasa a ejecución automática dentro de límites. La promoción de autonomía debe ser una decisión operativa registrada, no una consecuencia implícita del tiempo."
+          ],
+          "en": [
+            "A useful policy distinguishes at least between reading, summarising, recommending, drafting and executing changes. Checking an order status does not carry the same risk as changing bank details, issuing a refund or cancelling a booking. Each tool should inherit an autonomy level consistent with its effect.",
+            "Levels can evolve. An action may start in proposal mode, accumulate results and, when quality and safety thresholds are met, move to automatic execution within limits. Promoting autonomy should be a recorded operating decision, not an implicit consequence of time."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Usa umbrales objetivos para activar aprobación",
+          "en": "3. Use objective thresholds to trigger approval"
+        },
+        "paragraphs": {
+          "es": [
+            "La aprobación funciona mejor cuando depende de reglas observables. Un importe superior a un límite, un cliente VIP, una reclamación legal, una baja confianza, datos contradictorios o un cambio irreversible pueden activar revisión humana. Las reglas deben ser legibles y testeables fuera del modelo.",
+            "Combina umbrales duros con señales contextuales. Por ejemplo, un reembolso pequeño puede ser automático salvo que exista una disputa abierta. La IA aporta contexto, pero una capa determinista decide si la operación cruza la frontera que exige autorización."
+          ],
+          "en": [
+            "Approval works best when it depends on observable rules. An amount above a threshold, a VIP customer, a legal complaint, low confidence, contradictory data or an irreversible change can trigger human review. Rules should be readable and testable outside the model.",
+            "Combine hard thresholds with contextual signals. A small refund may be automatic unless an open dispute exists. AI contributes context, but a deterministic layer decides whether the operation crosses the boundary that requires authorisation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Entrega al aprobador un paquete de decisión completo",
+          "en": "4. Give the approver a complete decision packet"
+        },
+        "paragraphs": {
+          "es": [
+            "Pedir aprobación sin contexto genera trabajo adicional. La solicitud debe incluir qué quiere hacer el agente, por qué, qué datos utilizó, qué política se aplicó, cuál será el efecto y qué alternativas existen. La persona debería decidir sin reconstruir el caso desde cero en cuatro sistemas distintos.",
+            "El paquete también debe señalar incertidumbres y excepciones. Si faltan datos, hay una contradicción o una fuente no respondió, la interfaz tiene que mostrarlo. Ocultar incertidumbre para presentar una propuesta aparentemente limpia reduce la calidad de la supervisión."
+          ],
+          "en": [
+            "Requesting approval without context creates extra work. The request should include what the agent wants to do, why, which data it used, which policy applied, the expected effect and available alternatives. A person should be able to decide without rebuilding the case across four systems.",
+            "The packet should also expose uncertainty and exceptions. If data is missing, sources disagree or a system did not respond, the interface must say so. Hiding uncertainty to present an apparently clean proposal weakens the quality of oversight."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Separa preparar, aprobar y ejecutar",
+          "en": "5. Separate preparation, approval and execution"
+        },
+        "paragraphs": {
+          "es": [
+            "El agente que prepara una operación no debería interpretar un simple mensaje ambiguo como autorización. La aprobación debe producir un evento estructurado vinculado a una acción concreta, con parámetros congelados o revisables y una identidad responsable. Después, el ejecutor valida de nuevo antes de escribir.",
+            "Esta separación evita que el contexto conversacional sustituya a los controles. También permite introducir segregación de funciones: una persona puede aprobar determinadas operaciones y otra distinta las de mayor impacto, sin modificar el razonamiento general del Empleado IA."
+          ],
+          "en": [
+            "The agent preparing an operation should not interpret an ambiguous chat message as authorisation. Approval should create a structured event tied to a specific action, with frozen or reviewable parameters and an accountable identity. The executor then validates again before writing.",
+            "This separation prevents conversational context from replacing controls. It also supports segregation of duties: one person may approve certain operations while another handles higher-impact ones without changing the AI Employee's general reasoning flow."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Evita aprobaciones eternas con caducidad y revalidación",
+          "en": "6. Avoid stale approvals with expiry and revalidation"
+        },
+        "paragraphs": {
+          "es": [
+            "Una aprobación pierde valor si el estado del negocio cambia antes de ejecutarse. Define cuánto tiempo es válida y qué datos deben revalidarse al final. Un stock, saldo, precio, estado de pedido o permiso puede haber cambiado mientras la solicitud estaba esperando.",
+            "Cuando una aprobación caduca, el agente debe recalcular la propuesta y pedir una nueva decisión si sigue siendo necesaria. No reutilizar autorizaciones antiguas reduce errores y deja claro que la persona aprobó un estado concreto, no cualquier variante futura del caso."
+          ],
+          "en": [
+            "An approval loses value if business state changes before execution. Define how long it remains valid and which data must be revalidated at the end. Stock, balance, price, order status or permissions may have changed while the request was waiting.",
+            "When approval expires, the agent should recompute the proposal and request a new decision if still needed. Avoiding stale authorisations reduces errors and makes clear that the person approved a specific state, not every future variation of the case."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Diseña escalados por tiempo y por riesgo",
+          "en": "7. Design escalations by time and risk"
+        },
+        "paragraphs": {
+          "es": [
+            "No todas las revisiones pueden esperar lo mismo. Una duda administrativa puede tolerar horas; una incidencia de cliente en curso quizá necesita minutos. Define SLA por tipo de aprobación y un responsable alternativo cuando el titular no responde.",
+            "El escalado debe aumentar visibilidad, no autonomía. Si una persona no contesta, el sistema no debería convertir automáticamente una operación sensible en acción autorizada. Puede reasignar, recordar, pausar o aplicar una salida segura previamente definida."
+          ],
+          "en": [
+            "Not every review can wait equally long. An administrative question may tolerate hours while an active customer incident may need minutes. Define an SLA for each approval type and an alternate owner when the primary reviewer does not respond.",
+            "Escalation should increase visibility, not autonomy. If a person does not respond, the system should not automatically turn a sensitive operation into an authorised action. It can reassign, remind, pause or apply a previously defined safe fallback."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Aplica mínimo privilegio incluso después de aprobar",
+          "en": "8. Apply least privilege even after approval"
+        },
+        "paragraphs": {
+          "es": [
+            "Aprobar una acción no justifica dar acceso general al sistema. El conector debe ejecutar únicamente la operación autorizada con el alcance mínimo posible. Una aprobación para modificar un campo de CRM no debería desbloquear permisos para exportar clientes o borrar registros.",
+            "Los permisos técnicos y la política de aprobación se complementan. Si una regla falla, el alcance reducido limita el daño; si una credencial se filtra, la aprobación por sí sola no protege. La defensa útil combina controles independientes."
+          ],
+          "en": [
+            "Approving an action does not justify broad system access. The connector should execute only the authorised operation with the narrowest possible scope. Approval to change one CRM field should not unlock permissions to export customers or delete records.",
+            "Technical permissions and approval policy complement each other. If a rule fails, restricted scope limits damage; if a credential leaks, approval alone is not protection. Useful defence combines independent controls."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Registra quién aprobó qué y con qué contexto",
+          "en": "9. Record who approved what and with which context"
+        },
+        "paragraphs": {
+          "es": [
+            "La trazabilidad debe enlazar propuesta, versión de política, datos relevantes, aprobador, hora, decisión y resultado de ejecución. Esto permite investigar un incidente y también aprender por qué las personas rechazan ciertas propuestas de forma recurrente.",
+            "No es necesario almacenar información sensible de manera indiscriminada. Conserva referencias, hashes o campos mínimos cuando sea suficiente. El objetivo es reconstruir la cadena de decisión y demostrar que la acción siguió el circuito previsto."
+          ],
+          "en": [
+            "Traceability should link the proposal, policy version, relevant data, approver, time, decision and execution result. This supports incident investigation and also reveals why people repeatedly reject certain proposals.",
+            "Sensitive information does not need to be stored indiscriminately. Keep references, hashes or minimal fields when sufficient. The objective is to reconstruct the decision chain and demonstrate that the action followed the intended control path."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Convierte rechazos y correcciones en señal de mejora",
+          "en": "10. Turn rejections and corrections into improvement signals"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada rechazo debería tener un motivo estructurado cuando sea razonable: dato incorrecto, política mal aplicada, excepción no detectada, propuesta incompleta o preferencia comercial. Esa taxonomía permite distinguir fallos del modelo, del conector y del propio proceso.",
+            "Analizar correcciones evita entrenar a ciegas. Si la mayoría de rechazos proviene de una regla desactualizada, cambiar prompts no resolverá nada. La mejora debe actuar sobre el componente responsable y volver a medir antes de ampliar autonomía."
+          ],
+          "en": [
+            "Each rejection should carry a structured reason where practical: incorrect data, misapplied policy, missed exception, incomplete proposal or commercial preference. This taxonomy helps distinguish failures in the model, connector and underlying process.",
+            "Analysing corrections prevents blind tuning. If most rejections come from an outdated rule, changing prompts will not fix the problem. Improvement should target the responsible component and be measured again before autonomy expands."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Usa muestreo humano para acciones ya automatizadas",
+          "en": "11. Use human sampling for actions already automated"
+        },
+        "paragraphs": {
+          "es": [
+            "Una acción de bajo riesgo puede dejar de requerir aprobación individual y seguir bajo supervisión mediante muestreo. Revisa una proporción de casos, incrementa la muestra tras cambios y aumenta temporalmente la revisión cuando aparecen errores o deriva.",
+            "El muestreo permite conservar velocidad sin perder observabilidad. Debe ser aleatorio cuando busque medir calidad y dirigido cuando investigue señales concretas. Registrar el tamaño y resultado de la muestra hace posible decidir con evidencia si mantener, reducir o ampliar autonomía."
+          ],
+          "en": [
+            "A low-risk action can stop requiring individual approval while remaining supervised through sampling. Review a proportion of cases, increase the sample after changes and temporarily raise review levels when errors or drift appear.",
+            "Sampling preserves speed without losing observability. It should be random when measuring quality and targeted when investigating specific signals. Recording sample size and outcomes supports evidence-based decisions about maintaining, reducing or expanding autonomy."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Prepara un modo seguro y una parada operativa",
+          "en": "12. Prepare a safe mode and an operational stop"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando una métrica cruza un límite, un conector se comporta de forma anómala o cambia una fuente crítica, el sistema necesita degradar capacidades sin apagar todo el servicio. Puede volver a modo borrador, bloquear escrituras o exigir aprobación temporalmente.",
+            "También debe existir una forma clara de revocar autonomía para un proceso, herramienta o tenant. La reversión rápida es parte del diseño, no un procedimiento improvisado después del primer incidente. Cuanto más fácil sea retroceder, más segura es la evolución."
+          ],
+          "en": [
+            "When a metric crosses a limit, a connector behaves unexpectedly or a critical source changes, the system needs to degrade capabilities without shutting down the entire service. It can return to draft mode, block writes or temporarily require approval.",
+            "There should also be a clear way to revoke autonomy for a process, tool or tenant. Rapid rollback is part of the design, not an improvised procedure after the first incident. The easier it is to step back, the safer evolution becomes."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Mide la fricción de supervisión junto con la seguridad",
+          "en": "13. Measure oversight friction alongside safety"
+        },
+        "paragraphs": {
+          "es": [
+            "Un flujo puede ser seguro y aun así fracasar si crea demasiadas interrupciones. Mide porcentaje de casos que requieren revisión, tiempo hasta decisión, tasa de aprobación, correcciones, abandonos y trabajo manual añadido. La supervisión también necesita objetivos de eficiencia.",
+            "Cruza esas métricas con impacto y calidad. Una tasa alta de aprobación puede indicar que el umbral es demasiado conservador, pero no siempre: quizá la revisión sea obligatoria por política. Las decisiones deben considerar contexto, no perseguir un único porcentaje ideal."
+          ],
+          "en": [
+            "A workflow can be safe and still fail if it creates too many interruptions. Measure the share of cases requiring review, time to decision, approval rate, corrections, abandonment and added manual work. Oversight also needs efficiency goals.",
+            "Combine those metrics with impact and quality. A high approval rate may mean the threshold is overly conservative, but not always: review may be mandatory by policy. Decisions should consider context rather than chase one ideal percentage."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Amplía autonomía solo después de demostrar estabilidad",
+          "en": "14. Expand autonomy only after proving stability"
+        },
+        "paragraphs": {
+          "es": [
+            "La progresión más segura es lectura, propuesta, aprobación, ejecución limitada y automatización controlada. En cada etapa define criterios de salida: precisión, errores críticos, volumen de excepciones, cumplimiento de SLA y capacidad de reversión.",
+            "Así la autonomía se convierte en una propiedad gestionada del proceso. El negocio puede avanzar más rápido porque conoce las condiciones para ampliar y para retroceder. La supervisión humana deja de ser una barrera fija y se convierte en un mecanismo de aprendizaje operativo."
+          ],
+          "en": [
+            "A safer progression is read, propose, approve, limited execution and controlled automation. At every stage define exit criteria such as accuracy, critical errors, exception volume, SLA compliance and rollback capability.",
+            "Autonomy then becomes a managed property of the process. The business can move faster because it knows the conditions for expansion and reversal. Human oversight stops being a fixed barrier and becomes an operating learning mechanism."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Modelo práctico de supervisión humana para un Empleado IA",
+        "en": "Practical human oversight model for an AI Employee"
+      },
+      "steps": {
+        "es": [
+          "Inventaría acciones y clasifícalas por impacto y reversibilidad.",
+          "Asigna un nivel de autonomía a cada acción.",
+          "Define umbrales deterministas que obligan a revisión.",
+          "Construye un paquete de decisión con contexto, evidencia y efecto esperado.",
+          "Registra una aprobación estructurada ligada a parámetros concretos.",
+          "Revalida el estado del negocio antes de ejecutar.",
+          "Aplica mínimo privilegio, segregación de funciones y caducidad.",
+          "Escala por SLA sin convertir silencio en autorización.",
+          "Audita aprobaciones, rechazos, correcciones y resultados.",
+          "Amplía o reduce autonomía según métricas y evidencia."
+        ],
+        "en": [
+          "Inventory actions and classify them by impact and reversibility.",
+          "Assign an autonomy level to every action.",
+          "Define deterministic thresholds that require review.",
+          "Build a decision packet with context, evidence and expected effect.",
+          "Record structured approval tied to specific parameters.",
+          "Revalidate business state before execution.",
+          "Apply least privilege, segregation of duties and expiry.",
+          "Escalate by SLA without turning silence into authorisation.",
+          "Audit approvals, rejections, corrections and outcomes.",
+          "Expand or reduce autonomy according to metrics and evidence."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Porcentaje de casos con revisión humana",
+        "Tiempo medio hasta aprobación",
+        "Tasa de aprobación y rechazo",
+        "Correcciones posteriores a aprobación",
+        "Errores críticos evitados",
+        "Aprobaciones caducadas",
+        "Casos escalados por SLA",
+        "Acciones devueltas a modo borrador",
+        "Cobertura de muestreo",
+        "Autonomía por herramienta y proceso"
+      ],
+      "en": [
+        "Share of cases with human review",
+        "Mean time to approval",
+        "Approval and rejection rate",
+        "Corrections after approval",
+        "Critical errors prevented",
+        "Expired approvals",
+        "Cases escalated by SLA",
+        "Actions returned to draft mode",
+        "Sampling coverage",
+        "Autonomy by tool and process"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Supervisión humana significa aprobar cada acción?",
+          "en": "Does human oversight mean approving every action?"
+        },
+        "answer": {
+          "es": "No. La revisión debe concentrarse en acciones de mayor impacto, baja reversibilidad, incertidumbre o requisitos internos. Las tareas rutinarias de bajo riesgo pueden automatizarse con límites, trazabilidad y muestreo.",
+          "en": "No. Review should focus on higher-impact, low-reversibility, uncertain or policy-sensitive actions. Routine low-risk work can be automated with limits, traceability and sampling."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo decide un Empleado IA cuándo pedir aprobación?",
+          "en": "How does an AI Employee decide when approval is needed?"
+        },
+        "answer": {
+          "es": "Mediante reglas explícitas que combinan tipo de acción, importe, datos sensibles, excepciones, confianza y estado del proceso. La frontera de aprobación debe ser verificable fuera del modelo.",
+          "en": "Through explicit rules combining action type, amount, sensitive data, exceptions, confidence and process state. The approval boundary should be verifiable outside the model."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Puede una acción pasar de manual a automática?",
+          "en": "Can an action move from manual to automatic?"
+        },
+        "answer": {
+          "es": "Sí, si existe evidencia suficiente de calidad, estabilidad y capacidad de reversión. La ampliación de autonomía debe registrarse y mantener límites y monitorización.",
+          "en": "Yes, when there is sufficient evidence of quality, stability and rollback capability. Expanding autonomy should be recorded while retaining limits and monitoring."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué debe ver la persona que aprueba?",
+          "en": "What should an approver see?"
+        },
+        "answer": {
+          "es": "La acción propuesta, motivo, datos relevantes, política aplicada, efecto esperado, incertidumbres y alternativas. La persona no debería tener que reconstruir el caso desde cero.",
+          "en": "The proposed action, rationale, relevant data, applied policy, expected effect, uncertainties and alternatives. The person should not need to reconstruct the case from scratch."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué ocurre si nadie aprueba a tiempo?",
+          "en": "What happens if nobody approves in time?"
+        },
+        "answer": {
+          "es": "El flujo debe escalar, reasignar, pausar o aplicar una salida segura predefinida. El silencio no debe convertirse automáticamente en autorización para una acción sensible.",
+          "en": "The workflow should escalate, reassign, pause or apply a predefined safe fallback. Silence should not automatically become authorisation for a sensitive action."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo se mide si la supervisión funciona?",
+          "en": "How do you measure whether oversight works?"
+        },
+        "answer": {
+          "es": "Con métricas de seguridad y fricción: revisiones, tiempo de decisión, rechazos, correcciones, errores críticos, escalados, muestreo y evolución del nivel de autonomía.",
+          "en": "With both safety and friction metrics: reviews, decision time, rejections, corrections, critical errors, escalations, sampling and changes in autonomy level."
+        }
+      }
+    ],
+    "relatedArticleKey": "design-ai-approval-workflows",
+    "publishedAt": "2026-09-29",
+    "updatedAt": "2026-09-29"
+  }
+]
