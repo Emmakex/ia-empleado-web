@@ -1,0 +1,308 @@
+[
+  {
+    "key": "design-ai-approval-workflows",
+    "slugs": {
+      "es": "como-disenar-flujos-aprobacion-empleados-ia",
+      "en": "how-to-design-approval-workflows-for-ai-employees"
+    },
+    "seoTitle": {
+      "es": "Cómo diseñar flujos de aprobación para Empleados IA | IA Empleado",
+      "en": "How to design approval workflows for AI Employees | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía para crear aprobaciones útiles en Empleados IA: matriz de riesgo, contexto, identidad, caducidad, segregación, escalado, auditoría, muestreo y métricas.",
+      "en": "Guide to useful AI Employee approvals: risk matrix, context, identity, expiry, segregation, escalation, audit, sampling and metrics."
+    },
+    "title": {
+      "es": "Cómo diseñar flujos de aprobación para Empleados IA sin frenar la automatización",
+      "en": "How to design approval workflows for AI Employees without slowing automation"
+    },
+    "excerpt": {
+      "es": "Un flujo de aprobación eficaz protege las decisiones importantes sin convertir cada tarea automática en otra cola manual. Esta guía explica cómo decidir qué se revisa, qué contexto mostrar y cómo evolucionar la autonomía.",
+      "en": "An effective approval workflow protects important decisions without turning every automated task into another manual queue. This guide explains what to review, what context to show and how to evolve autonomy."
+    },
+    "intro": {
+      "es": "La supervisión humana falla cuando se añade al final como un botón genérico. Un aprobador recibe una propuesta sin contexto, abre varias aplicaciones para comprobarla y termina aceptando casi todo por cansancio. El problema no es la idea de aprobar: es el diseño. Un buen flujo separa preparación, autorización y ejecución; activa revisión solo con reglas claras; presenta evidencia suficiente; caduca cuando cambia el estado del negocio y deja trazabilidad para aprender. El objetivo no es maximizar ni minimizar aprobaciones, sino asignar a personas y automatización el trabajo que cada una puede realizar con más fiabilidad.",
+      "en": "Human oversight fails when it is added at the end as a generic button. An approver receives a proposal without context, opens several applications to verify it and eventually accepts almost everything out of fatigue. The problem is not approval itself; it is the design. A good workflow separates preparation, authorisation and execution, triggers review only through clear rules, presents enough evidence, expires when business state changes and leaves traceability for learning. The goal is not to maximise or minimise approvals, but to assign people and automation the work each can perform more reliably."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Lista las acciones reales del proceso",
+          "en": "1. List the real actions in the process"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza por verbos concretos: consultar cliente, clasificar correo, proponer respuesta, crear tarea, cambiar estado, emitir abono, modificar datos bancarios o enviar un documento. Una etiqueta amplia como gestionar cliente oculta diferencias de riesgo que son esenciales para diseñar controles.",
+            "Incluye acciones que ocurren fuera de la interfaz principal. Un agente puede enviar email, llamar a una API, escribir en CRM o generar un fichero para otro sistema. El inventario debe cubrir efectos reales, no solo los pasos visibles para el usuario."
+          ],
+          "en": [
+            "Start with concrete verbs: read customer, classify email, propose reply, create task, change status, issue refund, modify bank details or send a document. A broad label such as manage customer hides risk differences that are essential for control design.",
+            "Include actions that happen outside the main interface. An agent may send email, call an API, write to CRM or generate a file for another system. The inventory must cover real effects, not only steps visible to the user."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Crea una matriz de impacto y reversibilidad",
+          "en": "2. Build an impact and reversibility matrix"
+        },
+        "paragraphs": {
+          "es": [
+            "Para cada acción evalúa impacto financiero, contractual, reputacional, privacidad, seguridad y experiencia de cliente. Después añade reversibilidad: corregir una etiqueta interna suele ser fácil; transferir dinero o enviar información confidencial a un destinatario equivocado puede ser difícil o imposible de deshacer.",
+            "No necesitas una fórmula universal. Una escala simple bajo, medio y alto puede funcionar si tiene criterios definidos. Lo importante es que dos equipos clasifiquen casos similares de forma parecida y que la matriz pueda revisarse cuando cambian procesos o riesgos."
+          ],
+          "en": [
+            "For every action assess financial, contractual, reputational, privacy, security and customer-experience impact. Then add reversibility: correcting an internal label is usually easy, while transferring money or sending confidential information to the wrong recipient may be difficult or impossible to undo.",
+            "You do not need a universal formula. A simple low, medium and high scale can work when criteria are defined. What matters is that two teams classify similar cases consistently and that the matrix can be revised as processes or risks change."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Asigna un modo de operación a cada nivel",
+          "en": "3. Assign an operating mode to each level"
+        },
+        "paragraphs": {
+          "es": [
+            "Las acciones de bajo riesgo pueden ejecutarse automáticamente con registros y límites. Las de riesgo medio pueden comenzar en modo propuesta y requerir aprobación. Las de alto impacto pueden exigir doble validación, separación de funciones o quedar fuera del alcance del agente.",
+            "Evita usar confianza del modelo como única frontera. Una salida con alta confianza puede seguir siendo una mala operación si afecta a un dato crítico. La confianza es una señal adicional; la naturaleza de la acción y las reglas de negocio siguen siendo determinantes."
+          ],
+          "en": [
+            "Low-risk actions can execute automatically with logging and limits. Medium-risk actions can start in proposal mode and require approval. High-impact actions may need dual validation, segregation of duties or remain outside the agent's scope.",
+            "Avoid using model confidence as the only boundary. A high-confidence output can still be a bad operation when it affects critical data. Confidence is an additional signal; action type and business rules remain decisive."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Define disparadores de aprobación deterministas",
+          "en": "4. Define deterministic approval triggers"
+        },
+        "paragraphs": {
+          "es": [
+            "Convierte la matriz en reglas ejecutables: importe superior a X, descuento fuera de rango, destinatario externo, documento con categoría sensible, cambio irreversible, cliente bloqueado, excepción contractual o contradicción entre fuentes. Cada regla debe poder probarse con casos concretos.",
+            "Mantén las reglas fuera del prompt cuando definan autoridad. El modelo puede explicar por qué cree que una situación cumple una condición, pero una capa de política debe comprobar valores, permisos y estados antes de decidir si la acción requiere revisión."
+          ],
+          "en": [
+            "Turn the matrix into executable rules: amount above a threshold, discount outside range, external recipient, sensitive document category, irreversible change, blocked customer, contractual exception or contradictory sources. Every rule should be testable with concrete cases.",
+            "Keep authority rules outside the prompt. The model can explain why it believes a situation meets a condition, but a policy layer should check values, permissions and state before deciding whether the action requires review."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Diseña la solicitud de aprobación como un producto",
+          "en": "5. Design the approval request as a product"
+        },
+        "paragraphs": {
+          "es": [
+            "Una buena solicitud resume el caso en segundos: acción, motivo, impacto, datos fuente, cambios propuestos, reglas activadas y enlaces al sistema de origen. Muestra primero lo esencial y permite profundizar cuando el aprobador necesita evidencia adicional.",
+            "Evita volcar conversaciones o documentos completos por defecto. Extrae los fragmentos que justifican la propuesta y respeta minimización de datos. Menos ruido reduce tiempo de decisión y disminuye el riesgo de exponer información que no era necesaria para aprobar."
+          ],
+          "en": [
+            "A good approval request summarises the case in seconds: action, rationale, impact, source data, proposed changes, triggered rules and links to the source system. Show essentials first and allow drill-down when the approver needs more evidence.",
+            "Avoid dumping entire conversations or documents by default. Extract the fragments supporting the proposal and respect data minimisation. Less noise reduces decision time and lowers the risk of exposing information that was not needed for approval."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Expón incertidumbre y datos faltantes",
+          "en": "6. Expose uncertainty and missing data"
+        },
+        "paragraphs": {
+          "es": [
+            "El aprobador necesita saber qué parte está verificada y qué parte es inferencia. Marca campos sin confirmar, fuentes no disponibles, coincidencias múltiples y contradicciones. Una propuesta aparentemente segura que oculta estas señales produce confianza artificial.",
+            "Cuando falta un dato obligatorio, considera bloquear la aprobación hasta completarlo. La persona no debería convertirse en un mecanismo para saltarse validaciones básicas. La revisión humana aporta criterio, pero las reglas deterministas siguen protegiendo integridad del proceso."
+          ],
+          "en": [
+            "The approver needs to know which parts are verified and which are inferred. Mark unconfirmed fields, unavailable sources, multiple matches and contradictions. An apparently confident proposal that hides these signals creates artificial trust.",
+            "When a required value is missing, consider blocking approval until it is completed. A person should not become a mechanism for bypassing basic validation. Human review adds judgment, while deterministic rules continue protecting process integrity."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Vincula la aprobación a parámetros concretos",
+          "en": "7. Bind approval to specific parameters"
+        },
+        "paragraphs": {
+          "es": [
+            "Una autorización debe describir exactamente qué se permite ejecutar: herramienta, entidad, campos, valores, importe y versión del estado relevante. Evita autorizaciones genéricas como hazlo o procede que puedan reinterpretarse si el contexto cambia.",
+            "Genera un identificador de aprobación y asócialo a la operación. Si alguien modifica parámetros importantes después, invalida la autorización y solicita una nueva. Esto evita que una decisión humana legítima termine respaldando una acción distinta de la revisada."
+          ],
+          "en": [
+            "An authorisation should describe exactly what may execute: tool, entity, fields, values, amount and version of relevant state. Avoid generic authorisations such as do it or proceed that can be reinterpreted when context changes.",
+            "Generate an approval identifier and bind it to the operation. If important parameters change afterwards, invalidate the authorisation and request a new one. This prevents a legitimate human decision from backing an action different from the one reviewed."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Revalida justo antes de ejecutar",
+          "en": "8. Revalidate immediately before execution"
+        },
+        "paragraphs": {
+          "es": [
+            "Entre propuesta y aprobación pueden cambiar precio, stock, saldo, estado de cliente, permisos o disponibilidad. Antes de escribir, vuelve a consultar los datos que afectan a la validez de la operación. Si existe una diferencia relevante, detén el flujo.",
+            "La revalidación también protege contra carreras entre automatizaciones. Dos procesos pueden intentar modificar el mismo registro. Usa versiones, estados esperados o controles de concurrencia cuando el sistema los permita para no sobrescribir cambios posteriores."
+          ],
+          "en": [
+            "Price, stock, balance, customer status, permissions or availability may change between proposal and approval. Before writing, query again the data affecting operation validity. If a relevant difference exists, stop the flow.",
+            "Revalidation also protects against races between automations. Two processes may try to modify the same record. Use versions, expected states or concurrency controls where supported so later changes are not overwritten."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Añade caducidad a las decisiones",
+          "en": "9. Add expiry to decisions"
+        },
+        "paragraphs": {
+          "es": [
+            "Define una ventana de validez según el proceso. Una respuesta comercial puede ser válida durante horas; una operación dependiente de inventario quizá solo minutos. La caducidad debe ser visible para el aprobador y verificarse automáticamente antes de ejecutar.",
+            "Cuando expire, no reutilices el sí anterior. Reconstruye la propuesta con datos actuales y muestra qué cambió. Esto reduce frustración y ayuda a que la persona entienda por qué necesita revisar de nuevo una acción aparentemente similar."
+          ],
+          "en": [
+            "Define a validity window according to the process. A commercial reply may remain valid for hours while an inventory-dependent operation may be valid only for minutes. Expiry should be visible to the approver and checked automatically before execution.",
+            "When it expires, do not reuse the previous yes. Rebuild the proposal with current data and show what changed. This reduces frustration and helps the person understand why an apparently similar action needs review again."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Diseña identidad, permisos y segregación de funciones",
+          "en": "10. Design identity, permissions and segregation of duties"
+        },
+        "paragraphs": {
+          "es": [
+            "Registra quién aprueba y qué rol tenía en ese momento. Algunas decisiones pueden requerir un responsable de área, finanzas o seguridad. La pertenencia al chat o a una bandeja general no debería equivaler automáticamente a autoridad para cualquier operación.",
+            "Para acciones de mayor impacto aplica separación entre quien prepara y quien autoriza, o incluso doble aprobación cuando la política interna lo justifique. El objetivo no es añadir burocracia universal, sino hacer explícita la autoridad necesaria para cada tipo de efecto."
+          ],
+          "en": [
+            "Record who approves and which role they held at that time. Some decisions may require a department owner, finance or security. Membership in a chat or shared inbox should not automatically equal authority for every operation.",
+            "For higher-impact actions apply separation between the person preparing and the person authorising, or even dual approval where internal policy justifies it. The objective is not universal bureaucracy, but explicit authority for each type of effect."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Define qué ocurre ante silencio o rechazo",
+          "en": "11. Define what happens on silence or rejection"
+        },
+        "paragraphs": {
+          "es": [
+            "Un flujo necesita estados claros: pendiente, aprobado, rechazado, caducado, cancelado y escalado. Si nadie responde, aplica el SLA y la salida segura prevista. Nunca conviertas ausencia de respuesta en consentimiento para una acción sensible.",
+            "Un rechazo debería cerrar la operación o devolverla a preparación con instrucciones. Evita ciclos infinitos donde el agente presenta la misma propuesta. Captura un motivo estructurado y úsalo para corregir datos, reglas o enfoque antes de volver a solicitar revisión."
+          ],
+          "en": [
+            "A workflow needs clear states: pending, approved, rejected, expired, cancelled and escalated. If nobody responds, apply the SLA and predefined safe fallback. Never turn lack of response into consent for a sensitive action.",
+            "A rejection should close the operation or return it to preparation with instructions. Avoid endless loops where the agent presents the same proposal. Capture a structured reason and use it to correct data, rules or approach before requesting review again."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Diseña escalado sin saltarte controles",
+          "en": "12. Design escalation without bypassing controls"
+        },
+        "paragraphs": {
+          "es": [
+            "Escalar significa encontrar otro aprobador autorizado, aumentar prioridad o derivar a un canal operativo. No significa elevar privilegios del agente porque hay prisa. La urgencia cambia el tratamiento temporal, no la autoridad de la acción.",
+            "Define responsables alternativos y calendarios de cobertura para procesos críticos. Si nadie autorizado está disponible, la opción segura puede ser pausar, informar al cliente o ejecutar una alternativa reversible. Documenta estas salidas antes de necesitarlas."
+          ],
+          "en": [
+            "Escalation means finding another authorised approver, increasing priority or routing to an operational channel. It does not mean elevating agent privileges because the case is urgent. Urgency changes timing treatment, not action authority.",
+            "Define alternate owners and coverage schedules for critical processes. If nobody authorised is available, the safe option may be to pause, inform the customer or execute a reversible alternative. Document these fallbacks before they are needed."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Audita el resultado, no solo el clic de aprobación",
+          "en": "13. Audit the outcome, not just the approval click"
+        },
+        "paragraphs": {
+          "es": [
+            "La trazabilidad debe continuar después del sí. Registra si la ejecución fue correcta, qué devolvió el sistema destino, si hubo reintentos y si el efecto coincidió con la propuesta. Una aprobación no demuestra que la operación terminó bien.",
+            "Usa un identificador de correlación de extremo a extremo para unir propuesta, aprobación, ejecución y resultado. Así puedes investigar errores sin depender de capturas de pantalla o de reconstrucciones manuales entre correo, CRM y registros técnicos."
+          ],
+          "en": [
+            "Traceability should continue after yes. Record whether execution succeeded, what the destination system returned, whether retries occurred and whether the effect matched the proposal. An approval does not prove the operation completed correctly.",
+            "Use an end-to-end correlation identifier joining proposal, approval, execution and outcome. This makes errors investigable without relying on screenshots or manual reconstruction across email, CRM and technical logs."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Usa muestreo para reducir aprobaciones sin perder control",
+          "en": "14. Use sampling to reduce approvals without losing control"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando una acción demuestra estabilidad, sustituye parte de la revisión previa por control posterior mediante muestras. Selecciona casos aleatorios y añade muestras dirigidas para excepciones, cambios de modelo, nuevas versiones de conector o segmentos de mayor riesgo.",
+            "Define qué resultado obliga a volver temporalmente a aprobación individual. El muestreo solo funciona si existe un mecanismo para reaccionar. Sin umbrales de retroceso, revisar una muestra se convierte en observación pasiva sin efecto operativo."
+          ],
+          "en": [
+            "When an action proves stable, replace some pre-review with post-control through samples. Select random cases and add targeted samples for exceptions, model changes, new connector versions or higher-risk segments.",
+            "Define which outcome forces a temporary return to individual approval. Sampling works only when there is a response mechanism. Without rollback thresholds, reviewing samples becomes passive observation with no operational effect."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Mide calidad y coste de la supervisión",
+          "en": "15. Measure oversight quality and cost"
+        },
+        "paragraphs": {
+          "es": [
+            "Controla volumen de aprobaciones, tiempo medio, tasa de rechazo, correcciones, escalados, caducidades y minutos humanos consumidos. Añade métricas de resultado: errores evitados, incidentes posteriores y satisfacción del equipo. Sin esa combinación puedes optimizar velocidad a costa de seguridad.",
+            "Segmenta por acción y riesgo. Un promedio global oculta que una herramienta funciona muy bien mientras otra genera fricción. Las métricas deben permitir decidir dónde ajustar umbrales, mejorar contexto o mantener revisión obligatoria."
+          ],
+          "en": [
+            "Track approval volume, average time, rejection rate, corrections, escalations, expiries and human minutes consumed. Add outcome metrics such as prevented errors, later incidents and team satisfaction. Without that combination you can optimise speed at the expense of safety.",
+            "Segment by action and risk. A global average can hide that one tool performs very well while another creates friction. Metrics should support decisions about adjusting thresholds, improving context or keeping mandatory review."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Evoluciona autonomía con criterios de entrada y salida",
+          "en": "16. Evolve autonomy with entry and exit criteria"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de pasar una acción de propuesta a ejecución automática define el periodo observado, volumen mínimo, calidad requerida, ausencia de errores críticos y cobertura de rollback. La promoción debe ser deliberada y quedar versionada junto a la política.",
+            "Define también criterios de retroceso: aumento de errores, cambios en datos, nueva integración, modificación normativa interna o incidentes. Poder reducir autonomía rápidamente es tan importante como ampliarla. Un sistema maduro no presume que una decisión de ayer será válida para siempre."
+          ],
+          "en": [
+            "Before moving an action from proposal to automatic execution, define the observation period, minimum volume, required quality, absence of critical errors and rollback coverage. Promotion should be deliberate and versioned with the policy.",
+            "Also define rollback criteria: rising errors, data changes, a new integration, internal policy changes or incidents. Being able to reduce autonomy quickly is as important as expanding it. A mature system does not assume yesterday's decision remains valid forever."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "La aprobación útil se diseña por acción y riesgo, no como un paso genérico para todo.",
+        "Las reglas de autoridad deben ser deterministas, testeables y externas al prompt.",
+        "El aprobador necesita contexto, evidencia, incertidumbre y efecto esperado en una sola vista.",
+        "La autorización debe vincularse a parámetros concretos, caducar y revalidarse antes de ejecutar.",
+        "Rechazos, correcciones y muestreo son señales para ajustar el sistema y evolucionar autonomía.",
+        "La capacidad de reducir autonomía rápidamente es parte esencial del control operativo."
+      ],
+      "en": [
+        "Useful approval is designed by action and risk, not as a generic step for everything.",
+        "Authority rules should be deterministic, testable and external to the prompt.",
+        "The approver needs context, evidence, uncertainty and expected effect in one view.",
+        "Authorisation should bind to specific parameters, expire and be revalidated before execution.",
+        "Rejections, corrections and sampling are signals for improving the system and evolving autonomy.",
+        "The ability to reduce autonomy quickly is an essential part of operational control."
+      ]
+    },
+    "relatedLandingKey": "human-in-the-loop-ai-automation",
+    "publishedAt": "2026-09-29",
+    "updatedAt": "2026-09-29"
+  }
+]
