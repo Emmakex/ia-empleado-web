@@ -1,0 +1,308 @@
+[
+  {
+    "key": "how-to-monitor-ai-employees-in-production",
+    "slugs": {
+      "es": "como-monitorizar-empleados-ia-produccion",
+      "en": "how-to-monitor-ai-employees-in-production"
+    },
+    "seoTitle": {
+      "es": "Cómo monitorizar Empleados IA en producción | IA Empleado",
+      "en": "How to monitor AI Employees in production | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía práctica para monitorizar Empleados IA con trazas, métricas, alertas, costes, calidad, drift, auditoría, despliegues y rollback.",
+      "en": "Practical guide to monitoring AI Employees with traces, metrics, alerts, cost, quality, drift, auditability, releases and rollback."
+    },
+    "title": {
+      "es": "Cómo monitorizar Empleados IA en producción: métricas, trazas, alertas y calidad",
+      "en": "How to monitor AI Employees in production: metrics, traces, alerts and quality"
+    },
+    "excerpt": {
+      "es": "Una guía operativa para saber qué está haciendo un Empleado IA, detectar degradaciones, investigar fallos y mejorar autonomía con datos reales.",
+      "en": "An operational guide to understanding what an AI Employee is doing, detecting degradation, investigating failures and improving autonomy with real data."
+    },
+    "intro": {
+      "es": "Cuando un Empleado IA pasa de demo a producción, la pregunta deja de ser si puede completar una tarea y pasa a ser si puedes operar el sistema de forma fiable. Necesitas detectar fallos antes de que se conviertan en incidencias, distinguir un problema del modelo de un problema de datos o integración, controlar coste, saber qué cambió entre versiones y demostrar qué ocurrió en un caso concreto. La monitorización efectiva no consiste en guardar todo ni en llenar un dashboard de gráficos. Consiste en elegir señales que expliquen el proceso, definir umbrales y convertir esas señales en decisiones operativas.",
+      "en": "When an AI Employee moves from demo to production, the question changes from whether it can complete a task to whether you can operate the system reliably. You need to detect failures before they become incidents, distinguish a model problem from a data or integration problem, control cost, know what changed between versions and demonstrate what happened in a specific case. Effective monitoring is not about storing everything or filling a dashboard with charts. It is about choosing signals that explain the workflow, defining thresholds and turning those signals into operational decisions."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Dibuja el flujo operativo antes de elegir métricas",
+          "en": "1. Map the operating flow before choosing metrics"
+        },
+        "paragraphs": {
+          "es": [
+            "Escribe las etapas reales de un caso: entrada, clasificación, recuperación de contexto, uso de herramientas, decisión, aprobación, ejecución, confirmación y cierre. Si un proceso no sigue todas estas etapas, adapta el mapa. El objetivo es tener una secuencia que represente cómo se produce valor y dónde puede romperse.",
+            "Para cada etapa identifica responsable, sistema, dato de entrada, resultado esperado y posibles excepciones. Esta tabla se convierte en el mapa de observabilidad. Así cada métrica y evento responde a una pregunta concreta en lugar de acumular telemetría sin propósito."
+          ],
+          "en": [
+            "Write down the real stages of a case: intake, classification, context retrieval, tool use, decision, approval, execution, confirmation and closure. If a process does not use all of them, adapt the map. The objective is a sequence that represents how value is created and where it can break.",
+            "For each stage identify owner, system, input data, expected outcome and possible exceptions. This table becomes the observability map. Every metric and event then answers a concrete question instead of accumulating telemetry without purpose."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Define un esquema de eventos estable",
+          "en": "2. Define a stable event schema"
+        },
+        "paragraphs": {
+          "es": [
+            "Evita logs libres como única fuente. Define eventos estructurados con campos comunes: timestamp, organización, proceso, case_id, etapa, versión, herramienta, estado, duración y categoría de error. Añade campos específicos solo cuando sean necesarios. Un esquema estable facilita consultas, paneles y alertas.",
+            "Versiona el esquema cuando cambie de forma incompatible. Si hoy llamas success a una cosa y mañana significa otra, las series históricas pierden valor. La disciplina de eventos es tan importante como la calidad de los prompts cuando quieres operar a escala."
+          ],
+          "en": [
+            "Avoid relying only on free-form logs. Define structured events with common fields: timestamp, organisation, process, case_id, stage, version, tool, status, duration and error category. Add specific fields only when necessary. A stable schema makes queries, dashboards and alerts easier.",
+            "Version the schema when it changes incompatibly. If success means one thing today and something different tomorrow, historical series lose value. Event discipline matters as much as prompt quality when operating at scale."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Introduce un ID de correlación de extremo a extremo",
+          "en": "3. Introduce an end-to-end correlation ID"
+        },
+        "paragraphs": {
+          "es": [
+            "Genera un identificador único cuando entra el caso y propágalo por todos los componentes. Si una herramienta crea una tarea en CRM o llama a ERP, incluye la referencia siempre que el sistema lo permita. La correlación convierte múltiples logs aislados en una historia operativa.",
+            "No uses email, DNI, nombre de cliente u otro dato personal como identificador de correlación. El ID debe ser opaco y servir únicamente para unir eventos. Esto reduce exposición y facilita aplicar políticas de retención distintas al contenido de negocio."
+          ],
+          "en": [
+            "Generate a unique identifier when the case enters and propagate it through every component. If a tool creates a CRM task or calls ERP, include the reference whenever the system supports it. Correlation turns multiple isolated logs into one operational story.",
+            "Do not use email, national ID, customer name or other personal data as the correlation identifier. The ID should be opaque and used only to join events. This reduces exposure and makes it easier to apply retention policies separately from business content."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Mide volumen, éxito y resolución",
+          "en": "4. Measure volume, success and resolution"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza por métricas básicas: casos recibidos, procesados, completados, escalados y fallidos. Define éxito desde la perspectiva del proceso, no solo del software. Una llamada HTTP 200 no significa que el cliente haya recibido una solución correcta.",
+            "Distingue procesado de resuelto. Un agente puede cerrar técnicamente un flujo que después requiere recontacto o corrección. Si existe una señal posterior de reapertura, devolución o rectificación, incorpórala para tener una tasa de resolución más realista."
+          ],
+          "en": [
+            "Start with basic metrics: cases received, processed, completed, escalated and failed. Define success from the process perspective, not only the software perspective. An HTTP 200 does not mean the customer received the correct solution.",
+            "Distinguish processed from resolved. An agent can technically close a flow that later requires repeat contact or correction. If you have downstream signals such as reopening, return or amendment, include them for a more realistic resolution rate."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Descompón la latencia por componente",
+          "en": "5. Break latency down by component"
+        },
+        "paragraphs": {
+          "es": [
+            "Registra duración en recuperación de datos, modelo, herramientas, colas, aprobaciones y escritura. La latencia total es útil para experiencia; el desglose es útil para arreglar problemas. Sin él, optimizar el modelo puede no cambiar nada si el cuello de botella está en una API.",
+            "Observa distribución y percentiles, no solo promedio. Un p95 creciente puede anticipar saturación antes de que el promedio resulte alarmante. Segmenta por proceso y herramienta para evitar que flujos rápidos escondan flujos lentos dentro de una media global."
+          ],
+          "en": [
+            "Record duration for data retrieval, model, tools, queues, approvals and writes. Total latency is useful for experience; breakdown is useful for fixing problems. Without it, optimising the model may change nothing if the bottleneck is an API.",
+            "Observe distribution and percentiles, not only averages. A rising p95 can reveal saturation before the average becomes alarming. Segment by process and tool so fast workflows do not hide slow ones inside a global mean."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Crea una taxonomía de errores que sirva para operar",
+          "en": "6. Create an error taxonomy that supports operations"
+        },
+        "paragraphs": {
+          "es": [
+            "Separa errores de infraestructura, autenticación, permisos, rate limit, timeout, validación, datos, políticas, negocio y salida del modelo. Añade un código estable además del mensaje humano. Esto permite contar tendencias sin depender de textos que cambian entre versiones.",
+            "Asigna propietario y acción inicial a cada familia. Un error de credenciales puede ir a plataforma; una contradicción entre CRM y ERP, a datos o proceso; una violación de política, a control. El objetivo es que el error llegue al equipo que puede corregirlo."
+          ],
+          "en": [
+            "Separate infrastructure, authentication, permission, rate-limit, timeout, validation, data, policy, business and model-output errors. Add a stable code as well as a human-readable message. This supports trend counting without depending on text that changes across versions.",
+            "Assign an owner and first action to every family. A credential error may belong to platform; a CRM/ERP contradiction to data or process; a policy violation to control. The objective is for the error to reach the team that can correct it."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Registra uso de herramientas y efectos",
+          "en": "7. Record tool usage and effects"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada herramienta debe registrar operación, objetivo, duración, resultado y efecto confirmado. Si crea un registro, guarda el identificador devuelto; si actualiza un estado, registra el estado anterior y el nuevo cuando sea adecuado y seguro. La trazabilidad debe demostrar qué cambió.",
+            "Distingue intento de efecto confirmado. Un timeout después de enviar una petición puede dejarte sin saber si el sistema destino ejecutó la operación. Usa idempotencia y consultas de verificación para resolver estados ambiguos en lugar de marcar simplemente el caso como error."
+          ],
+          "en": [
+            "Every tool should record operation, target, duration, outcome and confirmed effect. If it creates a record, store the returned identifier; if it changes a status, record previous and new state when appropriate and safe. Traceability should demonstrate what changed.",
+            "Distinguish attempt from confirmed effect. A timeout after sending a request may leave you unsure whether the destination system executed it. Use idempotency and verification queries to resolve ambiguous states instead of simply marking the case as failed."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Mide intervención humana como señal de calidad",
+          "en": "8. Measure human intervention as a quality signal"
+        },
+        "paragraphs": {
+          "es": [
+            "Registra qué casos requieren aprobación, escalado, corrección o intervención completa. Estas métricas muestran dónde la automatización necesita apoyo. Una tasa alta no siempre es mala si la política exige revisión, por lo que debes segmentar por tipo de acción y nivel de riesgo.",
+            "Captura motivos estructurados de rechazo y corrección. Con el tiempo podrás distinguir si el problema es falta de contexto, mala clasificación, una regla demasiado restrictiva o una respuesta de baja calidad. Esa información guía mejoras mucho mejor que una etiqueta genérica de fallo."
+          ],
+          "en": [
+            "Record which cases require approval, escalation, correction or full human handling. These metrics show where automation needs support. A high rate is not always bad when policy requires review, so segment by action type and risk level.",
+            "Capture structured reasons for rejection and correction. Over time you can distinguish whether the problem is missing context, poor classification, an overly restrictive rule or low-quality output. That information guides improvement far better than a generic failure label."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Define métricas de calidad específicas por tarea",
+          "en": "9. Define task-specific quality metrics"
+        },
+        "paragraphs": {
+          "es": [
+            "No existe una única métrica de calidad para todos los Empleados IA. En clasificación puedes medir precisión contra una muestra revisada; en extracción, campos correctos; en email, correcciones antes de envío; en facturación, discrepancias; en atención, reaperturas o escalados.",
+            "Evita depender únicamente de evaluación automática del propio modelo. Puede ser útil como señal secundaria, pero combina con reglas deterministas, resultados del sistema y revisión humana. Las métricas deben conectarse con consecuencias observables del trabajo."
+          ],
+          "en": [
+            "There is no single quality metric for every AI Employee. In classification you can measure accuracy against a reviewed sample; in extraction, correct fields; in email, edits before sending; in invoicing, discrepancies; in support, reopenings or escalations.",
+            "Avoid relying only on automated evaluation by the model itself. It may be useful as a secondary signal, but combine it with deterministic rules, system outcomes and human review. Metrics should connect to observable consequences of the work."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Calcula coste por caso y coste por resolución",
+          "en": "10. Calculate cost per case and per resolution"
+        },
+        "paragraphs": {
+          "es": [
+            "Suma consumo de modelo, herramientas de pago, infraestructura y tiempo humano cuando sea medible. El coste por caso permite comparar procesos; el coste por resolución incorpora calidad porque penaliza casos que requieren repetir trabajo o corregir errores.",
+            "Busca colas largas y distribuciones, no solo promedio. Algunos casos excepcionales pueden consumir una parte desproporcionada del presupuesto. Quizá convenga derivarlos pronto a una persona o usar una ruta distinta en vez de optimizar todo el sistema para esos extremos."
+          ],
+          "en": [
+            "Add model usage, paid tools, infrastructure and human time where measurable. Cost per case supports process comparison; cost per resolution includes quality because it penalises cases that require repeated work or correction.",
+            "Look at long tails and distributions, not only averages. Some exceptional cases may consume a disproportionate share of budget. It may be better to route them early to a person or use a different path rather than optimise the entire system for those extremes."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Establece una línea base antes de buscar drift",
+          "en": "11. Establish a baseline before looking for drift"
+        },
+        "paragraphs": {
+          "es": [
+            "Para detectar deriva necesitas saber qué es normal. Define un periodo estable y registra rangos habituales de volumen, latencia, errores, escalados, uso de herramientas, coste y calidad. La línea base puede variar por día de semana, temporada o segmento.",
+            "No conviertas cualquier cambio en incidente. Compara contra contexto y busca desviaciones persistentes o combinaciones significativas. Por ejemplo, más casos puede explicar más errores absolutos; lo relevante quizá sea que la tasa de error también aumente."
+          ],
+          "en": [
+            "To detect drift you need to know what normal looks like. Define a stable period and record usual ranges for volume, latency, errors, escalations, tool use, cost and quality. Baselines may vary by weekday, season or segment.",
+            "Do not turn every change into an incident. Compare against context and look for persistent deviations or meaningful combinations. More cases may explain more absolute errors; what matters may be whether the error rate also rises."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Versiona todo lo que pueda cambiar comportamiento",
+          "en": "12. Version everything that can change behaviour"
+        },
+        "paragraphs": {
+          "es": [
+            "Registra versión de modelo, prompt, reglas, herramientas, conectores, fuentes de conocimiento y configuración relevante. Si una métrica empeora después de un cambio, necesitas poder responder qué versión procesó cada caso y cuándo comenzó el despliegue.",
+            "No hace falta exponer secretos ni guardar configuraciones completas en cada evento. Un identificador de versión es suficiente si existe un repositorio donde reconstruirla. La clave es conectar resultados operativos con cambios concretos."
+          ],
+          "en": [
+            "Record versions of the model, prompt, rules, tools, connectors, knowledge sources and relevant configuration. If a metric degrades after a change, you need to know which version processed each case and when rollout began.",
+            "You do not need to expose secrets or store full configuration in every event. A version identifier is enough if a repository can reconstruct it. The key is connecting operational outcomes to concrete changes."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Construye alertas sobre síntomas con respuesta definida",
+          "en": "13. Build alerts around symptoms with a defined response"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza con pocas alertas importantes: caída de éxito, aumento de errores críticos, crecimiento de p95, cola acumulada, coste anómalo, uso inesperado de herramientas o violación de política. Cada alerta debe tener umbral, ventana temporal, severidad y responsable.",
+            "Añade un runbook corto: comprobar dependencia, revisar versión, inspeccionar casos correlacionados, activar modo seguro o escalar. Si la alerta no conduce a una acción clara, probablemente necesita mejor diseño o debe ser una métrica de panel en lugar de una notificación."
+          ],
+          "en": [
+            "Start with a small set of important alerts: falling success, rising critical errors, increasing p95, queue buildup, abnormal cost, unexpected tool use or policy violation. Every alert should have a threshold, time window, severity and owner.",
+            "Add a short runbook: check dependency, review version, inspect correlated cases, activate safe mode or escalate. If the alert does not lead to a clear action, it probably needs better design or should be a dashboard metric rather than a notification."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Diseña paneles por audiencia",
+          "en": "14. Design dashboards by audience"
+        },
+        "paragraphs": {
+          "es": [
+            "Operaciones necesita salud, colas, errores y SLA. Producto necesita calidad, adopción y fricción. Dirección puede necesitar volumen, ahorro, coste y resultado. Seguridad o cumplimiento pueden necesitar acciones sensibles, accesos y excepciones. Un único panel para todos suele terminar siendo demasiado complejo.",
+            "Aplica permisos también al contenido del panel. Las métricas agregadas pueden estar ampliamente disponibles mientras las trazas de casos concretos quedan restringidas. El principio es mostrar a cada rol suficiente información para actuar sin ampliar innecesariamente el acceso a datos."
+          ],
+          "en": [
+            "Operations needs health, queues, errors and SLA. Product needs quality, adoption and friction. Leadership may need volume, savings, cost and outcomes. Security or compliance may need sensitive actions, access and exceptions. One dashboard for everyone usually becomes too complex.",
+            "Apply permissions to dashboard content too. Aggregate metrics can be broadly available while traces for specific cases remain restricted. The principle is to give every role enough information to act without unnecessarily expanding access to data."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Usa despliegues graduales y comparación entre versiones",
+          "en": "15. Use gradual releases and version comparison"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando cambies una pieza importante, expón primero una fracción controlada del tráfico o un conjunto piloto. Compara versión nueva y anterior en éxito, latencia, coste, calidad, escalados y errores críticos. Esto hace visibles regresiones antes de afectar a toda la operación.",
+            "Define criterios de promoción y rollback por adelantado. Si esperas a ver los resultados para decidir qué métrica importa, puedes adaptar la conclusión al resultado deseado. Los criterios previos hacen la decisión más consistente y auditable."
+          ],
+          "en": [
+            "When changing an important component, expose only a controlled share of traffic or a pilot set first. Compare the new and previous versions on success, latency, cost, quality, escalations and critical errors. This makes regressions visible before they affect the whole operation.",
+            "Define promotion and rollback criteria in advance. If you wait for results to decide which metric matters, you can adapt the conclusion to the desired outcome. Predefined criteria make the decision more consistent and auditable."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Conecta observabilidad con rollback y mejora continua",
+          "en": "16. Connect observability to rollback and continuous improvement"
+        },
+        "paragraphs": {
+          "es": [
+            "La monitorización debe poder cambiar el estado operativo. Si una herramienta falla, desactívala o vuelve a una ruta segura. Si aumenta el riesgo, reduce autonomía y exige aprobación. Si una versión empeora métricas críticas, revierte. Las señales solo son útiles si existe capacidad de respuesta.",
+            "Revisa semanal o periódicamente los principales errores, costes y excepciones y convierte los hallazgos en un backlog priorizado. Después comprueba si cada cambio mejora la métrica objetivo. Así la observabilidad deja de ser un archivo de logs y se convierte en el sistema de aprendizaje de la operación."
+          ],
+          "en": [
+            "Monitoring should be able to change operating state. If a tool fails, disable it or return to a safe path. If risk rises, reduce autonomy and require approval. If a version worsens critical metrics, roll back. Signals are useful only when response capability exists.",
+            "Review the main errors, costs and exceptions weekly or on an appropriate cadence and turn findings into a prioritised backlog. Then verify whether each change improves the target metric. Observability stops being a log archive and becomes the learning system for operations."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Monitoriza el proceso completo, no solo el modelo.",
+        "Usa eventos estructurados y un ID de correlación para reconstruir cada caso.",
+        "Combina métricas técnicas, de negocio, calidad, intervención humana y coste.",
+        "Define taxonomías de error y versiones para localizar causas rápidamente.",
+        "Crea alertas accionables con responsables, runbooks y umbrales previos.",
+        "Conecta métricas con despliegues graduales, rollback y reducción de autonomía."
+      ],
+      "en": [
+        "Monitor the whole process, not only the model.",
+        "Use structured events and a correlation ID to reconstruct every case.",
+        "Combine technical, business, quality, human-intervention and cost metrics.",
+        "Define error taxonomies and versions to locate causes quickly.",
+        "Create actionable alerts with owners, runbooks and predefined thresholds.",
+        "Connect metrics to gradual releases, rollback and autonomy reduction."
+      ]
+    },
+    "relatedLandingKey": "ai-employee-observability",
+    "publishedAt": "2026-09-30",
+    "updatedAt": "2026-09-30"
+  }
+]
