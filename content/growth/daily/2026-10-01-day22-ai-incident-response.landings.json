@@ -1,0 +1,378 @@
+[
+  {
+    "key": "ai-employee-incident-response",
+    "slugs": {
+      "es": "respuesta-incidentes-empleados-ia-empresas",
+      "en": "ai-employee-incident-response-business"
+    },
+    "seoTitle": {
+      "es": "Respuesta a incidentes de Empleados IA | IA Empleado",
+      "en": "AI Employee incident response for business | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Diseña respuesta a incidentes para Empleados IA con contención, modo seguro, rollback, trazabilidad, comunicación y recuperación operativa.",
+      "en": "Design AI Employee incident response with containment, safe mode, rollback, traceability, communication and operational recovery."
+    },
+    "eyebrow": {
+      "es": "Resiliencia operativa de IA",
+      "en": "AI operational resilience"
+    },
+    "title": {
+      "es": "Respuesta a incidentes para Empleados IA: contener, recuperar y aprender sin detener el negocio.",
+      "en": "AI Employee incident response: contain, recover and learn without stopping the business."
+    },
+    "lead": {
+      "es": "Cuando un Empleado IA entra en producción, el riesgo ya no es solo que una respuesta sea imperfecta. También pueden fallar conectores, permisos, datos, reglas, proveedores o despliegues. Una estrategia de respuesta a incidentes permite detectar qué está ocurriendo, reducir el alcance, volver a un estado seguro, recuperar el servicio y documentar lo aprendido. La resiliencia no consiste en evitar todos los fallos, sino en limitar su impacto y recuperar el control rápidamente.",
+      "en": "When an AI Employee enters production, the risk is no longer only that a response may be imperfect. Connectors, permissions, data, rules, providers or releases can also fail. An incident-response strategy helps detect what is happening, reduce scope, return to a safe state, restore service and document what was learned. Resilience is not about preventing every failure, but limiting impact and regaining control quickly."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Define qué considera la empresa un incidente",
+          "en": "1. Define what the business considers an incident"
+        },
+        "paragraphs": {
+          "es": [
+            "No todo error técnico es un incidente. Un reintento automático que se resuelve sin impacto puede quedar como evento operativo. En cambio, una acción fuera de política, una modificación incorrecta en un sistema, una fuga de información, una degradación sostenida o una cola que impide cumplir SLA sí pueden requerir gestión formal.",
+            "Define categorías y ejemplos antes de que ocurra el problema. Esto evita discusiones durante una situación crítica y permite que operaciones, negocio y tecnología compartan el mismo lenguaje. La clasificación debe considerar impacto, alcance, reversibilidad, sensibilidad de los datos y necesidad de intervención humana."
+          ],
+          "en": [
+            "Not every technical error is an incident. An automatic retry that resolves without impact may remain an operational event. By contrast, an out-of-policy action, an incorrect system change, information exposure, sustained degradation or a queue that prevents SLA compliance may require formal management.",
+            "Define categories and examples before a problem occurs. This avoids debate during a critical situation and gives operations, business and technology a shared language. Classification should consider impact, scope, reversibility, data sensitivity and the need for human intervention."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Establece niveles de severidad y responsables",
+          "en": "2. Establish severity levels and owners"
+        },
+        "paragraphs": {
+          "es": [
+            "Una incidencia menor puede gestionarse dentro del equipo operativo; una acción con impacto financiero o datos sensibles puede requerir dirección, seguridad o cumplimiento. Define niveles de severidad con criterios observables y asigna quién coordina, quién investiga y quién puede autorizar medidas de contención.",
+            "La severidad también ayuda a priorizar tiempos de respuesta. No todos los incidentes necesitan la misma urgencia, pero todos deberían tener una ruta conocida. La claridad de roles reduce duplicidades y evita que varias personas cambien el sistema simultáneamente sin coordinación."
+          ],
+          "en": [
+            "A minor issue may be handled within the operations team; an action involving financial impact or sensitive data may require leadership, security or compliance. Define severity levels with observable criteria and assign who coordinates, who investigates and who can authorise containment measures.",
+            "Severity also helps prioritise response times. Not every incident needs the same urgency, but every incident should have a known path. Clear roles reduce duplication and prevent several people from changing the system at the same time without coordination."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Diseña contención granular",
+          "en": "3. Design granular containment"
+        },
+        "paragraphs": {
+          "es": [
+            "Ante un problema no siempre conviene apagar todo. Si falla una herramienta concreta, puedes bloquear solo esa integración; si el problema afecta a escrituras, puedes mantener lectura y borradores; si una organización concreta presenta datos inconsistentes, puedes aislar ese tenant sin afectar al resto.",
+            "La capacidad de contener por herramienta, proceso, organización o nivel de autonomía reduce el radio de impacto. Diseña estas palancas antes del incidente y prueba que realmente funcionan. Una opción de emergencia que nunca se ha validado puede fallar precisamente cuando más se necesita."
+          ],
+          "en": [
+            "When a problem occurs, shutting everything down is not always the best response. If one tool fails, you can block only that integration; if the issue affects writes, you can keep read access and drafts; if one organisation has inconsistent data, you can isolate that tenant without affecting others.",
+            "The ability to contain by tool, process, organisation or autonomy level reduces blast radius. Design these controls before an incident and test that they really work. An emergency option that has never been validated may fail precisely when it is needed most."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Mantén un modo seguro operativo",
+          "en": "4. Maintain an operational safe mode"
+        },
+        "paragraphs": {
+          "es": [
+            "Un modo seguro debe permitir que el servicio siga aportando valor con menos riesgo. Puede convertir acciones automáticas en propuestas, exigir aprobación humana, desactivar herramientas de escritura o limitarse a consultar información. La degradación controlada suele ser mejor que una caída completa.",
+            "Define qué funciones permanecen disponibles, qué mensaje reciben usuarios y clientes y qué condiciones permiten volver al modo normal. El modo seguro no debe improvisarse durante una crisis; debe formar parte de la arquitectura y de los procedimientos de operación."
+          ],
+          "en": [
+            "A safe mode should allow the service to keep creating value with less risk. It can turn automatic actions into proposals, require human approval, disable write tools or limit operation to information retrieval. Controlled degradation is often better than a complete outage.",
+            "Define which functions remain available, what message users and customers receive and which conditions allow return to normal mode. Safe mode should not be improvised during a crisis; it should be part of the architecture and operating procedures."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Prepara rollback de modelos, prompts, reglas y conectores",
+          "en": "5. Prepare rollback for models, prompts, rules and connectors"
+        },
+        "paragraphs": {
+          "es": [
+            "Los incidentes pueden aparecer después de cambiar una versión de modelo, una instrucción, una política o un conector. Cada componente que pueda alterar comportamiento necesita una versión identificable y una ruta clara para volver al estado anterior.",
+            "El rollback debe incluir dependencias compatibles. Volver un prompt sin revertir una herramienta que cambió su contrato puede no restaurar el comportamiento esperado. Mantén una matriz sencilla de versiones compatibles y automatiza el retorno cuando sea posible."
+          ],
+          "en": [
+            "Incidents can appear after changing a model version, an instruction, a policy or a connector. Every component capable of changing behaviour needs an identifiable version and a clear path back to the previous state.",
+            "Rollback should include compatible dependencies. Reverting a prompt without reverting a tool whose contract changed may not restore expected behaviour. Maintain a simple compatibility matrix and automate return paths where possible."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Conserva evidencia sin copiar datos innecesarios",
+          "en": "6. Preserve evidence without copying unnecessary data"
+        },
+        "paragraphs": {
+          "es": [
+            "Investigar exige conservar eventos, identificadores, versiones, decisiones, llamadas a herramientas y resultados relevantes. Pero responder a un incidente no justifica duplicar indiscriminadamente información sensible. Registra lo necesario para reconstruir la secuencia y usa referencias cuando el contenido original ya existe en otro sistema.",
+            "Protege el acceso a esta evidencia. Los logs de incidente pueden contener detalles más sensibles que los paneles habituales, por lo que conviene aplicar permisos específicos, retención definida y auditoría de acceso. La trazabilidad debe mejorar control, no crear una nueva superficie de riesgo."
+          ],
+          "en": [
+            "Investigation requires preserving events, identifiers, versions, decisions, tool calls and relevant outcomes. But incident response does not justify copying sensitive information indiscriminately. Record what is necessary to reconstruct the sequence and use references when the original content already exists elsewhere.",
+            "Protect access to this evidence. Incident logs may contain more sensitive detail than normal dashboards, so specific permissions, defined retention and access auditing are appropriate. Traceability should improve control, not create a new risk surface."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Reconstruye la línea temporal del caso",
+          "en": "7. Reconstruct the case timeline"
+        },
+        "paragraphs": {
+          "es": [
+            "Utiliza el identificador de correlación para ordenar entrada, recuperación de datos, decisiones, aprobaciones, herramientas, errores, reintentos y efectos confirmados. La línea temporal ayuda a diferenciar causa, síntoma y consecuencia y evita basarse solo en la última alerta recibida.",
+            "Incluye también cambios de configuración y despliegues cercanos al momento del incidente. Saber qué versión estaba activa y qué se modificó recientemente reduce el espacio de búsqueda y facilita decidir si conviene revertir, contener o corregir directamente."
+          ],
+          "en": [
+            "Use the correlation identifier to order intake, data retrieval, decisions, approvals, tools, errors, retries and confirmed effects. The timeline helps separate cause, symptom and consequence and prevents relying only on the last alert received.",
+            "Also include configuration changes and releases close to the incident time. Knowing which version was active and what changed recently reduces the search space and helps decide whether to roll back, contain or correct directly."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Distingue impacto técnico de impacto de negocio",
+          "en": "8. Separate technical impact from business impact"
+        },
+        "paragraphs": {
+          "es": [
+            "Un error puede afectar a miles de llamadas sin alterar ningún dato de negocio, mientras que una única acción incorrecta puede tener impacto financiero o reputacional elevado. Evalúa ambos planos por separado para asignar severidad y priorizar recuperación.",
+            "Mide cuántos casos, clientes, organizaciones, documentos o transacciones están afectados y qué consecuencias reales se han producido. Esta información orienta comunicación, remediación y decisiones sobre si reabrir procesos, repetir acciones o contactar a usuarios."
+          ],
+          "en": [
+            "An error can affect thousands of calls without changing any business data, while one incorrect action can have major financial or reputational impact. Evaluate both dimensions separately when assigning severity and prioritising recovery.",
+            "Measure how many cases, customers, organisations, documents or transactions are affected and what actual consequences occurred. This information guides communication, remediation and decisions about reopening processes, replaying actions or contacting users."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Define comunicaciones internas y externas",
+          "en": "9. Define internal and external communication"
+        },
+        "paragraphs": {
+          "es": [
+            "Durante un incidente, operaciones necesita instrucciones concretas; dirección necesita impacto y evolución; atención al cliente puede necesitar un mensaje coherente; seguridad o cumplimiento pueden necesitar detalles específicos. Prepara plantillas y responsables para no redactar desde cero bajo presión.",
+            "La comunicación externa debe ser proporcional y basada en hechos confirmados. Evita especular sobre causa antes de terminar la investigación. Explica qué servicio está afectado, qué alternativa existe y cuándo se proporcionará la siguiente actualización cuando sea necesario."
+          ],
+          "en": [
+            "During an incident, operations needs concrete instructions; leadership needs impact and progress; customer support may need consistent messaging; security or compliance may need specific detail. Prepare templates and owners so teams are not writing from scratch under pressure.",
+            "External communication should be proportionate and based on confirmed facts. Avoid speculating about cause before investigation is complete. Explain which service is affected, what alternative exists and when the next update will be provided when appropriate."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Recupera primero el servicio mínimo seguro",
+          "en": "10. Restore the minimum safe service first"
+        },
+        "paragraphs": {
+          "es": [
+            "La recuperación no siempre exige resolver la causa raíz de inmediato. Primero puedes restaurar una versión conocida, desactivar una función problemática o redirigir casos a revisión humana. Después investiga y corrige con más calma sin mantener el negocio bloqueado.",
+            "Define qué significa mínimo seguro para cada proceso. En atención puede ser generar borradores sin enviar; en administración, consultar datos pero no escribir; en facturación, preparar documentos sin emitirlos. Esta definición acelera decisiones durante la recuperación."
+          ],
+          "en": [
+            "Recovery does not always require immediately solving the root cause. You can first restore a known version, disable a problematic function or route cases to human review. Then investigate and correct with more time without keeping the business blocked.",
+            "Define what minimum safe service means for each process. In support it may mean drafting without sending; in administration, reading data but not writing; in invoicing, preparing documents without issuing them. This definition speeds decisions during recovery."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Verifica antes de volver a autonomía normal",
+          "en": "11. Verify before returning to normal autonomy"
+        },
+        "paragraphs": {
+          "es": [
+            "Después de aplicar una corrección, prueba casos representativos y excepciones antes de reactivar automatización completa. Comprueba integraciones, permisos, políticas, trazas y métricas. Una recuperación apresurada puede generar un segundo incidente y complicar el diagnóstico.",
+            "Restaura autonomía por etapas cuando sea posible. Empieza con muestreo, aprobación humana o un porcentaje limitado y observa comportamiento durante una ventana definida. Solo amplía cuando las señales vuelvan a rangos aceptables."
+          ],
+          "en": [
+            "After applying a correction, test representative cases and exceptions before restoring full automation. Check integrations, permissions, policies, traces and metrics. A rushed recovery can create a second incident and complicate diagnosis.",
+            "Restore autonomy in stages where possible. Start with sampling, human approval or a limited percentage and observe behaviour for a defined window. Expand only when signals return to acceptable ranges."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Documenta causa raíz y factores contribuyentes",
+          "en": "12. Document root cause and contributing factors"
+        },
+        "paragraphs": {
+          "es": [
+            "No te limites a encontrar el componente que falló. Pregunta por qué el fallo llegó a producción, por qué no se detectó antes y por qué el impacto fue el que fue. Puede existir una causa técnica y varios factores contribuyentes: falta de test, permisos amplios, alertas débiles o rollback lento.",
+            "Una revisión útil evita buscar culpables y se centra en mejorar el sistema. Describe hechos, decisiones y barreras que funcionaron o fallaron. Esto produce acciones concretas que reducen la probabilidad o el impacto de incidentes similares."
+          ],
+          "en": [
+            "Do not stop at finding the component that failed. Ask why the failure reached production, why it was not detected earlier and why the impact was what it was. There may be one technical cause and several contributing factors: missing tests, broad permissions, weak alerts or slow rollback.",
+            "A useful review avoids blame and focuses on improving the system. Describe facts, decisions and barriers that worked or failed. This produces concrete actions that reduce the likelihood or impact of similar incidents."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Convierte cada incidente en mejoras verificables",
+          "en": "13. Turn every incident into verifiable improvements"
+        },
+        "paragraphs": {
+          "es": [
+            "Las acciones posteriores deben tener propietario, fecha y criterio de cierre. Evita conclusiones vagas como mejorar monitorización. Es mejor definir añadir una alerta para determinada condición, limitar un permiso, crear un test de regresión o reducir el tiempo objetivo de rollback.",
+            "Después verifica que la mejora funciona. Ejecuta simulaciones, tests o revisiones periódicas. Una acción marcada como completada sin comprobar su efecto puede dejar la misma debilidad oculta hasta el siguiente incidente."
+          ],
+          "en": [
+            "Follow-up actions should have an owner, date and closure criterion. Avoid vague conclusions such as improve monitoring. It is better to define adding an alert for a specific condition, restricting a permission, creating a regression test or reducing target rollback time.",
+            "Then verify that the improvement works. Run simulations, tests or periodic reviews. An action marked complete without checking its effect can leave the same weakness hidden until the next incident."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Practica antes de necesitarlo",
+          "en": "14. Practise before you need it"
+        },
+        "paragraphs": {
+          "es": [
+            "Realiza ejercicios sencillos: un conector devuelve datos inválidos, una credencial expira, una versión aumenta errores o una acción de escritura debe bloquearse. Comprueba si el equipo sabe quién decide, cómo activar modo seguro y dónde encontrar la evidencia.",
+            "Los simulacros revelan dependencias que la documentación no muestra: accesos que faltan, alertas que no llegan, rollback demasiado lento o responsables que no están disponibles. Corregir estas fricciones en un ejercicio es mucho más barato que descubrirlas durante un incidente real."
+          ],
+          "en": [
+            "Run simple exercises: a connector returns invalid data, a credential expires, a version increases errors or a write action must be blocked. Check whether the team knows who decides, how to activate safe mode and where to find evidence.",
+            "Exercises reveal dependencies that documentation does not show: missing access, alerts that do not arrive, rollback that is too slow or owners who are unavailable. Fixing these frictions in a drill is far cheaper than discovering them during a real incident."
+          ]
+        }
+      }
+    ],
+    "workflow": {
+      "title": {
+        "es": "Ciclo de respuesta a incidentes para Empleados IA",
+        "en": "AI Employee incident-response cycle"
+      },
+      "steps": {
+        "es": [
+          "Detecta y clasifica el evento por impacto y severidad.",
+          "Asigna coordinador y responsables técnicos y de negocio.",
+          "Contén el alcance por herramienta, proceso, tenant o nivel de autonomía.",
+          "Activa modo seguro o rollback cuando sea necesario.",
+          "Preserva evidencia y reconstruye la línea temporal.",
+          "Evalúa impacto técnico y de negocio por separado.",
+          "Recupera el servicio mínimo seguro.",
+          "Valida la corrección y restaura autonomía gradualmente.",
+          "Documenta causa raíz y factores contribuyentes.",
+          "Convierte hallazgos en acciones verificables y practica el procedimiento."
+        ],
+        "en": [
+          "Detect and classify the event by impact and severity.",
+          "Assign a coordinator plus technical and business owners.",
+          "Contain scope by tool, process, tenant or autonomy level.",
+          "Activate safe mode or rollback where necessary.",
+          "Preserve evidence and reconstruct the timeline.",
+          "Evaluate technical and business impact separately.",
+          "Restore the minimum safe service.",
+          "Validate the fix and restore autonomy gradually.",
+          "Document root cause and contributing factors.",
+          "Turn findings into verifiable actions and practise the procedure."
+        ]
+      }
+    },
+    "metrics": {
+      "es": [
+        "Tiempo hasta detección",
+        "Tiempo hasta contención",
+        "Tiempo hasta recuperación",
+        "Casos y organizaciones afectadas",
+        "Acciones revertidas o corregidas",
+        "Incidentes por causa y severidad",
+        "Porcentaje recuperado mediante rollback",
+        "Tiempo en modo seguro",
+        "Reincidencias por causa raíz",
+        "Acciones post-incidente completadas y verificadas"
+      ],
+      "en": [
+        "Time to detection",
+        "Time to containment",
+        "Time to recovery",
+        "Cases and organisations affected",
+        "Actions reverted or corrected",
+        "Incidents by cause and severity",
+        "Share recovered through rollback",
+        "Time spent in safe mode",
+        "Recurrence by root cause",
+        "Post-incident actions completed and verified"
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "es": "¿Qué es un incidente en un Empleado IA?",
+          "en": "What is an incident in an AI Employee?"
+        },
+        "answer": {
+          "es": "Es un evento que afecta o puede afectar de forma relevante a disponibilidad, datos, seguridad, cumplimiento, resultados de negocio o control operativo, y que requiere una respuesta coordinada.",
+          "en": "It is an event that materially affects or may affect availability, data, security, compliance, business outcomes or operational control and requires a coordinated response."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Hay que apagar el Empleado IA ante cualquier problema?",
+          "en": "Do you need to shut down the AI Employee for every problem?"
+        },
+        "answer": {
+          "es": "No. La mejor respuesta suele ser granular: bloquear una herramienta, desactivar escrituras, reducir autonomía o aislar un proceso concreto mientras el resto continúa funcionando.",
+          "en": "No. The best response is usually granular: block one tool, disable writes, reduce autonomy or isolate one process while the rest keeps working."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué es el modo seguro?",
+          "en": "What is safe mode?"
+        },
+        "answer": {
+          "es": "Es un estado operativo con capacidades limitadas y menor riesgo, por ejemplo solo lectura, generación de borradores o acciones sujetas a aprobación humana.",
+          "en": "It is an operating state with reduced capability and lower risk, for example read-only access, draft generation or actions subject to human approval."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cuándo conviene hacer rollback?",
+          "en": "When should you roll back?"
+        },
+        "answer": {
+          "es": "Cuando existe evidencia de que un cambio reciente está relacionado con la degradación y volver a una versión conocida permite recuperar estabilidad más rápido que corregir en caliente.",
+          "en": "When evidence links a recent change to degradation and returning to a known version can restore stability faster than fixing it live."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Qué información debe conservarse durante un incidente?",
+          "en": "What information should be preserved during an incident?"
+        },
+        "answer": {
+          "es": "Eventos, identificadores, versiones, decisiones, herramientas, resultados y cambios relevantes, aplicando minimización de datos y permisos adecuados.",
+          "en": "Relevant events, identifiers, versions, decisions, tools, outcomes and changes, while applying data minimisation and appropriate access controls."
+        }
+      },
+      {
+        "question": {
+          "es": "¿Cómo se evita repetir el mismo incidente?",
+          "en": "How do you prevent the same incident from happening again?"
+        },
+        "answer": {
+          "es": "Mediante análisis de causa raíz, acciones concretas con propietario y criterio de cierre, tests de regresión, mejoras de alertas y simulaciones que verifiquen que las nuevas barreras funcionan.",
+          "en": "Through root-cause analysis, concrete actions with owners and closure criteria, regression tests, alert improvements and exercises that verify the new safeguards work."
+        }
+      }
+    ],
+    "relatedArticleKey": "ai-incident-response-playbook",
+    "publishedAt": "2026-10-01",
+    "updatedAt": "2026-10-01"
+  }
+]

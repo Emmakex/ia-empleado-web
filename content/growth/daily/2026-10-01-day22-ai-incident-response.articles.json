@@ -1,0 +1,308 @@
+[
+  {
+    "key": "ai-incident-response-playbook",
+    "slugs": {
+      "es": "playbook-respuesta-incidentes-empleados-ia",
+      "en": "ai-employee-incident-response-playbook"
+    },
+    "seoTitle": {
+      "es": "Playbook de respuesta a incidentes para Empleados IA | IA Empleado",
+      "en": "AI Employee incident response playbook | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía para crear un playbook de incidentes de IA con severidad, contención, rollback, comunicación, recuperación, postmortem y simulacros.",
+      "en": "Guide to building an AI incident playbook with severity, containment, rollback, communication, recovery, postmortems and drills."
+    },
+    "title": {
+      "es": "Cómo crear un playbook de respuesta a incidentes para Empleados IA",
+      "en": "How to build an incident response playbook for AI Employees"
+    },
+    "excerpt": {
+      "es": "Un procedimiento práctico para preparar equipos, contener fallos, recuperar servicio y convertir cada incidente en mejoras verificables.",
+      "en": "A practical procedure for preparing teams, containing failures, restoring service and turning every incident into verifiable improvements."
+    },
+    "intro": {
+      "es": "Un Empleado IA en producción forma parte de un sistema distribuido: datos, modelos, conectores, reglas, permisos, colas, personas y aplicaciones empresariales. Cuando algo falla, investigar únicamente el último mensaje del modelo suele ser insuficiente. Un playbook de incidentes define por adelantado cómo clasificar el problema, quién coordina, qué controles pueden reducir el alcance, qué evidencia conservar, cómo recuperar el servicio y cómo verificar que el riesgo ha vuelto a un nivel aceptable. El objetivo es reducir improvisación, tiempo de recuperación y repetición de errores.",
+      "en": "An AI Employee in production is part of a distributed system: data, models, connectors, rules, permissions, queues, people and business applications. When something fails, investigating only the model's last message is usually insufficient. An incident playbook defines in advance how to classify the problem, who coordinates, which controls can reduce scope, what evidence to preserve, how to restore service and how to verify that risk has returned to an acceptable level. The goal is to reduce improvisation, recovery time and repeated mistakes."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Define el alcance del playbook",
+          "en": "1. Define the playbook scope"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza aclarando qué sistemas y procesos cubre: atención al cliente, correo, administración, facturación, integraciones y herramientas compartidas. Incluye componentes externos relevantes como APIs, proveedores de modelo, bases de conocimiento y servicios de autenticación.",
+            "No intentes documentar cada posible fallo. Define familias de incidentes y controles comunes. Un playbook útil permite actuar con rapidez ante situaciones nuevas porque explica principios, responsables y palancas disponibles, no porque anticipe cada detalle."
+          ],
+          "en": [
+            "Start by clarifying which systems and processes are covered: customer support, email, administration, invoicing, integrations and shared tools. Include relevant external components such as APIs, model providers, knowledge bases and authentication services.",
+            "Do not try to document every possible failure. Define incident families and common controls. A useful playbook supports rapid action in new situations because it explains principles, owners and available levers rather than predicting every detail."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Crea una tabla de severidad",
+          "en": "2. Create a severity table"
+        },
+        "paragraphs": {
+          "es": [
+            "Define niveles con ejemplos concretos. Severidad baja puede ser una degradación sin impacto visible; media, un proceso con errores repetidos o SLA comprometido; alta, una acción incorrecta sobre datos críticos; crítica, un problema de seguridad, privacidad o impacto amplio que exige contención inmediata.",
+            "Para cada nivel fija tiempos objetivo de reconocimiento, contención y actualización. También especifica quién debe ser informado. Esta tabla reduce ambigüedad y evita que un incidente importante quede oculto porque técnicamente afecta a pocos eventos."
+          ],
+          "en": [
+            "Define levels with concrete examples. Low severity may be degradation without visible impact; medium, a process with repeated errors or threatened SLA; high, an incorrect action on critical data; critical, a security, privacy or broad-impact problem requiring immediate containment.",
+            "For each level set target times for acknowledgement, containment and updates. Also specify who must be informed. This table reduces ambiguity and prevents an important incident from being overlooked simply because it affects few technical events."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Asigna roles antes del incidente",
+          "en": "3. Assign roles before the incident"
+        },
+        "paragraphs": {
+          "es": [
+            "Define un coordinador de incidente, responsables técnicos por plataforma e integraciones, un representante del proceso de negocio y contactos de seguridad o cumplimiento cuando corresponda. La misma persona puede cubrir varios roles en equipos pequeños, pero las responsabilidades deben estar claras.",
+            "El coordinador organiza prioridades y comunicación; no necesita ejecutar todas las correcciones. Separar coordinación de investigación evita que la persona más técnica quede saturada intentando depurar y actualizar a todos al mismo tiempo."
+          ],
+          "en": [
+            "Define an incident coordinator, technical owners for platform and integrations, a business-process representative and security or compliance contacts where relevant. In smaller teams one person may cover several roles, but responsibilities should still be explicit.",
+            "The coordinator organises priorities and communication and does not need to execute every fix. Separating coordination from investigation prevents the most technical person from becoming overloaded while debugging and updating everyone at the same time."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Documenta las palancas de contención",
+          "en": "4. Document containment levers"
+        },
+        "paragraphs": {
+          "es": [
+            "Lista qué puedes desactivar sin desplegar código: una herramienta, una acción de escritura, un tenant, una automatización concreta, un proveedor, una cola o un nivel de autonomía. Indica dónde se encuentra el control y quién está autorizado a usarlo.",
+            "Incluye efectos secundarios. Desactivar ERP puede impedir completar pedidos; bloquear envío de email puede dejar borradores pendientes. Saber qué impacto produce cada palanca ayuda a elegir la contención mínima necesaria."
+          ],
+          "en": [
+            "List what can be disabled without deploying code: a tool, a write action, one tenant, one automation, a provider, a queue or an autonomy level. Record where the control is located and who is authorised to use it.",
+            "Include side effects. Disabling ERP may prevent order completion; blocking email sending may leave drafts pending. Knowing the impact of each lever helps choose the minimum necessary containment."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Define el modo seguro por proceso",
+          "en": "5. Define safe mode per process"
+        },
+        "paragraphs": {
+          "es": [
+            "El modo seguro debe estar adaptado al trabajo. En atención puede permitir leer y redactar sin enviar; en administración, consultar y preparar sin modificar; en facturación, calcular y generar borradores sin emitir. Así se mantiene parte del valor mientras se reduce riesgo.",
+            "Especifica cómo se activa, cómo se comunica al usuario y qué métricas indican que está funcionando. También define qué acciones quedan prohibidas. Un modo seguro ambiguo puede generar nuevas inconsistencias durante la recuperación."
+          ],
+          "en": [
+            "Safe mode should match the work. In support it may allow reading and drafting without sending; in administration, reading and preparing without modifying; in invoicing, calculating and generating drafts without issuing. This preserves some value while reducing risk.",
+            "Specify how it is activated, how it is communicated to the user and which metrics show it is working. Also define prohibited actions. An ambiguous safe mode can create new inconsistencies during recovery."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Prepara un inventario de versiones y rollback",
+          "en": "6. Prepare a version and rollback inventory"
+        },
+        "paragraphs": {
+          "es": [
+            "Mantén identificables las versiones de modelo, prompt, reglas, herramientas, conectores y conocimiento. El playbook debe indicar cómo volver a una combinación conocida y qué dependencias deben revertirse juntas.",
+            "Prueba el rollback periódicamente. Un procedimiento que funcionó hace meses puede romperse por cambios de infraestructura o datos. Mide cuánto tarda desde la decisión hasta que la versión anterior está realmente activa."
+          ],
+          "en": [
+            "Keep model, prompt, rule, tool, connector and knowledge versions identifiable. The playbook should explain how to return to a known combination and which dependencies need to be reverted together.",
+            "Test rollback periodically. A procedure that worked months ago may break after infrastructure or data changes. Measure how long it takes from the decision until the previous version is actually active."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Define qué evidencia preservar",
+          "en": "7. Define what evidence to preserve"
+        },
+        "paragraphs": {
+          "es": [
+            "Conserva case_id, timestamps, versiones, eventos, errores, llamadas a herramientas, aprobaciones y efectos confirmados relevantes. Incluye cambios recientes de configuración y despliegues. Esta información permite reconstruir la secuencia sin depender de memoria o capturas aisladas.",
+            "Aplica minimización. No conviertas el playbook en una excusa para almacenar contenido completo indefinidamente. Utiliza referencias a sistemas fuente, retención limitada y controles de acceso para datos sensibles."
+          ],
+          "en": [
+            "Preserve case_id, timestamps, versions, events, errors, tool calls, approvals and relevant confirmed effects. Include recent configuration changes and releases. This information supports sequence reconstruction without relying on memory or isolated screenshots.",
+            "Apply minimisation. Do not turn the playbook into an excuse to store complete content indefinitely. Use references to source systems, limited retention and access controls for sensitive data."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Establece un procedimiento de triaje",
+          "en": "8. Establish a triage procedure"
+        },
+        "paragraphs": {
+          "es": [
+            "Las primeras preguntas deben ser simples: ¿sigue ocurriendo?, ¿qué procesos afecta?, ¿hay escrituras o datos sensibles implicados?, ¿qué cambió recientemente?, ¿existe una ruta segura disponible? Estas respuestas orientan contención antes de entrar en una investigación profunda.",
+            "Evita modificar múltiples componentes a la vez durante el triaje. Cada cambio adicional puede ocultar la causa original. Prioriza estabilizar, registrar lo observado y probar hipótesis de forma controlada."
+          ],
+          "en": [
+            "The first questions should be simple: is it still happening, which processes are affected, are writes or sensitive data involved, what changed recently and is a safe path available? These answers guide containment before deep investigation begins.",
+            "Avoid changing multiple components at once during triage. Every additional change can hide the original cause. Prioritise stabilisation, record observations and test hypotheses in a controlled way."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Evalúa el radio de impacto",
+          "en": "9. Assess the blast radius"
+        },
+        "paragraphs": {
+          "es": [
+            "Determina cuántos casos, usuarios, organizaciones, herramientas y sistemas están afectados. Diferencia entre casos potencialmente expuestos y casos con impacto confirmado. Esta distinción evita tanto minimizar como exagerar el problema.",
+            "Segmenta por tiempo y versión. Quizá solo estén afectados los casos procesados después de un despliegue o una organización con una configuración concreta. Cuanto mejor delimites el alcance, más precisa será la remediación."
+          ],
+          "en": [
+            "Determine how many cases, users, organisations, tools and systems are affected. Distinguish potentially exposed cases from cases with confirmed impact. This avoids both minimising and exaggerating the problem.",
+            "Segment by time and version. Only cases processed after a release or one organisation with a specific configuration may be affected. The better you delimit scope, the more precise remediation can be."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Diseña una matriz de comunicación",
+          "en": "10. Design a communication matrix"
+        },
+        "paragraphs": {
+          "es": [
+            "Para cada severidad define destinatarios, canal, frecuencia y responsable de actualización. Operaciones necesita instrucciones; negocio necesita impacto; dirección necesita evolución; clientes pueden necesitar información cuando el servicio o sus datos están afectados.",
+            "Utiliza hechos confirmados y separa claramente lo conocido de lo que sigue investigándose. Una buena actualización incluye estado actual, alcance, medidas tomadas, riesgos abiertos y próxima revisión."
+          ],
+          "en": [
+            "For each severity define recipients, channel, frequency and update owner. Operations needs instructions; business needs impact; leadership needs progress; customers may need information when service or their data is affected.",
+            "Use confirmed facts and clearly separate what is known from what remains under investigation. A good update includes current status, scope, actions taken, open risks and the next review point."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Recupera con una estrategia por etapas",
+          "en": "11. Recover with a staged strategy"
+        },
+        "paragraphs": {
+          "es": [
+            "Primero busca estabilidad: versión conocida, herramienta desactivada o modo seguro. Después valida un conjunto pequeño de casos y amplía gradualmente. Evita pasar directamente de incidente activo a automatización completa sin una fase de observación.",
+            "Define métricas de recuperación: tasa de éxito, ausencia de errores críticos, latencia, cola y resultado de casos muestreados. La recuperación termina cuando el servicio es estable, no simplemente cuando desaparece la alerta inicial."
+          ],
+          "en": [
+            "First seek stability: a known version, disabled tool or safe mode. Then validate a small set of cases and expand gradually. Avoid moving directly from an active incident to full automation without an observation phase.",
+            "Define recovery metrics: success rate, absence of critical errors, latency, queue depth and sampled case outcomes. Recovery ends when the service is stable, not merely when the initial alert disappears."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Define remediación para casos ya afectados",
+          "en": "12. Define remediation for affected cases"
+        },
+        "paragraphs": {
+          "es": [
+            "Recuperar el sistema no corrige automáticamente efectos anteriores. Identifica registros, mensajes, documentos o transacciones afectados y decide si deben revertirse, corregirse, reenviarse o revisarse manualmente.",
+            "Automatiza la remediación solo cuando sea segura y verificable. En casos sensibles puede ser mejor generar una lista de acciones propuestas para aprobación humana. Conserva evidencia de qué se corrigió y con qué resultado."
+          ],
+          "en": [
+            "Restoring the system does not automatically correct earlier effects. Identify affected records, messages, documents or transactions and decide whether they must be reverted, corrected, resent or manually reviewed.",
+            "Automate remediation only when it is safe and verifiable. In sensitive cases it may be better to generate a proposed-action list for human approval. Preserve evidence of what was corrected and with what outcome."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Realiza un postmortem basado en hechos",
+          "en": "13. Run a fact-based postmortem"
+        },
+        "paragraphs": {
+          "es": [
+            "Documenta línea temporal, impacto, detección, contención, recuperación, causa raíz y factores contribuyentes. Señala qué controles funcionaron y cuáles no. La revisión debe ayudar a mejorar arquitectura y operación, no buscar una persona a la que atribuir el problema.",
+            "Diferencia causa de condición. Un conector pudo devolver un dato incorrecto, pero el impacto quizá fue posible porque no existía validación o porque el permiso era demasiado amplio. Corregir solo el primer fallo deja las demás debilidades intactas."
+          ],
+          "en": [
+            "Document timeline, impact, detection, containment, recovery, root cause and contributing factors. Record which controls worked and which did not. The review should improve architecture and operations rather than find an individual to blame.",
+            "Separate cause from condition. A connector may have returned incorrect data, but impact may have been possible because validation was missing or permission was too broad. Fixing only the first failure leaves other weaknesses intact."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Convierte conclusiones en tareas verificables",
+          "en": "14. Turn conclusions into verifiable tasks"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada mejora debe indicar propietario, prioridad y criterio de aceptación. Ejemplos: añadir una validación, restringir un scope, crear una alerta, incorporar un test, reducir tiempo de rollback o documentar una dependencia externa.",
+            "Evita acumular decenas de acciones de baja prioridad. Prioriza las que reducen probabilidad o impacto de forma significativa y comprueba después que la barrera realmente funciona mediante pruebas o simulaciones."
+          ],
+          "en": [
+            "Every improvement should have an owner, priority and acceptance criterion. Examples include adding validation, restricting a scope, creating an alert, adding a test, reducing rollback time or documenting an external dependency.",
+            "Avoid accumulating dozens of low-priority actions. Prioritise those that significantly reduce likelihood or impact and later verify that the safeguard actually works through tests or exercises."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Crea simulacros sencillos y repetibles",
+          "en": "15. Create simple repeatable drills"
+        },
+        "paragraphs": {
+          "es": [
+            "Simula fallos concretos en entornos seguros: API no disponible, credencial caducada, resultado fuera de política, cola saturada o despliegue defectuoso. Mide si el equipo detecta el problema, activa contención y recupera dentro de los tiempos esperados.",
+            "Varía escenarios para comprobar dependencias distintas. No hace falta un ejercicio complejo; una prueba breve y frecuente suele encontrar más fricciones operativas que un simulacro anual muy elaborado."
+          ],
+          "en": [
+            "Simulate concrete failures in safe environments: unavailable API, expired credential, out-of-policy result, saturated queue or faulty release. Measure whether the team detects the issue, activates containment and recovers within expected times.",
+            "Vary scenarios to test different dependencies. The exercise does not need to be complex; short frequent tests often reveal more operational friction than one elaborate annual drill."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Revisa el playbook después de cambios importantes",
+          "en": "16. Review the playbook after major changes"
+        },
+        "paragraphs": {
+          "es": [
+            "Nuevas herramientas, procesos, proveedores y niveles de autonomía cambian las opciones de contención y recuperación. Incluye la revisión del playbook en lanzamientos relevantes para que responsables, enlaces y procedimientos no queden obsoletos.",
+            "Comprueba especialmente accesos de emergencia, rutas de rollback, contactos y modo seguro. Un documento actualizado pero controles técnicos desfasados sigue siendo insuficiente. El playbook debe reflejar capacidades reales del sistema."
+          ],
+          "en": [
+            "New tools, processes, providers and autonomy levels change containment and recovery options. Include playbook review in significant releases so owners, links and procedures do not become obsolete.",
+            "Check emergency access, rollback paths, contacts and safe mode in particular. An updated document with outdated technical controls is still insufficient. The playbook must reflect the system's real capabilities."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Define severidad, responsables y tiempos antes de que ocurra un incidente.",
+        "Diseña contención granular, modo seguro y rollback como capacidades técnicas reales.",
+        "Conserva evidencia suficiente aplicando minimización y control de acceso.",
+        "Recupera por etapas y mide estabilidad antes de restaurar autonomía completa.",
+        "Corrige también los efectos ya producidos, no solo la causa técnica.",
+        "Convierte cada postmortem en tareas verificables y prueba el playbook con simulacros."
+      ],
+      "en": [
+        "Define severity, owners and target times before an incident occurs.",
+        "Design granular containment, safe mode and rollback as real technical capabilities.",
+        "Preserve enough evidence while applying minimisation and access control.",
+        "Recover in stages and measure stability before restoring full autonomy.",
+        "Correct effects already produced, not only the technical cause.",
+        "Turn every postmortem into verifiable tasks and test the playbook through drills."
+      ]
+    },
+    "relatedLandingKey": "ai-employee-incident-response",
+    "publishedAt": "2026-10-01",
+    "updatedAt": "2026-10-01"
+  }
+]
