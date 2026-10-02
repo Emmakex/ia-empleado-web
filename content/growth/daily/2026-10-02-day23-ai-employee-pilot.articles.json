@@ -1,0 +1,308 @@
+[
+  {
+    "key": "how-to-run-ai-employee-pilot",
+    "slugs": {
+      "es": "como-lanzar-piloto-empleado-ia-empresa",
+      "en": "how-to-run-ai-employee-pilot-business"
+    },
+    "seoTitle": {
+      "es": "Cómo lanzar un piloto de Empleado IA en una empresa | IA Empleado",
+      "en": "How to run an AI Employee pilot in a business | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía paso a paso para lanzar un piloto de Empleado IA con línea base, alcance, datos, integraciones, supervisión, métricas y decisión de escala.",
+      "en": "Step-by-step guide to running an AI Employee pilot with a baseline, scope, data, integrations, oversight, metrics and scale decision."
+    },
+    "title": {
+      "es": "Cómo lanzar un piloto de Empleado IA y decidir si merece escalar",
+      "en": "How to run an AI Employee pilot and decide whether it deserves to scale"
+    },
+    "excerpt": {
+      "es": "Una guía práctica para convertir una idea de automatización con IA en un piloto medible, controlado y útil para tomar una decisión de negocio.",
+      "en": "A practical guide to turning an AI automation idea into a measurable, controlled pilot that supports a business decision."
+    },
+    "intro": {
+      "es": "Los pilotos de IA fallan a menudo por dos motivos opuestos: se quedan en una demo demasiado pequeña para demostrar valor real o intentan abarcar tantos procesos que resulta imposible saber qué funciona. Un piloto de Empleado IA debe situarse entre ambos extremos. Tiene que operar sobre un proceso real, con datos e integraciones suficientes para ser representativo, pero con límites claros para controlar riesgo y atribuir resultados. Esta guía propone una secuencia práctica para seleccionar el caso, medir el punto de partida, diseñar la intervención, operar con supervisión y decidir si el sistema debe escalar.",
+      "en": "AI pilots often fail for two opposite reasons: they remain demos that are too small to prove real value, or they try to cover so many processes that it becomes impossible to know what works. An AI Employee pilot should sit between these extremes. It needs to operate on a real process, with enough data and integrations to be representative, while keeping clear boundaries so risk can be controlled and outcomes can be attributed. This guide proposes a practical sequence for selecting the case, measuring the starting point, designing the intervention, operating with oversight and deciding whether the system should scale."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Elige un proceso con suficiente volumen",
+          "en": "1. Choose a process with enough volume"
+        },
+        "paragraphs": {
+          "es": [
+            "Necesitas suficientes casos para observar patrones, errores y excepciones. Si el proceso ocurre dos veces al mes, el piloto puede tardar demasiado en generar evidencia. Prioriza actividades frecuentes donde el equipo pueda aportar una muestra representativa en un periodo razonable.",
+            "Volumen no significa necesariamente miles de casos. Lo importante es que haya repetición suficiente para comparar comportamiento y distinguir coincidencias de mejoras consistentes. Define antes un mínimo de casos observados para cerrar la evaluación."
+          ],
+          "en": [
+            "You need enough cases to observe patterns, errors and exceptions. If a process occurs twice a month, the pilot may take too long to generate evidence. Prioritise frequent activities where the team can provide a representative sample within a reasonable period.",
+            "Volume does not necessarily mean thousands of cases. What matters is enough repetition to compare behaviour and distinguish coincidence from consistent improvement. Define a minimum number of observed cases before closing evaluation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Comprueba que el proceso sea suficientemente estable",
+          "en": "2. Check that the process is stable enough"
+        },
+        "paragraphs": {
+          "es": [
+            "Un proceso en plena redefinición es un mal candidato. Si las reglas, responsables o sistemas cambian constantemente, cualquier resultado quedará mezclado con esos cambios. El piloto funciona mejor cuando existe una forma relativamente estable de hacer el trabajo hoy.",
+            "Eso no significa que el proceso deba ser perfecto. Puede tener tareas manuales, fricción y excepciones, precisamente porque quieres mejorarlo. Lo importante es conocer el recorrido actual y poder describir qué cambia durante la prueba."
+          ],
+          "en": [
+            "A process undergoing constant redesign is a poor candidate. If rules, owners or systems keep changing, any result will be mixed with those changes. A pilot works best when there is a relatively stable way of doing the work today.",
+            "This does not mean the process must be perfect. It may contain manual tasks, friction and exceptions, precisely because you want to improve it. What matters is understanding the current workflow and being able to describe what changes during the test."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Escribe una hipótesis de valor concreta",
+          "en": "3. Write a concrete value hypothesis"
+        },
+        "paragraphs": {
+          "es": [
+            "Formula qué esperas mejorar y por qué. Por ejemplo: si el Empleado IA clasifica solicitudes y prepara respuestas con contexto de CRM, el equipo podrá reducir tiempo de primera respuesta sin aumentar correcciones. La hipótesis conecta la tecnología con una consecuencia medible.",
+            "Incluye también qué no intentas demostrar. Un piloto de correo puede evaluar clasificación y borradores, pero no necesariamente ventas, satisfacción anual o ahorro global de plantilla. Limitar la hipótesis mantiene la evaluación honesta."
+          ],
+          "en": [
+            "State what you expect to improve and why. For example: if the AI Employee classifies requests and drafts responses using CRM context, the team can reduce first-response time without increasing corrections. The hypothesis connects technology to a measurable consequence.",
+            "Also state what you are not trying to prove. An email pilot may evaluate classification and drafting, but not necessarily sales, annual satisfaction or global staffing savings. Limiting the hypothesis keeps evaluation honest."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Mide el proceso actual antes de intervenir",
+          "en": "4. Measure the current process before intervening"
+        },
+        "paragraphs": {
+          "es": [
+            "Registra durante una muestra razonable volumen, tiempos, errores, retrabajo, escalados, pasos manuales y coste aproximado. Si es posible, mide por tipo de caso porque los simples y los complejos suelen tener comportamientos muy distintos.",
+            "Documenta cómo se obtuvo la línea base y qué limitaciones tiene. No necesitas precisión contable absoluta para tomar una buena decisión, pero sí una referencia suficientemente consistente para comparar el piloto con el trabajo anterior."
+          ],
+          "en": [
+            "Across a reasonable sample, record volume, time, errors, rework, escalations, manual steps and approximate cost. Where possible, measure by case type because simple and complex cases often behave very differently.",
+            "Document how the baseline was obtained and its limitations. You do not need accounting-level precision to make a good decision, but you do need a consistent enough reference to compare the pilot with previous work."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Describe exactamente el alcance",
+          "en": "5. Describe the exact scope"
+        },
+        "paragraphs": {
+          "es": [
+            "Especifica entradas, salidas, herramientas, usuarios y tipos de caso incluidos. También lista exclusiones: idiomas no soportados, importes superiores a cierto límite, clientes especiales, documentos sensibles o sistemas que todavía no se conectan.",
+            "Un alcance escrito evita que el éxito dependa de expectativas distintas entre equipos. También permite analizar un error en contexto: un caso que estaba fuera del piloto no debería contar como fallo del sistema, pero sí puede convertirse en candidato para una fase posterior."
+          ],
+          "en": [
+            "Specify inputs, outputs, tools, users and included case types. Also list exclusions: unsupported languages, amounts above a threshold, special customers, sensitive documents or systems not yet connected.",
+            "A written scope prevents success from depending on different expectations across teams. It also lets you analyse an error in context: a case outside the pilot should not count as a system failure, but it may become a candidate for a later phase."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Selecciona los datos mínimos necesarios",
+          "en": "6. Select the minimum necessary data"
+        },
+        "paragraphs": {
+          "es": [
+            "Identifica qué información necesita realmente el Empleado IA para resolver el proceso. Evita conectar bases completas por comodidad. Cuanto menor sea el conjunto de datos, más fácil será controlar permisos, calidad, privacidad y comportamiento.",
+            "Antes del lanzamiento revisa duplicados, campos vacíos, formatos inconsistentes y fuentes contradictorias. Los problemas de datos se convierten rápidamente en problemas aparentes de IA. Corregirlos o diseñar reglas de excepción mejora la interpretación de resultados."
+          ],
+          "en": [
+            "Identify what information the AI Employee actually needs to complete the process. Avoid connecting complete databases for convenience. The smaller the data set, the easier it becomes to control permissions, quality, privacy and behaviour.",
+            "Before launch review duplicates, missing fields, inconsistent formats and conflicting sources. Data problems quickly become apparent AI problems. Correcting them or designing exception rules improves interpretation of results."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Diseña integraciones con permisos mínimos",
+          "en": "7. Design integrations with least privilege"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada conector debería exponer solo las operaciones necesarias para el piloto. Si el agente necesita consultar pedidos y crear tareas, no necesita permisos generales para borrar clientes o modificar contabilidad. Los scopes reducidos limitan el impacto de errores y simplifican auditoría.",
+            "Separa lectura y escritura cuando sea posible. Durante las primeras iteraciones puedes habilitar consultas reales y mantener las escrituras detrás de aprobación humana. Así validas contexto e integración antes de conceder más autonomía."
+          ],
+          "en": [
+            "Each connector should expose only the operations required by the pilot. If the agent needs to read orders and create tasks, it does not need broad permission to delete customers or modify accounting. Narrow scopes limit error impact and simplify auditing.",
+            "Separate read and write access where possible. During early iterations you can enable real queries while keeping writes behind human approval. This validates context and integration before granting more autonomy."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Decide qué hará la persona y qué hará la IA",
+          "en": "8. Decide what the person does and what the AI does"
+        },
+        "paragraphs": {
+          "es": [
+            "Dibuja el reparto de trabajo: el agente puede leer, resumir, clasificar, recuperar datos, proponer y ejecutar determinadas acciones; la persona puede aprobar, resolver excepciones o tomar decisiones de mayor impacto. Esta frontera debe estar clara antes del piloto.",
+            "Evita colocar humanos como validadores de cada detalle si no aporta valor. Si todo se revisa línea por línea, el piloto medirá una herramienta de ayuda y no una automatización. Diseña revisión proporcional al riesgo."
+          ],
+          "en": [
+            "Map the division of work: the agent may read, summarise, classify, retrieve data, propose and execute certain actions; the person may approve, resolve exceptions or make higher-impact decisions. This boundary should be clear before the pilot.",
+            "Avoid using people as validators of every detail when it adds no value. If everything is reviewed line by line, the pilot measures an assistance tool rather than automation. Design review in proportion to risk."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Establece métricas de negocio, calidad y seguridad",
+          "en": "9. Set business, quality and safety metrics"
+        },
+        "paragraphs": {
+          "es": [
+            "No evalúes únicamente velocidad. Un proceso puede ser más rápido y producir más errores. Combina tiempo, volumen, resolución, retrabajo, intervención humana, coste, errores críticos y cumplimiento de políticas. La combinación debe reflejar el resultado que importa al negocio.",
+            "Define umbrales o rangos objetivo antes de lanzar. Por ejemplo, reducir tiempo sin superar cierto porcentaje de correcciones y sin incidentes críticos. Esto evita declarar éxito basándote solo en la métrica que salió mejor."
+          ],
+          "en": [
+            "Do not evaluate speed alone. A workflow can become faster while producing more errors. Combine time, volume, resolution, rework, human intervention, cost, critical errors and policy compliance. The combination should reflect the outcome that matters to the business.",
+            "Define thresholds or target ranges before launch. For example, reduce time without exceeding a certain correction rate and without critical incidents. This prevents success from being declared based only on the metric that happened to improve most."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Define un grupo piloto y un periodo de observación",
+          "en": "10. Define a pilot group and observation period"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza con un grupo pequeño pero representativo de usuarios o casos. Evita seleccionar únicamente ejemplos sencillos porque crearán una imagen demasiado optimista. Incluye variabilidad suficiente para encontrar excepciones habituales sin exponer todo el negocio.",
+            "En lugar de fijar solo una fecha final, define también un volumen mínimo. Si una semana tiene poca actividad, quizá no obtengas suficiente evidencia. El cierre debería ocurrir cuando se alcance una muestra útil y se hayan observado condiciones relevantes."
+          ],
+          "en": [
+            "Start with a small but representative group of users or cases. Avoid selecting only simple examples because they create an overly optimistic picture. Include enough variability to encounter common exceptions without exposing the whole business.",
+            "Instead of setting only an end date, define a minimum volume as well. If one week has low activity, you may not gather enough evidence. Closure should happen when a useful sample has been reached and relevant conditions have been observed."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Instrumenta el piloto desde el primer día",
+          "en": "11. Instrument the pilot from day one"
+        },
+        "paragraphs": {
+          "es": [
+            "Asigna identificadores de caso y registra etapas, herramientas, errores, tiempos, aprobaciones, correcciones y resultados. Sin observabilidad será difícil explicar por qué una métrica cambia o investigar casos discrepantes.",
+            "Mantén versiones de modelo, prompts, reglas e integraciones. Cuando ajustes el sistema durante el piloto, podrás separar resultados por versión y evitar mezclar comportamientos antiguos y nuevos en una única media."
+          ],
+          "en": [
+            "Assign case identifiers and record stages, tools, errors, times, approvals, corrections and outcomes. Without observability it becomes difficult to explain why a metric changes or investigate discrepant cases.",
+            "Keep versions of models, prompts, rules and integrations. When you adjust the system during the pilot, you can separate results by version and avoid mixing old and new behaviour into one average."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "12. Diseña criterios de pausa y rollback",
+          "en": "12. Design pause and rollback criteria"
+        },
+        "paragraphs": {
+          "es": [
+            "Especifica qué situaciones requieren detener escrituras, volver a aprobación humana, aislar una integración o regresar a la versión anterior. Ejemplos: error crítico, aumento sostenido de correcciones, datos inconsistentes o comportamiento inesperado tras un despliegue.",
+            "Prueba los mecanismos antes del lanzamiento. Saber teóricamente que existe un modo seguro no basta si nadie sabe activarlo o si tarda demasiado. La capacidad de retroceder aumenta la confianza para experimentar de forma responsable."
+          ],
+          "en": [
+            "Specify which situations require stopping writes, returning to human approval, isolating an integration or reverting to the previous version. Examples include critical errors, sustained correction increases, inconsistent data or unexpected behaviour after a release.",
+            "Test these mechanisms before launch. Knowing that a safe mode theoretically exists is not enough if nobody knows how to activate it or if it takes too long. The ability to step back increases confidence for responsible experimentation."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "13. Revisa casos fallidos con una taxonomía común",
+          "en": "13. Review failed cases with a common taxonomy"
+        },
+        "paragraphs": {
+          "es": [
+            "Clasifica cada problema por origen probable: datos, modelo, instrucciones, integración, regla, permiso, interfaz o proceso. Añade severidad y si fue detectado automáticamente o por una persona. Esta taxonomía convierte anécdotas en patrones.",
+            "No todos los fallos justifican cambiar el modelo. Si la mayoría procede de una fuente de datos incompleta o una API lenta, la mejora debe dirigirse allí. El piloto ayuda a descubrir qué componente limita realmente el valor."
+          ],
+          "en": [
+            "Classify each problem by likely source: data, model, instructions, integration, rule, permission, interface or process. Add severity and whether it was detected automatically or by a person. This taxonomy turns anecdotes into patterns.",
+            "Not every failure justifies changing the model. If most issues come from an incomplete data source or a slow API, improvement should target that component. The pilot helps discover what really limits value."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "14. Calcula el coste operativo completo",
+          "en": "14. Calculate total operating cost"
+        },
+        "paragraphs": {
+          "es": [
+            "Incluye consumo de modelo, APIs, infraestructura, licencias, almacenamiento y tiempo humano de revisión. Un piloto puede parecer barato por uso de IA pero resultar caro si genera muchas correcciones o requiere supervisión intensa.",
+            "Compara coste por caso y, cuando sea posible, coste por caso resuelto correctamente. Esta segunda métrica penaliza el retrabajo y ofrece una visión más realista de la eficiencia que una cifra técnica de consumo."
+          ],
+          "en": [
+            "Include model usage, APIs, infrastructure, licences, storage and human review time. A pilot may look cheap in AI usage while becoming expensive if it generates many corrections or requires heavy oversight.",
+            "Compare cost per case and, where possible, cost per correctly resolved case. The second metric penalises rework and gives a more realistic view of efficiency than a technical consumption figure."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "15. Haz una revisión final con criterios predefinidos",
+          "en": "15. Run a final review using predefined criteria"
+        },
+        "paragraphs": {
+          "es": [
+            "Presenta línea base, resultados, distribución de casos, calidad, coste, incidentes, feedback y excepciones. Explica qué mejoras se realizaron durante el piloto y separa resultados por versión cuando sea relevante.",
+            "Después compara cada criterio con el objetivo acordado. Evita conclusiones generales como ha funcionado bien. Una decisión útil identifica qué parte está lista, qué parte necesita otra iteración y qué parte no debe escalar todavía."
+          ],
+          "en": [
+            "Present the baseline, outcomes, case distribution, quality, cost, incidents, feedback and exceptions. Explain which improvements were made during the pilot and separate results by version where relevant.",
+            "Then compare each criterion with the agreed target. Avoid general conclusions such as it worked well. A useful decision identifies what is ready, what needs another iteration and what should not scale yet."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "16. Escala con un plan de expansión controlada",
+          "en": "16. Scale with a controlled expansion plan"
+        },
+        "paragraphs": {
+          "es": [
+            "Si el piloto cumple criterios, amplía gradualmente volumen, usuarios, integraciones o autonomía. Cambia una dimensión relevante cada vez y observa el efecto. Esta secuencia facilita atribuir regresiones y mantener control.",
+            "Conserva todo lo aprendido como estándar operativo: permisos, observabilidad, supervisión, tests, rollback, métricas y responsables. El objetivo de un piloto exitoso no es terminar la prueba, sino convertir lo que funcionó en una operación repetible y sostenible."
+          ],
+          "en": [
+            "If the pilot meets its criteria, gradually expand volume, users, integrations or autonomy. Change one meaningful dimension at a time and observe the effect. This sequence makes regressions easier to attribute and keeps control.",
+            "Keep everything learned as an operating standard: permissions, observability, oversight, tests, rollback, metrics and owners. The goal of a successful pilot is not simply to finish the test, but to turn what worked into repeatable, sustainable operations."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Selecciona un proceso frecuente, estable y medible.",
+        "Define hipótesis, alcance y línea base antes de construir.",
+        "Empieza con datos e integraciones mínimos y autonomía limitada.",
+        "Fija criterios de éxito, pausa y rollback antes del lanzamiento.",
+        "Mide calidad, negocio, coste e intervención humana durante la ejecución.",
+        "Escala únicamente cuando la evidencia supere los criterios acordados."
+      ],
+      "en": [
+        "Choose a frequent, stable and measurable process.",
+        "Define the hypothesis, scope and baseline before building.",
+        "Start with minimum data and integrations and limited autonomy.",
+        "Set success, pause and rollback criteria before launch.",
+        "Measure quality, business impact, cost and human intervention during execution.",
+        "Scale only when evidence meets the agreed criteria."
+      ]
+    },
+    "relatedLandingKey": "ai-employee-pilot",
+    "publishedAt": "2026-10-02",
+    "updatedAt": "2026-10-02"
+  }
+]
