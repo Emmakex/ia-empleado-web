@@ -5,7 +5,7 @@ import type { GrowthLandingRecord } from "../lib/growth-content";
 import { blogArticlePath, blogIndexPath, getBlogArticleByKey, growthLandingPath } from "../lib/growth-content";
 import { employeeIndexPath } from "../lib/employee-catalog";
 import { employeeDetailPath } from "../lib/employee-content-engine";
-import { useCaseIndexPath } from "../lib/sector-use-cases";
+import { useCaseDetailPath, useCaseIndexPath } from "../lib/sector-use-cases";
 import { integrationIndexPath } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { roiEstimatorPath } from "../lib/roi-estimator";
@@ -21,8 +21,22 @@ export function GrowthLandingPage({ locale, record }: Props) {
   const canonical = growthLandingPath(record.key, locale);
   const alternate = growthLandingPath(record.key, otherLocale);
   const relatedArticle = getBlogArticleByKey(record.relatedArticleKey);
-  const relatedEmployeeHref = record.key === "ai-customer-support-automation"
-    ? employeeDetailPath("customer-support", locale)
+  const relatedEmployee = record.key === "ai-customer-support-automation"
+    ? {
+        href: employeeDetailPath("customer-support", locale),
+        label: locale === "es" ? "Ver Agente IA de Atención al Cliente" : "View Customer Support AI agent",
+      }
+    : record.key === "ai-invoicing-accounting-automation"
+      ? {
+          href: employeeDetailPath("accounting-billing", locale),
+          label: locale === "es" ? "Ver IA para Contabilidad y Facturación" : "View AI for Accounting and Billing",
+        }
+      : undefined;
+  const relatedUseCase = record.key === "ai-invoicing-accounting-automation"
+    ? {
+        href: useCaseDetailPath("invoice-validation", locale),
+        label: locale === "es" ? "Ver validación de facturas" : "View invoice validation",
+      }
     : undefined;
   const relatedRoiHref = record.key === "ai-employee-cost" || record.key === "ai-employee-roi"
     ? roiEstimatorPath(locale)
@@ -126,11 +140,8 @@ export function GrowthLandingPage({ locale, record }: Props) {
               <h2 id="growth-explore-title">{locale === "es" ? "Explora el producto, los casos de uso y las integraciones relacionadas." : "Explore related product roles, use cases and integrations."}</h2>
             </div>
             <div className="cta-actions">
-              {relatedEmployeeHref ? (
-                <Link className="text-link" href={relatedEmployeeHref}>
-                  {locale === "es" ? "Ver Agente IA de Atención al Cliente" : "View Customer Support AI agent"} →
-                </Link>
-              ) : null}
+              {relatedEmployee ? <Link className="text-link" href={relatedEmployee.href}>{relatedEmployee.label} →</Link> : null}
+              {relatedUseCase ? <Link className="text-link" href={relatedUseCase.href}>{relatedUseCase.label} →</Link> : null}
               {relatedRoiHref ? (
                 <Link className="text-link" href={relatedRoiHref}>
                   {locale === "es" ? "Calcular un escenario de ROI" : "Calculate an ROI scenario"} →
