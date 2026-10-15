@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { EmployeeDetailPage } from "../../../../../components/employee-detail-page";
 import { alternateEmployeePath, employeeDetailPath, getDetailedEmployeeRecords, getEmployeeBySlug } from "../../../../../lib/employee-content-engine";
+import { getEmployeeSeoIntent } from "../../../../../lib/core-seo-intents";
 import { getDictionary } from "../../../../../lib/i18n";
 import { buildRouteSocialMetadata } from "../../../../../lib/seo-social-metadata";
 
@@ -20,13 +21,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const employee = getEmployeeBySlug("en", slug);
   if (!employee) return {};
 
-  const content = employee.content;
+  const seoIntent = getEmployeeSeoIntent(employee.key, "en");
   const canonical = employeeDetailPath(employee.key, "en");
   const alternate = alternateEmployeePath(employee.key, "en");
 
   return {
-    title: content.seoTitle,
-    description: content.seoDescription,
+    title: seoIntent.title,
+    description: seoIntent.description,
     alternates: {
       canonical,
       languages: {
@@ -38,8 +39,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ...buildRouteSocialMetadata({
       locale: "en",
       surface: "employees",
-      title: content.seoTitle,
-      description: content.seoDescription,
+      title: seoIntent.title,
+      description: seoIntent.description,
       canonical,
     }),
   };
