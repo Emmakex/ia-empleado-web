@@ -28,6 +28,11 @@ Every indexable URL must have one primary intent owner. Supporting pages may use
 | `/equipos-ia/turismo` | Equipo IA de Turismo | AI travel team composition | team evaluation |
 | `/empleados-ia-para-pymes` | IA para pymes / empleados IA para pymes | AI Employees for small business | commercial landing |
 | `/automatizacion-atencion-cliente-ia` | automatización de atención al cliente con IA | AI customer service automation | commercial landing |
+| `/automatizacion-facturacion-contabilidad-ia` | `automatización contable` | `accounting automation` | broad accounting process landing |
+| `/blog/como-automatizar-facturacion-contabilidad-con-ia-y-revision-humana` | `automatizar contabilidad` | `how to automate accounting` | broad accounting how-to guide |
+| `/automatizacion-facturas-ia-empresas` | `automatización de facturas` | `invoice automation` | invoice-processing commercial landing |
+| `/blog/como-automatizar-procesamiento-facturas-ia` | `cómo automatizar facturas con IA` | `how to automate invoice processing` | invoice-processing how-to guide |
+| `/casos-de-uso/validacion-facturas` | `validación de facturas` | `invoice validation` | bounded use-case evaluation |
 | `/blog/**` | informational support for a distinct commercial owner | informational support | support content |
 | `/casos-de-uso/**` | specific business use-case intent | specific use-case intent | evaluation |
 | `/sectores/**` | sector-specific AI automation intent | industry-specific AI automation intent | evaluation |
@@ -40,11 +45,24 @@ Research captured on 2026-10-15 and implemented through `lib/core-seo-intents.ts
 
 - Atención al cliente: ES `agentes ia atención al cliente` 140 searches/month, KD 11; EN/UK `ai customer service agent` 140, KD 47.
 - Administrativo: ES `agente ia administrativo` 30; EN/UK `ai administrative assistant` 10.
-- Contabilidad/facturación: ES `ia para contabilidad` 210, KD 46 and `automatización de facturas` 170, KD 25; EN/UK `ai for accounting` 390, KD 63 and `ai invoice automation` 90.
+- Contabilidad/facturación role: ES `ia para contabilidad` 210, KD 46 and `ia contable` 110, KD 50; EN/UK `ai for accounting` 390, KD 63 and `ai accountant` 1,000, KD 47.
 - Ventas/SDR: ES `agente ia ventas` 50, KD 19 and `ia para ventas` 50, KD 37; EN/UK `ai sdr` 390, KD 57 and `ai sales agent` 210, KD 47.
 - Home: ES `agentes ia para empresas` 170, KD 30; EN/UK `ai agents for business` 170, KD 38.
 
 These terms are acquisition vocabulary, not permission to repeat exact-match phrases mechanically in every heading or link.
+
+### Phase 2 accounting and invoice ownership
+
+The accounting cluster is deliberately split by intent instead of forcing accounting, invoices and validation into one URL:
+
+- **Role owner:** `/empleados-ia/contabilidad-facturacion` keeps `ia para contabilidad` / `ai for accounting`. It explains the specialised role, authority boundaries and responsibilities.
+- **Broad accounting commercial owner:** `/automatizacion-facturacion-contabilidad-ia` keeps `automatización contable` / `accounting automation`. Semrush reports ES `automatizacion contable` 110/month, KD 25; UK `accounting automation` 590/month, KD 34 and `automated accounting` 170/month, KD 19.
+- **Broad accounting informational owner:** `/blog/como-automatizar-facturacion-contabilidad-con-ia-y-revision-humana` keeps `automatizar contabilidad` / `how to automate accounting`. Semrush reports ES 30/month for `automatizar contabilidad`; UK 30/month for `how to automate accounting` and 70/month for `automate accounting`.
+- **Invoice-processing commercial owner:** `/automatizacion-facturas-ia-empresas` keeps `automatización de facturas` / `invoice automation`. Supporting demand includes ES `automatización de facturas` 170/month, `automatización de cuentas por pagar` 90/month and `procesamiento de facturas` 50/month; UK `invoice automation` 720/month, `automated invoice processing` 1,000/month, `invoice processing automation` 320/month and `accounts payable automation` 1,300/month.
+- **Invoice-processing informational owner:** `/blog/como-automatizar-procesamiento-facturas-ia` keeps the invoice implementation/how-to intent. Exact Spanish how-to variants had no meaningful reported volume, while UK `how to automate invoice processing` reports 110/month, KD 46 and `automate invoice processing` 210/month, KD 49.
+- **Use-case owner:** `/casos-de-uso/validacion-facturas` stays narrow around invoice validation instead of competing for broad accounting or invoice-automation demand. Semrush ES reports 10–20/month for accented/unaccented `validación de facturas`; UK reports 110/month for `invoice validation`, KD 14.
+
+These owners must link contextually across role → broad process → invoice process → bounded validation where relevant. Supporting vocabulary cannot silently reassign exact category ownership to another page.
 
 ## High-value demand vocabulary
 

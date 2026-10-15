@@ -55,21 +55,21 @@ const employeeIntents: Record<EmployeeKey, Record<Locale, CoreSeoIntent>> = {
   "accounting-billing": {
     es: {
       primaryKeyword: "ia para contabilidad",
-      supportingKeywords: ["automatización de facturas", "ia para facturación", "empleado ia contabilidad"],
+      supportingKeywords: ["ia contable", "agente ia contabilidad", "empleado ia contabilidad"],
       searchIntent: "commercial-investigation",
       decision: "REPOSITION",
       title: "IA para Contabilidad y Facturación | IA Empleado",
       description: "IA para contabilidad y facturación: valida facturas, prepara registros, detecta incidencias y coordina revisiones sin delegar autoridad financiera ilimitada.",
-      researchBasis: "Semrush ES 2026-10-15: 210 búsquedas/mes para 'ia para contabilidad' (KD 46) y 170 para 'automatización de facturas' (KD 25).",
+      researchBasis: "Semrush ES 2026-10-15: 210 búsquedas/mes para 'ia para contabilidad' (KD 46) y 110 para 'ia contable' (KD 50). La automatización contable y de facturas pertenece a la landing de proceso.",
     },
     en: {
       primaryKeyword: "ai for accounting",
-      supportingKeywords: ["ai invoice automation", "ai accounting automation", "ai billing automation"],
+      supportingKeywords: ["ai accountant", "ai accounting agent", "accounting ai agent"],
       searchIntent: "commercial-investigation",
       decision: "REPOSITION",
       title: "AI for Accounting and Billing | AI Employee",
       description: "AI for accounting and billing workflows: validate invoices, prepare records, detect exceptions and keep consequential financial actions under human control.",
-      researchBasis: "Semrush UK 2026-10-15: 390 searches/month for 'ai for accounting' (KD 63) and 90 for 'ai invoice automation'.",
+      researchBasis: "Semrush UK 2026-10-15: 390 searches/month for 'ai for accounting' (KD 63) and 1,000 for 'ai accountant' (KD 47). Accounting and invoice automation belong to the process landing.",
     },
   },
   "sales-sdr": {

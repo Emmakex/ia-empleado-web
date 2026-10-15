@@ -3,10 +3,7 @@
     {
       "key": "private-ai-employee-deployment",
       "decision": "REPOSITION",
-      "primaryKeyword": {
-        "es": "ia privada para empresas",
-        "en": "private ai"
-      },
+      "primaryKeyword": { "es": "ia privada para empresas", "en": "private ai" },
       "supportingKeywords": {
         "es": ["ia privada", "ia local", "ia on premise", "inteligencia artificial privada"],
         "en": ["private ai for business", "on premise ai", "self hosted ai", "private ai infrastructure"]
@@ -15,18 +12,12 @@
         "Semrush ES 2026-10-15: ia privada 210/month, KD 15; ia local 480/month, KD 14; ia privada para empresas 10/month.",
         "Semrush UK 2026-10-15: private ai 390/month, KD 33; on premise ai 90/month, KD 19; self hosted ai 170/month, KD 31."
       ],
-      "seoTitle": {
-        "es": "IA privada para empresas: despliegue local y on-premise | IA Empleado",
-        "en": "Private AI for business: self-hosted and on-premise | IA Empleado"
-      },
+      "seoTitle": { "es": "IA privada para empresas: despliegue local y on-premise | IA Empleado", "en": "Private AI for business: self-hosted and on-premise | IA Empleado" },
       "seoDescription": {
         "es": "Cómo desplegar IA privada para empresas en infraestructura local, dedicada u on-premise con control de datos, identidad, red, secretos, auditoría y actualizaciones.",
         "en": "How to deploy private AI for business in self-hosted, dedicated or on-premise infrastructure with data, identity, network, secret, audit and update controls."
       },
-      "eyebrow": {
-        "es": "IA PRIVADA PARA EMPRESAS · LOCAL · ON-PREMISE",
-        "en": "PRIVATE AI FOR BUSINESS · SELF-HOSTED · ON-PREMISE"
-      },
+      "eyebrow": { "es": "IA PRIVADA PARA EMPRESAS · LOCAL · ON-PREMISE", "en": "PRIVATE AI FOR BUSINESS · SELF-HOSTED · ON-PREMISE" },
       "title": {
         "es": "IA privada para empresas: despliega agentes y Empleados IA con control de datos e infraestructura.",
         "en": "Private AI for business: deploy AI agents and AI Employees with control over data and infrastructure."
@@ -40,10 +31,7 @@
     {
       "key": "ai-business-process-automation",
       "decision": "EXPAND",
-      "primaryKeyword": {
-        "es": "automatización de procesos con ia",
-        "en": "ai process automation"
-      },
+      "primaryKeyword": { "es": "automatización de procesos con ia", "en": "ai process automation" },
       "supportingKeywords": {
         "es": ["automatización de procesos", "automatización con ia", "automatización de procesos empresariales", "automatizar procesos con ia"],
         "en": ["business process automation", "ai workflow automation", "intelligent process automation", "automate business processes with ai"]
@@ -52,18 +40,12 @@
         "Semrush ES 2026-10-15: automatización de procesos con ia 320/month, KD 46; automatización de procesos 1,300/month, KD 32; automatización de procesos empresariales 50/month, KD 12.",
         "Semrush UK 2026-10-15: business process automation 6,600/month, KD 57; ai workflow automation 260/month, KD 42; ai process automation 110/month, KD 26."
       ],
-      "seoTitle": {
-        "es": "Automatización de procesos con IA para empresas | IA Empleado",
-        "en": "AI process automation for business | IA Empleado"
-      },
+      "seoTitle": { "es": "Automatización de procesos con IA para empresas | IA Empleado", "en": "AI process automation for business | IA Empleado" },
       "seoDescription": {
         "es": "Automatiza procesos con IA paso a paso: prioriza el flujo adecuado, conecta sistemas, limita permisos, mide resultados y conserva aprobación humana donde importa.",
         "en": "Automate business processes with AI: choose the right workflow, connect systems, bound permissions, measure outcomes and keep human approval where it matters."
       },
-      "eyebrow": {
-        "es": "AUTOMATIZACIÓN DE PROCESOS CON IA",
-        "en": "AI PROCESS AUTOMATION"
-      },
+      "eyebrow": { "es": "AUTOMATIZACIÓN DE PROCESOS CON IA", "en": "AI PROCESS AUTOMATION" },
       "title": {
         "es": "Automatización de procesos con IA: convierte un flujo empresarial en trabajo coordinado y medible.",
         "en": "AI process automation: turn a business workflow into coordinated, measurable work."
@@ -73,16 +55,61 @@
         "en": "AI process automation means applying artificial intelligence to a specific business workflow rather than connecting a model to an entire company. Value appears when the workflow has a clear input, identified sources of truth, repeatable steps, known exceptions and a measurable outcome. AI can interpret documents or messages, gather context and prepare actions; deterministic rules validate boundaries and authorised systems execute changes. Autonomy should increase only when quality, traceability and risk are under control."
       },
       "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "ai-invoicing-accounting-automation",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatización contable", "en": "accounting automation" },
+      "supportingKeywords": {
+        "es": ["automatizacion contable", "contabilidad con ia", "automatización de contabilidad", "procesos contables con ia"],
+        "en": ["automated accounting", "ai accounting automation", "accounting with ai", "accounting workflow automation"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatizacion contable 110/month, KD 25; contabilidad con ia 30/month. Invoice-specific demand is assigned to the Day 24 invoice-processing landing, while ia para contabilidad 210/month belongs to the employee-role owner.",
+        "Semrush UK 2026-10-15: accounting automation 590/month, KD 34; automated accounting 170/month, KD 19; ai accounting automation 40/month. Invoice automation and accounts-payable demand are assigned to the Day 24 invoice-processing landing."
+      ],
+      "seoTitle": { "es": "Automatización contable con IA | Procesos y revisión humana", "en": "Accounting automation with AI and human review | IA Empleado" },
+      "seoDescription": {
+        "es": "Automatización contable con IA para preparación, comprobaciones, conciliación y excepciones, manteniendo pagos, criterio profesional y decisiones sensibles bajo revisión humana.",
+        "en": "Accounting automation with AI for preparation, checks, reconciliation and exceptions while payments, professional judgement and sensitive decisions remain under human review."
+      },
+      "eyebrow": { "es": "AUTOMATIZACIÓN CONTABLE · IA", "en": "ACCOUNTING AUTOMATION · AI" },
+      "title": {
+        "es": "Automatización contable con IA: reduce preparación y conciliación manual sin delegar el criterio financiero.",
+        "en": "Accounting automation with AI: reduce manual preparation and reconciliation without delegating financial judgement."
+      },
+      "lead": {
+        "es": "La automatización contable con IA aplica inteligencia artificial a trabajo repetitivo de soporte contable: estructurar información, comprobar reglas, preparar registros, proponer conciliaciones y señalar excepciones. La automatización específica de recepción y procesamiento de facturas tiene su propio propietario porque responde a una intención distinta. Aquí el foco es el proceso contable más amplio y cómo reducir preparación manual sin delegar pagos, interpretación fiscal ni criterio profesional.",
+        "en": "Accounting automation with AI applies artificial intelligence to repetitive accounting-support work: structuring information, checking rules, preparing records, proposing reconciliations and flagging exceptions. Invoice intake and processing have their own canonical owner because they satisfy a distinct search intent. This page focuses on the broader accounting workflow and reducing manual preparation without delegating payments, tax interpretation or professional judgement."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "ai-invoice-processing",
+      "decision": "EXPAND",
+      "primaryKeyword": { "es": "automatización de facturas", "en": "invoice automation" },
+      "supportingKeywords": {
+        "es": ["automatizacion de facturas", "procesamiento de facturas", "automatización de cuentas por pagar", "procesamiento de facturas con ia"],
+        "en": ["invoice processing automation", "automated invoice processing", "accounts payable automation", "ai invoice processing"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatización de facturas 170/month, KD 25; automatizacion de facturas 140/month, KD 19; automatización de cuentas por pagar 90/month, KD 22; procesamiento de facturas 50/month, KD 21.",
+        "Semrush UK 2026-10-15: invoice automation 720/month, KD 39; automated invoice processing 1,000/month, KD 38; invoice processing automation 320/month, KD 33; accounts payable automation 1,300/month, KD 44; ai invoice processing 260/month, KD 55."
+      ],
+      "seoTitle": { "es": "Automatización de facturas con IA | Procesamiento y ERP", "en": "Invoice automation with AI | Processing, controls and ERP" },
+      "seoDescription": {
+        "es": "Automatiza el procesamiento de facturas con IA: captura, extracción, duplicados, matching, aprobaciones, ERP y excepciones con controles financieros y revisión humana.",
+        "en": "Automate invoice processing with AI across intake, extraction, duplicates, matching, approvals, ERP posting and exceptions with financial controls and human review."
+      },
+      "eyebrow": { "es": "AUTOMATIZACIÓN DE FACTURAS · CUENTAS A PAGAR", "en": "INVOICE AUTOMATION · ACCOUNTS PAYABLE" },
+      "updatedAt": "2026-10-15"
     }
   ],
   "articles": [
     {
       "key": "how-to-deploy-ai-employee-privately",
       "decision": "REPOSITION",
-      "primaryKeyword": {
-        "es": "ia local",
-        "en": "self hosted ai"
-      },
+      "primaryKeyword": { "es": "ia local", "en": "self hosted ai" },
       "supportingKeywords": {
         "es": ["inteligencia artificial local", "ia on premise", "ia privada", "inteligencia artificial privada"],
         "en": ["self hosted ai agents", "on premise ai", "private ai infrastructure", "private ai deployment"]
@@ -91,18 +118,12 @@
         "Semrush ES 2026-10-15: ia local 480/month, KD 14; inteligencia artificial local 20/month; ia on premise 20/month.",
         "Semrush UK 2026-10-15: self hosted ai 170/month, KD 31; on premise ai 90/month, KD 19; self hosted ai agents 10/month."
       ],
-      "seoTitle": {
-        "es": "IA local y on-premise: guía para desplegar IA privada | IA Empleado",
-        "en": "Self-hosted AI and on-premise deployment guide | IA Empleado"
-      },
+      "seoTitle": { "es": "IA local y on-premise: guía para desplegar IA privada | IA Empleado", "en": "Self-hosted AI and on-premise deployment guide | IA Empleado" },
       "seoDescription": {
         "es": "Guía técnica para evaluar IA local, privada y on-premise: datos, modelos, red, identidad, secretos, observabilidad, backups, actualizaciones y operación.",
         "en": "Technical guide to self-hosted, private and on-premise AI covering data, models, networking, identity, secrets, observability, backups, updates and operations."
       },
-      "title": {
-        "es": "IA local, privada y on-premise: cómo elegir una arquitectura de despliegue",
-        "en": "Self-hosted and on-premise AI: how to choose a private deployment architecture"
-      },
+      "title": { "es": "IA local, privada y on-premise: cómo elegir una arquitectura de despliegue", "en": "Self-hosted and on-premise AI: how to choose a private deployment architecture" },
       "excerpt": {
         "es": "La IA local no consiste solo en instalar un modelo dentro de la empresa. Hay que decidir dónde viven los datos, qué componentes se alojan internamente y quién controla identidad, red, herramientas, registros y actualizaciones.",
         "en": "Self-hosted AI is not simply installing a model inside the company. You need to decide where data lives, which components run internally and who controls identity, networking, tools, logs and updates."
@@ -111,6 +132,54 @@
         "es": "Una arquitectura de IA local o on-premise busca aumentar el control sobre datos, conectividad y operación, pero no obliga a ejecutar todos los componentes en el mismo servidor. Una empresa puede alojar agentes y datos en su infraestructura, utilizar un modelo privado gestionado, combinar servicios externos bajo reglas de salida o aislar completamente determinados procesos. La decisión correcta depende de sensibilidad de datos, requisitos regulatorios, integración con sistemas internos, latencia, capacidad operativa y coste total. Esta guía separa esas decisiones para evitar tratar «IA privada» como una única arquitectura.",
         "en": "A self-hosted or on-premise AI architecture aims to increase control over data, connectivity and operations, but it does not require every component to run on the same server. A business can host agents and data in its own infrastructure, use a managed private model, combine external services under egress rules or fully isolate selected workflows. The right choice depends on data sensitivity, regulatory requirements, integration with internal systems, latency, operational capacity and total cost. This guide separates those decisions so that “private AI” is not treated as one single architecture."
       },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "automate-invoicing-accounting-human-review",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatizar contabilidad", "en": "how to automate accounting" },
+      "supportingKeywords": {
+        "es": ["cómo automatizar contabilidad con ia", "automatización contable con revisión humana", "procesos contables con ia", "contabilidad con ia"],
+        "en": ["automate accounting", "automate accounting with ai", "how to automate accounting with ai", "accounting automation guide"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatizar contabilidad 30/month; exact how-to AI variants had little or no reported volume. Invoice-specific how-to intent belongs to the Day 24 guide.",
+        "Semrush UK 2026-10-15: automate accounting 70/month; how to automate accounting 30/month; automate accounting with ai 10/month."
+      ],
+      "seoTitle": { "es": "Cómo automatizar contabilidad con IA y revisión humana | IA Empleado", "en": "How to automate accounting with AI and human review | IA Empleado" },
+      "seoDescription": {
+        "es": "Guía para automatizar contabilidad con IA: qué tareas empezar, cómo preparar conciliaciones, gestionar excepciones y mantener aprobación humana.",
+        "en": "Guide to automating accounting with AI: where to start, how to prepare reconciliations, manage exceptions and keep human approval."
+      },
+      "title": { "es": "Cómo automatizar contabilidad con IA sin perder la revisión humana", "en": "How to automate accounting with AI without losing human review" },
+      "excerpt": {
+        "es": "Automatizar contabilidad con IA funciona mejor cuando la IA prepara, comprueba y concilia el trabajo repetitivo, mientras las discrepancias, pagos y decisiones sensibles conservan revisión humana.",
+        "en": "Accounting automation works best when AI prepares, checks and reconciles repetitive work while discrepancies, payments and sensitive decisions keep human review."
+      },
+      "intro": {
+        "es": "Para automatizar contabilidad con IA conviene separar preparación, validación y autoridad financiera. La IA puede estructurar datos, aplicar comprobaciones, proponer coincidencias, preparar conciliaciones y explicar excepciones; una persona debe conservar los puntos de revisión definidos para discrepancias, pagos, cierres, criterios contables o interpretación fiscal. El procesamiento de facturas tiene una guía específica y separada. Este enfoque permite medir calidad antes de ampliar autonomía y evita convertir una automatización operativa en una delegación de responsabilidad financiera.",
+        "en": "To automate accounting with AI, separate preparation, validation and financial authority. AI can structure data, run checks, propose matches, prepare reconciliations and explain exceptions; people should retain the review points defined for discrepancies, payments, close activities, accounting judgement or tax interpretation. Invoice processing has its own separate guide. This approach lets teams measure quality before increasing autonomy and avoids turning operational automation into delegated financial responsibility."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "how-to-automate-invoice-processing-ai",
+      "decision": "EXPAND",
+      "primaryKeyword": { "es": "cómo automatizar facturas con ia", "en": "how to automate invoice processing" },
+      "supportingKeywords": {
+        "es": ["automatizar facturas", "automatizar procesamiento de facturas", "procesamiento de facturas con ia", "guía automatización de facturas"],
+        "en": ["automate invoice processing", "how to automate invoices", "automate invoices", "invoice processing with ai"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: exact how-to invoice variants had no meaningful reported volume; the guide is retained because it cleanly serves informational implementation intent behind the commercial invoice-automation owner.",
+        "Semrush UK 2026-10-15: how to automate invoice processing 110/month, KD 46; automate invoice processing 210/month, KD 49; how to automate invoices 20/month; automate invoices 70/month."
+      ],
+      "seoTitle": { "es": "Cómo automatizar facturas con IA paso a paso | IA Empleado", "en": "How to automate invoice processing with AI | IA Empleado" },
+      "seoDescription": {
+        "es": "Guía práctica para automatizar facturas con IA: captura, extracción, duplicados, matching, aprobaciones, ERP, excepciones, trazabilidad y control financiero.",
+        "en": "Practical guide to automating invoice processing with AI across capture, extraction, duplicates, matching, approvals, ERP, exceptions and financial controls."
+      },
+      "title": { "es": "Cómo automatizar facturas con IA sin perder control financiero", "en": "How to automate invoice processing with AI without losing financial control" },
       "updatedAt": "2026-10-15"
     }
   ]

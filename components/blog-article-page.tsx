@@ -4,6 +4,8 @@ import { getDictionary, localeHref } from "../lib/i18n";
 import type { BlogArticleRecord } from "../lib/growth-content";
 import { blogArticlePath, blogIndexPath, getGrowthLandingByKey, growthLandingPath } from "../lib/growth-content";
 import { employeeIndexPath } from "../lib/employee-catalog";
+import { employeeDetailPath } from "../lib/employee-content-engine";
+import { useCaseDetailPath } from "../lib/sector-use-cases";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { requestDemoPath } from "../lib/conversion-handoff";
 import { SiteFooter } from "./site-footer";
@@ -19,6 +21,13 @@ export function BlogArticlePage({ locale, article }: Props) {
   const relatedLanding = getGrowthLandingByKey(article.relatedLandingKey);
   const chatbotComparisonHref = article.key === "what-is-an-ai-employee"
     ? (locale === "es" ? "/comparativas/chatbot" : "/en/comparisons/chatbot")
+    : undefined;
+  const isAccountingGuide = article.key === "automate-invoicing-accounting-human-review" || article.key === "how-to-automate-invoice-processing-ai";
+  const accountingConnections = isAccountingGuide
+    ? {
+        employeeHref: employeeDetailPath("accounting-billing", locale),
+        useCaseHref: useCaseDetailPath("invoice-validation", locale),
+      }
     : undefined;
   const demoHref = requestDemoPath(locale, {
     intent: "demo",
@@ -107,6 +116,22 @@ export function BlogArticlePage({ locale, article }: Props) {
               <div className="container cta-panel">
                 <div><p className="eyebrow">{locale === "es" ? "SIGUE PROFUNDIZANDO" : "GO DEEPER"}</p><h2>{relatedLanding.title[locale]}</h2><p>{relatedLanding.lead[locale]}</p></div>
                 <div className="cta-actions"><Link className="button" href={growthLandingPath(relatedLanding.key, locale)}>{locale === "es" ? "Ver solución" : "View solution"}</Link></div>
+              </div>
+            </section>
+          ) : null}
+
+          {accountingConnections ? (
+            <section className="content-section section-panel" aria-labelledby="accounting-connections-title">
+              <div className="container cta-panel">
+                <div>
+                  <p className="eyebrow">{locale === "es" ? "CONEXIONES DEL CLÚSTER" : "CLUSTER CONNECTIONS"}</p>
+                  <h2 id="accounting-connections-title">{locale === "es" ? "Distingue el rol contable del patrón concreto de validación de facturas." : "Separate the accounting role from the specific invoice-validation pattern."}</h2>
+                  <p>{locale === "es" ? "El perfil de Contabilidad y Facturación explica quién realiza el trabajo; el caso de uso de validación de facturas muestra un flujo acotado con controles y escalado." : "The Accounting and Billing profile explains who performs the work; the invoice-validation use case shows a bounded workflow with controls and escalation."}</p>
+                </div>
+                <div className="cta-actions">
+                  <Link className="button button-ghost" href={accountingConnections.employeeHref}>{locale === "es" ? "Ver IA para Contabilidad" : "View AI for Accounting"}</Link>
+                  <Link className="text-link" href={accountingConnections.useCaseHref}>{locale === "es" ? "Ver validación de facturas" : "View invoice validation"} →</Link>
+                </div>
               </div>
             </section>
           ) : null}
