@@ -17,6 +17,9 @@ export function BlogArticlePage({ locale, article }: Props) {
   const canonical = blogArticlePath(article.key, locale);
   const alternate = blogArticlePath(article.key, otherLocale);
   const relatedLanding = getGrowthLandingByKey(article.relatedLandingKey);
+  const chatbotComparisonHref = article.key === "what-is-an-ai-employee"
+    ? (locale === "es" ? "/comparativas/chatbot" : "/en/comparisons/chatbot")
+    : undefined;
   const demoHref = requestDemoPath(locale, {
     intent: "demo",
     source: `blog:${article.key}`,
@@ -85,6 +88,19 @@ export function BlogArticlePage({ locale, article }: Props) {
               <div className="sector-card-grid">{article.takeaways[locale].map((item) => <article className="sector-card" key={item}><p>{item}</p></article>)}</div>
             </div>
           </section>
+
+          {chatbotComparisonHref ? (
+            <section className="content-section">
+              <div className="container cta-panel">
+                <div>
+                  <p className="eyebrow">{locale === "es" ? "COMPARACIÓN" : "COMPARISON"}</p>
+                  <h2>{locale === "es" ? "¿Buscas decidir entre chatbot y agente IA?" : "Trying to choose between a chatbot and an AI agent?"}</h2>
+                  <p>{locale === "es" ? "Esta guía posee la intención informacional de definir qué es un agente IA. La comparación de alternativas tiene su propia página canónica para evaluar diferencias y escenarios." : "This guide owns the informational definition of an AI agent. The alternatives comparison has its own canonical page for evaluating differences and scenarios."}</p>
+                </div>
+                <div className="cta-actions"><Link className="button button-ghost" href={chatbotComparisonHref}>{locale === "es" ? "Comparar con un chatbot" : "Compare with a chatbot"}</Link></div>
+              </div>
+            </section>
+          ) : null}
 
           {relatedLanding ? (
             <section className="content-section">
