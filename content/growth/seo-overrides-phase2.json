@@ -61,6 +61,37 @@
         "en": "Leave management connects employee requests, balances, calendars, policy, team coverage, approvals and HR systems. An AI Employee can organise that workflow, retrieve authorised data, check verifiable rules, detect overlaps and prepare updates in HRIS or payroll. Automation should not independently decide employment rights, sensitive exceptions or medical matters; those cases remain with HR or the authorised owner."
       },
       "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "ai-expense-management",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "gestión de gastos", "en": "expense management automation" },
+      "supportingKeywords": {
+        "es": ["gestion gastos empresa", "nota de gastos", "notas de gastos", "software gestión de gastos"],
+        "en": ["employee expense management", "expense automation", "automated expense management", "expense management"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: gestión de gastos 90/month, KD 46; gestion de gastos 170/month, KD 36; gestion gastos empresa 110/month, KD 32; nota de gastos 320/month, KD 19; notas de gastos 140/month, KD 23.",
+        "Semrush UK 2026-10-15: expense management automation 140/month, KD 22; employee expense management 320/month, KD 22; expense automation 210/month, KD 19; automated expense management 90/month, KD 23; expense management 1,600/month, KD 41."
+      ],
+      "seoTitle": {
+        "es": "Gestión de gastos de empresa con IA | IA Empleado",
+        "en": "Expense management automation with AI | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Gestiona notas de gastos con IA: tickets, políticas, tarjetas, aprobaciones, conciliación y exportación contable con trazabilidad y control financiero humano.",
+        "en": "Automate employee expense management with AI across receipts, policy checks, cards, approvals, reconciliation and accounting export with human financial control."
+      },
+      "eyebrow": { "es": "GESTIÓN DE GASTOS · FINANZAS · CONTABILIDAD", "en": "EXPENSE MANAGEMENT AUTOMATION · FINANCE · ACCOUNTING" },
+      "title": {
+        "es": "Gestión de gastos con IA: automatiza tickets, políticas y conciliación sin perder control financiero.",
+        "en": "Expense management automation with AI: connect receipts, policy, approvals and accounting with human control."
+      },
+      "lead": {
+        "es": "La gestión de gastos conecta justificantes, notas de gastos, movimientos de tarjeta, políticas, aprobaciones, conciliación y contabilización. Un Empleado IA puede capturar evidencia, extraer datos, proponer categorías, comprobar reglas, buscar coincidencias y preparar el asiento o la exportación al ERP. No debe aprobar excepciones sensibles, cambiar límites ni ejecutar reembolsos por iniciativa propia. Este flujo pertenece al gasto de empleados y se mantiene separado del procesamiento de facturas de proveedor, que tiene su propio propietario SEO y operativo.",
+        "en": "Expense management connects receipts, employee claims, card transactions, policy checks, approvals, reconciliation and accounting. An AI Employee can capture evidence, extract fields, suggest categories, check rules, find matches and prepare an ERP or accounting export. It should not independently approve sensitive exceptions, change limits or execute reimbursements. This workflow owns employee expenses and remains separate from supplier-invoice processing, which has its own SEO and operational owner."
+      },
+      "updatedAt": "2026-10-15"
     }
   ],
   "articles": [
@@ -129,6 +160,40 @@
       "intro": {
         "es": "Planificar vacaciones y gestionar ausencias exige coordinar más que un calendario. Hay que comprobar saldo y tipo de permiso, aplicar la política vigente, revisar solapes, entender cobertura, obtener la aprobación correcta, actualizar el sistema de RRHH y comunicar el resultado. La IA puede reducir seguimiento manual y preparar decisiones, pero el proceso debe conservar una fuente de verdad clara, reglas versionadas y escalado humano cuando exista conflicto, información médica, interpretación laboral o una excepción que la política no resuelva.",
         "en": "Managing employee absence and leave requires more than maintaining a calendar. The process must check balances and leave type, apply current policy, review overlaps, understand team coverage, obtain the right approval, update the HR system and communicate the result. AI can reduce manual follow-up and prepare decisions, but the workflow needs a clear system of record, versioned rules and human escalation when there is conflict, medical information, employment-law interpretation or an exception that policy does not resolve."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "how-to-automate-expense-management",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "nota de gastos", "en": "expense management process" },
+      "supportingKeywords": {
+        "es": ["notas de gastos", "gestión de gastos", "gestion gastos empresa", "cómo gestionar gastos"],
+        "en": ["automate expense management", "expense claim process", "expense claims", "expense reporting"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: nota de gastos 320/month, KD 19; notas de gastos 140/month, KD 23; gestión de gastos 90/month, KD 46; gestion de gastos 170/month, KD 36. Exact Spanish how-to variants returned little or no reported volume, so the guide owns the employee-claim explanation and implementation intent rather than the commercial category query.",
+        "Semrush UK 2026-10-15: expense management process 40/month; automate expense management 50/month; expense claim process 20/month; expense claims 210/month, KD 28; expense reporting 390/month, KD 28."
+      ],
+      "seoTitle": {
+        "es": "Nota de gastos: cómo automatizar el proceso con IA | IA Empleado",
+        "en": "Expense management process: how to automate claims with AI"
+      },
+      "seoDescription": {
+        "es": "Guía para automatizar notas de gastos: captura de tickets, extracción, políticas, tarjetas, aprobaciones, conciliación, contabilización y reembolsos con control humano.",
+        "en": "Guide to the expense management process: automate receipts, claims, policy checks, card matching, approvals, accounting and reimbursements with human control."
+      },
+      "title": {
+        "es": "Nota de gastos: cómo automatizar captura, aprobación y contabilización con IA sin perder control",
+        "en": "Expense management process: how to automate claims and accounting with AI without losing control"
+      },
+      "excerpt": {
+        "es": "Una guía práctica para convertir tickets y notas de gastos en un flujo trazable desde la evidencia hasta la aprobación y contabilidad, manteniendo las decisiones financieras sensibles bajo control humano.",
+        "en": "A practical guide to turning receipts and expense claims into a traceable workflow from evidence to approval and accounting while keeping sensitive financial decisions under human control."
+      },
+      "intro": {
+        "es": "Una nota de gastos documenta un gasto realizado por una persona para la empresa y lo conecta con su justificante, política, aprobación, conciliación y tratamiento contable. Automatizar ese proceso con IA no consiste solo en leer un ticket: hay que preservar evidencia, validar importes, aplicar reglas versionadas, distinguir tarjeta, anticipo o reembolso, preparar la aprobación correcta y verificar la escritura final en contabilidad. La IA puede reducir captura y seguimiento manual, mientras Finanzas conserva autoridad sobre excepciones, límites, reembolsos y cualquier decisión económica sensible. Las facturas de proveedor permanecen fuera de este propietario y siguen su circuito específico de cuentas a pagar.",
+        "en": "The expense management process connects an employee spend to its evidence, policy, approval, reconciliation and accounting treatment. Automating it with AI is not just about reading a receipt: the workflow must preserve evidence, validate amounts, apply versioned rules, distinguish cards, advances and reimbursements, prepare the right approval and verify the final accounting write. AI can reduce data entry and manual follow-up while Finance retains authority over exceptions, limits, reimbursements and other sensitive financial decisions. Supplier invoices remain outside this owner and continue through their separate accounts-payable workflow."
       },
       "updatedAt": "2026-10-15"
     }
