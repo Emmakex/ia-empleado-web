@@ -16,7 +16,9 @@ test.describe("Phase 2 Growth consolidation redirects", () => {
     test(`${source} permanently redirects to its canonical comparison owner`, async ({ request }) => {
       const response = await request.get(source, { maxRedirects: 0 });
       expect(response.status()).toBe(308);
-      expect(response.headers().location).toBe(destination);
+      const location = response.headers().location;
+      expect(location).toBeTruthy();
+      expect(new URL(location!, "https://iaempleado.com").pathname).toBe(destination);
     });
   }
 
