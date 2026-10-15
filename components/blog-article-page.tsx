@@ -25,7 +25,7 @@ export function BlogArticlePage({ locale, article }: Props) {
   const isAccountingGuide = article.key === "automate-invoicing-accounting-human-review" || article.key === "how-to-automate-invoice-processing-ai";
   const isSalesOrderGuide = article.key === "how-to-automate-b2b-sales-order-processing-ai";
   const isEmployeeOnboardingGuide = article.key === "how-to-automate-employee-onboarding-ai";
-  const isLeaveManagementGuide = article.key === "how-to-automate-leave-management-ai";
+  const isLeaveManagementGuide = article.key === "how-to-automate-leave-management-with-ai";
   const workflowConnections = isAccountingGuide
     ? {
         employeeHref: employeeDetailPath("accounting-billing", locale),
