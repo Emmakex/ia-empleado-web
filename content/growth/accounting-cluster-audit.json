@@ -8,28 +8,42 @@
       "type": "employee-role",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "ia para contabilidad", "en": "ai for accounting" },
-      "notes": "Role owner only. Broad automation and invoice-processing terms were removed from its supporting keyword set."
+      "notes": "Role owner only. Broad accounting automation and invoice-processing terms are excluded from its supporting keyword set."
     },
     {
       "surface": "/automatizacion-facturacion-contabilidad-ia",
       "type": "commercial-process-landing",
-      "decision": "EXPAND",
+      "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatización contable", "en": "accounting automation" },
-      "notes": "Commercial owner for accounting automation, with invoice and accounts-payable automation as supporting demand."
+      "notes": "Broad accounting-automation owner. Invoice-processing and accounts-payable category demand is explicitly delegated to the Day 24 invoice landing."
     },
     {
       "surface": "/blog/como-automatizar-facturacion-contabilidad-con-ia-y-revision-humana",
       "type": "informational-support",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatizar contabilidad", "en": "how to automate accounting" },
-      "notes": "How-to owner; remains reciprocal with the commercial landing and links to product/use-case surfaces."
+      "notes": "Broad accounting how-to owner; invoice-processing implementation intent is delegated to the Day 24 guide."
+    },
+    {
+      "surface": "/automatizacion-facturas-ia-empresas",
+      "type": "commercial-process-landing",
+      "decision": "EXPAND",
+      "primaryKeyword": { "es": "automatización de facturas", "en": "invoice automation" },
+      "notes": "Existing Day 24 owner for invoice intake and processing, including accounts-payable automation as supporting demand."
+    },
+    {
+      "surface": "/blog/como-automatizar-procesamiento-facturas-ia",
+      "type": "informational-support",
+      "decision": "EXPAND",
+      "primaryKeyword": { "es": "cómo automatizar facturas con ia", "en": "how to automate invoice processing" },
+      "notes": "Existing Day 24 implementation guide retained as the informational owner behind the invoice-automation landing."
     },
     {
       "surface": "/casos-de-uso/validacion-facturas",
       "type": "use-case",
       "decision": "KEEP",
       "primaryKeyword": { "es": "validación de facturas", "en": "invoice validation" },
-      "notes": "Kept narrow as a bounded workflow instead of competing for broad accounting-automation demand."
+      "notes": "Kept narrow as a bounded validation workflow instead of competing for broad accounting or invoice-automation demand."
     }
   ],
   "createdUrls": 0,
