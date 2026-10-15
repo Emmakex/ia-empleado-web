@@ -23,6 +23,7 @@ export function GrowthLandingPage({ locale, record }: Props) {
   const relatedArticle = getBlogArticleByKey(record.relatedArticleKey);
   const isAccountingCluster = record.key === "ai-invoicing-accounting-automation" || record.key === "ai-invoice-processing";
   const isSalesOrderCluster = record.key === "ai-sales-order-processing";
+  const isEmployeeOnboardingCluster = record.key === "ai-employee-onboarding";
   const relatedEmployee = record.key === "ai-customer-support-automation"
     ? {
         href: employeeDetailPath("customer-support", locale),
@@ -38,7 +39,12 @@ export function GrowthLandingPage({ locale, record }: Props) {
             href: employeeDetailPath("sales-sdr", locale),
             label: locale === "es" ? "Ver Agente IA para Ventas y SDR" : "View AI SDR and Sales Agent",
           }
-        : undefined;
+        : isEmployeeOnboardingCluster
+          ? {
+              href: employeeDetailPath("administrative", locale),
+              label: locale === "es" ? "Ver Agente IA Administrativo" : "View Administrative AI Agent",
+            }
+          : undefined;
   const relatedUseCase = isAccountingCluster
     ? {
         href: useCaseDetailPath("invoice-validation", locale),
@@ -49,7 +55,12 @@ export function GrowthLandingPage({ locale, record }: Props) {
           href: useCaseDetailPath("order-exception", locale),
           label: locale === "es" ? "Ver incidencias de pedidos" : "View order exceptions",
         }
-      : undefined;
+      : isEmployeeOnboardingCluster
+        ? {
+            href: useCaseDetailPath("administrative-documentation", locale),
+            label: locale === "es" ? "Ver gestión documental administrativa" : "View administrative document workflow",
+          }
+        : undefined;
   const relatedRoiHref = record.key === "ai-employee-cost" || record.key === "ai-employee-roi"
     ? roiEstimatorPath(locale)
     : undefined;
