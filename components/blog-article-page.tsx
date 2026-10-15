@@ -22,7 +22,8 @@ export function BlogArticlePage({ locale, article }: Props) {
   const chatbotComparisonHref = article.key === "what-is-an-ai-employee"
     ? (locale === "es" ? "/comparativas/chatbot" : "/en/comparisons/chatbot")
     : undefined;
-  const accountingConnections = article.key === "automate-invoicing-accounting-human-review"
+  const isAccountingGuide = article.key === "automate-invoicing-accounting-human-review" || article.key === "how-to-automate-invoice-processing-ai";
+  const accountingConnections = isAccountingGuide
     ? {
         employeeHref: employeeDetailPath("accounting-billing", locale),
         useCaseHref: useCaseDetailPath("invoice-validation", locale),
