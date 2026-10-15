@@ -21,18 +21,19 @@ export function GrowthLandingPage({ locale, record }: Props) {
   const canonical = growthLandingPath(record.key, locale);
   const alternate = growthLandingPath(record.key, otherLocale);
   const relatedArticle = getBlogArticleByKey(record.relatedArticleKey);
+  const isAccountingCluster = record.key === "ai-invoicing-accounting-automation" || record.key === "ai-invoice-processing";
   const relatedEmployee = record.key === "ai-customer-support-automation"
     ? {
         href: employeeDetailPath("customer-support", locale),
         label: locale === "es" ? "Ver Agente IA de Atención al Cliente" : "View Customer Support AI agent",
       }
-    : record.key === "ai-invoicing-accounting-automation"
+    : isAccountingCluster
       ? {
           href: employeeDetailPath("accounting-billing", locale),
           label: locale === "es" ? "Ver IA para Contabilidad y Facturación" : "View AI for Accounting and Billing",
         }
       : undefined;
-  const relatedUseCase = record.key === "ai-invoicing-accounting-automation"
+  const relatedUseCase = isAccountingCluster
     ? {
         href: useCaseDetailPath("invoice-validation", locale),
         label: locale === "es" ? "Ver validación de facturas" : "View invoice validation",
