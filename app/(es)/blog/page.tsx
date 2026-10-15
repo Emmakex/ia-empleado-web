@@ -6,8 +6,8 @@ const canonical = blogIndexPath("es");
 const alternate = blogIndexPath("en");
 
 export const metadata: Metadata = {
-  title: "Blog sobre Empleados IA, automatización y empresa | IA Empleado",
-  description: "Guías, novedades y recursos prácticos para entender, evaluar e implantar Empleados IA en procesos empresariales.",
+  title: "Guías sobre agentes IA y automatización de procesos | IA Empleado",
+  description: "Guías prácticas sobre agentes IA, Empleados IA, IA para empresas y automatización de procesos con sistemas, control humano e implantación real.",
   alternates: { canonical, languages: { "es-ES": canonical, en: alternate, "x-default": canonical } },
 };
 
