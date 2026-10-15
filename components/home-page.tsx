@@ -1,5 +1,7 @@
+import Link from "next/link";
 import type { Locale, SiteDictionary } from "../lib/i18n";
 import { getBrandCharacters } from "../lib/brand-characters";
+import { employeeDetailPath } from "../lib/employee-content-engine";
 import { teamBuilderPath } from "../lib/team-builder";
 import { requestDemoPath } from "../lib/conversion-handoff";
 import { BrandCharacterImage } from "./brand-character-image";
@@ -11,6 +13,8 @@ type HomePageProps = {
   locale: Locale;
   dictionary: SiteDictionary;
 };
+
+const referenceEmployeeKeys = ["customer-support", "administrative", "accounting-billing", "sales-sdr"] as const;
 
 export function HomePage({ locale, dictionary }: HomePageProps) {
   const brandCharacters = getBrandCharacters(locale);
@@ -153,6 +157,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
             <div className="card-grid four-grid brand-character-grid">
               {dictionary.employees.items.map((employee, index) => {
                 const character = brandCharacters[index];
+                const employeeKey = referenceEmployeeKeys[index];
                 return (
                   <article className="info-card employee-card brand-character-card" data-accent={character.accent} key={employee.title}>
                     <div className="brand-character-card-visual">
@@ -164,6 +169,9 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
                       <h3>{employee.title}</h3>
                       <p>{employee.text}</p>
                       <p className="brand-character-promise">{character.promise}</p>
+                      <Link className="text-link" href={employeeDetailPath(employeeKey, locale)}>
+                        {locale === "es" ? "Ver este Empleado IA" : "View this AI Employee"} <span aria-hidden="true">→</span>
+                      </Link>
                     </div>
                   </article>
                 );
