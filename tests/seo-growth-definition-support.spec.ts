@@ -7,11 +7,13 @@ const definitionRoutes = [
     legacy: "/blog/que-es-un-empleado-ia-y-como-se-diferencia-de-un-chatbot",
     current: "/blog/que-es-un-agente-ia",
     title: /Qué es un agente IA/i,
+    comparison: "/comparativas/chatbot",
   },
   {
     legacy: "/en/blog/what-is-an-ai-employee-and-how-is-it-different-from-a-chatbot",
     current: "/en/blog/what-is-an-ai-agent",
     title: /What is an AI agent/i,
+    comparison: "/en/comparisons/chatbot",
   },
 ] as const;
 
@@ -32,6 +34,7 @@ test.describe("Phase 2 definition article repositioning", () => {
       const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
       expect(canonical).toBeTruthy();
       expect(new URL(canonical!, publicOrigin).pathname).toBe(route.current);
+      await expect(page.locator(`a[href="${route.comparison}"]`)).toBeVisible();
     });
   }
 
