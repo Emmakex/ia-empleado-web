@@ -1,0 +1,71 @@
+{
+  "landings": [
+    {
+      "key": "human-in-the-loop-ai-automation",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "human in the loop", "en": "human in the loop ai" },
+      "supportingKeywords": {
+        "es": ["hitl", "human-in-the-loop", "human in loop", "supervision humana ia"],
+        "en": ["human in the loop", "human-in-the-loop ai", "hitl ai", "human oversight ai"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: human in the loop 480/month, KD 64; HITL 480/month, KD 33; human-in-the-loop 210/month, KD 49; human in loop 70/month, KD 42; supervision humana ia 20/month. Spanish search behavior therefore uses the English HITL vocabulary materially more than literal Spanish variants.",
+        "Semrush UK 2026-10-15: human in the loop 880/month, KD 64; human in the loop ai 170/month, KD 53; human-in-the-loop ai 30/month, KD 53; HITL AI 70/month; human oversight ai 20/month."
+      ],
+      "seoTitle": {
+        "es": "Human in the loop (HITL): supervisión humana en IA | IA Empleado",
+        "en": "Human-in-the-loop AI (HITL) | Human oversight for automation"
+      },
+      "seoDescription": {
+        "es": "Aplica human in the loop (HITL) a agentes IA: define qué se automatiza, cuándo interviene una persona, aprobaciones, límites, escalado, trazabilidad y métricas.",
+        "en": "Apply human-in-the-loop AI to business automation: define autonomy, human review, approvals, thresholds, escalation, traceability and measurable control."
+      },
+      "eyebrow": { "es": "HUMAN IN THE LOOP · HITL · SUPERVISIÓN HUMANA", "en": "HUMAN IN THE LOOP · HITL · HUMAN OVERSIGHT" },
+      "title": {
+        "es": "Human in the loop (HITL) para IA: automatiza con supervisión humana donde realmente importa.",
+        "en": "Human-in-the-loop AI (HITL): automate routine work while people retain critical decisions."
+      },
+      "lead": {
+        "es": "Human in the loop (HITL) es un patrón de automatización en el que una persona interviene en puntos definidos del flujo cuando una decisión supera límites de riesgo, impacto, incertidumbre o reversibilidad. La IA puede leer, clasificar, preparar propuestas y ejecutar acciones de bajo riesgo; la revisión humana se activa mediante reglas explícitas para excepciones o decisiones sensibles. HITL no sustituye la gobernanza de IA: es uno de sus controles operativos, diseñado para mantener autoridad humana sin convertir cada tarea automática en una aprobación manual.",
+        "en": "Human-in-the-loop AI (HITL) is an automation pattern in which a person intervenes at defined points when a decision crosses thresholds for risk, impact, uncertainty or reversibility. AI can read, classify, prepare proposals and execute low-risk actions, while explicit rules trigger human review for exceptions or sensitive decisions. HITL does not replace AI governance; it is one operational control within it, designed to preserve human authority without turning every automated task into a manual approval."
+      },
+      "updatedAt": "2026-10-15"
+    }
+  ],
+  "articles": [
+    {
+      "key": "design-ai-approval-workflows",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "flujo de aprobación", "en": "approval workflow" },
+      "supportingKeywords": {
+        "es": ["flujo de aprobacion", "flujos de aprobación", "proceso de aprobación", "supervision humana ia"],
+        "en": ["approval workflows", "approval process", "automated approval workflow", "human review ai"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: flujo de aprobación 10/month; flujo de aprobacion 20/month; flujos de aprobacion 10/month; proceso de aprobación 20/month; proceso de aprobacion 10/month. Exact AI-approval variants did not return measurable volume, so the guide uses the natural Spanish workflow term and keeps AI as the implementation context.",
+        "Semrush UK 2026-10-15: approval workflow 110/month, KD 27; approval workflows 70/month; workflow approval 40/month; approval process 110/month, KD 30; automated approval workflow 20/month; human review ai 20/month."
+      ],
+      "seoTitle": {
+        "es": "Cómo diseñar un flujo de aprobación para IA | Guía práctica",
+        "en": "AI approval workflow | How to design human review without bottlenecks"
+      },
+      "seoDescription": {
+        "es": "Diseña flujos de aprobación para agentes IA con matriz de riesgo, disparadores, contexto, identidad, caducidad, revalidación, escalado, auditoría y métricas.",
+        "en": "Design an AI approval workflow with risk tiers, triggers, context, identity, expiry, revalidation, escalation, auditability, sampling and metrics."
+      },
+      "title": {
+        "es": "Cómo diseñar un flujo de aprobación para IA sin convertir la automatización en otra cola manual",
+        "en": "How to design an AI approval workflow without turning automation into another manual queue"
+      },
+      "excerpt": {
+        "es": "Una guía práctica para decidir qué debe revisar una persona, qué contexto necesita y cómo enlazar autorización y ejecución sin perder velocidad ni trazabilidad.",
+        "en": "A practical guide to deciding what people should review, what context they need and how to bind authorisation to execution without losing speed or traceability."
+      },
+      "intro": {
+        "es": "Un flujo de aprobación para IA debe decidir qué acciones necesitan revisión, quién tiene autoridad para aprobarlas, qué evidencia debe ver esa persona y cuánto tiempo sigue siendo válida la autorización. No basta con añadir un botón al final. Hay que separar preparación, aprobación y ejecución; usar disparadores deterministas; mostrar incertidumbre; revalidar el estado antes de escribir y registrar el resultado. Esta guía posee la intención de implementación sobre flujos de aprobación. La landing de Human in the loop conserva la intención de patrón operativo y supervisión humana, mientras la página de gobernanza de IA sigue siendo la propietaria del marco más amplio de responsabilidades, políticas, riesgos y control.",
+        "en": "An AI approval workflow must determine which actions require review, who has authority to approve them, what evidence that person needs and how long the authorisation remains valid. Adding an approve button at the end is not enough. Preparation, approval and execution should be separated; deterministic triggers should activate review; uncertainty should be visible; business state should be revalidated before writing; and the outcome should be recorded. This guide owns implementation intent for approval workflows. The human-in-the-loop landing retains the operational oversight pattern, while the AI-governance page remains the broader owner for responsibilities, policy, risk and control."
+      },
+      "updatedAt": "2026-10-15"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ import consolidationsJson from "../content/growth/consolidations.json";
 import seoOverridesJson from "../content/growth/seo-overrides.json";
 import seoOverridesPhase2Json from "../content/growth/seo-overrides-phase2.json";
 import seoOverridesPhase3Json from "../content/growth/seo-overrides-phase3.json";
+import seoOverridesPhase4Json from "../content/growth/seo-overrides-phase4.json";
 
 type LocalizedText = Record<Locale, string>;
 type LocalizedList = Record<Locale, string[]>;
@@ -82,16 +83,19 @@ const consolidationRegistry = consolidationsJson as ConsolidationRegistry;
 const baseSeoOverrideRegistry = seoOverridesJson as SeoOverrideRegistry;
 const phase2SeoOverrideRegistry = seoOverridesPhase2Json as SeoOverrideRegistry;
 const phase3SeoOverrideRegistry = seoOverridesPhase3Json as SeoOverrideRegistry;
+const phase4SeoOverrideRegistry = seoOverridesPhase4Json as SeoOverrideRegistry;
 const seoOverrideRegistry: SeoOverrideRegistry = {
   landings: [
     ...baseSeoOverrideRegistry.landings,
     ...phase2SeoOverrideRegistry.landings,
     ...phase3SeoOverrideRegistry.landings,
+    ...phase4SeoOverrideRegistry.landings,
   ],
   articles: [
     ...baseSeoOverrideRegistry.articles,
     ...phase2SeoOverrideRegistry.articles,
     ...phase3SeoOverrideRegistry.articles,
+    ...phase4SeoOverrideRegistry.articles,
   ],
 };
 const consolidatedArticleKeys = new Set(consolidationRegistry.articles.map((item) => item.key));
