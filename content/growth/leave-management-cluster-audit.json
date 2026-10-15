@@ -1,0 +1,53 @@
+{
+  "batch": "phase-2-batch-08-leave-management",
+  "date": "2026-10-15",
+  "scope": "existing-content-first",
+  "records": [
+    {
+      "surface": "/automatizacion-vacaciones-ausencias-ia",
+      "type": "commercial-process-landing",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "gestión de vacaciones", "en": "leave management" },
+      "supportingKeywords": {
+        "es": ["gestión de ausencias", "gestión de vacaciones empleados", "gestion vacaciones empresa", "software vacaciones"],
+        "en": ["employee leave management", "leave management system", "absence management", "holiday management"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: gestión de vacaciones 110/month, KD 10; gestion de vacaciones 260/month, KD 12; gestión de ausencias 140/month, KD 21; gestión de vacaciones empleados 50/month, KD 8; gestion vacaciones empresa 70/month, KD 9.",
+        "Semrush UK 2026-10-15: leave management 720/month, KD 11; employee leave management 210/month, KD 9; leave management system 1,000/month, KD 24; absence management 1,900/month, KD 30."
+      ],
+      "notes": "Existing Day 27 landing remains the commercial/process owner for requests, balances, policy, coverage, approvals and HR systems."
+    },
+    {
+      "surface": "/blog/como-automatizar-vacaciones-ausencias-ia",
+      "type": "informational-support",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "planificar vacaciones empleados", "en": "how to manage employee absence" },
+      "supportingKeywords": {
+        "es": ["gestionar vacaciones empleados", "gestión vacaciones empresa", "cómo gestionar vacaciones", "gestión de ausencias"],
+        "en": ["absence management process", "manage employee absence", "leave management process", "employee leave policy"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: planificar vacaciones empleados 20/month, KD 11; gestionar vacaciones empleados 10/month; gestión vacaciones empresa 50/month, KD 7. Exact how-to variants had little reported volume.",
+        "Semrush UK 2026-10-15: how to manage employee absence 70/month, KD 23; absence management process 70/month, KD 15; manage employee absence 30/month."
+      ],
+      "notes": "Existing guide owns planning/how-to intent rather than competing with the commercial category query."
+    },
+    {
+      "surface": "/empleados-ia/administrativo",
+      "type": "employee-role",
+      "decision": "KEEP",
+      "primaryKeyword": { "es": "agente ia administrativo", "en": "ai administrative assistant" },
+      "notes": "Administrative support can help with requests, records and follow-up, but leave policy and rights remain owned by the HR leave-management process."
+    },
+    {
+      "surface": "/casos-de-uso/documentacion-administrativa",
+      "type": "use-case",
+      "decision": "KEEP",
+      "primaryKeyword": { "es": "documentación administrativa", "en": "administrative documentation" },
+      "notes": "Only a bounded support pattern for forms/evidence; it does not own leave balances, policy, coverage or approval intent."
+    }
+  ],
+  "createdUrls": 0,
+  "mergedOrRedirectedUrls": 0
+}

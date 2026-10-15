@@ -30,6 +30,37 @@
         "en": "Employee onboarding is the process that turns an approved hire into an operational new starter: completed documents, corporate identity, equipment, access, training and prepared owners. AI can orchestrate that journey across HR, IT, administration and managers without replacing systems of record or delegating sensitive decisions. The AI Employee maintains a traceable case, coordinates tasks and reminders, prepares actions in authorised tools and escalates privileged access, contractual changes or exceptions to the responsible person."
       },
       "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "ai-leave-management",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "gestión de vacaciones", "en": "leave management" },
+      "supportingKeywords": {
+        "es": ["gestión de ausencias", "gestión de vacaciones empleados", "gestion vacaciones empresa", "software vacaciones"],
+        "en": ["employee leave management", "leave management system", "absence management", "holiday management"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: gestión de vacaciones 110/month, KD 10; gestion de vacaciones 260/month, KD 12; gestión de ausencias 140/month, KD 21; gestión de vacaciones empleados 50/month, KD 8; gestion vacaciones empresa 70/month, KD 9.",
+        "Semrush UK 2026-10-15: leave management 720/month, KD 11; employee leave management 210/month, KD 9; leave management system 1,000/month, KD 24; absence management 1,900/month, KD 30; holiday management 90/month, KD 5."
+      ],
+      "seoTitle": {
+        "es": "Gestión de vacaciones y ausencias con IA | IA Empleado",
+        "en": "Leave management with AI | Employee absence and holiday workflow"
+      },
+      "seoDescription": {
+        "es": "Gestiona vacaciones y ausencias con IA: solicitudes, saldos, políticas, solapes, aprobaciones, HRIS y nómina con trazabilidad y control humano.",
+        "en": "Manage employee leave with AI across requests, balances, policy checks, overlaps, approvals, HRIS and payroll with traceability and human control."
+      },
+      "eyebrow": { "es": "GESTIÓN DE VACACIONES · AUSENCIAS · RRHH", "en": "LEAVE MANAGEMENT · ABSENCE · HR" },
+      "title": {
+        "es": "Gestión de vacaciones y ausencias con IA: coordina solicitudes, políticas y cobertura sin perder control humano.",
+        "en": "Leave management with AI: coordinate requests, policy, balances and coverage without losing human control."
+      },
+      "lead": {
+        "es": "La gestión de vacaciones y ausencias conecta solicitudes de empleados, saldos, calendarios, políticas, cobertura del equipo, aprobaciones y sistemas de RRHH. Un Empleado IA puede organizar ese flujo, recuperar datos autorizados, comprobar reglas verificables, detectar solapes y preparar actualizaciones en HRIS o nómina. La automatización no debe decidir por sí sola sobre derechos laborales, excepciones sensibles o información médica: esos casos permanecen bajo responsabilidad de RRHH o del responsable autorizado.",
+        "en": "Leave management connects employee requests, balances, calendars, policy, team coverage, approvals and HR systems. An AI Employee can organise that workflow, retrieve authorised data, check verifiable rules, detect overlaps and prepare updates in HRIS or payroll. Automation should not independently decide employment rights, sensitive exceptions or medical matters; those cases remain with HR or the authorised owner."
+      },
+      "updatedAt": "2026-10-15"
     }
   ],
   "articles": [
@@ -64,6 +95,40 @@
       "intro": {
         "es": "El proceso de onboarding empieza cuando una contratación está suficientemente aprobada y termina cuando la persona puede trabajar con los datos, equipos, accesos, formación y contexto necesarios. Automatizarlo con IA no significa generar un correo de bienvenida: significa modelar dependencias entre RRHH, IT, seguridad, administración y managers; conectar fuentes autorizadas; distinguir preparación de ejecución; y tratar excepciones como trabajo visible. La IA puede interpretar información, coordinar tareas y preparar acciones, mientras reglas deterministas validan lo comprobable y las personas conservan decisiones sobre derechos laborales, cambios contractuales, privilegios y otras acciones sensibles.",
         "en": "The employee onboarding process starts when a hire is sufficiently approved and ends when the person can work with the required data, equipment, access, training and context. Automating it with AI is not about generating a welcome email: it means modelling dependencies across HR, IT, security, administration and managers; connecting authorised sources; separating preparation from execution; and treating exceptions as visible work. AI can interpret information, coordinate tasks and prepare actions while deterministic rules validate what can be checked and people retain decisions over employment rights, contractual changes, privileges and other sensitive actions."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "how-to-automate-leave-management-with-ai",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "planificar vacaciones empleados", "en": "how to manage employee absence" },
+      "supportingKeywords": {
+        "es": ["gestionar vacaciones empleados", "gestión vacaciones empresa", "cómo gestionar vacaciones", "gestión de ausencias"],
+        "en": ["absence management process", "manage employee absence", "leave management process", "employee leave policy"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: planificar vacaciones empleados 20/month, KD 11; gestionar vacaciones empleados 10/month; gestión vacaciones empresa 50/month, KD 7; gestion vacaciones empresa 70/month, KD 9. Exact how-to variants had little or no reported volume, so the guide owns planning/how-to intent rather than the commercial category query.",
+        "Semrush UK 2026-10-15: how to manage employee absence 70/month, KD 23; absence management process 70/month, KD 15; manage employee absence 30/month; leave management process 10/month."
+      ],
+      "seoTitle": {
+        "es": "Cómo planificar vacaciones y gestionar ausencias | IA Empleado",
+        "en": "How to manage employee absence and leave with AI | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Guía para planificar vacaciones y gestionar ausencias: saldos, políticas, solapes, cobertura, aprobaciones, HRIS, nómina y excepciones con IA.",
+        "en": "Guide to managing employee absence and leave with AI: balances, policy, overlaps, coverage, approvals, HRIS, payroll and exceptions."
+      },
+      "title": {
+        "es": "Cómo planificar vacaciones y gestionar ausencias de empleados con IA sin perder control",
+        "en": "How to manage employee absence and leave with AI without losing control"
+      },
+      "excerpt": {
+        "es": "Un método para ordenar solicitudes, saldos, calendarios, cobertura, aprobaciones y sistemas de RRHH sin convertir la IA en autoridad sobre derechos o excepciones sensibles.",
+        "en": "A method for coordinating requests, balances, calendars, coverage, approvals and HR systems without turning AI into the authority over rights or sensitive exceptions."
+      },
+      "intro": {
+        "es": "Planificar vacaciones y gestionar ausencias exige coordinar más que un calendario. Hay que comprobar saldo y tipo de permiso, aplicar la política vigente, revisar solapes, entender cobertura, obtener la aprobación correcta, actualizar el sistema de RRHH y comunicar el resultado. La IA puede reducir seguimiento manual y preparar decisiones, pero el proceso debe conservar una fuente de verdad clara, reglas versionadas y escalado humano cuando exista conflicto, información médica, interpretación laboral o una excepción que la política no resuelva.",
+        "en": "Managing employee absence and leave requires more than maintaining a calendar. The process must check balances and leave type, apply current policy, review overlaps, understand team coverage, obtain the right approval, update the HR system and communicate the result. AI can reduce manual follow-up and prepare decisions, but the workflow needs a clear system of record, versioned rules and human escalation when there is conflict, medical information, employment-law interpretation or an exception that policy does not resolve."
       },
       "updatedAt": "2026-10-15"
     }

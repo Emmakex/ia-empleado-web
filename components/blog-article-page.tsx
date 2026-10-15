@@ -25,6 +25,7 @@ export function BlogArticlePage({ locale, article }: Props) {
   const isAccountingGuide = article.key === "automate-invoicing-accounting-human-review" || article.key === "how-to-automate-invoice-processing-ai";
   const isSalesOrderGuide = article.key === "how-to-automate-b2b-sales-order-processing-ai";
   const isEmployeeOnboardingGuide = article.key === "how-to-automate-employee-onboarding-ai";
+  const isLeaveManagementGuide = article.key === "how-to-automate-leave-management-with-ai";
   const workflowConnections = isAccountingGuide
     ? {
         employeeHref: employeeDetailPath("accounting-billing", locale),
@@ -52,7 +53,16 @@ export function BlogArticlePage({ locale, article }: Props) {
             employeeLabel: locale === "es" ? "Ver Agente IA Administrativo" : "View Administrative AI Agent",
             useCaseLabel: locale === "es" ? "Ver gestión documental" : "View document workflow",
           }
-        : undefined;
+        : isLeaveManagementGuide
+          ? {
+              employeeHref: employeeDetailPath("administrative", locale),
+              useCaseHref: useCaseDetailPath("administrative-documentation", locale),
+              heading: locale === "es" ? "Distingue la gestión de vacaciones del soporte administrativo que la acompaña." : "Separate leave management from the administrative support around it.",
+              body: locale === "es" ? "El perfil Administrativo puede ayudar con solicitudes, registros y seguimiento, y la gestión documental cubre formularios o evidencias. El propietario de vacaciones y ausencias sigue siendo este proceso de RRHH porque debe coordinar saldos, política, cobertura, aprobaciones y sistemas de personas." : "The Administrative profile can support requests, records and follow-up, while the document workflow covers forms or evidence. Leave and absence management remains the HR process owner because it coordinates balances, policy, coverage, approvals and people systems.",
+              employeeLabel: locale === "es" ? "Ver Agente IA Administrativo" : "View Administrative AI Agent",
+              useCaseLabel: locale === "es" ? "Ver gestión documental" : "View document workflow",
+            }
+          : undefined;
   const demoHref = requestDemoPath(locale, {
     intent: "demo",
     source: `blog:${article.key}`,

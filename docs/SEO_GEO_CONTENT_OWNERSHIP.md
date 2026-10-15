@@ -38,6 +38,8 @@ Every indexable URL must have one primary intent owner. Supporting pages may use
 | `/casos-de-uso/incidencias-pedidos` | `incidencias de pedidos` | `order exceptions` | bounded post-order use-case evaluation |
 | `/automatizacion-onboarding-empleados-ia` | `onboarding de empleados` | `employee onboarding automation` | employee-onboarding commercial process landing |
 | `/blog/como-automatizar-onboarding-empleados-ia` | `proceso de onboarding` | `employee onboarding process` | employee-onboarding informational support guide |
+| `/automatizacion-vacaciones-ausencias-ia` | `gestión de vacaciones` | `leave management` | leave-management commercial process landing |
+| `/blog/como-automatizar-vacaciones-ausencias-ia` | `planificar vacaciones empleados` | `how to manage employee absence` | leave-management informational support guide |
 | `/casos-de-uso/documentacion-administrativa` | `documentación administrativa` | `administrative documentation` | bounded document-processing use case |
 | `/blog/**` | informational support for a distinct commercial owner | informational support | support content |
 | `/casos-de-uso/**` | specific business use-case intent | specific use-case intent | evaluation |
@@ -91,6 +93,17 @@ The onboarding cluster is split between process evaluation, process education an
 - **Administrative-documentation use case:** `/casos-de-uso/documentacion-administrativa` stays narrow around document classification, extraction, completeness and record updates. It can support onboarding without competing for end-to-end onboarding demand.
 
 The commercial onboarding owner must explain the complete journey from approved hire through identity, documents, equipment, access, training and day-one readiness. The guide owns process design and how-to intent. Administrative surfaces are supporting nodes only. Contextual links should make that division explicit rather than allowing `IA para recursos humanos` or generic administration language to drift between pages.
+
+### Phase 2 leave-management ownership
+
+The leave cluster is split between commercial process evaluation, informational planning and the administrative surfaces that support only a bounded part of the workflow:
+
+- **Leave-management commercial owner:** `/automatizacion-vacaciones-ausencias-ia` keeps `gestión de vacaciones` / `leave management`. Semrush reports ES `gestión de vacaciones` 110/month, KD 10 and the unaccented variant 260/month, KD 12; `gestión de ausencias` remains supporting vocabulary at 140/month, KD 21. UK reports `leave management` 720/month, KD 11, `employee leave management` 210/month, KD 9 and `leave management system` 1,000/month, KD 24.
+- **Leave-management informational owner:** `/blog/como-automatizar-vacaciones-ausencias-ia` keeps `planificar vacaciones empleados` / `how to manage employee absence`. Semrush reports ES `planificar vacaciones empleados` 20/month, KD 11 and `gestionar vacaciones empleados` 10/month. UK reports `how to manage employee absence` 70/month, KD 23 and `absence management process` 70/month, KD 15.
+- **Administrative role:** `/empleados-ia/administrativo` can support request intake, records and follow-up but does not own leave balances, HR policy, employee rights or medical information.
+- **Administrative-documentation use case:** `/casos-de-uso/documentacion-administrativa` can support forms and evidence but does not own leave policy, coverage or approval intent.
+
+The commercial landing must own the end-to-end operational process: request, balance, policy, team coverage, approval, HRIS/payroll update and audit trail. The guide owns planning/how-to intent. Sensitive employment-rights, medical and exceptional cases remain under human responsibility. This separation prevents broad `absence management` vocabulary from turning a support role or generic document workflow into a competing HR page.
 
 ## High-value demand vocabulary
 
