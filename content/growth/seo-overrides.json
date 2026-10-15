@@ -73,6 +73,43 @@
         "en": "AI process automation means applying artificial intelligence to a specific business workflow rather than connecting a model to an entire company. Value appears when the workflow has a clear input, identified sources of truth, repeatable steps, known exceptions and a measurable outcome. AI can interpret documents or messages, gather context and prepare actions; deterministic rules validate boundaries and authorised systems execute changes. Autonomy should increase only when quality, traceability and risk are under control."
       },
       "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "ai-invoicing-accounting-automation",
+      "decision": "EXPAND",
+      "primaryKeyword": {
+        "es": "automatización contable",
+        "en": "accounting automation"
+      },
+      "supportingKeywords": {
+        "es": ["automatización de facturas", "automatización de cuentas por pagar", "contabilidad con ia", "facturación con ia"],
+        "en": ["invoice automation", "accounts payable automation", "automated accounting", "ai accounting automation"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatizacion contable 110/month, KD 25; automatización de facturas 170/month, KD 25; automatización de cuentas por pagar 90/month, KD 22; ia para contabilidad 210/month, KD 46 belongs to the employee-role owner.",
+        "Semrush UK 2026-10-15: accounting automation 590/month, KD 34; invoice automation 720/month, KD 39; accounts payable automation 1,300/month, KD 44; ai for accounting 390/month belongs to the employee-role owner."
+      ],
+      "seoTitle": {
+        "es": "Automatización contable con IA y facturas | IA Empleado",
+        "en": "Accounting automation with AI and invoices | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Automatiza tareas contables y de facturas con IA: captura, validación, duplicados, conciliación, cuentas por pagar y revisión humana en decisiones sensibles.",
+        "en": "Automate accounting and invoice workflows with AI: capture, validation, duplicate checks, reconciliation, accounts payable and human review for sensitive decisions."
+      },
+      "eyebrow": {
+        "es": "AUTOMATIZACIÓN CONTABLE · FACTURAS · IA",
+        "en": "ACCOUNTING AUTOMATION · INVOICES · AI"
+      },
+      "title": {
+        "es": "Automatización contable con IA: reduce trabajo repetitivo en facturas y conciliaciones sin perder revisión humana.",
+        "en": "Accounting automation with AI: reduce repetitive invoice and reconciliation work while keeping human review."
+      },
+      "lead": {
+        "es": "La automatización contable con IA aplica inteligencia artificial a tareas repetitivas de facturación y soporte contable: recibir documentos, extraer campos, comprobar duplicados, comparar datos, preparar conciliaciones y señalar excepciones. El objetivo no es delegar criterio financiero, pagos ni interpretación fiscal, sino reducir preparación manual y concentrar la revisión humana en discrepancias, aprobaciones y decisiones de mayor impacto.",
+        "en": "Accounting automation with AI applies artificial intelligence to repetitive invoicing and accounting-support work: receiving documents, extracting fields, checking duplicates, comparing records, preparing reconciliations and flagging exceptions. The goal is not to delegate financial judgement, payments or tax interpretation, but to reduce manual preparation and focus human review on discrepancies, approvals and higher-impact decisions."
+      },
+      "updatedAt": "2026-10-15"
     }
   ],
   "articles": [
@@ -110,6 +147,43 @@
       "intro": {
         "es": "Una arquitectura de IA local o on-premise busca aumentar el control sobre datos, conectividad y operación, pero no obliga a ejecutar todos los componentes en el mismo servidor. Una empresa puede alojar agentes y datos en su infraestructura, utilizar un modelo privado gestionado, combinar servicios externos bajo reglas de salida o aislar completamente determinados procesos. La decisión correcta depende de sensibilidad de datos, requisitos regulatorios, integración con sistemas internos, latencia, capacidad operativa y coste total. Esta guía separa esas decisiones para evitar tratar «IA privada» como una única arquitectura.",
         "en": "A self-hosted or on-premise AI architecture aims to increase control over data, connectivity and operations, but it does not require every component to run on the same server. A business can host agents and data in its own infrastructure, use a managed private model, combine external services under egress rules or fully isolate selected workflows. The right choice depends on data sensitivity, regulatory requirements, integration with internal systems, latency, operational capacity and total cost. This guide separates those decisions so that “private AI” is not treated as one single architecture."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "automate-invoicing-accounting-human-review",
+      "decision": "REPOSITION",
+      "primaryKeyword": {
+        "es": "automatizar contabilidad",
+        "en": "how to automate accounting"
+      },
+      "supportingKeywords": {
+        "es": ["cómo automatizar contabilidad con ia", "automatizar facturación con ia", "automatización contable con revisión humana", "automatizar facturas"],
+        "en": ["automate accounting", "automate accounting with ai", "how to automate accounting with ai", "automate invoicing"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatizar contabilidad 30/month; the exact how-to AI variants had little or no reported volume, so this guide owns the informational how-to intent rather than the commercial category query.",
+        "Semrush UK 2026-10-15: automate accounting 70/month; how to automate accounting 30/month; automate accounting with ai 10/month."
+      ],
+      "seoTitle": {
+        "es": "Cómo automatizar contabilidad con IA y revisión humana | IA Empleado",
+        "en": "How to automate accounting with AI and human review | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Guía para automatizar contabilidad y facturación con IA: qué tareas empezar, cómo validar facturas, gestionar excepciones y mantener aprobación humana.",
+        "en": "Guide to automating accounting and invoicing with AI: where to start, how to validate invoices, manage exceptions and keep human approval."
+      },
+      "title": {
+        "es": "Cómo automatizar contabilidad con IA sin perder la revisión humana",
+        "en": "How to automate accounting with AI without losing human review"
+      },
+      "excerpt": {
+        "es": "Automatizar contabilidad con IA funciona mejor cuando la IA prepara, comprueba y concilia el trabajo repetitivo, mientras las discrepancias, pagos y decisiones sensibles conservan revisión humana.",
+        "en": "Accounting automation works best when AI prepares, checks and reconciles repetitive work while discrepancies, payments and sensitive decisions keep human review."
+      },
+      "intro": {
+        "es": "Para automatizar contabilidad con IA conviene separar preparación, validación y autoridad financiera. La IA puede capturar datos de facturas, detectar duplicados, proponer coincidencias, preparar conciliaciones y explicar excepciones; una persona debe conservar los puntos de revisión definidos para discrepancias, pagos, cierres, criterios contables o interpretación fiscal. Este enfoque permite medir calidad antes de ampliar autonomía y evita convertir una automatización operativa en una delegación de responsabilidad financiera.",
+        "en": "To automate accounting with AI, separate preparation, validation and financial authority. AI can capture invoice data, detect duplicates, propose matches, prepare reconciliations and explain exceptions; people should retain the review points defined for discrepancies, payments, close activities, accounting judgement or tax interpretation. This approach lets teams measure quality before increasing autonomy and avoids turning operational automation into delegated financial responsibility."
       },
       "updatedAt": "2026-10-15"
     }
