@@ -30,6 +30,37 @@
         "en": "Data readiness for AI means the workflow knows which information it needs, which system is authoritative, which fields are reliable, what the agent may read or write and what happens when data is missing or systems disagree. It does not require cleaning the entire enterprise before starting. It requires making the minimum data set for the chosen workflow sufficiently reliable, normalising what can be verified, limiting permissions and keeping traceability and human review where inconsistency could cause a consequential action."
       },
       "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "enterprise-ai-governance",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "gobernanza de ia", "en": "ai governance" },
+      "supportingKeywords": {
+        "es": ["gobernanza de la ia", "gobierno de ia", "gobernanza de la inteligencia artificial empresas", "ia responsable"],
+        "en": ["artificial intelligence governance", "enterprise ai governance", "responsible ai governance", "ai risk management"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: gobernanza de ia 50/month; gobernanza de la ia 30/month; gobierno de ia 20/month; gobernanza de la inteligencia artificial empresas 40/month; ia responsable 170/month, KD 37.",
+        "Semrush UK 2026-10-15: ai governance 1,600/month, KD 34; artificial intelligence governance 390/month, KD 43; enterprise ai governance 70/month; responsible ai governance 110/month, KD 59; ai risk management 320/month, KD 57."
+      ],
+      "seoTitle": {
+        "es": "Gobernanza de IA para empresas | Control, riesgo y trazabilidad",
+        "en": "AI governance for business | Controls, risk and traceability"
+      },
+      "seoDescription": {
+        "es": "Diseña gobernanza de IA para agentes y automatización: permisos, responsables, políticas, aprobación humana, trazabilidad, riesgos, excepciones y control operativo.",
+        "en": "Design AI governance for agents and automation: permissions, ownership, policies, human approval, traceability, risk, exceptions and operational control."
+      },
+      "eyebrow": { "es": "GOBERNANZA DE IA · CONTROL · RIESGO", "en": "AI GOVERNANCE · CONTROL · RISK" },
+      "title": {
+        "es": "Gobernanza de IA para empresas: define qué puede hacer la IA, quién responde y cómo se controla.",
+        "en": "AI governance for business: define what AI may do, who is accountable and how it is controlled."
+      },
+      "lead": {
+        "es": "La gobernanza de IA es el sistema de responsabilidades, permisos, políticas, controles y evidencias que determina cómo puede operar una IA dentro de la empresa. Para un agente o Empleado IA significa definir qué datos puede consultar, qué acciones puede proponer o ejecutar, quién aprueba las decisiones sensibles, qué riesgos obligan a detener el flujo y cómo se reconstruye cada acción después. La gobernanza no sustituye la supervisión humana: convierte la autonomía en capacidades acotadas, medibles y auditables.",
+        "en": "AI governance is the system of responsibilities, permissions, policies, controls and evidence that determines how AI may operate inside a business. For an AI agent or AI Employee, it means defining which data it may access, which actions it may propose or execute, who approves sensitive decisions, which risks must stop the workflow and how each action can be reconstructed afterwards. Governance does not replace human oversight; it turns autonomy into bounded, measurable and auditable capabilities."
+      },
+      "updatedAt": "2026-10-15"
     }
   ],
   "articles": [
@@ -64,6 +95,40 @@
       "intro": {
         "es": "Mejorar la calidad de los datos antes de usar IA no significa corregir cada registro corporativo. Significa identificar el proceso que se va a automatizar, definir sus datos mínimos, asignar una fuente de verdad, medir completitud y duplicados, normalizar formatos, limitar permisos y diseñar reglas para valores ausentes o contradictorios. Esta guía se centra en ese trabajo práctico. La landing de calidad de datos para IA conserva la intención de evaluación; aquí el objetivo es explicar cómo preparar y comprobar el conjunto de datos antes de conceder capacidad operativa a un agente.",
         "en": "Preparing data for AI does not mean fixing every enterprise record. It means identifying the workflow to automate, defining its minimum data set, assigning sources of truth, measuring completeness and duplicates, normalising formats, limiting permissions and designing rules for missing or contradictory values. This guide focuses on that practical work. The data-readiness landing retains the evaluation intent; this article explains how to prepare and test the data set before an agent receives operational capability."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "enterprise-ai-governance-checklist",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "implementación de gobernanza de ia", "en": "ai governance framework" },
+      "supportingKeywords": {
+        "es": ["política ia", "marco de gobernanza de ia", "controles de gobernanza ia", "ia responsable"],
+        "en": ["ai governance policy", "ai governance checklist", "ai governance framework template", "responsible ai governance"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: implementación de gobernanza de ia 50/month, KD 17; política ia 40/month, KD 10 and politica ia 50/month, KD 14; marco de gobernanza de ia returned 0 reported volume. The guide therefore owns implementation/framework intent without inventing demand for the exact framework phrase.",
+        "Semrush UK 2026-10-15: ai governance framework 390/month, KD 28; ai governance policy 110/month, KD 37; ai governance checklist 40/month; ai governance framework template 20/month."
+      ],
+      "seoTitle": {
+        "es": "Cómo implementar gobernanza de IA | Marco y controles prácticos",
+        "en": "AI governance framework | Implementation checklist and controls"
+      },
+      "seoDescription": {
+        "es": "Guía para implementar gobernanza de IA: alcance, riesgos, permisos, aprobaciones, políticas, trazabilidad, pruebas, métricas, responsables y revisión continua.",
+        "en": "Build an AI governance framework with practical controls for scope, risk, permissions, approvals, policy, traceability, testing, metrics and ownership."
+      },
+      "title": {
+        "es": "Cómo implementar gobernanza de IA: un marco práctico de controles antes de dar autonomía",
+        "en": "AI governance framework: how to implement practical controls before increasing autonomy"
+      },
+      "excerpt": {
+        "es": "Un marco práctico para convertir principios de gobernanza en permisos, responsables, reglas, aprobaciones, registros, pruebas y métricas aplicables a agentes IA en producción.",
+        "en": "A practical AI governance framework for turning principles into permissions, ownership, rules, approvals, records, tests and metrics for production AI agents."
+      },
+      "intro": {
+        "es": "Implementar gobernanza de IA consiste en transformar principios como supervisión, responsabilidad y transparencia en controles que puedan comprobarse dentro de un proceso real. Hay que delimitar alcance, clasificar acciones por riesgo, separar lectura de escritura, definir quién puede aprobar, bloquear capacidades prohibidas, registrar decisiones y versionar los componentes que cambian comportamiento. Esta guía posee la intención de implementación. La landing de gobernanza de IA conserva la intención de evaluación y categoría: explica qué es la gobernanza y por qué una empresa la necesita antes de aumentar autonomía.",
+        "en": "An AI governance framework turns principles such as oversight, accountability and transparency into controls that can be verified inside a real workflow. It defines scope, classifies actions by risk, separates read and write permissions, assigns approval authority, blocks prohibited capabilities, records decisions and versions the components that change behaviour. This guide owns framework and implementation intent. The AI-governance landing retains category and evaluation intent: it explains what governance is and why a business needs it before increasing autonomy."
       },
       "updatedAt": "2026-10-15"
     }
