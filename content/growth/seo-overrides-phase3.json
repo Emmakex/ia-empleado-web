@@ -61,6 +61,37 @@
         "en": "AI governance is the system of responsibilities, permissions, policies, controls and evidence that determines how AI may operate inside a business. For an AI agent or AI Employee, it means defining which data it may access, which actions it may propose or execute, who approves sensitive decisions, which risks must stop the workflow and how each action can be reconstructed afterwards. Governance does not replace human oversight; it turns autonomy into bounded, measurable and auditable capabilities."
       },
       "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "enterprise-ai-integration",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "integración de ia", "en": "enterprise ai integration" },
+      "supportingKeywords": {
+        "es": ["integracion ia", "integración de inteligencia artificial", "integración ia empresas", "integración de sistemas"],
+        "en": ["ai integration", "artificial intelligence integration", "ai systems integration", "ai integration services"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: integración de ia 30/month; integracion ia 20/month; integración de inteligencia artificial 20/month; integración ia empresas 10/month; integración de sistemas 320/month, KD 15. The landing owns the AI-specific category/evaluation job rather than the broader generic systems-integration query.",
+        "Semrush UK 2026-10-15: enterprise ai integration 30/month; ai integration 260/month, KD 69; artificial intelligence integration 30/month; ai systems integration 10/month; ai integration services 320/month, KD 34."
+      ],
+      "seoTitle": {
+        "es": "Integración de IA con sistemas empresariales | CRM, ERP y APIs",
+        "en": "Enterprise AI integration | CRM, ERP, email and APIs"
+      },
+      "seoDescription": {
+        "es": "Integra agentes IA con CRM, ERP, email, helpdesk y APIs mediante fuentes de verdad, permisos mínimos, validación, trazabilidad y aprobación humana cuando sea necesaria.",
+        "en": "Connect AI agents to CRM, ERP, email, helpdesk and APIs with authoritative sources, least privilege, validation, traceability and human approval where needed."
+      },
+      "eyebrow": { "es": "INTEGRACIÓN DE IA · CRM · ERP · APIs", "en": "ENTERPRISE AI INTEGRATION · CRM · ERP · APIs" },
+      "title": {
+        "es": "Integración de IA con sistemas empresariales: conecta agentes con CRM, ERP, email y APIs sin perder control.",
+        "en": "Enterprise AI integration: connect agents to CRM, ERP, email and APIs without losing control."
+      },
+      "lead": {
+        "es": "La integración de IA es la conexión controlada entre agentes o automatizaciones y los sistemas donde vive el proceso empresarial. En la práctica implica exponer solo las operaciones necesarias de CRM, ERP, email, helpdesk o APIs, declarar fuentes de verdad, validar antes de escribir, aplicar permisos mínimos y registrar cada acción. El objetivo no es conectar todas las aplicaciones: es dar a la IA acceso verificable al contexto y las herramientas que necesita para un flujo concreto, manteniendo aprobación humana cuando una acción sea sensible, irreversible o de impacto relevante.",
+        "en": "Enterprise AI integration is the controlled connection between AI agents or automation and the systems where a business process actually runs. In practice, it means exposing only the required CRM, ERP, email, helpdesk or API operations, declaring authoritative sources, validating before writes, applying least privilege and recording each action. The goal is not to connect every application: it is to give AI verifiable access to the context and tools required for one defined workflow while retaining human approval for sensitive, irreversible or consequential actions."
+      },
+      "updatedAt": "2026-10-15"
     }
   ],
   "articles": [
@@ -129,6 +160,40 @@
       "intro": {
         "es": "Implementar gobernanza de IA consiste en transformar principios como supervisión, responsabilidad y transparencia en controles que puedan comprobarse dentro de un proceso real. Hay que delimitar alcance, clasificar acciones por riesgo, separar lectura de escritura, definir quién puede aprobar, bloquear capacidades prohibidas, registrar decisiones y versionar los componentes que cambian comportamiento. Esta guía posee la intención de implementación. La landing de gobernanza de IA conserva la intención de evaluación y categoría: explica qué es la gobernanza y por qué una empresa la necesita antes de aumentar autonomía.",
         "en": "An AI governance framework turns principles such as oversight, accountability and transparency into controls that can be verified inside a real workflow. It defines scope, classifies actions by risk, separates read and write permissions, assigns approval authority, blocks prohibited capabilities, records decisions and versions the components that change behaviour. This guide owns framework and implementation intent. The AI-governance landing retains category and evaluation intent: it explains what governance is and why a business needs it before increasing autonomy."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "how-to-connect-ai-employee-to-business-systems",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "cómo integrar ia", "en": "how to integrate ai" },
+      "supportingKeywords": {
+        "es": ["integración api", "integracion api", "integración de sistemas", "integración de inteligencia artificial"],
+        "en": ["api integration", "ai integration architecture", "crm erp integration", "integrate ai into business"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: exact tested how-to variants such as 'cómo integrar ia' and 'integrar ia en sistemas' returned no reported volume. Supporting implementation demand exists for integración api 70/month, KD 21; integracion api 90/month, KD 25; integración de sistemas 320/month, KD 15; integración de inteligencia artificial 20/month. The guide therefore owns AI implementation/how-to intent without inventing volume for the exact question.",
+        "Semrush UK 2026-10-15: how to integrate ai 20/month; integrate ai into business 20/month; integrating ai into business 20/month; ai integration architecture 10/month; api integration 1,600/month, KD 47; crm erp integration 140/month, KD 19."
+      ],
+      "seoTitle": {
+        "es": "Cómo integrar IA con CRM, ERP y APIs | Guía práctica",
+        "en": "How to integrate AI with CRM, ERP and APIs | Practical guide"
+      },
+      "seoDescription": {
+        "es": "Guía para integrar IA con CRM, ERP, email y APIs: contratos, permisos mínimos, validación, idempotencia, errores, trazabilidad, pruebas y aprobación humana.",
+        "en": "Practical guide to integrating AI with CRM, ERP, email and APIs using contracts, least privilege, validation, idempotency, error handling, traceability and testing."
+      },
+      "title": {
+        "es": "Cómo integrar IA con CRM, ERP, email y APIs sin crear una capa frágil",
+        "en": "How to integrate AI with CRM, ERP, email and APIs without creating a fragile layer"
+      },
+      "excerpt": {
+        "es": "Una guía práctica para convertir sistemas y APIs existentes en herramientas pequeñas, seguras, verificables y mantenibles para agentes IA.",
+        "en": "A practical guide for turning existing systems and APIs into small, safe, verifiable and maintainable tools for AI agents."
+      },
+      "intro": {
+        "es": "Integrar IA en sistemas empresariales no consiste en entregar al modelo una API completa. Empieza por un flujo real, identifica qué CRM, ERP, email o servicio participa, define la fuente de verdad y encapsula cada operación en una herramienta pequeña con parámetros, permisos y validaciones explícitos. La landing de integración de IA conserva la intención de categoría y evaluación; esta guía posee la intención de implementación y explica cómo diseñar identificadores, contratos, permisos de lectura y escritura, idempotencia, tratamiento de errores, trazabilidad y pruebas antes de ampliar autonomía.",
+        "en": "Integrating AI with business systems does not mean handing a model an entire API. Start with a real workflow, identify which CRM, ERP, email or service participates, define the authoritative source and wrap each operation in a small tool with explicit parameters, permissions and validation. The enterprise AI integration landing retains category and evaluation intent; this guide owns implementation intent and explains how to design identifiers, contracts, read and write permissions, idempotency, error handling, traceability and tests before increasing autonomy."
       },
       "updatedAt": "2026-10-15"
     }
