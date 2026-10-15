@@ -6,6 +6,7 @@ import articlesJson from "../content/growth/articles.json";
 import incrementalLandingsJson from "../content/growth/incremental-landings.json";
 import incrementalArticlesJson from "../content/growth/incremental-articles.json";
 import consolidationsJson from "../content/growth/consolidations.json";
+import seoOverridesJson from "../content/growth/seo-overrides.json";
 
 type LocalizedText = Record<Locale, string>;
 type LocalizedList = Record<Locale, string[]>;
@@ -60,9 +61,23 @@ type ConsolidationRegistry = {
   landings: Array<{ key: string }>;
 };
 
+type SeoOverride<T extends { key: string }> = Partial<T> & {
+  key: string;
+  decision?: string;
+  primaryKeyword?: LocalizedText;
+  supportingKeywords?: LocalizedList;
+  researchBasis?: string[];
+};
+
+type SeoOverrideRegistry = {
+  landings: Array<SeoOverride<GrowthLandingRecord>>;
+  articles: Array<SeoOverride<BlogArticleRecord>>;
+};
+
 const dailyDirectory = path.join(process.cwd(), "content", "growth", "daily");
 const replacedLegacyArticleKeys = new Set(["what-is-an-ai-employee"]);
 const consolidationRegistry = consolidationsJson as ConsolidationRegistry;
+const seoOverrideRegistry = seoOverridesJson as SeoOverrideRegistry;
 const consolidatedArticleKeys = new Set(consolidationRegistry.articles.map((item) => item.key));
 const consolidatedLandingKeys = new Set(consolidationRegistry.landings.map((item) => item.key));
 
@@ -76,21 +91,32 @@ function readDailyRecords<T>(suffix: string): T[] {
     });
 }
 
+function applySeoOverrides<T extends { key: string }>(records: T[], overrides: Array<SeoOverride<T>>): T[] {
+  const byKey = new Map(overrides.map((override) => [override.key, override]));
+  return records.map((record) => {
+    const override = byKey.get(record.key);
+    return override ? ({ ...record, ...override } as T) : record;
+  });
+}
+
 const dailyLandings = readDailyRecords<GrowthLandingRecord>(".landings.json");
 const dailyArticles = readDailyRecords<BlogArticleRecord>(".articles.json");
 const legacyArticles = (articlesJson as BlogArticleRecord[]).filter((record) => !replacedLegacyArticleKeys.has(record.key));
 
-export const growthLandingRecords = [
+const baseLandingRecords = [
   ...(landingsJson as GrowthLandingRecord[]),
   ...(incrementalLandingsJson as GrowthLandingRecord[]),
   ...dailyLandings,
 ].filter((record) => !consolidatedLandingKeys.has(record.key));
 
-export const blogArticleRecords = [
+const baseArticleRecords = [
   ...legacyArticles,
   ...(incrementalArticlesJson as BlogArticleRecord[]),
   ...dailyArticles,
 ].filter((record) => !consolidatedArticleKeys.has(record.key));
+
+export const growthLandingRecords = applySeoOverrides(baseLandingRecords, seoOverrideRegistry.landings);
+export const blogArticleRecords = applySeoOverrides(baseArticleRecords, seoOverrideRegistry.articles);
 
 export function getGrowthLandingByKey(key: string) {
   return growthLandingRecords.find((record) => record.key === key);
