@@ -16,17 +16,26 @@ const readDailyRecords = async (suffix) => {
 };
 
 const editorialPolicy = await readJson("../content/growth/daily/.editorial-policy.json");
+const consolidationRegistry = await readJson("../content/growth/consolidations.json");
 const legacyLandings = await readJson("../content/growth/landings.json");
 const incrementalLandings = await readJson("../content/growth/incremental-landings.json");
-const dailyLandings = await readDailyRecords(".landings.json");
+const rawDailyLandings = await readDailyRecords(".landings.json");
 const rawLegacyArticles = await readJson("../content/growth/articles.json");
 const incrementalArticles = await readJson("../content/growth/incremental-articles.json");
-const dailyArticles = await readDailyRecords(".articles.json");
+const rawDailyArticles = await readDailyRecords(".articles.json");
 const replacedLegacyArticleKeys = new Set(["what-is-an-ai-employee"]);
+const consolidatedArticleKeys = new Set((consolidationRegistry.articles ?? []).map((item) => item.key));
+const consolidatedLandingKeys = new Set((consolidationRegistry.landings ?? []).map((item) => item.key));
 const legacyArticles = rawLegacyArticles.filter((record) => !replacedLegacyArticleKeys.has(record.key));
+const dailyLandings = rawDailyLandings.filter((record) => !consolidatedLandingKeys.has(record.key));
+const dailyArticles = rawDailyArticles.filter((record) => !consolidatedArticleKeys.has(record.key));
 
-const landings = [...legacyLandings, ...incrementalLandings, ...dailyLandings];
-const articles = [...legacyArticles, ...incrementalArticles, ...dailyArticles];
+const landings = [...legacyLandings, ...incrementalLandings, ...dailyLandings].filter(
+  (record) => !consolidatedLandingKeys.has(record.key),
+);
+const articles = [...legacyArticles, ...incrementalArticles, ...dailyArticles].filter(
+  (record) => !consolidatedArticleKeys.has(record.key),
+);
 const editorialLandings = [...incrementalLandings, ...dailyLandings];
 const editorialArticles = [...incrementalArticles, ...dailyArticles];
 
@@ -137,6 +146,19 @@ function validateEditorialMetadata(record, kind) {
   validateStringList(editorial.researchBasis, `${record.key}.editorial.researchBasis`, 1);
 }
 
+for (const entry of consolidationRegistry.articles ?? []) {
+  requireText(entry.key, "consolidation.article.key");
+  requireText(entry.decision, `${entry.key}.decision`);
+  requireText(entry.destinations?.es, `${entry.key}.destinations.es`);
+  requireText(entry.destinations?.en, `${entry.key}.destinations.en`);
+}
+for (const entry of consolidationRegistry.landings ?? []) {
+  requireText(entry.key, "consolidation.landing.key");
+  requireText(entry.decision, `${entry.key}.decision`);
+  requireText(entry.destinations?.es, `${entry.key}.destinations.es`);
+  requireText(entry.destinations?.en, `${entry.key}.destinations.en`);
+}
+
 if (!Array.isArray(landings) || landings.length === 0) errors.push("At least one growth landing is required");
 if (!Array.isArray(articles) || articles.length === 0) errors.push("At least one blog article is required");
 
@@ -211,7 +233,9 @@ const landingKeys = new Set(landings.map((item) => item.key));
 const articleKeys = new Set(articles.map((item) => item.key));
 const articleByKey = new Map(articles.map((item) => [item.key, item]));
 for (const landing of landings) {
-  if (!articleKeys.has(landing.relatedArticleKey)) errors.push(`${landing.key} links to unknown article ${landing.relatedArticleKey}`);
+  if (!articleKeys.has(landing.relatedArticleKey) && !consolidatedArticleKeys.has(landing.relatedArticleKey)) {
+    errors.push(`${landing.key} links to unknown article ${landing.relatedArticleKey}`);
+  }
   const article = articleByKey.get(landing.relatedArticleKey);
   if (landing.editorial && article?.editorial) {
     if (landing.editorial.cluster !== article.editorial.cluster) {
@@ -227,7 +251,9 @@ for (const landing of landings) {
   }
 }
 for (const article of articles) {
-  if (!landingKeys.has(article.relatedLandingKey)) errors.push(`${article.key} links to unknown landing ${article.relatedLandingKey}`);
+  if (!landingKeys.has(article.relatedLandingKey) && !consolidatedLandingKeys.has(article.relatedLandingKey)) {
+    errors.push(`${article.key} links to unknown landing ${article.relatedLandingKey}`);
+  }
 }
 
 if (errors.length) {
@@ -237,5 +263,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Editorial metadata gate: ${EDITORIAL_METADATA_EFFECTIVE_DATE}. Daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s).`,
+  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Editorial metadata gate: ${EDITORIAL_METADATA_EFFECTIVE_DATE}. Active daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s). Consolidated: ${consolidatedLandingKeys.size} landing(s), ${consolidatedArticleKeys.size} article(s).`,
 );
