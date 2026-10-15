@@ -2,7 +2,10 @@ import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
 import type { GrowthLandingRecord } from "../lib/growth-content";
-import { blogArticlePath, getBlogArticleByKey, growthLandingPath } from "../lib/growth-content";
+import { blogArticlePath, blogIndexPath, getBlogArticleByKey, growthLandingPath } from "../lib/growth-content";
+import { employeeIndexPath } from "../lib/employee-catalog";
+import { useCaseIndexPath } from "../lib/sector-use-cases";
+import { integrationIndexPath } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { requestDemoPath } from "../lib/conversion-handoff";
 import { SiteFooter } from "./site-footer";
@@ -107,6 +110,21 @@ export function GrowthLandingPage({ locale, record }: Props) {
             </div>
           </section>
         ) : null}
+
+        <section className="content-section" aria-labelledby="growth-explore-title">
+          <div className="container">
+            <div className="section-heading sector-section-heading">
+              <p className="eyebrow">{locale === "es" ? "RELACIONES DEL TEMA" : "TOPIC CONNECTIONS"}</p>
+              <h2 id="growth-explore-title">{locale === "es" ? "Explora el producto, los casos de uso y las integraciones relacionadas." : "Explore related product roles, use cases and integrations."}</h2>
+            </div>
+            <div className="cta-actions">
+              <Link className="text-link" href={employeeIndexPath(locale)}>{locale === "es" ? "Explorar Empleados IA" : "Explore AI Employees"} →</Link>
+              <Link className="text-link" href={useCaseIndexPath(locale)}>{locale === "es" ? "Ver casos de uso" : "View use cases"} →</Link>
+              <Link className="text-link" href={integrationIndexPath(locale)}>{locale === "es" ? "Ver integraciones" : "View integrations"} →</Link>
+              <Link className="text-link" href={blogIndexPath(locale)}>{locale === "es" ? "Más guías" : "More guides"} →</Link>
+            </div>
+          </div>
+        </section>
 
         <section className="content-section" aria-labelledby="growth-faq-title">
           <div className="container">
