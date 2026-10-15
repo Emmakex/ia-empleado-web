@@ -13,21 +13,38 @@ Every indexable URL must have one primary intent owner. Supporting pages may use
 
 ## Current canonical ownership
 
-| Surface | Primary ES intent | Role |
-| --- | --- | --- |
-| `/` | agentes IA para empresas; IA para empresas | commercial pillar + brand |
-| `/empleados-ia` | empleados IA para empresas; catálogo de empleados IA | catalog pillar |
-| `/empleados-ia/atencion-cliente` | empleado/agente IA de atención al cliente | employee landing |
-| `/empleados-ia/administrativo` | empleado/agente IA administrativo | employee landing |
-| `/empleados-ia/contabilidad-facturacion` | IA para contabilidad y facturación | employee landing |
-| `/empleados-ia/comercial-sdr` | agente IA de ventas / comercial | employee landing |
-| `/empleados-ia-para-pymes` | IA para pymes / empleados IA para pymes | commercial landing |
-| `/automatizacion-atencion-cliente-ia` | automatización de atención al cliente con IA | commercial landing |
-| `/blog/**` | informational support for a distinct commercial owner | support content |
-| `/casos-de-uso/**` | specific business use-case intent | evaluation |
-| `/sectores/**` | sector-specific AI automation intent | evaluation |
-| `/integraciones/**` | system/integration intent | evaluation |
-| `/comparativas/**` | comparison/evaluation intent | comparison |
+| Surface | Primary ES intent | Primary EN intent | Role |
+| --- | --- | --- | --- |
+| `/` | `agentes IA para empresas`; `IA para empresas` | `ai agents for business` | commercial pillar + brand |
+| `/empleados-ia` | `empleados IA para empresas`; catálogo de empleados IA | AI Employee catalog | catalog pillar |
+| `/empleados-ia/atencion-cliente` | `agentes ia atención al cliente` | `ai customer service agent` | employee landing |
+| `/empleados-ia/administrativo` | `agente ia administrativo` | `ai administrative assistant` | employee landing |
+| `/empleados-ia/contabilidad-facturacion` | `ia para contabilidad` | `ai for accounting` | employee landing |
+| `/empleados-ia/comercial-sdr` | `agente ia ventas` | `ai sdr` | employee landing |
+| `/equipos-ia` | Equipo IA como composición coordinada | `ai teams` / AI Team composition | team catalog/evaluation |
+| `/equipos-ia/ventas` | Equipo IA de Ventas como composición multirol | `ai sales team` | team evaluation |
+| `/equipos-ia/ecommerce` | Equipo IA de Ecommerce | AI ecommerce team composition | team evaluation |
+| `/equipos-ia/administracion` | Equipo IA de Administración | AI administration team composition | team evaluation |
+| `/equipos-ia/turismo` | Equipo IA de Turismo | AI travel team composition | team evaluation |
+| `/empleados-ia-para-pymes` | IA para pymes / empleados IA para pymes | AI Employees for small business | commercial landing |
+| `/automatizacion-atencion-cliente-ia` | automatización de atención al cliente con IA | AI customer service automation | commercial landing |
+| `/blog/**` | informational support for a distinct commercial owner | informational support | support content |
+| `/casos-de-uso/**` | specific business use-case intent | specific use-case intent | evaluation |
+| `/sectores/**` | sector-specific AI automation intent | industry-specific AI automation intent | evaluation |
+| `/integraciones/**` | system/integration intent | system/integration intent | evaluation |
+| `/comparativas/**` | comparison/evaluation intent | comparison/evaluation intent | comparison |
+
+### Phase 1 researched role vocabulary
+
+Research captured on 2026-10-15 and implemented through `lib/core-seo-intents.ts`:
+
+- Atención al cliente: ES `agentes ia atención al cliente` 140 searches/month, KD 11; EN/UK `ai customer service agent` 140, KD 47.
+- Administrativo: ES `agente ia administrativo` 30; EN/UK `ai administrative assistant` 10.
+- Contabilidad/facturación: ES `ia para contabilidad` 210, KD 46 and `automatización de facturas` 170, KD 25; EN/UK `ai for accounting` 390, KD 63 and `ai invoice automation` 90.
+- Ventas/SDR: ES `agente ia ventas` 50, KD 19 and `ia para ventas` 50, KD 37; EN/UK `ai sdr` 390, KD 57 and `ai sales agent` 210, KD 47.
+- Home: ES `agentes ia para empresas` 170, KD 30; EN/UK `ai agents for business` 170, KD 38.
+
+These terms are acquisition vocabulary, not permission to repeat exact-match phrases mechanically in every heading or link.
 
 ## High-value demand vocabulary
 
@@ -70,7 +87,7 @@ Every commercial landing must link to:
 
 Every informational article must link back to its commercial intent owner and at least one relevant product or process surface.
 
-Anchor text should describe the destination naturally. Avoid repeating an exact-match keyword mechanically across the site.
+Core role pages and Team pages must remain mutually connected through navigation, breadcrumbs, role membership and contextual related content. Anchor text should describe the destination naturally. Avoid repeating an exact-match keyword mechanically across the site.
 
 ## GEO / answer-engine contract
 
