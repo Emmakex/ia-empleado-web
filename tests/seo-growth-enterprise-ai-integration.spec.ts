@@ -40,7 +40,7 @@ test.describe("Phase 2 Batch 13 enterprise AI integration ownership", () => {
   test("Spanish landing, guide and integration catalog retain distinct connected jobs", async ({ page }) => {
     await page.goto("/integracion-ia-sistemas-empresariales", { waitUntil: "domcontentloaded" });
     await expect(page.locator('a[href="/blog/como-conectar-empleado-ia-crm-erp-email-apis"]')).toBeVisible();
-    await expect(page.locator('a[href="/integraciones"]')).toBeVisible();
+    await expect(page.locator('main a[href="/integraciones"]')).toBeVisible();
     await expect(page.locator("main")).toContainText(/La integración de IA es la conexión controlada/i);
 
     await page.goto("/blog/como-conectar-empleado-ia-crm-erp-email-apis", { waitUntil: "domcontentloaded" });
@@ -51,7 +51,7 @@ test.describe("Phase 2 Batch 13 enterprise AI integration ownership", () => {
   test("English landing, guide and integration catalog retain distinct connected jobs", async ({ page }) => {
     await page.goto("/en/enterprise-ai-systems-integration", { waitUntil: "domcontentloaded" });
     await expect(page.locator('a[href="/en/blog/how-to-connect-ai-employee-to-crm-erp-email-apis"]')).toBeVisible();
-    await expect(page.locator('a[href="/en/integrations"]')).toBeVisible();
+    await expect(page.locator('main a[href="/en/integrations"]')).toBeVisible();
     await expect(page.locator("main")).toContainText(/Enterprise AI integration is the controlled connection/i);
 
     await page.goto("/en/blog/how-to-connect-ai-employee-to-crm-erp-email-apis", { waitUntil: "domcontentloaded" });
