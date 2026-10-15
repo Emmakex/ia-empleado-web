@@ -2,10 +2,10 @@
   "locale": "en",
   "languageName": "English",
   "seo": {
-    "title": "IA Empleado | Teams of AI Employees for business",
-    "description": "Design teams of specialized AI Employees that collaborate with each other, connect to your systems and work under explicit policies and human oversight.",
-    "ogTitle": "IA Empleado — a digital team that works with your company",
-    "ogDescription": "Specialized, connected and governed AI Employees for real business processes."
+    "title": "AI agents for business | AI Employees and automation",
+    "description": "Deploy AI agents and AI Employees for business processes that work with CRM, ERP and email while keeping explicit permissions and human approval.",
+    "ogTitle": "AI agents and AI Employees for business | IA Empleado",
+    "ogDescription": "Specialized, connected and governed AI agents for real business process automation with human control."
   },
   "nav": {
     "employees": "AI Employees",
@@ -17,9 +17,9 @@
     "language": "ES"
   },
   "hero": {
-    "eyebrow": "AI EMPLOYEES THAT WORK AS A TEAM",
-    "title": "Your company. A team of AI Employees working together.",
-    "description": "Automate real operations with specialized digital employees that collaborate across departments, use your systems and escalate important decisions to people.",
+    "eyebrow": "AI AGENTS FOR BUSINESS · SPECIALIZED AI EMPLOYEES",
+    "title": "AI Employees and agents for business processes that work inside your systems.",
+    "description": "Automate real business processes with specialized AI agents that collaborate across departments, use your systems and escalate important decisions to people.",
     "primaryCta": "Design my AI team",
     "secondaryCta": "See how they work together",
     "note": "Start with one process. Expand into a full team when it makes sense.",
@@ -35,9 +35,9 @@
     {"title": "Private", "text": "The architecture supports private or dedicated deployment options adapted to each company."}
   ],
   "definition": {
-    "eyebrow": "WHAT IS IA EMPLEADO",
-    "title": "More than a chatbot: a digital work unit with a role, tools and boundaries.",
-    "body": "An AI Employee represents a concrete business role. It receives work, checks authorized information, uses approved tools, delivers results and asks for human intervention when a decision exceeds its authority.",
+    "eyebrow": "WHAT IS AN AI EMPLOYEE OR AI AGENT",
+    "title": "An AI Employee is an AI agent specialized in a defined business job.",
+    "body": "An AI Employee is an AI agent configured for a concrete business role. It receives work, checks authorized information, uses approved tools, executes or prepares actions within explicit boundaries and asks for human intervention when a decision exceeds its authority.",
     "bullets": ["Defined role and objectives", "Approved tools and integrations", "Policies and authority boundaries", "History and measurable outcomes"]
   },
   "workflow": {
@@ -63,9 +63,9 @@
     ]
   },
   "employees": {
-    "eyebrow": "REFERENCE SUITE",
-    "title": "Four reference profiles illustrating common business needs.",
-    "description": "The first reference suite covers support, internal operations, finance and sales. The catalog will expand progressively without turning every profile into an immediate availability promise.",
+    "eyebrow": "SPECIALIZED AI AGENTS",
+    "title": "Four reference AI Employees for support, administration, accounting and sales.",
+    "description": "Each profile represents an AI agent specialized in a concrete business function. The reference suite covers customer support, internal operations, finance and sales, and the catalog expands progressively around real business needs.",
     "items": [
       {"title": "Customer Support AI Employee", "text": "Questions, incidents, orders and escalation of exceptions.", "tag": "Reference"},
       {"title": "Administrative AI Employee", "text": "Email, documents, records and repetitive back-office work.", "tag": "Reference"},
@@ -93,9 +93,9 @@
     "after": ["The event is classified", "The right profile checks systems", "Tasks move with context", "Policy decides whether approval is required", "The outcome is recorded"]
   },
   "systems": {
-    "eyebrow": "WORK WITH YOUR OPERATIONS",
-    "title": "AI Employees should connect to real work, not live in an isolated chat window.",
-    "description": "IA Empleado separates the job, capabilities and integrations. Each company enables only what is necessary for its approved processes.",
+    "eyebrow": "AI FOR BUSINESS PROCESSES",
+    "title": "AI agents should connect to real work, not live in an isolated chat window.",
+    "description": "IA Empleado separates the job, capabilities and integrations. Each company enables only the systems, permissions and actions needed for the processes it chooses to automate.",
     "items": ["CRM", "ERP / accounting", "Email", "Calendar", "Ecommerce", "Ticketing", "Documents", "Custom APIs"]
   },
   "security": {
@@ -112,7 +112,7 @@
     "eyebrow": "KEY QUESTIONS",
     "title": "Understand IA Empleado without ambiguous language.",
     "items": [
-      {"question": "What is an AI Employee?", "answer": "It is a digital worker configured for a defined business role with objectives, tools, permissions, policies and supervision. It is not simply a chatbot with a job title."},
+      {"question": "What is an AI Employee or AI agent for business?", "answer": "It is an AI agent configured for a defined business role with objectives, tools, permissions, policies and supervision. It can work with business systems and perform bounded tasks under explicit rules; it is not simply a chatbot with a job title."},
       {"question": "Can AI Employees work with each other?", "answer": "The product vision includes teams of specialized profiles coordinating tasks and structured context. The concrete availability of each workflow depends on implemented and validated capabilities and integrations."},
       {"question": "Can it connect to my company systems?", "answer": "The platform is designed to integrate systems such as CRM, ERP, email, calendar, ecommerce, ticketing, documents and APIs through scoped connectors and permissions."},
       {"question": "Does AI make every decision automatically?", "answer": "No. Important actions can require deterministic rules and human approval. Autonomy is configured and never means authority without limits."},
@@ -127,7 +127,7 @@
     "secondary": "Design my AI team"
   },
   "footer": {
-    "tagline": "Specialized AI Employees working with people, systems and real business processes.",
+    "tagline": "Specialized AI agents and AI Employees working with people, systems and real business processes.",
     "product": "Product",
     "resources": "Explore",
     "legal": "IA Empleado is a product metaphor; it does not imply an employment relationship.",
