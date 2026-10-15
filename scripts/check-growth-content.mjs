@@ -15,6 +15,7 @@ const readDailyRecords = async (suffix) => {
   return records.flat();
 };
 
+const editorialPolicy = await readJson("../content/growth/daily/.editorial-policy.json");
 const legacyLandings = await readJson("../content/growth/landings.json");
 const incrementalLandings = await readJson("../content/growth/incremental-landings.json");
 const dailyLandings = await readDailyRecords(".landings.json");
@@ -30,8 +31,11 @@ const editorialArticles = [...incrementalArticles, ...dailyArticles];
 const errors = [];
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const MIN_EDITORIAL_LANDING_WORDS = 900;
-const MIN_EDITORIAL_ARTICLE_WORDS = 1200;
+const MIN_EDITORIAL_LANDING_WORDS = editorialPolicy.landingMinWordsPerLocale ?? 900;
+const MIN_EDITORIAL_ARTICLE_WORDS = editorialPolicy.articleMinWordsPerLocale ?? 1200;
+const EDITORIAL_METADATA_EFFECTIVE_DATE = editorialPolicy.effectiveFrom ?? "9999-12-31";
+const allowedSearchIntents = new Set(["commercial", "informational", "transactional", "comparison"]);
+const allowedConversionRoles = new Set(["demo", "process-analysis", "education", "evaluation"]);
 
 function requireText(value, label) {
   if (typeof value !== "string" || !value.trim()) errors.push(`${label} must be non-empty text`);
@@ -90,6 +94,47 @@ function articleEditorialCopy(record, locale) {
     .join(" ");
 }
 
+function validateStringList(value, label, minimum) {
+  if (!Array.isArray(value) || value.length < minimum) {
+    errors.push(`${label} needs at least ${minimum} item(s)`);
+    return;
+  }
+  value.forEach((item, index) => requireText(item, `${label}[${index}]`));
+}
+
+function needsEditorialMetadata(record) {
+  return typeof record.updatedAt === "string" && record.updatedAt >= EDITORIAL_METADATA_EFFECTIVE_DATE;
+}
+
+function validateEditorialMetadata(record, kind) {
+  if (!needsEditorialMetadata(record)) return;
+
+  const editorial = record.editorial;
+  if (!editorial || typeof editorial !== "object") {
+    errors.push(`${record.key} updated on/after ${EDITORIAL_METADATA_EFFECTIVE_DATE} requires editorial metadata`);
+    return;
+  }
+
+  validateLocalized(editorial.primaryKeyword, `${record.key}.editorial.primaryKeyword`);
+  validateStringList(editorial.supportingKeywords?.es, `${record.key}.editorial.supportingKeywords.es`, 3);
+  validateStringList(editorial.supportingKeywords?.en, `${record.key}.editorial.supportingKeywords.en`, 3);
+  requireText(editorial.searchIntent, `${record.key}.editorial.searchIntent`);
+  if (editorial.searchIntent && !allowedSearchIntents.has(editorial.searchIntent)) {
+    errors.push(`${record.key}.editorial.searchIntent is not allowed: ${editorial.searchIntent}`);
+  }
+  requireText(editorial.cluster, `${record.key}.editorial.cluster`);
+  requireText(editorial.canonicalRole, `${record.key}.editorial.canonicalRole`);
+  const expectedRole = kind === "landing" ? "landing" : "support";
+  if (editorial.canonicalRole && editorial.canonicalRole !== expectedRole) {
+    errors.push(`${record.key}.editorial.canonicalRole must be ${expectedRole}`);
+  }
+  requireText(editorial.conversionRole, `${record.key}.editorial.conversionRole`);
+  if (editorial.conversionRole && !allowedConversionRoles.has(editorial.conversionRole)) {
+    errors.push(`${record.key}.editorial.conversionRole is not allowed: ${editorial.conversionRole}`);
+  }
+  validateStringList(editorial.researchBasis, `${record.key}.editorial.researchBasis`, 1);
+}
+
 if (!Array.isArray(landings) || landings.length === 0) errors.push("At least one growth landing is required");
 if (!Array.isArray(articles) || articles.length === 0) errors.push("At least one blog article is required");
 
@@ -109,6 +154,7 @@ for (const landing of landings) {
   if (!datePattern.test(landing.publishedAt ?? "")) errors.push(`${landing.key}.publishedAt must be YYYY-MM-DD`);
   if (!datePattern.test(landing.updatedAt ?? "")) errors.push(`${landing.key}.updatedAt must be YYYY-MM-DD`);
   requireText(landing.relatedArticleKey, `${landing.key}.relatedArticleKey`);
+  validateEditorialMetadata(landing, "landing");
 }
 
 for (const article of articles) {
@@ -127,6 +173,7 @@ for (const article of articles) {
   if (!datePattern.test(article.publishedAt ?? "")) errors.push(`${article.key}.publishedAt must be YYYY-MM-DD`);
   if (!datePattern.test(article.updatedAt ?? "")) errors.push(`${article.key}.updatedAt must be YYYY-MM-DD`);
   requireText(article.relatedLandingKey, `${article.key}.relatedLandingKey`);
+  validateEditorialMetadata(article, "article");
 }
 
 for (const landing of editorialLandings) {
@@ -160,8 +207,22 @@ validateUnique(articles, (item) => item.slugs.en, "English article slug");
 
 const landingKeys = new Set(landings.map((item) => item.key));
 const articleKeys = new Set(articles.map((item) => item.key));
+const articleByKey = new Map(articles.map((item) => [item.key, item]));
 for (const landing of landings) {
   if (!articleKeys.has(landing.relatedArticleKey)) errors.push(`${landing.key} links to unknown article ${landing.relatedArticleKey}`);
+  const article = articleByKey.get(landing.relatedArticleKey);
+  if (landing.editorial && article?.editorial) {
+    if (landing.editorial.cluster !== article.editorial.cluster) {
+      errors.push(`${landing.key} and ${article.key} must share the same editorial cluster`);
+    }
+    for (const locale of ["es", "en"]) {
+      const landingKeyword = landing.editorial.primaryKeyword?.[locale]?.trim().toLowerCase();
+      const articleKeyword = article.editorial.primaryKeyword?.[locale]?.trim().toLowerCase();
+      if (landingKeyword && articleKeyword && landingKeyword === articleKeyword) {
+        errors.push(`${landing.key} and ${article.key} cannot target the same primary ${locale} keyword`);
+      }
+    }
+  }
 }
 for (const article of articles) {
   if (!landingKeys.has(article.relatedLandingKey)) errors.push(`${article.key} links to unknown landing ${article.relatedLandingKey}`);
@@ -174,5 +235,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s).`,
+  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Editorial metadata gate: ${EDITORIAL_METADATA_EFFECTIVE_DATE}. Daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s).`,
 );
