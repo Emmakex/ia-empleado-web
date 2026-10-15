@@ -24,6 +24,7 @@ export function GrowthLandingPage({ locale, record }: Props) {
   const isAccountingCluster = record.key === "ai-invoicing-accounting-automation" || record.key === "ai-invoice-processing";
   const isSalesOrderCluster = record.key === "ai-sales-order-processing";
   const isEmployeeOnboardingCluster = record.key === "ai-employee-onboarding";
+  const isLeaveManagementCluster = record.key === "ai-leave-management";
   const relatedEmployee = record.key === "ai-customer-support-automation"
     ? {
         href: employeeDetailPath("customer-support", locale),
@@ -39,7 +40,7 @@ export function GrowthLandingPage({ locale, record }: Props) {
             href: employeeDetailPath("sales-sdr", locale),
             label: locale === "es" ? "Ver Agente IA para Ventas y SDR" : "View AI SDR and Sales Agent",
           }
-        : isEmployeeOnboardingCluster
+        : isEmployeeOnboardingCluster || isLeaveManagementCluster
           ? {
               href: employeeDetailPath("administrative", locale),
               label: locale === "es" ? "Ver Agente IA Administrativo" : "View Administrative AI Agent",
