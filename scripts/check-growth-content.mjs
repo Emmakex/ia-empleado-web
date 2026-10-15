@@ -17,6 +17,7 @@ const readDailyRecords = async (suffix) => {
 
 const editorialPolicy = await readJson("../content/growth/daily/.editorial-policy.json");
 const consolidationRegistry = await readJson("../content/growth/consolidations.json");
+const seoOverrideRegistry = await readJson("../content/growth/seo-overrides.json");
 const legacyLandings = await readJson("../content/growth/landings.json");
 const incrementalLandings = await readJson("../content/growth/incremental-landings.json");
 const rawDailyLandings = await readDailyRecords(".landings.json");
@@ -30,14 +31,26 @@ const legacyArticles = rawLegacyArticles.filter((record) => !replacedLegacyArtic
 const dailyLandings = rawDailyLandings.filter((record) => !consolidatedLandingKeys.has(record.key));
 const dailyArticles = rawDailyArticles.filter((record) => !consolidatedArticleKeys.has(record.key));
 
-const landings = [...legacyLandings, ...incrementalLandings, ...dailyLandings].filter(
+function applySeoOverrides(records, overrides) {
+  const byKey = new Map((overrides ?? []).map((override) => [override.key, override]));
+  return records.map((record) => {
+    const override = byKey.get(record.key);
+    return override ? { ...record, ...override } : record;
+  });
+}
+
+const baseLandings = [...legacyLandings, ...incrementalLandings, ...dailyLandings].filter(
   (record) => !consolidatedLandingKeys.has(record.key),
 );
-const articles = [...legacyArticles, ...incrementalArticles, ...dailyArticles].filter(
+const baseArticles = [...legacyArticles, ...incrementalArticles, ...dailyArticles].filter(
   (record) => !consolidatedArticleKeys.has(record.key),
 );
-const editorialLandings = [...incrementalLandings, ...dailyLandings];
-const editorialArticles = [...incrementalArticles, ...dailyArticles];
+const landings = applySeoOverrides(baseLandings, seoOverrideRegistry.landings);
+const articles = applySeoOverrides(baseArticles, seoOverrideRegistry.articles);
+const editorialLandingKeys = new Set([...incrementalLandings, ...dailyLandings].map((record) => record.key));
+const editorialArticleKeys = new Set([...incrementalArticles, ...dailyArticles].map((record) => record.key));
+const editorialLandings = landings.filter((record) => editorialLandingKeys.has(record.key));
+const editorialArticles = articles.filter((record) => editorialArticleKeys.has(record.key));
 
 const errors = [];
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -47,6 +60,7 @@ const MIN_EDITORIAL_ARTICLE_WORDS = editorialPolicy.articleMinWordsPerLocale ?? 
 const EDITORIAL_METADATA_EFFECTIVE_DATE = editorialPolicy.effectiveFrom ?? "9999-12-31";
 const allowedSearchIntents = new Set(["commercial", "informational", "transactional", "comparison"]);
 const allowedConversionRoles = new Set(["demo", "process-analysis", "education", "evaluation"]);
+const allowedOverrideDecisions = new Set(["KEEP", "EXPAND", "REPOSITION", "MERGE", "REDIRECT", "NOINDEX"]);
 
 function requireText(value, label) {
   if (typeof value !== "string" || !value.trim()) errors.push(`${label} must be non-empty text`);
@@ -146,6 +160,28 @@ function validateEditorialMetadata(record, kind) {
   validateStringList(editorial.researchBasis, `${record.key}.editorial.researchBasis`, 1);
 }
 
+function validateSeoOverrides(overrides, baseRecords, kind) {
+  const baseKeys = new Set(baseRecords.map((record) => record.key));
+  validateUnique(overrides ?? [], (item) => item.key, `${kind} SEO override key`);
+  for (const override of overrides ?? []) {
+    requireText(override.key, `${kind}.seoOverride.key`);
+    if (!baseKeys.has(override.key)) errors.push(`${kind} SEO override targets unknown key: ${override.key}`);
+    requireText(override.decision, `${override.key}.decision`);
+    if (override.decision && !allowedOverrideDecisions.has(override.decision)) {
+      errors.push(`${override.key}.decision is not allowed: ${override.decision}`);
+    }
+    validateLocalized(override.primaryKeyword, `${override.key}.primaryKeyword`);
+    validateStringList(override.supportingKeywords?.es, `${override.key}.supportingKeywords.es`, 3);
+    validateStringList(override.supportingKeywords?.en, `${override.key}.supportingKeywords.en`, 3);
+    validateStringList(override.researchBasis, `${override.key}.researchBasis`, 1);
+    if (override.seoTitle) validateLocalized(override.seoTitle, `${override.key}.seoTitle`);
+    if (override.seoDescription) validateLocalized(override.seoDescription, `${override.key}.seoDescription`);
+    if (override.updatedAt && !datePattern.test(override.updatedAt)) {
+      errors.push(`${override.key}.updatedAt must be YYYY-MM-DD`);
+    }
+  }
+}
+
 for (const entry of consolidationRegistry.articles ?? []) {
   requireText(entry.key, "consolidation.article.key");
   requireText(entry.decision, `${entry.key}.decision`);
@@ -158,6 +194,9 @@ for (const entry of consolidationRegistry.landings ?? []) {
   requireText(entry.destinations?.es, `${entry.key}.destinations.es`);
   requireText(entry.destinations?.en, `${entry.key}.destinations.en`);
 }
+
+validateSeoOverrides(seoOverrideRegistry.landings, baseLandings, "landing");
+validateSeoOverrides(seoOverrideRegistry.articles, baseArticles, "article");
 
 if (!Array.isArray(landings) || landings.length === 0) errors.push("At least one growth landing is required");
 if (!Array.isArray(articles) || articles.length === 0) errors.push("At least one blog article is required");
@@ -263,5 +302,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Editorial metadata gate: ${EDITORIAL_METADATA_EFFECTIVE_DATE}. Active daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s). Consolidated: ${consolidatedLandingKeys.size} landing(s), ${consolidatedArticleKeys.size} article(s).`,
+  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Editorial metadata gate: ${EDITORIAL_METADATA_EFFECTIVE_DATE}. Active daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s). Consolidated: ${consolidatedLandingKeys.size} landing(s), ${consolidatedArticleKeys.size} article(s). SEO overrides: ${(seoOverrideRegistry.landings ?? []).length} landing(s), ${(seoOverrideRegistry.articles ?? []).length} article(s).`,
 );

@@ -15,9 +15,10 @@ Audit every historical Growth record against the current `one-primary-intent = o
 - Audited in Batch 01: **4**.
 - Audited in Batch 02: **3**.
 - Audited in Batch 03: **4**.
-- Total audited: **11 / 56**.
-- Remaining after Batch 03: **45**.
-- New search-intent URLs created in Phase 2: **0**. Batch 02 changed the slug of one existing article as part of a `REPOSITION`; it is not counted as a new content owner.
+- Audited in Batch 04: **4**.
+- Total audited: **15 / 56**.
+- Remaining after Batch 04: **41**.
+- New search-intent URLs created in Phase 2: **0**. Existing owners are merged, expanded or repositioned before any new URL is considered.
 
 ## Batch 01 — comparison-intent consolidation
 
@@ -135,9 +136,66 @@ This makes the distinction visible to users and search/answer engines: education
 
 ### Consolidation registry
 
-`content/growth/consolidations.json` is now the explicit registry for Growth records that remain in historical source files but must no longer participate in routing, sitemap generation or canonical ownership. The Growth runtime and CI contract both consume this registry, and the checker allows a retained landing to reference a support article only when that article has an explicit consolidation decision and destination.
+`content/growth/consolidations.json` is the explicit registry for Growth records that remain in historical source files but must no longer participate in routing, sitemap generation or canonical ownership. The Growth runtime and CI contract both consume this registry.
 
-This avoids silently deleting editorial history while still ensuring merged content cannot remain indexable by accident.
+## Batch 04 — private AI + process automation
+
+Batch 04 audits Day 15 and Day 16. Unlike earlier comparison or ROI support duplicates, these clusters have distinct search demand and a useful business job, so the correct move is to strengthen the existing owners rather than delete them.
+
+| Historical record | Decision | Primary ownership after audit |
+| --- | --- | --- |
+| Day 15 landing `private-ai-employee-deployment` | **REPOSITION** | private AI for business / private deployment evaluation |
+| Day 15 article `how-to-deploy-ai-employee-privately` | **REPOSITION** | local, self-hosted and on-premise AI informational guide |
+| Day 16 landing `ai-business-process-automation` | **EXPAND** | AI process automation / automation of business processes with AI |
+| Day 16 article `how-to-choose-first-ai-process` | **KEEP** | how to choose the first process to automate with AI |
+
+### Day 15 — private AI is a real market-language opportunity
+
+Semrush evidence captured on 2026-10-15:
+
+- ES `ia local`: **480 searches/month**, KD **14**;
+- ES `ia privada`: **210**, KD **15**;
+- ES `inteligencia artificial privada`: **20**;
+- ES `ia on premise`: **20**;
+- ES `ia privada para empresas`: **10**;
+- UK `private ai`: **390**, KD **33**;
+- UK `self hosted ai`: **170**, KD **31**;
+- UK `on premise ai`: **90**, KD **19**;
+- UK `private ai agents`: **20**, KD **21**;
+- UK `private ai infrastructure`: **10**.
+
+The original pages were too centered on the owned phrase `Empleado IA privado`. Batch 04 keeps the existing URLs and authority but changes the visible search framing:
+
+- the **landing** now owns business evaluation around private AI, dedicated infrastructure and on-premise deployment;
+- the **article** owns the informational/technical question around local, self-hosted and on-premise AI architecture.
+
+No slug changes are necessary: the intent can be clarified through title, H1, description, direct answer and internal relationship without paying the cost of another migration.
+
+### Day 16 — process automation deserves its own owner
+
+Search evidence is stronger still:
+
+- ES `automatización de procesos con ia`: **320 searches/month**, KD **46**;
+- ES `automatización de procesos`: **1,300**, KD **32**;
+- ES `automatización de procesos empresariales`: **50**, KD **12**;
+- UK `business process automation`: **6,600**, KD **57**;
+- UK `ai workflow automation`: **260**, KD **42**;
+- UK `ai process automation`: **110**, KD **26**;
+- UK `automate business processes with ai`: **30**, KD **18**.
+
+The Day 16 landing therefore remains distinct from Home and from `/mejora-tu-proceso`. Home owns the broad company/category proposition; the Growth landing owns the commercial/evaluation concept of process automation with AI; Process Analyzer remains the transactional tool used to inspect a concrete workflow. The existing support article remains informational and answers how to select the first process rather than competing for the commercial phrase.
+
+### SEO override registry
+
+Batch 04 introduces `content/growth/seo-overrides.json` so historical content can be repositioned without copying or rewriting entire source records. An override must point to a real existing record and declares:
+
+- explicit decision;
+- primary keyword in ES and EN;
+- supporting keyword set;
+- research evidence;
+- only the fields that materially change, such as title, description, H1, lead or `updatedAt`.
+
+The Growth runtime applies these overrides to the canonical record, while `scripts/check-growth-content.mjs` rejects unknown keys, duplicate overrides, invalid decisions, missing keyword evidence or malformed dates. This gives future audits a smaller and more reviewable change surface than duplicating full 30–40 KB historical JSON files.
 
 ## Redirect contract
 
@@ -149,17 +207,17 @@ Historical redirects created during Phase 2 must:
 4. leave the destination indexable;
 5. preserve ES/EN parity.
 
-Regression tests cover redirect status/destination, sitemap ownership and the contextual link graph.
+Regression tests cover redirect status/destination, sitemap ownership, canonical URLs and the contextual link graph.
 
 ## Next audit order
 
-Continue existing-content-first with the remaining **45** records. Prioritise records with the highest overlap risk against existing owners before low-risk long-tail process content:
+Continue existing-content-first with the remaining **41** records. Prioritise records with the highest overlap risk against existing owners before low-risk long-tail process content:
 
-1. Day 15 private deployment versus product/security positioning;
-2. Day 16 broad process automation versus Home and process-analysis surfaces;
-3. Day 24 invoice processing versus Accounting & Billing and invoice-validation use case;
-4. administrative/accounting/sales original Growth pairs versus their deep role owners;
-5. then the remaining integration, governance, operational and HR/finance process clusters.
+1. Day 24 invoice processing versus Accounting & Billing and invoice-validation use case;
+2. administrative/accounting/sales original Growth pairs versus their deep role owners;
+3. CRM / ERP / enterprise email integration pairs versus dedicated integration surfaces;
+4. data readiness, governance, human-in-the-loop, observability and incident-response clusters;
+5. pilot, sales-order, onboarding, leave and expense-management process clusters.
 
 ## Completion rule
 

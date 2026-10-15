@@ -1,0 +1,117 @@
+{
+  "landings": [
+    {
+      "key": "private-ai-employee-deployment",
+      "decision": "REPOSITION",
+      "primaryKeyword": {
+        "es": "ia privada para empresas",
+        "en": "private ai"
+      },
+      "supportingKeywords": {
+        "es": ["ia privada", "ia local", "ia on premise", "inteligencia artificial privada"],
+        "en": ["private ai for business", "on premise ai", "self hosted ai", "private ai infrastructure"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: ia privada 210/month, KD 15; ia local 480/month, KD 14; ia privada para empresas 10/month.",
+        "Semrush UK 2026-10-15: private ai 390/month, KD 33; on premise ai 90/month, KD 19; self hosted ai 170/month, KD 31."
+      ],
+      "seoTitle": {
+        "es": "IA privada para empresas: despliegue local y on-premise | IA Empleado",
+        "en": "Private AI for business: self-hosted and on-premise | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Cómo desplegar IA privada para empresas en infraestructura local, dedicada u on-premise con control de datos, identidad, red, secretos, auditoría y actualizaciones.",
+        "en": "How to deploy private AI for business in self-hosted, dedicated or on-premise infrastructure with data, identity, network, secret, audit and update controls."
+      },
+      "eyebrow": {
+        "es": "IA PRIVADA PARA EMPRESAS · LOCAL · ON-PREMISE",
+        "en": "PRIVATE AI FOR BUSINESS · SELF-HOSTED · ON-PREMISE"
+      },
+      "title": {
+        "es": "IA privada para empresas: despliega agentes y Empleados IA con control de datos e infraestructura.",
+        "en": "Private AI for business: deploy AI agents and AI Employees with control over data and infrastructure."
+      },
+      "lead": {
+        "es": "La IA privada permite ejecutar agentes y automatizaciones empresariales en infraestructura dedicada, local u on-premise cuando la empresa necesita controlar dónde circulan los datos, cómo se autentican los sistemas y quién opera la plataforma. El objetivo no es aislar la IA por defecto, sino elegir una arquitectura proporcional a los requisitos de privacidad, integración, disponibilidad y gobierno. Un despliegue sólido separa modelo, datos, herramientas y permisos, y define desde el inicio red, identidad, secretos, observabilidad, copias de seguridad, actualizaciones y responsabilidad operativa.",
+        "en": "Private AI lets businesses run agents and automations in dedicated, self-hosted or on-premise infrastructure when they need stronger control over where data flows, how systems authenticate and who operates the platform. The goal is not to isolate AI by default, but to choose an architecture proportionate to privacy, integration, availability and governance requirements. A robust deployment separates model, data, tools and permissions and defines networking, identity, secrets, observability, backups, updates and operational ownership from the start."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "ai-business-process-automation",
+      "decision": "EXPAND",
+      "primaryKeyword": {
+        "es": "automatización de procesos con ia",
+        "en": "ai process automation"
+      },
+      "supportingKeywords": {
+        "es": ["automatización de procesos", "automatización con ia", "automatización de procesos empresariales", "automatizar procesos con ia"],
+        "en": ["business process automation", "ai workflow automation", "intelligent process automation", "automate business processes with ai"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatización de procesos con ia 320/month, KD 46; automatización de procesos 1,300/month, KD 32; automatización de procesos empresariales 50/month, KD 12.",
+        "Semrush UK 2026-10-15: business process automation 6,600/month, KD 57; ai workflow automation 260/month, KD 42; ai process automation 110/month, KD 26."
+      ],
+      "seoTitle": {
+        "es": "Automatización de procesos con IA para empresas | IA Empleado",
+        "en": "AI process automation for business | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Automatiza procesos con IA paso a paso: prioriza el flujo adecuado, conecta sistemas, limita permisos, mide resultados y conserva aprobación humana donde importa.",
+        "en": "Automate business processes with AI: choose the right workflow, connect systems, bound permissions, measure outcomes and keep human approval where it matters."
+      },
+      "eyebrow": {
+        "es": "AUTOMATIZACIÓN DE PROCESOS CON IA",
+        "en": "AI PROCESS AUTOMATION"
+      },
+      "title": {
+        "es": "Automatización de procesos con IA: convierte un flujo empresarial en trabajo coordinado y medible.",
+        "en": "AI process automation: turn a business workflow into coordinated, measurable work."
+      },
+      "lead": {
+        "es": "Automatizar procesos con IA significa aplicar inteligencia artificial a un flujo empresarial concreto, no conectar un modelo a toda la compañía. El valor aparece cuando existe una entrada clara, fuentes de verdad identificadas, pasos repetibles, excepciones conocidas y un resultado que puede medirse. La IA puede interpretar documentos o mensajes, reunir contexto y preparar acciones; las reglas deterministas validan límites y los sistemas autorizados ejecutan los cambios. La autonomía debe crecer solo cuando calidad, trazabilidad y riesgo están bajo control.",
+        "en": "AI process automation means applying artificial intelligence to a specific business workflow rather than connecting a model to an entire company. Value appears when the workflow has a clear input, identified sources of truth, repeatable steps, known exceptions and a measurable outcome. AI can interpret documents or messages, gather context and prepare actions; deterministic rules validate boundaries and authorised systems execute changes. Autonomy should increase only when quality, traceability and risk are under control."
+      },
+      "updatedAt": "2026-10-15"
+    }
+  ],
+  "articles": [
+    {
+      "key": "how-to-deploy-ai-employee-privately",
+      "decision": "REPOSITION",
+      "primaryKeyword": {
+        "es": "ia local",
+        "en": "self hosted ai"
+      },
+      "supportingKeywords": {
+        "es": ["inteligencia artificial local", "ia on premise", "ia privada", "inteligencia artificial privada"],
+        "en": ["self hosted ai agents", "on premise ai", "private ai infrastructure", "private ai deployment"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: ia local 480/month, KD 14; inteligencia artificial local 20/month; ia on premise 20/month.",
+        "Semrush UK 2026-10-15: self hosted ai 170/month, KD 31; on premise ai 90/month, KD 19; self hosted ai agents 10/month."
+      ],
+      "seoTitle": {
+        "es": "IA local y on-premise: guía para desplegar IA privada | IA Empleado",
+        "en": "Self-hosted AI and on-premise deployment guide | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Guía técnica para evaluar IA local, privada y on-premise: datos, modelos, red, identidad, secretos, observabilidad, backups, actualizaciones y operación.",
+        "en": "Technical guide to self-hosted, private and on-premise AI covering data, models, networking, identity, secrets, observability, backups, updates and operations."
+      },
+      "title": {
+        "es": "IA local, privada y on-premise: cómo elegir una arquitectura de despliegue",
+        "en": "Self-hosted and on-premise AI: how to choose a private deployment architecture"
+      },
+      "excerpt": {
+        "es": "La IA local no consiste solo en instalar un modelo dentro de la empresa. Hay que decidir dónde viven los datos, qué componentes se alojan internamente y quién controla identidad, red, herramientas, registros y actualizaciones.",
+        "en": "Self-hosted AI is not simply installing a model inside the company. You need to decide where data lives, which components run internally and who controls identity, networking, tools, logs and updates."
+      },
+      "intro": {
+        "es": "Una arquitectura de IA local o on-premise busca aumentar el control sobre datos, conectividad y operación, pero no obliga a ejecutar todos los componentes en el mismo servidor. Una empresa puede alojar agentes y datos en su infraestructura, utilizar un modelo privado gestionado, combinar servicios externos bajo reglas de salida o aislar completamente determinados procesos. La decisión correcta depende de sensibilidad de datos, requisitos regulatorios, integración con sistemas internos, latencia, capacidad operativa y coste total. Esta guía separa esas decisiones para evitar tratar «IA privada» como una única arquitectura.",
+        "en": "A self-hosted or on-premise AI architecture aims to increase control over data, connectivity and operations, but it does not require every component to run on the same server. A business can host agents and data in its own infrastructure, use a managed private model, combine external services under egress rules or fully isolate selected workflows. The right choice depends on data sensitivity, regulatory requirements, integration with internal systems, latency, operational capacity and total cost. This guide separates those decisions so that “private AI” is not treated as one single architecture."
+      },
+      "updatedAt": "2026-10-15"
+    }
+  ]
+}
