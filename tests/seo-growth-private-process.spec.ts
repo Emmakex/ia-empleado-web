@@ -28,8 +28,8 @@ const surfaces = [
   },
   {
     path: "/en/ai-business-process-automation",
-    title: /AI process automation/i,
-    h1: /AI process automation/i,
+    title: /Business process automation with AI/i,
+    h1: /Business process automation with AI/i,
   },
 ] as const;
 
@@ -71,11 +71,11 @@ test.describe("Phase 2 Batch 04 private AI and process automation ownership", ()
 
   test("the first-process guide remains a distinct informational support owner", async ({ page }) => {
     await page.goto("/blog/como-elegir-primer-proceso-automatizar-ia", { waitUntil: "domcontentloaded" });
-    await expect(page.locator("h1")).toContainText(/Cómo elegir el primer proceso para automatizar con IA/i);
+    await expect(page.locator("h1")).toContainText(/Cómo automatizar procesos con IA/i);
     await expect(page.getByRole("link", { name: /Analizar proceso/ })).toHaveAttribute("href", "/mejora-tu-proceso");
 
     await page.goto("/en/blog/how-to-choose-first-process-to-automate-with-ai", { waitUntil: "domcontentloaded" });
-    await expect(page.locator("h1")).toContainText(/How to choose the first process to automate with AI/i);
+    await expect(page.locator("h1")).toContainText(/How to automate business processes with AI/i);
     await expect(page.getByRole("link", { name: /Analyse process/ })).toHaveAttribute("href", "/en/improve-your-process");
   });
 });
