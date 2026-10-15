@@ -40,6 +40,8 @@ Every indexable URL must have one primary intent owner. Supporting pages may use
 | `/blog/como-automatizar-onboarding-empleados-ia` | `proceso de onboarding` | `employee onboarding process` | employee-onboarding informational support guide |
 | `/automatizacion-vacaciones-ausencias-ia` | `gestión de vacaciones` | `leave management` | leave-management commercial process landing |
 | `/blog/como-automatizar-vacaciones-ausencias-ia` | `planificar vacaciones empleados` | `how to manage employee absence` | leave-management informational support guide |
+| `/automatizacion-gestion-gastos-ia` | `gestión de gastos` | `expense management automation` | employee-expense commercial process landing |
+| `/blog/como-automatizar-gestion-gastos-ia` | `nota de gastos` | `expense management process` | employee-expense informational support guide |
 | `/casos-de-uso/documentacion-administrativa` | `documentación administrativa` | `administrative documentation` | bounded document-processing use case |
 | `/blog/**` | informational support for a distinct commercial owner | informational support | support content |
 | `/casos-de-uso/**` | specific business use-case intent | specific use-case intent | evaluation |
@@ -104,6 +106,17 @@ The leave cluster is split between commercial process evaluation, informational 
 - **Administrative-documentation use case:** `/casos-de-uso/documentacion-administrativa` can support forms and evidence but does not own leave policy, coverage or approval intent.
 
 The commercial landing must own the end-to-end operational process: request, balance, policy, team coverage, approval, HRIS/payroll update and audit trail. The guide owns planning/how-to intent. Sensitive employment-rights, medical and exceptional cases remain under human responsibility. This separation prevents broad `absence management` vocabulary from turning a support role or generic document workflow into a competing HR page.
+
+### Phase 2 expense-management ownership
+
+The expense cluster is deliberately separated from both the broad accounting role and supplier-invoice/accounts-payable automation:
+
+- **Expense-management commercial owner:** `/automatizacion-gestion-gastos-ia` keeps `gestión de gastos` / `expense management automation`. Semrush reports ES `gestión de gastos` 90/month, KD 46 and unaccented `gestion de gastos` 170/month, KD 36; `gestion gastos empresa` reports 110/month, KD 32. UK reports `expense management automation` 140/month, KD 22, `employee expense management` 320/month, KD 22, `expense automation` 210/month, KD 19 and `automated expense management` 90/month, KD 23.
+- **Expense informational owner:** `/blog/como-automatizar-gestion-gastos-ia` keeps `nota de gastos` / `expense management process`. Semrush reports ES `nota de gastos` 320/month, KD 19 and `notas de gastos` 140/month, KD 23. UK reports `expense management process` 40/month, `automate expense management` 50/month and `expense claim process` 20/month.
+- **Accounting role:** `/empleados-ia/contabilidad-facturacion` continues to own `ia para contabilidad` / `ai for accounting`. It can perform parts of the expense workflow but does not own the employee-expense category.
+- **Supplier invoices:** `/automatizacion-facturas-ia-empresas` and its support guide retain invoice automation/accounts-payable intent. Employee receipts, card transactions, claims, advances and reimbursements must not silently migrate into that owner.
+
+The expense landing owns the operational evaluation flow from receipt or card transaction through extraction, policy, approval, reconciliation and accounting handoff. The guide owns the explanatory implementation path around a note/claim. Reimbursement execution, exception approval and policy changes remain under financial authority. Contextual links should connect the expense cluster to Accounting without confusing employee expenses with supplier invoices.
 
 ## High-value demand vocabulary
 
