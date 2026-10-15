@@ -5,6 +5,7 @@ import landingsJson from "../content/growth/landings.json";
 import articlesJson from "../content/growth/articles.json";
 import incrementalLandingsJson from "../content/growth/incremental-landings.json";
 import incrementalArticlesJson from "../content/growth/incremental-articles.json";
+import consolidationsJson from "../content/growth/consolidations.json";
 
 type LocalizedText = Record<Locale, string>;
 type LocalizedList = Record<Locale, string[]>;
@@ -54,8 +55,16 @@ export type BlogArticleRecord = {
   updatedAt: string;
 };
 
+type ConsolidationRegistry = {
+  articles: Array<{ key: string }>;
+  landings: Array<{ key: string }>;
+};
+
 const dailyDirectory = path.join(process.cwd(), "content", "growth", "daily");
 const replacedLegacyArticleKeys = new Set(["what-is-an-ai-employee"]);
+const consolidationRegistry = consolidationsJson as ConsolidationRegistry;
+const consolidatedArticleKeys = new Set(consolidationRegistry.articles.map((item) => item.key));
+const consolidatedLandingKeys = new Set(consolidationRegistry.landings.map((item) => item.key));
 
 function readDailyRecords<T>(suffix: string): T[] {
   return readdirSync(dailyDirectory)
@@ -75,13 +84,13 @@ export const growthLandingRecords = [
   ...(landingsJson as GrowthLandingRecord[]),
   ...(incrementalLandingsJson as GrowthLandingRecord[]),
   ...dailyLandings,
-];
+].filter((record) => !consolidatedLandingKeys.has(record.key));
 
 export const blogArticleRecords = [
   ...legacyArticles,
   ...(incrementalArticlesJson as BlogArticleRecord[]),
   ...dailyArticles,
-];
+].filter((record) => !consolidatedArticleKeys.has(record.key));
 
 export function getGrowthLandingByKey(key: string) {
   return growthLandingRecords.find((record) => record.key === key);
