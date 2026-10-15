@@ -36,6 +36,9 @@ Every indexable URL must have one primary intent owner. Supporting pages may use
 | `/automatizacion-pedidos-ventas-ia-erp` | `automatización de pedidos` | `sales order automation` | sales-order commercial process landing |
 | `/blog/como-automatizar-procesamiento-pedidos-b2b-ia` | `automatizar pedidos` | `how to automate order processing` | sales-order informational support guide |
 | `/casos-de-uso/incidencias-pedidos` | `incidencias de pedidos` | `order exceptions` | bounded post-order use-case evaluation |
+| `/automatizacion-onboarding-empleados-ia` | `onboarding de empleados` | `employee onboarding automation` | employee-onboarding commercial process landing |
+| `/blog/como-automatizar-onboarding-empleados-ia` | `proceso de onboarding` | `employee onboarding process` | employee-onboarding informational support guide |
+| `/casos-de-uso/documentacion-administrativa` | `documentación administrativa` | `administrative documentation` | bounded document-processing use case |
 | `/blog/**` | informational support for a distinct commercial owner | informational support | support content |
 | `/casos-de-uso/**` | specific business use-case intent | specific use-case intent | evaluation |
 | `/sectores/**` | sector-specific AI automation intent | industry-specific AI automation intent | evaluation |
@@ -77,6 +80,17 @@ The sales-order cluster is split between the employee role, the process category
 - **Post-order use-case owner:** `/casos-de-uso/incidencias-pedidos` remains narrow around `incidencias de pedidos` / `order exceptions`: stock, shipping, changes, refunds or other cases after a normal order path breaks.
 
 The commercial landing owns intake, extraction, customer identification, SKU matching, pricing, stock, credit controls and bounded ERP creation. The role page must not absorb process-category terms, and the exception page must not compete for end-to-end order automation. The landing, guide, sales role and exception use case must link contextually to one another.
+
+### Phase 2 employee-onboarding ownership
+
+The onboarding cluster is split between process evaluation, process education and the administrative surfaces that support only part of the workflow:
+
+- **Employee-onboarding commercial owner:** `/automatizacion-onboarding-empleados-ia` keeps `onboarding de empleados` / `employee onboarding automation`. Semrush reports ES `onboarding de empleados` 210/month, KD 14; `onboarding empleados` 70/month, KD 13; `onboarding automatizado` 70/month, KD 10. UK reports `employee onboarding automation` 70/month, `onboarding automation` 170/month, KD 25 and `automated employee onboarding` 110/month, KD 28.
+- **Employee-onboarding informational owner:** `/blog/como-automatizar-onboarding-empleados-ia` keeps `proceso de onboarding` / `employee onboarding process`. Semrush reports ES `proceso de onboarding` 320/month, KD 19 and `proceso onboarding` 70/month, KD 21. UK reports `employee onboarding process` 390/month, KD 43, plus `how to automate employee onboarding` 20/month.
+- **Administrative role:** `/empleados-ia/administrativo` remains the owner for `agente ia administrativo` / `ai administrative assistant`. It supports documentation, records and follow-up but does not own the HR/IT onboarding process.
+- **Administrative-documentation use case:** `/casos-de-uso/documentacion-administrativa` stays narrow around document classification, extraction, completeness and record updates. It can support onboarding without competing for end-to-end onboarding demand.
+
+The commercial onboarding owner must explain the complete journey from approved hire through identity, documents, equipment, access, training and day-one readiness. The guide owns process design and how-to intent. Administrative surfaces are supporting nodes only. Contextual links should make that division explicit rather than allowing `IA para recursos humanos` or generic administration language to drift between pages.
 
 ## High-value demand vocabulary
 

@@ -1,0 +1,53 @@
+{
+  "batch": "phase-2-batch-07-employee-onboarding",
+  "date": "2026-10-15",
+  "scope": "existing-content-first",
+  "records": [
+    {
+      "surface": "/automatizacion-onboarding-empleados-ia",
+      "type": "commercial-process-landing",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "onboarding de empleados", "en": "employee onboarding automation" },
+      "supportingKeywords": {
+        "es": ["onboarding empleados", "onboarding automatizado", "automatización onboarding", "onboarding con ia"],
+        "en": ["onboarding automation", "automated employee onboarding", "hr onboarding automation", "ai employee onboarding"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: onboarding de empleados 210/month, KD 14; onboarding empleados 70/month, KD 13; onboarding automatizado 70/month, KD 10; automatización onboarding 10/month.",
+        "Semrush UK 2026-10-15: employee onboarding automation 70/month; onboarding automation 170/month, KD 25; automated employee onboarding 110/month, KD 28; HR onboarding automation 30/month."
+      ],
+      "notes": "Existing Day 26 landing remains the commercial process owner and is repositioned around market vocabulary rather than the owned Empleado IA phrase."
+    },
+    {
+      "surface": "/blog/como-automatizar-onboarding-empleados-ia",
+      "type": "informational-support",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "proceso de onboarding", "en": "employee onboarding process" },
+      "supportingKeywords": {
+        "es": ["proceso onboarding", "cómo hacer un onboarding", "automatizar onboarding", "onboarding empleados"],
+        "en": ["how to automate employee onboarding", "automate employee onboarding", "employee onboarding workflow", "automated employee onboarding"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: proceso de onboarding 320/month, KD 19; proceso onboarding 70/month, KD 21; cómo hacer un onboarding 20/month.",
+        "Semrush UK 2026-10-15: employee onboarding process 390/month, KD 43; automate employee onboarding 40/month; how to automate employee onboarding 20/month."
+      ],
+      "notes": "The existing Day 26 guide owns process/how-to intent and remains reciprocal with the commercial owner."
+    },
+    {
+      "surface": "/empleados-ia/administrativo",
+      "type": "employee-role",
+      "decision": "KEEP",
+      "primaryKeyword": { "es": "agente ia administrativo", "en": "ai administrative assistant" },
+      "notes": "Administrative support is relevant to documents, records and follow-up, but the role does not own HR onboarding intent."
+    },
+    {
+      "surface": "/casos-de-uso/documentacion-administrativa",
+      "type": "use-case",
+      "decision": "KEEP",
+      "primaryKeyword": { "es": "documentación administrativa", "en": "administrative documentation" },
+      "notes": "Kept as a bounded document-processing pattern that supports onboarding without competing for the end-to-end onboarding process."
+    }
+  ],
+  "createdUrls": 0,
+  "mergedOrRedirectedUrls": 0
+}
