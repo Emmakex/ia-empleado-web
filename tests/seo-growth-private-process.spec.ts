@@ -40,7 +40,10 @@ test.describe("Phase 2 Batch 04 private AI and process automation ownership", ()
       expect(response?.ok()).toBeTruthy();
       await expect(page).toHaveTitle(surface.title);
       await expect(page.locator("h1")).toContainText(surface.h1);
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", surface.path);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://iaempleado.com${surface.path}`,
+      );
     });
   }
 
