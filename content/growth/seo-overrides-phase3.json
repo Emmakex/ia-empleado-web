@@ -1,0 +1,71 @@
+{
+  "landings": [
+    {
+      "key": "ai-data-readiness",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "calidad de datos para IA", "en": "data readiness for ai" },
+      "supportingKeywords": {
+        "es": ["calidad de datos", "calidad del dato", "mejorar la calidad de los datos", "preparación de datos"],
+        "en": ["ai data readiness", "data quality for ai", "ai data quality", "prepare data for ai"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: calidad de datos 110/month, KD 22; calidad del dato 70/month, KD 19; mejorar la calidad de los datos 90/month, KD 13; preparación de datos 20/month. Exact 'calidad de datos para IA' returned no reported volume, so the landing uses it as the precise modifier while supporting it with measured category demand.",
+        "Semrush UK 2026-10-15: data readiness for ai 70/month, CPC 30.74; ai data readiness 50/month, CPC 21.77; data quality for ai 20/month; ai data quality 50/month; prepare data for ai 20/month."
+      ],
+      "seoTitle": {
+        "es": "Calidad de datos para IA en empresas | IA Empleado",
+        "en": "Data readiness for AI | Enterprise data quality | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Prepara la calidad de datos para IA antes de conectar CRM, ERP, email o documentos: fuentes de verdad, permisos, formatos, privacidad, validación y excepciones.",
+        "en": "Prepare enterprise data for AI across CRM, ERP, email and documents: data quality, sources of truth, permissions, privacy, validation and exceptions."
+      },
+      "eyebrow": { "es": "CALIDAD DE DATOS · IA · SISTEMAS EMPRESARIALES", "en": "DATA READINESS FOR AI · DATA QUALITY · ENTERPRISE SYSTEMS" },
+      "title": {
+        "es": "Calidad de datos para IA: prepara lo necesario para automatizar sin amplificar errores.",
+        "en": "Data readiness for AI: prepare the data your automation needs without amplifying errors."
+      },
+      "lead": {
+        "es": "La calidad de datos para IA significa que el proceso conoce qué información necesita, cuál es su fuente de verdad, qué campos son fiables, qué puede leer o escribir el agente y qué debe ocurrir cuando un dato falta o dos sistemas se contradicen. No exige limpiar toda la empresa antes de empezar. Exige preparar el conjunto mínimo del flujo elegido, normalizar lo verificable, limitar permisos y mantener trazabilidad y revisión humana donde una inconsistencia podría provocar una acción incorrecta.",
+        "en": "Data readiness for AI means the workflow knows which information it needs, which system is authoritative, which fields are reliable, what the agent may read or write and what happens when data is missing or systems disagree. It does not require cleaning the entire enterprise before starting. It requires making the minimum data set for the chosen workflow sufficiently reliable, normalising what can be verified, limiting permissions and keeping traceability and human review where inconsistency could cause a consequential action."
+      },
+      "updatedAt": "2026-10-15"
+    }
+  ],
+  "articles": [
+    {
+      "key": "data-readiness-checklist-before-ai",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "mejorar la calidad de los datos", "en": "prepare data for ai" },
+      "supportingKeywords": {
+        "es": ["preparación de datos", "calidad de los datos", "estrategia de calidad de datos", "métodos de prueba de calidad de datos"],
+        "en": ["data quality for ai", "ai data quality", "data quality metrics", "data quality standards"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: mejorar la calidad de los datos 90/month, KD 13; preparación de datos 20/month; calidad de los datos 40/month, KD 19; estrategia de calidad de datos 40/month, KD 11; métodos de prueba de calidad de datos 70/month, KD 16.",
+        "Semrush UK 2026-10-15: prepare data for ai 20/month, CPC 17.67; data quality for ai 20/month; ai data quality 50/month; data quality metrics 260/month, KD 29; data quality standards 90/month, KD 26."
+      ],
+      "seoTitle": {
+        "es": "Cómo mejorar la calidad de los datos antes de usar IA | IA Empleado",
+        "en": "How to prepare data for AI | Data quality checklist | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Checklist para mejorar la calidad de los datos antes de conectar IA: fuentes de verdad, completitud, duplicados, formatos, permisos, privacidad, pruebas y trazabilidad.",
+        "en": "Checklist to prepare data for AI: sources of truth, completeness, duplicates, formats, permissions, privacy, testing, metrics and traceability."
+      },
+      "title": {
+        "es": "Cómo mejorar la calidad de los datos antes de conectar IA a tus sistemas",
+        "en": "How to prepare data for AI: a practical data-quality checklist before connecting business systems"
+      },
+      "excerpt": {
+        "es": "Una checklist práctica para mejorar datos del proceso que vas a automatizar sin convertir la preparación en un proyecto de limpieza corporativa interminable.",
+        "en": "A practical checklist for preparing the data used by the workflow you want to automate without turning readiness into an endless enterprise-wide cleanup project."
+      },
+      "intro": {
+        "es": "Mejorar la calidad de los datos antes de usar IA no significa corregir cada registro corporativo. Significa identificar el proceso que se va a automatizar, definir sus datos mínimos, asignar una fuente de verdad, medir completitud y duplicados, normalizar formatos, limitar permisos y diseñar reglas para valores ausentes o contradictorios. Esta guía se centra en ese trabajo práctico. La landing de calidad de datos para IA conserva la intención de evaluación; aquí el objetivo es explicar cómo preparar y comprobar el conjunto de datos antes de conceder capacidad operativa a un agente.",
+        "en": "Preparing data for AI does not mean fixing every enterprise record. It means identifying the workflow to automate, defining its minimum data set, assigning sources of truth, measuring completeness and duplicates, normalising formats, limiting permissions and designing rules for missing or contradictory values. This guide focuses on that practical work. The data-readiness landing retains the evaluation intent; this article explains how to prepare and test the data set before an agent receives operational capability."
+      },
+      "updatedAt": "2026-10-15"
+    }
+  ]
+}
