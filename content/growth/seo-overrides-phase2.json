@@ -92,6 +92,37 @@
         "en": "Expense management connects receipts, employee claims, card transactions, policy checks, approvals, reconciliation and accounting. An AI Employee can capture evidence, extract fields, suggest categories, check rules, find matches and prepare an ERP or accounting export. It should not independently approve sensitive exceptions, change limits or execute reimbursements. This workflow owns employee expenses and remains separate from supplier-invoice processing, which has its own SEO and operational owner."
       },
       "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "ai-business-process-automation",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatización de procesos", "en": "business process automation" },
+      "supportingKeywords": {
+        "es": ["automatización de procesos empresariales", "automatización de procesos con ia", "automatizar procesos con ia", "automatización empresarial"],
+        "en": ["ai business process automation", "process automation", "business automation", "business process automation software"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatización de procesos 1,300/month, KD 32; automatización de procesos empresariales 210/month, KD 26; automatización de procesos con ia 320/month, KD 48; automatizar procesos con ia 140/month, KD 40; automatización empresarial 170/month, KD 22.",
+        "Semrush UK 2026-10-15: business process automation 1,300/month, KD 53; ai business process automation 110/month, KD 50; process automation 1,300/month, KD 41; business automation 720/month, KD 32; business process automation software 260/month, KD 37."
+      ],
+      "seoTitle": {
+        "es": "Automatización de procesos con IA para empresas | IA Empleado",
+        "en": "Business process automation with AI | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Automatiza procesos empresariales con IA: prioriza flujos, conecta CRM y ERP, aplica reglas, controla excepciones y mantiene aprobación humana donde importa.",
+        "en": "Automate business processes with AI across workflows, CRM and ERP integrations, rules, exceptions, measurable outcomes and human approval where it matters."
+      },
+      "eyebrow": { "es": "AUTOMATIZACIÓN DE PROCESOS · IA · EMPRESA", "en": "BUSINESS PROCESS AUTOMATION · AI · OPERATIONS" },
+      "title": {
+        "es": "Automatización de procesos con IA: convierte trabajo repetitivo en flujos medibles y controlados.",
+        "en": "Business process automation with AI: turn repetitive work into measurable, controlled workflows."
+      },
+      "lead": {
+        "es": "La automatización de procesos usa reglas, integraciones y, cuando aporta valor, inteligencia artificial para mover un caso desde su entrada hasta un resultado verificable. En IA Empleado, un agente especializado puede interpretar información variable, consultar sistemas autorizados, preparar o ejecutar acciones de bajo riesgo y escalar excepciones. El objetivo no es conectar IA a toda la empresa, sino automatizar un proceso concreto con métricas, permisos y supervisión definidos desde el inicio.",
+        "en": "Business process automation uses rules, integrations and, where it adds value, AI to move a case from intake to a verifiable outcome. In IA Empleado, a specialist agent can interpret variable information, query authorised systems, prepare or execute low-risk actions and escalate exceptions. The goal is not to connect AI to the entire company, but to automate a specific process with metrics, permissions and supervision defined from the start."
+      },
+      "updatedAt": "2026-10-15"
     }
   ],
   "articles": [
@@ -194,6 +225,40 @@
       "intro": {
         "es": "Una nota de gastos documenta un gasto realizado por una persona para la empresa y lo conecta con su justificante, política, aprobación, conciliación y tratamiento contable. Automatizar ese proceso con IA no consiste solo en leer un ticket: hay que preservar evidencia, validar importes, aplicar reglas versionadas, distinguir tarjeta, anticipo o reembolso, preparar la aprobación correcta y verificar la escritura final en contabilidad. La IA puede reducir captura y seguimiento manual, mientras Finanzas conserva autoridad sobre excepciones, límites, reembolsos y cualquier decisión económica sensible. Las facturas de proveedor permanecen fuera de este propietario y siguen su circuito específico de cuentas a pagar.",
         "en": "The expense management process connects an employee spend to its evidence, policy, approval, reconciliation and accounting treatment. Automating it with AI is not just about reading a receipt: the workflow must preserve evidence, validate amounts, apply versioned rules, distinguish cards, advances and reimbursements, prepare the right approval and verify the final accounting write. AI can reduce data entry and manual follow-up while Finance retains authority over exceptions, limits, reimbursements and other sensitive financial decisions. Supplier invoices remain outside this owner and continue through their separate accounts-payable workflow."
+      },
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "key": "how-to-choose-first-ai-process",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatizar procesos con ia", "en": "automate business processes" },
+      "supportingKeywords": {
+        "es": ["automatización de procesos con ia", "cómo automatizar procesos", "automatización de tareas", "automatización empresarial"],
+        "en": ["automating business processes", "ai business process automation", "process automation", "business automation"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatizar procesos con ia 140/month, KD 40; automatización de procesos con ia 320/month, KD 48; automatización de tareas 260/month, KD 32; automatización empresarial 170/month, KD 22. The guide owns the verb/how-to implementation intent while the landing owns the category noun.",
+        "Semrush UK 2026-10-15: automate business processes 210/month, KD 32; automating business processes 170/month, KD 34; ai business process automation 110/month, KD 50; process automation 1,300/month, KD 41."
+      ],
+      "seoTitle": {
+        "es": "Cómo automatizar procesos con IA: qué proceso elegir primero",
+        "en": "How to automate business processes with AI | First-process guide"
+      },
+      "seoDescription": {
+        "es": "Guía para elegir y automatizar procesos con IA usando volumen, tiempo, datos, integraciones, riesgo, excepciones, ROI y un piloto medible.",
+        "en": "Guide to automating business processes with AI: choose the right first workflow using volume, data, integrations, risk, exceptions, ROI and a measurable pilot."
+      },
+      "title": {
+        "es": "Cómo automatizar procesos con IA: elige el primer flujo por impacto, riesgo y capacidad de medirlo",
+        "en": "How to automate business processes with AI: choose the first workflow by impact, risk and measurability"
+      },
+      "excerpt": {
+        "es": "Un método práctico para priorizar qué proceso automatizar primero, medir su línea base, limitar autonomía y demostrar valor antes de ampliar el alcance.",
+        "en": "A practical method for choosing which business process to automate first, measuring the baseline, limiting autonomy and proving value before expanding scope."
+      },
+      "intro": {
+        "es": "Automatizar procesos con IA empieza por una decisión de negocio, no por elegir un modelo. Antes de construir un agente hay que identificar qué flujo consume tiempo, qué salida puede verificarse, qué datos y sistemas necesita, qué excepciones aparecen y qué riesgo tendría una acción incorrecta. Esta guía propone un método para comparar procesos, elegir un primer piloto y avanzar desde observación hasta ejecución controlada solo cuando las métricas demuestren calidad. La landing comercial de automatización de procesos explica la categoría y el enfoque de solución; aquí nos centramos en cómo seleccionar y poner en marcha el primer proceso.",
+        "en": "Automating business processes with AI starts with a business decision, not a model choice. Before building an agent, identify which workflow consumes time, which outcome can be verified, which data and systems it needs, which exceptions occur and what an incorrect action would risk. This guide provides a method for comparing processes, choosing a first pilot and progressing from observation to controlled execution only when metrics demonstrate quality. The commercial business-process automation page explains the category and solution approach; this guide focuses on how to select and launch the first process."
       },
       "updatedAt": "2026-10-15"
     }
