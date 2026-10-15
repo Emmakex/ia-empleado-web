@@ -5,9 +5,9 @@ import { brandPreviewUrl } from "../../../../lib/brand-social-previews";
 
 const dictionary = getDictionary("en");
 const preview = brandPreviewUrl("en", "employees");
-const title = "AI Employees for business | IA Empleado";
-const description = "Explore the IA Empleado reference suite: Customer Support, Administrative, Accounting & Billing and Sales SDR, with governed work and human supervision.";
-const socialDescription = "Specialist digital roles that can work with systems, policies and other AI Employees to resolve business processes.";
+const title = "AI Employees for business | Specialized AI agents | IA Empleado";
+const description = "Explore AI Employees and specialized agents for customer support, administration, accounting, billing and sales, with scoped permissions and human oversight.";
+const socialDescription = "AI agents specialized by business function that work with systems, policies and other AI Employees under explicit boundaries.";
 
 export const metadata: Metadata = {
   title,
