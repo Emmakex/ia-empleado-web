@@ -17,7 +17,21 @@ const readDailyRecords = async (suffix) => {
 
 const editorialPolicy = await readJson("../content/growth/daily/.editorial-policy.json");
 const consolidationRegistry = await readJson("../content/growth/consolidations.json");
-const seoOverrideRegistry = await readJson("../content/growth/seo-overrides.json");
+const baseSeoOverrideRegistry = await readJson("../content/growth/seo-overrides.json");
+const phase2SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase2.json");
+const phase3SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase3.json");
+const seoOverrideRegistry = {
+  landings: [
+    ...(baseSeoOverrideRegistry.landings ?? []),
+    ...(phase2SeoOverrideRegistry.landings ?? []),
+    ...(phase3SeoOverrideRegistry.landings ?? []),
+  ],
+  articles: [
+    ...(baseSeoOverrideRegistry.articles ?? []),
+    ...(phase2SeoOverrideRegistry.articles ?? []),
+    ...(phase3SeoOverrideRegistry.articles ?? []),
+  ],
+};
 const legacyLandings = await readJson("../content/growth/landings.json");
 const incrementalLandings = await readJson("../content/growth/incremental-landings.json");
 const rawDailyLandings = await readDailyRecords(".landings.json");
