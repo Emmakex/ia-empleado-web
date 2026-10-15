@@ -1,0 +1,53 @@
+{
+  "batch": "phase-2-batch-06-sales-orders",
+  "date": "2026-10-15",
+  "scope": "existing-content-first",
+  "records": [
+    {
+      "surface": "/empleados-ia/comercial-sdr",
+      "type": "employee-role",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "agente ia ventas", "en": "ai sdr" },
+      "notes": "Role owner for prospecting, research, qualification, CRM and follow-up. Sales-order automation is explicitly excluded from its supporting intent set."
+    },
+    {
+      "surface": "/automatizacion-pedidos-ventas-ia-erp",
+      "type": "commercial-process-landing",
+      "decision": "EXPAND",
+      "primaryKeyword": { "es": "automatización de pedidos", "en": "sales order automation" },
+      "supportingKeywords": {
+        "es": ["automatizacion de pedidos", "procesamiento de pedidos", "automatizar pedidos", "pedidos con ia"],
+        "en": ["sales order processing automation", "order processing automation", "automated order processing", "ai order processing"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatización de pedidos 70/month, KD 12; automatizacion de pedidos 40/month, KD 10; procesamiento de pedidos 20/month; automatizar pedidos 50/month, KD 10.",
+        "Semrush UK 2026-10-15: sales order automation 140/month, KD 13; sales order processing automation 30/month; order processing automation 50/month; automated order processing 50/month; ai order processing 50/month."
+      ],
+      "notes": "Existing Day 25 landing remains the commercial owner. It covers order intake, extraction, SKU matching, pricing, stock, credit controls and bounded ERP writes."
+    },
+    {
+      "surface": "/blog/como-automatizar-procesamiento-pedidos-b2b-ia",
+      "type": "informational-support",
+      "decision": "EXPAND",
+      "primaryKeyword": { "es": "automatizar pedidos", "en": "how to automate order processing" },
+      "supportingKeywords": {
+        "es": ["cómo automatizar pedidos", "automatizar pedidos con ia", "procesamiento de pedidos con ia"],
+        "en": ["automate order processing", "ai order processing", "how to automate sales order processing"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: automatizar pedidos 50/month, KD 10; exact AI how-to variants had insufficient reported volume.",
+        "Semrush UK 2026-10-15: automate order processing 20/month; how to automate order processing 10/month; ai order processing 50/month."
+      ],
+      "notes": "Informational implementation owner. It links back to the commercial process owner and to role/use-case surfaces without competing for the category query."
+    },
+    {
+      "surface": "/casos-de-uso/incidencias-pedidos",
+      "type": "use-case",
+      "decision": "KEEP",
+      "primaryKeyword": { "es": "incidencias de pedidos", "en": "order exceptions" },
+      "notes": "Kept narrow around post-order exception handling. It must not compete for the broader order-processing automation category."
+    }
+  ],
+  "createdUrls": 0,
+  "mergedOrRedirectedUrls": 0
+}

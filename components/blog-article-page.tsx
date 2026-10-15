@@ -23,12 +23,26 @@ export function BlogArticlePage({ locale, article }: Props) {
     ? (locale === "es" ? "/comparativas/chatbot" : "/en/comparisons/chatbot")
     : undefined;
   const isAccountingGuide = article.key === "automate-invoicing-accounting-human-review" || article.key === "how-to-automate-invoice-processing-ai";
-  const accountingConnections = isAccountingGuide
+  const isSalesOrderGuide = article.key === "how-to-automate-b2b-sales-order-processing-ai";
+  const workflowConnections = isAccountingGuide
     ? {
         employeeHref: employeeDetailPath("accounting-billing", locale),
         useCaseHref: useCaseDetailPath("invoice-validation", locale),
+        heading: locale === "es" ? "Distingue el rol contable del patrón concreto de validación de facturas." : "Separate the accounting role from the specific invoice-validation pattern.",
+        body: locale === "es" ? "El perfil de Contabilidad y Facturación explica quién realiza el trabajo; el caso de uso de validación de facturas muestra un flujo acotado con controles y escalado." : "The Accounting and Billing profile explains who performs the work; the invoice-validation use case shows a bounded workflow with controls and escalation.",
+        employeeLabel: locale === "es" ? "Ver IA para Contabilidad" : "View AI for Accounting",
+        useCaseLabel: locale === "es" ? "Ver validación de facturas" : "View invoice validation",
       }
-    : undefined;
+    : isSalesOrderGuide
+      ? {
+          employeeHref: employeeDetailPath("sales-sdr", locale),
+          useCaseHref: useCaseDetailPath("order-exception", locale),
+          heading: locale === "es" ? "Separa la automatización de pedidos del trabajo comercial de prospección y seguimiento." : "Separate sales-order automation from prospecting and sales follow-up.",
+          body: locale === "es" ? "El perfil de Ventas y SDR cubre research, cualificación, CRM y seguimiento; el caso de incidencias de pedidos cubre el tratamiento de excepciones una vez existe un pedido. Esta guía permanece centrada en cómo automatizar el procesamiento B2B de pedidos." : "The Sales and SDR profile covers research, qualification, CRM and follow-up; the order-exception use case covers exceptions once an order exists. This guide remains focused on automating B2B sales-order processing.",
+          employeeLabel: locale === "es" ? "Ver Agente IA para Ventas" : "View AI Sales Agent",
+          useCaseLabel: locale === "es" ? "Ver incidencias de pedidos" : "View order exceptions",
+        }
+      : undefined;
   const demoHref = requestDemoPath(locale, {
     intent: "demo",
     source: `blog:${article.key}`,
@@ -120,17 +134,17 @@ export function BlogArticlePage({ locale, article }: Props) {
             </section>
           ) : null}
 
-          {accountingConnections ? (
-            <section className="content-section section-panel" aria-labelledby="accounting-connections-title">
+          {workflowConnections ? (
+            <section className="content-section section-panel" aria-labelledby="cluster-connections-title">
               <div className="container cta-panel">
                 <div>
                   <p className="eyebrow">{locale === "es" ? "CONEXIONES DEL CLÚSTER" : "CLUSTER CONNECTIONS"}</p>
-                  <h2 id="accounting-connections-title">{locale === "es" ? "Distingue el rol contable del patrón concreto de validación de facturas." : "Separate the accounting role from the specific invoice-validation pattern."}</h2>
-                  <p>{locale === "es" ? "El perfil de Contabilidad y Facturación explica quién realiza el trabajo; el caso de uso de validación de facturas muestra un flujo acotado con controles y escalado." : "The Accounting and Billing profile explains who performs the work; the invoice-validation use case shows a bounded workflow with controls and escalation."}</p>
+                  <h2 id="cluster-connections-title">{workflowConnections.heading}</h2>
+                  <p>{workflowConnections.body}</p>
                 </div>
                 <div className="cta-actions">
-                  <Link className="button button-ghost" href={accountingConnections.employeeHref}>{locale === "es" ? "Ver IA para Contabilidad" : "View AI for Accounting"}</Link>
-                  <Link className="text-link" href={accountingConnections.useCaseHref}>{locale === "es" ? "Ver validación de facturas" : "View invoice validation"} →</Link>
+                  <Link className="button button-ghost" href={workflowConnections.employeeHref}>{workflowConnections.employeeLabel}</Link>
+                  <Link className="text-link" href={workflowConnections.useCaseHref}>{workflowConnections.useCaseLabel} →</Link>
                 </div>
               </div>
             </section>

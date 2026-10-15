@@ -33,6 +33,9 @@ Every indexable URL must have one primary intent owner. Supporting pages may use
 | `/automatizacion-facturas-ia-empresas` | `automatización de facturas` | `invoice automation` | invoice-processing commercial landing |
 | `/blog/como-automatizar-procesamiento-facturas-ia` | `cómo automatizar facturas con IA` | `how to automate invoice processing` | invoice-processing how-to guide |
 | `/casos-de-uso/validacion-facturas` | `validación de facturas` | `invoice validation` | bounded use-case evaluation |
+| `/automatizacion-pedidos-ventas-ia-erp` | `automatización de pedidos` | `sales order automation` | sales-order commercial process landing |
+| `/blog/como-automatizar-procesamiento-pedidos-b2b-ia` | `automatizar pedidos` | `how to automate order processing` | sales-order informational support guide |
+| `/casos-de-uso/incidencias-pedidos` | `incidencias de pedidos` | `order exceptions` | bounded post-order use-case evaluation |
 | `/blog/**` | informational support for a distinct commercial owner | informational support | support content |
 | `/casos-de-uso/**` | specific business use-case intent | specific use-case intent | evaluation |
 | `/sectores/**` | sector-specific AI automation intent | industry-specific AI automation intent | evaluation |
@@ -63,6 +66,17 @@ The accounting cluster is deliberately split by intent instead of forcing accoun
 - **Use-case owner:** `/casos-de-uso/validacion-facturas` stays narrow around invoice validation instead of competing for broad accounting or invoice-automation demand. Semrush ES reports 10–20/month for accented/unaccented `validación de facturas`; UK reports 110/month for `invoice validation`, KD 14.
 
 These owners must link contextually across role → broad process → invoice process → bounded validation where relevant. Supporting vocabulary cannot silently reassign exact category ownership to another page.
+
+### Phase 2 sales-order ownership
+
+The sales-order cluster is split between the employee role, the process category, the implementation guide and post-order exceptions:
+
+- **Sales/SDR role owner:** `/empleados-ia/comercial-sdr` keeps `agente ia ventas` / `ai sdr`. Its scope is prospecting, account research, qualification, CRM and follow-up. It does not own order-processing automation.
+- **Sales-order commercial owner:** `/automatizacion-pedidos-ventas-ia-erp` keeps `automatización de pedidos` / `sales order automation`. Semrush reports ES 70/month, KD 12 for `automatización de pedidos`, plus 40/month, KD 10 for the unaccented variant; UK `sales order automation` reports 140/month, KD 13.
+- **Sales-order informational owner:** `/blog/como-automatizar-procesamiento-pedidos-b2b-ia` keeps `automatizar pedidos` / `how to automate order processing`. Semrush reports ES `automatizar pedidos` 50/month, KD 10; UK `how to automate order processing` 10/month and `automate order processing` 20/month.
+- **Post-order use-case owner:** `/casos-de-uso/incidencias-pedidos` remains narrow around `incidencias de pedidos` / `order exceptions`: stock, shipping, changes, refunds or other cases after a normal order path breaks.
+
+The commercial landing owns intake, extraction, customer identification, SKU matching, pricing, stock, credit controls and bounded ERP creation. The role page must not absorb process-category terms, and the exception page must not compete for end-to-end order automation. The landing, guide, sales role and exception use case must link contextually to one another.
 
 ## High-value demand vocabulary
 
