@@ -5,6 +5,7 @@ import { teamIndexPath } from "../lib/team-content-engine";
 import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { teamBuilderPath } from "../lib/team-builder";
 import { requestDemoPath } from "../lib/conversion-handoff";
+import { blogIndexPath } from "../lib/growth-content";
 import { MenuNavigationLink } from "./menu-navigation-link";
 import { MobileNavigation, type NavigationGroup } from "./mobile-navigation";
 
@@ -34,6 +35,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
         useCases: "/casos-de-uso",
         departments: "/departamentos",
         integrations: "/integraciones",
+        blog: blogIndexPath("es"),
       }
     : {
         process: "/en/improve-your-process",
@@ -43,6 +45,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
         useCases: "/en/use-cases",
         departments: "/en/departments",
         integrations: "/en/integrations",
+        blog: blogIndexPath("en"),
       };
 
   const navigationGroups: NavigationGroup[] = locale === "es"
@@ -67,6 +70,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
         {
           label: "Explorar",
           links: [
+            { href: routes.blog, label: "Guías de agentes IA" },
             { href: routes.comparisons, label: "Comparativas" },
             { href: routes.sectors, label: "Sectores" },
             { href: routes.useCases, label: "Casos de uso" },
@@ -100,6 +104,7 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
         {
           label: "Explore",
           links: [
+            { href: routes.blog, label: "AI agent guides" },
             { href: routes.comparisons, label: "Comparisons" },
             { href: routes.sectors, label: "Sectors" },
             { href: routes.useCases, label: "Use cases" },

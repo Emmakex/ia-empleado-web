@@ -12,10 +12,10 @@ export function BlogIndexPage({ locale }: Props) {
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonical = blogIndexPath(locale);
   const alternate = blogIndexPath(otherLocale);
-  const title = locale === "es" ? "Blog sobre Empleados IA, automatización y empresa" : "AI Employees, automation and business blog";
+  const title = locale === "es" ? "Guías sobre agentes IA y automatización de procesos" : "AI agents and business process automation guides";
   const description = locale === "es"
-    ? "Guías, novedades y recursos prácticos para entender, evaluar e implantar Empleados IA en procesos empresariales."
-    : "Guides, updates and practical resources to understand, evaluate and implement AI Employees in business processes.";
+    ? "Contenido práctico para entender agentes IA, Empleados IA, IA para empresas y automatización de procesos, desde la evaluación hasta una implantación gobernada."
+    : "Practical content about AI agents, AI Employees, AI for business and process automation, from evaluation to governed implementation.";
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -50,7 +50,7 @@ export function BlogIndexPage({ locale }: Props) {
         </section>
         <section className="content-section">
           <div className="container">
-            <div className="section-heading sector-section-heading"><p className="eyebrow">{locale === "es" ? "ÚLTIMOS CONTENIDOS" : "LATEST CONTENT"}</p><h2>{locale === "es" ? "Guías para pasar de la idea al proceso" : "Guides from idea to process"}</h2></div>
+            <div className="section-heading sector-section-heading"><p className="eyebrow">{locale === "es" ? "ÚLTIMOS CONTENIDOS" : "LATEST CONTENT"}</p><h2>{locale === "es" ? "Guías para pasar de la búsqueda a un proceso real" : "Guides from search intent to a real process"}</h2></div>
             <div className="sector-card-grid">
               {blogArticleRecords.map((article) => (
                 <article className="sector-card" key={article.key}>

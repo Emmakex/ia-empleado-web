@@ -12,13 +12,13 @@ const sectors = read("lib/sector-use-cases.ts");
 const employees = read("lib/employee-catalog.ts");
 const teams = read("lib/team-content-engine.ts");
 
-// Home positioning must describe the same commercial scope in both locales.
+// Home positioning must describe the same commercial scope in both locales and keep the suite explicitly bounded as reference content.
 assert(
-  es.employees.title === "Cuatro perfiles de referencia para representar necesidades empresariales frecuentes.",
+  es.employees.title === "Cuatro Empleados IA de referencia para atención, administración, contabilidad y ventas.",
   "ES reference-suite title drifted into a broader claim",
 );
 assert(
-  en.employees.title === "Four reference profiles illustrating common business needs.",
+  en.employees.title === "Four reference AI Employees for support, administration, accounting and sales.",
   "EN reference-suite title drifted into a broader claim",
 );
 assert(

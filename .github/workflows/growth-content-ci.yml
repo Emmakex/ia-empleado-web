@@ -5,10 +5,16 @@ on:
     branches: [main]
     paths:
       - "content/growth/**"
+      - "scripts/check-growth-content.mjs"
+      - "docs/SEO_GEO_CONTENT_OWNERSHIP.md"
+      - ".github/workflows/growth-content-ci.yml"
   push:
     branches: [main]
     paths:
       - "content/growth/**"
+      - "scripts/check-growth-content.mjs"
+      - "docs/SEO_GEO_CONTENT_OWNERSHIP.md"
+      - ".github/workflows/growth-content-ci.yml"
 
 concurrency:
   group: growth-content-ci-${{ github.ref }}
@@ -31,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Growth content SEO contract
+      - name: Growth content SEO/GEO contract
         run: node scripts/check-growth-content.mjs
 
       - name: Typecheck

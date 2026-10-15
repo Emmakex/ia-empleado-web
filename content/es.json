@@ -2,10 +2,10 @@
   "locale": "es",
   "languageName": "Español",
   "seo": {
-    "title": "IA Empleado | Equipos de Empleados IA para empresas",
-    "description": "Diseña equipos de Empleados IA especializados que colaboran entre sí, se conectan con tus sistemas y trabajan bajo políticas y supervisión humana.",
-    "ogTitle": "IA Empleado — un equipo digital que trabaja con tu empresa",
-    "ogDescription": "Empleados IA especializados, conectados y gobernados para automatizar procesos empresariales reales."
+    "title": "Agentes IA para empresas | Empleados IA y automatización",
+    "description": "Implementa agentes y Empleados IA para empresas que automatizan procesos, trabajan con CRM, ERP y email, y mantienen control y aprobación humana.",
+    "ogTitle": "Agentes y Empleados IA para empresas | IA Empleado",
+    "ogDescription": "Agentes IA especializados, conectados y gobernados para automatizar procesos empresariales reales con control humano."
   },
   "nav": {
     "employees": "Empleados IA",
@@ -17,9 +17,9 @@
     "language": "EN"
   },
   "hero": {
-    "eyebrow": "EMPLEADOS IA QUE TRABAJAN EN EQUIPO",
-    "title": "Tu empresa. Un equipo de Empleados IA trabajando juntos.",
-    "description": "Automatiza operaciones reales con empleados digitales especializados que colaboran entre departamentos, utilizan tus sistemas y escalan las decisiones importantes a personas.",
+    "eyebrow": "AGENTES IA PARA EMPRESAS · EMPLEADOS IA ESPECIALIZADOS",
+    "title": "Empleados y agentes IA para empresas que trabajan dentro de tus procesos.",
+    "description": "Automatiza procesos empresariales con agentes de IA especializados que colaboran entre departamentos, utilizan tus sistemas y escalan las decisiones importantes a personas.",
     "primaryCta": "Diseñar mi equipo IA",
     "secondaryCta": "Ver cómo trabajan juntos",
     "note": "Empieza por un proceso. Amplía hacia un equipo completo cuando tenga sentido.",
@@ -35,9 +35,9 @@
     {"title": "Privados", "text": "La arquitectura admite opciones de despliegue privado o dedicado adaptadas a cada empresa."}
   ],
   "definition": {
-    "eyebrow": "QUÉ ES IA EMPLEADO",
-    "title": "Más que un chatbot: una unidad de trabajo digital con función, herramientas y límites.",
-    "body": "Un Empleado IA representa un rol empresarial concreto. Recibe trabajo, consulta información autorizada, utiliza herramientas aprobadas, entrega resultados y pide intervención humana cuando una decisión supera su autoridad.",
+    "eyebrow": "QUÉ ES UN EMPLEADO O AGENTE IA",
+    "title": "Un Empleado IA es un agente de inteligencia artificial especializado en un trabajo empresarial.",
+    "body": "Un Empleado IA es un agente de IA configurado para un rol empresarial concreto. Recibe trabajo, consulta información autorizada, utiliza herramientas aprobadas, ejecuta o prepara acciones dentro de límites definidos y solicita intervención humana cuando una decisión supera su autoridad.",
     "bullets": ["Rol y objetivos definidos", "Herramientas e integraciones aprobadas", "Políticas y límites de autoridad", "Historial y resultados medibles"]
   },
   "workflow": {
@@ -63,9 +63,9 @@
     ]
   },
   "employees": {
-    "eyebrow": "SUITE DE REFERENCIA",
-    "title": "Cuatro perfiles de referencia para representar necesidades empresariales frecuentes.",
-    "description": "La primera suite de referencia cubre atención, operaciones internas, finanzas y ventas. El catálogo se ampliará progresivamente sin convertir todos los perfiles en promesas de disponibilidad inmediata.",
+    "eyebrow": "AGENTES IA ESPECIALIZADOS",
+    "title": "Cuatro Empleados IA de referencia para atención, administración, contabilidad y ventas.",
+    "description": "Cada perfil representa un agente IA especializado en una función empresarial concreta. La suite de referencia cubre atención al cliente, operaciones internas, finanzas y ventas, y el catálogo se amplía progresivamente según necesidades reales.",
     "items": [
       {"title": "Atención al Cliente IA", "text": "Consultas, incidencias, pedidos y escalado de excepciones.", "tag": "Referencia"},
       {"title": "Administrativo IA", "text": "Email, documentos, registros y tareas repetitivas de back office.", "tag": "Referencia"},
@@ -93,9 +93,9 @@
     "after": ["Se clasifica el evento", "El perfil adecuado consulta sistemas", "Las tareas se derivan con contexto", "La política decide si hace falta aprobación", "Se registra el resultado"]
   },
   "systems": {
-    "eyebrow": "TRABAJA CON TU OPERACIÓN",
-    "title": "Los Empleados IA deben conectarse al trabajo real, no vivir en una ventana aislada.",
-    "description": "La arquitectura de IA Empleado separa el puesto, las capacidades y las integraciones. Cada empresa habilita únicamente lo necesario para sus procesos aprobados.",
+    "eyebrow": "IA PARA PROCESOS EMPRESARIALES",
+    "title": "Los agentes IA deben conectarse al trabajo real, no vivir en una ventana aislada.",
+    "description": "IA Empleado separa el puesto, las capacidades y las integraciones. Cada empresa habilita únicamente los sistemas, permisos y acciones necesarios para los procesos que decide automatizar.",
     "items": ["CRM", "ERP / contabilidad", "Email", "Calendario", "Ecommerce", "Ticketing", "Documentos", "APIs propias"]
   },
   "security": {
@@ -112,7 +112,7 @@
     "eyebrow": "PREGUNTAS CLAVE",
     "title": "Entender IA Empleado sin lenguaje ambiguo.",
     "items": [
-      {"question": "¿Qué es un Empleado IA?", "answer": "Es un trabajador digital configurado para un rol empresarial definido, con objetivos, herramientas, permisos, políticas y supervisión. No es simplemente un chatbot con un nombre de puesto."},
+      {"question": "¿Qué es un Empleado IA o agente IA para empresas?", "answer": "Es un agente de inteligencia artificial configurado para un rol empresarial definido, con objetivos, herramientas, permisos, políticas y supervisión. Puede consultar sistemas y realizar trabajo acotado bajo reglas; no es simplemente un chatbot con un nombre de puesto."},
       {"question": "¿Los Empleados IA pueden trabajar entre sí?", "answer": "La visión del producto contempla equipos de perfiles especializados que coordinan tareas y contexto estructurado. La disponibilidad concreta de cada flujo depende de las capacidades e integraciones implementadas y validadas."},
       {"question": "¿Puede conectarse con los sistemas de mi empresa?", "answer": "La plataforma está diseñada para integrar sistemas como CRM, ERP, email, calendario, ecommerce, ticketing, documentos y APIs mediante conectores y permisos específicos."},
       {"question": "¿La IA toma todas las decisiones automáticamente?", "answer": "No. Las acciones importantes pueden requerir reglas deterministas y aprobación humana. La autonomía se configura y no equivale a autoridad sin límites."},
@@ -127,7 +127,7 @@
     "secondary": "Diseñar mi equipo IA"
   },
   "footer": {
-    "tagline": "Empleados IA especializados que trabajan con personas, sistemas y procesos empresariales reales.",
+    "tagline": "Agentes y Empleados IA especializados que trabajan con personas, sistemas y procesos empresariales reales.",
     "product": "Producto",
     "resources": "Explorar",
     "legal": "IA Empleado es una metáfora de producto; no implica una relación laboral.",
