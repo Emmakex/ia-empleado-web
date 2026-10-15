@@ -28,8 +28,10 @@ Every indexable URL must have one primary intent owner. Supporting pages may use
 | `/equipos-ia/turismo` | Equipo IA de Turismo | AI travel team composition | team evaluation |
 | `/empleados-ia-para-pymes` | IA para pymes / empleados IA para pymes | AI Employees for small business | commercial landing |
 | `/automatizacion-atencion-cliente-ia` | automatización de atención al cliente con IA | AI customer service automation | commercial landing |
-| `/automatizacion-facturacion-contabilidad-ia` | `automatización contable` | `accounting automation` | commercial process landing |
-| `/blog/como-automatizar-facturacion-contabilidad-con-ia-y-revision-humana` | `automatizar contabilidad` | `how to automate accounting` | informational support guide |
+| `/automatizacion-facturacion-contabilidad-ia` | `automatización contable` | `accounting automation` | broad accounting process landing |
+| `/blog/como-automatizar-facturacion-contabilidad-con-ia-y-revision-humana` | `automatizar contabilidad` | `how to automate accounting` | broad accounting how-to guide |
+| `/automatizacion-facturas-ia-empresas` | `automatización de facturas` | `invoice automation` | invoice-processing commercial landing |
+| `/blog/como-automatizar-procesamiento-facturas-ia` | `cómo automatizar facturas con IA` | `how to automate invoice processing` | invoice-processing how-to guide |
 | `/casos-de-uso/validacion-facturas` | `validación de facturas` | `invoice validation` | bounded use-case evaluation |
 | `/blog/**` | informational support for a distinct commercial owner | informational support | support content |
 | `/casos-de-uso/**` | specific business use-case intent | specific use-case intent | evaluation |
@@ -51,14 +53,16 @@ These terms are acquisition vocabulary, not permission to repeat exact-match phr
 
 ### Phase 2 accounting and invoice ownership
 
-The accounting cluster is deliberately split by intent instead of forcing all demand into the employee profile:
+The accounting cluster is deliberately split by intent instead of forcing accounting, invoices and validation into one URL:
 
-- **Role owner:** `/empleados-ia/contabilidad-facturacion` keeps `ia para contabilidad` / `ai for accounting`. It explains the specialised worker, authority boundaries and responsibilities.
-- **Commercial process owner:** `/automatizacion-facturacion-contabilidad-ia` keeps `automatización contable` / `accounting automation`. Supporting demand includes ES `automatización de facturas` 170/month and `automatización de cuentas por pagar` 90/month; UK `invoice automation` 720/month and `accounts payable automation` 1,300/month.
-- **Informational owner:** the paired guide owns `automatizar contabilidad` / `how to automate accounting`, with ES 30/month for `automatizar contabilidad` and UK 30/month for `how to automate accounting`.
-- **Use-case owner:** `/casos-de-uso/validacion-facturas` stays narrow around invoice validation rather than competing for the broad accounting-automation category. Semrush ES reports 10–20/month for accented/unaccented `validación de facturas`; UK reports 110/month for `invoice validation`, KD 14.
+- **Role owner:** `/empleados-ia/contabilidad-facturacion` keeps `ia para contabilidad` / `ai for accounting`. It explains the specialised role, authority boundaries and responsibilities.
+- **Broad accounting commercial owner:** `/automatizacion-facturacion-contabilidad-ia` keeps `automatización contable` / `accounting automation`. Semrush reports ES `automatizacion contable` 110/month, KD 25; UK `accounting automation` 590/month, KD 34 and `automated accounting` 170/month, KD 19.
+- **Broad accounting informational owner:** `/blog/como-automatizar-facturacion-contabilidad-con-ia-y-revision-humana` keeps `automatizar contabilidad` / `how to automate accounting`. Semrush reports ES 30/month for `automatizar contabilidad`; UK 30/month for `how to automate accounting` and 70/month for `automate accounting`.
+- **Invoice-processing commercial owner:** `/automatizacion-facturas-ia-empresas` keeps `automatización de facturas` / `invoice automation`. Supporting demand includes ES `automatización de facturas` 170/month, `automatización de cuentas por pagar` 90/month and `procesamiento de facturas` 50/month; UK `invoice automation` 720/month, `automated invoice processing` 1,000/month, `invoice processing automation` 320/month and `accounts payable automation` 1,300/month.
+- **Invoice-processing informational owner:** `/blog/como-automatizar-procesamiento-facturas-ia` keeps the invoice implementation/how-to intent. Exact Spanish how-to variants had no meaningful reported volume, while UK `how to automate invoice processing` reports 110/month, KD 46 and `automate invoice processing` 210/month, KD 49.
+- **Use-case owner:** `/casos-de-uso/validacion-facturas` stays narrow around invoice validation instead of competing for broad accounting or invoice-automation demand. Semrush ES reports 10–20/month for accented/unaccented `validación de facturas`; UK reports 110/month for `invoice validation`, KD 14.
 
-The commercial landing, informational guide, employee role and bounded use case must link to each other contextually. None of them should reuse the same primary keyword as its main target.
+These owners must link contextually across role → broad process → invoice process → bounded validation where relevant. Supporting vocabulary cannot silently reassign exact category ownership to another page.
 
 ## High-value demand vocabulary
 
