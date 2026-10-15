@@ -42,6 +42,8 @@ Every indexable URL must have one primary intent owner. Supporting pages may use
 | `/blog/como-automatizar-vacaciones-ausencias-ia` | `planificar vacaciones empleados` | `how to manage employee absence` | leave-management informational support guide |
 | `/automatizacion-gestion-gastos-ia` | `gestión de gastos` | `expense management automation` | employee-expense commercial process landing |
 | `/blog/como-automatizar-gestion-gastos-ia` | `nota de gastos` | `expense management process` | employee-expense informational support guide |
+| `/automatizacion-procesos-empresariales-ia` | `automatización de procesos` | `business process automation` | business-process automation commercial landing |
+| `/blog/como-elegir-primer-proceso-automatizar-ia` | `automatizar procesos con ia` | `automate business processes` | business-process automation support guide |
 | `/casos-de-uso/documentacion-administrativa` | `documentación administrativa` | `administrative documentation` | bounded document-processing use case |
 | `/blog/**` | informational support for a distinct commercial owner | informational support | support content |
 | `/casos-de-uso/**` | specific business use-case intent | specific use-case intent | evaluation |
@@ -117,6 +119,17 @@ The expense cluster is deliberately separated from both the broad accounting rol
 - **Supplier invoices:** `/automatizacion-facturas-ia-empresas` and its support guide retain invoice automation/accounts-payable intent. Employee receipts, card transactions, claims, advances and reimbursements must not silently migrate into that owner.
 
 The expense landing owns the operational evaluation flow from receipt or card transaction through extraction, policy, approval, reconciliation and accounting handoff. The guide owns the explanatory implementation path around a note/claim. Reimbursement execution, exception approval and policy changes remain under financial authority. Contextual links should connect the expense cluster to Accounting without confusing employee expenses with supplier invoices.
+
+### Phase 2 business-process automation ownership
+
+The broad process-automation cluster is separated from both the Home category owner and the interactive Process Analyzer:
+
+- **Process-automation commercial owner:** `/automatizacion-procesos-empresariales-ia` keeps `automatización de procesos` / `business process automation`. Semrush reports ES `automatización de procesos` 1,300/month, KD 32; `automatización de procesos empresariales` 210/month, KD 26; `automatización de procesos con ia` 320/month, KD 48. UK reports `business process automation` 1,300/month, KD 53; `ai business process automation` 110/month, KD 50; `process automation` 1,300/month, KD 41 and `business automation` 720/month, KD 32.
+- **Process-automation informational owner:** `/blog/como-elegir-primer-proceso-automatizar-ia` keeps `automatizar procesos con ia` / `automate business processes`. Semrush reports ES `automatizar procesos con ia` 140/month, KD 40. UK reports `automate business processes` 210/month, KD 32 and `automating business processes` 170/month, KD 34.
+- **Home:** `/` continues to own `agentes IA para empresas` / `IA para empresas` and the product-category proposition. It can introduce process automation as an outcome, but it must not absorb the exact process-automation category intent.
+- **Process Analyzer:** `/mejora-tu-proceso` remains an interactive educational utility for inspecting a workflow. It supports evaluation but is not the canonical SEO owner for `automatización de procesos`.
+
+The landing owns the category, solution architecture and commercial evaluation. The guide owns prioritisation and how-to implementation. The Process Analyzer is the interactive next step. This separation lets the site capture high-value process-automation demand without turning Home or the tool into competing pages.
 
 ## High-value demand vocabulary
 
