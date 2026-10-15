@@ -32,6 +32,26 @@ const surfaces = [
     h1: /How to automate accounting with AI/i,
   },
   {
+    path: "/automatizacion-facturas-ia-empresas",
+    title: /Automatización de facturas con IA/i,
+    h1: /Automatización de facturas con IA/i,
+  },
+  {
+    path: "/en/ai-invoice-processing-automation-business",
+    title: /Invoice automation with AI/i,
+    h1: /AI invoice processing automation/i,
+  },
+  {
+    path: "/blog/como-automatizar-procesamiento-facturas-ia",
+    title: /Cómo automatizar facturas con IA/i,
+    h1: /Cómo automatizar facturas con IA/i,
+  },
+  {
+    path: "/en/blog/how-to-automate-invoice-processing-with-ai",
+    title: /How to automate invoice processing with AI/i,
+    h1: /How to automate invoice processing with AI/i,
+  },
+  {
     path: "/casos-de-uso/validacion-facturas",
     title: /validación de facturas/i,
     h1: /Automatiza la preparación y los controles repetitivos/i,
@@ -78,6 +98,38 @@ test.describe("Phase 2 Batch 05 accounting and invoice ownership", () => {
     await expect(page.getByRole("link", { name: /Ver solución/ })).toHaveAttribute(
       "href",
       "/automatizacion-facturacion-contabilidad-ia",
+    );
+    await expect(page.getByRole("link", { name: /Ver IA para Contabilidad/ })).toHaveAttribute(
+      "href",
+      "/empleados-ia/contabilidad-facturacion",
+    );
+    await expect(page.getByRole("link", { name: /Ver validación de facturas/ })).toHaveAttribute(
+      "href",
+      "/casos-de-uso/validacion-facturas",
+    );
+  });
+
+  test("invoice automation landing keeps its own process owner and cluster links", async ({ page }) => {
+    await page.goto("/automatizacion-facturas-ia-empresas", { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("link", { name: /Leer la guía/ })).toHaveAttribute(
+      "href",
+      "/blog/como-automatizar-procesamiento-facturas-ia",
+    );
+    await expect(page.getByRole("link", { name: /Ver IA para Contabilidad y Facturación/ })).toHaveAttribute(
+      "href",
+      "/empleados-ia/contabilidad-facturacion",
+    );
+    await expect(page.getByRole("link", { name: /Ver validación de facturas/ })).toHaveAttribute(
+      "href",
+      "/casos-de-uso/validacion-facturas",
+    );
+  });
+
+  test("invoice how-to guide links back to invoice automation and product surfaces", async ({ page }) => {
+    await page.goto("/blog/como-automatizar-procesamiento-facturas-ia", { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("link", { name: /Ver solución/ })).toHaveAttribute(
+      "href",
+      "/automatizacion-facturas-ia-empresas",
     );
     await expect(page.getByRole("link", { name: /Ver IA para Contabilidad/ })).toHaveAttribute(
       "href",
