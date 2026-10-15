@@ -7,7 +7,7 @@ const surfaces = [
     h1: /Gestión de vacaciones y ausencias con IA/i,
   },
   {
-    path: "/en/ai-leave-absence-management-automation",
+    path: "/en/ai-leave-management-automation",
     title: /Leave management with AI/i,
     h1: /Leave management with AI/i,
   },
@@ -17,7 +17,7 @@ const surfaces = [
     h1: /Cómo planificar vacaciones y gestionar ausencias/i,
   },
   {
-    path: "/en/blog/how-to-automate-leave-absence-management-with-ai",
+    path: "/en/blog/how-to-automate-leave-management-with-ai",
     title: /How to manage employee absence and leave with AI/i,
     h1: /How to manage employee absence and leave with AI/i,
   },
