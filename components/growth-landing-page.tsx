@@ -22,6 +22,7 @@ export function GrowthLandingPage({ locale, record }: Props) {
   const alternate = growthLandingPath(record.key, otherLocale);
   const relatedArticle = getBlogArticleByKey(record.relatedArticleKey);
   const isAccountingCluster = record.key === "ai-invoicing-accounting-automation" || record.key === "ai-invoice-processing";
+  const isExpenseManagementCluster = record.key === "ai-expense-management";
   const isSalesOrderCluster = record.key === "ai-sales-order-processing";
   const isEmployeeOnboardingCluster = record.key === "ai-employee-onboarding";
   const isLeaveManagementCluster = record.key === "ai-leave-management";
@@ -30,7 +31,7 @@ export function GrowthLandingPage({ locale, record }: Props) {
         href: employeeDetailPath("customer-support", locale),
         label: locale === "es" ? "Ver Agente IA de Atención al Cliente" : "View Customer Support AI agent",
       }
-    : isAccountingCluster
+    : isAccountingCluster || isExpenseManagementCluster
       ? {
           href: employeeDetailPath("accounting-billing", locale),
           label: locale === "es" ? "Ver IA para Contabilidad y Facturación" : "View AI for Accounting and Billing",

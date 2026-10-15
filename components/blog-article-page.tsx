@@ -26,6 +26,8 @@ export function BlogArticlePage({ locale, article }: Props) {
   const isSalesOrderGuide = article.key === "how-to-automate-b2b-sales-order-processing-ai";
   const isEmployeeOnboardingGuide = article.key === "how-to-automate-employee-onboarding-ai";
   const isLeaveManagementGuide = article.key === "how-to-automate-leave-management-with-ai";
+  const isExpenseManagementGuide = article.key === "how-to-automate-expense-management";
+  const expenseRoleHref = isExpenseManagementGuide ? employeeDetailPath("accounting-billing", locale) : undefined;
   const workflowConnections = isAccountingGuide
     ? {
         employeeHref: employeeDetailPath("accounting-billing", locale),
@@ -150,6 +152,21 @@ export function BlogArticlePage({ locale, article }: Props) {
               <div className="container cta-panel">
                 <div><p className="eyebrow">{locale === "es" ? "SIGUE PROFUNDIZANDO" : "GO DEEPER"}</p><h2>{relatedLanding.title[locale]}</h2><p>{relatedLanding.lead[locale]}</p></div>
                 <div className="cta-actions"><Link className="button" href={growthLandingPath(relatedLanding.key, locale)}>{locale === "es" ? "Ver solución" : "View solution"}</Link></div>
+              </div>
+            </section>
+          ) : null}
+
+          {expenseRoleHref ? (
+            <section className="content-section section-panel" aria-labelledby="expense-role-connection-title">
+              <div className="container cta-panel">
+                <div>
+                  <p className="eyebrow">{locale === "es" ? "CONEXIÓN CONTABLE" : "ACCOUNTING CONNECTION"}</p>
+                  <h2 id="expense-role-connection-title">{locale === "es" ? "Separa los gastos de empleados del procesamiento de facturas de proveedor." : "Keep employee expenses separate from supplier-invoice processing."}</h2>
+                  <p>{locale === "es" ? "Esta guía explica el flujo de notas de gastos, tarjetas, políticas, aprobaciones y reembolsos. El perfil de Contabilidad y Facturación aporta el rol especializado que puede operar parte del proceso, mientras las facturas de proveedor conservan su propio flujo de cuentas a pagar y su propia intención SEO." : "This guide covers employee claims, cards, policy, approvals and reimbursements. The Accounting and Billing profile provides the specialist role that can operate parts of the process, while supplier invoices keep their own accounts-payable workflow and SEO intent."}</p>
+                </div>
+                <div className="cta-actions">
+                  <Link className="button button-ghost" href={expenseRoleHref}>{locale === "es" ? "Ver IA para Contabilidad" : "View AI for Accounting"}</Link>
+                </div>
               </div>
             </section>
           ) : null}
