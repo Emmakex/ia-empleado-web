@@ -1,0 +1,25 @@
+{
+  "articles": [
+    {
+      "key": "how-much-ai-employee-costs",
+      "decision": "MERGE_REDIRECT",
+      "batch": "phase-2-batch-03",
+      "destinations": {
+        "es": "/coste-empleado-ia",
+        "en": "/en/ai-employee-cost"
+      },
+      "reason": "The historical budgeting article overlaps the commercial cost owner. Its useful budgeting concepts are already covered by the cost landing, so authority is concentrated on one cost URL."
+    },
+    {
+      "key": "how-to-calculate-ai-employee-roi",
+      "decision": "MERGE_REDIRECT",
+      "batch": "phase-2-batch-03",
+      "destinations": {
+        "es": "/calculadora-roi",
+        "en": "/en/roi-calculator"
+      },
+      "reason": "The historical ROI how-to duplicates the calculator methodology and formula content. The calculator becomes the transactional owner while the ROI Growth landing remains the evaluation/education owner."
+    }
+  ],
+  "landings": []
+}
