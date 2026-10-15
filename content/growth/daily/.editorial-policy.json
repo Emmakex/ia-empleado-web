@@ -1,1 +1,35 @@
-{"landingMinWordsPerLocale":900,"articleMinWordsPerLocale":1200,"locales":["es","en"],"principles":["useful-first","semantic-coverage","no-keyword-stuffing","human-control-for-sensitive-actions","traceable-sources"]}
+{
+  "version": 2,
+  "effectiveFrom": "2026-10-16",
+  "canonicalGuide": "Emmakex/ia-empleado/docs/EDITORIAL_SEO_GEO_GUIDE.md",
+  "ownershipMap": "docs/SEO_GEO_CONTENT_OWNERSHIP.md",
+  "landingMinWordsPerLocale": 900,
+  "articleMinWordsPerLocale": 1200,
+  "locales": ["es", "en"],
+  "principles": [
+    "existing-owner-first",
+    "one-primary-intent-one-canonical-url",
+    "useful-first",
+    "search-demand-evidence",
+    "semantic-coverage",
+    "no-keyword-stuffing",
+    "no-thin-content",
+    "no-cannibalization",
+    "contextual-internal-linking",
+    "geo-direct-answer-readiness",
+    "human-control-for-sensitive-actions",
+    "traceable-sources"
+  ],
+  "requiredEditorialMetadata": [
+    "primaryKeyword.es",
+    "primaryKeyword.en",
+    "supportingKeywords.es",
+    "supportingKeywords.en",
+    "searchIntent",
+    "cluster",
+    "canonicalRole",
+    "conversionRole",
+    "researchBasis"
+  ],
+  "dailyRule": "A daily slot may improve an existing canonical owner instead of creating a new pair when search intent overlaps or the existing URL is strategically stronger."
+}
