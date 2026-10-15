@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const publicOrigin = "https://iaempleado.com";
+
 const definitionRoutes = [
   {
     legacy: "/blog/que-es-un-empleado-ia-y-como-se-diferencia-de-un-chatbot",
@@ -20,14 +22,16 @@ test.describe("Phase 2 definition article repositioning", () => {
       expect(response.status()).toBe(308);
       const location = response.headers().location;
       expect(location).toBeTruthy();
-      expect(new URL(location!, "https://iaempleado.com").pathname).toBe(route.current);
+      expect(new URL(location!, publicOrigin).pathname).toBe(route.current);
     });
 
     test(`${route.current} owns the informational definition intent`, async ({ page }) => {
       const response = await page.goto(route.current, { waitUntil: "domcontentloaded" });
       expect(response?.ok()).toBeTruthy();
       await expect(page.locator("h1")).toContainText(route.title);
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", route.current);
+      const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+      expect(canonical).toBeTruthy();
+      expect(new URL(canonical!, publicOrigin).pathname).toBe(route.current);
     });
   }
 
