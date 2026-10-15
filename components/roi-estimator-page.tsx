@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
+import { growthLandingPath } from "../lib/growth-content";
 import { getRoiEstimatorPageContent, roiEstimatorPath } from "../lib/roi-estimator";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { teamBuilderPath } from "../lib/team-builder";
@@ -20,6 +21,8 @@ export function RoiEstimatorPage({ locale }: RoiEstimatorPageProps) {
   const canonicalPath = roiEstimatorPath(locale);
   const alternatePath = roiEstimatorPath(otherLocale);
   const homeHref = localeHref(locale);
+  const roiGuideHref = growthLandingPath("ai-employee-roi", locale);
+  const costGuideHref = growthLandingPath("ai-employee-cost", locale);
 
   const pageSchema = {
     "@context": "https://schema.org",
@@ -111,6 +114,10 @@ export function RoiEstimatorPage({ locale }: RoiEstimatorPageProps) {
                   <p>{item.text}</p>
                 </article>
               ))}
+            </div>
+            <div className="cta-actions">
+              <Link className="text-link" href={roiGuideHref}>{locale === "es" ? "Entender cómo evaluar el ROI de IA" : "Understand how to evaluate AI ROI"} →</Link>
+              <Link className="text-link" href={costGuideHref}>{locale === "es" ? "Revisar el coste total de implantación" : "Review total implementation cost"} →</Link>
             </div>
           </div>
         </section>
