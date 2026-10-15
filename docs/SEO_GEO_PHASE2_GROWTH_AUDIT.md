@@ -14,9 +14,10 @@ Audit every historical Growth record against the current `one-primary-intent = o
 - Total historical Growth records: **56**.
 - Audited in Batch 01: **4**.
 - Audited in Batch 02: **3**.
-- Total audited: **7 / 56**.
-- Remaining after Batch 02: **49**.
-- New search-intent URLs created in Phase 2: **0**. Batch 02 changes the slug of one existing article as part of a `REPOSITION`; it is not counted as a new content owner.
+- Audited in Batch 03: **4**.
+- Total audited: **11 / 56**.
+- Remaining after Batch 03: **45**.
+- New search-intent URLs created in Phase 2: **0**. Batch 02 changed the slug of one existing article as part of a `REPOSITION`; it is not counted as a new content owner.
 
 ## Batch 01 — comparison-intent consolidation
 
@@ -84,6 +85,60 @@ This shows two distinct search/evaluation jobs: choosing or understanding the ag
 
 Batch 02 strengthens the internal graph in both directions: the process landing links directly to the Customer Support AI role, and the deep role links back to the automation landing and its practical guide.
 
+## Batch 03 — cost + ROI ownership
+
+Batch 03 audits the four Day 13/14 records against the existing ROI calculator. The objective is to keep a useful cost/evaluation cluster while removing articles that repeat the same budgeting or formula job already handled by a stronger owner.
+
+| Historical record | Decision | Canonical job / destination |
+| --- | --- | --- |
+| Day 13 landing `ai-employee-cost` | **KEEP** | commercial/evaluation owner for AI Employee / AI-agent implementation cost |
+| Day 13 article `how-much-ai-employee-costs` | **MERGE + REDIRECT** | `/coste-empleado-ia` / `/en/ai-employee-cost` |
+| Day 14 landing `ai-employee-roi` | **KEEP + EXPAND GRAPH** | education/evaluation owner for AI ROI and return methodology |
+| Day 14 article `how-to-calculate-ai-employee-roi` | **MERGE + REDIRECT** | `/calculadora-roi` / `/en/roi-calculator` |
+
+### Search evidence and intent split
+
+Semrush evidence captured on 2026-10-15 supports keeping ROI evaluation separate from the calculator tool:
+
+- ES `roi ia`: **20 searches/month**;
+- UK `ai roi`: **110**, KD **36**;
+- UK `roi of ai`: **70**;
+- UK `ai return on investment`: **30**;
+- UK `ai roi calculator`: **30**.
+
+For cost, the Spanish exact phrases tested did not return measurable data, so no Spanish volume is invented. UK does show low but real demand around the broader market wording:
+
+- UK `cost of implementing ai`: **30**;
+- UK `cost of ai agents`: **20**;
+- UK `ai agent pricing`: **20**;
+- UK `ai agent cost`: **10**;
+- UK `ai implementation cost`: **10**.
+
+The resulting ownership is deliberately different by user job:
+
+- **Cost landing:** what implementation costs consist of, what changes the budget and how to evaluate total cost.
+- **ROI landing:** how to think about return, baselines, quality, capacity and defensible benefit measurement.
+- **ROI calculator:** transactional tool for entering real assumptions and calculating transparent scenarios.
+
+The historical cost article duplicated the cost landing's budgeting job, while the historical ROI how-to duplicated formulas and methodology already present in the calculator. Both support URLs are removed from the active Growth inventory and sitemap and permanently redirected to the stronger owner.
+
+### Internal graph
+
+Batch 03 adds reciprocal intent-aware links instead of replacing one kind of page with another:
+
+- cost landing → ROI calculator;
+- ROI landing → ROI calculator;
+- ROI calculator → ROI evaluation landing;
+- ROI calculator → cost landing.
+
+This makes the distinction visible to users and search/answer engines: education/evaluation content explains the decision, while the calculator performs the calculation.
+
+### Consolidation registry
+
+`content/growth/consolidations.json` is now the explicit registry for Growth records that remain in historical source files but must no longer participate in routing, sitemap generation or canonical ownership. The Growth runtime and CI contract both consume this registry, and the checker allows a retained landing to reference a support article only when that article has an explicit consolidation decision and destination.
+
+This avoids silently deleting editorial history while still ensuring merged content cannot remain indexable by accident.
+
 ## Redirect contract
 
 Historical redirects created during Phase 2 must:
@@ -94,18 +149,17 @@ Historical redirects created during Phase 2 must:
 4. leave the destination indexable;
 5. preserve ES/EN parity.
 
-Regression tests cover redirect status/destination, sitemap ownership and the customer-service reciprocal links.
+Regression tests cover redirect status/destination, sitemap ownership and the contextual link graph.
 
 ## Next audit order
 
-Continue existing-content-first with the remaining **49** records. Prioritise records with the highest overlap risk against existing owners before low-risk long-tail process content:
+Continue existing-content-first with the remaining **45** records. Prioritise records with the highest overlap risk against existing owners before low-risk long-tail process content:
 
-1. Day 13 cost and Day 14 ROI versus `/calculadora-roi` and conversion intent;
-2. Day 15 private deployment versus product/security positioning;
-3. Day 16 broad process automation versus Home and process-analysis surfaces;
-4. Day 24 invoice processing versus Accounting & Billing and invoice-validation use case;
-5. administrative/accounting/sales original Growth pairs versus their deep role owners;
-6. then the remaining integration, governance, operational and HR/finance process clusters.
+1. Day 15 private deployment versus product/security positioning;
+2. Day 16 broad process automation versus Home and process-analysis surfaces;
+3. Day 24 invoice processing versus Accounting & Billing and invoice-validation use case;
+4. administrative/accounting/sales original Growth pairs versus their deep role owners;
+5. then the remaining integration, governance, operational and HR/finance process clusters.
 
 ## Completion rule
 

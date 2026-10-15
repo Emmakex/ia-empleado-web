@@ -8,6 +8,7 @@ import { employeeDetailPath } from "../lib/employee-content-engine";
 import { useCaseIndexPath } from "../lib/sector-use-cases";
 import { integrationIndexPath } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
+import { roiEstimatorPath } from "../lib/roi-estimator";
 import { requestDemoPath } from "../lib/conversion-handoff";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
@@ -22,6 +23,9 @@ export function GrowthLandingPage({ locale, record }: Props) {
   const relatedArticle = getBlogArticleByKey(record.relatedArticleKey);
   const relatedEmployeeHref = record.key === "ai-customer-support-automation"
     ? employeeDetailPath("customer-support", locale)
+    : undefined;
+  const relatedRoiHref = record.key === "ai-employee-cost" || record.key === "ai-employee-roi"
+    ? roiEstimatorPath(locale)
     : undefined;
   const demoHref = requestDemoPath(locale, {
     intent: "demo",
@@ -125,6 +129,11 @@ export function GrowthLandingPage({ locale, record }: Props) {
               {relatedEmployeeHref ? (
                 <Link className="text-link" href={relatedEmployeeHref}>
                   {locale === "es" ? "Ver Agente IA de Atención al Cliente" : "View Customer Support AI agent"} →
+                </Link>
+              ) : null}
+              {relatedRoiHref ? (
+                <Link className="text-link" href={relatedRoiHref}>
+                  {locale === "es" ? "Calcular un escenario de ROI" : "Calculate an ROI scenario"} →
                 </Link>
               ) : null}
               <Link className="text-link" href={employeeIndexPath(locale)}>{locale === "es" ? "Explorar Empleados IA" : "Explore AI Employees"} →</Link>
