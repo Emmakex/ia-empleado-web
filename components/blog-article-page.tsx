@@ -24,6 +24,7 @@ export function BlogArticlePage({ locale, article }: Props) {
     : undefined;
   const isAccountingGuide = article.key === "automate-invoicing-accounting-human-review" || article.key === "how-to-automate-invoice-processing-ai";
   const isSalesOrderGuide = article.key === "how-to-automate-b2b-sales-order-processing-ai";
+  const isEmployeeOnboardingGuide = article.key === "how-to-automate-employee-onboarding-ai";
   const workflowConnections = isAccountingGuide
     ? {
         employeeHref: employeeDetailPath("accounting-billing", locale),
@@ -42,7 +43,16 @@ export function BlogArticlePage({ locale, article }: Props) {
           employeeLabel: locale === "es" ? "Ver Agente IA para Ventas" : "View AI Sales Agent",
           useCaseLabel: locale === "es" ? "Ver incidencias de pedidos" : "View order exceptions",
         }
-      : undefined;
+      : isEmployeeOnboardingGuide
+        ? {
+            employeeHref: employeeDetailPath("administrative", locale),
+            useCaseHref: useCaseDetailPath("administrative-documentation", locale),
+            heading: locale === "es" ? "Mantén el onboarding como proceso de RRHH e IT y conecta solo el trabajo administrativo que le da soporte." : "Keep onboarding as an HR and IT process while connecting the administrative work that supports it.",
+            body: locale === "es" ? "El perfil Administrativo ayuda con documentación, registros y seguimiento; el caso de documentación administrativa muestra un patrón acotado. Ninguno sustituye al propietario de onboarding, que coordina contratación aprobada, identidad, equipo, accesos, formación y excepciones entre RRHH e IT." : "The Administrative profile supports documents, records and follow-up, while the administrative-document workflow shows a bounded pattern. Neither replaces the onboarding owner, which coordinates approved hire, identity, equipment, access, training and exceptions across HR and IT.",
+            employeeLabel: locale === "es" ? "Ver Agente IA Administrativo" : "View Administrative AI Agent",
+            useCaseLabel: locale === "es" ? "Ver gestión documental" : "View document workflow",
+          }
+        : undefined;
   const demoHref = requestDemoPath(locale, {
     intent: "demo",
     source: `blog:${article.key}`,
