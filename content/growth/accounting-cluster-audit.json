@@ -1,0 +1,37 @@
+{
+  "batch": "phase-2-batch-05-accounting-invoices",
+  "date": "2026-10-15",
+  "scope": "existing-content-first",
+  "records": [
+    {
+      "surface": "/empleados-ia/contabilidad-facturacion",
+      "type": "employee-role",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "ia para contabilidad", "en": "ai for accounting" },
+      "notes": "Role owner only. Broad automation and invoice-processing terms were removed from its supporting keyword set."
+    },
+    {
+      "surface": "/automatizacion-facturacion-contabilidad-ia",
+      "type": "commercial-process-landing",
+      "decision": "EXPAND",
+      "primaryKeyword": { "es": "automatización contable", "en": "accounting automation" },
+      "notes": "Commercial owner for accounting automation, with invoice and accounts-payable automation as supporting demand."
+    },
+    {
+      "surface": "/blog/como-automatizar-facturacion-contabilidad-con-ia-y-revision-humana",
+      "type": "informational-support",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatizar contabilidad", "en": "how to automate accounting" },
+      "notes": "How-to owner; remains reciprocal with the commercial landing and links to product/use-case surfaces."
+    },
+    {
+      "surface": "/casos-de-uso/validacion-facturas",
+      "type": "use-case",
+      "decision": "KEEP",
+      "primaryKeyword": { "es": "validación de facturas", "en": "invoice validation" },
+      "notes": "Kept narrow as a bounded workflow instead of competing for broad accounting-automation demand."
+    }
+  ],
+  "createdUrls": 0,
+  "mergedOrRedirectedUrls": 0
+}
