@@ -33,31 +33,31 @@ test.describe("Phase 2 Batch 03 cost and ROI consolidation", () => {
     expect(xml).toContain("/en/ai-employee-roi");
   });
 
-  test("Spanish cost and ROI owners point to the ROI calculator", async ({ page }) => {
+  test("Spanish cost and ROI owners expose the contextual ROI-calculator handoff", async ({ page }) => {
     await page.goto("/coste-empleado-ia", { waitUntil: "domcontentloaded" });
-    await expect(page.locator('a[href="/calculadora-roi"]')).toBeVisible();
+    await expect(page.getByRole("link", { name: /Calcular un escenario de ROI/ })).toHaveAttribute("href", "/calculadora-roi");
 
     await page.goto("/roi-empleado-ia", { waitUntil: "domcontentloaded" });
-    await expect(page.locator('a[href="/calculadora-roi"]')).toBeVisible();
+    await expect(page.getByRole("link", { name: /Calcular un escenario de ROI/ })).toHaveAttribute("href", "/calculadora-roi");
   });
 
-  test("English cost and ROI owners point to the ROI calculator", async ({ page }) => {
+  test("English cost and ROI owners expose the contextual ROI-calculator handoff", async ({ page }) => {
     await page.goto("/en/ai-employee-cost", { waitUntil: "domcontentloaded" });
-    await expect(page.locator('a[href="/en/roi-calculator"]')).toBeVisible();
+    await expect(page.getByRole("link", { name: /Calculate an ROI scenario/ })).toHaveAttribute("href", "/en/roi-calculator");
 
     await page.goto("/en/ai-employee-roi", { waitUntil: "domcontentloaded" });
-    await expect(page.locator('a[href="/en/roi-calculator"]')).toBeVisible();
+    await expect(page.getByRole("link", { name: /Calculate an ROI scenario/ })).toHaveAttribute("href", "/en/roi-calculator");
   });
 
   test("ROI calculator links back to cost and ROI evaluation owners in Spanish", async ({ page }) => {
     await page.goto("/calculadora-roi", { waitUntil: "domcontentloaded" });
-    await expect(page.locator('a[href="/roi-empleado-ia"]')).toBeVisible();
-    await expect(page.locator('a[href="/coste-empleado-ia"]')).toBeVisible();
+    await expect(page.getByRole("link", { name: /Entender cómo evaluar el ROI de IA/ })).toHaveAttribute("href", "/roi-empleado-ia");
+    await expect(page.getByRole("link", { name: /Revisar el coste total de implantación/ })).toHaveAttribute("href", "/coste-empleado-ia");
   });
 
   test("ROI calculator links back to cost and ROI evaluation owners in English", async ({ page }) => {
     await page.goto("/en/roi-calculator", { waitUntil: "domcontentloaded" });
-    await expect(page.locator('a[href="/en/ai-employee-roi"]')).toBeVisible();
-    await expect(page.locator('a[href="/en/ai-employee-cost"]')).toBeVisible();
+    await expect(page.getByRole("link", { name: /Understand how to evaluate AI ROI/ })).toHaveAttribute("href", "/en/ai-employee-roi");
+    await expect(page.getByRole("link", { name: /Review total implementation cost/ })).toHaveAttribute("href", "/en/ai-employee-cost");
   });
 });
