@@ -5,9 +5,9 @@ import { brandPreviewUrl } from "../../../lib/brand-social-previews";
 
 const dictionary = getDictionary("es");
 const preview = brandPreviewUrl("es", "employees");
-const title = "Empleados IA para empresas | IA Empleado";
-const description = "Explora la suite de Empleados IA de referencia: Atención al Cliente, Administrativo, Contabilidad y Facturación y Comercial SDR, con trabajo gobernado y supervisión humana.";
-const socialDescription = "Roles digitales especializados que pueden trabajar con sistemas, políticas y otros Empleados IA para resolver procesos empresariales.";
+const title = "Empleados IA para empresas | Agentes especializados | IA Empleado";
+const description = "Explora Empleados IA y agentes especializados para atención al cliente, administración, contabilidad, facturación y ventas, con permisos y supervisión humana.";
+const socialDescription = "Agentes IA especializados por función empresarial que trabajan con sistemas, políticas y otros Empleados IA bajo límites explícitos.";
 
 export const metadata: Metadata = {
   title,
