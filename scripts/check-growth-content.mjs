@@ -20,17 +20,10 @@ const consolidationRegistry = await readJson("../content/growth/consolidations.j
 const baseSeoOverrideRegistry = await readJson("../content/growth/seo-overrides.json");
 const phase2SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase2.json");
 const phase3SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase3.json");
+const seoOverrideRegistries = [baseSeoOverrideRegistry, phase2SeoOverrideRegistry, phase3SeoOverrideRegistry];
 const seoOverrideRegistry = {
-  landings: [
-    ...(baseSeoOverrideRegistry.landings ?? []),
-    ...(phase2SeoOverrideRegistry.landings ?? []),
-    ...(phase3SeoOverrideRegistry.landings ?? []),
-  ],
-  articles: [
-    ...(baseSeoOverrideRegistry.articles ?? []),
-    ...(phase2SeoOverrideRegistry.articles ?? []),
-    ...(phase3SeoOverrideRegistry.articles ?? []),
-  ],
+  landings: seoOverrideRegistries.flatMap((registry) => registry.landings ?? []),
+  articles: seoOverrideRegistries.flatMap((registry) => registry.articles ?? []),
 };
 const legacyLandings = await readJson("../content/growth/landings.json");
 const incrementalLandings = await readJson("../content/growth/incremental-landings.json");
@@ -176,7 +169,6 @@ function validateEditorialMetadata(record, kind) {
 
 function validateSeoOverrides(overrides, baseRecords, kind) {
   const baseKeys = new Set(baseRecords.map((record) => record.key));
-  validateUnique(overrides ?? [], (item) => item.key, `${kind} SEO override key`);
   for (const override of overrides ?? []) {
     requireText(override.key, `${kind}.seoOverride.key`);
     if (!baseKeys.has(override.key)) errors.push(`${kind} SEO override targets unknown key: ${override.key}`);
@@ -209,6 +201,10 @@ for (const entry of consolidationRegistry.landings ?? []) {
   requireText(entry.destinations?.en, `${entry.key}.destinations.en`);
 }
 
+seoOverrideRegistries.forEach((registry, index) => {
+  validateUnique(registry.landings ?? [], (item) => item.key, `landing SEO override key in registry ${index + 1}`);
+  validateUnique(registry.articles ?? [], (item) => item.key, `article SEO override key in registry ${index + 1}`);
+});
 validateSeoOverrides(seoOverrideRegistry.landings, baseLandings, "landing");
 validateSeoOverrides(seoOverrideRegistry.articles, baseArticles, "article");
 
@@ -316,5 +312,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Editorial metadata gate: ${EDITORIAL_METADATA_EFFECTIVE_DATE}. Active daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s). Consolidated: ${consolidatedLandingKeys.size} landing(s), ${consolidatedArticleKeys.size} article(s). SEO overrides: ${(seoOverrideRegistry.landings ?? []).length} landing(s), ${(seoOverrideRegistry.articles ?? []).length} article(s).`,
+  `Growth content contract OK: ${landings.length} landing(s), ${articles.length} article(s). Editorial minimums: ${MIN_EDITORIAL_LANDING_WORDS} words/landing/locale, ${MIN_EDITORIAL_ARTICLE_WORDS} words/article/locale. Editorial metadata gate: ${EDITORIAL_METADATA_EFFECTIVE_DATE}. Active daily files: ${dailyLandings.length} landing(s), ${dailyArticles.length} article(s). Consolidated: ${consolidatedLandingKeys.size} landing(s), ${consolidatedArticleKeys.size} article(s). SEO override layers: ${seoOverrideRegistries.length}; effective declarations: ${(seoOverrideRegistry.landings ?? []).length} landing override declaration(s), ${(seoOverrideRegistry.articles ?? []).length} article override declaration(s).`,
 );
