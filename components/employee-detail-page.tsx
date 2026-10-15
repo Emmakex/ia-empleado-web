@@ -4,6 +4,7 @@ import type { EmployeeKey, LocalizedEmployeeDetail } from "../lib/employee-catal
 import { alternateEmployeePath, employeeIndexPath } from "../lib/employee-content-engine";
 import { getRelatedDiscoveryProfiles } from "../lib/employee-discovery";
 import { getBrandCharacterByEmployeeKey } from "../lib/brand-characters";
+import { blogArticlePath, growthLandingPath } from "../lib/growth-content";
 import { requestDemoPath } from "../lib/conversion-handoff";
 import { BrandRoleFamilyScene } from "./brand-role-family-scene";
 import { SiteFooter } from "./site-footer";
@@ -34,6 +35,12 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
   });
   const relatedProfiles = getRelatedDiscoveryProfiles(employeeKey, locale);
   const character = getBrandCharacterByEmployeeKey(employeeKey, locale);
+  const customerSupportGrowth = employeeKey === "customer-support"
+    ? {
+        landing: growthLandingPath("ai-customer-support-automation", locale),
+        article: blogArticlePath("automate-customer-service-human-control", locale),
+      }
+    : undefined;
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -115,6 +122,22 @@ export function EmployeeDetailPage({ locale, dictionary, employeeKey, content }:
         <section className="content-section section-panel" aria-labelledby="related-employees-title"><div className="container"><div className="section-heading"><p className="eyebrow">{locale === "es" ? "ECOSISTEMA" : "ECOSYSTEM"}</p><h2 id="related-employees-title">{locale === "es" ? "Empleados IA relacionados con este proceso" : "AI Employees related to this process"}</h2><p>{locale === "es" ? "Los procesos reales suelen cruzar funciones. Estos perfiles son conexiones naturales para construir un equipo coordinado, no asistentes aislados." : "Real processes usually cross functions. These profiles are natural connections for building a coordinated team rather than isolated assistants."}</p></div><div className="related-employee-grid">{relatedProfiles.map((profile) => (<article key={profile.key} className={`related-employee-card status-${profile.status}`}><span className={`employee-content-status is-${profile.status}`}>{profile.status === "reference" ? (locale === "es" ? "Perfil profundo" : "Deep profile") : profile.status === "restricted" ? (locale === "es" ? "Uso restringido" : "Restricted use") : (locale === "es" ? "Perfil de catálogo" : "Catalog profile")}</span><p className="employee-department">{profile.department}</p><h3>{profile.shortName}</h3><p>{profile.focus}</p>{profile.href ? <Link className="employee-text-link" href={profile.href}>{locale === "es" ? "Ver perfil" : "View profile"} <span aria-hidden="true">→</span></Link> : <span className="employee-text-link is-disabled">{locale === "es" ? "Relacionado en el catálogo" : "Related catalog profile"}</span>}</article>))}</div><div className="related-catalog-link"><Link className="button button-ghost" href={indexHref}>{locale === "es" ? "Explorar los 22 perfiles" : "Explore all 22 profiles"}</Link></div></div></section>
 
         <section className="content-section employee-control-section" id="control-humano" aria-labelledby="supervision-title"><div className="container employee-control-grid"><div><p className="eyebrow">{locale === "es" ? "CONTROL Y AUTORIDAD" : "CONTROL AND AUTHORITY"}</p><h2 id="supervision-title">{content.supervisionTitle}</h2><p>{content.supervisionIntro}</p></div><ul>{content.supervision.map((item) => <li key={item}>{item}</li>)}</ul></div></section>
+
+        {customerSupportGrowth ? (
+          <section className="content-section section-panel" aria-labelledby="customer-support-growth-title">
+            <div className="container cta-panel">
+              <div>
+                <p className="eyebrow">{locale === "es" ? "AUTOMATIZACIÓN DEL PROCESO" : "PROCESS AUTOMATION"}</p>
+                <h2 id="customer-support-growth-title">{locale === "es" ? "Del rol de Atención al Cliente IA al proceso completo de automatización." : "From the Customer Support AI role to the complete automation workflow."}</h2>
+                <p>{locale === "es" ? "El perfil explica quién hace el trabajo. La landing y la guía relacionadas explican cómo diseñar la automatización de atención al cliente, sus controles y el escalado humano." : "The profile explains who performs the work. The related landing and guide explain how to design customer-service automation, its controls and human escalation."}</p>
+              </div>
+              <div className="cta-actions">
+                <Link className="button button-ghost" href={customerSupportGrowth.landing}>{locale === "es" ? "Ver automatización de atención" : "View customer-service automation"}</Link>
+                <Link className="text-link" href={customerSupportGrowth.article}>{locale === "es" ? "Leer la guía práctica" : "Read the practical guide"} →</Link>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="content-section" id="casos-de-uso" aria-labelledby="use-cases-title"><div className="container"><div className="section-heading"><p className="eyebrow">{locale === "es" ? "CASOS DE USO" : "USE CASES"}</p><h2 id="use-cases-title">{content.useCasesTitle}</h2></div><div className="employee-use-case-grid">{content.useCases.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div></section>
 

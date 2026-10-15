@@ -25,6 +25,8 @@ const nextConfig: NextConfig = {
       { source: "/blog/cuando-usar-agente-ia-rpa-o-ambos", destination: "/comparativas/rpa", permanent: true },
       { source: "/en/ai-agent-vs-rpa", destination: "/en/comparisons/rpa", permanent: true },
       { source: "/en/blog/when-to-use-ai-agent-rpa-or-both", destination: "/en/comparisons/rpa", permanent: true },
+      { source: "/blog/que-es-un-empleado-ia-y-como-se-diferencia-de-un-chatbot", destination: "/blog/que-es-un-agente-ia", permanent: true },
+      { source: "/en/blog/what-is-an-ai-employee-and-how-is-it-different-from-a-chatbot", destination: "/en/blog/what-is-an-ai-agent", permanent: true },
     ];
   },
 };

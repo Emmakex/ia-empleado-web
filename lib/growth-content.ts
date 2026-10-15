@@ -55,6 +55,7 @@ export type BlogArticleRecord = {
 };
 
 const dailyDirectory = path.join(process.cwd(), "content", "growth", "daily");
+const replacedLegacyArticleKeys = new Set(["what-is-an-ai-employee"]);
 
 function readDailyRecords<T>(suffix: string): T[] {
   return readdirSync(dailyDirectory)
@@ -68,6 +69,7 @@ function readDailyRecords<T>(suffix: string): T[] {
 
 const dailyLandings = readDailyRecords<GrowthLandingRecord>(".landings.json");
 const dailyArticles = readDailyRecords<BlogArticleRecord>(".articles.json");
+const legacyArticles = (articlesJson as BlogArticleRecord[]).filter((record) => !replacedLegacyArticleKeys.has(record.key));
 
 export const growthLandingRecords = [
   ...(landingsJson as GrowthLandingRecord[]),
@@ -76,7 +78,7 @@ export const growthLandingRecords = [
 ];
 
 export const blogArticleRecords = [
-  ...(articlesJson as BlogArticleRecord[]),
+  ...legacyArticles,
   ...(incrementalArticlesJson as BlogArticleRecord[]),
   ...dailyArticles,
 ];

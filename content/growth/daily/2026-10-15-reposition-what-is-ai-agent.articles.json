@@ -1,0 +1,239 @@
+[
+  {
+    "key": "what-is-an-ai-employee",
+    "slugs": {
+      "es": "que-es-un-agente-ia",
+      "en": "what-is-an-ai-agent"
+    },
+    "seoTitle": {
+      "es": "Qué es un agente IA: cómo funciona en una empresa | IA Empleado",
+      "en": "What is an AI agent? How it works in business | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Qué es un agente IA, cómo usa herramientas y sistemas, qué niveles de autonomía existen y cómo encaja el concepto de Empleado IA con control humano.",
+      "en": "What an AI agent is, how it uses tools and business systems, the levels of autonomy involved and how the AI Employee model adds governed business roles."
+    },
+    "title": {
+      "es": "Qué es un agente IA: cómo funciona, qué puede hacer y dónde encaja un Empleado IA",
+      "en": "What is an AI agent? How it works, what it can do and where an AI Employee fits"
+    },
+    "excerpt": {
+      "es": "Un agente IA no es solo un chatbot: puede interpretar un objetivo, consultar sistemas y usar herramientas dentro de permisos y reglas explícitas.",
+      "en": "An AI agent is more than a chatbot: it can interpret a goal, retrieve business data and use tools within explicit permissions and rules."
+    },
+    "intro": {
+      "es": "Un agente IA es un sistema de inteligencia artificial capaz de recibir un objetivo o evento, interpretar contexto, consultar información autorizada, elegir entre herramientas disponibles y realizar o preparar acciones dentro de límites definidos. La diferencia frente a un modelo que solo genera texto no está en una etiqueta comercial, sino en que el agente participa en un flujo de trabajo: observa un estado, decide el siguiente paso permitido, usa una herramienta y deja un resultado que puede verificarse. En una empresa, esa capacidad debe estar rodeada de permisos, reglas, trazabilidad y supervisión humana.",
+      "en": "An AI agent is an artificial-intelligence system that can receive a goal or event, interpret context, retrieve authorised information, choose among available tools and perform or prepare actions within defined boundaries. The difference from a model that only generates text is not a marketing label. An agent participates in a workflow: it observes a state, selects the next permitted step, uses a tool and leaves a result that can be verified. In a business environment, that capability should be surrounded by permissions, deterministic rules, traceability and human oversight."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Qué es un agente IA, en una definición práctica",
+          "en": "1. What an AI agent is in practical terms"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando alguien pregunta qué es un agente IA, la respuesta útil no es «una IA más autónoma». Un agente combina un modelo capaz de interpretar instrucciones con contexto, herramientas y un mecanismo de ejecución. Puede activarse por una conversación, un correo, un formulario, un evento del CRM o una tarea programada. A partir de esa entrada identifica qué necesita saber, consulta únicamente las fuentes autorizadas y decide entre un conjunto limitado de acciones posibles. Un agente bien diseñado no inventa herramientas ni autoridad: opera dentro de un catálogo explícito de capacidades.",
+            "La palabra agente describe un patrón técnico, no un nivel fijo de autonomía. Un agente puede trabajar solo en modo lectura, preparar borradores, recomendar una acción o ejecutar pasos de bajo riesgo. También puede detenerse obligatoriamente antes de una decisión sensible. Por eso dos sistemas llamados «agente IA» pueden tener responsabilidades muy distintas. Para evaluarlos hay que mirar qué datos consultan, qué herramientas pueden invocar, qué reglas limitan esas herramientas y qué ocurre cuando el caso queda fuera de lo previsto."
+          ],
+          "en": [
+            "When someone asks what an AI agent is, the useful answer is not simply “a more autonomous AI.” An agent combines a model that can interpret instructions with context, tools and an execution mechanism. It may be triggered by a conversation, an email, a form, a CRM event or a scheduled task. From that input it identifies what it needs to know, retrieves only authorised sources and chooses from a limited set of possible actions. A well-designed agent does not invent tools or authority; it operates inside an explicit catalogue of capabilities.",
+            "The word agent describes a technical pattern rather than a fixed autonomy level. An agent can work in read-only mode, prepare drafts, recommend an action or execute low-risk steps. It can also be required to stop before a sensitive decision. Two systems both called “AI agents” may therefore have very different responsibilities. To evaluate them, look at which data they can access, which tools they can invoke, which rules constrain those tools and what happens when a case falls outside the expected path."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. En qué se diferencia de un chatbot o un asistente de texto",
+          "en": "2. How an AI agent differs from a chatbot or text assistant"
+        },
+        "paragraphs": {
+          "es": [
+            "Un chatbot está orientado principalmente a la conversación. Puede responder preguntas, recuperar conocimiento, recoger datos o guiar a una persona. Un agente IA puede incluir conversación, pero su diseño se centra en completar una tarea o avanzar un proceso. Por ejemplo, ante «¿dónde está mi pedido?», un chatbot puede explicar cómo consultar el estado; un agente autorizado puede identificar el pedido, leer el sistema logístico, detectar una incidencia, crear un caso y preparar la respuesta. La interfaz puede ser la misma, pero el alcance operativo es diferente.",
+            "Esto no significa que un chatbot sea una tecnología inferior ni que todo deba convertirse en agente. Si el problema termina al entregar información fiable, añadir herramientas de escritura, permisos y automatizaciones puede introducir complejidad sin retorno. La arquitectura debe ser tan simple como el proceso permita. Cuando la conversación genera trabajo posterior entre CRM, ERP, ticketing, correo, documentos o calendarios, entonces aparece un caso más claro para capacidades agentivas. La comparación completa entre ambos enfoques debe tratarse como una decisión de arquitectura, no como una batalla de etiquetas."
+          ],
+          "en": [
+            "A chatbot is primarily oriented around conversation. It can answer questions, retrieve knowledge, collect information or guide a person. An AI agent may include conversation, but its design focuses on completing a task or advancing a workflow. For example, when a customer asks “where is my order?”, a chatbot may explain how to check the status; an authorised agent can identify the order, read the logistics system, detect an exception, open a case and prepare the response. The interface may look similar, while the operational scope is very different.",
+            "That does not mean a chatbot is an inferior technology or that every workflow should become agentic. If the problem ends when reliable information is delivered, adding write tools, permissions and automations can create complexity without enough return. Architecture should be as simple as the process allows. When conversation creates downstream work across CRM, ERP, ticketing, email, documents or calendars, the case for agentic capabilities becomes clearer. A full chatbot-versus-agent comparison should be treated as an architecture decision rather than a contest between labels."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Cómo funciona un agente IA dentro de un proceso empresarial",
+          "en": "3. How an AI agent works inside a business process"
+        },
+        "paragraphs": {
+          "es": [
+            "Un flujo agentivo suele comenzar con una entrada: un mensaje, un documento, una alerta o un cambio de estado. El agente clasifica el objetivo y reúne el contexto mínimo necesario. Después consulta una fuente de verdad —por ejemplo CRM, ERP, ecommerce o base de conocimiento— antes de afirmar datos. Con esa información selecciona una herramienta permitida, prepara parámetros estructurados y pasa por las validaciones definidas. Si la acción está autorizada y es de bajo riesgo, puede ejecutarla; si requiere aprobación, crea una propuesta para una persona. Finalmente registra el resultado y el estado del proceso.",
+            "La parte crítica es que cada transición sea observable. No basta con guardar la respuesta final del modelo. Conviene conservar qué recurso se identificó, qué fuente confirmó el dato, qué regla permitió continuar, qué herramienta se utilizó y si hubo aprobación. Ese historial permite investigar errores, medir calidad y mejorar el proceso. También evita depender de una memoria conversacional opaca. El estado de negocio debería residir en estructuras verificables: un ticket, una tarea, un registro, un expediente o un identificador de proceso."
+          ],
+          "en": [
+            "An agentic workflow usually starts with an input: a message, document, alert or state change. The agent classifies the objective and gathers the minimum context required. It then checks a source of truth—such as CRM, ERP, ecommerce or an approved knowledge base—before asserting facts. With that context it selects a permitted tool, prepares structured parameters and passes through defined validation. If the action is authorised and low risk, it may execute it; if approval is required, it creates a proposal for a person. Finally, it records the result and the new process state.",
+            "The critical part is making every transition observable. Storing only the model's final answer is not enough. It is useful to retain which resource was identified, which source confirmed the data, which rule allowed the workflow to continue, which tool was used and whether a person approved the action. That history supports investigation, quality measurement and process improvement. It also avoids relying on opaque conversational memory. Business state should live in verifiable structures such as a ticket, task, record, case file or process identifier."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Herramientas, integraciones y fuentes de verdad",
+          "en": "4. Tools, integrations and sources of truth"
+        },
+        "paragraphs": {
+          "es": [
+            "Un agente sin herramientas puede razonar o redactar, pero no necesariamente completar trabajo. Las herramientas convierten una intención en operaciones concretas: consultar un cliente, crear un ticket, leer una factura, preparar una actualización, enviar un borrador a revisión o consultar disponibilidad. Cada herramienta debería tener un contrato claro de entrada y salida, validar parámetros y aplicar permisos. La conexión con un sistema no concede automáticamente acceso total. Leer el estado de un pedido, modificar una dirección y cancelar una compra son capacidades distintas y deberían poder autorizarse por separado.",
+            "Siempre que sea posible, las acciones críticas deberían apoyarse en APIs o integraciones estables y en reglas deterministas para cálculos y límites. La IA es especialmente útil para interpretar lenguaje, documentos y contexto variable; no necesita sustituir lógica que ya puede expresarse de forma fiable. Si una empresa utiliza sistemas legacy sin API, RPA o automatización de navegador puede actuar como herramienta ejecutora, pero debe quedar monitorizada. Separar interpretación, validación y ejecución facilita cambiar un conector sin rediseñar todo el agente."
+          ],
+          "en": [
+            "An agent without tools can reason or draft, but it may not be able to complete business work. Tools turn intent into concrete operations: retrieve a customer, create a ticket, read an invoice, prepare an update, send a draft for review or check availability. Each tool should have a clear input and output contract, validate parameters and enforce permissions. Connecting a system never implies unrestricted access. Reading an order status, changing an address and cancelling a purchase are separate capabilities and should be authorised independently.",
+            "Where possible, critical actions should use stable APIs or supported integrations, while calculations and hard limits should remain deterministic. AI is especially useful for interpreting language, documents and variable context; it does not need to replace logic that can already be expressed reliably. When a company depends on legacy software without APIs, RPA or browser automation may act as the execution tool, but it should be monitored. Separating interpretation, validation and execution makes it possible to replace a connector without redesigning the whole agent."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Autonomía, permisos y control humano",
+          "en": "5. Autonomy, permissions and human control"
+        },
+        "paragraphs": {
+          "es": [
+            "Autonomía no significa autoridad ilimitada. El nivel correcto depende del impacto de cada acción. Consultar información suele tener menos riesgo que modificarla; preparar una propuesta tiene menos riesgo que enviarla; cambiar un dato administrativo no equivale a autorizar un pago. Un diseño robusto separa modos de lectura, propuesta, ejecución y aprobación. La empresa decide qué acciones puede realizar el agente automáticamente y cuáles requieren una confirmación humana, una regla adicional o un segundo canal de verificación.",
+            "El escalado humano debe diseñarse antes de ampliar la autonomía. Casos con identidad incierta, datos contradictorios, baja confianza, excepciones de política o impacto económico pueden detenerse y pasar a una persona. El valor no está solo en «pasar el caso», sino en entregar contexto útil: qué ocurrió, qué información se consultó, qué validaciones pasaron y cuál es la acción propuesta. Así una aprobación humana no obliga a repetir todo el trabajo anterior y el control se integra en el proceso en lugar de convertirse en un freno manual."
+          ],
+          "en": [
+            "Autonomy does not mean unlimited authority. The right level depends on the impact of each action. Reading information usually carries less risk than changing it; preparing a proposal carries less risk than sending it; editing an administrative field is not the same as authorising a payment. A robust design separates read, proposal, execution and approval modes. The business decides which actions the agent may perform automatically and which require a human confirmation, an additional rule or verification through another channel.",
+            "Human escalation should be designed before autonomy expands. Cases involving uncertain identity, contradictory data, low confidence, policy exceptions or financial impact can stop and move to a person. The value is not merely “handing the case over,” but delivering useful context: what happened, which information was checked, which validations passed and which action is proposed. This way human approval does not require repeating all previous work, and oversight becomes part of the workflow rather than a manual obstacle outside it."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Qué relación hay entre un agente IA y un Empleado IA",
+          "en": "6. The relationship between an AI agent and an AI Employee"
+        },
+        "paragraphs": {
+          "es": [
+            "Agente IA y Empleado IA no tienen por qué ser categorías competidoras. «Agente IA» describe principalmente un patrón técnico: un sistema que interpreta objetivos, utiliza herramientas y avanza tareas. «Empleado IA» es la forma en que IA Empleado organiza esas capacidades alrededor de una función empresarial comprensible: atención al cliente, administración, contabilidad o ventas. El rol añade responsabilidades, límites de autoridad, métricas, sistemas permitidos, handoffs con otros perfiles y un owner humano que sabe qué trabajo se está delegando.",
+            "Un Empleado IA puede estar implementado internamente mediante uno o varios agentes, reglas deterministas y conectores. Lo importante es que negocio no tenga que gestionar una colección de capacidades técnicas sin contexto. En lugar de decir «tenemos un agente que puede llamar ocho herramientas», la organización puede definir «este perfil gestiona incidencias de primer nivel, puede consultar pedidos y crear casos, pero los reembolsos superiores a un umbral requieren aprobación». Esa capa de rol convierte la tecnología en un modelo operativo gobernable."
+          ],
+          "en": [
+            "AI agent and AI Employee do not need to be competing categories. “AI agent” mainly describes a technical pattern: a system that interprets goals, uses tools and advances tasks. “AI Employee” is how IA Empleado organises those capabilities around a business function people can understand, such as customer support, administration, accounting or sales. The role adds responsibilities, authority boundaries, metrics, permitted systems, handoffs to other profiles and a human owner who understands which work is being delegated.",
+            "An AI Employee can be implemented internally through one or more agents, deterministic rules and connectors. The important point is that the business should not have to manage a collection of technical capabilities without context. Instead of saying “we have an agent that can call eight tools,” the organisation can define “this profile handles first-line incidents, can read orders and create cases, while refunds above a threshold require approval.” That role layer turns the technology into an operating model that can be governed and explained."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Ejemplo: un agente IA para una incidencia de cliente",
+          "en": "7. Example: an AI agent handling a customer issue"
+        },
+        "paragraphs": {
+          "es": [
+            "Imagina que entra un correo indicando que una factura no coincide con el pedido. El agente de atención identifica al cliente y el pedido usando datos suficientes, consulta el ecommerce o ERP y recupera la factura relacionada. Si detecta una discrepancia, no inventa la corrección. Crea una tarea estructurada para el perfil de facturación con referencias a pedido, factura y evidencia. Facturación valida las reglas y puede preparar un ajuste. Si la política exige autorización, el flujo se detiene hasta recibirla. Después atención comunica el resultado y registra el cierre.",
+            "Este ejemplo muestra por qué un agente empresarial no se reduce a generar una respuesta convincente. El valor aparece en conservar contexto entre sistemas y roles, aplicar permisos y mantener una ruta explícita para las excepciones. También muestra que la automatización puede ser parcial. Una empresa puede empezar permitiendo solo consultas y preparación de tareas, medir errores y tiempos, y ampliar posteriormente acciones de bajo riesgo. La autonomía se gana con evidencia de calidad y no por el hecho de que el modelo sea capaz de proponer una acción."
+          ],
+          "en": [
+            "Imagine an email arrives saying that an invoice does not match an order. The support agent identifies the customer and order using sufficient evidence, checks the ecommerce or ERP system and retrieves the related invoice. If it detects a discrepancy, it does not invent a correction. It creates a structured task for the billing profile with references to the order, invoice and evidence. Billing validates the rules and can prepare an adjustment. If policy requires authorisation, the workflow stops until approval arrives. Support then communicates the outcome and records the closure.",
+            "This example shows why an enterprise agent is more than a system that produces convincing text. The value comes from preserving context across systems and roles, applying permissions and keeping an explicit route for exceptions. It also shows that automation can be partial. A company can start by allowing only lookups and task preparation, measure errors and cycle time, then expand to reversible low-risk actions. Autonomy should be earned through evidence of quality rather than granted because a model is technically capable of proposing an action."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Cuándo tiene sentido usar agentes IA y cuándo no",
+          "en": "8. When AI agents make sense—and when they do not"
+        },
+        "paragraphs": {
+          "es": [
+            "Los agentes encajan mejor en procesos con volumen suficiente, pasos repetitivos, entradas variables que requieren interpretación y varios sistemas que hoy obligan a copiar información manualmente. También son útiles cuando existe una salida fácil de verificar y un límite claro entre trabajo estándar y excepciones. Atención, back office, clasificación documental, seguimiento comercial, preparación de facturas o coordinación de reservas pueden contener buenos candidatos, pero cada empresa debe evaluar el proceso real antes de asumir que una categoría completa puede automatizarse.",
+            "No conviene empezar por procesos raros, poco medibles o donde cada caso exige una decisión irrepetible de alto impacto. Tampoco tiene sentido introducir un agente cuando una regla simple, una integración directa o una automatización determinista resuelve el problema con menos coste. La pregunta correcta no es «¿dónde podemos poner un agente?», sino «¿qué cuello de botella tiene suficiente repetición y evidencia para justificar interpretación, herramientas y gobierno adicionales?». Esta forma de seleccionar casos evita construir automatización por moda."
+          ],
+          "en": [
+            "Agents fit best in processes with enough volume, repetitive steps, variable inputs that need interpretation and several systems that currently force people to copy information manually. They are also useful when outputs are easy to verify and there is a clear boundary between standard work and exceptions. Support, back-office processing, document classification, sales follow-up, invoice preparation or booking coordination can contain strong candidates, but each organisation should evaluate the actual workflow before assuming an entire function can be automated.",
+            "Agents are a poor starting point for rare, hard-to-measure processes where every case requires a unique high-impact judgement. They are also unnecessary when a simple rule, direct integration or deterministic automation solves the problem more cheaply and reliably. The right question is not “where can we put an agent?” but “which bottleneck has enough repetition and evidence to justify extra interpretation, tools and governance?” Selecting use cases this way prevents companies from building agentic automation simply because the technology is fashionable."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Qué medir para saber si el agente aporta valor",
+          "en": "9. What to measure to know whether the agent creates value"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes del despliegue conviene crear una línea base: volumen mensual, minutos humanos por caso, tiempo de espera, retrabajo, errores, escalados y coste de las excepciones. Después se comparan las mismas métricas. Un agente puede aportar valor aunque no cierre todos los casos automáticamente si reduce preparación manual, entrega mejor contexto o acorta el tiempo hasta que una persona toma una decisión. Medir solo el número de tareas «automatizadas» puede ocultar correcciones posteriores o desplazamiento de trabajo hacia otro equipo.",
+            "Además de productividad, hay que medir calidad y control: precisión de clasificación, porcentaje de acciones corregidas, frecuencia de baja confianza, fallos de integración, incidentes de permisos y motivos de escalado. Estos datos indican qué capacidades pueden ganar autonomía y cuáles deben permanecer en modo propuesta. El objetivo no es maximizar el porcentaje automático, sino mejorar el resultado del proceso con un nivel de riesgo aceptable y una operación que el equipo pueda entender, auditar y mantener."
+          ],
+          "en": [
+            "Before deployment, establish a baseline: monthly volume, human minutes per case, waiting time, rework, errors, escalations and the cost of exceptions. After deployment, compare the same measures. An agent can create value even when it does not close every case automatically if it reduces preparation work, delivers better context or shortens the time until a person can decide. Measuring only the number of “automated tasks” can hide downstream corrections or work that has simply moved to another team.",
+            "Alongside productivity, measure quality and control: classification accuracy, percentage of actions corrected, low-confidence frequency, integration failures, permission incidents and escalation reasons. These signals show which capabilities can gain autonomy and which should remain in proposal mode. The objective is not to maximise the automation percentage. It is to improve the process outcome with an acceptable risk level and an operating model that the team can understand, audit and maintain over time."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Un marco sencillo para empezar con agentes IA",
+          "en": "10. A simple framework for starting with AI agents"
+        },
+        "paragraphs": {
+          "es": [
+            "El primer paso es escoger un proceso concreto y dibujar entradas, sistemas, decisiones, acciones y excepciones. Después se identifica la fuente de verdad para cada dato y se separa lo que el agente puede interpretar de lo que debe validar una regla. A continuación se define el catálogo mínimo de herramientas, con permisos distintos para lectura y escritura. Las acciones sensibles se colocan detrás de aprobación. Antes de ejecutar automáticamente, el agente puede funcionar en modo propuesta para comparar sus decisiones con las del equipo y recoger ejemplos de excepciones reales.",
+            "Cuando las métricas son estables, se amplía una capacidad cada vez: primero lectura, después borradores, luego una actualización reversible y finalmente otras acciones justificadas por evidencia. Cada ampliación necesita pruebas y observabilidad. Este enfoque incremental también ayuda a estimar coste y retorno sin comprometer una transformación completa desde el primer día. Un agente IA útil no es el que dispone de más herramientas, sino el que resuelve un trabajo definido con el mínimo acceso necesario, resultados verificables y una ruta clara hacia la supervisión humana."
+          ],
+          "en": [
+            "Start by choosing one concrete process and mapping its inputs, systems, decisions, actions and exceptions. Identify the source of truth for each important fact, then separate what AI can interpret from what deterministic rules must validate. Define the smallest possible tool catalogue, with different permissions for reading and writing. Put sensitive actions behind approval. Before allowing automatic execution, the agent can run in proposal mode so its decisions can be compared with the team's decisions and real exceptions can be collected.",
+            "When metrics are stable, expand one capability at a time: first reading, then drafts, then a reversible update and finally other actions supported by evidence. Each expansion needs tests and observability. This incremental approach also makes it easier to estimate cost and return without committing to a complete transformation on day one. A useful AI agent is not the one with the largest number of tools. It is the one that completes a defined job with the minimum required access, verifiable outcomes and a clear route to human oversight."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Un agente IA combina interpretación, contexto, herramientas y ejecución gobernada.",
+        "Agente IA describe un patrón técnico; Empleado IA organiza esas capacidades alrededor de un rol empresarial.",
+        "La autonomía debe definirse por acción y riesgo, no concederse de forma general.",
+        "Las fuentes de verdad, permisos y trazabilidad importan tanto como el modelo.",
+        "Empieza por un proceso medible y amplía la autonomía solo con evidencia de calidad."
+      ],
+      "en": [
+        "An AI agent combines interpretation, context, tools and governed execution.",
+        "AI agent describes a technical pattern; AI Employee organises those capabilities around a business role.",
+        "Autonomy should be defined by action and risk rather than granted broadly.",
+        "Sources of truth, permissions and traceability matter as much as the model.",
+        "Start with a measurable process and expand autonomy only with quality evidence."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-09-17",
+    "updatedAt": "2026-10-15",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "que es un agente ia",
+        "en": "what is an ai agent"
+      },
+      "supportingKeywords": {
+        "es": [
+          "qué es un agente ia",
+          "agentes ia",
+          "agentes ia para empresas",
+          "empleado ia"
+        ],
+        "en": [
+          "what are ai agents",
+          "ai agent definition",
+          "ai agents for business",
+          "ai employees"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "ai-agents-for-business",
+      "canonicalRole": "support",
+      "conversionRole": "education",
+      "researchBasis": [
+        "Semrush ES 2026-10-15: que es un agente ia 320 búsquedas/mes, KD 58; qué es un agente ia 90, KD 65.",
+        "Semrush UK 2026-10-15: what is an ai agent 2,400 búsquedas/mes, KD 68; what are ai agents 880, KD 72.",
+        "Existing-content audit: previous article mixed definition and chatbot comparison; chatbot comparison intent is owned by /comparativas/chatbot."
+      ]
+    }
+  }
+]

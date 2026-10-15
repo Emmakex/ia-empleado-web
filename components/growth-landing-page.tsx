@@ -4,6 +4,7 @@ import { getDictionary, localeHref } from "../lib/i18n";
 import type { GrowthLandingRecord } from "../lib/growth-content";
 import { blogArticlePath, blogIndexPath, getBlogArticleByKey, growthLandingPath } from "../lib/growth-content";
 import { employeeIndexPath } from "../lib/employee-catalog";
+import { employeeDetailPath } from "../lib/employee-content-engine";
 import { useCaseIndexPath } from "../lib/sector-use-cases";
 import { integrationIndexPath } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
@@ -19,6 +20,9 @@ export function GrowthLandingPage({ locale, record }: Props) {
   const canonical = growthLandingPath(record.key, locale);
   const alternate = growthLandingPath(record.key, otherLocale);
   const relatedArticle = getBlogArticleByKey(record.relatedArticleKey);
+  const relatedEmployeeHref = record.key === "ai-customer-support-automation"
+    ? employeeDetailPath("customer-support", locale)
+    : undefined;
   const demoHref = requestDemoPath(locale, {
     intent: "demo",
     source: `seo-landing:${record.key}`,
@@ -118,6 +122,11 @@ export function GrowthLandingPage({ locale, record }: Props) {
               <h2 id="growth-explore-title">{locale === "es" ? "Explora el producto, los casos de uso y las integraciones relacionadas." : "Explore related product roles, use cases and integrations."}</h2>
             </div>
             <div className="cta-actions">
+              {relatedEmployeeHref ? (
+                <Link className="text-link" href={relatedEmployeeHref}>
+                  {locale === "es" ? "Ver Agente IA de Atención al Cliente" : "View Customer Support AI agent"} →
+                </Link>
+              ) : null}
               <Link className="text-link" href={employeeIndexPath(locale)}>{locale === "es" ? "Explorar Empleados IA" : "Explore AI Employees"} →</Link>
               <Link className="text-link" href={useCaseIndexPath(locale)}>{locale === "es" ? "Ver casos de uso" : "View use cases"} →</Link>
               <Link className="text-link" href={integrationIndexPath(locale)}>{locale === "es" ? "Ver integraciones" : "View integrations"} →</Link>
