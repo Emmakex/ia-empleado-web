@@ -1,0 +1,71 @@
+{
+  "landings": [
+    {
+      "key": "ai-employee-onboarding",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "onboarding de empleados", "en": "employee onboarding automation" },
+      "supportingKeywords": {
+        "es": ["onboarding empleados", "onboarding automatizado", "automatización onboarding", "onboarding con ia"],
+        "en": ["onboarding automation", "automated employee onboarding", "hr onboarding automation", "ai employee onboarding"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: onboarding de empleados 210/month, KD 14; onboarding empleados 70/month, KD 13; onboarding automatizado 70/month, KD 10; automatización onboarding 10/month.",
+        "Semrush UK 2026-10-15: employee onboarding automation 70/month; onboarding automation 170/month, KD 25; automated employee onboarding 110/month, KD 28; HR onboarding automation 30/month."
+      ],
+      "seoTitle": {
+        "es": "Onboarding de empleados con IA | Automatización RRHH e IT",
+        "en": "Employee onboarding automation with AI | HR and IT workflow"
+      },
+      "seoDescription": {
+        "es": "Automatiza el onboarding de empleados entre RRHH e IT: documentación, altas, accesos, equipos, formación, recordatorios y excepciones con control humano.",
+        "en": "Automate employee onboarding across HR and IT: documents, accounts, access, equipment, training, reminders and exceptions with human control."
+      },
+      "eyebrow": { "es": "ONBOARDING DE EMPLEADOS · RRHH · IT", "en": "EMPLOYEE ONBOARDING AUTOMATION · HR · IT" },
+      "title": {
+        "es": "Onboarding de empleados con IA: coordina RRHH e IT desde la contratación hasta el día uno.",
+        "en": "Employee onboarding automation with AI: coordinate HR and IT from approved hire to day one."
+      },
+      "lead": {
+        "es": "El onboarding de empleados es el proceso que convierte una contratación aprobada en una incorporación operativa: documentación completa, identidad corporativa, equipo, accesos, formación y responsables preparados. Con IA, ese recorrido puede orquestarse entre RRHH, IT, administración y managers sin sustituir los sistemas de origen ni delegar decisiones sensibles. El Empleado IA mantiene un caso trazable, coordina tareas y recordatorios, prepara acciones en herramientas autorizadas y escala accesos privilegiados, cambios contractuales o excepciones a la persona responsable.",
+        "en": "Employee onboarding is the process that turns an approved hire into an operational new starter: completed documents, corporate identity, equipment, access, training and prepared owners. AI can orchestrate that journey across HR, IT, administration and managers without replacing systems of record or delegating sensitive decisions. The AI Employee maintains a traceable case, coordinates tasks and reminders, prepares actions in authorised tools and escalates privileged access, contractual changes or exceptions to the responsible person."
+      },
+      "updatedAt": "2026-10-15"
+    }
+  ],
+  "articles": [
+    {
+      "key": "how-to-automate-employee-onboarding-ai",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "proceso de onboarding", "en": "employee onboarding process" },
+      "supportingKeywords": {
+        "es": ["proceso onboarding", "cómo hacer un onboarding", "automatizar onboarding", "onboarding empleados"],
+        "en": ["how to automate employee onboarding", "automate employee onboarding", "employee onboarding workflow", "automated employee onboarding"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-15: proceso de onboarding 320/month, KD 19; proceso onboarding 70/month, KD 21; cómo hacer un onboarding 20/month.",
+        "Semrush UK 2026-10-15: employee onboarding process 390/month, KD 43; automate employee onboarding 40/month; how to automate employee onboarding 20/month."
+      ],
+      "seoTitle": {
+        "es": "Proceso de onboarding: cómo automatizarlo con IA | IA Empleado",
+        "en": "Employee onboarding process: how to automate it with AI"
+      },
+      "seoDescription": {
+        "es": "Guía para diseñar un proceso de onboarding de empleados automatizado: HRIS, documentación, IT, accesos, equipos, formación, aprobaciones y métricas.",
+        "en": "Guide to designing an automated employee onboarding process across HRIS, documents, IT, access, equipment, training, approvals and metrics."
+      },
+      "title": {
+        "es": "Proceso de onboarding de empleados: cómo automatizar RRHH e IT con IA sin perder control",
+        "en": "Employee onboarding process: how to automate HR and IT with AI without losing control"
+      },
+      "excerpt": {
+        "es": "Un proceso de onboarding sólido conecta contratación, documentación, identidad, equipos, accesos, formación y primeras semanas. Esta guía explica qué automatizar, qué validar y dónde conservar decisión humana.",
+        "en": "A robust employee onboarding process connects hiring, documents, identity, equipment, access, training and the first weeks. This guide explains what to automate, what to validate and where human decisions remain necessary."
+      },
+      "intro": {
+        "es": "El proceso de onboarding empieza cuando una contratación está suficientemente aprobada y termina cuando la persona puede trabajar con los datos, equipos, accesos, formación y contexto necesarios. Automatizarlo con IA no significa generar un correo de bienvenida: significa modelar dependencias entre RRHH, IT, seguridad, administración y managers; conectar fuentes autorizadas; distinguir preparación de ejecución; y tratar excepciones como trabajo visible. La IA puede interpretar información, coordinar tareas y preparar acciones, mientras reglas deterministas validan lo comprobable y las personas conservan decisiones sobre derechos laborales, cambios contractuales, privilegios y otras acciones sensibles.",
+        "en": "The employee onboarding process starts when a hire is sufficiently approved and ends when the person can work with the required data, equipment, access, training and context. Automating it with AI is not about generating a welcome email: it means modelling dependencies across HR, IT, security, administration and managers; connecting authorised sources; separating preparation from execution; and treating exceptions as visible work. AI can interpret information, coordinate tasks and prepare actions while deterministic rules validate what can be checked and people retain decisions over employment rights, contractual changes, privileges and other sensitive actions."
+      },
+      "updatedAt": "2026-10-15"
+    }
+  ]
+}
