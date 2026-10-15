@@ -19,9 +19,11 @@ const editorialPolicy = await readJson("../content/growth/daily/.editorial-polic
 const legacyLandings = await readJson("../content/growth/landings.json");
 const incrementalLandings = await readJson("../content/growth/incremental-landings.json");
 const dailyLandings = await readDailyRecords(".landings.json");
-const legacyArticles = await readJson("../content/growth/articles.json");
+const rawLegacyArticles = await readJson("../content/growth/articles.json");
 const incrementalArticles = await readJson("../content/growth/incremental-articles.json");
 const dailyArticles = await readDailyRecords(".articles.json");
+const replacedLegacyArticleKeys = new Set(["what-is-an-ai-employee"]);
+const legacyArticles = rawLegacyArticles.filter((record) => !replacedLegacyArticleKeys.has(record.key));
 
 const landings = [...legacyLandings, ...incrementalLandings, ...dailyLandings];
 const articles = [...legacyArticles, ...incrementalArticles, ...dailyArticles];
