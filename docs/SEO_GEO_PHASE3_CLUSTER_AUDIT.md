@@ -1,237 +1,102 @@
 # IA Empleado — Phase 3 cluster audit
 
-**Status:** active  
+**Status:** complete  
 **Started:** 2026-10-16  
+**Completed:** 2026-10-16  
 **Scope:** sectors + use cases + departments + integrations  
 **Canonical rules:** `SEO_GEO_CONTENT_OWNERSHIP.md` + `SEO_GEO_FULL_OPTIMIZATION_ROADMAP.md`
 
 ## Goal
 
-Phase 3 audits the organizational and problem-oriented cluster pages after the Growth backlog was closed at 56/56. The objective is not to create more URLs. It is to make every existing sector, use-case, department and integration surface own one materially distinct search/evaluation job or remove its ability to compete.
+Phase 3 audits the organizational and problem-oriented cluster pages after the Growth backlog was closed at 56/56. The objective is not to create more URLs. Every existing sector, use-case, department and integration surface must own one materially distinct search/evaluation job and must state its boundary with adjacent role, process, industry or system pages.
 
-The phase contains **27 conceptual surfaces**:
+## Final progress
 
-- sectors: 1 hub + 4 detail pages = 5;
-- use cases: 1 hub + 6 detail pages = 7;
-- departments: 1 hub + 6 detail pages = 7;
-- integrations: 1 hub + 7 detail pages = 8.
+The phase contains **27 conceptual surfaces** and all are audited:
 
-## Progress
+- sectors: 1 hub + 4 detail pages = **5/5**;
+- use cases: 1 hub + 6 detail pages = **7/7**;
+- departments: 1 hub + 6 detail pages = **7/7**;
+- integrations: 1 hub + 7 detail pages = **8/8**;
+- **total: 27/27 complete**;
+- new indexable SEO URLs created in Phase 3: **0**;
+- unresolved same-intent conflicts introduced: **0**.
 
-- Audited in Batch 01 — sectors: **5 / 27**.
-- Audited in Batch 02 — use cases: **+7 → 12 / 27**.
-- Remaining after Batch 02: **15**.
-- New indexable SEO URLs created in Phase 3: **0**.
-- Same-intent conflicts introduced: **0**.
-
-## Batch 01 — sectors
+## Batch 01 — sectors — 5/5
 
 | Surface | Decision | ES owner | EN owner | Boundary |
 | --- | --- | --- | --- | --- |
-| Sector hub | REPOSITION | `IA por sectores` | `AI by industry` | navigational/evaluation hub; does not take broad `IA para empresas` intent from Home |
-| Ecommerce | REPOSITION | `IA para ecommerce` | `AI for ecommerce` | Growth landing keeps ecommerce-automation intent; guide keeps ecommerce implementation intent |
-| Turismo | REPOSITION | `IA para turismo` | `AI for travel` | booking-automation landing and implementation guide remain separate process owners |
-| Servicios profesionales | KEEP | `IA para servicios profesionales` | `AI for professional services` | retained for distinct industry/evaluation value; ES exact tested variants currently show no reported Semrush volume |
-| Ventas B2B | REPOSITION | `IA para ventas B2B` | `AI for B2B sales` | Growth landing keeps broad sales-automation intent; role/department keep agent and organizational intent |
+| Sector hub | REPOSITION | `IA por sectores` | `AI by industry` | evaluation/navigation; Home keeps broad business-AI intent |
+| Ecommerce | REPOSITION | `IA para ecommerce` | `AI for ecommerce` | Growth keeps ecommerce automation; integration keeps system access |
+| Turismo | REPOSITION | `IA para turismo` | `AI for travel` | Growth keeps booking automation; use case keeps bounded booking workflow |
+| Servicios profesionales | KEEP | `IA para servicios profesionales` | `AI for professional services` | distinct industry evaluation; no forced broad keyword in ES |
+| Ventas B2B | REPOSITION | `IA para ventas B2B` | `AI for B2B sales` | Growth keeps broad sales automation; role/department keep their jobs |
 
-## Search evidence — Batch 01
+Representative Semrush evidence, 2026-10-16: ES `IA para ecommerce` 50/month, `IA turismo` 50/month, `IA para ventas B2B` 40/month; UK `AI for ecommerce` 140/month, `AI for travel` 110/month and `AI for professional services` 30/month. Exact ES professional-services variants reported no volume, so that page remains a deliberate evaluation owner rather than being forced onto a broader query.
 
-### Ecommerce
+Implementation: `lib/sector-search-optimization.ts` provides the audited view layer and both locale route families render it without changing public slugs.
 
-Semrush ES, 2026-10-16:
-
-- `agentes ia ecommerce`: 70/month;
-- `ia para ecommerce`: 50/month, KD 45;
-- `inteligencia artificial ecommerce`: 50/month, KD 42;
-- `ia ecommerce`: 40/month.
-
-Semrush UK, 2026-10-16:
-
-- `ai for ecommerce`: 140/month, KD 46;
-- `ecommerce ai`: 140/month, KD 35;
-- `ai agents ecommerce`: 10/month.
-
-Decision: sector page owns ecommerce context/evaluation around `IA para ecommerce` / `AI for ecommerce`. `/automatizacion-ecommerce-ia` keeps the process-automation category; the related blog article keeps implementation guidance.
-
-### Turismo
-
-Semrush ES, 2026-10-16:
-
-- `ia turismo`: 50/month, KD 31;
-- `inteligencia artificial turismo`: 50/month, KD 48;
-- `ia para turismo`: 20/month.
-
-Semrush UK, 2026-10-16:
-
-- `travel ai`: 390/month, KD 61;
-- `ai for travel`: 110/month, KD 59;
-- `ai agents travel`: 20/month.
-
-Decision: sector page owns tourism context/evaluation around `IA para turismo` / `AI for travel`. Booking automation remains a separate process owner.
-
-### Servicios profesionales
-
-Semrush ES, 2026-10-16: tested exact variants such as `ia para servicios profesionales`, `ia para consultoras`, `automatización servicios profesionales` and `ia para despachos` returned no reported volume in the batch query.
-
-Semrush UK, 2026-10-16:
-
-- `ai for professional services`: 30/month, CPC 18.66;
-- `ai for consulting firms`: 20/month;
-- `professional services ai`: 10/month.
-
-Decision: KEEP as a distinct evaluation surface instead of forcing it onto a broader keyword already owned elsewhere. The page explicitly separates operational coordination from professional judgment.
-
-### Ventas B2B
-
-Semrush ES, 2026-10-16:
-
-- `ia para ventas b2b`: 40/month.
-
-Semrush UK, 2026-10-16:
-
-- `b2b sales automation`: 90/month;
-- `ai for b2b sales`: 20/month;
-- `b2b sales ai`: 20/month.
-
-Decision: sector page targets B2B-specific context rather than the broad automation category. `/automatizacion-ventas-sdr-ia` remains the canonical owner for general sales automation.
-
-## Implementation changes — Batch 01
-
-- added `lib/sector-search-optimization.ts` as the Phase 3 search-ownership layer;
-- routed sector hub and detail metadata/content through the optimized records without changing public slugs;
-- preserved canonical, hreflang and existing route architecture;
-- strengthened direct-answer copy so each sector explains its exact job and boundary with Growth/process pages;
-- added ES/EN regression coverage for hub + four sector pages and the highest-risk overlap boundaries;
-- created no new search URL, redirect or noindex rule.
-
-## Batch 02 — use cases
+## Batch 02 — use cases — 7/7
 
 | Surface | Decision | ES owner | EN owner | Boundary |
 | --- | --- | --- | --- | --- |
-| Use-case hub | REPOSITION | `casos de uso IA` | `AI use cases` | informational/evaluation directory; does not replace product/process landings |
-| Incidencia de cliente | REPOSITION | `gestión de reclamaciones` | `customer issue resolution` | bounded resolution workflow; customer-service Growth landing keeps automation intent; support profile keeps role intent |
-| Validación de facturas | REPOSITION | `validación de facturas` | `invoice validation` | bounded validation/control; Growth keeps broad invoice/accounting automation |
-| Seguimiento comercial | REPOSITION | `seguimiento de leads` | `sales follow up` | continuity workflow; Growth keeps broad sales automation; Sales / SDR profile keeps role intent |
-| Incidencias de pedidos | REPOSITION | `control de pedidos` | `order exception management` | exception/control path; broader order-processing and automation content remains outside this owner |
-| Reservas de viajes | REPOSITION | `gestión de reservas` | `travel booking management` | concrete booking workflow; Growth keeps booking-automation intent; Travel sector keeps industry context |
-| Documentación administrativa | REPOSITION | `automatización documental` | `document workflow automation` | document workflow; document-management integration keeps system-access intent; administrative automation stays broader |
+| Use-case hub | REPOSITION | `casos de uso IA` | `AI use cases` | bounded workflow directory, not a product/process landing |
+| Incidencia de cliente | REPOSITION | `gestión de reclamaciones` | `customer issue resolution` | customer-service Growth keeps broad automation; profile keeps role intent |
+| Validación de facturas | REPOSITION | `validación de facturas` | `invoice validation` | Growth keeps broad invoice/accounting automation |
+| Seguimiento comercial | REPOSITION | `seguimiento de leads` | `sales follow up` | Growth keeps sales automation; Sales/SDR keeps role intent |
+| Incidencias de pedidos | REPOSITION | `control de pedidos` | `order exception management` | owns exception path, not full order-management category |
+| Reservas de viajes | REPOSITION | `gestión de reservas` | `travel booking management` | Growth keeps booking automation; sector keeps travel context |
+| Documentación administrativa | REPOSITION | `automatización documental` | `document workflow automation` | document integration keeps system access; admin Growth remains broader |
 
-## Search evidence — Batch 02
+Representative Semrush evidence: ES `gestión de incidencias` 140/month, `validación de facturas` 10–20/month, `seguimiento de leads` 40/month, `gestión de pedidos` 390/month, `gestión de reservas` 140/month and `automatización documental` 40/month. UK `invoice validation` 110/month, `sales follow up` 70/month and `document workflow automation` 320/month.
 
-### Hub
+Implementation: `lib/use-case-search-optimization.ts` preserves canonical use-case records while applying audited metadata, direct answers and ownership boundaries.
 
-Semrush ES, 2026-10-16:
+## Batch 03 — departments — 7/7
 
-- `casos de uso ia`: 50/month, KD 28;
-- `casos de uso de ia`: 50/month, KD 28;
-- `casos de uso inteligencia artificial`: 20/month.
+Department pages own **organizational operating-model intent**: how people, agents, systems, metrics, handoffs and authority are arranged inside an area. They do not take role, process, sector or bounded-use-case queries.
 
-Semrush UK, 2026-10-16:
+| Surface | Decision | ES owner | EN owner |
+| --- | --- | --- | --- |
+| Department hub | REPOSITION | `IA por departamentos` | `AI by department` |
+| Atención al cliente | REPOSITION | `equipo de atención al cliente con IA` | `AI-augmented customer service team` |
+| Administración | REPOSITION | `departamento de administración con IA` | `AI-augmented administration team` |
+| Contabilidad y facturación | REPOSITION | `departamento de contabilidad con IA` | `AI-augmented accounting team` |
+| Ventas | REPOSITION | `equipo de ventas con IA` | `AI for sales teams` |
+| Operaciones ecommerce | REPOSITION | `operaciones ecommerce con IA` | `AI ecommerce operations` |
+| Turismo y reservas | REPOSITION | `operaciones de reservas con IA` | `AI travel operations` |
 
-- `ai use cases`: 480/month, KD 59;
-- `artificial intelligence use cases`: 140/month, KD 61;
-- `ai use cases for business`: 20/month.
+Implementation: `lib/department-search-optimization.ts` is the audited department view layer. ES/EN routes, metadata and direct answers use it while canonical slugs remain unchanged.
 
-### Incidencias y reclamaciones
+## Batch 04 — integrations — 8/8
 
-Semrush ES, 2026-10-16:
+Integration pages own the **system-access contract**: authoritative data, entity matching, least privilege, read/write separation, validation, fallback and auditability. A system appearing in a workflow does not make its integration page the owner of that process automation query.
 
-- `gestión de incidencias`: 140/month, KD 20;
-- `gestión de reclamaciones`: 70/month, KD 17;
-- `reclamaciones clientes`: 40/month, KD 32;
-- `resolución de incidencias`: 20/month.
+| Surface | Decision | ES owner | EN owner | Boundary |
+| --- | --- | --- | --- | --- |
+| Integration hub | KEEP | `integraciones para empleados IA` | `AI agent integrations` | category/navigation; Growth keeps broad enterprise AI integration |
+| CRM | REPOSITION | `integración CRM` | `CRM integration` | `/automatizacion-crm-ia` keeps CRM workflow automation |
+| ERP | REPOSITION | `integración ERP` | `ERP integration` | `/automatizacion-erp-ia` keeps ERP workflow automation |
+| Email | REPOSITION | `integración email` | `email integration` | email Growth owner keeps inbox/workflow automation |
+| Calendario | REPOSITION | `integración calendario` | `calendar integration` | system availability/actions, not scheduling-process ownership |
+| Ecommerce | REPOSITION | `integración ecommerce` | `ecommerce integration` | ecommerce Growth keeps operational automation |
+| Ticketing | REPOSITION | `integración ticketing` | `ticketing integration` | owns case-system lifecycle and permissions |
+| Gestión documental | REPOSITION | `integración gestión documental` | `document management integration` | document use case keeps workflow automation |
 
-Semrush UK, 2026-10-16:
+Representative Semrush evidence, 2026-10-16:
 
-- `customer complaint management`: 40/month;
-- `customer issue resolution`: 20/month;
-- `customer issue management`: 20/month.
+- CRM: ES `integración CRM` 70/month, KD 22; UK `CRM integration` 880/month, KD 37.
+- ERP: ES `integración ERP` 50/month plus `integracion ERP` 390/month; UK `ERP integration` 590/month, KD 33.
+- Email: ES `integración email` 50/month; UK `email integration` 50/month.
+- Calendar: ES 10–20/month; UK `calendar integration` 390/month, KD 29.
+- Ecommerce: ES 20–30/month; UK `ecommerce integration` 260/month, KD 29.
+- Ticketing: ES `integración ticketing` 20/month; UK `ticketing integration` 110/month, KD 23.
+- Document management: ES `integración gestión documental` 20/month; UK `document management integration` 50/month, KD 21.
 
-Decision: own the bounded resolution pattern instead of duplicating the broader customer-service automation page.
+Implementation: `lib/integration-seo-intents.ts` derives optimized integration records from the canonical organization map. Both detail route families and the integration hub render the audited layer; canonical, hreflang, breadcrumbs, schema and public URLs are preserved.
 
-### Validación de facturas
+## Phase 3 exit gate
 
-Semrush ES, 2026-10-16:
+Phase 3 is complete because every one of the 27 cluster surfaces now has a deliberate owner or retained category job, each family states its boundary with adjacent content, ES and EN rationale is recorded, and no new search URL was required.
 
-- `control de facturas`: 170/month, KD 24;
-- `validación de facturas`: 10/month.
-
-Semrush UK, 2026-10-16:
-
-- `invoice validation`: 110/month, KD 41;
-- `invoice control`: 20/month;
-- `invoice automation`: 260/month, kept outside this owner because it is broader automation intent.
-
-### Seguimiento comercial
-
-Semrush ES, 2026-10-16:
-
-- `seguimiento de leads`: 40/month, KD 26;
-- `seguimiento comercial`: 20/month, KD 19;
-- `seguimiento de ventas`: 10/month.
-
-Semrush UK, 2026-10-16:
-
-- `sales follow up`: 70/month, KD 42;
-- `sales follow up process`: 50/month;
-- `lead follow up`: 50/month.
-
-### Control e incidencias de pedidos
-
-Semrush ES exact-query recheck, 2026-10-16:
-
-- `gestión de pedidos`: 390/month, KD 21;
-- `control de pedidos`: 70/month, KD 12;
-- `automatización de pedidos`: 70/month, KD 12.
-
-Semrush UK, 2026-10-16:
-
-- `order management`: 1,900/month, KD 58;
-- `AI order management`: 110/month, KD 40;
-- `order exception management`: 10/month.
-
-Decision: use the narrower exception/control framing. The page is not positioned as a full order-management/OMS category owner.
-
-### Gestión de reservas
-
-Semrush ES, 2026-10-16:
-
-- `gestión de reservas`: 140/month, KD 27;
-- `reservas de viajes`: 90/month;
-- `gestión de reservas turísticas`: 10/month.
-
-Semrush UK, 2026-10-16:
-
-- `booking management`: 90/month, KD 26;
-- `travel booking management`: 30/month;
-- `booking automation`: 20/month, retained by the automation owner.
-
-### Automatización documental
-
-Semrush ES, 2026-10-16:
-
-- `gestión documental`: 1,300/month, KD 61;
-- `gestión de documentos`: 210/month;
-- `automatización documental`: 40/month.
-
-Semrush UK, 2026-10-16:
-
-- `document management`: 1,900/month, KD 66;
-- `document workflow automation`: 320/month, KD 44;
-- `document automation`: 50/month.
-
-Decision: keep the use case on workflow automation while reserving document-management system/access intent for the integration family.
-
-## Implementation changes — Batch 02
-
-- added `lib/use-case-search-optimization.ts` as a view/ownership layer over the six canonical use-case records;
-- routed use-case hub and detail metadata/content through audited records without changing any public slug;
-- strengthened direct answers so every page states its problem/outcome job and its boundary with Growth, employee, sector or integration owners;
-- preserved existing workflow steps, systems, controls, metrics, limits, FAQ and HowTo schema;
-- extended the sector/use-case CI contract so the optimized layer must derive from canonical records and both ES/EN route families must use it;
-- added ES/EN regression coverage for the hub, all six use cases and the highest-risk overlap boundaries;
-- created no new indexable URL, redirect or noindex rule.
-
-## Next batch
-
-**Batch 03 — departments:** audit the department hub plus six existing department pages. The priority is to separate organizational operating-model intent from specialist employee roles and process automation landings. After departments, Batch 04 will close Phase 3 with integrations.
+**Next:** Phase 4 — comparison and decision-stage content. The historical chatbot/RPA duplicates were already consolidated in Phase 2; Phase 4 now audits the dedicated comparison hub + five comparison pages themselves.

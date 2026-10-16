@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { IntegrationDetailPage } from "../../../../components/integration-detail-page";
-import { getIntegrationBySlug, integrationDetailPath, integrationRecords } from "../../../../lib/organization-map";
+import { integrationDetailPath } from "../../../../lib/organization-map";
+import { getOptimizedIntegrationBySlug, optimizedIntegrationRecords } from "../../../../lib/integration-seo-intents";
 import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return integrationRecords.map((record) => ({ slug: record.slugs.es }));
+  return optimizedIntegrationRecords.map((record) => ({ slug: record.slugs.es }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const record = getIntegrationBySlug("es", slug);
+  const record = getOptimizedIntegrationBySlug("es", slug);
   if (!record) return {};
   const canonical = integrationDetailPath(record.key, "es");
   const alternate = integrationDetailPath(record.key, "en");
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function IntegrationSpanishDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const record = getIntegrationBySlug("es", slug);
+  const record = getOptimizedIntegrationBySlug("es", slug);
   if (!record) notFound();
   return <IntegrationDetailPage locale="es" integration={record} />;
 }

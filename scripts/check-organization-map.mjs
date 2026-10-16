@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 const content = fs.readFileSync("lib/organization-map.ts", "utf8");
 const departmentOptimization = fs.readFileSync("lib/department-search-optimization.ts", "utf8");
+const integrationOptimization = fs.readFileSync("lib/integration-seo-intents.ts", "utf8");
 const departmentIndex = fs.readFileSync("components/department-index-page.tsx", "utf8");
 const departmentDetail = fs.readFileSync("components/department-detail-page.tsx", "utf8");
 const integrationIndex = fs.readFileSync("components/integration-index-page.tsx", "utf8");
@@ -29,6 +30,7 @@ for (const key of departments) {
 }
 for (const key of integrations) {
   if (!content.includes(`key: \"${key}\"`)) throw new Error(`Missing integration: ${key}`);
+  if (!hasOwnershipKey(integrationOptimization, key)) throw new Error(`Missing audited integration ownership: ${key}`);
 }
 
 if (!content.includes('return locale === "es" ? "/departamentos" : "/en/departments"')) {
@@ -51,8 +53,18 @@ if (!departmentOptimization.includes("departmentRecords.map") || !departmentOpti
 if (!departmentOptimization.includes("primaryKeyword") || !departmentOptimization.includes("researchBasis")) {
   throw new Error("Department optimization must document search ownership and research basis");
 }
+if (!integrationOptimization.includes("integrationRecords.map") || !integrationOptimization.includes("optimizedIntegrationRecords")) {
+  throw new Error("Integration optimization must derive audited records from canonical integration content");
+}
+if (!integrationOptimization.includes("primaryKeyword") || !integrationOptimization.includes("researchBasis")) {
+  throw new Error("Integration optimization must document search ownership and research basis");
+}
+if (!integrationOptimization.includes("optimizedIntegrationIndexContent")) {
+  throw new Error("Integration optimization must expose audited hub content");
+}
 if (!departmentIndex.includes("optimizedDepartmentRecords.map")) throw new Error("Department index must render audited records");
-if (!integrationIndex.includes("integrationRecords.map")) throw new Error("Integration index must render canonical records");
+if (!integrationIndex.includes("optimizedIntegrationRecords.map")) throw new Error("Integration index must render audited records");
+if (!integrationIndex.includes("optimizedIntegrationIndexContent")) throw new Error("Integration index must render audited hub content");
 if (!departmentDetail.includes("employeeDetailPath") || !departmentDetail.includes("useCaseDetailPath") || !departmentDetail.includes("integrationDetailPath")) {
   throw new Error("Department detail must connect employees, use cases and integrations");
 }
@@ -63,7 +75,7 @@ if (!integrationDetail.includes("Separate read and write") || !integrationDetail
   throw new Error("Integration detail must make read/write authority explicit");
 }
 if (!content.includes("no una promesa de compatibilidad universal") || !content.includes("not a promise of universal compatibility")) {
-  throw new Error("Integration index must reject universal connector claims");
+  throw new Error("Canonical integration content must reject universal connector claims");
 }
 if (!sitemap.includes("departmentIndexPath") || !sitemap.includes("departmentDetailPath") || !sitemap.includes("integrationIndexPath") || !sitemap.includes("integrationDetailPath")) {
   throw new Error("Sitemap must include department and integration surfaces");
@@ -75,4 +87,4 @@ if (!esLayout.includes("organization-map.css") || !enLayout.includes("organizati
   throw new Error("Both locale layouts must load organization-map.css");
 }
 
-console.log("Organization map contract OK: 6 audited departments + 7 integrations with bilingual routes, authority controls and graph links.");
+console.log("Organization map contract OK: 6 audited departments + 7 audited integrations with bilingual routes, authority controls and graph links.");

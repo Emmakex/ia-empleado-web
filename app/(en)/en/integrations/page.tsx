@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { IntegrationIndexPage } from "../../../../components/integration-index-page";
-import { integrationIndexContent, integrationIndexPath } from "../../../../lib/organization-map";
+import { optimizedIntegrationIndexContent } from "../../../../lib/integration-seo-intents";
+import { integrationIndexPath } from "../../../../lib/organization-map";
 import { brandPreviewUrl } from "../../../../lib/brand-social-previews";
 
-const content = integrationIndexContent.en;
+const content = optimizedIntegrationIndexContent.en;
 const canonical = integrationIndexPath("en");
 const alternate = integrationIndexPath("es");
 const preview = brandPreviewUrl("en", "integrations");
