@@ -9,13 +9,13 @@ This batch closes the nine historical Growth records that remained after Batch 1
 | Existing record | Decision | ES primary intent | EN primary intent | Boundary |
 | --- | --- | --- | --- | --- |
 | `ai-ecommerce-automation` | REPOSITION | `automatización ecommerce` | `ecommerce automation` | process automation, not sector/department/integration |
-| `how-to-automate-ecommerce-with-ai` | REPOSITION | `ecommerce con ia` | `ecommerce with ai` | implementation guide |
+| `how-to-automate-ecommerce-operations-human-control` | REPOSITION | `ecommerce con ia` | `ecommerce with ai` | implementation guide |
 | `ai-tourism-reservations-automation` | REPOSITION | `automatización de reservas` | `booking automation` | booking process, not travel sector/department |
-| `how-to-automate-tourism-reservations-with-ai` | REPOSITION | `automatizar reservas con ia` | `how to automate travel bookings with ai` | implementation guide |
+| `automate-tourism-reservations-ai-control` | REPOSITION | `automatizar reservas con ia` | `how to automate travel bookings with ai` | implementation guide |
 | `ai-administrative-automation` | REPOSITION | `automatización administrativa` | `administrative automation` | process, not Administrative AI role |
 | `automate-administrative-tasks-human-approval` | REPOSITION | `automatizar tareas administrativas con ia` | `ai administration` | implementation guide |
 | `ai-sales-sdr-automation` | REPOSITION | `automatización de ventas` | `sales automation` | process, not Sales / SDR AI agent role |
-| `automate-sales-sdr-human-approval` | REPOSITION | `automatizar ventas con ia` | `ai for sales` | implementation guide |
+| `automate-sales-prospecting-human-control` | REPOSITION | `automatizar ventas con ia` | `ai for sales` | implementation guide |
 | `ai-employees-smb` | REPOSITION | `ia para pymes` | `ai for small business` | audience-specific commercial owner |
 
 No new indexable URL, merge, redirect or noindex action is introduced in this batch.
