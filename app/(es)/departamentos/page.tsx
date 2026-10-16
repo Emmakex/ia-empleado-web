@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { DepartmentIndexPage } from "../../../components/department-index-page";
-import { departmentIndexContent, departmentIndexPath } from "../../../lib/organization-map";
+import { optimizedDepartmentIndexContent } from "../../../lib/department-search-optimization";
+import { departmentIndexPath } from "../../../lib/organization-map";
 import { brandPreviewUrl } from "../../../lib/brand-social-previews";
 
-const content = departmentIndexContent.es;
+const content = optimizedDepartmentIndexContent.es;
 const canonical = departmentIndexPath("es");
 const alternate = departmentIndexPath("en");
 const preview = brandPreviewUrl("es", "departments");
