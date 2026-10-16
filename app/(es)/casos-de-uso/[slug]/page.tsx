@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { UseCaseDetailPage } from "../../../../components/use-case-detail-page";
-import { getUseCaseBySlug, useCaseDetailPath, useCaseRecords } from "../../../../lib/sector-use-cases";
+import { useCaseDetailPath } from "../../../../lib/sector-use-cases";
+import { getOptimizedUseCaseBySlug, optimizedUseCaseRecords } from "../../../../lib/use-case-search-optimization";
 import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return useCaseRecords.map((record) => ({ slug: record.slugs.es }));
+  return optimizedUseCaseRecords.map((record) => ({ slug: record.slugs.es }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const record = getUseCaseBySlug(slug, "es");
+  const record = getOptimizedUseCaseBySlug(slug, "es");
   if (!record) return {};
   const canonical = useCaseDetailPath(record.key, "es");
   const alternate = useCaseDetailPath(record.key, "en");
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function UseCaseSpanishDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const record = getUseCaseBySlug(slug, "es");
+  const record = getOptimizedUseCaseBySlug(slug, "es");
   if (!record) notFound();
   return <UseCaseDetailPage locale="es" record={record} />;
 }
