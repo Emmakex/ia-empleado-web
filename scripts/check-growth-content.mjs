@@ -20,7 +20,15 @@ const consolidationRegistry = await readJson("../content/growth/consolidations.j
 const baseSeoOverrideRegistry = await readJson("../content/growth/seo-overrides.json");
 const phase2SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase2.json");
 const phase3SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase3.json");
-const seoOverrideRegistries = [baseSeoOverrideRegistry, phase2SeoOverrideRegistry, phase3SeoOverrideRegistry];
+const phase4SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase4.json");
+const phase5SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase5.json");
+const seoOverrideRegistries = [
+  baseSeoOverrideRegistry,
+  phase2SeoOverrideRegistry,
+  phase3SeoOverrideRegistry,
+  phase4SeoOverrideRegistry,
+  phase5SeoOverrideRegistry,
+];
 const seoOverrideRegistry = {
   landings: seoOverrideRegistries.flatMap((registry) => registry.landings ?? []),
   articles: seoOverrideRegistries.flatMap((registry) => registry.articles ?? []),
