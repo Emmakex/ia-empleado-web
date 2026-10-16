@@ -1,13 +1,8 @@
 import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
-import {
-  departmentIndexPath,
-  integrationDetailPath,
-  integrationIndexContent,
-  integrationIndexPath,
-  integrationRecords,
-} from "../lib/organization-map";
+import { optimizedIntegrationIndexContent, optimizedIntegrationRecords } from "../lib/integration-seo-intents";
+import { departmentIndexPath, integrationDetailPath, integrationIndexPath } from "../lib/organization-map";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { BrandOrganizationRoster, BrandOrganizationScene } from "./brand-organization-scene";
 import { SiteFooter } from "./site-footer";
@@ -17,7 +12,7 @@ type Props = { locale: Locale };
 
 export function IntegrationIndexPage({ locale }: Props) {
   const dictionary = getDictionary(locale);
-  const content = integrationIndexContent[locale];
+  const content = optimizedIntegrationIndexContent[locale];
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonical = integrationIndexPath(locale);
   const alternate = integrationIndexPath(otherLocale);
@@ -34,8 +29,8 @@ export function IntegrationIndexPage({ locale }: Props) {
   const listSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    numberOfItems: integrationRecords.length,
-    itemListElement: integrationRecords.map((record, index) => ({
+    numberOfItems: optimizedIntegrationRecords.length,
+    itemListElement: optimizedIntegrationRecords.map((record, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: record.name[locale],
@@ -75,7 +70,7 @@ export function IntegrationIndexPage({ locale }: Props) {
                 humanLabel={locale === "es" ? "Aprobación humana" : "Human approval"}
               />
               <aside className="organization-hero-note">
-                <strong>{integrationRecords.length}</strong>
+                <strong>{optimizedIntegrationRecords.length}</strong>
                 <span>{locale === "es" ? "categorías de sistema con contrato de control" : "system categories with a control contract"}</span>
                 <p>{locale === "es" ? "No prometemos conectores universales: cada integración debe validarse contra el sistema y proceso reales." : "We do not promise universal connectors: every integration must be validated against the real system and process."}</p>
               </aside>
@@ -91,7 +86,7 @@ export function IntegrationIndexPage({ locale }: Props) {
               <p>{content.cardsIntro}</p>
             </div>
             <div className="organization-card-grid">
-              {integrationRecords.map((record) => (
+              {optimizedIntegrationRecords.map((record) => (
                 <article className="organization-card integration-card brand-organization-card" key={record.key}>
                   <div className="organization-card-topline">
                     <span>{record.eyebrow[locale]}</span>
