@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { SectorIndexPage } from "../../../../components/sector-index-page";
-import { sectorIndexContent, sectorIndexPath } from "../../../../lib/sector-use-cases";
+import { sectorIndexPath } from "../../../../lib/sector-use-cases";
+import { optimizedSectorIndexContent } from "../../../../lib/sector-search-optimization";
 import { brandPreviewUrl } from "../../../../lib/brand-social-previews";
 
-const content = sectorIndexContent.en;
+const content = optimizedSectorIndexContent.en;
 const canonical = sectorIndexPath("en");
 const alternate = sectorIndexPath("es");
 const preview = brandPreviewUrl("en", "sectors");

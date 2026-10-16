@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SectorDetailPage } from "../../../../../components/sector-detail-page";
-import { getSectorBySlug, sectorDetailPath, sectorRecords } from "../../../../../lib/sector-use-cases";
+import { sectorDetailPath } from "../../../../../lib/sector-use-cases";
+import { getOptimizedSectorBySlug, optimizedSectorRecords } from "../../../../../lib/sector-search-optimization";
 import { buildRouteSocialMetadata } from "../../../../../lib/seo-social-metadata";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return sectorRecords.map((record) => ({ slug: record.slugs.en }));
+  return optimizedSectorRecords.map((record) => ({ slug: record.slugs.en }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const record = getSectorBySlug(slug, "en");
+  const record = getOptimizedSectorBySlug(slug, "en");
   if (!record) return {};
   const canonical = sectorDetailPath(record.key, "en");
   const alternate = sectorDetailPath(record.key, "es");
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function SectorEnglishDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const record = getSectorBySlug(slug, "en");
+  const record = getOptimizedSectorBySlug(slug, "en");
   if (!record) notFound();
   return <SectorDetailPage locale="en" sector={record} />;
 }

@@ -3,12 +3,11 @@ import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
 import {
   sectorDetailPath,
-  sectorIndexContent,
   sectorIndexPath,
-  sectorRecords,
   useCaseIndexPath,
   type RoleReference,
 } from "../lib/sector-use-cases";
+import { optimizedSectorIndexContent, optimizedSectorRecords } from "../lib/sector-search-optimization";
 import { teamBuilderPath } from "../lib/team-builder";
 import { BrandCharacterStrip, BrandContextScene } from "./brand-context-scene";
 import { SiteFooter } from "./site-footer";
@@ -18,14 +17,14 @@ type Props = { locale: Locale };
 
 export function SectorIndexPage({ locale }: Props) {
   const dictionary = getDictionary(locale);
-  const content = sectorIndexContent[locale];
+  const content = optimizedSectorIndexContent[locale];
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonical = sectorIndexPath(locale);
   const alternate = sectorIndexPath(otherLocale);
-  const overviewRoles = sectorRecords
+  const overviewRoles = optimizedSectorRecords
     .flatMap((sector) => sector.roles[locale])
     .filter((role, index, roles) => role.employeeKey && roles.findIndex((candidate) => candidate.employeeKey === role.employeeKey) === index) as RoleReference[];
-  const overviewSystems = [...new Set(sectorRecords.flatMap((sector) => sector.systems[locale]))];
+  const overviewSystems = [...new Set(optimizedSectorRecords.flatMap((sector) => sector.systems[locale]))];
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -39,8 +38,8 @@ export function SectorIndexPage({ locale }: Props) {
   const listSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    numberOfItems: sectorRecords.length,
-    itemListElement: sectorRecords.map((sector, index) => ({
+    numberOfItems: optimizedSectorRecords.length,
+    itemListElement: optimizedSectorRecords.map((sector, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: sector.name[locale],
@@ -81,7 +80,7 @@ export function SectorIndexPage({ locale }: Props) {
                 humanLabel={locale === "es" ? "Control humano donde importa" : "Human control where it matters"}
               />
               <div className="sector-brand-overview-meta">
-                <strong>{sectorRecords.length}</strong>
+                <strong>{optimizedSectorRecords.length}</strong>
                 <span>{locale === "es" ? "sectores iniciales con contenido profundo" : "initial industries with deep content"}</span>
                 <p>{locale === "es" ? "Cada página conecta problemas, procesos, roles, sistemas, controles y métricas." : "Each page connects problems, processes, roles, systems, controls and metrics."}</p>
               </div>
@@ -97,7 +96,7 @@ export function SectorIndexPage({ locale }: Props) {
               <p>{content.cardsIntro}</p>
             </div>
             <div className="sector-card-grid">
-              {sectorRecords.map((sector) => (
+              {optimizedSectorRecords.map((sector) => (
                 <article className="sector-card brand-sector-card" data-sector={sector.key} key={sector.key}>
                   <div className="sector-card-topline">
                     <span>{sector.eyebrow[locale]}</span>
