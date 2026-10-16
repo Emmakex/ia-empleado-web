@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 const content = fs.readFileSync("lib/sector-use-cases.ts", "utf8");
 const sectorOptimization = fs.readFileSync("lib/sector-search-optimization.ts", "utf8");
+const useCaseOptimization = fs.readFileSync("lib/use-case-search-optimization.ts", "utf8");
 const sectorIndex = fs.readFileSync("components/sector-index-page.tsx", "utf8");
 const sectorDetail = fs.readFileSync("components/sector-detail-page.tsx", "utf8");
 const useCaseIndex = fs.readFileSync("components/use-case-index-page.tsx", "utf8");
@@ -10,6 +11,10 @@ const sectorEsRoute = fs.readFileSync("app/(es)/sectores/[slug]/page.tsx", "utf8
 const sectorEnRoute = fs.readFileSync("app/(en)/en/sectors/[slug]/page.tsx", "utf8");
 const sectorEsIndexRoute = fs.readFileSync("app/(es)/sectores/page.tsx", "utf8");
 const sectorEnIndexRoute = fs.readFileSync("app/(en)/en/sectors/page.tsx", "utf8");
+const useCaseEsRoute = fs.readFileSync("app/(es)/casos-de-uso/[slug]/page.tsx", "utf8");
+const useCaseEnRoute = fs.readFileSync("app/(en)/en/use-cases/[slug]/page.tsx", "utf8");
+const useCaseEsIndexRoute = fs.readFileSync("app/(es)/casos-de-uso/page.tsx", "utf8");
+const useCaseEnIndexRoute = fs.readFileSync("app/(en)/en/use-cases/page.tsx", "utf8");
 const sitemap = fs.readFileSync("app/sitemap.ts", "utf8");
 const footer = fs.readFileSync("components/site-footer.tsx", "utf8");
 
@@ -24,6 +29,7 @@ for (const key of sectorKeys) {
 }
 for (const key of useCaseKeys) {
   if (!content.includes(`key: \"${key}\"`)) throw new Error(`Missing use-case record: ${key}`);
+  if (!hasObjectKey(useCaseOptimization, key)) throw new Error(`Missing audited use-case search ownership: ${key}`);
 }
 
 for (const marker of ["problems:", "systems:", "controls:", "metrics:", "implementation:", "faq:"]) {
@@ -44,9 +50,17 @@ if (!sectorOptimization.includes("optimizedSectorRecords")) throw new Error("Mis
 if (!sectorOptimization.includes("optimizedSectorIndexContent")) throw new Error("Missing optimized sector hub export");
 if (!sectorOptimization.includes("getOptimizedSectorBySlug")) throw new Error("Missing optimized sector slug resolver");
 
+// Phase 3 use-case optimization follows the same rule: audit the existing canonical model, do not fork it.
+if (!useCaseOptimization.includes("useCaseRecords.map")) throw new Error("Optimized use cases must derive from canonical useCaseRecords");
+if (!useCaseOptimization.includes("useCaseIndexContent")) throw new Error("Optimized use-case hub must derive from canonical useCaseIndexContent");
+if (!useCaseOptimization.includes("optimizedUseCaseRecords")) throw new Error("Missing optimized use-case record export");
+if (!useCaseOptimization.includes("optimizedUseCaseIndexContent")) throw new Error("Missing optimized use-case hub export");
+if (!useCaseOptimization.includes("getOptimizedUseCaseBySlug")) throw new Error("Missing optimized use-case slug resolver");
+
 if (!sectorIndex.includes("optimizedSectorRecords.map")) throw new Error("Sector index must render audited optimized sector records");
 if (!sectorIndex.includes("optimizedSectorIndexContent")) throw new Error("Sector index must render audited optimized hub content");
-if (!useCaseIndex.includes("useCaseRecords.map")) throw new Error("Use-case index must render canonical use cases");
+if (!useCaseIndex.includes("optimizedUseCaseRecords.map")) throw new Error("Use-case index must render audited optimized use-case records");
+if (!useCaseIndex.includes("optimizedUseCaseIndexContent")) throw new Error("Use-case index must render audited optimized hub content");
 
 for (const [label, route] of [
   ["ES sector detail", sectorEsRoute],
@@ -62,6 +76,21 @@ for (const [label, route] of [
 ]) {
   if (!route.includes("optimizedSectorIndexContent")) throw new Error(`${label} must expose audited hub metadata`);
   if (!route.includes("sectorIndexPath")) throw new Error(`${label} must preserve canonical bilingual hub routes`);
+}
+for (const [label, route] of [
+  ["ES use-case detail", useCaseEsRoute],
+  ["EN use-case detail", useCaseEnRoute],
+]) {
+  if (!route.includes("getOptimizedUseCaseBySlug")) throw new Error(`${label} must resolve audited use-case content`);
+  if (!route.includes("optimizedUseCaseRecords")) throw new Error(`${label} must generate params from audited use-case records`);
+  if (!route.includes("useCaseDetailPath")) throw new Error(`${label} must preserve canonical bilingual route generation`);
+}
+for (const [label, route] of [
+  ["ES use-case index", useCaseEsIndexRoute],
+  ["EN use-case index", useCaseEnIndexRoute],
+]) {
+  if (!route.includes("optimizedUseCaseIndexContent")) throw new Error(`${label} must expose audited hub metadata`);
+  if (!route.includes("useCaseIndexPath")) throw new Error(`${label} must preserve canonical bilingual hub routes`);
 }
 
 if (!sectorDetail.includes("human") && !sectorDetail.includes("control")) throw new Error("Sector detail must expose human-control context");
@@ -83,4 +112,4 @@ for (const file of routeFiles) {
   if (!fs.existsSync(file)) throw new Error(`Missing Phase 6B route file: ${file}`);
 }
 
-console.log("Sector/use-case contract OK: audited sector ownership derives from 4 canonical bilingual sectors, with 6 bilingual deep use cases, controls, metrics and SEO routes protected.");
+console.log("Sector/use-case contract OK: audited ownership derives from 4 canonical bilingual sectors and 6 canonical bilingual use cases, with controls, metrics and SEO routes protected.");
