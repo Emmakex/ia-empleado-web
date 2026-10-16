@@ -93,10 +93,10 @@ The runtime already consumed the Phase 4 override layer, but the Growth checker 
 
 - runtime now loads the new Phase 5 observability registry;
 - the Growth checker validates base + Phase 2 + Phase 3 + Phase 4 + Phase 5;
-- cross-registry duplicate keys are rejected;
+- duplicate keys inside each individual registry remain rejected, while later registry layers may intentionally supersede an earlier override for the same historical owner;
 - the 2026-10-16 editorial metadata gate is exercised on the optimized Day 21 pair.
 
-This prevents a later override layer from affecting production without passing the same SEO/GEO contract as earlier layers.
+This prevents a later override layer from affecting production without passing the same SEO/GEO contract as earlier layers while preserving deliberate layered precedence.
 
 ## Audit decision
 
