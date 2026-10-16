@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import { LegalDocumentPage } from "../../../../components/legal-document-page";
-import {
-  getLegalDocumentContent,
-  isLegalIdentityComplete,
-  privacyPolicyPath,
-} from "../../../../lib/legal-content";
+import { getLegalDocumentContent, privacyPolicyPath } from "../../../../lib/legal-content";
+import { getPhase5SeoPolicy } from "../../../../lib/conversion-seo-policy";
 
 const content = getLegalDocumentContent("en", "privacy-policy");
+const policy = getPhase5SeoPolicy("privacy-policy");
 const canonical = privacyPolicyPath("en");
 const alternate = privacyPolicyPath("es");
-const ready = isLegalIdentityComplete();
 
 export const metadata: Metadata = {
   title: `${content.title} | IA Empleado`,
@@ -18,7 +15,7 @@ export const metadata: Metadata = {
     canonical,
     languages: { "es-ES": alternate, en: canonical, "x-default": alternate },
   },
-  robots: { index: ready, follow: true },
+  robots: { index: policy.index, follow: policy.follow },
 };
 
 export default function EnglishPrivacyPolicyPage() {
