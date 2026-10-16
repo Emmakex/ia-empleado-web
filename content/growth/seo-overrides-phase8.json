@@ -4,386 +4,125 @@
       "key": "ai-ecommerce-automation",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatización ecommerce", "en": "ecommerce automation" },
-      "supportingKeywords": {
-        "es": ["automatizacion ecommerce", "ecommerce con ia", "ia ecommerce", "automatización comercio electrónico"],
-        "en": ["ai ecommerce automation", "ai ecommerce", "ecommerce with ai", "ecommerce workflow automation"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: automatización ecommerce 70/month, KD 11; ecommerce con IA 50/month, KD 45; IA ecommerce 40/month. Exact how-to ecommerce variants returned no reported volume in the tested set.",
-        "Semrush UK 2026-10-16: ecommerce automation 260/month, KD 21; AI ecommerce 170/month, KD 52; ecommerce with AI 10/month."
-      ],
-      "seoTitle": {
-        "es": "Automatización ecommerce con IA | Operaciones y pedidos | IA Empleado",
-        "en": "Ecommerce automation with AI | Operations and orders | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Automatiza operaciones ecommerce con IA para pedidos, incidencias, datos, soporte y coordinación entre sistemas con reglas, trazabilidad y control humano.",
-        "en": "Automate ecommerce operations with AI across orders, exceptions, data, support and system handoffs with rules, traceability and human control."
-      },
+      "supportingKeywords": { "es": ["automatizacion ecommerce", "ecommerce con ia", "ia ecommerce"], "en": ["ai ecommerce automation", "ai ecommerce", "ecommerce with ai"] },
+      "researchBasis": ["Semrush ES 2026-10-16: automatización ecommerce 70/month, KD 11; ecommerce con IA 50/month, KD 45; IA ecommerce 40/month.", "Semrush UK 2026-10-16: ecommerce automation 260/month, KD 21; AI ecommerce 170/month, KD 52; ecommerce with AI 10/month."],
+      "seoTitle": { "es": "Automatización ecommerce con IA | Operaciones y pedidos | IA Empleado", "en": "Ecommerce automation with AI | Operations and orders | IA Empleado" },
+      "seoDescription": { "es": "Automatiza operaciones ecommerce con IA para pedidos, incidencias, datos, soporte y coordinación entre sistemas con reglas, trazabilidad y control humano.", "en": "Automate ecommerce operations with AI across orders, exceptions, data, support and system handoffs with rules, traceability and human control." },
       "eyebrow": { "es": "AUTOMATIZACIÓN ECOMMERCE · IA OPERATIVA", "en": "ECOMMERCE AUTOMATION · OPERATIONAL AI" },
-      "title": {
-        "es": "Automatización ecommerce con IA: coordina pedidos, incidencias y operaciones sin perder control.",
-        "en": "Ecommerce automation with AI: coordinate orders, exceptions and operations without losing control."
-      },
-      "lead": {
-        "es": "La automatización ecommerce con IA aplica agentes a trabajo operativo como clasificar incidencias, consultar pedidos, preparar cambios permitidos, coordinar soporte y back office, actualizar tareas y escalar excepciones. Esta página posee la intención de automatización del proceso ecommerce. Las páginas de sector Ecommerce, departamento Operaciones Ecommerce e Integración Ecommerce conservan trabajos distintos: contexto sectorial, modelo organizativo y acceso técnico al sistema.",
-        "en": "Ecommerce automation with AI applies agents to operational work such as classifying exceptions, checking orders, preparing permitted changes, coordinating support and back office, updating tasks and escalating edge cases. This page owns ecommerce-process automation intent. The Ecommerce sector, Ecommerce Operations department and Ecommerce Integration pages retain different jobs: industry context, operating model and technical system access."
-      },
+      "title": { "es": "Automatización ecommerce con IA: coordina pedidos, incidencias y operaciones sin perder control.", "en": "Ecommerce automation with AI: coordinate orders, exceptions and operations without losing control." },
+      "lead": { "es": "La automatización ecommerce con IA aplica agentes a trabajo operativo como clasificar incidencias, consultar pedidos, preparar cambios permitidos, coordinar soporte y back office, actualizar tareas y escalar excepciones. Esta página posee la intención de automatización del proceso ecommerce. Las páginas de sector Ecommerce, departamento Operaciones Ecommerce e Integración Ecommerce conservan trabajos distintos: contexto sectorial, modelo organizativo y acceso técnico al sistema.", "en": "Ecommerce automation with AI applies agents to operational work such as classifying exceptions, checking orders, preparing permitted changes, coordinating support and back office, updating tasks and escalating edge cases. This page owns ecommerce-process automation intent. The Ecommerce sector, Ecommerce Operations department and Ecommerce Integration pages retain different jobs: industry context, operating model and technical system access." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "automatización ecommerce", "en": "ecommerce automation" },
-        "supportingKeywords": {
-          "es": ["automatizacion ecommerce", "ecommerce con ia", "ia ecommerce", "automatización comercio electrónico"],
-          "en": ["ai ecommerce automation", "ai ecommerce", "ecommerce with ai", "ecommerce workflow automation"]
-        },
-        "searchIntent": "commercial",
-        "cluster": "ecommerce-automation",
-        "canonicalRole": "landing",
-        "conversionRole": "evaluation",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports keeping ecommerce process automation distinct from sector, department and system-integration ownership."]
-      }
+      "editorial": { "primaryKeyword": { "es": "automatización ecommerce", "en": "ecommerce automation" }, "supportingKeywords": { "es": ["automatizacion ecommerce", "ecommerce con ia", "ia ecommerce"], "en": ["ai ecommerce automation", "ai ecommerce", "ecommerce with ai"] }, "searchIntent": "commercial", "cluster": "ecommerce-automation", "canonicalRole": "landing", "conversionRole": "evaluation", "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports keeping ecommerce process automation distinct from sector, department and integration ownership."] }
     },
     {
       "key": "ai-tourism-reservations-automation",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatización de reservas", "en": "booking automation" },
-      "supportingKeywords": {
-        "es": ["automatizacion de reservas", "ia para turismo", "ia turismo", "automatización turismo"],
-        "en": ["travel automation", "ai for travel", "travel ai", "travel booking automation"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: automatización de reservas 10/month; IA turismo 50/month, KD 31; IA para turismo 20/month. Exact reservation-with-AI how-to variants returned no reported volume.",
-        "Semrush UK 2026-10-16: travel automation 50/month; booking automation 20/month; AI for travel 110/month, KD 59; travel AI 390/month, KD 61."
-      ],
-      "seoTitle": {
-        "es": "Automatización de reservas con IA para turismo | IA Empleado",
-        "en": "Booking automation with AI for travel operations | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Automatiza reservas y operaciones turísticas con IA: consultas, disponibilidad, documentación, cambios y handoffs con fuentes verificables y control humano.",
-        "en": "Automate travel bookings and operations with AI across inquiries, availability, documents, changes and handoffs using verifiable sources and human control."
-      },
+      "supportingKeywords": { "es": ["automatizacion de reservas", "ia para turismo", "ia turismo"], "en": ["travel automation", "ai for travel", "travel ai"] },
+      "researchBasis": ["Semrush ES 2026-10-16: automatización de reservas 10/month; IA turismo 50/month, KD 31; IA para turismo 20/month.", "Semrush UK 2026-10-16: travel automation 50/month; booking automation 20/month; AI for travel 110/month, KD 59; travel AI 390/month, KD 61."],
+      "seoTitle": { "es": "Automatización de reservas con IA para turismo | IA Empleado", "en": "Booking automation with AI for travel operations | IA Empleado" },
+      "seoDescription": { "es": "Automatiza reservas y operaciones turísticas con IA: consultas, disponibilidad, documentación, cambios y handoffs con fuentes verificables y control humano.", "en": "Automate travel bookings and operations with AI across inquiries, availability, documents, changes and handoffs using verifiable sources and human control." },
       "eyebrow": { "es": "AUTOMATIZACIÓN DE RESERVAS · TURISMO", "en": "BOOKING AUTOMATION · TRAVEL" },
-      "title": {
-        "es": "Automatización de reservas con IA: coordina consulta, disponibilidad y cambios sin inventar confirmaciones.",
-        "en": "Booking automation with AI: coordinate inquiries, availability and changes without inventing confirmations."
-      },
-      "lead": {
-        "es": "La automatización de reservas con IA usa agentes para estructurar consultas, recuperar disponibilidad autorizada, preparar opciones, coordinar documentación, registrar cambios y escalar excepciones. Esta página posee la intención de automatización del proceso de reserva. El sector Turismo y el departamento Turismo y Reservas conservan el contexto sectorial y organizativo; las integraciones explican por separado cómo se accede a proveedores y sistemas autoritativos.",
-        "en": "Booking automation with AI uses agents to structure inquiries, retrieve authorised availability, prepare options, coordinate documents, record changes and escalate exceptions. This page owns booking-process automation intent. The Travel sector and Travel & Reservations department retain industry and organisational context, while integration pages separately explain access to suppliers and authoritative systems."
-      },
+      "title": { "es": "Automatización de reservas con IA: coordina consulta, disponibilidad y cambios sin inventar confirmaciones.", "en": "Booking automation with AI: coordinate inquiries, availability and changes without inventing confirmations." },
+      "lead": { "es": "La automatización de reservas con IA usa agentes para estructurar consultas, recuperar disponibilidad autorizada, preparar opciones, coordinar documentación, registrar cambios y escalar excepciones. Esta página posee la intención de automatización del proceso de reserva. El sector Turismo y el departamento Turismo y Reservas conservan el contexto sectorial y organizativo; las integraciones explican por separado cómo se accede a proveedores y sistemas autoritativos.", "en": "Booking automation with AI uses agents to structure inquiries, retrieve authorised availability, prepare options, coordinate documents, record changes and escalate exceptions. This page owns booking-process automation intent. The Travel sector and Travel & Reservations department retain industry and organisational context, while integration pages separately explain access to suppliers and authoritative systems." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "automatización de reservas", "en": "booking automation" },
-        "supportingKeywords": {
-          "es": ["automatizacion de reservas", "ia para turismo", "ia turismo", "automatización turismo"],
-          "en": ["travel automation", "ai for travel", "travel ai", "travel booking automation"]
-        },
-        "searchIntent": "commercial",
-        "cluster": "travel-booking-automation",
-        "canonicalRole": "landing",
-        "conversionRole": "evaluation",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports booking automation as a process owner distinct from travel sector and department pages."]
-      }
+      "editorial": { "primaryKeyword": { "es": "automatización de reservas", "en": "booking automation" }, "supportingKeywords": { "es": ["automatizacion de reservas", "ia para turismo", "ia turismo"], "en": ["travel automation", "ai for travel", "travel ai"] }, "searchIntent": "commercial", "cluster": "travel-booking-automation", "canonicalRole": "landing", "conversionRole": "evaluation", "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports booking automation as a process owner distinct from travel sector and department pages."] }
     },
     {
       "key": "ai-administrative-automation",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatización administrativa", "en": "administrative automation" },
-      "supportingKeywords": {
-        "es": ["automatizacion administrativa", "ia administración", "ia administracion", "automatizar tareas administrativas con ia"],
-        "en": ["ai administration", "ai administrative assistant", "administrative task automation", "office automation ai"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: automatización administrativa 20/month; IA administración 20/month. The exact 'automatizar tareas administrativas con IA' variant returned 0 reported volume, so the commercial owner uses the measurable category wording.",
-        "Semrush UK 2026-10-16: administrative automation 20/month; AI administration 20/month; AI administrative assistant 10/month."
-      ],
-      "seoTitle": {
-        "es": "Automatización administrativa con IA | Procesos y tareas | IA Empleado",
-        "en": "Administrative automation with AI | Business workflows | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Automatiza tareas administrativas con IA sobre correo, documentos, registros y seguimiento, manteniendo procedencia, permisos, trazabilidad y aprobación humana.",
-        "en": "Automate administrative work with AI across email, documents, records and follow-up while preserving provenance, permissions, traceability and human approval."
-      },
+      "supportingKeywords": { "es": ["automatizacion administrativa", "ia administración", "ia administracion"], "en": ["ai administration", "ai administrative assistant", "administrative task automation"] },
+      "researchBasis": ["Semrush ES 2026-10-16: automatización administrativa 20/month; IA administración 20/month.", "Semrush UK 2026-10-16: administrative automation 20/month; AI administration 20/month; AI administrative assistant 10/month."],
+      "seoTitle": { "es": "Automatización administrativa con IA | Procesos y tareas | IA Empleado", "en": "Administrative automation with AI | Business workflows | IA Empleado" },
+      "seoDescription": { "es": "Automatiza tareas administrativas con IA sobre correo, documentos, registros y seguimiento, manteniendo procedencia, permisos, trazabilidad y aprobación humana.", "en": "Automate administrative work with AI across email, documents, records and follow-up while preserving provenance, permissions, traceability and human approval." },
       "eyebrow": { "es": "AUTOMATIZACIÓN ADMINISTRATIVA · IA", "en": "ADMINISTRATIVE AUTOMATION · AI" },
-      "title": {
-        "es": "Automatización administrativa con IA: reduce trabajo repetitivo sin perder procedencia ni aprobación.",
-        "en": "Administrative automation with AI: reduce repetitive work without losing provenance or approval."
-      },
-      "lead": {
-        "es": "La automatización administrativa con IA aplica agentes a tareas como clasificar entradas, extraer datos, comprobar completitud, preparar registros, coordinar faltantes y hacer seguimiento. Esta landing posee la intención del proceso de automatización. El perfil Administrativo IA conserva la intención de agente/rol y el departamento Administración explica el modelo operativo completo del área, por lo que no deben competir por la misma consulta.",
-        "en": "Administrative automation with AI applies agents to work such as classifying inputs, extracting data, checking completeness, preparing records, coordinating missing information and following up. This landing owns process-automation intent. The Administrative AI profile retains agent/role intent, while the Administration department explains the area's full operating model, so they should not compete for the same query."
-      },
+      "title": { "es": "Automatización administrativa con IA: reduce trabajo repetitivo sin perder procedencia ni aprobación.", "en": "Administrative automation with AI: reduce repetitive work without losing provenance or approval." },
+      "lead": { "es": "La automatización administrativa con IA aplica agentes a tareas como clasificar entradas, extraer datos, comprobar completitud, preparar registros, coordinar faltantes y hacer seguimiento. Esta landing posee la intención del proceso de automatización. El perfil Administrativo IA conserva la intención de agente/rol y el departamento Administración explica el modelo operativo completo del área, por lo que no deben competir por la misma consulta.", "en": "Administrative automation with AI applies agents to work such as classifying inputs, extracting data, checking completeness, preparing records, coordinating missing information and following up. This landing owns process-automation intent. The Administrative AI profile retains agent/role intent, while the Administration department explains the area's full operating model, so they should not compete for the same query." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "automatización administrativa", "en": "administrative automation" },
-        "supportingKeywords": {
-          "es": ["automatizacion administrativa", "ia administración", "ia administracion", "automatizar tareas administrativas con ia"],
-          "en": ["ai administration", "ai administrative assistant", "administrative task automation", "office automation ai"]
-        },
-        "searchIntent": "commercial",
-        "cluster": "administrative-automation",
-        "canonicalRole": "landing",
-        "conversionRole": "evaluation",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports administrative process automation as a distinct owner from the Administrative AI role and Administration department."]
-      }
+      "editorial": { "primaryKeyword": { "es": "automatización administrativa", "en": "administrative automation" }, "supportingKeywords": { "es": ["automatizacion administrativa", "ia administración", "ia administracion"], "en": ["ai administration", "ai administrative assistant", "administrative task automation"] }, "searchIntent": "commercial", "cluster": "administrative-automation", "canonicalRole": "landing", "conversionRole": "evaluation", "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports administrative process automation as a distinct owner from the Administrative AI role and Administration department."] }
     },
     {
       "key": "ai-sales-sdr-automation",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatización de ventas", "en": "sales automation" },
-      "supportingKeywords": {
-        "es": ["automatizacion de ventas", "ventas con ia", "ia para ventas", "automatizar ventas con ia"],
-        "en": ["ai sales automation", "ai for sales", "sales with ai", "sales workflow automation"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: automatización de ventas 210/month, KD 20; automatizacion de ventas 70/month, KD 14; IA para ventas 50/month, KD 37; ventas con IA 30/month; automatizar ventas con IA 30/month. Agent-role demand remains separate at agente IA ventas 50/month, KD 19.",
-        "Semrush UK 2026-10-16: sales automation 390/month, KD 41; AI sales automation 50/month; AI for sales 170/month, KD 51; AI sales agent 210/month, KD 47."
-      ],
-      "seoTitle": {
-        "es": "Automatización de ventas con IA | Seguimiento y pipeline | IA Empleado",
-        "en": "Sales automation with AI | Follow-up and pipeline | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Automatiza ventas con IA para seguimiento, CRM, preparación comercial y pipeline, manteniendo aprobación humana en compromisos, descuentos y decisiones sensibles.",
-        "en": "Automate sales workflows with AI across follow-up, CRM, commercial preparation and pipeline while keeping human approval for commitments, discounts and sensitive decisions."
-      },
+      "supportingKeywords": { "es": ["automatizacion de ventas", "ventas con ia", "ia para ventas"], "en": ["ai sales automation", "ai for sales", "sales with ai"] },
+      "researchBasis": ["Semrush ES 2026-10-16: automatización de ventas 210/month, KD 20; automatizacion de ventas 70/month, KD 14; IA para ventas 50/month, KD 37; ventas con IA 30/month; agente IA ventas 50/month, KD 19.", "Semrush UK 2026-10-16: sales automation 390/month, KD 41; AI sales automation 50/month; AI for sales 170/month, KD 51; AI sales agent 210/month, KD 47."],
+      "seoTitle": { "es": "Automatización de ventas con IA | Seguimiento y pipeline | IA Empleado", "en": "Sales automation with AI | Follow-up and pipeline | IA Empleado" },
+      "seoDescription": { "es": "Automatiza ventas con IA para seguimiento, CRM, preparación comercial y pipeline, manteniendo aprobación humana en compromisos, descuentos y decisiones sensibles.", "en": "Automate sales workflows with AI across follow-up, CRM, commercial preparation and pipeline while keeping human approval for commitments, discounts and sensitive decisions." },
       "eyebrow": { "es": "AUTOMATIZACIÓN DE VENTAS · IA", "en": "SALES AUTOMATION · AI" },
-      "title": {
-        "es": "Automatización de ventas con IA: acelera seguimiento y pipeline sin automatizar el criterio comercial.",
-        "en": "Sales automation with AI: accelerate follow-up and pipeline without automating commercial judgment."
-      },
-      "lead": {
-        "es": "La automatización de ventas con IA usa agentes para preparar seguimientos, actualizar contexto, crear tareas, detectar oportunidades sin actividad y coordinar trabajo alrededor del CRM. Esta landing posee la intención del proceso de automatización comercial. El perfil Comercial / SDR IA conserva la intención de agente de ventas y el departamento Ventas conserva el modelo organizativo del área.",
-        "en": "Sales automation with AI uses agents to prepare follow-ups, update context, create tasks, detect inactive opportunities and coordinate work around CRM. This landing owns sales-process automation intent. The Sales / SDR AI profile retains sales-agent intent, while the Sales department retains the organisational operating-model intent."
-      },
+      "title": { "es": "Automatización de ventas con IA: acelera seguimiento y pipeline sin automatizar el criterio comercial.", "en": "Sales automation with AI: accelerate follow-up and pipeline without automating commercial judgment." },
+      "lead": { "es": "La automatización de ventas con IA usa agentes para preparar seguimientos, actualizar contexto, crear tareas, detectar oportunidades sin actividad y coordinar trabajo alrededor del CRM. Esta landing posee la intención del proceso de automatización comercial. El perfil Comercial / SDR IA conserva la intención de agente de ventas y el departamento Ventas conserva el modelo organizativo del área.", "en": "Sales automation with AI uses agents to prepare follow-ups, update context, create tasks, detect inactive opportunities and coordinate work around CRM. This landing owns sales-process automation intent. The Sales / SDR AI profile retains sales-agent intent, while the Sales department retains the organisational operating-model intent." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "automatización de ventas", "en": "sales automation" },
-        "supportingKeywords": {
-          "es": ["automatizacion de ventas", "ventas con ia", "ia para ventas", "automatizar ventas con ia"],
-          "en": ["ai sales automation", "ai for sales", "sales with ai", "sales workflow automation"]
-        },
-        "searchIntent": "commercial",
-        "cluster": "sales-automation",
-        "canonicalRole": "landing",
-        "conversionRole": "evaluation",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports sales process automation as a distinct owner from the Sales / SDR AI role and Sales department."]
-      }
+      "editorial": { "primaryKeyword": { "es": "automatización de ventas", "en": "sales automation" }, "supportingKeywords": { "es": ["automatizacion de ventas", "ventas con ia", "ia para ventas"], "en": ["ai sales automation", "ai for sales", "sales with ai"] }, "searchIntent": "commercial", "cluster": "sales-automation", "canonicalRole": "landing", "conversionRole": "evaluation", "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports sales process automation as a distinct owner from the Sales / SDR AI role and Sales department."] }
     },
     {
       "key": "ai-employees-smb",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "ia para pymes", "en": "ai for small business" },
-      "supportingKeywords": {
-        "es": ["inteligencia artificial para pymes", "agentes ia para pymes", "empleados ia para pymes", "soluciones ia para pymes"],
-        "en": ["ai agents for small business", "ai for smb", "ai employees for small business", "small business ai automation"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: IA para pymes 140/month, KD 42; inteligencia artificial para pymes 90/month, KD 32; agentes IA para pymes 10/month.",
-        "Semrush UK 2026-10-16: AI for small business 320/month, KD 35; AI agents for small business 30/month; AI for SMB 20/month."
-      ],
-      "seoTitle": {
-        "es": "IA para pymes: agentes y automatización empresarial | IA Empleado",
-        "en": "AI for small business: agents and automation | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Cómo aplicar IA en pymes con agentes especializados para atención, administración, contabilidad y ventas, empezando por procesos medibles y controlados.",
-        "en": "How small businesses can use AI agents across support, administration, accounting and sales by starting with measurable, governed workflows."
-      },
+      "supportingKeywords": { "es": ["inteligencia artificial para pymes", "agentes ia para pymes", "empleados ia para pymes"], "en": ["ai agents for small business", "ai for smb", "ai employees for small business"] },
+      "researchBasis": ["Semrush ES 2026-10-16: IA para pymes 140/month, KD 42; inteligencia artificial para pymes 90/month, KD 32; agentes IA para pymes 10/month.", "Semrush UK 2026-10-16: AI for small business 320/month, KD 35; AI agents for small business 30/month; AI for SMB 20/month."],
+      "seoTitle": { "es": "IA para pymes: agentes y automatización empresarial | IA Empleado", "en": "AI for small business: agents and automation | IA Empleado" },
+      "seoDescription": { "es": "Cómo aplicar IA en pymes con agentes especializados para atención, administración, contabilidad y ventas, empezando por procesos medibles y controlados.", "en": "How small businesses can use AI agents across support, administration, accounting and sales by starting with measurable, governed workflows." },
       "eyebrow": { "es": "IA PARA PYMES · AGENTES ESPECIALIZADOS", "en": "AI FOR SMALL BUSINESS · SPECIALISED AGENTS" },
-      "title": {
-        "es": "IA para pymes: automatiza procesos concretos con agentes especializados y control humano.",
-        "en": "AI for small business: automate concrete workflows with specialised agents and human control."
-      },
-      "lead": {
-        "es": "IA para pymes no significa desplegar una plataforma compleja ni automatizar toda la empresa de una vez. El enfoque útil es elegir un proceso repetitivo, asignarlo a un agente especializado, conectar solo los sistemas necesarios y mantener reglas, métricas y supervisión humana. Esta página posee la intención comercial específica de IA para pymes; Home conserva la intención general de agentes IA para empresas y la guía relacionada explica qué es un agente IA.",
-        "en": "AI for small business does not mean deploying a complex platform or automating the whole company at once. A useful approach is to select one repetitive workflow, assign it to a specialised agent, connect only the systems required and retain rules, metrics and human oversight. This page owns the small-business commercial intent; Home retains the general AI-agents-for-business intent and the related guide explains what an AI agent is."
-      },
+      "title": { "es": "IA para pymes: automatiza procesos concretos con agentes especializados y control humano.", "en": "AI for small business: automate concrete workflows with specialised agents and human control." },
+      "lead": { "es": "IA para pymes no significa desplegar una plataforma compleja ni automatizar toda la empresa de una vez. El enfoque útil es elegir un proceso repetitivo, asignarlo a un agente especializado, conectar solo los sistemas necesarios y mantener reglas, métricas y supervisión humana. Esta página posee la intención comercial específica de IA para pymes; Home conserva la intención general de agentes IA para empresas y la guía relacionada explica qué es un agente IA.", "en": "AI for small business does not mean deploying a complex platform or automating the whole company at once. A useful approach is to select one repetitive workflow, assign it to a specialised agent, connect only the systems required and retain rules, metrics and human oversight. This page owns the small-business commercial intent; Home retains the general AI-agents-for-business intent and the related guide explains what an AI agent is." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "ia para pymes", "en": "ai for small business" },
-        "supportingKeywords": {
-          "es": ["inteligencia artificial para pymes", "agentes ia para pymes", "empleados ia para pymes", "soluciones ia para pymes"],
-          "en": ["ai agents for small business", "ai for smb", "ai employees for small business", "small business ai automation"]
-        },
-        "searchIntent": "commercial",
-        "cluster": "ai-agents-for-business",
-        "canonicalRole": "landing",
-        "conversionRole": "evaluation",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports a dedicated small-business commercial owner while keeping the related AI-agent definition article informational in the same cluster."]
-      }
+      "editorial": { "primaryKeyword": { "es": "ia para pymes", "en": "ai for small business" }, "supportingKeywords": { "es": ["inteligencia artificial para pymes", "agentes ia para pymes", "empleados ia para pymes"], "en": ["ai agents for small business", "ai for smb", "ai employees for small business"] }, "searchIntent": "commercial", "cluster": "ai-agents-for-business", "canonicalRole": "landing", "conversionRole": "evaluation", "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports a dedicated small-business commercial owner while keeping the related AI-agent definition article informational in the same cluster."] }
     }
   ],
   "articles": [
     {
-      "key": "how-to-automate-ecommerce-with-ai",
+      "key": "how-to-automate-ecommerce-operations-human-control",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "ecommerce con ia", "en": "ecommerce with ai" },
-      "supportingKeywords": {
-        "es": ["automatización ecommerce", "ia ecommerce", "automatizar ecommerce con ia", "automatizacion ecommerce"],
-        "en": ["ai ecommerce", "ecommerce automation", "ai ecommerce automation", "how to automate ecommerce with ai"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: ecommerce con IA 50/month, KD 45; automatización ecommerce 70/month, KD 11; IA ecommerce 40/month. Exact how-to variants did not return reported volume.",
-        "Semrush UK 2026-10-16: ecommerce with AI 10/month; ecommerce automation 260/month, KD 21; AI ecommerce 170/month, KD 52. Exact how-to variants did not return reported volume."
-      ],
-      "seoTitle": {
-        "es": "Ecommerce con IA: cómo automatizar operaciones con control | IA Empleado",
-        "en": "Ecommerce with AI: how to automate operations safely | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Guía para automatizar ecommerce con IA: pedidos, incidencias, sistemas, permisos, aprobaciones, trazabilidad, métricas y escalado humano.",
-        "en": "Guide to ecommerce with AI: orders, exceptions, systems, permissions, approvals, traceability, metrics and human escalation."
-      },
-      "title": {
-        "es": "Cómo usar IA en ecommerce para automatizar operaciones sin perder control",
-        "en": "How to use AI in ecommerce to automate operations without losing control"
-      },
-      "intro": {
-        "es": "Esta guía posee la intención de implementación: cómo aplicar IA en ecommerce sobre un flujo concreto, definiendo fuentes, permisos, acciones permitidas, aprobaciones, trazabilidad y métricas antes de ampliar autonomía. La landing de automatización ecommerce conserva la intención comercial/evaluación; sector, departamento e integración ecommerce conservan respectivamente contexto sectorial, modelo operativo y acceso al sistema.",
-        "en": "This guide owns implementation intent: how to apply AI in ecommerce to one concrete workflow by defining sources, permissions, permitted actions, approvals, traceability and metrics before expanding autonomy. The ecommerce-automation landing retains commercial/evaluation intent; ecommerce sector, department and integration pages respectively retain industry context, operating model and system access."
-      },
+      "supportingKeywords": { "es": ["automatización ecommerce", "ia ecommerce", "automatizar ecommerce con ia"], "en": ["ai ecommerce", "ecommerce automation", "ai ecommerce automation"] },
+      "researchBasis": ["Semrush ES 2026-10-16: ecommerce con IA 50/month, KD 45; automatización ecommerce 70/month, KD 11; IA ecommerce 40/month. Exact how-to variants did not return reported volume.", "Semrush UK 2026-10-16: ecommerce with AI 10/month; ecommerce automation 260/month, KD 21; AI ecommerce 170/month, KD 52."],
+      "seoTitle": { "es": "Ecommerce con IA: cómo automatizar operaciones con control | IA Empleado", "en": "Ecommerce with AI: how to automate operations safely | IA Empleado" },
+      "seoDescription": { "es": "Guía para automatizar ecommerce con IA: pedidos, incidencias, sistemas, permisos, aprobaciones, trazabilidad, métricas y escalado humano.", "en": "Guide to ecommerce with AI: orders, exceptions, systems, permissions, approvals, traceability, metrics and human escalation." },
+      "title": { "es": "Cómo usar IA en ecommerce para automatizar operaciones sin perder control", "en": "How to use AI in ecommerce to automate operations without losing control" },
+      "intro": { "es": "Esta guía posee la intención de implementación: cómo aplicar IA en ecommerce sobre un flujo concreto, definiendo fuentes, permisos, acciones permitidas, aprobaciones, trazabilidad y métricas antes de ampliar autonomía. La landing de automatización ecommerce conserva la intención comercial/evaluación; sector, departamento e integración ecommerce conservan respectivamente contexto sectorial, modelo operativo y acceso al sistema.", "en": "This guide owns implementation intent: how to apply AI in ecommerce to one concrete workflow by defining sources, permissions, permitted actions, approvals, traceability and metrics before expanding autonomy. The ecommerce-automation landing retains commercial/evaluation intent; ecommerce sector, department and integration pages respectively retain industry context, operating model and system access." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "ecommerce con ia", "en": "ecommerce with ai" },
-        "supportingKeywords": {
-          "es": ["automatización ecommerce", "ia ecommerce", "automatizar ecommerce con ia", "automatizacion ecommerce"],
-          "en": ["ai ecommerce", "ecommerce automation", "ai ecommerce automation", "how to automate ecommerce with ai"]
-        },
-        "searchIntent": "informational",
-        "cluster": "ecommerce-automation",
-        "canonicalRole": "support",
-        "conversionRole": "education",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 separates ecommerce automation category intent from implementation guidance while preserving existing owners."]
-      }
+      "editorial": { "primaryKeyword": { "es": "ecommerce con ia", "en": "ecommerce with ai" }, "supportingKeywords": { "es": ["automatización ecommerce", "ia ecommerce", "automatizar ecommerce con ia"], "en": ["ai ecommerce", "ecommerce automation", "ai ecommerce automation"] }, "searchIntent": "informational", "cluster": "ecommerce-automation", "canonicalRole": "support", "conversionRole": "education", "researchBasis": ["Semrush ES/UK research on 2026-10-16 separates ecommerce automation category intent from implementation guidance."] }
     },
     {
-      "key": "how-to-automate-tourism-reservations-with-ai",
+      "key": "automate-tourism-reservations-ai-control",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatizar reservas con ia", "en": "how to automate travel bookings with ai" },
-      "supportingKeywords": {
-        "es": ["automatización de reservas", "ia para turismo", "ia turismo", "automatización turismo"],
-        "en": ["travel automation", "booking automation", "ai for travel", "travel ai"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: the exact 'automatizar reservas con IA' variants returned no reported volume; nearby demand exists at automatización de reservas 10/month, IA turismo 50/month and IA para turismo 20/month.",
-        "Semrush UK 2026-10-16: exact travel-booking how-to variants returned no reported volume; nearby demand exists at travel automation 50/month, booking automation 20/month, AI for travel 110/month and travel AI 390/month."
-      ],
-      "seoTitle": {
-        "es": "Cómo automatizar reservas con IA en turismo | IA Empleado",
-        "en": "How to automate travel bookings with AI | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Guía para automatizar reservas con IA: consulta, disponibilidad, proveedores, documentación, cambios, controles, métricas y escalado humano.",
-        "en": "Guide to automating travel bookings with AI across inquiries, availability, suppliers, documents, changes, controls, metrics and human escalation."
-      },
-      "title": {
-        "es": "Cómo automatizar reservas con IA sin confundir disponibilidad con confirmación",
-        "en": "How to automate travel bookings with AI without confusing availability with confirmation"
-      },
-      "intro": {
-        "es": "Esta guía posee la intención de implementación: cómo diseñar un flujo de reservas con IA que consulte fuentes autorizadas, distinga opción de confirmación, limite acciones económicas y entregue excepciones a una persona con contexto suficiente. La landing de automatización de reservas conserva la intención de evaluación; las superficies de turismo y reservas conservan contexto sectorial y organizativo.",
-        "en": "This guide owns implementation intent: how to design an AI-assisted booking workflow that checks authorised sources, distinguishes an option from confirmation, limits financial actions and hands exceptions to a person with enough context. The booking-automation landing retains evaluation intent, while travel and reservations surfaces retain industry and organisational context."
-      },
+      "supportingKeywords": { "es": ["automatización de reservas", "ia para turismo", "ia turismo"], "en": ["travel automation", "booking automation", "ai for travel"] },
+      "researchBasis": ["Semrush ES 2026-10-16: exact automatizar reservas con IA variants returned no reported volume; nearby demand exists at automatización de reservas 10/month, IA turismo 50/month and IA para turismo 20/month.", "Semrush UK 2026-10-16: exact travel-booking how-to variants returned no reported volume; nearby demand exists at travel automation 50/month, booking automation 20/month and AI for travel 110/month."],
+      "seoTitle": { "es": "Cómo automatizar reservas con IA en turismo | IA Empleado", "en": "How to automate travel bookings with AI | IA Empleado" },
+      "seoDescription": { "es": "Guía para automatizar reservas con IA: consulta, disponibilidad, proveedores, documentación, cambios, controles, métricas y escalado humano.", "en": "Guide to automating travel bookings with AI across inquiries, availability, suppliers, documents, changes, controls, metrics and human escalation." },
+      "title": { "es": "Cómo automatizar reservas con IA sin confundir disponibilidad con confirmación", "en": "How to automate travel bookings with AI without confusing availability with confirmation" },
+      "intro": { "es": "Esta guía posee la intención de implementación: cómo diseñar un flujo de reservas con IA que consulte fuentes autorizadas, distinga opción de confirmación, limite acciones económicas y entregue excepciones a una persona con contexto suficiente. La landing de automatización de reservas conserva la intención de evaluación; las superficies de turismo y reservas conservan contexto sectorial y organizativo.", "en": "This guide owns implementation intent: how to design an AI-assisted booking workflow that checks authorised sources, distinguishes an option from confirmation, limits financial actions and hands exceptions to a person with enough context. The booking-automation landing retains evaluation intent, while travel and reservations surfaces retain industry and organisational context." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "automatizar reservas con ia", "en": "how to automate travel bookings with ai" },
-        "supportingKeywords": {
-          "es": ["automatización de reservas", "ia para turismo", "ia turismo", "automatización turismo"],
-          "en": ["travel automation", "booking automation", "ai for travel", "travel ai"]
-        },
-        "searchIntent": "informational",
-        "cluster": "travel-booking-automation",
-        "canonicalRole": "support",
-        "conversionRole": "education",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports a process-specific booking guide even though the exact how-to long tail reports no measurable volume."]
-      }
+      "editorial": { "primaryKeyword": { "es": "automatizar reservas con ia", "en": "how to automate travel bookings with ai" }, "supportingKeywords": { "es": ["automatización de reservas", "ia para turismo", "ia turismo"], "en": ["travel automation", "booking automation", "ai for travel"] }, "searchIntent": "informational", "cluster": "travel-booking-automation", "canonicalRole": "support", "conversionRole": "education", "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports a process-specific booking guide even though the exact how-to long tail reports no measurable volume."] }
     },
     {
       "key": "automate-administrative-tasks-human-approval",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatizar tareas administrativas con ia", "en": "ai administration" },
-      "supportingKeywords": {
-        "es": ["automatización administrativa", "ia administración", "ia administracion", "tareas administrativas ia"],
-        "en": ["administrative automation", "ai administrative assistant", "administrative task automation", "automate administrative tasks with ai"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: exact automatizar tareas administrativas con IA returned 0 reported volume; adjacent measurable demand exists at automatización administrativa 20/month and IA administración 20/month.",
-        "Semrush UK 2026-10-16: AI administration 20/month; administrative automation 20/month; AI administrative assistant 10/month. Exact how-to variants returned no reported volume."
-      ],
-      "seoTitle": {
-        "es": "Cómo automatizar tareas administrativas con IA | IA Empleado",
-        "en": "AI administration: how to automate administrative tasks | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Guía para automatizar tareas administrativas con IA manteniendo fuentes, permisos, validaciones, aprobación humana, trazabilidad y métricas.",
-        "en": "Guide to AI administration and administrative task automation with sources, permissions, validation, human approval, traceability and metrics."
-      },
-      "title": {
-        "es": "Cómo automatizar tareas administrativas con IA sin perder control ni procedencia",
-        "en": "How to automate administrative tasks with AI without losing control or provenance"
-      },
-      "intro": {
-        "es": "Esta guía posee la intención de implementación: cómo elegir una tarea administrativa, definir fuentes y permisos, estructurar validaciones, reservar excepciones para aprobación humana y medir el resultado. La landing de automatización administrativa conserva la intención comercial del proceso; el perfil Administrativo IA conserva la intención de rol y el departamento Administración conserva el modelo operativo del área.",
-        "en": "This guide owns implementation intent: how to select an administrative task, define sources and permissions, structure validation, reserve exceptions for human approval and measure the result. The administrative-automation landing retains commercial process intent; the Administrative AI profile retains role intent and the Administration department retains the area's operating model."
-      },
+      "supportingKeywords": { "es": ["automatización administrativa", "ia administración", "ia administracion"], "en": ["administrative automation", "ai administrative assistant", "administrative task automation"] },
+      "researchBasis": ["Semrush ES 2026-10-16: exact automatizar tareas administrativas con IA returned 0 reported volume; adjacent demand exists at automatización administrativa 20/month and IA administración 20/month.", "Semrush UK 2026-10-16: AI administration 20/month; administrative automation 20/month; AI administrative assistant 10/month."],
+      "seoTitle": { "es": "Cómo automatizar tareas administrativas con IA | IA Empleado", "en": "AI administration: how to automate administrative tasks | IA Empleado" },
+      "seoDescription": { "es": "Guía para automatizar tareas administrativas con IA manteniendo fuentes, permisos, validaciones, aprobación humana, trazabilidad y métricas.", "en": "Guide to AI administration and administrative task automation with sources, permissions, validation, human approval, traceability and metrics." },
+      "title": { "es": "Cómo automatizar tareas administrativas con IA sin perder control ni procedencia", "en": "How to automate administrative tasks with AI without losing control or provenance" },
+      "intro": { "es": "Esta guía posee la intención de implementación: cómo elegir una tarea administrativa, definir fuentes y permisos, estructurar validaciones, reservar excepciones para aprobación humana y medir el resultado. La landing de automatización administrativa conserva la intención comercial del proceso; el perfil Administrativo IA conserva la intención de rol y el departamento Administración conserva el modelo operativo del área.", "en": "This guide owns implementation intent: how to select an administrative task, define sources and permissions, structure validation, reserve exceptions for human approval and measure the result. The administrative-automation landing retains commercial process intent; the Administrative AI profile retains role intent and the Administration department retains the area's operating model." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "automatizar tareas administrativas con ia", "en": "ai administration" },
-        "supportingKeywords": {
-          "es": ["automatización administrativa", "ia administración", "ia administracion", "tareas administrativas ia"],
-          "en": ["administrative automation", "ai administrative assistant", "administrative task automation", "automate administrative tasks with ai"]
-        },
-        "searchIntent": "informational",
-        "cluster": "administrative-automation",
-        "canonicalRole": "support",
-        "conversionRole": "education",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports keeping practical administrative implementation guidance separate from the commercial process owner and the role page."]
-      }
+      "editorial": { "primaryKeyword": { "es": "automatizar tareas administrativas con ia", "en": "ai administration" }, "supportingKeywords": { "es": ["automatización administrativa", "ia administración", "ia administracion"], "en": ["administrative automation", "ai administrative assistant", "administrative task automation"] }, "searchIntent": "informational", "cluster": "administrative-automation", "canonicalRole": "support", "conversionRole": "education", "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports practical administrative implementation guidance distinct from the commercial process owner and role page."] }
     },
     {
-      "key": "automate-sales-sdr-human-approval",
+      "key": "automate-sales-prospecting-human-control",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatizar ventas con ia", "en": "ai for sales" },
-      "supportingKeywords": {
-        "es": ["ventas con ia", "automatización de ventas", "ia para ventas", "automatizacion de ventas"],
-        "en": ["sales automation", "ai sales automation", "sales with ai", "how to automate sales with ai"]
-      },
-      "researchBasis": [
-        "Semrush ES 2026-10-16: automatizar ventas con IA 30/month; ventas con IA 30/month; automatización de ventas 210/month, KD 20; IA para ventas 50/month, KD 37.",
-        "Semrush UK 2026-10-16: AI for sales 170/month, KD 51; sales automation 390/month, KD 41; AI sales automation 50/month. Exact how-to/automate-sales-with-AI variants returned 0 reported volume."
-      ],
-      "seoTitle": {
-        "es": "Cómo automatizar ventas con IA y control humano | IA Empleado",
-        "en": "AI for sales: how to automate workflows with control | IA Empleado"
-      },
-      "seoDescription": {
-        "es": "Guía para automatizar ventas con IA: seguimiento, CRM, tareas, pipeline, mensajes, aprobaciones, límites comerciales, trazabilidad y métricas.",
-        "en": "Guide to AI for sales across follow-up, CRM, tasks, pipeline, messages, approvals, commercial boundaries, traceability and metrics."
-      },
-      "title": {
-        "es": "Cómo automatizar ventas con IA sin delegar descuentos, compromisos ni criterio comercial",
-        "en": "How to use AI for sales without delegating discounts, commitments or commercial judgment"
-      },
-      "intro": {
-        "es": "Esta guía posee la intención de implementación: cómo automatizar tareas comerciales de bajo riesgo con IA, definir cuándo el agente puede actuar y cuándo debe preparar una propuesta para una persona. La landing de automatización de ventas conserva la intención comercial del proceso; el perfil Comercial / SDR IA conserva la intención de agente y el departamento Ventas conserva el modelo operativo del área.",
-        "en": "This guide owns implementation intent: how to automate low-risk sales tasks with AI and define when an agent may act versus when it should prepare a proposal for a person. The sales-automation landing retains commercial process intent; the Sales / SDR AI profile retains agent intent and the Sales department retains the area's operating model."
-      },
+      "supportingKeywords": { "es": ["ventas con ia", "automatización de ventas", "ia para ventas"], "en": ["sales automation", "ai sales automation", "sales with ai"] },
+      "researchBasis": ["Semrush ES 2026-10-16: automatizar ventas con IA 30/month; ventas con IA 30/month; automatización de ventas 210/month, KD 20; IA para ventas 50/month, KD 37.", "Semrush UK 2026-10-16: AI for sales 170/month, KD 51; sales automation 390/month, KD 41; AI sales automation 50/month."],
+      "seoTitle": { "es": "Cómo automatizar ventas con IA y control humano | IA Empleado", "en": "AI for sales: how to automate workflows with control | IA Empleado" },
+      "seoDescription": { "es": "Guía para automatizar ventas con IA: seguimiento, CRM, tareas, pipeline, mensajes, aprobaciones, límites comerciales, trazabilidad y métricas.", "en": "Guide to AI for sales across follow-up, CRM, tasks, pipeline, messages, approvals, commercial boundaries, traceability and metrics." },
+      "title": { "es": "Cómo automatizar ventas con IA sin delegar descuentos, compromisos ni criterio comercial", "en": "How to use AI for sales without delegating discounts, commitments or commercial judgment" },
+      "intro": { "es": "Esta guía posee la intención de implementación: cómo automatizar tareas comerciales de bajo riesgo con IA, definir cuándo el agente puede actuar y cuándo debe preparar una propuesta para una persona. La landing de automatización de ventas conserva la intención comercial del proceso; el perfil Comercial / SDR IA conserva la intención de agente y el departamento Ventas conserva el modelo operativo del área.", "en": "This guide owns implementation intent: how to automate low-risk sales tasks with AI and define when an agent may act versus when it should prepare a proposal for a person. The sales-automation landing retains commercial process intent; the Sales / SDR AI profile retains agent intent and the Sales department retains the area's operating model." },
       "updatedAt": "2026-10-16",
-      "editorial": {
-        "primaryKeyword": { "es": "automatizar ventas con ia", "en": "ai for sales" },
-        "supportingKeywords": {
-          "es": ["ventas con ia", "automatización de ventas", "ia para ventas", "automatizacion de ventas"],
-          "en": ["sales automation", "ai sales automation", "sales with ai", "how to automate sales with ai"]
-        },
-        "searchIntent": "informational",
-        "cluster": "sales-automation",
-        "canonicalRole": "support",
-        "conversionRole": "education",
-        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports practical sales-with-AI guidance distinct from the sales automation commercial owner and AI sales-agent role page."]
-      }
+      "editorial": { "primaryKeyword": { "es": "automatizar ventas con ia", "en": "ai for sales" }, "supportingKeywords": { "es": ["ventas con ia", "automatización de ventas", "ia para ventas"], "en": ["sales automation", "ai sales automation", "sales with ai"] }, "searchIntent": "informational", "cluster": "sales-automation", "canonicalRole": "support", "conversionRole": "education", "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports practical sales-with-AI guidance distinct from the sales automation commercial owner and AI sales-agent role page."] }
     }
   ]
 }
