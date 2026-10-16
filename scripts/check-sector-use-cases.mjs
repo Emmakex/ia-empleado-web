@@ -16,9 +16,11 @@ const footer = fs.readFileSync("components/site-footer.tsx", "utf8");
 const sectorKeys = ["ecommerce", "travel", "professional-services", "sales"];
 const useCaseKeys = ["customer-issue", "invoice-validation", "sales-follow-up", "order-exception", "travel-booking", "administrative-documentation"];
 
+const hasObjectKey = (source, key) => source.includes(`${key}:`) || source.includes(`"${key}":`) || source.includes(`'${key}':`);
+
 for (const key of sectorKeys) {
   if (!content.includes(`key: \"${key}\"`)) throw new Error(`Missing sector record: ${key}`);
-  if (!sectorOptimization.includes(`${key}:`)) throw new Error(`Missing audited sector search ownership: ${key}`);
+  if (!hasObjectKey(sectorOptimization, key)) throw new Error(`Missing audited sector search ownership: ${key}`);
 }
 for (const key of useCaseKeys) {
   if (!content.includes(`key: \"${key}\"`)) throw new Error(`Missing use-case record: ${key}`);
