@@ -1,0 +1,261 @@
+{
+  "landings": [
+    {
+      "key": "ai-crm-automation",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "crm con ia", "en": "crm automation" },
+      "supportingKeywords": {
+        "es": ["crm ia", "automatización crm", "automatizacion crm", "ia crm"],
+        "en": ["ai crm", "crm with ai", "ai crm automation", "sales crm automation"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: CRM con IA 110/month, KD 49; CRM IA 260/month, KD 35; automatización CRM 30/month. Integración CRM is a separate query family at 70/month (accented) and 40/month (unaccented), supporting separate automation and integration owners.",
+        "Semrush UK 2026-10-16: CRM automation 260/month, KD 41, CPC 16.57; AI CRM 320/month, KD 58; CRM with AI 30/month. CRM integration is much larger but distinct at 880/month, KD 37."
+      ],
+      "seoTitle": {
+        "es": "CRM con IA: automatización de leads, datos y pipeline | IA Empleado",
+        "en": "CRM automation with AI: leads, data and pipeline | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Automatiza trabajo operativo del CRM con IA: leads, datos, seguimiento, tareas y pipeline con permisos mínimos, trazabilidad y aprobación humana.",
+        "en": "Automate operational CRM work with AI across leads, data, follow-up, tasks and pipeline with least privilege, traceability and human approval."
+      },
+      "eyebrow": { "es": "CRM CON IA · AUTOMATIZACIÓN OPERATIVA", "en": "CRM AUTOMATION · OPERATIONAL AI" },
+      "title": {
+        "es": "CRM con IA: automatiza leads, seguimiento y datos sin convertir la integración en acceso ilimitado.",
+        "en": "CRM automation with AI: automate leads, follow-up and data without turning integration into unlimited access."
+      },
+      "lead": {
+        "es": "CRM con IA significa usar agentes para ejecutar trabajo operativo alrededor de clientes y oportunidades —clasificar leads, completar datos, preparar seguimientos, crear tareas y mantener el pipeline— bajo permisos y reglas explícitas. Esta página posee la intención de automatización del proceso. La página de Integración CRM explica, por separado, cómo se diseña el acceso al sistema, qué objetos pueden leerse o escribirse y qué controles necesita el conector.",
+        "en": "CRM automation with AI means using agents to execute operational work around customers and opportunities—classifying leads, enriching records, preparing follow-ups, creating tasks and maintaining pipeline—under explicit permissions and rules. This page owns process-automation intent. The CRM Integration page separately explains system access, which objects may be read or written and which connector controls are required."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "crm con ia", "en": "crm automation" },
+        "supportingKeywords": {
+          "es": ["crm ia", "automatización crm", "automatizacion crm", "ia crm"],
+          "en": ["ai crm", "crm with ai", "ai crm automation", "sales crm automation"]
+        },
+        "searchIntent": "commercial",
+        "cluster": "crm-automation",
+        "canonicalRole": "landing",
+        "conversionRole": "evaluation",
+        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports a distinct CRM automation owner separate from the CRM integration category page."]
+      }
+    },
+    {
+      "key": "ai-erp-automation",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "erp con ia", "en": "erp automation" },
+      "supportingKeywords": {
+        "es": ["erp ia", "automatización erp", "automatizacion erp", "ia erp"],
+        "en": ["ai erp", "ai erp automation", "erp with ai", "enterprise resource planning automation"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: ERP con IA 70/month, KD 19; ERP IA 30/month; automatización ERP 20/month. Integración ERP is a distinct system-access family at 50/month accented and 390/month unaccented, KD 13–20.",
+        "Semrush UK 2026-10-16: ERP automation 140/month, KD 27; AI ERP 140/month, KD 39. ERP integration is a separate query family at 590/month, KD 33."
+      ],
+      "seoTitle": {
+        "es": "ERP con IA: automatización de pedidos, facturas y operaciones | IA Empleado",
+        "en": "ERP automation with AI: orders, invoices and operations | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Automatiza trabajo operativo del ERP con IA sobre pedidos, facturas, maestros y excepciones, con fuentes autoritativas, permisos y aprobación humana.",
+        "en": "Automate operational ERP work with AI across orders, invoices, master data and exceptions while preserving authoritative sources, permissions and human approval."
+      },
+      "eyebrow": { "es": "ERP CON IA · AUTOMATIZACIÓN OPERATIVA", "en": "ERP AUTOMATION · OPERATIONAL AI" },
+      "title": {
+        "es": "ERP con IA: automatiza trabajo operativo sin confundir ejecución con acceso total al sistema.",
+        "en": "ERP automation with AI: automate operational work without confusing execution with unrestricted system access."
+      },
+      "lead": {
+        "es": "ERP con IA significa aplicar agentes a tareas operativas como consultar pedidos y facturas, cotejar referencias, preparar registros, detectar excepciones y coordinar correcciones dentro de reglas explícitas. Esta página posee la intención de automatización del proceso. La página de Integración ERP conserva la intención de arquitectura y acceso: fuentes autoritativas, permisos de lectura y escritura, matching, auditoría y controles sobre acciones con impacto económico o contable.",
+        "en": "ERP automation with AI means applying agents to operational tasks such as checking orders and invoices, matching references, preparing records, detecting exceptions and coordinating corrections under explicit rules. This page owns process-automation intent. The ERP Integration page retains architecture and access intent: authoritative sources, read/write permissions, matching, audit and controls over financially or accounting-significant actions."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "erp con ia", "en": "erp automation" },
+        "supportingKeywords": {
+          "es": ["erp ia", "automatización erp", "automatizacion erp", "ia erp"],
+          "en": ["ai erp", "ai erp automation", "erp with ai", "enterprise resource planning automation"]
+        },
+        "searchIntent": "commercial",
+        "cluster": "erp-automation",
+        "canonicalRole": "landing",
+        "conversionRole": "evaluation",
+        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports a distinct ERP automation owner separate from the ERP integration category page."]
+      }
+    },
+    {
+      "key": "ai-enterprise-email-automation",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatización de correo electrónico", "en": "email automation" },
+      "supportingKeywords": {
+        "es": ["automatización email", "automatizar emails", "automatizar correos", "ia email"],
+        "en": ["ai email automation", "email workflow automation", "ai email", "email management ai"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: automatización de correo electrónico 30/month; automatizar emails 30/month; automatizar correos 20/month; IA email 30/month; automatización email 20/month.",
+        "Semrush UK 2026-10-16: email automation 720/month, KD 58, CPC 17.35; email workflow automation 140/month, KD 34; AI email automation 20/month; AI email 1,600/month. Email integration is a separate system-access query at 50/month and AI email integration at 20/month."
+      ],
+      "seoTitle": {
+        "es": "Automatización de correo electrónico con IA | IA Empleado",
+        "en": "Email automation with AI for business workflows | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Automatiza correo empresarial con IA para clasificar, extraer contexto, preparar respuestas, crear tareas y escalar excepciones con revisión humana.",
+        "en": "Automate business email with AI to classify messages, extract context, draft replies, create tasks and escalate exceptions with human review."
+      },
+      "eyebrow": { "es": "AUTOMATIZACIÓN DE CORREO · IA EMPRESARIAL", "en": "EMAIL AUTOMATION · BUSINESS AI" },
+      "title": {
+        "es": "Automatización de correo electrónico con IA: convierte mensajes en trabajo trazable, no en respuestas automáticas sin contexto.",
+        "en": "Email automation with AI: turn messages into traceable work, not context-free automatic replies."
+      },
+      "lead": {
+        "es": "La automatización de correo electrónico con IA usa agentes para clasificar mensajes, recuperar contexto autorizado, extraer datos, preparar borradores, crear tareas y coordinar excepciones. Esta página posee la intención de automatización del flujo de correo. La página de Integración Email explica por separado cómo se conecta una cuenta o sistema de correo, qué permisos necesita y cómo se limitan lectura, envío y acciones sensibles.",
+        "en": "Email automation with AI uses agents to classify messages, retrieve authorized context, extract data, draft replies, create tasks and coordinate exceptions. This page owns email-workflow automation intent. The Email Integration page separately explains how an inbox or mail system is connected, which permissions it needs and how reading, sending and sensitive actions are bounded."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "automatización de correo electrónico", "en": "email automation" },
+        "supportingKeywords": {
+          "es": ["automatización email", "automatizar emails", "automatizar correos", "ia email"],
+          "en": ["ai email automation", "email workflow automation", "ai email", "email management ai"]
+        },
+        "searchIntent": "commercial",
+        "cluster": "email-automation",
+        "canonicalRole": "landing",
+        "conversionRole": "evaluation",
+        "researchBasis": ["Semrush ES/UK research on 2026-10-16 supports a distinct email-automation owner separate from the email integration category page."]
+      }
+    }
+  ],
+  "articles": [
+    {
+      "key": "how-to-automate-crm-with-ai-without-losing-control",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatización crm", "en": "crm with ai" },
+      "supportingKeywords": {
+        "es": ["automatizacion crm", "crm con ia", "crm ia", "automatizar crm con ia"],
+        "en": ["how to automate crm with ai", "ai crm automation", "ai crm", "crm automation"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: automatización CRM 30/month; CRM con IA 110/month; CRM IA 260/month. The exact Spanish how-to variants returned no reported volume, so the guide owns implementation intent using measured CRM-automation vocabulary.",
+        "Semrush UK 2026-10-16: CRM with AI 30/month; CRM automation 260/month; AI CRM 320/month. Exact how-to phrasing returned no reported volume in the tested UK database."
+      ],
+      "seoTitle": {
+        "es": "Automatización CRM: cómo usar IA sin perder control | IA Empleado",
+        "en": "CRM with AI: how to automate workflows safely | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Guía para automatizar CRM con IA: alcance, permisos, datos, leads, seguimiento, pipeline, aprobaciones, trazabilidad y métricas.",
+        "en": "Guide to using AI in CRM workflows: scope, permissions, data, leads, follow-up, pipeline, approvals, traceability and metrics."
+      },
+      "title": {
+        "es": "Cómo diseñar automatización CRM con IA sin perder control del cliente ni del pipeline",
+        "en": "How to use AI in CRM workflows without losing control of customers or pipeline"
+      },
+      "intro": {
+        "es": "Esta guía posee la intención de implementación: cómo automatizar trabajo dentro de un CRM con IA de forma acotada y verificable. Parte de un proceso concreto, define qué datos puede leer el agente, qué campos puede proponer o actualizar, qué acciones requieren aprobación y cómo se audita cada cambio. La landing de CRM con IA conserva la intención comercial y de evaluación; la página de Integración CRM conserva la intención técnica de acceso al sistema y diseño del conector.",
+        "en": "This guide owns implementation intent: how to use AI in CRM workflows in a bounded, verifiable way. Start from one concrete process, define which data the agent may read, which fields it may propose or update, which actions require approval and how every change is audited. The CRM automation landing retains commercial/evaluation intent, while the CRM Integration page retains technical system-access and connector-design intent."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "automatización crm", "en": "crm with ai" },
+        "supportingKeywords": {
+          "es": ["automatizacion crm", "crm con ia", "crm ia", "automatizar crm con ia"],
+          "en": ["how to automate crm with ai", "ai crm automation", "ai crm", "crm automation"]
+        },
+        "searchIntent": "informational",
+        "cluster": "crm-automation",
+        "canonicalRole": "support",
+        "conversionRole": "education",
+        "researchBasis": ["Semrush ES/UK research on 2026-10-16 separates CRM automation from CRM integration and assigns this guide the implementation job."]
+      }
+    },
+    {
+      "key": "how-to-automate-erp-with-ai-without-losing-control",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatizacion erp", "en": "erp with ai" },
+      "supportingKeywords": {
+        "es": ["automatización erp", "erp con ia", "erp ia", "ia erp"],
+        "en": ["how to automate erp with ai", "ai erp", "ai erp automation", "erp automation"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: automatización ERP 20/month; ERP con IA 70/month, KD 19; ERP IA 30/month. Exact Spanish how-to variants returned no reported volume.",
+        "Semrush UK 2026-10-16: ERP automation 140/month, KD 27; AI ERP 140/month, KD 39. Exact how-to phrasing returned no reported volume in the tested UK database."
+      ],
+      "seoTitle": {
+        "es": "Automatización ERP: cómo aplicar IA con control | IA Empleado",
+        "en": "ERP with AI: how to automate operational workflows | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Guía para automatizar ERP con IA: alcance, fuentes, matching, permisos, pedidos, facturas, excepciones, aprobaciones y auditoría.",
+        "en": "Guide to using AI in ERP workflows: scope, sources, matching, permissions, orders, invoices, exceptions, approvals and audit."
+      },
+      "title": {
+        "es": "Cómo diseñar automatización ERP con IA sin perder control sobre datos y acciones críticas",
+        "en": "How to use AI in ERP workflows without losing control of data and critical actions"
+      },
+      "intro": {
+        "es": "Esta guía posee la intención de implementación: cómo automatizar un flujo ERP con IA sin otorgar permisos amplios por comodidad. Define primero el caso de uso, la fuente autoritativa, el matching de entidades, los permisos de lectura y escritura, los umbrales de aprobación y el registro de cada acción. La landing ERP con IA conserva la intención comercial/evaluación; la página de Integración ERP conserva la intención de arquitectura y acceso al sistema.",
+        "en": "This guide owns implementation intent: how to use AI in an ERP workflow without granting broad permissions for convenience. Define the use case, authoritative source, entity matching, read/write permissions, approval thresholds and action log first. The ERP automation landing retains commercial/evaluation intent, while the ERP Integration page retains system architecture and access intent."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "automatizacion erp", "en": "erp with ai" },
+        "supportingKeywords": {
+          "es": ["automatización erp", "erp con ia", "erp ia", "ia erp"],
+          "en": ["how to automate erp with ai", "ai erp", "ai erp automation", "erp automation"]
+        },
+        "searchIntent": "informational",
+        "cluster": "erp-automation",
+        "canonicalRole": "support",
+        "conversionRole": "education",
+        "researchBasis": ["Semrush ES/UK research on 2026-10-16 separates ERP automation from ERP integration and assigns this guide the implementation job."]
+      }
+    },
+    {
+      "key": "how-to-automate-enterprise-email-with-ai-without-losing-control",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "automatizar emails", "en": "email workflow automation" },
+      "supportingKeywords": {
+        "es": ["automatizar correos", "automatización email", "automatización de correo electrónico", "ia email"],
+        "en": ["ai email automation", "email automation", "ai email", "email management ai"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: automatizar emails 30/month; automatizar correos 20/month; automatización email 20/month; automatización de correo electrónico 30/month; IA email 30/month.",
+        "Semrush UK 2026-10-16: email workflow automation 140/month, KD 34; email automation 720/month, KD 58; AI email automation 20/month; AI email 1,600/month."
+      ],
+      "seoTitle": {
+        "es": "Cómo automatizar emails con IA y control humano | IA Empleado",
+        "en": "Email workflow automation with AI: practical guide | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Guía para automatizar emails con IA: clasificación, contexto, borradores, tareas, permisos de envío, escalados, auditoría y métricas.",
+        "en": "Practical email workflow automation guide with AI: classification, context, drafts, tasks, send permissions, escalation, audit and metrics."
+      },
+      "title": {
+        "es": "Cómo automatizar emails con IA sin perder contexto, permisos ni supervisión",
+        "en": "How to design email workflow automation with AI without losing context or control"
+      },
+      "intro": {
+        "es": "Esta guía posee la intención de implementación: cómo convertir correo entrante en un flujo de trabajo controlado con clasificación, recuperación de contexto, extracción de datos, borradores, tareas y escalados. La landing de automatización de correo conserva la intención de categoría/evaluación. La página de Integración Email conserva la intención de conexión técnica: autenticación, permisos, lectura, envío y límites del sistema de correo.",
+        "en": "This guide owns implementation intent: how to turn incoming email into a controlled workflow with classification, context retrieval, data extraction, drafts, tasks and escalation. The email-automation landing retains category/evaluation intent. The Email Integration page retains technical connection intent: authentication, permissions, reading, sending and mail-system boundaries."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "automatizar emails", "en": "email workflow automation" },
+        "supportingKeywords": {
+          "es": ["automatizar correos", "automatización email", "automatización de correo electrónico", "ia email"],
+          "en": ["ai email automation", "email automation", "ai email", "email management ai"]
+        },
+        "searchIntent": "informational",
+        "cluster": "email-automation",
+        "canonicalRole": "support",
+        "conversionRole": "education",
+        "researchBasis": ["Semrush ES/UK research on 2026-10-16 separates email workflow automation from email-system integration and assigns this guide the implementation job."]
+      }
+    }
+  ]
+}
