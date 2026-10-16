@@ -47,6 +47,54 @@
           "Semrush ES/UK research on 2026-10-16 separates the observability category from monitoring implementation intent and confirms measurable UK AI-observability demand plus broader Spanish observability/monitoring demand."
         ]
       }
+    },
+    {
+      "key": "ai-employee-incident-response",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "respuesta a incidentes de ia", "en": "ai incident response" },
+      "supportingKeywords": {
+        "es": ["respuesta a incidentes", "gestión de incidentes", "respuesta ante incidentes", "resiliencia ia"],
+        "en": ["incident response", "ai incident management", "ai incident response plan", "ai resilience"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: respuesta a incidentes 50/month, KD 22; respuesta ante incidentes 20/month; gestión de incidentes 110/month, KD 28; gestion de incidentes 40/month, KD 22; resiliencia IA 20/month. Exact AI-specific incident-response variants did not return reported volume, so the page uses the precise AI modifier while grounding the category in measured Spanish incident-response demand.",
+        "Semrush UK 2026-10-16: AI incident response 40/month, CPC 15.17; incident response 1,300/month, KD 48; AI incident management 30/month; AI incident response plan 20/month; AI resilience 20/month."
+      ],
+      "seoTitle": {
+        "es": "Respuesta a incidentes de IA: contención y recuperación | IA Empleado",
+        "en": "AI incident response: containment and recovery | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Diseña respuesta a incidentes de IA con severidad, contención, modo seguro, rollback, recuperación, comunicación, evidencia y aprendizaje operativo.",
+        "en": "Design AI incident response with severity, containment, safe mode, rollback, recovery, communication, evidence and operational learning."
+      },
+      "eyebrow": {
+        "es": "RESPUESTA A INCIDENTES DE IA · CONTENCIÓN · RECUPERACIÓN",
+        "en": "AI INCIDENT RESPONSE · CONTAINMENT · RECOVERY"
+      },
+      "title": {
+        "es": "Respuesta a incidentes de IA: contener, recuperar y aprender sin perder el control operativo.",
+        "en": "AI incident response: contain, recover and learn without losing operational control."
+      },
+      "lead": {
+        "es": "La respuesta a incidentes de IA es el proceso coordinado para clasificar un fallo relevante, limitar su impacto, preservar evidencia, llevar el sistema a un estado seguro, recuperar el servicio y comprobar que el riesgo vuelve a un nivel aceptable. En agentes empresariales puede implicar desactivar una herramienta, reducir autonomía, bloquear escrituras, aislar un tenant, revertir una versión o exigir aprobación humana. La observabilidad detecta y explica señales; la respuesta a incidentes empieza cuando esas señales requieren contención o recuperación. La gobernanza define quién tiene autoridad para decidir cada medida.",
+        "en": "AI incident response is the coordinated process for classifying a meaningful failure, limiting its impact, preserving evidence, moving the system into a safe state, restoring service and verifying that risk has returned to an acceptable level. For business agents this may mean disabling a tool, reducing autonomy, blocking writes, isolating a tenant, rolling back a version or requiring human approval. Observability detects and explains signals; incident response begins when those signals require containment or recovery. Governance defines who has authority to approve each measure."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "respuesta a incidentes de ia", "en": "ai incident response" },
+        "supportingKeywords": {
+          "es": ["respuesta a incidentes", "gestión de incidentes", "respuesta ante incidentes", "resiliencia ia"],
+          "en": ["incident response", "ai incident management", "ai incident response plan", "ai resilience"]
+        },
+        "searchIntent": "commercial",
+        "cluster": "ai-incident-response",
+        "canonicalRole": "landing",
+        "conversionRole": "evaluation",
+        "researchBasis": [
+          "Semrush ES/UK research on 2026-10-16 supports keeping AI incident response as a distinct operational-resilience owner, separate from observability and governance."
+        ]
+      }
     }
   ],
   "articles": [
@@ -95,6 +143,54 @@
         "conversionRole": "education",
         "researchBasis": [
           "Semrush ES/UK research on 2026-10-16 assigns category/evaluation intent to the observability landing and monitoring/how-to intent to this support guide."
+        ]
+      }
+    },
+    {
+      "key": "ai-incident-response-playbook",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "plan de respuesta a incidentes", "en": "incident response playbook" },
+      "supportingKeywords": {
+        "es": ["respuesta a incidentes", "gestión de incidentes", "respuesta ante incidentes", "plan de respuesta a incidentes de ciberseguridad"],
+        "en": ["incident response plan", "ai incident response plan", "ai incident response", "incident management"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: plan de respuesta a incidentes 20/month; respuesta a incidentes 50/month, KD 22; gestión de incidentes 110/month, KD 28. Related research also reports plan de respuesta a incidentes de ciberseguridad 50/month, KD 18. Exact Spanish playbook variants did not return measurable data, so the guide owns the practical plan/playbook implementation job rather than the category query.",
+        "Semrush UK 2026-10-16: incident response playbook 140/month, KD 47; incident response plan 590/month, KD 36; AI incident response plan 20/month; AI incident response 40/month."
+      ],
+      "seoTitle": {
+        "es": "Plan de respuesta a incidentes de IA: playbook práctico | IA Empleado",
+        "en": "Incident response playbook for AI systems | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Crea un plan de respuesta a incidentes de IA con severidad, responsables, contención, evidencia, rollback, comunicación, recuperación, postmortem y simulacros.",
+        "en": "Build an incident response playbook for AI systems with severity, owners, containment, evidence, rollback, communication, recovery, postmortems and drills."
+      },
+      "title": {
+        "es": "Cómo crear un plan de respuesta a incidentes de IA: playbook, roles y recuperación",
+        "en": "How to build an incident response playbook for AI systems"
+      },
+      "excerpt": {
+        "es": "Una guía práctica para convertir la respuesta a incidentes en un procedimiento comprobable con responsables, severidad, contención, recuperación y aprendizaje.",
+        "en": "A practical guide to turning incident response into a testable procedure with owners, severity, containment, recovery and learning."
+      },
+      "intro": {
+        "es": "Un plan de respuesta a incidentes de IA define de antemano cómo clasificar un incidente, quién coordina, qué medidas pueden reducir el alcance, qué evidencia debe conservarse, cómo recuperar el servicio y cómo verificar que el riesgo vuelve a un nivel aceptable. Esta guía posee la intención de implementación: construir y probar el playbook. La landing de respuesta a incidentes de IA conserva la intención de categoría y evaluación; la observabilidad cubre detección y diagnóstico de señales, mientras la gobernanza define autoridad, políticas y responsabilidades.",
+        "en": "An AI incident response playbook defines in advance how to classify an incident, who coordinates, which controls can reduce scope, what evidence must be preserved, how to restore service and how to verify that risk has returned to an acceptable level. This guide owns implementation intent: building and testing the playbook. The AI incident-response landing retains category and evaluation intent; observability covers signal detection and diagnosis, while governance defines authority, policies and responsibilities."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "plan de respuesta a incidentes", "en": "incident response playbook" },
+        "supportingKeywords": {
+          "es": ["respuesta a incidentes", "gestión de incidentes", "respuesta ante incidentes", "plan de respuesta a incidentes de ciberseguridad"],
+          "en": ["incident response plan", "ai incident response plan", "ai incident response", "incident management"]
+        },
+        "searchIntent": "informational",
+        "cluster": "ai-incident-response",
+        "canonicalRole": "support",
+        "conversionRole": "education",
+        "researchBasis": [
+          "Semrush ES/UK research on 2026-10-16 separates incident-response category/evaluation intent from the implementation job of building a plan or playbook."
         ]
       }
     }
