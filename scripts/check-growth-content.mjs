@@ -213,8 +213,6 @@ seoOverrideRegistries.forEach((registry, index) => {
   validateUnique(registry.landings ?? [], (item) => item.key, `landing SEO override key in registry ${index + 1}`);
   validateUnique(registry.articles ?? [], (item) => item.key, `article SEO override key in registry ${index + 1}`);
 });
-validateUnique(seoOverrideRegistry.landings ?? [], (item) => item.key, "landing SEO override key across registries");
-validateUnique(seoOverrideRegistry.articles ?? [], (item) => item.key, "article SEO override key across registries");
 validateSeoOverrides(seoOverrideRegistry.landings, baseLandings, "landing");
 validateSeoOverrides(seoOverrideRegistry.articles, baseArticles, "article");
 
