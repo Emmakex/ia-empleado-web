@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { ComparisonsIndexPage } from "../../../../components/comparisons-index-page";
-import { comparisonIndexContent, comparisonIndexPath } from "../../../../lib/comparison-content";
+import { comparisonIndexPath } from "../../../../lib/comparison-content";
+import { auditedComparisonIndexContent } from "../../../../lib/comparison-search-optimization";
 import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
-const content = comparisonIndexContent.en;
+const content = auditedComparisonIndexContent.en;
 const canonical = comparisonIndexPath("en");
 const alternate = comparisonIndexPath("es");
 

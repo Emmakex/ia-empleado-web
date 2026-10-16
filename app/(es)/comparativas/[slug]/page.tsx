@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ComparisonDetailPage } from "../../../../components/comparison-detail-page";
+import { comparisonDetailPath } from "../../../../lib/comparison-content";
 import {
-  comparisonDetailPath,
-  comparisonRecords,
-  getComparisonBySlug,
-} from "../../../../lib/comparison-content";
+  auditedComparisonRecords,
+  getAuditedComparisonBySlug,
+} from "../../../../lib/comparison-search-optimization";
 import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
 type PageProps = {
@@ -13,12 +13,12 @@ type PageProps = {
 };
 
 export function generateStaticParams() {
-  return comparisonRecords.map((record) => ({ slug: record.slugs.es }));
+  return auditedComparisonRecords.map((record) => ({ slug: record.slugs.es }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const record = getComparisonBySlug(slug, "es");
+  const record = getAuditedComparisonBySlug(slug, "es");
   if (!record) return {};
   const canonical = comparisonDetailPath(record.key, "es");
   const alternate = comparisonDetailPath(record.key, "en");
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ComparisonSpanishDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const record = getComparisonBySlug(slug, "es");
+  const record = getAuditedComparisonBySlug(slug, "es");
   if (!record) notFound();
   return <ComparisonDetailPage locale="es" record={record} />;
 }

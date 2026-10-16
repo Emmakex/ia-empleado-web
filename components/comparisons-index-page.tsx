@@ -1,12 +1,11 @@
 import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
+import { comparisonDetailPath, comparisonIndexPath } from "../lib/comparison-content";
 import {
-  comparisonDetailPath,
-  comparisonIndexContent,
-  comparisonIndexPath,
-  comparisonRecords,
-} from "../lib/comparison-content";
+  auditedComparisonIndexContent,
+  auditedComparisonRecords,
+} from "../lib/comparison-search-optimization";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { teamBuilderPath } from "../lib/team-builder";
 import { BrandComparisonScene } from "./brand-comparison-scene";
@@ -20,7 +19,7 @@ type ComparisonsIndexPageProps = {
 
 export function ComparisonsIndexPage({ locale }: ComparisonsIndexPageProps) {
   const dictionary = getDictionary(locale);
-  const content = comparisonIndexContent[locale];
+  const content = auditedComparisonIndexContent[locale];
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonicalPath = comparisonIndexPath(locale);
   const alternatePath = comparisonIndexPath(otherLocale);
@@ -43,8 +42,8 @@ export function ComparisonsIndexPage({ locale }: ComparisonsIndexPageProps) {
   const listSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    numberOfItems: comparisonRecords.length,
-    itemListElement: comparisonRecords.map((record, index) => ({
+    numberOfItems: auditedComparisonRecords.length,
+    itemListElement: auditedComparisonRecords.map((record, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: record.title[locale],
@@ -92,7 +91,7 @@ export function ComparisonsIndexPage({ locale }: ComparisonsIndexPageProps) {
               <p>{locale === "es" ? "Cada página explica diferencias, cuándo elegir cada enfoque y cuándo conviene combinarlos." : "Each page explains the differences, when to choose each approach and when combining them makes sense."}</p>
             </div>
             <div className="comparison-card-grid">
-              {comparisonRecords.map((record) => (
+              {auditedComparisonRecords.map((record) => (
                 <article className="comparison-card comparison-card-branded" key={record.key}>
                   <BrandComparisonScene locale={locale} alternativeName={record.alternativeName[locale]} comparisonKey={record.key} compact />
                   <h3>{record.title[locale]}</h3>
