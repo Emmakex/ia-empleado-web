@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { IntegrationDetailPage } from "../../../../components/integration-detail-page";
 import { getIntegrationBySlug, integrationDetailPath, integrationRecords } from "../../../../lib/organization-map";
+import { applyIntegrationSeoIntent } from "../../../../lib/integration-seo-intents";
 import { buildRouteSocialMetadata } from "../../../../lib/seo-social-metadata";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -12,8 +13,9 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const record = getIntegrationBySlug("es", slug);
-  if (!record) return {};
+  const baseRecord = getIntegrationBySlug("es", slug);
+  if (!baseRecord) return {};
+  const record = applyIntegrationSeoIntent(baseRecord);
   const canonical = integrationDetailPath(record.key, "es");
   const alternate = integrationDetailPath(record.key, "en");
   return {
@@ -26,7 +28,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function IntegrationSpanishDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const record = getIntegrationBySlug("es", slug);
-  if (!record) notFound();
+  const baseRecord = getIntegrationBySlug("es", slug);
+  if (!baseRecord) notFound();
+  const record = applyIntegrationSeoIntent(baseRecord);
   return <IntegrationDetailPage locale="es" integration={record} />;
 }
