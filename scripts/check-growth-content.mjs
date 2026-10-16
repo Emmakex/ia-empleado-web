@@ -22,12 +22,14 @@ const phase2SeoOverrideRegistry = await readJson("../content/growth/seo-override
 const phase3SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase3.json");
 const phase4SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase4.json");
 const phase5SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase5.json");
+const phase6SeoOverrideRegistry = await readJson("../content/growth/seo-overrides-phase6.json");
 const seoOverrideRegistries = [
   baseSeoOverrideRegistry,
   phase2SeoOverrideRegistry,
   phase3SeoOverrideRegistry,
   phase4SeoOverrideRegistry,
   phase5SeoOverrideRegistry,
+  phase6SeoOverrideRegistry,
 ];
 const seoOverrideRegistry = {
   landings: seoOverrideRegistries.flatMap((registry) => registry.landings ?? []),
