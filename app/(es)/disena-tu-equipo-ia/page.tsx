@@ -2,15 +2,20 @@ import type { Metadata } from "next";
 import { TeamBuilderPage } from "../../../components/team-builder-page";
 import { getTeamBuilderPageContent, teamBuilderPath } from "../../../lib/team-builder";
 import { brandPreviewUrl } from "../../../lib/brand-social-previews";
+import { getPhase5SeoPolicy } from "../../../lib/conversion-seo-policy";
 
 const content = getTeamBuilderPageContent("es");
+const policy = getPhase5SeoPolicy("team-builder");
 const canonical = teamBuilderPath("es");
 const alternate = teamBuilderPath("en");
 const preview = brandPreviewUrl("es", "team-builder");
+const seoTitle = policy.seoTitle?.es ?? content.seoTitle;
+const seoDescription = policy.seoDescription?.es ?? content.seoDescription;
 
 export const metadata: Metadata = {
-  title: content.seoTitle,
-  description: content.seoDescription,
+  title: seoTitle,
+  description: seoDescription,
+  robots: { index: policy.index, follow: policy.follow },
   alternates: {
     canonical,
     languages: {
@@ -21,14 +26,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: content.seoTitle,
-    description: content.seoDescription,
+    title: seoTitle,
+    description: seoDescription,
     url: canonical,
     locale: "es_ES",
     alternateLocale: ["en_US"],
-    images: [{ url: preview, width: 1200, height: 630, alt: content.seoTitle }],
+    images: [{ url: preview, width: 1200, height: 630, alt: seoTitle }],
   },
-  twitter: { card: "summary_large_image", title: content.seoTitle, description: content.seoDescription, images: [preview] },
+  twitter: { card: "summary_large_image", title: seoTitle, description: seoDescription, images: [preview] },
 };
 
 export default function SpanishTeamBuilderRoute() {
