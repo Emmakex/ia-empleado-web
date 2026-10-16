@@ -1,6 +1,6 @@
 # IA Empleado — Full SEO/GEO Optimization Roadmap
 
-**Status:** active roadmap — **Phase 4 next**  
+**Status:** active roadmap — **Phase 5 next**  
 **Baseline:** 2026-10-15  
 **Last reconciled:** 2026-10-16  
 **Scope:** `iaempleado.com` commercial website (`Emmakex/ia-empleado-web`)  
@@ -27,11 +27,11 @@ The public content model contains **at least 101 conceptual SEO/content surfaces
 | Casos de uso | 1 hub + 6 use-case pages | ✅ Phase 3: 7/7 audited |
 | Departamentos | 1 hub + 6 department pages | ✅ Phase 3: 7/7 audited |
 | Integraciones | 1 hub + 7 integration pages | ✅ Phase 3: 8/8 audited |
-| Comparativas | 1 hub + 5 comparison pages | 🔄 Phase 4 next; duplicated Growth comparison owners already consolidated in Phase 2 |
+| Comparativas | 1 hub + 5 comparison pages | ✅ Phase 4: 6/6 audited |
 | Growth commercial landings | 28 historical records | ✅ Phase 2: 28/28 audited |
 | Blog Growth support | 28 historical records | ✅ Phase 2: 28/28 audited |
-| Conversion / interactive utilities | 5 core ES surfaces plus EN parity where applicable | ⏳ Phase 5 pending |
-| Legal | Legal notice + privacy policy | ⏳ Phase 5 indexability policy pending |
+| Conversion / interactive utilities | 5 core ES surfaces plus EN parity where applicable | 🔄 Phase 5 next |
+| Legal | Legal notice + privacy policy | 🔄 Phase 5 indexability policy next |
 
 ### Growth inventory closure
 
@@ -84,25 +84,28 @@ No new public SEO URL was required. Existing slugs, canonicals and locale archit
 
 **Exit gate:** satisfied. All **27/27** cluster surfaces have a materially distinct search/evaluation purpose and no unresolved same-intent conflict is known inside Phase 3.
 
+### Phase 4 — Comparison and decision-stage content — ✅ COMPLETE — 6/6
+
+Authoritative audit: `docs/SEO_GEO_PHASE4_COMPARISON_AUDIT.md`.
+
+Completed scope:
+
+- comparison hub;
+- agente IA vs chatbot;
+- Empleado IA vs agente IA;
+- RPA vs IA;
+- IA vs automatización tradicional;
+- agente IA vs copiloto IA.
+
+The dedicated comparison family now owns pairwise evaluation intent only. Home keeps broad company/category intent, `/blog/que-es-un-agente-ia` keeps generic AI-agent definition intent, and process-automation Growth pages keep implementation/commercial intent. Historical comparison duplicates were already consolidated during Phase 2.
+
+Representative Semrush evidence from 2026-10-16: ES `agente IA vs chatbot` 30/month and `RPA vs IA` 20/month; UK `AI agent vs chatbot` 70/month, `RPA vs AI` 40/month, `AI agent vs RPA` 10/month and `AI agent vs copilot` 10/month. Low/no-volume comparison variants were retained only when they served a distinct product or architecture decision job.
+
+**Exit gate:** satisfied once the Phase 4 PR merges green. No new public comparison URL, redirect or noindex action was required.
+
 ## Remaining optimization phases
 
-### Phase 4 — Comparison and decision-stage content — P1 — 🔄 NEXT
-
-**Scope:** comparison hub + 5 comparisons:
-
-- Empleado IA vs chatbot;
-- Empleado IA vs agente IA;
-- Empleado IA vs RPA;
-- Empleado IA vs automatización tradicional;
-- Empleado IA vs AI copilot.
-
-**Objective:** own high-value evaluation queries without contradicting Home definitions or competing with informational content.
-
-Phase 2 already removed the clearest historical Growth duplication around chatbot/RPA. Phase 4 now audits the dedicated comparison surfaces themselves for current ES/EN demand, SERP intent, neutral comparison quality, direct answers, decision matrices, internal links and CTA fit.
-
-**Exit gate:** one canonical owner per comparison intent and every dedicated comparison has a justified search/evaluation job.
-
-### Phase 5 — Conversion, tools and indexability decisions — P1
+### Phase 5 — Conversion, tools and indexability decisions — P1 — 🔄 NEXT
 
 **Scope:**
 
@@ -142,12 +145,11 @@ After the one-time cleanup:
 
 ## Execution order from here
 
-1. **Phase 4** — dedicated comparisons.
-2. **Phase 5** — conversion/indexability decisions.
-3. **Phase 6** — full technical closure.
-4. **Phase 7** — measurement and continuous optimization.
+1. **Phase 5** — conversion/indexability decisions.
+2. **Phase 6** — full technical closure.
+3. **Phase 7** — measurement and continuous optimization.
 
-Do not start a broad new content-expansion campaign while Phase 4 contains unresolved ownership issues. The daily SEO/GEO automation should preferentially consume this optimization backlog rather than create URLs for cadence.
+The daily SEO/GEO automation should continue consuming this optimization backlog before creating new URLs for cadence. New content remains subordinate to canonical ownership and evidence of a genuinely uncovered intent.
 
 ## Progress board
 
@@ -157,8 +159,8 @@ Do not start a broad new content-expansion campaign while Phase 4 contains unres
 | 1. Core commercial + reference roles | ✅ Complete | P0 | Core product/role owners individually audited and aligned |
 | 2. Historical Growth 28 + 28 | ✅ Complete — 56/56 | P0 | All historical records classified and known Growth cannibalization resolved |
 | 3. Sectors/use cases/departments/integrations | ✅ Complete — 27/27 | P1 | Every cluster page has distinct demand/ownership and explicit boundaries |
-| 4. Comparisons | 🔄 Next | P1 | One canonical owner per comparison intent |
-| 5. Conversion/indexability | ⏳ Pending | P1 | Every utility/legal/internal route has deliberate index policy |
+| 4. Comparisons | ✅ Complete — 6/6 | P1 | One canonical owner per comparison intent |
+| 5. Conversion/indexability | 🔄 Next | P1 | Every utility/legal/internal route has deliberate index policy |
 | 6. Technical closure | ⏳ Pending | P1 | Crawl/index/schema/linking checks clean |
 | 7. Measurement loop | 🔁 Ongoing after cleanup | P2 | Search Console/Semrush evidence drives future changes |
 
