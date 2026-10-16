@@ -19,7 +19,8 @@ The phase contains **27 conceptual surfaces**:
 ## Progress
 
 - Audited in Batch 01 — sectors: **5 / 27**.
-- Remaining after Batch 01: **22**.
+- Audited in Batch 02 — use cases: **+7 → 12 / 27**.
+- Remaining after Batch 02: **15**.
 - New indexable SEO URLs created in Phase 3: **0**.
 - Same-intent conflicts introduced: **0**.
 
@@ -103,6 +104,134 @@ Decision: sector page targets B2B-specific context rather than the broad automat
 - added ES/EN regression coverage for hub + four sector pages and the highest-risk overlap boundaries;
 - created no new search URL, redirect or noindex rule.
 
+## Batch 02 — use cases
+
+| Surface | Decision | ES owner | EN owner | Boundary |
+| --- | --- | --- | --- | --- |
+| Use-case hub | REPOSITION | `casos de uso IA` | `AI use cases` | informational/evaluation directory; does not replace product/process landings |
+| Incidencia de cliente | REPOSITION | `gestión de reclamaciones` | `customer issue resolution` | bounded resolution workflow; customer-service Growth landing keeps automation intent; support profile keeps role intent |
+| Validación de facturas | REPOSITION | `validación de facturas` | `invoice validation` | bounded validation/control; Growth keeps broad invoice/accounting automation |
+| Seguimiento comercial | REPOSITION | `seguimiento de leads` | `sales follow up` | continuity workflow; Growth keeps broad sales automation; Sales / SDR profile keeps role intent |
+| Incidencias de pedidos | REPOSITION | `control de pedidos` | `order exception management` | exception/control path; broader order-processing and automation content remains outside this owner |
+| Reservas de viajes | REPOSITION | `gestión de reservas` | `travel booking management` | concrete booking workflow; Growth keeps booking-automation intent; Travel sector keeps industry context |
+| Documentación administrativa | REPOSITION | `automatización documental` | `document workflow automation` | document workflow; document-management integration keeps system-access intent; administrative automation stays broader |
+
+## Search evidence — Batch 02
+
+### Hub
+
+Semrush ES, 2026-10-16:
+
+- `casos de uso ia`: 50/month, KD 28;
+- `casos de uso de ia`: 50/month, KD 28;
+- `casos de uso inteligencia artificial`: 20/month.
+
+Semrush UK, 2026-10-16:
+
+- `ai use cases`: 480/month, KD 59;
+- `artificial intelligence use cases`: 140/month, KD 61;
+- `ai use cases for business`: 20/month.
+
+### Incidencias y reclamaciones
+
+Semrush ES, 2026-10-16:
+
+- `gestión de incidencias`: 140/month, KD 20;
+- `gestión de reclamaciones`: 70/month, KD 17;
+- `reclamaciones clientes`: 40/month, KD 32;
+- `resolución de incidencias`: 20/month.
+
+Semrush UK, 2026-10-16:
+
+- `customer complaint management`: 40/month;
+- `customer issue resolution`: 20/month;
+- `customer issue management`: 20/month.
+
+Decision: own the bounded resolution pattern instead of duplicating the broader customer-service automation page.
+
+### Validación de facturas
+
+Semrush ES, 2026-10-16:
+
+- `control de facturas`: 170/month, KD 24;
+- `validación de facturas`: 10/month.
+
+Semrush UK, 2026-10-16:
+
+- `invoice validation`: 110/month, KD 41;
+- `invoice control`: 20/month;
+- `invoice automation`: 260/month, kept outside this owner because it is broader automation intent.
+
+### Seguimiento comercial
+
+Semrush ES, 2026-10-16:
+
+- `seguimiento de leads`: 40/month, KD 26;
+- `seguimiento comercial`: 20/month, KD 19;
+- `seguimiento de ventas`: 10/month.
+
+Semrush UK, 2026-10-16:
+
+- `sales follow up`: 70/month, KD 42;
+- `sales follow up process`: 50/month;
+- `lead follow up`: 50/month.
+
+### Control e incidencias de pedidos
+
+Semrush ES exact-query recheck, 2026-10-16:
+
+- `gestión de pedidos`: 390/month, KD 21;
+- `control de pedidos`: 70/month, KD 12;
+- `automatización de pedidos`: 70/month, KD 12.
+
+Semrush UK, 2026-10-16:
+
+- `order management`: 1,900/month, KD 58;
+- `AI order management`: 110/month, KD 40;
+- `order exception management`: 10/month.
+
+Decision: use the narrower exception/control framing. The page is not positioned as a full order-management/OMS category owner.
+
+### Gestión de reservas
+
+Semrush ES, 2026-10-16:
+
+- `gestión de reservas`: 140/month, KD 27;
+- `reservas de viajes`: 90/month;
+- `gestión de reservas turísticas`: 10/month.
+
+Semrush UK, 2026-10-16:
+
+- `booking management`: 90/month, KD 26;
+- `travel booking management`: 30/month;
+- `booking automation`: 20/month, retained by the automation owner.
+
+### Automatización documental
+
+Semrush ES, 2026-10-16:
+
+- `gestión documental`: 1,300/month, KD 61;
+- `gestión de documentos`: 210/month;
+- `automatización documental`: 40/month.
+
+Semrush UK, 2026-10-16:
+
+- `document management`: 1,900/month, KD 66;
+- `document workflow automation`: 320/month, KD 44;
+- `document automation`: 50/month.
+
+Decision: keep the use case on workflow automation while reserving document-management system/access intent for the integration family.
+
+## Implementation changes — Batch 02
+
+- added `lib/use-case-search-optimization.ts` as a view/ownership layer over the six canonical use-case records;
+- routed use-case hub and detail metadata/content through audited records without changing any public slug;
+- strengthened direct answers so every page states its problem/outcome job and its boundary with Growth, employee, sector or integration owners;
+- preserved existing workflow steps, systems, controls, metrics, limits, FAQ and HowTo schema;
+- extended the sector/use-case CI contract so the optimized layer must derive from canonical records and both ES/EN route families must use it;
+- added ES/EN regression coverage for the hub, all six use cases and the highest-risk overlap boundaries;
+- created no new indexable URL, redirect or noindex rule.
+
 ## Next batch
 
-**Batch 02 — use cases:** audit the use-case hub plus six existing process-pattern pages. Priority is to separate genuine problem/query intent from Growth process landings and from employee/department role intent before moving to departments and integrations.
+**Batch 03 — departments:** audit the department hub plus six existing department pages. The priority is to separate organizational operating-model intent from specialist employee roles and process automation landings. After departments, Batch 04 will close Phase 3 with integrations.

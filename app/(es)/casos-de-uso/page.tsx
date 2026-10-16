@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { UseCaseIndexPage } from "../../../components/use-case-index-page";
-import { useCaseIndexContent, useCaseIndexPath } from "../../../lib/sector-use-cases";
+import { useCaseIndexPath } from "../../../lib/sector-use-cases";
+import { optimizedUseCaseIndexContent } from "../../../lib/use-case-search-optimization";
 import { brandPreviewUrl } from "../../../lib/brand-social-previews";
 
-const content = useCaseIndexContent.es;
+const content = optimizedUseCaseIndexContent.es;
 const canonical = useCaseIndexPath("es");
 const alternate = useCaseIndexPath("en");
 const preview = brandPreviewUrl("es", "use-cases");

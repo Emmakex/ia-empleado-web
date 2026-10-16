@@ -31,11 +31,11 @@ const surfaces = [
   },
   {
     path: "/casos-de-uso/documentacion-administrativa",
-    title: /documentación administrativa/i,
+    title: /Automatización documental con IA/i,
   },
   {
     path: "/en/use-cases/administrative-documentation",
-    title: /administrative documentation/i,
+    title: /Document workflow automation with AI/i,
   },
 ] as const;
 

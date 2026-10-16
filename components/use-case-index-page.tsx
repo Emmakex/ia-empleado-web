@@ -4,11 +4,10 @@ import { getDictionary, localeHref } from "../lib/i18n";
 import {
   sectorIndexPath,
   useCaseDetailPath,
-  useCaseIndexContent,
   useCaseIndexPath,
-  useCaseRecords,
   type RoleReference,
 } from "../lib/sector-use-cases";
+import { optimizedUseCaseIndexContent, optimizedUseCaseRecords } from "../lib/use-case-search-optimization";
 import { processAnalyzerPath } from "../lib/process-analyzer";
 import { BrandCharacterStrip, BrandContextScene } from "./brand-context-scene";
 import { SiteFooter } from "./site-footer";
@@ -18,14 +17,14 @@ type Props = { locale: Locale };
 
 export function UseCaseIndexPage({ locale }: Props) {
   const dictionary = getDictionary(locale);
-  const content = useCaseIndexContent[locale];
+  const content = optimizedUseCaseIndexContent[locale];
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonical = useCaseIndexPath(locale);
   const alternate = useCaseIndexPath(otherLocale);
-  const overviewRoles = useCaseRecords
+  const overviewRoles = optimizedUseCaseRecords
     .flatMap((record) => record.roles[locale])
     .filter((role, index, roles) => role.employeeKey && roles.findIndex((candidate) => candidate.employeeKey === role.employeeKey) === index) as RoleReference[];
-  const overviewSystems = [...new Set(useCaseRecords.flatMap((record) => record.systems[locale]))];
+  const overviewSystems = [...new Set(optimizedUseCaseRecords.flatMap((record) => record.systems[locale]))];
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -39,8 +38,8 @@ export function UseCaseIndexPage({ locale }: Props) {
   const listSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    numberOfItems: useCaseRecords.length,
-    itemListElement: useCaseRecords.map((record, index) => ({
+    numberOfItems: optimizedUseCaseRecords.length,
+    itemListElement: optimizedUseCaseRecords.map((record, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: record.title[locale],
@@ -81,7 +80,7 @@ export function UseCaseIndexPage({ locale }: Props) {
                 humanLabel={locale === "es" ? "Decisión humana cuando corresponde" : "Human decision where required"}
               />
               <div className="sector-brand-overview-meta">
-                <strong>{useCaseRecords.length}</strong>
+                <strong>{optimizedUseCaseRecords.length}</strong>
                 <span>{locale === "es" ? "patrones operativos con pasos y controles" : "operational patterns with steps and controls"}</span>
                 <p>{locale === "es" ? "No son automatizaciones listas para activar: son diseños de referencia que deben adaptarse." : "These are not ready-to-activate automations; they are reference designs that require adaptation."}</p>
               </div>
@@ -97,7 +96,7 @@ export function UseCaseIndexPage({ locale }: Props) {
               <p>{content.cardsIntro}</p>
             </div>
             <div className="use-case-card-grid">
-              {useCaseRecords.map((record) => {
+              {optimizedUseCaseRecords.map((record) => {
                 const humanSteps = record.steps[locale].filter((step) => step.mode === "human").length;
                 return (
                   <article className="use-case-card brand-use-case-card" data-use-case={record.key} key={record.key}>

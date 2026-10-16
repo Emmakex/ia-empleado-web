@@ -7,8 +7,8 @@ const surfaces = [
   { path: "/en/ai-sales-order-processing-automation-erp", title: /sales order/i },
   { path: "/blog/como-automatizar-procesamiento-pedidos-b2b-ia", title: /Cómo automatizar pedidos B2B/i },
   { path: "/en/blog/how-to-automate-b2b-sales-order-processing-ai", title: /How to automate B2B sales order processing/i },
-  { path: "/casos-de-uso/incidencias-pedidos", title: /incidencias de pedidos/i },
-  { path: "/en/use-cases/order-exception", title: /order exceptions/i },
+  { path: "/casos-de-uso/incidencias-pedidos", title: /Control de pedidos e incidencias con IA/i },
+  { path: "/en/use-cases/order-exception", title: /Order exception management with AI/i },
 ] as const;
 
 test.describe("Phase 2 Batch 06 sales-order ownership", () => {

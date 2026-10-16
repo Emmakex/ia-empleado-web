@@ -54,12 +54,12 @@ const surfaces = [
   {
     path: "/casos-de-uso/validacion-facturas",
     title: /validación de facturas/i,
-    h1: /Automatiza la preparación y los controles repetitivos/i,
+    h1: /Validación de facturas: automatiza comprobaciones repetitivas/i,
   },
   {
     path: "/en/use-cases/invoice-validation",
     title: /invoice validation/i,
-    h1: /Automate repetitive preparation and checks/i,
+    h1: /Invoice validation: automate repetitive checks/i,
   },
 ] as const;
 
