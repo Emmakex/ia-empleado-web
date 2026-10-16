@@ -1,0 +1,102 @@
+{
+  "landings": [
+    {
+      "key": "ai-employee-observability",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "observabilidad ia", "en": "ai observability" },
+      "supportingKeywords": {
+        "es": ["observabilidad", "monitorización", "monitoreo ia", "trazabilidad ia"],
+        "en": ["ai monitoring", "ai agent observability", "ai agent monitoring", "llm observability"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: observabilidad 720/month, KD 33; monitorización 720/month, KD 35; monitorizacion 880/month, KD 29; monitoreo IA 30/month; trazabilidad IA 10/month. Exact 'observabilidad IA' returned 0 reported volume, so the landing uses the precise AI modifier while supporting it with measured observability and monitoring vocabulary.",
+        "Semrush UK 2026-10-16: AI observability 140/month, KD 30, CPC 17.77; AI monitoring 90/month, KD 52; AI agent observability 30/month; AI agent monitoring 50/month; LLM observability 50/month."
+      ],
+      "seoTitle": {
+        "es": "Observabilidad de IA: monitorización de agentes en producción | IA Empleado",
+        "en": "AI observability for agents in production | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Aplica observabilidad de IA a agentes en producción con trazas, métricas, alertas, costes, calidad, errores y correlación de extremo a extremo.",
+        "en": "Apply AI observability to production agents with end-to-end traces, metrics, alerts, cost, quality, errors, correlation and operational controls."
+      },
+      "eyebrow": {
+        "es": "OBSERVABILIDAD DE IA · TRAZAS · MÉTRICAS · ALERTAS",
+        "en": "AI OBSERVABILITY · TRACES · METRICS · ALERTS"
+      },
+      "title": {
+        "es": "Observabilidad de IA: controla agentes, trazas, métricas y alertas en producción.",
+        "en": "AI observability: monitor agents, traces, metrics and alerts in production."
+      },
+      "lead": {
+        "es": "La observabilidad de IA es la capacidad de reconstruir y medir cómo un agente ejecuta un proceso de extremo a extremo: qué caso recibió, qué datos y herramientas utilizó, cuánto tardó cada etapa, qué decisiones o excepciones produjo, cuánto costó y cuál fue el resultado final. No se limita a monitorizar el modelo. Conecta señales técnicas y de negocio para detectar degradaciones, investigar fallos y decidir cuándo intervenir. La gobernanza define responsabilidades y límites; la observabilidad aporta la evidencia operativa para comprobarlos y la respuesta a incidentes actúa cuando una señal ya exige contención o recuperación.",
+        "en": "AI observability is the ability to reconstruct and measure how an agent executes an end-to-end workflow: which case it received, which data and tools it used, how long each stage took, which decisions or exceptions it produced, what it cost and what the final outcome was. It is broader than model monitoring. It connects technical and business signals so teams can detect degradation, investigate failures and decide when to intervene. Governance defines responsibilities and boundaries; observability supplies the operational evidence to verify them, while incident response acts when a signal requires containment or recovery."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "observabilidad ia", "en": "ai observability" },
+        "supportingKeywords": {
+          "es": ["observabilidad", "monitorización", "monitoreo ia", "trazabilidad ia"],
+          "en": ["ai monitoring", "ai agent observability", "ai agent monitoring", "llm observability"]
+        },
+        "searchIntent": "commercial",
+        "cluster": "ai-observability",
+        "canonicalRole": "landing",
+        "conversionRole": "evaluation",
+        "researchBasis": [
+          "Semrush ES/UK research on 2026-10-16 separates the observability category from monitoring implementation intent and confirms measurable UK AI-observability demand plus broader Spanish observability/monitoring demand."
+        ]
+      }
+    }
+  ],
+  "articles": [
+    {
+      "key": "how-to-monitor-ai-employees-in-production",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "monitoreo ia", "en": "ai agent monitoring" },
+      "supportingKeywords": {
+        "es": ["monitorización", "monitorizacion", "monitorización de sistemas", "observabilidad"],
+        "en": ["monitor ai agents", "monitoring ai agents", "ai monitoring", "model monitoring"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: monitoreo IA 30/month; monitorización 720/month, KD 35; monitorizacion 880/month, KD 29; monitorización de sistemas 50/month, KD 12; observabilidad 720/month, KD 33. Exact long-tail 'monitorización de agentes IA' variants returned no reported volume, so the guide targets the measurable monitoring vocabulary with AI-agent implementation context.",
+        "Semrush UK 2026-10-16: AI agent monitoring 50/month; monitor AI agents 30/month; monitoring AI agents 30/month; AI monitoring 90/month, KD 52; model monitoring 30/month."
+      ],
+      "seoTitle": {
+        "es": "Monitoreo de IA: cómo monitorizar agentes en producción | IA Empleado",
+        "en": "AI agent monitoring in production | Practical guide | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Guía para monitorizar agentes IA en producción con IDs de correlación, eventos, métricas, trazas, alertas, calidad, costes, versiones y rollback.",
+        "en": "Practical AI agent monitoring guide for production: correlation IDs, events, metrics, traces, alerts, quality, cost, versions and rollback."
+      },
+      "title": {
+        "es": "Cómo monitorizar agentes IA en producción: qué medir, trazar y alertar",
+        "en": "How to monitor AI agents in production: metrics, traces, alerts and quality"
+      },
+      "excerpt": {
+        "es": "Una guía operativa para convertir trazas, métricas y alertas en decisiones concretas sobre calidad, coste, degradaciones, errores y escalado.",
+        "en": "An operational guide to turning traces, metrics and alerts into concrete decisions about quality, cost, degradation, errors and escalation."
+      },
+      "intro": {
+        "es": "Monitorizar agentes IA en producción significa seguir el flujo completo y convertir sus eventos en señales operativas: volumen, resolución, latencia por etapa, errores, uso de herramientas, escalados, calidad, coste y cambios entre versiones. Esta guía posee la intención de implementación y explica cómo diseñar ese sistema de monitorización. La landing de observabilidad de IA conserva la intención de categoría y evaluación; la gobernanza de IA define responsabilidades y límites, y la respuesta a incidentes cubre contención, recuperación y aprendizaje cuando una señal ya se convierte en un incidente.",
+        "en": "Monitoring AI agents in production means following the complete workflow and turning its events into operational signals: volume, resolution, stage latency, errors, tool use, escalations, quality, cost and changes between versions. This guide owns implementation intent and explains how to design that monitoring system. The AI-observability landing retains category and evaluation intent; AI governance defines responsibilities and boundaries, while incident response covers containment, recovery and learning when a signal becomes an incident."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "monitoreo ia", "en": "ai agent monitoring" },
+        "supportingKeywords": {
+          "es": ["monitorización", "monitorizacion", "monitorización de sistemas", "observabilidad"],
+          "en": ["monitor ai agents", "monitoring ai agents", "ai monitoring", "model monitoring"]
+        },
+        "searchIntent": "informational",
+        "cluster": "ai-observability",
+        "canonicalRole": "support",
+        "conversionRole": "education",
+        "researchBasis": [
+          "Semrush ES/UK research on 2026-10-16 assigns category/evaluation intent to the observability landing and monitoring/how-to intent to this support guide."
+        ]
+      }
+    }
+  ]
+}
