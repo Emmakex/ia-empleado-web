@@ -218,7 +218,7 @@
   ],
   "articles": [
     {
-      "key": "how-to-automate-ecommerce-with-ai",
+      "key": "how-to-automate-ecommerce-operations-human-control",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "ecommerce con ia", "en": "ecommerce with ai" },
       "supportingKeywords": {
@@ -260,7 +260,7 @@
       }
     },
     {
-      "key": "how-to-automate-tourism-reservations-with-ai",
+      "key": "automate-tourism-reservations-ai-control",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatizar reservas con ia", "en": "how to automate travel bookings with ai" },
       "supportingKeywords": {
@@ -344,7 +344,7 @@
       }
     },
     {
-      "key": "automate-sales-sdr-human-approval",
+      "key": "automate-sales-prospecting-human-control",
       "decision": "REPOSITION",
       "primaryKeyword": { "es": "automatizar ventas con ia", "en": "ai for sales" },
       "supportingKeywords": {
