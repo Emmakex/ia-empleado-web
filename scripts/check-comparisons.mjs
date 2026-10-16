@@ -1,6 +1,7 @@
 import fs from "node:fs";
 
 const content = fs.readFileSync("lib/comparison-content.ts", "utf8");
+const searchOptimization = fs.readFileSync("lib/comparison-search-optimization.ts", "utf8");
 const indexPage = fs.readFileSync("components/comparisons-index-page.tsx", "utf8");
 const detailPage = fs.readFileSync("components/comparison-detail-page.tsx", "utf8");
 const comparisonScene = fs.readFileSync("components/brand-comparison-scene.tsx", "utf8");
@@ -12,6 +13,8 @@ const esLayout = fs.readFileSync("app/(es)/layout.tsx", "utf8");
 const enLayout = fs.readFileSync("app/(en)/en/layout.tsx", "utf8");
 const esIndexRoute = fs.readFileSync("app/(es)/comparativas/page.tsx", "utf8");
 const enIndexRoute = fs.readFileSync("app/(en)/en/comparisons/page.tsx", "utf8");
+const esDetailRoute = fs.readFileSync("app/(es)/comparativas/[slug]/page.tsx", "utf8");
+const enDetailRoute = fs.readFileSync("app/(en)/en/comparisons/[slug]/page.tsx", "utf8");
 const sitemap = fs.readFileSync("app/sitemap.ts", "utf8");
 
 const requiredKeys = ["chatbot", "ai-agent", "rpa", "traditional-automation", "ai-copilot"];
@@ -38,7 +41,24 @@ for (const marker of ["chooseEmployeeWhen", "chooseAlternativeWhen", "combineWhe
   if (count < 5) throw new Error(`Comparison content is missing complete ${marker} coverage`);
 }
 
-if (!indexPage.includes("comparisonRecords.map")) throw new Error("Comparison index must render the canonical records");
+for (const marker of [
+  "comparisonSearchAudit",
+  "auditedComparisonRecords",
+  "auditedComparisonIndexContent",
+  "getAuditedComparisonBySlug",
+  "agente ia vs chatbot",
+  "ai agent vs chatbot",
+  "rpa vs ia",
+  "rpa vs ai",
+  "ai agent vs copilot",
+]) {
+  if (!searchOptimization.toLowerCase().includes(marker.toLowerCase())) {
+    throw new Error(`Comparison search audit missing marker: ${marker}`);
+  }
+}
+
+if (!indexPage.includes("auditedComparisonRecords.map")) throw new Error("Comparison index must render the audited canonical records");
+if (!indexPage.includes("auditedComparisonIndexContent")) throw new Error("Comparison index must render audited search metadata/content");
 if (!indexPage.includes("<BrandComparisonScene") || !indexPage.includes("<BrandEvidencePanel")) {
   throw new Error("Comparison index must expose branded decision and evidence surfaces");
 }
@@ -69,8 +89,12 @@ for (const [locale, layout] of [["ES", esLayout], ["EN", enLayout]]) {
 }
 if (!esIndexRoute.includes("ComparisonsIndexPage locale=\"es\"")) throw new Error("Missing Spanish comparison index route");
 if (!enIndexRoute.includes("ComparisonsIndexPage locale=\"en\"")) throw new Error("Missing English comparison index route");
+if (!esIndexRoute.includes("auditedComparisonIndexContent")) throw new Error("Spanish comparison index metadata must use the audited search layer");
+if (!enIndexRoute.includes("auditedComparisonIndexContent")) throw new Error("English comparison index metadata must use the audited search layer");
+if (!esDetailRoute.includes("getAuditedComparisonBySlug")) throw new Error("Spanish comparison detail routes must use audited records");
+if (!enDetailRoute.includes("getAuditedComparisonBySlug")) throw new Error("English comparison detail routes must use audited records");
 if (!sitemap.includes("comparisonIndexPath") || !sitemap.includes("comparisonDetailPath")) {
   throw new Error("Sitemap must include comparison index and detail routes");
 }
 
-console.log("Comparison surfaces contract OK: 5 bilingual comparisons with trade-offs, branded decision visuals and explicit evidence taxonomy.");
+console.log("Comparison surfaces contract OK: 5 bilingual audited comparisons with trade-offs, branded decision visuals and explicit evidence taxonomy.");
