@@ -1,6 +1,7 @@
 import fs from "node:fs";
 
 const content = fs.readFileSync("lib/organization-map.ts", "utf8");
+const departmentOptimization = fs.readFileSync("lib/department-search-optimization.ts", "utf8");
 const departmentIndex = fs.readFileSync("components/department-index-page.tsx", "utf8");
 const departmentDetail = fs.readFileSync("components/department-detail-page.tsx", "utf8");
 const integrationIndex = fs.readFileSync("components/integration-index-page.tsx", "utf8");
@@ -20,8 +21,11 @@ const departments = [
 ];
 const integrations = ["crm", "erp", "email", "calendar", "ecommerce", "ticketing", "document-management"];
 
+const hasOwnershipKey = (source, key) => source.includes(`\"${key}\":`) || source.includes(`  ${key}:`);
+
 for (const key of departments) {
   if (!content.includes(`key: \"${key}\"`)) throw new Error(`Missing department: ${key}`);
+  if (!hasOwnershipKey(departmentOptimization, key)) throw new Error(`Missing audited department ownership: ${key}`);
 }
 for (const key of integrations) {
   if (!content.includes(`key: \"${key}\"`)) throw new Error(`Missing integration: ${key}`);
@@ -41,7 +45,13 @@ for (const marker of ["reads", "writes", "departments", "useCases", "controls", 
   if ((content.split(marker).length - 1) < integrations.length) throw new Error(`Integration content missing ${marker} coverage`);
 }
 
-if (!departmentIndex.includes("departmentRecords.map")) throw new Error("Department index must render canonical records");
+if (!departmentOptimization.includes("departmentRecords.map") || !departmentOptimization.includes("optimizedDepartmentRecords")) {
+  throw new Error("Department optimization must derive audited records from canonical department content");
+}
+if (!departmentOptimization.includes("primaryKeyword") || !departmentOptimization.includes("researchBasis")) {
+  throw new Error("Department optimization must document search ownership and research basis");
+}
+if (!departmentIndex.includes("optimizedDepartmentRecords.map")) throw new Error("Department index must render audited records");
 if (!integrationIndex.includes("integrationRecords.map")) throw new Error("Integration index must render canonical records");
 if (!departmentDetail.includes("employeeDetailPath") || !departmentDetail.includes("useCaseDetailPath") || !departmentDetail.includes("integrationDetailPath")) {
   throw new Error("Department detail must connect employees, use cases and integrations");
@@ -65,4 +75,4 @@ if (!esLayout.includes("organization-map.css") || !enLayout.includes("organizati
   throw new Error("Both locale layouts must load organization-map.css");
 }
 
-console.log("Organization map contract OK: 6 departments + 7 integrations with bilingual routes, authority controls and graph links.");
+console.log("Organization map contract OK: 6 audited departments + 7 integrations with bilingual routes, authority controls and graph links.");

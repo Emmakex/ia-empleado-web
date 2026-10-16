@@ -1,11 +1,10 @@
 import Link from "next/link";
 import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
+import { optimizedDepartmentIndexContent, optimizedDepartmentRecords } from "../lib/department-search-optimization";
 import {
   departmentDetailPath,
-  departmentIndexContent,
   departmentIndexPath,
-  departmentRecords,
   integrationIndexPath,
 } from "../lib/organization-map";
 import { teamBuilderPath } from "../lib/team-builder";
@@ -17,7 +16,7 @@ type Props = { locale: Locale };
 
 export function DepartmentIndexPage({ locale }: Props) {
   const dictionary = getDictionary(locale);
-  const content = departmentIndexContent[locale];
+  const content = optimizedDepartmentIndexContent[locale];
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonical = departmentIndexPath(locale);
   const alternate = departmentIndexPath(otherLocale);
@@ -34,8 +33,8 @@ export function DepartmentIndexPage({ locale }: Props) {
   const listSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    numberOfItems: departmentRecords.length,
-    itemListElement: departmentRecords.map((record, index) => ({
+    numberOfItems: optimizedDepartmentRecords.length,
+    itemListElement: optimizedDepartmentRecords.map((record, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: record.name[locale],
@@ -75,7 +74,7 @@ export function DepartmentIndexPage({ locale }: Props) {
                 humanLabel={locale === "es" ? "Control humano" : "Human control"}
               />
               <aside className="organization-hero-note">
-                <strong>{departmentRecords.length}</strong>
+                <strong>{optimizedDepartmentRecords.length}</strong>
                 <span>{locale === "es" ? "departamentos con mapa operativo" : "departments with an operating map"}</span>
                 <p>{locale === "es" ? "Cada página conecta responsabilidades, Empleados IA, procesos, sistemas y control humano." : "Each page connects responsibilities, AI Employees, processes, systems and human control."}</p>
               </aside>
@@ -91,7 +90,7 @@ export function DepartmentIndexPage({ locale }: Props) {
               <p>{content.cardsIntro}</p>
             </div>
             <div className="organization-card-grid">
-              {departmentRecords.map((record) => (
+              {optimizedDepartmentRecords.map((record) => (
                 <article className="organization-card brand-organization-card" key={record.key}>
                   <div className="organization-card-topline">
                     <span>{record.eyebrow[locale]}</span>
