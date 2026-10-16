@@ -6,8 +6,10 @@ import {
   type SearchParamRecord,
 } from "../../../../lib/conversion-handoff";
 import { brandPreviewUrl } from "../../../../lib/brand-social-previews";
+import { getPhase5SeoPolicy } from "../../../../lib/conversion-seo-policy";
 
 const content = getConversionHandoffContent("en");
+const policy = getPhase5SeoPolicy("request-demo");
 const canonical = requestDemoPath("en");
 const alternate = requestDemoPath("es");
 const preview = brandPreviewUrl("en", "home");
@@ -15,6 +17,7 @@ const preview = brandPreviewUrl("en", "home");
 export const metadata: Metadata = {
   title: content.seoTitle,
   description: content.seoDescription,
+  robots: { index: policy.index, follow: policy.follow },
   alternates: {
     canonical,
     languages: { "es-ES": alternate, en: canonical, "x-default": alternate },
