@@ -10,14 +10,7 @@ import {
 type UseCaseOverride = Partial<
   Pick<
     UseCaseRecord,
-    | "title"
-    | "seoTitle"
-    | "seoDescription"
-    | "eyebrow"
-    | "heroTitle"
-    | "heroDescription"
-    | "shortAnswer"
-    | "problem"
+    "title" | "seoTitle" | "seoDescription" | "eyebrow" | "heroTitle" | "heroDescription" | "shortAnswer" | "problem"
   >
 >;
 
@@ -30,9 +23,9 @@ export const useCaseSearchOwnership = {
       en: ["customer complaint management", "customer issue management", "customer complaint resolution"],
     },
     researchBasis: [
-      "Semrush ES 2026-10-16: gestión de incidencias 140/month, KD 20; gestión de reclamaciones 70/month, KD 17; reclamaciones clientes 40/month; resolución de incidencias 20/month.",
+      "Semrush ES 2026-10-16: gestión de incidencias 140/month, KD 20; gestión de reclamaciones 70/month, KD 17; reclamaciones clientes 40/month, KD 32; resolución de incidencias 20/month.",
       "Semrush UK 2026-10-16: customer complaint management 40/month; customer issue resolution 20/month; customer issue management 20/month.",
-      "Ownership boundary: customer-service automation remains with the Growth process landing; the Customer Support AI profile remains the role owner. This use case owns the bounded complaint/issue-resolution workflow across systems and approvals.",
+      "Boundary: customer-service Growth content owns broad automation; Customer Support AI owns the specialist role; this page owns the bounded issue-resolution workflow.",
     ],
   },
   "invoice-validation": {
@@ -43,8 +36,8 @@ export const useCaseSearchOwnership = {
       en: ["invoice control", "validate invoices", "invoice verification"],
     },
     researchBasis: [
-      "Semrush ES 2026-10-16: validación de facturas 10/month; control de facturas 170/month, KD 24. Broad automatización de facturas is intentionally not assigned here because Growth owns invoice/accounting automation.",
-      "Semrush UK 2026-10-16: invoice validation 110/month, KD 41; invoice control 20/month; invoice automation 260/month remains a broader category outside this bounded use-case owner.",
+      "Semrush ES 2026-10-16: validación de facturas 10/month; control de facturas 170/month, KD 24. Broad automatización de facturas remains with Growth.",
+      "Semrush UK 2026-10-16: invoice validation 110/month, KD 41; invoice control 20/month; invoice automation 260/month is a broader category outside this bounded owner.",
     ],
   },
   "sales-follow-up": {
@@ -57,7 +50,7 @@ export const useCaseSearchOwnership = {
     researchBasis: [
       "Semrush ES 2026-10-16: seguimiento de leads 40/month, KD 26; seguimiento comercial 20/month, KD 19; seguimiento de ventas 10/month.",
       "Semrush UK 2026-10-16: sales follow up 70/month, KD 42; sales follow up process 50/month; lead follow up 50/month.",
-      "Ownership boundary: broad automatización de ventas / sales automation stays with the Growth landing; the Sales / SDR AI page stays the role owner.",
+      "Boundary: broad sales automation remains with Growth and Sales / SDR AI remains the specialist-role owner.",
     ],
   },
   "order-exception": {
@@ -68,8 +61,8 @@ export const useCaseSearchOwnership = {
       en: ["order management", "order issue management", "order automation"],
     },
     researchBasis: [
-      "Semrush ES 2026-10-16: gestión de pedidos 390/month, KD 17; control de pedidos 170/month in the direct overview batch and 70/month in the related-keyword dataset, KD 12; automatización de pedidos 70/month, KD 12. The page deliberately owns exception/control intent rather than broad sales-order automation.",
-      "Semrush UK 2026-10-16: order management 1,900/month, KD 58; AI order management 110/month, KD 40; order exception management 10/month. Specific exception wording is preferred to avoid pretending this page is a full OMS category owner.",
+      "Semrush ES exact-query recheck 2026-10-16: gestión de pedidos 390/month, KD 21; control de pedidos 70/month, KD 12; automatización de pedidos 70/month, KD 12.",
+      "Semrush UK 2026-10-16: order management 1,900/month, KD 58; AI order management 110/month, KD 40; order exception management 10/month. The narrower exception wording avoids claiming full OMS-category ownership.",
     ],
   },
   "travel-booking": {
@@ -80,7 +73,7 @@ export const useCaseSearchOwnership = {
       en: ["booking management", "travel bookings", "booking workflow"],
     },
     researchBasis: [
-      "Semrush ES 2026-10-16: gestión de reservas 140/month, KD 27; reservas de viajes 90/month; gestión de reservas turísticas 10/month. Automatización de reservas remains the Growth commercial owner.",
+      "Semrush ES 2026-10-16: gestión de reservas 140/month, KD 27; reservas de viajes 90/month; gestión de reservas turísticas 10/month. Booking automation remains with Growth.",
       "Semrush UK 2026-10-16: booking management 90/month, KD 26; travel booking management 30/month; booking automation 20/month remains a separate automation-category owner.",
     ],
   },
@@ -92,7 +85,7 @@ export const useCaseSearchOwnership = {
       en: ["document automation", "document management", "document workflow"],
     },
     researchBasis: [
-      "Semrush ES 2026-10-16: gestión documental 1,300/month, KD 61; automatización documental 40/month; gestión de documentos 210/month. The narrower automation-workflow intent is used to avoid taking the document-management system/integration category.",
+      "Semrush ES 2026-10-16: gestión documental 1,300/month, KD 61; automatización documental 40/month; gestión de documentos 210/month. The narrower workflow intent avoids taking system/category ownership.",
       "Semrush UK 2026-10-16: document management 1,900/month, KD 66; document workflow automation 320/month, KD 44; document automation 50/month. Integration pages retain connector/system-access intent.",
     ],
   },
@@ -109,8 +102,8 @@ const useCaseOverrides: Record<UseCaseKey, UseCaseOverride> = {
       en: "Customer issue resolution and complaint workflow | IA Empleado",
     },
     seoDescription: {
-      es: "Patrón para gestionar incidencias y reclamaciones de clientes entre CRM, pedidos, ticketing y políticas, con trazabilidad, handoffs y aprobación humana.",
-      en: "A pattern for customer issue resolution across CRM, orders, ticketing and policy with traceability, handoffs and human approval.",
+      es: "Gestiona incidencias y reclamaciones entre CRM, pedidos, ticketing y políticas con trazabilidad, handoffs y aprobación humana.",
+      en: "Resolve customer issues across CRM, orders, ticketing and policy with traceability, handoffs and human approval.",
     },
     eyebrow: { es: "CASO DE USO · INCIDENCIAS Y RECLAMACIONES", en: "USE CASE · CUSTOMER ISSUES" },
     heroTitle: {
@@ -118,7 +111,7 @@ const useCaseOverrides: Record<UseCaseKey, UseCaseOverride> = {
       en: "Resolve customer issues with verifiable context before promising an outcome.",
     },
     heroDescription: {
-      es: "Este caso de uso posee el flujo de resolución: identificar cliente y recurso, consultar fuentes autorizadas, aplicar política, coordinar responsables y escalar excepciones. La landing de atención al cliente conserva la intención amplia de automatización y el perfil Atención al Cliente IA conserva la intención de rol.",
+      es: "Este caso posee el flujo de resolución: identificar cliente y recurso, consultar fuentes autorizadas, aplicar política, coordinar responsables y escalar excepciones. La landing de atención al cliente conserva la intención amplia de automatización y el perfil Atención al Cliente IA conserva la intención de rol.",
       en: "This use case owns the resolution workflow: identify the customer and resource, check authorised sources, apply policy, coordinate owners and escalate exceptions. The customer-service landing keeps broad automation intent and the Customer Support AI profile keeps role intent.",
     },
     shortAnswer: {
@@ -126,8 +119,8 @@ const useCaseOverrides: Record<UseCaseKey, UseCaseOverride> = {
       en: "Customer issue resolution with AI works when the system can verify identity, order or service, policy and real status before proposing an action. Missing data, contradictions or higher-impact compensation move the case to a person.",
     },
     problem: {
-      es: "El problema no es solo responder al cliente: es reunir contexto fiable entre conversación, CRM, pedido, ticket, política y operación para que la resolución no dependa de copiar datos ni adivinar estados.",
-      en: "The problem is not simply replying to the customer. It is assembling reliable context across conversation, CRM, order, ticket, policy and operations so resolution does not depend on copying data or guessing states.",
+      es: "El problema no es solo responder: es reunir contexto fiable entre conversación, CRM, pedido, ticket, política y operación para no depender de copiar datos ni adivinar estados.",
+      en: "The problem is not simply replying. It is assembling reliable context across conversation, CRM, order, ticket, policy and operations instead of copying data or guessing states.",
     },
   },
   "invoice-validation": {
@@ -143,16 +136,12 @@ const useCaseOverrides: Record<UseCaseKey, UseCaseOverride> = {
       en: "Invoice validation: automate repetitive checks without turning them into payment approval.",
     },
     heroDescription: {
-      es: "Este caso posee la validación acotada: recepción, extracción, duplicados, referencias, reglas y preparación para revisión. La automatización de facturas/contabilidad conserva la intención de proceso más amplia y Contabilidad y Facturación IA conserva la intención de rol.",
+      es: "Este caso posee la validación acotada: recepción, extracción, duplicados, referencias, reglas y preparación para revisión. La automatización de facturas y contabilidad conserva la intención de proceso más amplia; Contabilidad y Facturación IA conserva la intención de rol.",
       en: "This use case owns bounded validation: intake, extraction, duplicate checks, references, rules and preparation for review. Invoice/accounting automation keeps the broader process intent and Accounting & Billing AI keeps role intent.",
     },
     shortAnswer: {
       es: "La validación de facturas con IA puede extraer y contrastar campos, detectar duplicados y comprobar reglas contra fuentes autorizadas. Aprobar un pago, asumir riesgo o resolver una discrepancia material son autoridades separadas.",
       en: "Invoice validation with AI can extract and compare fields, detect duplicates and check rules against authorised sources. Approving payment, taking financial risk or resolving a material discrepancy are separate authorities.",
-    },
-    problem: {
-      es: "Facturas que llegan por varios canales obligan a extraer datos, comprobar proveedor y referencias, detectar duplicados y decidir qué excepciones requieren revisión antes de registrar o aprobar.",
-      en: "Invoices arriving through multiple channels require data extraction, supplier and reference checks, duplicate detection and a decision on which exceptions require review before posting or approval.",
     },
   },
   "sales-follow-up": {
@@ -173,11 +162,7 @@ const useCaseOverrides: Record<UseCaseKey, UseCaseOverride> = {
     },
     shortAnswer: {
       es: "Un flujo de seguimiento de leads con IA puede resumir contexto, actualizar CRM, proponer la siguiente acción y preparar borradores. Envío, frecuencia, claims, negociación y compromisos comerciales siguen sujetos a política y autoridad humana.",
-      en: "An AI-assisted sales follow-up flow can summarise context, update CRM, propose the next action and prepare drafts. Sending, frequency, claims, negotiation and commercial commitments remain subject to policy and human authority.",
-    },
-    problem: {
-      es: "El problema aparece cuando cada oportunidad depende de memoria individual: notas dispersas, CRM incompleto, respuestas sin clasificar y siguientes acciones que se pierden después de reuniones o propuestas.",
-      en: "The problem appears when each opportunity depends on individual memory: scattered notes, incomplete CRM, unclassified replies and next actions that disappear after meetings or proposals.",
+      en: "An AI-assisted sales-follow-up flow can summarise context, update CRM, propose the next action and prepare drafts. Sending, frequency, claims, negotiation and commercial commitments remain subject to policy and human authority.",
     },
   },
   "order-exception": {
@@ -193,16 +178,12 @@ const useCaseOverrides: Record<UseCaseKey, UseCaseOverride> = {
       en: "Order exception management: coordinate the exception before promising stock, delivery or compensation.",
     },
     heroDescription: {
-      es: "Este caso posee el camino de excepción: pedido identificado, estados contrastados, causa clasificada, responsables coordinados y acción escalada cuando cambia dinero o compromiso. Las páginas Growth de procesamiento/automatización de pedidos conservan la intención de flujo general.",
-      en: "This use case owns the exception path: identify the order, reconcile states, classify cause, coordinate owners and escalate actions that change money or commitments. Growth order-processing/automation pages retain the general flow intent.",
+      es: "Este caso posee el camino de excepción: pedido identificado, estados contrastados, causa clasificada, responsables coordinados y acción escalada cuando cambia dinero o compromiso. Las páginas Growth de procesamiento y automatización de pedidos conservan la intención de flujo general.",
+      en: "This use case owns the exception path: identify the order, reconcile states, classify cause, coordinate owners and escalate actions that change money or commitments. Growth order-processing and automation pages retain the general flow intent.",
     },
     shortAnswer: {
       es: "El control de pedidos con IA es útil cuando una incidencia obliga a cruzar ecommerce, ERP, stock, transporte y atención. La IA puede reunir el estado y preparar una solución, pero no debe inventar stock ni asumir permisos de cambio, sustitución o reembolso.",
       en: "Order exception management with AI is useful when an issue crosses ecommerce, ERP, inventory, shipping and support. AI can assemble the state and prepare a resolution, but it must not invent inventory or assume change, replacement or refund authority.",
-    },
-    problem: {
-      es: "Un pedido fuera del flujo normal genera contactos repetidos y decisiones inconsistentes cuando soporte, operaciones, stock y transporte ven estados distintos o no saben quién debe actuar.",
-      en: "An order outside the happy path creates repeated contacts and inconsistent decisions when support, operations, inventory and shipping see different states or do not know who should act.",
     },
   },
   "travel-booking": {
@@ -225,10 +206,6 @@ const useCaseOverrides: Record<UseCaseKey, UseCaseOverride> = {
       es: "La gestión de reservas con IA puede estructurar la solicitud, consultar disponibilidad autorizada, preparar opciones, recoger datos y coordinar confirmación. Precio, condiciones y estado confirmado deben volver siempre a la fuente que realmente los gobierna.",
       en: "Travel booking management with AI can structure the request, check authorised availability, prepare options, collect data and coordinate confirmation. Price, terms and confirmed status must always come back to the source that actually governs them.",
     },
-    problem: {
-      es: "Una reserva mezcla preferencias, disponibilidad cambiante, proveedores, datos de viajeros, documentación y condiciones. Si el estado se copia manualmente entre canales, una opción puede terminar tratándose como confirmación.",
-      en: "A booking combines preferences, changing availability, suppliers, traveler data, documents and terms. When state is copied manually across channels, an option can end up being treated as a confirmation.",
-    },
   },
   "administrative-documentation": {
     title: { es: "Automatizar documentación administrativa con trazabilidad", en: "Automate document workflows with administrative controls" },
@@ -249,10 +226,6 @@ const useCaseOverrides: Record<UseCaseKey, UseCaseOverride> = {
     shortAnswer: {
       es: "La automatización documental con IA puede clasificar documentos, extraer campos y preparar actualizaciones si cada dato conserva procedencia y nivel de confianza. Un dato sensible, incompleto o de baja confianza debe validarse antes de convertirse en registro autoritativo.",
       en: "Document workflow automation with AI can classify documents, extract fields and prepare updates when every value retains provenance and confidence. Sensitive, incomplete or low-confidence data should be validated before becoming an authoritative record.",
-    },
-    problem: {
-      es: "La documentación administrativa suele llegar por correo, formularios y adjuntos con formatos distintos. El coste aparece al clasificar, copiar, comprobar completitud y corregir errores sin una trazabilidad clara de origen.",
-      en: "Administrative documents often arrive through email, forms and attachments in different formats. Cost appears in classification, copying, completeness checks and corrections without clear source traceability.",
     },
   },
 };
