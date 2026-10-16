@@ -1,224 +1,121 @@
 # IA Empleado — Phase 2 Growth audit
 
-**Status:** active  
+**Status:** ✅ COMPLETE  
 **Started:** 2026-10-15  
+**Completed:** 2026-10-16  
 **Scope:** 28 commercial Growth landings + 28 supporting articles  
+**Result:** **56 / 56 historical records audited · 0 remaining**  
 **Canonical rules:** `SEO_GEO_CONTENT_OWNERSHIP.md` + `SEO_GEO_FULL_OPTIMIZATION_ROADMAP.md`
 
 ## Goal
 
-Audit every historical Growth record against the current `one-primary-intent = one-canonical-URL` rule. Historical daily publication is not evidence that a URL should remain indexable. Each record must finish with one explicit decision: `KEEP`, `EXPAND`, `REPOSITION`, `MERGE`, `REDIRECT`, or `NOINDEX`.
+Audit every historical Growth record against the `one-primary-intent = one-canonical-URL` and `existing-owner-first` rules. Historical publication is not evidence that a URL should remain indexable. Every record must finish with an explicit `KEEP`, `EXPAND`, `REPOSITION`, `MERGE`, `REDIRECT` or `NOINDEX` decision.
 
-## Progress
+## Final result
+
+Phase 2 is complete. All **56 historical Growth records** have been reviewed against search demand, current canonical owners, ES/EN intent, internal relationships and conversion role.
+
+The audit did **not** create new indexable URLs simply to maintain publication cadence. Existing owners were preferred, strengthened, repositioned or consolidated.
+
+### Closure counter
 
 - Total historical Growth records: **56**.
-- Audited in Batch 01: **4**.
-- Audited in Batch 02: **3**.
-- Audited in Batch 03: **4**.
-- Audited in Batch 04: **4**.
-- Total audited: **15 / 56**.
-- Remaining after Batch 04: **41**.
-- New search-intent URLs created in Phase 2: **0**. Existing owners are merged, expanded or repositioned before any new URL is considered.
+- Audited: **56**.
+- Remaining: **0**.
+- New search-intent URLs created to satisfy the audit: **0**.
+- Batch 17 authoritative checkpoint: **41 / 56**.
+- Batch 18 CRM / ERP / email: **+6 → 47 / 56**.
+- Batch 19 final ecommerce / tourism / administration / sales / SME review: **+9 → 56 / 56**.
 
-## Batch 01 — comparison-intent consolidation
+## What changed during the audit
 
-The first batch starts with the clearest cannibalisation risk: historical Growth content that duplicates dedicated comparison owners created later.
+### Consolidated same-intent duplicates
 
-| Historical record | ES legacy URL | EN legacy URL | Decision | Canonical owner |
-| --- | --- | --- | --- | --- |
-| Day 11 landing `ai-employee-vs-chatbot` | `/empleado-ia-vs-chatbot` | `/en/ai-employee-vs-chatbot` | MERGE + REDIRECT | `/comparativas/chatbot` / `/en/comparisons/chatbot` |
-| Day 11 article `when-to-choose-ai-employee-or-chatbot` | `/blog/cuando-elegir-empleado-ia-o-chatbot` | `/en/blog/when-to-choose-ai-employee-or-chatbot` | MERGE + REDIRECT | `/comparativas/chatbot` / `/en/comparisons/chatbot` |
-| Day 12 landing `ai-agent-vs-rpa` | `/agente-ia-vs-rpa` | `/en/ai-agent-vs-rpa` | MERGE + REDIRECT | `/comparativas/rpa` / `/en/comparisons/rpa` |
-| Day 12 article `when-to-use-ai-agent-rpa-or-both` | `/blog/cuando-usar-agente-ia-rpa-o-ambos` | `/en/blog/when-to-use-ai-agent-rpa-or-both` | MERGE + REDIRECT | `/comparativas/rpa` / `/en/comparisons/rpa` |
+Historical Growth pages that duplicated stronger canonical owners were merged and permanently redirected where appropriate. The clearest cases were:
 
-### Why merge instead of keep
+- Empleado IA vs chatbot → dedicated chatbot comparison;
+- agente IA vs RPA → dedicated RPA comparison;
+- duplicate cost support content → cost owner;
+- duplicate ROI calculation guide → ROI calculator/tool owner.
 
-The dedicated comparison surfaces already provide the same evaluation job with a direct answer, structured comparison dimensions, explicit guidance on when to choose each approach, combination patterns and FAQ. Keeping parallel Growth landing/article URLs would split the same comparison intent across multiple canonical candidates.
+Redirected historical URLs are removed from active Growth ownership and sitemap participation while preserving direct permanent destinations.
 
-The Day 11 and Day 12 records are therefore removed from the Growth inventory and sitemap, while their public legacy paths receive permanent redirects to the dedicated comparison owners. This preserves a single indexable owner and avoids throwing away any link/history value accumulated by the old URLs.
+### Repositioned market-language owners
 
-Semrush did not return measurable keyword data for the exact long-tail comparison phrases tested on 2026-10-15. The consolidation decision is therefore based on direct intent/content overlap and the current canonical architecture, not on invented volume.
+Useful historical content was preserved when it had a distinct job but originally used terminology that was too centered on the owned phrase `Empleado IA`. Examples include:
 
-## Batch 02 — definition ownership + customer-service separation
+- AI-agent definition;
+- private/local/on-premise AI;
+- business-process automation;
+- accounting and invoice automation;
+- sales-order automation;
+- onboarding, leave and expense management;
+- data readiness;
+- AI governance;
+- enterprise AI integration;
+- human-in-the-loop;
+- AI observability and monitoring;
+- AI incident response;
+- AI pilot;
+- CRM, ERP and email automation;
+- ecommerce automation;
+- booking automation;
+- administrative automation;
+- sales automation;
+- AI for SMEs / small business.
 
-### 1. Reposition the mixed definition/chatbot article
+### Separated landing and support intent
 
-The legacy support article `what-is-an-ai-employee` mixed two jobs in one URL: defining the product/category and comparing it with a chatbot. The dedicated comparison owner now owns chatbot-vs-agent evaluation, while Semrush shows meaningful informational demand for the broader market-language question.
+Where both a commercial landing and support article remain indexable, they no longer intentionally target the same primary query. The landing owns category/evaluation/process demand; the support article owns implementation, how-to or educational intent.
 
-| Record | Previous focus | Decision | New primary intent |
-| --- | --- | --- | --- |
-| `what-is-an-ai-employee` | `qué es un Empleado IA` + chatbot comparison | **REPOSITION** | informational definition: `que es un agente ia` / `what is an ai agent` |
+The Growth CI contract enforces this rule whenever both sides declare editorial metadata.
 
-Demand evidence captured on 2026-10-15:
+## Final ownership boundaries
 
-- ES `que es un agente ia`: **320 searches/month**, KD **58**;
-- ES `qué es un agente ia`: **90**, KD **65**;
-- UK `what is an ai agent`: **2,400**, KD **68**;
-- UK `what are ai agents`: **880**, KD **72**.
+The surviving Growth content is subordinate to the wider site ownership model:
 
-The article keeps the same internal record key so its existing relationship with the SME commercial landing remains intact, but is replaced by a current long-form ES/EN version and moves to:
+- **Home:** broad `agentes IA para empresas` / company-level proposition.
+- **Empleado IA profiles:** specialist role/agent intent.
+- **Growth landings:** process/problem/audience-specific commercial intent.
+- **Growth articles:** informational and implementation support.
+- **Departments:** organisational operating model.
+- **Sectors:** industry-specific context and workflows.
+- **Use cases:** bounded problem/outcome intent.
+- **Integrations:** system access, permissions, data and connector controls.
+- **Comparisons:** explicit decision-stage comparison intent.
+- **Conversion tools:** transactional action, not informational ownership.
 
-- ES `/blog/que-es-un-agente-ia`;
-- EN `/en/blog/what-is-an-ai-agent`.
+## Search-evidence rule
 
-The old ES/EN article paths permanently redirect directly to the new paths. The revised article gives the informational query one owner and treats chatbot comparison as a secondary concept rather than the primary intent. The dedicated `/comparativas/chatbot` surface remains the owner of the comparison query.
+ES and EN were researched independently. Semrush volumes are recorded only where the connected database returned data. Exact long-tail phrases with zero or no reported volume are never presented as measured opportunities; they may still be used for support intent when a distinct user job exists and adjacent category demand is measurable.
 
-### 2. Keep customer-service role and process as separate owners
+## Technical governance added during Phase 2
 
-The customer-service cluster was reviewed against the deep role page. Search evidence supports keeping the distinction rather than merging:
+The audit introduced and hardened:
 
-| Surface | Decision | Primary job |
-| --- | --- | --- |
-| `/empleados-ia/atencion-cliente` | KEEP | the specialist role / agent itself |
-| `/automatizacion-atencion-cliente-ia` | EXPAND | the customer-service automation process |
-| support article `automate-customer-service-human-control` | KEEP | informational how-to guidance |
+- `content/growth/consolidations.json` for explicit merged/redirected historical records;
+- layered `seo-overrides*.json` registries so historical owners can be repositioned without copying entire source files;
+- validation that overrides target real records and declare allowed decisions;
+- mandatory editorial metadata for new/updated Growth content after the governance effective date;
+- landing/support cluster consistency;
+- prevention of exact primary-keyword duplication inside a landing/article pair;
+- permanent-redirect, canonical and sitemap regression coverage where consolidation occurs;
+- ES/EN regression coverage for repositioned owners.
 
-Demand evidence:
+## Exit gate
 
-- ES `agentes ia atención al cliente`: **140**, KD **11**;
-- ES `agente ia atención al cliente`: **40**, KD **21**;
-- ES `automatización de atención al cliente`: **50**, KD **12**;
-- UK `ai customer service agent`: **140**, KD **47**;
-- UK `customer service automation`: **320**, KD **34**;
-- UK `ai customer service automation`: **20**.
+Phase 2 is considered closed because:
 
-This shows two distinct search/evaluation jobs: choosing or understanding the agent/role, and designing the automation process. The exact `automate ... with AI` how-to phrases returned no measurable data in the tested database, but the article remains useful as informational support and does not target the same primary query as either commercial owner.
+1. **56 / 56** historical Growth records have an explicit audit decision;
+2. no known same-intent Growth pair remains unresolved;
+3. surviving landing/article pairs have distinct search jobs;
+4. overlap with role, department, sector, integration, comparison and tool owners is explicitly bounded;
+5. ES and EN rationale is independent;
+6. legacy duplicates use direct permanent destinations rather than parallel indexable owners;
+7. future Growth changes remain protected by CI governance.
 
-Batch 02 strengthens the internal graph in both directions: the process landing links directly to the Customer Support AI role, and the deep role links back to the automation landing and its practical guide.
+## Handoff
 
-## Batch 03 — cost + ROI ownership
+The active roadmap now moves to **Phase 3 — sectors, use cases, departments and integrations**. Phase 3 should not assume those templated surfaces deserve indexation merely because they exist: each must prove distinct demand/evaluation value or be merged/noindexed.
 
-Batch 03 audits the four Day 13/14 records against the existing ROI calculator. The objective is to keep a useful cost/evaluation cluster while removing articles that repeat the same budgeting or formula job already handled by a stronger owner.
-
-| Historical record | Decision | Canonical job / destination |
-| --- | --- | --- |
-| Day 13 landing `ai-employee-cost` | **KEEP** | commercial/evaluation owner for AI Employee / AI-agent implementation cost |
-| Day 13 article `how-much-ai-employee-costs` | **MERGE + REDIRECT** | `/coste-empleado-ia` / `/en/ai-employee-cost` |
-| Day 14 landing `ai-employee-roi` | **KEEP + EXPAND GRAPH** | education/evaluation owner for AI ROI and return methodology |
-| Day 14 article `how-to-calculate-ai-employee-roi` | **MERGE + REDIRECT** | `/calculadora-roi` / `/en/roi-calculator` |
-
-### Search evidence and intent split
-
-Semrush evidence captured on 2026-10-15 supports keeping ROI evaluation separate from the calculator tool:
-
-- ES `roi ia`: **20 searches/month**;
-- UK `ai roi`: **110**, KD **36**;
-- UK `roi of ai`: **70**;
-- UK `ai return on investment`: **30**;
-- UK `ai roi calculator`: **30**.
-
-For cost, the Spanish exact phrases tested did not return measurable data, so no Spanish volume is invented. UK does show low but real demand around the broader market wording:
-
-- UK `cost of implementing ai`: **30**;
-- UK `cost of ai agents`: **20**;
-- UK `ai agent pricing`: **20**;
-- UK `ai agent cost`: **10**;
-- UK `ai implementation cost`: **10**.
-
-The resulting ownership is deliberately different by user job:
-
-- **Cost landing:** what implementation costs consist of, what changes the budget and how to evaluate total cost.
-- **ROI landing:** how to think about return, baselines, quality, capacity and defensible benefit measurement.
-- **ROI calculator:** transactional tool for entering real assumptions and calculating transparent scenarios.
-
-The historical cost article duplicated the cost landing's budgeting job, while the historical ROI how-to duplicated formulas and methodology already present in the calculator. Both support URLs are removed from the active Growth inventory and sitemap and permanently redirected to the stronger owner.
-
-### Internal graph
-
-Batch 03 adds reciprocal intent-aware links instead of replacing one kind of page with another:
-
-- cost landing → ROI calculator;
-- ROI landing → ROI calculator;
-- ROI calculator → ROI evaluation landing;
-- ROI calculator → cost landing.
-
-This makes the distinction visible to users and search/answer engines: education/evaluation content explains the decision, while the calculator performs the calculation.
-
-### Consolidation registry
-
-`content/growth/consolidations.json` is the explicit registry for Growth records that remain in historical source files but must no longer participate in routing, sitemap generation or canonical ownership. The Growth runtime and CI contract both consume this registry.
-
-## Batch 04 — private AI + process automation
-
-Batch 04 audits Day 15 and Day 16. Unlike earlier comparison or ROI support duplicates, these clusters have distinct search demand and a useful business job, so the correct move is to strengthen the existing owners rather than delete them.
-
-| Historical record | Decision | Primary ownership after audit |
-| --- | --- | --- |
-| Day 15 landing `private-ai-employee-deployment` | **REPOSITION** | private AI for business / private deployment evaluation |
-| Day 15 article `how-to-deploy-ai-employee-privately` | **REPOSITION** | local, self-hosted and on-premise AI informational guide |
-| Day 16 landing `ai-business-process-automation` | **EXPAND** | AI process automation / automation of business processes with AI |
-| Day 16 article `how-to-choose-first-ai-process` | **KEEP** | how to choose the first process to automate with AI |
-
-### Day 15 — private AI is a real market-language opportunity
-
-Semrush evidence captured on 2026-10-15:
-
-- ES `ia local`: **480 searches/month**, KD **14**;
-- ES `ia privada`: **210**, KD **15**;
-- ES `inteligencia artificial privada`: **20**;
-- ES `ia on premise`: **20**;
-- ES `ia privada para empresas`: **10**;
-- UK `private ai`: **390**, KD **33**;
-- UK `self hosted ai`: **170**, KD **31**;
-- UK `on premise ai`: **90**, KD **19**;
-- UK `private ai agents`: **20**, KD **21**;
-- UK `private ai infrastructure`: **10**.
-
-The original pages were too centered on the owned phrase `Empleado IA privado`. Batch 04 keeps the existing URLs and authority but changes the visible search framing:
-
-- the **landing** now owns business evaluation around private AI, dedicated infrastructure and on-premise deployment;
-- the **article** owns the informational/technical question around local, self-hosted and on-premise AI architecture.
-
-No slug changes are necessary: the intent can be clarified through title, H1, description, direct answer and internal relationship without paying the cost of another migration.
-
-### Day 16 — process automation deserves its own owner
-
-Search evidence is stronger still:
-
-- ES `automatización de procesos con ia`: **320 searches/month**, KD **46**;
-- ES `automatización de procesos`: **1,300**, KD **32**;
-- ES `automatización de procesos empresariales`: **50**, KD **12**;
-- UK `business process automation`: **6,600**, KD **57**;
-- UK `ai workflow automation`: **260**, KD **42**;
-- UK `ai process automation`: **110**, KD **26**;
-- UK `automate business processes with ai`: **30**, KD **18**.
-
-The Day 16 landing therefore remains distinct from Home and from `/mejora-tu-proceso`. Home owns the broad company/category proposition; the Growth landing owns the commercial/evaluation concept of process automation with AI; Process Analyzer remains the transactional tool used to inspect a concrete workflow. The existing support article remains informational and answers how to select the first process rather than competing for the commercial phrase.
-
-### SEO override registry
-
-Batch 04 introduces `content/growth/seo-overrides.json` so historical content can be repositioned without copying or rewriting entire source records. An override must point to a real existing record and declares:
-
-- explicit decision;
-- primary keyword in ES and EN;
-- supporting keyword set;
-- research evidence;
-- only the fields that materially change, such as title, description, H1, lead or `updatedAt`.
-
-The Growth runtime applies these overrides to the canonical record, while `scripts/check-growth-content.mjs` rejects unknown keys, duplicate overrides, invalid decisions, missing keyword evidence or malformed dates. This gives future audits a smaller and more reviewable change surface than duplicating full 30–40 KB historical JSON files.
-
-## Redirect contract
-
-Historical redirects created during Phase 2 must:
-
-1. return a permanent redirect;
-2. resolve directly to the intended owner without a redirect chain;
-3. disappear from the sitemap when the historical URL no longer exists as an owner;
-4. leave the destination indexable;
-5. preserve ES/EN parity.
-
-Regression tests cover redirect status/destination, sitemap ownership, canonical URLs and the contextual link graph.
-
-## Next audit order
-
-Continue existing-content-first with the remaining **41** records. Prioritise records with the highest overlap risk against existing owners before low-risk long-tail process content:
-
-1. Day 24 invoice processing versus Accounting & Billing and invoice-validation use case;
-2. administrative/accounting/sales original Growth pairs versus their deep role owners;
-3. CRM / ERP / enterprise email integration pairs versus dedicated integration surfaces;
-4. data readiness, governance, human-in-the-loop, observability and incident-response clusters;
-5. pilot, sales-order, onboarding, leave and expense-management process clusters.
-
-## Completion rule
-
-Phase 2 closes only when all **56 / 56** historical records have an explicit decision and no unresolved same-intent pair remains.
+Detailed implementation evidence for the final closure is recorded in `SEO_PHASE_2_BATCH_18.md` and `SEO_PHASE_2_BATCH_19.md`, with earlier batch documentation and Git history preserving the preceding decisions.
