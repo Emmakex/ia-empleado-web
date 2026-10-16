@@ -1,0 +1,102 @@
+{
+  "landings": [
+    {
+      "key": "ai-employee-pilot",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "piloto ia", "en": "ai pilot" },
+      "supportingKeywords": {
+        "es": ["piloto inteligencia artificial", "implementación ia empresa", "escalar ia", "escalado ia"],
+        "en": ["artificial intelligence pilot", "ai proof of concept", "scaling ai", "ai rollout"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: piloto IA 20/month, CPC 0.77; piloto inteligencia artificial 20/month; implementación IA empresa 50/month, KD 34; escalar IA 20/month; escalado IA 20/month. Several more specific pilot-project/PoC variants returned no reported Spanish volume, so the landing owns the concise pilot category while supporting implementation and scale vocabulary.",
+        "Semrush UK 2026-10-16: AI pilot 880/month, KD 64; artificial intelligence pilot 480/month, KD 56; AI proof of concept 30/month; AI POC 30/month; scaling AI 30/month; AI rollout 20/month."
+      ],
+      "seoTitle": {
+        "es": "Piloto de IA para empresas: valida antes de escalar | IA Empleado",
+        "en": "AI pilot for business: validate before scaling | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Diseña un piloto de IA empresarial con proceso acotado, línea base, datos, integraciones, supervisión, métricas y criterios para escalar o detener.",
+        "en": "Design a business AI pilot with bounded scope, baseline, data, integrations, oversight, metrics and explicit criteria to scale, adjust or stop."
+      },
+      "eyebrow": {
+        "es": "PILOTO DE IA · VALIDACIÓN · ESCALADO",
+        "en": "AI PILOT · VALIDATION · SCALING"
+      },
+      "title": {
+        "es": "Piloto de IA para empresas: valida valor, seguridad y encaje operativo antes de escalar.",
+        "en": "AI pilot for business: validate value, safety and operational fit before scaling."
+      },
+      "lead": {
+        "es": "Un piloto de IA empresarial es una prueba controlada sobre un proceso real que busca generar evidencia suficiente para decidir si una solución merece escalar. Debe partir de una línea base, limitar tareas y sistemas, definir qué acciones puede ejecutar el agente, mantener supervisión humana donde exista impacto relevante y acordar métricas y criterios de salida antes de empezar. No es una demo aislada ni un despliegue completo: es una etapa de validación entre ambos extremos que permite ampliar, ajustar o detener con datos comparables.",
+        "en": "A business AI pilot is a controlled test on a real workflow designed to produce enough evidence to decide whether a solution should scale. It should start from a baseline, limit tasks and systems, define which actions the agent may execute, preserve human oversight where impact is material and agree metrics and exit criteria before work begins. It is neither an isolated demo nor a full deployment: it is a validation stage between the two that supports an evidence-based decision to expand, adjust or stop."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "piloto ia", "en": "ai pilot" },
+        "supportingKeywords": {
+          "es": ["piloto inteligencia artificial", "implementación ia empresa", "escalar ia", "escalado ia"],
+          "en": ["artificial intelligence pilot", "ai proof of concept", "scaling ai", "ai rollout"]
+        },
+        "searchIntent": "commercial",
+        "cluster": "ai-pilot",
+        "canonicalRole": "landing",
+        "conversionRole": "evaluation",
+        "researchBasis": [
+          "Semrush ES/UK research on 2026-10-16 supports a distinct AI-pilot evaluation owner, with much stronger category demand in English and smaller but measurable Spanish pilot/implementation demand."
+        ]
+      }
+    }
+  ],
+  "articles": [
+    {
+      "key": "how-to-run-ai-employee-pilot",
+      "decision": "REPOSITION",
+      "primaryKeyword": { "es": "proyecto piloto de ia", "en": "ai pilot project" },
+      "supportingKeywords": {
+        "es": ["piloto ia", "implementación ia empresa", "piloto inteligencia artificial", "escalar ia"],
+        "en": ["ai proof of concept", "artificial intelligence pilot", "ai rollout", "scaling ai"]
+      },
+      "researchBasis": [
+        "Semrush ES 2026-10-16: piloto IA 20/month; piloto inteligencia artificial 20/month; implementación IA empresa 50/month, KD 34; escalar IA 20/month. Exact 'proyecto piloto de IA' variants returned no reported volume, so the guide uses the precise how-to/project wording while grounding the cluster in measured pilot and implementation demand.",
+        "Semrush UK 2026-10-16: AI pilot project 10/month; AI proof of concept 30/month; artificial intelligence pilot 480/month, KD 56; AI rollout 20/month; scaling AI 30/month."
+      ],
+      "seoTitle": {
+        "es": "Cómo lanzar un proyecto piloto de IA en una empresa | IA Empleado",
+        "en": "How to run an AI pilot project in a business | IA Empleado"
+      },
+      "seoDescription": {
+        "es": "Guía para lanzar un proyecto piloto de IA: elegir proceso, medir línea base, acotar alcance, conectar datos, supervisar, evaluar y decidir el escalado.",
+        "en": "Step-by-step guide to running an AI pilot project: choose the workflow, measure a baseline, bound scope, connect data, supervise, evaluate and decide whether to scale."
+      },
+      "title": {
+        "es": "Cómo lanzar un proyecto piloto de IA y decidir si merece escalar",
+        "en": "How to run an AI pilot project and decide whether it should scale"
+      },
+      "excerpt": {
+        "es": "Una guía práctica para convertir una idea de automatización en un piloto de IA medible, controlado y útil para una decisión de negocio.",
+        "en": "A practical guide to turning an automation idea into a measurable, controlled AI pilot that supports a business decision."
+      },
+      "intro": {
+        "es": "Lanzar un proyecto piloto de IA significa convertir una hipótesis de automatización en una prueba operativa con proceso, muestra, línea base, alcance, permisos, responsables, métricas y criterio de cierre. Esta guía posee la intención de implementación: explica la secuencia para seleccionar el caso, preparar datos e integraciones, operar con supervisión y decidir si el resultado justifica escalar. La landing de piloto de IA conserva la intención de categoría y evaluación; las páginas de automatización de procesos explican qué tipo de procesos pueden automatizarse, mientras el piloto demuestra si un caso concreto funciona en condiciones reales.",
+        "en": "Running an AI pilot project means turning an automation hypothesis into an operational test with a workflow, sample, baseline, scope, permissions, owners, metrics and a closing criterion. This guide owns implementation intent: it explains the sequence for selecting the case, preparing data and integrations, operating with oversight and deciding whether results justify scaling. The AI-pilot landing retains category and evaluation intent; process-automation pages explain which workflows can be automated, while the pilot proves whether one concrete case works under real operating conditions."
+      },
+      "updatedAt": "2026-10-16",
+      "editorial": {
+        "primaryKeyword": { "es": "proyecto piloto de ia", "en": "ai pilot project" },
+        "supportingKeywords": {
+          "es": ["piloto ia", "implementación ia empresa", "piloto inteligencia artificial", "escalar ia"],
+          "en": ["ai proof of concept", "artificial intelligence pilot", "ai rollout", "scaling ai"]
+        },
+        "searchIntent": "informational",
+        "cluster": "ai-pilot",
+        "canonicalRole": "support",
+        "conversionRole": "education",
+        "researchBasis": [
+          "Semrush ES/UK research on 2026-10-16 separates the pilot category/evaluation job from the practical project/how-to job and preserves the existing landing-to-guide pair."
+        ]
+      }
+    }
+  ]
+}
