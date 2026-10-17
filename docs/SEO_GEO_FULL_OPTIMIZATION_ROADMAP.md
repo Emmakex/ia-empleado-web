@@ -1,21 +1,19 @@
 # IA Empleado — Full SEO/GEO Optimization Roadmap
 
-**Status:** active roadmap — **Phase 5 next**  
+**Status:** active roadmap — **Phase 6 next**  
 **Baseline:** 2026-10-15  
-**Last reconciled:** 2026-10-16  
+**Last reconciled:** 2026-10-17  
 **Scope:** `iaempleado.com` commercial website (`Emmakex/ia-empleado-web`)  
 **Canonical editorial guide:** `Emmakex/ia-empleado/docs/EDITORIAL_SEO_GEO_GUIDE.md`  
 **Canonical ownership map:** `docs/SEO_GEO_CONTENT_OWNERSHIP.md`
 
 ## Purpose
 
-This document answers one operational question: **what is already optimized, what still needs review, and in which order do we finish the whole website without creating SEO/GEO debt?**
-
-The website is not considered fully optimized until every indexable surface has a clear intent owner, validated search vocabulary, adequate content depth, internal links, conversion role, GEO-ready direct answers, correct metadata/canonical/hreflang/schema behavior, and a deliberate KEEP / EXPAND / REPOSITION / MERGE / REDIRECT / NOINDEX decision.
+This roadmap records what is already optimized, what still needs review and the order required to finish the website without creating SEO/GEO debt. The website is not considered fully optimized until every indexable surface has a clear intent owner, validated search vocabulary, adequate content depth, internal links, conversion role, GEO-ready direct answers, correct metadata/canonical/hreflang/schema behavior and a deliberate KEEP / EXPAND / REPOSITION / MERGE / REDIRECT / NOINDEX decision.
 
 ## Current inventory and status
 
-The public content model contains **at least 101 conceptual SEO/content surfaces before conversion utilities and legal pages**, with ES/EN parity where applicable.
+The public content model contains at least 101 conceptual SEO/content surfaces before conversion utilities and legal pages, with ES/EN parity where applicable.
 
 | Family | Conceptual surfaces | Current status |
 | --- | ---: | --- |
@@ -30,8 +28,8 @@ The public content model contains **at least 101 conceptual SEO/content surfaces
 | Comparativas | 1 hub + 5 comparison pages | ✅ Phase 4: 6/6 audited |
 | Growth commercial landings | 28 historical records | ✅ Phase 2: 28/28 audited |
 | Blog Growth support | 28 historical records | ✅ Phase 2: 28/28 audited |
-| Conversion / interactive utilities | 5 core ES surfaces plus EN parity where applicable | 🔄 Phase 5 next |
-| Legal | Legal notice + privacy policy | 🔄 Phase 5 indexability policy next |
+| Conversion / interactive utilities | 5 core ES surfaces plus EN parity | ✅ Phase 5 audited; deliberate index policy assigned |
+| Legal | Legal notice + privacy policy, ES/EN | ✅ Phase 5 audited; deliberate index policy assigned |
 
 ### Growth inventory closure
 
@@ -41,89 +39,44 @@ The Growth engine historically aggregated 4 original pairs, 1 incremental pair a
 
 ### Phase 0 — Governance and canonical foundation — ✅ COMPLETE
 
-Completed in the editorial alignment workstream and PR #162. Home/hubs were aligned with market language, direct GEO definitions and contextual linking; `SEO_GEO_CONTENT_OWNERSHIP.md` was created; Growth governance became `existing-owner-first` and `one-primary-intent-one-canonical-url`; and CI now requires declared keyword, intent, cluster, canonical role, conversion role and research basis for new/updated Growth content.
+Editorial alignment established `existing-owner-first`, `one-primary-intent-one-canonical-url`, the ownership map, Home/hub baseline and CI governance for declared keyword, intent, cluster, canonical role, conversion role and research basis.
 
 ### Phase 1 — Core commercial owners and reference roles — ✅ COMPLETE
 
-Completed scope:
-
-- Home and `/empleados-ia` ownership verified;
-- four deep reference profiles audited independently in ES/EN;
-- `/equipos-ia` hub + four team pages reviewed;
-- role intent separated from process-automation Growth intent and Home's broad company/category intent.
-
-Core ES examples: Home → `agentes IA para empresas`; Customer Support → `agentes ia atención al cliente`; Administrative → `agente ia administrativo`; Accounting/Billing → `ia para contabilidad`; Sales/SDR → `agente ia ventas`.
-
-**Exit gate:** satisfied.
+Home, `/empleados-ia`, four deep reference profiles and `/equipos-ia` plus four team pages were audited independently in ES/EN. Role intent is separated from process-automation Growth intent and Home's broad company/category intent.
 
 ### Phase 2 — Historical Growth audit and consolidation — ✅ COMPLETE — 56/56
 
-All 28 commercial landings + 28 support articles were individually reviewed. Comparison duplicates were consolidated, cost/ROI overlap was resolved, useful historical pages were repositioned around researched market language, CRM/ERP/email automation was separated from system integration, process pages were separated from role/sector/department intent, and the SME owner was aligned to `ia para pymes` / `ai for small business`.
-
-**Exit gate:** satisfied. All **56/56** records have an explicit decision and no known same-intent Growth pair remains unresolved.
+All 28 commercial landings + 28 support articles were individually reviewed. Same-intent conflicts were consolidated or repositioned and all 56 records now have an explicit decision. Authoritative audit: `docs/SEO_GEO_PHASE2_GROWTH_AUDIT.md`.
 
 ### Phase 3 — Organizational and problem clusters — ✅ COMPLETE — 27/27
 
-Authoritative audit: `docs/SEO_GEO_PHASE3_CLUSTER_AUDIT.md`.
-
-Completed scope:
-
-- sectors: **5/5** — hub + Ecommerce, Travel, Professional Services and B2B Sales;
-- use cases: **7/7** — hub + customer issue, invoice validation, sales follow-up, order exception, travel booking and administrative documentation;
-- departments: **7/7** — hub + six organizational operating-model pages;
-- integrations: **8/8** — hub + CRM, ERP, email, calendar, ecommerce, ticketing and document management.
-
-Ownership rule established across the family:
-
-- **sector** = industry/context/evaluation;
-- **use case** = bounded problem/workflow;
-- **department** = organizational operating model across people, agents, systems, metrics, handoffs and authority;
-- **integration** = system access, authoritative data, matching, permissions, validation, fallback and auditability.
-
-No new public SEO URL was required. Existing slugs, canonicals and locale architecture were preserved while metadata, direct answers and owner boundaries were strengthened.
-
-**Exit gate:** satisfied. All **27/27** cluster surfaces have a materially distinct search/evaluation purpose and no unresolved same-intent conflict is known inside Phase 3.
+Sectors 5/5, use cases 7/7, departments 7/7 and integrations 8/8 were audited. Ownership boundaries are explicit: sector = industry/context/evaluation; use case = bounded problem/workflow; department = organizational operating model; integration = system access/data/permissions/validation/fallback/auditability. Authoritative audit: `docs/SEO_GEO_PHASE3_CLUSTER_AUDIT.md`.
 
 ### Phase 4 — Comparison and decision-stage content — ✅ COMPLETE — 6/6
 
-Authoritative audit: `docs/SEO_GEO_PHASE4_COMPARISON_AUDIT.md`.
+Comparison hub plus five dedicated pairwise comparisons were audited. Generic definition remains with the AI-agent educational owner; process implementation remains with Growth. Authoritative audit: `docs/SEO_GEO_PHASE4_COMPARISON_AUDIT.md`.
 
-Completed scope:
+### Phase 5 — Conversion, tools and indexability decisions — ✅ COMPLETE
 
-- comparison hub;
-- agente IA vs chatbot;
-- Empleado IA vs agente IA;
-- RPA vs IA;
-- IA vs automatización tradicional;
-- agente IA vs copiloto IA.
+Authoritative audit: `docs/SEO_GEO_PHASE5_CONVERSION_INDEXABILITY_AUDIT.md`.
 
-The dedicated comparison family now owns pairwise evaluation intent only. Home keeps broad company/category intent, `/blog/que-es-un-agente-ia` keeps generic AI-agent definition intent, and process-automation Growth pages keep implementation/commercial intent. Historical comparison duplicates were already consolidated during Phase 2.
+Reviewed scope:
 
-Representative Semrush evidence from 2026-10-16: ES `agente IA vs chatbot` 30/month and `RPA vs IA` 20/month; UK `AI agent vs chatbot` 70/month, `RPA vs AI` 40/month, `AI agent vs RPA` 10/month and `AI agent vs copilot` 10/month. Low/no-volume comparison variants were retained only when they served a distinct product or architecture decision job.
+- `/como-trabajan-juntos` and EN counterpart — **INDEX AS DISTINCT SEARCH OWNER** for narrow collaboration/how-agents-work-together intent, without taking `equipo IA` / `ai team` ownership;
+- `/disena-tu-equipo-ia` / `/en/design-your-ai-team` — **INDEX** as conversion/configuration utility; `/equipos-ia` remains category owner;
+- `/mejora-tu-proceso` / `/en/improve-your-process` — **INDEX** as diagnostic utility; Growth retains broad process-automation ownership;
+- `/calculadora-roi` / `/en/roi-calculator` — **INDEX AS DISTINCT SEARCH OWNER** for calculator/tool intent;
+- `/solicitar-demo` / `/en/request-demo` — **INDEX** as branded/navigational conversion endpoint, not acquisition keyword owner;
+- legal notice and privacy policy ES/EN — **INDEX** as trust/legal surfaces, with the existing conditional legal-identity robots safeguard retained.
 
-**Exit gate:** satisfied once the Phase 4 PR merges green. No new public comparison URL, redirect or noindex action was required.
+Semrush evidence was refreshed separately for ES and UK on 2026-10-17. Representative signals: ES `equipo ia` 30/month; ES `automatizar procesos con ia` 140/month, KD 40; UK `ai team` 110/month, KD 44; UK `ai agents working together` 20/month; UK `process analysis` 140/month, KD 26; UK `ai roi calculator` 30/month, CPC 7.93. No meaningful checked volume was returned for generic demo-request variants, so the demo route remains conversion-only.
+
+**Exit gate:** satisfied. Every conversion/legal route has a deliberate index policy and no reviewed utility is assigned a primary intent already owned by a commercial or informational URL.
 
 ## Remaining optimization phases
 
-### Phase 5 — Conversion, tools and indexability decisions — P1 — 🔄 NEXT
-
-**Scope:**
-
-- `/como-trabajan-juntos`;
-- `/disena-tu-equipo-ia`;
-- `/mejora-tu-proceso`;
-- `/calculadora-roi`;
-- `/solicitar-demo`;
-- legal/privacy surfaces;
-- any internal preview/campaign route that can be crawled.
-
-For each page choose deliberately: `INDEX`, `NOINDEX`, or `INDEX AS A DISTINCT SEARCH OWNER`.
-
-Check metadata, canonical, robots behavior, internal links, conversion tracking, form copy, trust language, SSR content and whether tools need explanatory text for search/answer engines.
-
-**Exit gate:** no conversion/internal/legal URL accidentally competes with a commercial or informational owner.
-
-### Phase 6 — Technical SEO/GEO and internal graph closure — P1
+### Phase 6 — Technical SEO/GEO and internal graph closure — P1 — 🔄 NEXT
 
 Run a site-wide final pass for canonical URLs, ES/EN hreflang and x-default, sitemap completeness/exclusions, robots/indexability, redirects/chains, structured data, breadcrumbs, server-rendered critical meaning, orphan detection, contextual internal linking, title/meta/H1 duplication, thin pages, media/social previews where useful, and performance/Core Web Vitals regressions caused by content/UI changes.
 
@@ -131,25 +84,16 @@ Run a site-wide final pass for canonical URLs, ES/EN hreflang and x-default, sit
 
 ### Phase 7 — Measurement, re-crawl and optimization loop — P2 / ongoing
 
-After the one-time cleanup:
-
-- establish Search Console baseline by query and landing page;
-- configure/refresh Semrush project and position tracking when available;
-- watch pages roughly in positions 4–50 for expansion/CTR opportunities;
-- detect cannibalization by query;
-- review impressions with poor CTR;
-- review content decay monthly;
-- change ownership only when search evidence supports it.
+After the one-time cleanup: establish Search Console baseline by query and landing page; configure/refresh Semrush project and position tracking when available; watch pages roughly in positions 4–50 for expansion/CTR opportunities; detect cannibalization by query; review impressions with poor CTR; review content decay monthly; and change ownership only when search evidence supports it.
 
 **Exit gate:** no permanent exit; this becomes the operating loop after cleanup.
 
 ## Execution order from here
 
-1. **Phase 5** — conversion/indexability decisions.
-2. **Phase 6** — full technical closure.
-3. **Phase 7** — measurement and continuous optimization.
+1. **Phase 6** — full technical closure.
+2. **Phase 7** — measurement and continuous optimization.
 
-The daily SEO/GEO automation should continue consuming this optimization backlog before creating new URLs for cadence. New content remains subordinate to canonical ownership and evidence of a genuinely uncovered intent.
+The daily SEO/GEO automation must continue consuming this optimization backlog before creating new URLs for cadence. New content remains subordinate to canonical ownership and evidence of a genuinely uncovered intent.
 
 ## Progress board
 
@@ -160,37 +104,14 @@ The daily SEO/GEO automation should continue consuming this optimization backlog
 | 2. Historical Growth 28 + 28 | ✅ Complete — 56/56 | P0 | All historical records classified and known Growth cannibalization resolved |
 | 3. Sectors/use cases/departments/integrations | ✅ Complete — 27/27 | P1 | Every cluster page has distinct demand/ownership and explicit boundaries |
 | 4. Comparisons | ✅ Complete — 6/6 | P1 | One canonical owner per comparison intent |
-| 5. Conversion/indexability | 🔄 Next | P1 | Every utility/legal/internal route has deliberate index policy |
-| 6. Technical closure | ⏳ Pending | P1 | Crawl/index/schema/linking checks clean |
+| 5. Conversion/indexability | ✅ Complete | P1 | Every utility/legal route has deliberate index policy and owner boundary |
+| 6. Technical closure | 🔄 Next | P1 | Crawl/index/schema/linking checks clean |
 | 7. Measurement loop | 🔁 Ongoing after cleanup | P2 | Search Console/Semrush evidence drives future changes |
 
 ## Definition of “100% optimized” for this project
 
-We may call the current cleanup **complete** only when:
-
-1. every current indexable URL is inventoried;
-2. every URL has a primary intent or deliberate non-index decision;
-3. every primary intent has one canonical owner;
-4. all same-intent conflicts are resolved;
-5. ES and EN have independent keyword rationale;
-6. internal links connect informational → evaluation → commercial → conversion paths;
-7. GEO-critical pages provide extractable definitions, workflows, systems, controls, limits and concise answers;
-8. canonical/hreflang/schema/sitemap/indexability are validated;
-9. Search Console/Semrush monitoring is ready to measure impact;
-10. the daily automation follows this roadmap instead of publishing merely for cadence.
+The cleanup is complete only when every current indexable URL is inventoried; every URL has a primary intent or deliberate non-index decision; every primary intent has one canonical owner; all same-intent conflicts are resolved; ES and EN have independent keyword rationale; internal links connect informational → evaluation → commercial → conversion paths; GEO-critical pages provide extractable definitions, workflows, systems, controls, limits and concise answers; canonical/hreflang/schema/sitemap/indexability are validated; Search Console/Semrush monitoring is ready; and the daily automation follows this roadmap instead of publishing merely for cadence.
 
 ## Reporting contract during the roadmap
 
-Every optimization batch must report:
-
-- `OPTIMIZADO`;
-- `AMPLIADO`;
-- `CREADO`;
-- `FUSIONADO/REDIRIGIDO`;
-- `NOINDEX` where applicable;
-- `SIN CAMBIOS` when reviewed and intentionally retained;
-- key `ANTES → DESPUÉS` examples;
-- final counts;
-- PR, commit, CI and production verification.
-
-A page reviewed and intentionally retained is progress. A new URL is not progress unless it owns a new, validated intent.
+Every optimization batch must report `OPTIMIZADO`, `AMPLIADO`, `CREADO`, `FUSIONADO/REDIRIGIDO`, `NOINDEX` where applicable, `SIN CAMBIOS` when reviewed and intentionally retained, key `ANTES → DESPUÉS` examples, final counts, PR, commit, CI and production verification. A page reviewed and intentionally retained is progress. A new URL is not progress unless it owns a new, validated intent.
