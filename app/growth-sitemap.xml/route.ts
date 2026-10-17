@@ -2,8 +2,27 @@ import { blogArticlePath, blogArticleRecords, blogIndexPath, growthLandingPath, 
 
 const BASE_URL = "https://iaempleado.com";
 
-function sitemapUrl(url: string, lastModified: string, changeFrequency: "daily" | "weekly", priority: number) {
-  return `<url><loc>${url}</loc><lastmod>${lastModified}</lastmod><changefreq>${changeFrequency}</changefreq><priority>${priority.toFixed(1)}</priority></url>`;
+type SitemapEntry = {
+  url: string;
+  esUrl: string;
+  enUrl: string;
+  lastModified: string;
+  changeFrequency: "daily" | "weekly";
+  priority: number;
+};
+
+function sitemapUrl({ url, esUrl, enUrl, lastModified, changeFrequency, priority }: SitemapEntry) {
+  return [
+    "<url>",
+    `<loc>${url}</loc>`,
+    `<xhtml:link rel="alternate" hreflang="es-ES" href="${esUrl}" />`,
+    `<xhtml:link rel="alternate" hreflang="en" href="${enUrl}" />`,
+    `<xhtml:link rel="alternate" hreflang="x-default" href="${esUrl}" />`,
+    `<lastmod>${lastModified}</lastmod>`,
+    `<changefreq>${changeFrequency}</changefreq>`,
+    `<priority>${priority.toFixed(1)}</priority>`,
+    "</url>",
+  ].join("");
 }
 
 export function GET() {
@@ -11,26 +30,32 @@ export function GET() {
     .sort()
     .at(-1) ?? new Date().toISOString().slice(0, 10);
 
+  const blogEsUrl = `${BASE_URL}${blogIndexPath("es")}`;
+  const blogEnUrl = `${BASE_URL}${blogIndexPath("en")}`;
   const urls = [
-    sitemapUrl(`${BASE_URL}${blogIndexPath("es")}`, latestDate, "daily", 0.8),
-    sitemapUrl(`${BASE_URL}${blogIndexPath("en")}`, latestDate, "daily", 0.7),
+    sitemapUrl({ url: blogEsUrl, esUrl: blogEsUrl, enUrl: blogEnUrl, lastModified: latestDate, changeFrequency: "daily", priority: 0.8 }),
+    sitemapUrl({ url: blogEnUrl, esUrl: blogEsUrl, enUrl: blogEnUrl, lastModified: latestDate, changeFrequency: "daily", priority: 0.7 }),
   ];
 
   for (const landing of growthLandingRecords) {
+    const esUrl = `${BASE_URL}${growthLandingPath(landing.key, "es")}`;
+    const enUrl = `${BASE_URL}${growthLandingPath(landing.key, "en")}`;
     urls.push(
-      sitemapUrl(`${BASE_URL}${growthLandingPath(landing.key, "es")}`, landing.updatedAt, "weekly", 0.9),
-      sitemapUrl(`${BASE_URL}${growthLandingPath(landing.key, "en")}`, landing.updatedAt, "weekly", 0.8),
+      sitemapUrl({ url: esUrl, esUrl, enUrl, lastModified: landing.updatedAt, changeFrequency: "weekly", priority: 0.9 }),
+      sitemapUrl({ url: enUrl, esUrl, enUrl, lastModified: landing.updatedAt, changeFrequency: "weekly", priority: 0.8 }),
     );
   }
 
   for (const article of blogArticleRecords) {
+    const esUrl = `${BASE_URL}${blogArticlePath(article.key, "es")}`;
+    const enUrl = `${BASE_URL}${blogArticlePath(article.key, "en")}`;
     urls.push(
-      sitemapUrl(`${BASE_URL}${blogArticlePath(article.key, "es")}`, article.updatedAt, "weekly", 0.8),
-      sitemapUrl(`${BASE_URL}${blogArticlePath(article.key, "en")}`, article.updatedAt, "weekly", 0.7),
+      sitemapUrl({ url: esUrl, esUrl, enUrl, lastModified: article.updatedAt, changeFrequency: "weekly", priority: 0.8 }),
+      sitemapUrl({ url: enUrl, esUrl, enUrl, lastModified: article.updatedAt, changeFrequency: "weekly", priority: 0.7 }),
     );
   }
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls.join("")}</urlset>`;
 
   return new Response(xml, {
     headers: {
