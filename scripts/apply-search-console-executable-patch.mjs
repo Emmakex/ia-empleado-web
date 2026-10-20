@@ -56,6 +56,22 @@ function isAllowedTargetFile(targetFile) {
   return ALLOWED_FILES.has(targetFile) || DAILY_OWNER_FILE_PATTERN.test(targetFile);
 }
 
+function assertExecutionApproval(manifest) {
+  if (manifest.executionPolicy === "AUTO") return;
+  if (manifest.executionPolicy !== "REVIEW") {
+    fail(`unsupported executionPolicy: ${String(manifest.executionPolicy)}`);
+  }
+  if (manifest.reviewApproved !== true) {
+    fail("REVIEW manifests require explicit reviewApproved=true evidence");
+  }
+  if (typeof manifest.reviewActor !== "string" || !manifest.reviewActor.trim()) {
+    fail("REVIEW manifests require reviewActor");
+  }
+  if (typeof manifest.reviewedAt !== "string" || Number.isNaN(Date.parse(manifest.reviewedAt))) {
+    fail("REVIEW manifests require a valid reviewedAt timestamp");
+  }
+}
+
 function decodePointerToken(token) {
   return token.replaceAll("~1", "/").replaceAll("~0", "~");
 }
@@ -111,7 +127,7 @@ function assertMutable(pointer) {
     fail(`immutable owner field cannot be changed: ${pointer}`);
   }
   if (!MUTABLE_EXACT.has(pointer) && !MUTABLE_PREFIXES.some((prefix) => pointer.startsWith(prefix))) {
-    fail(`path is outside the AUTO mutable allowlist: ${pointer}`);
+    fail(`path is outside the guarded mutable allowlist: ${pointer}`);
   }
 }
 
@@ -167,9 +183,9 @@ try {
 }
 
 if (manifest.schema !== SCHEMA) fail(`unsupported schema: ${String(manifest.schema)}`);
-if (manifest.executionPolicy !== "AUTO") fail("only AUTO manifests may execute without review");
+assertExecutionApproval(manifest);
 if (manifest.preserveOwnerUrl !== true || manifest.createNewUrl !== false) {
-  fail("AUTO manifest must preserve the owner URL and forbid new URL creation");
+  fail("executable manifest must preserve the owner URL and forbid new URL creation");
 }
 if (manifest.targetRepository !== "Emmakex/ia-empleado-web") {
   fail("manifest targetRepository must be Emmakex/ia-empleado-web");
@@ -227,7 +243,7 @@ for (const operation of manifest.operations) {
 
 if (testCount === 0) fail("at least one test operation is required to prevent stale writes");
 if (mutationCount === 0) fail("at least one mutation operation is required");
-if (document.length !== ownerCountBefore) fail("AUTO execution may not add or remove intent owners");
+if (document.length !== ownerCountBefore) fail("guarded execution may not add or remove intent owners");
 for (const [field, value] of Object.entries(immutableBefore)) {
   if (!isDeepStrictEqual(owner[field] ?? null, value)) fail(`${field} changed unexpectedly`);
 }
@@ -237,6 +253,8 @@ console.log(JSON.stringify({
   ok: true,
   schema: SCHEMA,
   runId: manifest.runId,
+  executionPolicy: manifest.executionPolicy,
+  reviewApproved: manifest.executionPolicy === "REVIEW" ? true : null,
   targetFile,
   ownerKey: manifest.ownerKey,
   operations: mutationCount,
