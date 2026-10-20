@@ -16,8 +16,9 @@ function fixtureRoot() {
   return root;
 }
 
-function writeFixture(root, operations) {
-  const targetFile = "content/growth/landings.json";
+function writeFixture(root, operations, options = {}) {
+  const targetFile = options.targetFile ?? "content/growth/landings.json";
+  fs.mkdirSync(path.dirname(path.join(root, targetFile)), { recursive: true });
   fs.writeFileSync(
     path.join(root, targetFile),
     `${JSON.stringify([
@@ -69,6 +70,26 @@ function writeFixture(root, operations) {
 
 {
   const root = fixtureRoot();
+  const dailyFile = "content/growth/daily/2026-10-10-day25-ai-sales-order-processing.landings.json";
+  const { targetFile, manifestPath } = writeFixture(
+    root,
+    [
+      { op: "test", path: "/updatedAt", value: "2026-09-17" },
+      { op: "replace", path: "/updatedAt", value: "2026-10-20" },
+      { op: "replace", path: "/seoDescription/en", value: "AI order processing for ERP with human review." },
+    ],
+    { targetFile: dailyFile },
+  );
+  const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  const [owner] = JSON.parse(fs.readFileSync(path.join(root, targetFile), "utf8"));
+  assert.equal(owner.updatedAt, "2026-10-20");
+  assert.match(owner.seoDescription.en, /AI order processing/);
+  assert.equal(owner.slugs.en, "invoice-automation");
+}
+
+{
+  const root = fixtureRoot();
   const { manifestPath } = writeFixture(root, [
     { op: "test", path: "/updatedAt", value: "2026-09-17" },
     { op: "replace", path: "/slugs/es", value: "url-nueva" },
@@ -87,6 +108,21 @@ function writeFixture(root, operations) {
   const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /stale precondition/);
+}
+
+{
+  const root = fixtureRoot();
+  const { manifestPath } = writeFixture(
+    root,
+    [
+      { op: "test", path: "/updatedAt", value: "2026-09-17" },
+      { op: "replace", path: "/updatedAt", value: "2026-10-20" },
+    ],
+    { targetFile: "content/growth/daily/unscoped.json" },
+  );
+  const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /dated daily/);
 }
 
 console.log("IA Empleado Search Console executable patch tests passed.");
