@@ -1,4 +1,4 @@
-name: Search Console AUTO executor
+name: Search Console guarded executor
 
 on:
   pull_request:
@@ -38,6 +38,8 @@ jobs:
           grep -q 'Emmakex/ia-empleado-web' scripts/apply-search-console-executable-patch.mjs
           grep -q 'content/growth/landings.json' scripts/apply-search-console-executable-patch.mjs
           grep -q 'content/growth/articles.json' scripts/apply-search-console-executable-patch.mjs
+          grep -q 'reviewApproved' scripts/apply-search-console-executable-patch.mjs
+          grep -q 'DAILY_OWNER_FILE_PATTERN' scripts/apply-search-console-executable-patch.mjs
 
   execute-auto:
     if: github.event_name == 'push' && github.event.head_commit.author.name != 'kairoseth-search-console-auto'
@@ -55,7 +57,7 @@ jobs:
         run: |
           set -euo pipefail
           if [[ "$GITHUB_REF_NAME" != seo-run-* ]]; then
-            echo "AUTO execution is restricted to seo-run-* branches; got $GITHUB_REF_NAME."
+            echo "Search Console execution is restricted to seo-run-* branches; got $GITHUB_REF_NAME."
             exit 1
           fi
           mapfile -t PATCHES < <(
@@ -63,7 +65,7 @@ jobs:
               | grep -E '^\.kairoseth/search-console-auto/[^/]+\.json$' || true
           )
           if [ "${#PATCHES[@]}" -ne 1 ]; then
-            echo "Expected exactly one Search Console AUTO manifest in the triggering commit; found ${#PATCHES[@]}."
+            echo "Expected exactly one Search Console executable manifest in the triggering commit; found ${#PATCHES[@]}."
             exit 1
           fi
           PATCH_PATH="${PATCHES[0]}"
@@ -71,7 +73,7 @@ jobs:
           const fs = require('fs');
           const [manifestPath, outputPath] = process.argv.slice(2);
           const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-          const required = ['runId', 'organizationId', 'targetOwnerUrl', 'targetFile', 'ownerKey', 'targetRepository'];
+          const required = ['runId', 'organizationId', 'targetOwnerUrl', 'targetFile', 'ownerKey', 'targetRepository', 'executionPolicy'];
           for (const key of required) {
             if (typeof manifest[key] !== 'string' || !manifest[key].trim()) {
               throw new Error(`Manifest field ${key} is required.`);
@@ -80,16 +82,24 @@ jobs:
           if (manifest.targetRepository !== 'Emmakex/ia-empleado-web') {
             throw new Error('Wrong targetRepository for IA Empleado executor.');
           }
+          if (!['AUTO', 'REVIEW'].includes(manifest.executionPolicy)) {
+            throw new Error(`Unsupported executionPolicy ${manifest.executionPolicy}.`);
+          }
+          if (manifest.executionPolicy === 'REVIEW' && manifest.reviewApproved !== true) {
+            throw new Error('REVIEW execution requires reviewApproved=true.');
+          }
           fs.appendFileSync(outputPath, [
             `patch_path=${manifestPath}`,
             `run_id=${manifest.runId}`,
             `organization_id=${manifest.organizationId}`,
             `target_owner_url=${manifest.targetOwnerUrl}`,
             `target_file=${manifest.targetFile}`,
+            `execution_policy=${manifest.executionPolicy}`,
+            `review_approved=${manifest.reviewApproved === true ? 'true' : 'false'}`,
           ].join('\n') + '\n');
           NODE
 
-      - name: Apply guarded AUTO patch
+      - name: Apply guarded Search Console patch
         shell: bash
         run: |
           set -euo pipefail
@@ -120,6 +130,8 @@ jobs:
           RUN_ID: ${{ steps.manifest.outputs.run_id }}
           TARGET_OWNER_URL: ${{ steps.manifest.outputs.target_owner_url }}
           TARGET_FILE: ${{ steps.manifest.outputs.target_file }}
+          EXECUTION_POLICY: ${{ steps.manifest.outputs.execution_policy }}
+          REVIEW_APPROVED: ${{ steps.manifest.outputs.review_approved }}
         with:
           script: |
             const { owner, repo } = context.repo;
@@ -134,18 +146,24 @@ jobs:
             });
             let pull = existing.data[0];
             if (!pull) {
+              const reviewed = process.env.EXECUTION_POLICY === 'REVIEW';
+              const titlePrefix = reviewed ? 'SEO REVIEW APPROVED' : 'SEO AUTO';
+              const governance = reviewed
+                ? 'REVIEW · explicitly approved before execution'
+                : 'AUTO';
               const created = await github.rest.pulls.create({
                 owner,
                 repo,
                 head: branch,
                 base: 'main',
-                title: `SEO AUTO · ${process.env.RUN_ID}`,
+                title: `${titlePrefix} · ${process.env.RUN_ID}`,
                 body: [
-                  `Automated Search Console execution for \`${process.env.RUN_ID}\`.`,
+                  `Guarded Search Console execution for \`${process.env.RUN_ID}\`.`,
                   '',
                   `- Owner: ${process.env.TARGET_OWNER_URL}`,
                   `- File: \`${process.env.TARGET_FILE}\``,
-                  '- Governance: AUTO',
+                  `- Governance: ${governance}`,
+                  `- Review approval evidence: ${process.env.REVIEW_APPROVED}`,
                   '- URL/canonical preservation: enforced by executable-patch guard',
                   '- New URLs: forbidden',
                   '- Validation: Growth Content CI before merge',

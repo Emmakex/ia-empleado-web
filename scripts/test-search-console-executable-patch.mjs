@@ -16,8 +16,10 @@ function fixtureRoot() {
   return root;
 }
 
-function writeFixture(root, operations) {
-  const targetFile = "content/growth/landings.json";
+function writeFixture(root, operations, options = {}) {
+  const targetFile = options.targetFile ?? "content/growth/landings.json";
+  const executionPolicy = options.executionPolicy ?? "AUTO";
+  fs.mkdirSync(path.dirname(path.join(root, targetFile)), { recursive: true });
   fs.writeFileSync(
     path.join(root, targetFile),
     `${JSON.stringify([
@@ -33,15 +35,23 @@ function writeFixture(root, operations) {
     ], null, 2)}\n`,
   );
   const manifestPath = ".kairoseth/search-console-auto/SEO-20261020-ABCDEF12.json";
+  const reviewEvidence = executionPolicy === "REVIEW"
+    ? {
+        reviewApproved: options.reviewApproved ?? true,
+        reviewActor: options.reviewActor ?? "chatgpt:user-approved",
+        reviewedAt: options.reviewedAt ?? "2026-10-20T19:45:00.000Z",
+      }
+    : {};
   fs.writeFileSync(
     path.join(root, manifestPath),
     `${JSON.stringify({
       schema: "kairoseth.search-console-executable-patch.v1",
       runId: "SEO-20261020-ABCDEF12",
       organizationId: "test-org",
-      executionPolicy: "AUTO",
+      executionPolicy,
+      ...reviewEvidence,
       targetRepository: "Emmakex/ia-empleado-web",
-      targetOwnerUrl: "https://iaempleado.com/es/automatizacion-facturas",
+      targetOwnerUrl: "https://iaempleado.com/automatizacion-facturas",
       targetFile,
       ownerKey: "invoice-automation",
       preserveOwnerUrl: true,
@@ -69,6 +79,41 @@ function writeFixture(root, operations) {
 
 {
   const root = fixtureRoot();
+  const dailyFile = "content/growth/daily/2026-10-10-day25-ai-sales-order-processing.landings.json";
+  const { targetFile, manifestPath } = writeFixture(
+    root,
+    [
+      { op: "test", path: "/updatedAt", value: "2026-09-17" },
+      { op: "replace", path: "/updatedAt", value: "2026-10-20" },
+      { op: "replace", path: "/seoDescription/en", value: "AI order processing for ERP with human review." },
+    ],
+    { targetFile: dailyFile, executionPolicy: "REVIEW" },
+  );
+  const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  const [owner] = JSON.parse(fs.readFileSync(path.join(root, targetFile), "utf8"));
+  assert.equal(owner.updatedAt, "2026-10-20");
+  assert.match(owner.seoDescription.en, /AI order processing/);
+  assert.equal(owner.slugs.en, "invoice-automation");
+}
+
+{
+  const root = fixtureRoot();
+  const { manifestPath } = writeFixture(
+    root,
+    [
+      { op: "test", path: "/updatedAt", value: "2026-09-17" },
+      { op: "replace", path: "/updatedAt", value: "2026-10-20" },
+    ],
+    { executionPolicy: "REVIEW", reviewApproved: false },
+  );
+  const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /reviewApproved=true/);
+}
+
+{
+  const root = fixtureRoot();
   const { manifestPath } = writeFixture(root, [
     { op: "test", path: "/updatedAt", value: "2026-09-17" },
     { op: "replace", path: "/slugs/es", value: "url-nueva" },
@@ -87,6 +132,21 @@ function writeFixture(root, operations) {
   const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /stale precondition/);
+}
+
+{
+  const root = fixtureRoot();
+  const { manifestPath } = writeFixture(
+    root,
+    [
+      { op: "test", path: "/updatedAt", value: "2026-09-17" },
+      { op: "replace", path: "/updatedAt", value: "2026-10-20" },
+    ],
+    { targetFile: "content/growth/daily/unscoped.json" },
+  );
+  const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /dated daily/);
 }
 
 console.log("IA Empleado Search Console executable patch tests passed.");
