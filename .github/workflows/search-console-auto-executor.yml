@@ -1,0 +1,160 @@
+name: Search Console AUTO executor
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/search-console-auto-executor.yml'
+      - 'scripts/apply-search-console-executable-patch.mjs'
+      - 'scripts/test-search-console-executable-patch.mjs'
+  push:
+    branches:
+      - 'seo-run-*'
+    paths:
+      - '.kairoseth/search-console-auto/*.json'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ia-empleado-search-console-auto-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate-contract:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate executable patch contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/test-search-console-executable-patch.mjs
+          grep -q 'kairoseth.search-console-executable-patch.v1' scripts/apply-search-console-executable-patch.mjs
+          grep -q 'Emmakex/ia-empleado-web' scripts/apply-search-console-executable-patch.mjs
+          grep -q 'content/growth/landings.json' scripts/apply-search-console-executable-patch.mjs
+          grep -q 'content/growth/articles.json' scripts/apply-search-console-executable-patch.mjs
+
+  execute-auto:
+    if: github.event_name == 'push' && github.event.head_commit.author.name != 'kairoseth-search-console-auto'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout execution branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve executable manifest
+        id: manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_REF_NAME" != seo-run-* ]]; then
+            echo "AUTO execution is restricted to seo-run-* branches; got $GITHUB_REF_NAME."
+            exit 1
+          fi
+          mapfile -t PATCHES < <(
+            git diff-tree --no-commit-id --name-only -r HEAD \
+              | grep -E '^\.kairoseth/search-console-auto/[^/]+\.json$' || true
+          )
+          if [ "${#PATCHES[@]}" -ne 1 ]; then
+            echo "Expected exactly one Search Console AUTO manifest in the triggering commit; found ${#PATCHES[@]}."
+            exit 1
+          fi
+          PATCH_PATH="${PATCHES[0]}"
+          node - "$PATCH_PATH" "$GITHUB_OUTPUT" <<'NODE'
+          const fs = require('fs');
+          const [manifestPath, outputPath] = process.argv.slice(2);
+          const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+          const required = ['runId', 'organizationId', 'targetOwnerUrl', 'targetFile', 'ownerKey', 'targetRepository'];
+          for (const key of required) {
+            if (typeof manifest[key] !== 'string' || !manifest[key].trim()) {
+              throw new Error(`Manifest field ${key} is required.`);
+            }
+          }
+          if (manifest.targetRepository !== 'Emmakex/ia-empleado-web') {
+            throw new Error('Wrong targetRepository for IA Empleado executor.');
+          }
+          fs.appendFileSync(outputPath, [
+            `patch_path=${manifestPath}`,
+            `run_id=${manifest.runId}`,
+            `organization_id=${manifest.organizationId}`,
+            `target_owner_url=${manifest.targetOwnerUrl}`,
+            `target_file=${manifest.targetFile}`,
+          ].join('\n') + '\n');
+          NODE
+
+      - name: Apply guarded AUTO patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/apply-search-console-executable-patch.mjs '${{ steps.manifest.outputs.patch_path }}'
+          rm '${{ steps.manifest.outputs.patch_path }}'
+          node scripts/check-growth-content.mjs
+
+      - name: Commit exact content mutation
+        id: commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'kairoseth-search-console-auto'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'Executable manifest produced no repository change.'
+            exit 1
+          fi
+          git commit -m 'seo: execute ${{ steps.manifest.outputs.run_id }}'
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD
+
+      - name: Open or reuse execution pull request
+        id: pr
+        uses: actions/github-script@v7
+        env:
+          RUN_ID: ${{ steps.manifest.outputs.run_id }}
+          TARGET_OWNER_URL: ${{ steps.manifest.outputs.target_owner_url }}
+          TARGET_FILE: ${{ steps.manifest.outputs.target_file }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const branch = context.ref.replace('refs/heads/', '');
+            const existing = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: 'open',
+              head: `${owner}:${branch}`,
+              base: 'main',
+              per_page: 10,
+            });
+            let pull = existing.data[0];
+            if (!pull) {
+              const created = await github.rest.pulls.create({
+                owner,
+                repo,
+                head: branch,
+                base: 'main',
+                title: `SEO AUTO · ${process.env.RUN_ID}`,
+                body: [
+                  `Automated Search Console execution for \`${process.env.RUN_ID}\`.`,
+                  '',
+                  `- Owner: ${process.env.TARGET_OWNER_URL}`,
+                  `- File: \`${process.env.TARGET_FILE}\``,
+                  '- Governance: AUTO',
+                  '- URL/canonical preservation: enforced by executable-patch guard',
+                  '- New URLs: forbidden',
+                  '- Validation: Growth Content CI before merge',
+                  '',
+                  'Kairoseth remains the source of SEO_RUN history and production completion evidence.',
+                ].join('\n'),
+              });
+              pull = created.data;
+            }
+            core.setOutput('number', String(pull.number));
+            core.setOutput('url', pull.html_url);
+            core.info(`Execution PR #${pull.number}: ${pull.html_url}`);
