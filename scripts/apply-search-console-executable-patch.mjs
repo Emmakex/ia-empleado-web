@@ -11,6 +11,8 @@ const ALLOWED_FILES = new Set([
   "content/growth/landings.json",
   "content/growth/articles.json",
 ]);
+const DAILY_OWNER_FILE_PATTERN =
+  /^content\/growth\/daily\/\d{4}-\d{2}-\d{2}-[a-z0-9-]+\.(landings|articles)\.json$/;
 const MUTABLE_PREFIXES = [
   "/keywordVariants/",
   "/seoTitle/",
@@ -48,6 +50,10 @@ function normalizeRepoPath(value, label) {
     fail(`${label} must stay inside the repository`);
   }
   return normalized;
+}
+
+function isAllowedTargetFile(targetFile) {
+  return ALLOWED_FILES.has(targetFile) || DAILY_OWNER_FILE_PATTERN.test(targetFile);
 }
 
 function decodePointerToken(token) {
@@ -177,8 +183,8 @@ if (!Array.isArray(manifest.operations) || manifest.operations.length < 2) {
 }
 
 const targetFile = normalizeRepoPath(manifest.targetFile, "targetFile");
-if (!targetFile.startsWith(CONTENT_PREFIX) || !targetFile.endsWith(".json") || !ALLOWED_FILES.has(targetFile)) {
-  fail("targetFile must be content/growth/landings.json or content/growth/articles.json");
+if (!targetFile.startsWith(CONTENT_PREFIX) || !targetFile.endsWith(".json") || !isAllowedTargetFile(targetFile)) {
+  fail("targetFile must be a canonical Growth owner file or a dated daily .landings/.articles owner file");
 }
 if (!fs.existsSync(targetFile)) fail(`target file not found: ${targetFile}`);
 
