@@ -4,7 +4,7 @@ const surfaces = [
   { path: "/empleados-ia/comercial-sdr", title: /Agente IA para Ventas y SDR/i },
   { path: "/en/ai-employees/sales-sdr", title: /AI SDR and Sales Agent/i },
   { path: "/automatizacion-pedidos-ventas-ia-erp", title: /Automatización de pedidos/i },
-  { path: "/en/ai-sales-order-processing-automation-erp", title: /sales order/i },
+  { path: "/en/ai-sales-order-processing-automation-erp", title: /AI order processing/i },
   { path: "/blog/como-automatizar-procesamiento-pedidos-b2b-ia", title: /Cómo automatizar pedidos B2B/i },
   { path: "/en/blog/how-to-automate-b2b-sales-order-processing-ai", title: /How to automate B2B sales order processing/i },
   { path: "/casos-de-uso/incidencias-pedidos", title: /Control de pedidos e incidencias con IA/i },
