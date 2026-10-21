@@ -26,8 +26,9 @@ const MUTABLE_PREFIXES = [
   "/sections/",
   "/faq/",
   "/internalLinks/",
+  "/editorial/",
 ];
-const MUTABLE_EXACT = new Set(["/updatedAt"]);
+const MUTABLE_EXACT = new Set(["/updatedAt", "/editorial"]);
 const IMMUTABLE_PREFIXES = [
   "/key",
   "/slugs",

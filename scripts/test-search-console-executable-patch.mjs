@@ -80,12 +80,25 @@ function writeFixture(root, operations, options = {}) {
 {
   const root = fixtureRoot();
   const dailyFile = "content/growth/daily/2026-10-10-day25-ai-sales-order-processing.landings.json";
+  const editorial = {
+    primaryKeyword: { es: "automatización de pedidos", en: "ai order processing automation" },
+    supportingKeywords: {
+      es: ["automatizacion de pedidos", "procesamiento de pedidos", "automatizar pedidos"],
+      en: ["sales order processing automation", "order processing automation", "ai order processing"],
+    },
+    searchIntent: "commercial",
+    cluster: "sales-order-automation",
+    canonicalRole: "landing",
+    conversionRole: "evaluation",
+    researchBasis: ["Search Console + Semrush reviewed evidence."],
+  };
   const { targetFile, manifestPath } = writeFixture(
     root,
     [
       { op: "test", path: "/updatedAt", value: "2026-09-17" },
       { op: "replace", path: "/updatedAt", value: "2026-10-20" },
       { op: "replace", path: "/seoDescription/en", value: "AI order processing for ERP with human review." },
+      { op: "add", path: "/editorial", value: editorial },
     ],
     { targetFile: dailyFile, executionPolicy: "REVIEW" },
   );
@@ -94,6 +107,8 @@ function writeFixture(root, operations, options = {}) {
   const [owner] = JSON.parse(fs.readFileSync(path.join(root, targetFile), "utf8"));
   assert.equal(owner.updatedAt, "2026-10-20");
   assert.match(owner.seoDescription.en, /AI order processing/);
+  assert.equal(owner.editorial.primaryKeyword.en, "ai order processing automation");
+  assert.equal(owner.editorial.canonicalRole, "landing");
   assert.equal(owner.slugs.en, "invoice-automation");
 }
 
@@ -121,6 +136,17 @@ function writeFixture(root, operations, options = {}) {
   const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /immutable owner field/);
+}
+
+{
+  const root = fixtureRoot();
+  const { manifestPath } = writeFixture(root, [
+    { op: "test", path: "/updatedAt", value: "2026-09-17" },
+    { op: "add", path: "/metrics/internalScore", value: 99 },
+  ]);
+  const result = spawnSync(process.execPath, [executor, manifestPath], { cwd: root, encoding: "utf8" });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /outside the guarded mutable allowlist/);
 }
 
 {
