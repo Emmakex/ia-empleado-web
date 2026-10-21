@@ -6,6 +6,7 @@ on:
     paths:
       - "content/growth/**"
       - "scripts/check-growth-content.mjs"
+      - "scripts/verify-growth-production.mjs"
       - "docs/SEO_GEO_CONTENT_OWNERSHIP.md"
       - ".github/workflows/growth-content-ci.yml"
   push:
@@ -13,6 +14,7 @@ on:
     paths:
       - "content/growth/**"
       - "scripts/check-growth-content.mjs"
+      - "scripts/verify-growth-production.mjs"
       - "docs/SEO_GEO_CONTENT_OWNERSHIP.md"
       - ".github/workflows/growth-content-ci.yml"
 

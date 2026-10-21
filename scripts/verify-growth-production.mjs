@@ -41,12 +41,11 @@ if (!latestDate) {
   throw new Error("Growth content is empty; nothing to verify in production");
 }
 
-const latestLandings = dailyLandingFiles.length
-  ? dailyLandingFiles.at(-1).records
-  : landings.filter((record) => recordDate(record) === latestDate);
-const latestArticles = dailyArticleFiles.length
-  ? dailyArticleFiles.at(-1).records
-  : articles.filter((record) => recordDate(record) === latestDate);
+// Verify the records that actually define the latest Growth revision, not merely
+// the lexicographically newest daily files. This matters when Search Console
+// updates an existing owner from an earlier daily batch.
+const latestLandings = landings.filter((record) => recordDate(record) === latestDate);
+const latestArticles = articles.filter((record) => recordDate(record) === latestDate);
 
 const expectedUrls = [
   ...latestLandings.flatMap((record) => [
@@ -83,7 +82,9 @@ if (dailyLandingFiles.length || dailyArticleFiles.length) {
     `Latest daily files: ${dailyLandingFiles.at(-1)?.name ?? "none"}, ${dailyArticleFiles.at(-1)?.name ?? "none"}`,
   );
 }
-console.log(`Checking ${expectedUrls.length} latest Growth URL(s) in the public sitemap`);
+console.log(
+  `Checking ${expectedUrls.length} Growth URL(s) whose published/updated date is ${latestDate} in the public sitemap`,
+);
 
 const sitemapUrl = `${baseUrl}/growth-sitemap.xml`;
 const sitemap = await getText(sitemapUrl);
