@@ -21,16 +21,8 @@
       {"question":{"es":"¿La IA puede cerrar automáticamente una conciliación bancaria?","en":"Can AI automatically close a bank reconciliation?"},"answer":{"es":"Puede preparar cruces, detectar diferencias y reunir evidencia, pero el cierre debe respetar los roles, tolerancias, segregación de funciones y aprobaciones definidas por la empresa. Para un piloto conviene mantener el cierre final bajo autoridad financiera humana.","en":"It can prepare matches, detect differences and gather evidence, but close should respect the roles, tolerances, segregation of duties and approvals defined by the business. A pilot should normally keep final close under human financial authority."}},
       {"question":{"es":"¿En qué se diferencia de automatizar facturas?","en":"How is this different from invoice automation?"},"answer":{"es":"La automatización de facturas captura y valida documentos de compra o venta. La conciliación bancaria parte de movimientos financieros y comprueba cómo se relacionan con facturas, cobros, pagos y asientos existentes. Son procesos conectados, pero tienen entradas, controles e intención de búsqueda diferentes.","en":"Invoice automation captures and validates purchase or sales documents. Bank reconciliation starts from financial transactions and verifies how they relate to existing invoices, receipts, payments and ledger entries. The processes connect, but their inputs, controls and search intent are different."}}
     ],
-    "editorial": {
-      "primaryKeyword": {"es":"conciliación bancaria automática","en":"AI bank reconciliation automation"},
-      "supportingKeywords": {"es":["conciliación bancaria con IA","automatizar conciliación bancaria","conciliación bancaria automatizada","cruce automático de movimientos bancarios"],"en":["automated bank reconciliation","AI bank reconciliation","bank reconciliation automation","automated transaction matching"]},
-      "searchIntent": "commercial",
-      "cluster": "finance-operations",
-      "canonicalRole": "landing",
-      "conversionRole": "demo",
-      "researchBasis": ["2026-10-27 proactive SERP gap review: current ownership has accounting, invoice processing and expenses but no bank-reconciliation owner; reviewed dedicated commercial results for automated/AI reconciliation, transaction matching, exception handling and ERP/accounting integration, without reusing third-party performance claims as IA Empleado claims."]
-    },
-    "relatedArticleKey": "automate-administrative-tasks-human-approval",
+    "editorial": {"primaryKeyword":{"es":"conciliación bancaria automática","en":"AI bank reconciliation automation"},"supportingKeywords":{"es":["conciliación bancaria con IA","automatizar conciliación bancaria","conciliación bancaria automatizada","cruce automático de movimientos bancarios"],"en":["automated bank reconciliation","AI bank reconciliation","bank reconciliation automation","automated transaction matching"]},"searchIntent":"commercial","cluster":"finance-operations","canonicalRole":"landing","conversionRole":"demo","researchBasis":["2026-10-27 proactive SERP gap review: current ownership has accounting, invoice processing and expenses but no bank-reconciliation owner; reviewed dedicated commercial results for automated/AI reconciliation, transaction matching, exception handling and ERP/accounting integration, without reusing third-party performance claims as IA Empleado claims."]},
+    "relatedArticleKey": "automate-invoicing-accounting-human-review",
     "publishedAt": "2026-10-27",
     "updatedAt": "2026-10-27"
   }
