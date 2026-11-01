@@ -152,7 +152,12 @@ const baseArticleRecords = [
 ].filter((record) => !consolidatedArticleKeys.has(record.key));
 
 export const growthLandingRecords = applySeoOverrides(baseLandingRecords, seoOverrideRegistry.landings);
-export const blogArticleRecords = applySeoOverrides(baseArticleRecords, seoOverrideRegistry.articles);
+export const blogArticleRecords = applySeoOverrides(baseArticleRecords, seoOverrideRegistry.articles).sort(
+  (left, right) =>
+    right.publishedAt.localeCompare(left.publishedAt) ||
+    right.updatedAt.localeCompare(left.updatedAt) ||
+    left.key.localeCompare(right.key),
+);
 
 export function getGrowthLandingByKey(key: string) {
   return growthLandingRecords.find((record) => record.key === key);
