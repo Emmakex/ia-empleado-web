@@ -152,17 +152,16 @@ export function GrowthLandingPage({ locale, record }: Props) {
           </div>
         </section>
 
-        <section className="content-section editorial-context-strip" aria-label={locale === "es" ? "Enlaces relacionados" : "Related links"}>
-          <div className="container editorial-context-strip-inner">
-            <strong>{locale === "es" ? "Conecta este tema" : "Connect this topic"}</strong>
-            {relatedArticle ? <Link className="text-link" href={blogArticlePath(relatedArticle.key, locale)}>{locale === "es" ? "Guía relacionada" : "Related guide"} →</Link> : null}
-            {relatedEmployee ? <Link className="text-link" href={relatedEmployee.href}>{relatedEmployee.label} →</Link> : null}
-            {relatedUseCase ? <Link className="text-link" href={relatedUseCase.href}>{relatedUseCase.label} →</Link> : null}
-            <Link className="text-link" href={employeeIndexPath(locale)}>{locale === "es" ? "Empleados IA" : "AI Employees"} →</Link>
-            <Link className="text-link" href={useCaseIndexPath(locale)}>{locale === "es" ? "Casos de uso" : "Use cases"} →</Link>
-            <Link className="text-link" href={integrationIndexPath(locale)}>{locale === "es" ? "Integraciones" : "Integrations"} →</Link>
-          </div>
-        </section>
+        {(relatedArticle || relatedEmployee || relatedUseCase) ? (
+          <section className="content-section editorial-context-strip" aria-label={locale === "es" ? "Enlaces relacionados" : "Related links"}>
+            <div className="container editorial-context-strip-inner">
+              <strong>{locale === "es" ? "Conecta este tema" : "Connect this topic"}</strong>
+              {relatedArticle ? <Link className="text-link" href={`${blogArticlePath(relatedArticle.key, locale)}#contenido`}>{locale === "es" ? "Guía operativa" : "Operational guide"} →</Link> : null}
+              {relatedEmployee ? <Link className="text-link" href={`${relatedEmployee.href}#contenido`}>{locale === "es" ? "Rol IA relacionado" : "Related AI role"} →</Link> : null}
+              {relatedUseCase ? <Link className="text-link" href={`${relatedUseCase.href}#contenido`}>{locale === "es" ? "Caso de uso relacionado" : "Related use case"} →</Link> : null}
+            </div>
+          </section>
+        ) : null}
 
         {record.sections.map((section, index) => (
           <section id={`section-${index + 1}`} className={index % 2 === 1 ? "content-section section-panel" : "content-section"} key={section.title[locale]}>
