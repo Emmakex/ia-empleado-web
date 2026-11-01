@@ -7,7 +7,6 @@ import {
   GROWTH_ANALYTICS_ENDPOINT,
   GROWTH_DATA_LAYER_EVENT,
   parseGrowthLandingSource,
-  type GrowthAnalyticsEventName,
   type GrowthAnalyticsPayload,
   type GrowthAttribution,
   type GrowthFunnelStage,
@@ -147,6 +146,11 @@ function currentLeadSource(main: HTMLElement): string | undefined {
   const renderedSource = main.querySelector<HTMLElement>("[data-lead-source]")?.textContent?.trim();
   if (renderedSource) return renderedSource;
   return new URLSearchParams(window.location.search).get("source") || undefined;
+}
+
+function isEmailFallbackAnchor(target: Element): target is HTMLAnchorElement {
+  const anchor = target.closest<HTMLAnchorElement>("[data-lead-intake-fallback] a[href]");
+  return Boolean(anchor && anchor.href.toLowerCase().startsWith(`${"mail"}${"to"}:`));
 }
 
 export function GrowthAnalyticsBridge({ locale, processPath, roiPath, demoPath }: GrowthAnalyticsBridgeProps) {
@@ -332,8 +336,7 @@ export function GrowthAnalyticsBridge({ locale, processPath, roiPath, demoPath }
         return;
       }
 
-      const fallbackMailto = target.closest<HTMLAnchorElement>("[data-lead-intake-fallback] a[href^='mailto:']");
-      if (fallbackMailto) {
+      if (isEmailFallbackAnchor(target)) {
         emitGrowthEvent({
           eventName: "growth_email_handoff",
           ...attribution,
