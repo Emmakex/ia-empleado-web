@@ -3,6 +3,7 @@ import type { Locale } from "../lib/i18n";
 import { getDictionary, localeHref } from "../lib/i18n";
 import type { GrowthLandingRecord } from "../lib/growth-content";
 import { blogArticlePath, blogIndexPath, getBlogArticleByKey, growthLandingPath } from "../lib/growth-content";
+import { getEditorialSources } from "../lib/editorial-sources";
 import { employeeIndexPath } from "../lib/employee-catalog";
 import { employeeDetailPath } from "../lib/employee-content-engine";
 import { useCaseDetailPath, useCaseIndexPath } from "../lib/sector-use-cases";
@@ -15,12 +16,22 @@ import { SiteHeader } from "./site-header";
 
 type Props = { locale: Locale; record: GrowthLandingRecord };
 
+function formatEditorialDate(value: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "es" ? "es-ES" : "en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${value}T12:00:00Z`));
+}
+
 export function GrowthLandingPage({ locale, record }: Props) {
   const dictionary = getDictionary(locale);
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const canonical = growthLandingPath(record.key, locale);
   const alternate = growthLandingPath(record.key, otherLocale);
   const relatedArticle = getBlogArticleByKey(record.relatedArticleKey);
+  const editorialSources = getEditorialSources(record.key);
   const isAccountingCluster = record.key === "ai-invoicing-accounting-automation" || record.key === "ai-invoice-processing";
   const isExpenseManagementCluster = record.key === "ai-expense-management";
   const isSalesOrderCluster = record.key === "ai-sales-order-processing";
@@ -95,7 +106,7 @@ export function GrowthLandingPage({ locale, record }: Props) {
     <>
       <a className="skip-link" href="#contenido">{locale === "es" ? "Saltar al contenido" : "Skip to content"}</a>
       <SiteHeader locale={locale} dictionary={dictionary} alternateHref={alternate} />
-      <main id="contenido" className="sector-cluster-page">
+      <main id="contenido" className="sector-cluster-page editorial-landing-page">
         <section className="sector-hero section-shell">
           <div className="container sector-hero-grid">
             <div>
@@ -107,6 +118,10 @@ export function GrowthLandingPage({ locale, record }: Props) {
               <p className="eyebrow">{record.eyebrow[locale]}</p>
               <h1>{record.title[locale]}</h1>
               <p className="sector-hero-lead">{record.lead[locale]}</p>
+              <div className="editorial-reading-meta">
+                <span>{locale === "es" ? "Publicado" : "Published"}: <time dateTime={record.publishedAt}>{formatEditorialDate(record.publishedAt, locale)}</time></span>
+                {record.updatedAt !== record.publishedAt ? <span>{locale === "es" ? "Actualizado" : "Updated"}: <time dateTime={record.updatedAt}>{formatEditorialDate(record.updatedAt, locale)}</time></span> : null}
+              </div>
               <div className="hero-actions">
                 <Link className="button" href={demoHref}>{locale === "es" ? "Evaluar mi proceso" : "Evaluate my process"}</Link>
                 <Link className="button button-ghost" href={processAnalyzerPath(locale)}>{locale === "es" ? "Analizar un proceso" : "Analyse a process"}</Link>
@@ -115,8 +130,42 @@ export function GrowthLandingPage({ locale, record }: Props) {
           </div>
         </section>
 
+        <section className="content-section editorial-reading-rail" aria-label={locale === "es" ? "Resumen y navegación" : "Summary and navigation"}>
+          <div className="container">
+            <div className="editorial-reading-rail-inner">
+              <div className="editorial-reading-summary">
+                <div>
+                  <strong>{locale === "es" ? "Lectura orientada a decisión" : "Decision-oriented reading"}</strong>
+                  <p>{locale === "es" ? "Empieza por el proceso, revisa controles y termina en métricas, relaciones y fuentes." : "Start with the process, review controls, then move to metrics, related routes and sources."}</p>
+                </div>
+                <span className="eyebrow">{record.sections.length} {locale === "es" ? "bloques" : "sections"}</span>
+              </div>
+              <nav className="editorial-section-nav" aria-label={locale === "es" ? "En esta página" : "On this page"}>
+                {record.sections.slice(0, 6).map((section, index) => (
+                  <a href={`#section-${index + 1}`} key={section.title[locale]}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    {section.title[locale].replace(/^\d+\.\s*/u, "")}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </div>
+        </section>
+
+        <section className="content-section editorial-context-strip" aria-label={locale === "es" ? "Enlaces relacionados" : "Related links"}>
+          <div className="container editorial-context-strip-inner">
+            <strong>{locale === "es" ? "Conecta este tema" : "Connect this topic"}</strong>
+            {relatedArticle ? <Link className="text-link" href={blogArticlePath(relatedArticle.key, locale)}>{locale === "es" ? "Guía relacionada" : "Related guide"} →</Link> : null}
+            {relatedEmployee ? <Link className="text-link" href={relatedEmployee.href}>{relatedEmployee.label} →</Link> : null}
+            {relatedUseCase ? <Link className="text-link" href={relatedUseCase.href}>{relatedUseCase.label} →</Link> : null}
+            <Link className="text-link" href={employeeIndexPath(locale)}>{locale === "es" ? "Empleados IA" : "AI Employees"} →</Link>
+            <Link className="text-link" href={useCaseIndexPath(locale)}>{locale === "es" ? "Casos de uso" : "Use cases"} →</Link>
+            <Link className="text-link" href={integrationIndexPath(locale)}>{locale === "es" ? "Integraciones" : "Integrations"} →</Link>
+          </div>
+        </section>
+
         {record.sections.map((section, index) => (
-          <section className={index % 2 === 1 ? "content-section section-panel" : "content-section"} key={section.title[locale]}>
+          <section id={`section-${index + 1}`} className={index % 2 === 1 ? "content-section section-panel" : "content-section"} key={section.title[locale]}>
             <div className="container">
               <div className="section-heading sector-section-heading">
                 <p className="eyebrow">{String(index + 1).padStart(2, "0")}</p>
@@ -179,6 +228,25 @@ export function GrowthLandingPage({ locale, record }: Props) {
             </div>
           </div>
         </section>
+
+        {editorialSources.length ? (
+          <section className="content-section editorial-sources" aria-labelledby="editorial-sources-title">
+            <div className="container">
+              <div className="section-heading sector-section-heading">
+                <p className="eyebrow">{locale === "es" ? "FUENTES Y CONTEXTO" : "SOURCES AND CONTEXT"}</p>
+                <h2 id="editorial-sources-title">{locale === "es" ? "Referencias externas para contrastar el proceso." : "External references for validating the process."}</h2>
+              </div>
+              <div className="editorial-source-grid">
+                {editorialSources.map((source) => (
+                  <article className="editorial-source-card" key={source.href}>
+                    <span>{source.publisher}</span>
+                    <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label[locale]} ↗</a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="content-section" aria-labelledby="growth-faq-title">
           <div className="container">
