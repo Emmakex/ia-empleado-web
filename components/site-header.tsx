@@ -6,6 +6,7 @@ import { collaborationDemoPath } from "../lib/collaboration-demo";
 import { teamBuilderPath } from "../lib/team-builder";
 import { requestDemoPath } from "../lib/conversion-handoff";
 import { blogIndexPath } from "../lib/growth-content";
+import { GrowthAnalyticsBridge } from "./growth-analytics-bridge";
 import { MenuNavigationLink } from "./menu-navigation-link";
 import { MobileNavigation, type NavigationGroup } from "./mobile-navigation";
 
@@ -123,52 +124,60 @@ export function SiteHeader({ locale, dictionary, alternateHref }: SiteHeaderProp
   const navigationLabel = locale === "es" ? "Navegación principal" : "Main navigation";
 
   return (
-    <header className="site-header">
-      <div className="container header-inner">
-        <MenuNavigationLink className="brand" href={homeHref}>
-          <img className="brand-symbol" src="/branding/ia-empleado-mark.svg" alt="" width={41} height={41} aria-hidden="true" />
-          <span className="brand-wordmark">IA Empleado</span>
-        </MenuNavigationLink>
-        <nav className="main-nav" aria-label={navigationLabel}>
-          <MenuNavigationLink href={employeeHref}>{dictionary.nav.employees}</MenuNavigationLink>
-          <MenuNavigationLink href={teamsHref}>{dictionary.nav.teams}</MenuNavigationLink>
-          <MenuNavigationLink href={howHref}>{dictionary.nav.how}</MenuNavigationLink>
-          <details className="site-nav-explore">
-            <summary>{exploreLabel}</summary>
-            <div className="site-nav-mega" aria-label={exploreLabel}>
-              {exploreGroups.map((group) => (
-                <section className="site-nav-group" key={group.label}>
-                  <p className="site-nav-group-label">{group.label}</p>
-                  <div className="site-nav-group-links">
-                    {group.links.map((link) => (
-                      <MenuNavigationLink href={link.href} key={`${group.label}-${link.href}`}>{link.label}</MenuNavigationLink>
-                    ))}
-                  </div>
-                </section>
-              ))}
-            </div>
-          </details>
-        </nav>
-        <div className="header-actions">
-          <MenuNavigationLink className="language-link" href={languageHref} hrefLang={otherLocale}>
-            {dictionary.nav.language}
+    <>
+      <GrowthAnalyticsBridge
+        locale={locale}
+        processPath={routes.process}
+        roiPath={routes.roi}
+        demoPath={requestDemoPath(locale)}
+      />
+      <header className="site-header">
+        <div className="container header-inner">
+          <MenuNavigationLink className="brand" href={homeHref}>
+            <img className="brand-symbol" src="/branding/ia-empleado-mark.svg" alt="" width={41} height={41} aria-hidden="true" />
+            <span className="brand-wordmark">IA Empleado</span>
           </MenuNavigationLink>
-          <MenuNavigationLink className="button button-small" href={ctaHref}>
-            {dictionary.nav.cta}
-          </MenuNavigationLink>
+          <nav className="main-nav" aria-label={navigationLabel}>
+            <MenuNavigationLink href={employeeHref}>{dictionary.nav.employees}</MenuNavigationLink>
+            <MenuNavigationLink href={teamsHref}>{dictionary.nav.teams}</MenuNavigationLink>
+            <MenuNavigationLink href={howHref}>{dictionary.nav.how}</MenuNavigationLink>
+            <details className="site-nav-explore">
+              <summary>{exploreLabel}</summary>
+              <div className="site-nav-mega" aria-label={exploreLabel}>
+                {exploreGroups.map((group) => (
+                  <section className="site-nav-group" key={group.label}>
+                    <p className="site-nav-group-label">{group.label}</p>
+                    <div className="site-nav-group-links">
+                      {group.links.map((link) => (
+                        <MenuNavigationLink href={link.href} key={`${group.label}-${link.href}`}>{link.label}</MenuNavigationLink>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </details>
+          </nav>
+          <div className="header-actions">
+            <MenuNavigationLink className="language-link" href={languageHref} hrefLang={otherLocale}>
+              {dictionary.nav.language}
+            </MenuNavigationLink>
+            <MenuNavigationLink className="button button-small" href={ctaHref}>
+              {dictionary.nav.cta}
+            </MenuNavigationLink>
+          </div>
+          <MobileNavigation
+            groups={navigationGroups}
+            alternateHref={languageHref}
+            alternateHrefLang={otherLocale}
+            languageLabel={dictionary.nav.language}
+            ctaHref={ctaHref}
+            ctaLabel={dictionary.nav.cta}
+            openLabel={locale === "es" ? "Abrir menú" : "Open menu"}
+            closeLabel={locale === "es" ? "Cerrar menú" : "Close menu"}
+            navigationLabel={locale === "es" ? "Navegación móvil" : "Mobile navigation"}
+          />
         </div>
-        <MobileNavigation
-          groups={navigationGroups}
-          alternateHref={languageHref}
-          alternateHrefLang={otherLocale}
-          languageLabel={dictionary.nav.language}
-          ctaHref={ctaHref}
-          ctaLabel={dictionary.nav.cta}
-          openLabel={locale === "es" ? "Abrir menú" : "Open menu"}
-          closeLabel={locale === "es" ? "Cerrar menú" : "Close menu"}
-          navigationLabel={locale === "es" ? "Navegación móvil" : "Mobile navigation"}
-        />
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
