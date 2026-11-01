@@ -88,6 +88,11 @@ export function GrowthLandingPage({ locale, record }: Props) {
     source: `seo-landing:${record.key}:hero`,
     context: record.title[locale],
   });
+  const fitDemoHref = requestDemoPath(locale, {
+    intent: "demo",
+    source: `seo-landing:${record.key}:fit`,
+    context: record.title[locale],
+  });
   const pilotDemoHref = requestDemoPath(locale, {
     intent: "demo",
     source: `seo-landing:${record.key}:pilot`,
@@ -202,8 +207,8 @@ export function GrowthLandingPage({ locale, record }: Props) {
                     <p>{locale === "es" ? "Identifica qué parte conviene automatizar primero, qué datos necesita el flujo y dónde debe seguir existiendo control humano." : "Identify what to automate first, which data the workflow needs and where human control must remain."}</p>
                   </div>
                   <div className="cta-actions">
-                    <Link className="button" href={processHref}>{locale === "es" ? "Analizar mi proceso" : "Analyse my process"}</Link>
-                    {relatedEmployee ? <Link className="button button-ghost" href={relatedEmployee.href}>{locale === "es" ? "Ver el Empleado IA" : "View the AI Employee"}</Link> : null}
+                    <Link className="button" href={processHref}>{locale === "es" ? "Analizar un proceso" : "Analyse a process"}</Link>
+                    <Link className="button button-ghost" href={fitDemoHref}>{locale === "es" ? "Hablar sobre mi caso" : "Discuss my case"}</Link>
                   </div>
                 </div>
               </section>
