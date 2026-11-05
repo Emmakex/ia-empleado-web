@@ -145,6 +145,9 @@ jobs:
   chromium-qa:
     name: Chromium browser QA shard ${{ matrix.shard }}/3
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      options: --ipc=host
     timeout-minutes: 15
     strategy:
       fail-fast: false
@@ -162,8 +165,8 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Verify preinstalled Playwright browser runtime
+        run: npx playwright --version
 
       - name: Browser UX and accessibility QA shard ${{ matrix.shard }}/3
         run: npm run qa:browser -- --shard=${{ matrix.shard }}/3
@@ -252,6 +255,9 @@ jobs:
   webkit:
     name: WebKit browser acceptance
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      options: --ipc=host
     timeout-minutes: 15
     steps:
       - name: Checkout
@@ -265,8 +271,8 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Install WebKit
-        run: npx playwright install --with-deps webkit
+      - name: Verify preinstalled Playwright browser runtime
+        run: npx playwright --version
 
       - name: Phase 8G WebKit smoke acceptance
         run: npm run qa:phase8g:webkit
