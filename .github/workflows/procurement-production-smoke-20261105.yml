@@ -1,0 +1,46 @@
+name: Procurement Production Smoke (one-off)
+
+on:
+  push:
+    branches: [verify/procurement-production-20261105]
+    paths:
+      - ".github/workflows/procurement-production-smoke-20261105.yml"
+
+jobs:
+  verify-live-procurement:
+    name: Verify both procurement pages and public Growth sitemap
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Verify target URLs in live sitemap and page bodies
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://iaempleado.com"
+          es="${base}/automatizacion-compras-aprovisionamiento-ia"
+          en="${base}/en/ai-procurement-automation"
+          fetch() { curl -fSsL --retry 2 --retry-delay 2 --connect-timeout 15 --max-time 45 -A "IA-Empleado-Growth-Production-Smoke/1.0" "$1"; }
+          success=0
+          for attempt in $(seq 1 24); do
+            echo "Live publication verification attempt $attempt/24"
+            if fetch "${base}/growth-sitemap.xml" > /tmp/procurement-growth-sitemap.xml &&
+               grep -Fq "<loc>${es}</loc>" /tmp/procurement-growth-sitemap.xml &&
+               grep -Fq "<loc>${en}</loc>" /tmp/procurement-growth-sitemap.xml &&
+               fetch "$es" > /tmp/procurement-es.html &&
+               grep -Fqi "Automatización de compras" /tmp/procurement-es.html &&
+               fetch "$en" > /tmp/procurement-en.html &&
+               grep -Fqi "AI procurement automation" /tmp/procurement-en.html; then
+              success=1
+              break
+            fi
+            sleep 10
+          done
+          if [ "$success" -ne 1 ]; then
+            echo "::error::Procurement ES/EN pages and public sitemap were not both verifiable"
+            exit 1
+          fi
+          echo "PASS live sitemap ES: $es"
+          echo "PASS live sitemap EN: $en"
+          echo "PASS live content ES: $es"
+          echo "PASS live content EN: $en"
+          echo "PASS: both procurement pages are publicly accessible and indexed in Growth sitemap"
