@@ -112,6 +112,11 @@ function recordUrls({ kind, record }) {
   };
 }
 
+if (process.argv.includes("--list-targets")) {
+  console.log(JSON.stringify({ mode, urls: targets.flatMap((target) => Object.values(recordUrls(target))) }));
+  process.exit(0);
+}
+
 function visibleText(html) {
   return html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
