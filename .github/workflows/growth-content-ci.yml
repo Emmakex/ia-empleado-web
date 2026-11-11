@@ -7,6 +7,7 @@ on:
       - "content/growth/**"
       - "scripts/check-growth-content.mjs"
       - "scripts/verify-growth-production.mjs"
+      - "scripts/test-verify-growth-production.mjs"
       - "docs/SEO_GEO_CONTENT_OWNERSHIP.md"
       - ".github/workflows/growth-content-ci.yml"
   push:
@@ -15,6 +16,7 @@ on:
       - "content/growth/**"
       - "scripts/check-growth-content.mjs"
       - "scripts/verify-growth-production.mjs"
+      - "scripts/test-verify-growth-production.mjs"
       - "docs/SEO_GEO_CONTENT_OWNERSHIP.md"
       - ".github/workflows/growth-content-ci.yml"
 
@@ -41,6 +43,9 @@ jobs:
 
       - name: Growth content SEO/GEO contract
         run: node scripts/check-growth-content.mjs
+
+      - name: Growth production verifier regression tests
+        run: node --test scripts/test-verify-growth-production.mjs
 
       - name: Typecheck
         run: npm run typecheck

@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
+          fetch-depth: 2 # HEAD^ is required for release-specific Growth diff verification
 
       - name: Select verification profile
         id: profile
@@ -75,7 +76,7 @@ jobs:
           for attempt in $(seq 1 30); do
             echo "Growth production check $attempt/30"
             if node scripts/verify-growth-production.mjs; then
-              echo "Growth sitemap and latest public pages are live"
+              echo "Growth sitemap, exact changed records, live HTTP content and canonicals verified"
               exit 0
             fi
             if [[ "$attempt" -lt 30 ]]; then
