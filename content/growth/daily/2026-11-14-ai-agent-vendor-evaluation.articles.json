@@ -1,0 +1,256 @@
+[
+  {
+    "key": "ai-agent-vendor-evaluation-checklist",
+    "slugs": {
+      "es": "como-evaluar-proveedores-empleados-ia-antes-contratar",
+      "en": "ai-agent-vendor-evaluation-checklist-before-buying"
+    },
+    "seoTitle": {
+      "es": "Cómo evaluar proveedores de empleados IA: checklist | IA Empleado",
+      "en": "AI agent vendor evaluation checklist | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Guía para comparar proveedores de empleados IA: permisos, pruebas, privacidad, costes, trazabilidad, pilotos y salida antes de contratar.",
+      "en": "Compare AI employee vendors using evidence: workflows, access, privacy, audit logs, costs, pilots and exit readiness."
+    },
+    "title": {
+      "es": "Cómo evaluar proveedores de empleados IA antes de contratar: checklist con pruebas",
+      "en": "How to evaluate AI employee vendors before buying: an evidence-based checklist"
+    },
+    "excerpt": {
+      "es": "Una checklist práctica para responsables de operaciones y tecnología que necesitan comparar agentes IA por ejecución real, permisos, privacidad, calidad, costes y capacidad de salida.",
+      "en": "A practical checklist for operations and technology buyers comparing AI agents on real execution, permissions, privacy, quality, cost and exit readiness."
+    },
+    "intro": {
+      "es": "Elegir un proveedor de empleados IA requiere algo más que observar una conversación convincente. Un agente conectado a sistemas empresariales puede consultar información, preparar cambios y coordinar pasos, pero necesita permisos, reglas, supervisión y límites verificables. Esta guía propone once comprobaciones para comparar opciones antes de comprometer datos, presupuesto o procesos. Úsala con cualquier proveedor, incluida IA Empleado: pide evidencias, ensaya errores y separa lo que funciona hoy de lo que habría que construir. La evaluación no sustituye al análisis jurídico o de seguridad que requiera cada empresa.",
+      "en": "Choosing an AI employee vendor requires more than watching a convincing conversation. An agent connected to business systems may retrieve information, prepare changes and coordinate tasks, but it needs verifiable permissions, rules, oversight and limits. This guide offers eleven checks for comparing options before committing data, budget or operations. Apply them to any vendor, including IA Empleado: request evidence, test failure cases and separate what works today from what still needs to be built. This evaluation does not replace specialist legal or security assessment where the business requires one."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "1. Define el trabajo que quieres comprar antes de comparar proveedores",
+          "en": "1. Define the job you want to buy before comparing vendors"
+        },
+        "paragraphs": {
+          "es": [
+            "El primer criterio para evaluar proveedores de empleados IA no es el modelo utilizado ni el número de agentes de una demo. Es el trabajo verificable que la empresa necesita resolver. Escribe una ficha con disparador, entrada, sistema de origen, pasos, excepción, salida esperada y responsable. Por ejemplo, para clasificar incidencias de clientes define qué llega por correo, qué consulta el agente, cuándo prepara un ticket y quién aprueba un cambio sensible. Sin ese alcance, dos ofertas aparentemente similares pueden estar resolviendo problemas distintos y cualquier comparación de precio resulta engañosa.",
+            "Prepara al menos tres casos reales anonimizados: uno sencillo, uno con datos incompletos y uno que obligue a escalar. Aclara qué tareas son de lectura, cuáles preparan una propuesta y cuáles modifican un sistema. Si un proveedor presenta funciones que no necesitas, no las conviertas automáticamente en requisitos. La ficha del caso de uso debe poder compartirse con varios candidatos y producir respuestas comparables. Así se contrata capacidad operativa delimitada y no una promesa general de inteligencia artificial."
+          ],
+          "en": [
+            "The first criterion for evaluating AI employee vendors is not the model used or the number of agents in a demo. It is the verifiable work the business needs to complete. Write a brief identifying the trigger, inputs, source system, steps, exceptions, expected output and accountable owner. For customer issue classification, specify what arrives by email, what the agent looks up, when it prepares a ticket and who approves a sensitive change. Without that scope, apparently similar bids may solve different problems, making their prices impossible to compare fairly.",
+            "Prepare at least three anonymised real-world cases: a straightforward one, one with missing data and one that requires escalation. Separate read-only tasks, proposed changes and writes to business systems. Do not turn a vendor's unrelated features into mandatory requirements just because they look impressive. A reusable use-case brief should generate comparable responses from several candidates. The company is purchasing bounded operational capability, not a general promise that artificial intelligence will solve everything."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "2. Exige pruebas sobre el proceso y no solo una demostración",
+          "en": "2. Ask for workflow evidence, not merely a polished demonstration"
+        },
+        "paragraphs": {
+          "es": [
+            "Una demostración comercial puede mostrar una conversación fluida sin probar que el agente trabaja correctamente en los sistemas de la empresa. Solicita una prueba con datos sintéticos y un proceso completo: recibir, interpretar, consultar, proponer, solicitar aprobación si procede y registrar el resultado. Pregunta qué sistema guarda el estado oficial. Una respuesta generada en pantalla no demuestra que se haya creado una tarea válida ni que los permisos se respeten. Distingue lo implementado y demostrable de lo que el proveedor ofrece como adaptación futura o desarrollo pendiente.",
+            "Pide que la prueba incluya errores deliberados: credenciales sin permiso, una referencia inexistente, la caída de una API y una solicitud duplicada. El candidato debe explicar qué parte ejecutó, qué parte bloqueó y qué evidencia puede exportar. Si falla, interesa más una recuperación segura y trazable que una demo que nunca reconoce límites. Registra quién observó la prueba y qué artefactos conserva: identificadores de operaciones, cambios autorizados, capturas, registros depurados y resultados de aceptación. Una prueba repetible vale más que una promesa oral."
+          ],
+          "en": [
+            "A sales demonstration may show fluent conversation without proving that an agent works correctly in a company's systems. Request a test using synthetic data and an end-to-end workflow: receive, interpret, retrieve, propose, ask for approval where necessary and record the outcome. Ask which system holds the official state. An answer on a screen does not prove a valid task was created or permissions were respected. Separate functionality already implemented and demonstrable from features offered as a future customisation or roadmap commitment.",
+            "Include deliberate failure cases: insufficient credentials, an unknown reference, an unavailable API and a duplicate request. The candidate should explain what ran, what was blocked and which evidence can be exported. A safe, traceable recovery matters more than a demonstration that never admits limitations. Record who witnessed the test and which artefacts remain available: operation identifiers, approved state changes, redacted logs and acceptance results. A repeatable trial carries more weight than verbal assurances."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "3. Dibuja el recorrido de los datos y las responsabilidades",
+          "en": "3. Map the data journey and accountable parties"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de facilitar información real, identifica qué datos necesita el servicio, con qué finalidad, en qué territorio se tratan y qué organizaciones pueden recibirlos. No basta con preguntar dónde está alojada la aplicación: el modelo, herramientas externas, telemetría, soporte y copias de seguridad pueden seguir rutas distintas. Solicita una descripción comprensible del flujo desde que llega una solicitud hasta su eliminación. Si hay datos personales, revisa las condiciones de tratamiento y las responsabilidades con los equipos jurídico y de privacidad de tu empresa, sin dar por supuesto que una certificación cubre todos los componentes.",
+            "Pregunta expresamente si las entradas, salidas o registros se usan para entrenar modelos, durante cuánto tiempo se conservan y cómo se solicita una eliminación comprobable. Pide la lista de subencargados y la política de cambios de proveedores. Para probar, emplea datos ficticios o anonimizados y evita credenciales productivas. Una respuesta vaga sobre retención o acceso del personal es una incertidumbre contractual que debe resolverse antes de desplegar, no una nota menor que se compensa con buenas prestaciones. Documenta las respuestas y su fecha de vigencia."
+          ],
+          "en": [
+            "Before sharing real information, identify which data the service needs, its purpose, processing locations and the organisations that may receive it. Asking only where the application is hosted is insufficient: the model, external tools, telemetry, support functions and backups may follow different routes. Request a comprehensible data-flow description from intake to deletion. Where personal data is involved, review processing terms and responsibilities with the company's legal and privacy teams; do not assume that a certificate covers every component of the offered service.",
+            "Ask explicitly whether prompts, outputs or logs can be used for model training, how long they are retained and how a verifiable deletion request works. Request the subprocessor list and notification terms for vendor changes. Use synthetic or anonymised data for trials and avoid production credentials. A vague answer about retention or staff access is a contractual uncertainty to resolve before deployment, not a minor note that can be offset by impressive capabilities. Record each answer and the date on which it was valid."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "4. Comprueba permisos mínimos y aprobaciones humanas",
+          "en": "4. Verify least-privilege access and human approvals"
+        },
+        "paragraphs": {
+          "es": [
+            "Un empleado IA conectado a correo, CRM o ERP no debe heredar todos los permisos de un administrador. Para cada integración solicita una matriz con recurso, operación permitida, identidad utilizada, límite de datos y mecanismo de revocación. Leer un pedido, preparar una modificación y confirmarla son acciones distintas. Comprueba que la solución respete las autorizaciones en el sistema de destino y no dependa únicamente de instrucciones escritas para el modelo. La gestión de secretos, la rotación de claves y la separación entre pruebas y producción también forman parte de la evaluación.",
+            "Define antes de la prueba qué operaciones requieren una persona: gastos, devoluciones, cambios de cuenta bancaria, comunicaciones delicadas o decisiones reguladas. Haz que el candidato enseñe el recorrido de una aprobación, su rechazo y una expiración. El registro debe identificar la propuesta, la regla aplicada, la persona que decidió y la acción finalmente ejecutada. Si el agente puede saltarse ese circuito porque alguien se lo pide en lenguaje natural, el riesgo no está resuelto. La autonomía comercialmente útil es la que puede limitarse, revocarse y auditarse."
+          ],
+          "en": [
+            "An AI employee connected to email, CRM or ERP should not inherit an administrator's full permissions. For each integration request a matrix showing the resource, allowed operation, acting identity, data boundary and revocation mechanism. Reading an order, preparing a change and confirming it are separate actions. Verify that permissions are enforced at the destination system rather than relying only on instructions written for a model. Secret storage, key rotation and separation of test and production environments also belong in the evaluation.",
+            "Decide before the trial which operations require a person: spending, refunds, bank-detail changes, sensitive communications or regulated decisions. Ask the candidate to demonstrate approval, rejection and expiration paths. The evidence should identify the proposal, applied rule, human decision-maker and actual executed action. If the agent can bypass that path merely because someone asks in natural language, the risk has not been addressed. Commercially useful autonomy is autonomy that can be restricted, revoked and audited."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "5. Verifica cómo se integra y qué sucede cuando algo falla",
+          "en": "5. Test integration depth and what happens on failure"
+        },
+        "paragraphs": {
+          "es": [
+            "La palabra integración puede significar desde leer una página hasta modificar registros con una API oficial. Solicita especificar autenticación, operaciones disponibles, límites de tasa, errores esperados, versiones y dependencias por cada sistema. Pregunta si se respetan las validaciones propias del CRM o ERP y si las escrituras son idempotentes para evitar duplicados. Comprueba qué ocurre si una consulta devuelve dos clientes parecidos, el dato solicitado no existe o una operación tarda demasiado. Un proveedor responsable mostrará cómo se detiene o escala el proceso sin inventar el resultado.",
+            "Evalúa también mantenimiento y cambios. Una integración que funciona hoy puede romperse al cambiar permisos, campos obligatorios o versiones de API. Pide conocer quién detecta una regresión, quién recibe alertas, cómo se revierte una actualización y qué coste tiene adaptar el conector. No aceptes que la arquitectura se juzgue exclusivamente por el tiempo de la primera demo. La continuidad depende de contratos técnicos claros, observabilidad, límites de autoridad y responsables que puedan intervenir cuando un sistema ajeno deja de responder."
+          ],
+          "en": [
+            "The word integration may mean anything from reading a webpage to modifying records through an official API. Require details of authentication, supported operations, rate limits, expected errors, version dependencies and constraints for every system. Ask whether native CRM or ERP validations remain in force and whether writes are idempotent to prevent duplicates. Test what happens when two customers look similar, a required value is missing or an operation times out. A responsible vendor will show how the workflow stops or escalates rather than inventing an outcome.",
+            "Evaluate upkeep and change management as well. An integration that works today can break when permissions, mandatory fields or API versions change. Find out who detects a regression, receives alerts, rolls back a release and pays for connector adaptations. Do not judge architecture solely by the speed of the first demonstration. Continuity depends on clear technical contracts, observability, bounded authority and accountable people able to intervene when another system stops responding."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "6. Pide trazabilidad utilizable y procedimientos de incidentes",
+          "en": "6. Require usable traceability and incident procedures"
+        },
+        "paragraphs": {
+          "es": [
+            "Un registro útil no es una transcripción interminable. Debe permitir reconstruir qué solicitud inició el flujo, qué fuentes se consultaron, qué decisión propuso el agente, qué herramientas se llamaron, qué validaciones fallaron y quién autorizó cada acción relevante. Pide un ejemplo exportable con datos sensibles ocultos y comprueba que las marcas temporales, identificadores y cambios de estado permitan entender un incidente. La empresa necesita observar operaciones reales, no solo un panel que afirma que el agente ha terminado correctamente.",
+            "Pregunta quién puede detener un empleado IA, revocar sus credenciales y dejar un proceso en un estado seguro. Deben existir vías para atender errores de clasificación, respuestas incorrectas, datos filtrados por permisos excesivos y acciones pendientes de aprobación. Las retenciones de logs deben ser proporcionales a la finalidad y coherentes con los acuerdos de privacidad. Además, el proveedor debe separar fallos del modelo, de la integración y de las reglas empresariales. Esa distinción permite corregir la causa sin ampliar permisos indiscriminadamente."
+          ],
+          "en": [
+            "A useful audit trail is not an endless conversation transcript. It should reconstruct the request that started the workflow, consulted sources, proposed decision, tool calls, failed checks and human approval for each consequential action. Ask for an exportable sample with sensitive fields redacted and verify that timestamps, identifiers and state changes allow an incident to be understood. The business needs evidence of real operations, not merely a dashboard claiming the agent completed everything successfully.",
+            "Ask who can stop an AI employee, revoke its credentials and leave a workflow in a safe state. Procedures should cover classification errors, incorrect answers, data exposed through excessive access and actions waiting for approval. Log retention must be proportionate to its purpose and consistent with privacy arrangements. The vendor should also distinguish model failures from integration failures and business-rule failures. That distinction helps teams fix the cause instead of widening permissions indiscriminately."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "7. Evalúa calidad con casos difíciles y criterios definidos",
+          "en": "7. Measure quality with difficult cases and predefined criteria"
+        },
+        "paragraphs": {
+          "es": [
+            "No aceptes una cifra genérica de precisión sin saber qué se midió. Define un conjunto de pruebas representativas del proceso, con respuestas esperadas, excepciones y criterios de aceptación. Puedes medir exactitud de extracción, coincidencia con registros autorizados, errores de clasificación, escalados adecuados, acciones bloqueadas a tiempo y correcciones humanas. Separa resultados por tipo de caso; un promedio excelente puede ocultar fallos graves en un subconjunto pequeño pero crítico. Anota tamaño de muestra, fecha, versión, entorno y quién realizó la evaluación.",
+            "Durante el piloto compara una línea base manual con un alcance equivalente. No confundas tiempo ahorrado teórico con un resultado verificado. Una propuesta que automatiza más pasos puede ser peor si produce retrabajo, pierde información o consume horas de revisión. Define por adelantado qué fallos obligan a parar y qué mejoras permiten ampliar el piloto. Los criterios deben cambiar solo mediante una decisión documentada; de otro modo, el ensayo corre el riesgo de convertirse en una demostración sin posibilidad real de suspenso."
+          ],
+          "en": [
+            "Do not accept a generic accuracy percentage without knowing what was measured. Define representative workflow tests, expected outcomes, exceptions and acceptance rules. Measures may include extraction correctness, matching against authorised records, classification errors, appropriate escalations, timely blocks and human corrections. Segment results by case type; an excellent average may hide a serious failure in a small but important category. Record sample size, test date, version, environment and the people who performed the evaluation.",
+            "During a pilot compare a manual baseline with a genuinely equivalent scope. Do not confuse hypothetical time savings with verified results. An offer that automates more steps can be worse if it creates rework, loses information or requires hours of supervision. Define in advance which failures require a stop and which improvements allow the pilot to expand. Acceptance criteria should change only through a documented decision; otherwise the trial risks becoming a demonstration that cannot fail."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "8. Compara el coste total y no solo la licencia mensual",
+          "en": "8. Compare total cost, not only the monthly licence"
+        },
+        "paragraphs": {
+          "es": [
+            "Dos proveedores pueden anunciar el mismo precio base y tener costes operativos muy diferentes. Solicita un desglose de puesta en marcha, configuración de agentes, integraciones, consumo de modelos, llamadas a herramientas, soporte, mantenimiento, entornos de prueba y crecimiento del volumen. Identifica quién asume los costes cuando una tarea requiere reintentos o supervisión humana. Un presupuesto útil distingue el gasto fijo, el variable y los trabajos fuera de alcance. También deja claro qué cambios futuros necesitarán una nueva aprobación económica.",
+            "Calcula el coste por caso completado correctamente, no solo por mensaje enviado o acción generada. Relaciona la factura con la calidad del resultado y con el tiempo de las personas que preparan datos, revisan excepciones o corrigen errores. Prueba escenarios de bajo, medio y alto volumen y pide que el proveedor explique los límites aplicables. Si el ROI comercial se presenta como garantizado sin medir el proceso actual de tu empresa, trátalo como una hipótesis. El caso de negocio debe poder revisarse al concluir el piloto."
+          ],
+          "en": [
+            "Two vendors can advertise the same base price yet produce very different operating costs. Request a breakdown covering setup, agent configuration, integrations, model consumption, tool calls, support, maintenance, test environments and volume growth. Identify who pays when a task requires retries or human supervision. A useful quote separates fixed charges, variable costs and work outside the agreed scope. It also shows which future changes will require a new commercial approval rather than being assumed to be included.",
+            "Calculate cost per correctly completed case, not merely per message sent or action generated. Relate the invoice to outcome quality and to the time people spend preparing data, reviewing exceptions or correcting errors. Test low, medium and high-volume scenarios and ask the vendor to explain relevant limits. If the proposed return on investment is advertised as guaranteed without measuring your company's existing process, treat it as a hypothesis. The business case must be reviewable when the pilot ends."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "9. Revisa despliegue, portabilidad y dependencia del proveedor",
+          "en": "9. Check deployment, portability and vendor dependency"
+        },
+        "paragraphs": {
+          "es": [
+            "Pregunta dónde se ejecutará realmente el empleado IA y quién administra modelos, infraestructura, credenciales y conectores. Hay diferencias sustanciales entre un servicio compartido, un entorno privado dedicado y una instalación bajo control del cliente. No supongas que todas las opciones están disponibles ni que tener datos almacenados en Europa resuelve por sí solo cada cuestión de privacidad. El proveedor debe describir los límites de cada modalidad, las integraciones externas permitidas, los requisitos técnicos y qué cambia en precio, soporte y responsabilidad.",
+            "Antes de contratar, pide un inventario de lo que podrás exportar si cambia la relación: instrucciones operativas, configuraciones, reglas, datos, historiales, evaluaciones y documentación de integración. Determina qué activos son propios de la empresa, cuáles dependen de una licencia y qué se puede reconstruir sin el proveedor. Solicita plazos y procedimiento de desvinculación, borrado y revocación de accesos. Una estrategia de salida no significa que la migración sea gratis; significa poder estimarla y ensayarla antes de encontrarse con una dependencia inesperada."
+          ],
+          "en": [
+            "Ask where the AI employee will actually run and who administers models, infrastructure, credentials and connectors. There are substantial differences between a shared service, a dedicated private environment and deployment under customer control. Do not assume every option is available or that storing data in Europe automatically resolves every privacy question. The vendor should describe each arrangement's boundaries, permitted external integrations, technical prerequisites and the effect on pricing, support and accountability.",
+            "Before signing, obtain an inventory of what can be exported if the relationship ends: operating instructions, configuration, rules, data, histories, evaluations and integration documentation. Determine which assets belong to the business, which depend on a licence and which could be reconstructed without the vendor. Request an exit process and timelines covering deletion and revocation of access. An exit strategy does not mean migration is free; it means the effort can be estimated and tested before an unexpected dependency appears."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "10. Diseña una matriz de decisión con evidencias y responsables",
+          "en": "10. Build an evidence-based scorecard with named owners"
+        },
+        "paragraphs": {
+          "es": [
+            "Prepara una matriz en la que cada criterio tenga importancia para tu proceso, evidencia solicitada y una decisión provisional: cumple, requiere mitigación, pendiente o descartado. Agrupa criterios en ajuste funcional, acceso a sistemas, protección de datos, seguridad, supervisión, trazabilidad, recuperación, coste y salida. Un proveedor no debe ganar solo por acumular puntos en funciones secundarias mientras mantiene un incumplimiento crítico en permisos o tratamiento de información. Define esos requisitos no negociables antes de recibir ofertas y deja visibles las incertidumbres que siguen abiertas.",
+            "Asigna responsables distintos para negocio, sistemas, seguridad, privacidad y compras cuando el tamaño de la organización lo justifique. Cada persona valida la evidencia de su ámbito; nadie debería dar por verificada una capacidad que no observó. El objetivo de la matriz no es producir una nota exacta con falsa precisión, sino explicar por qué la elección es defendible y qué condiciones faltan. Conserva versión y fecha de la evaluación. Cuando cambie el alcance del proceso, revisa la matriz, porque una decisión válida para soporte informativo puede no serlo para operaciones con consecuencias financieras."
+          ],
+          "en": [
+            "Create a scorecard where every criterion has a business priority, requested evidence and a provisional decision: pass, mitigate, pending or reject. Group criteria under workflow fit, system access, data protection, security, human oversight, traceability, recovery, cost and exit readiness. A vendor should not win by collecting points for minor features while failing a critical permission or data-processing requirement. Define non-negotiable conditions before receiving bids and keep unresolved uncertainties visible rather than hiding them inside an average score.",
+            "Assign separate reviewers for business operations, IT, security, privacy and procurement where the organisation's size warrants it. Each person validates evidence within their remit; nobody should certify a capability they did not observe. The scorecard is not intended to create a falsely precise number, but to explain why the decision is defensible and which conditions remain. Keep its version and evaluation date. When the workflow scope changes, reassess the scorecard: a choice suitable for informational support may be unsuitable for financially consequential operations."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "11. Cierra el piloto y el contrato con condiciones verificables",
+          "en": "11. Close the pilot and contract with verifiable conditions"
+        },
+        "paragraphs": {
+          "es": [
+            "La contratación debería distinguir prueba, aceptación y operación. En el piloto acuerda casos de prueba, datos permitidos, fechas, responsables, soporte, límites de acceso, criterios para detenerse y entregables verificables. Un piloto no debe autorizar automáticamente uso productivo ni acceso ilimitado a sistemas. Tras la prueba, revisa errores, excepciones, esfuerzo humano y costes observados. Decide si corresponde ampliar, corregir, mantener como asistencia o descartar la solución. Documentar un resultado negativo también es una decisión valiosa y evita extender un proceso que todavía no es seguro o útil.",
+            "En el contrato revisa alcance, cambios, atención a incidentes, niveles de servicio, titularidad de datos y configuraciones, subproveedores, modificaciones del modelo, exportación, borrado y terminación. Para acciones con efectos jurídicos o de alto impacto pide revisión especializada. No todos los compromisos pueden verificarse con una pantalla; algunos requieren documentos, pruebas o controles posteriores. Si deseas explorar IA Empleado, usa esta misma lista para evaluar nuestra propuesta y la de cualquier alternativa, solicita una demostración acotada y exige que las capacidades reales queden distinguidas de posibles adaptaciones."
+          ],
+          "en": [
+            "Procurement should distinguish trial, acceptance and live operation. Agree pilot scenarios, permitted data, dates, owners, support, access boundaries, stop criteria and verifiable deliverables. A pilot must not automatically grant production access or unlimited authority over business systems. Afterwards review observed errors, exceptions, human effort and costs. Decide whether to expand, correct, keep the solution in an assistive role or reject it. A negative result is still a valuable business decision and prevents an immature workflow from being extended.",
+            "In the contract review scope, change control, incident response, service levels, ownership of data and configuration, subprocessors, model changes, export, deletion and termination. Seek specialist review for legally consequential or high-impact activities. Not every promise can be verified on a screen; some need documents, testing or ongoing controls. If exploring IA Empleado, apply this same checklist to our proposal and any alternative, request a bounded demonstration and insist that existing capabilities be distinguished from potential customisation."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Exige una prueba de proceso completo y distingue demo comercial de ejecución demostrable.",
+        "Rechaza permisos generales, accesos sin trazabilidad y aprobaciones que puedan saltarse.",
+        "Verifica la política de datos, subproveedores, retención, incidentes y salida.",
+        "Mide costes y calidad sobre casos correctos, con una línea base real.",
+        "Decide con una matriz de evidencias y responsables, no solo con promesas."
+      ],
+      "en": [
+        "Require an end-to-end workflow test and distinguish a sales demo from demonstrable execution.",
+        "Reject broad permissions, untraceable access and approvals that can be bypassed.",
+        "Verify data processing, subprocessors, retention, incident response and exit procedures.",
+        "Measure costs and quality on correctly completed cases using a real baseline.",
+        "Make the decision from evidence and accountable reviewers, not marketing promises."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-11-14",
+    "updatedAt": "2026-11-14",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "cómo evaluar proveedores de empleados IA",
+        "en": "AI agent vendor evaluation checklist"
+      },
+      "supportingKeywords": {
+        "es": [
+          "checklist contratar agentes IA",
+          "preguntas a proveedor de inteligencia artificial",
+          "comparar proveedores agentes IA",
+          "cómo elegir proveedor de agentes IA"
+        ],
+        "en": [
+          "AI employee vendor due diligence",
+          "questions to ask AI agent vendors",
+          "enterprise AI agent vendor selection",
+          "AI agent procurement checklist"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "ai-agent-vendor-selection",
+      "canonicalRole": "support",
+      "conversionRole": "evaluation",
+      "researchBasis": [
+        "2026-11-14 Spanish and English SERP review: AI agent vendor evaluation checklist and cómo evaluar proveedor de IA show dedicated pre-purchase evaluation intent, separate from the IA Empleado employee catalog and company/SMB commercial landing; sources: https://cogniver.com/insights/ai-agent-vendor-evaluation-checklist and https://igniten.io/blog/checklist-evaluar-proveedor-de-ia/.",
+        "2026-11-14 current Spanish vendor-selection guidance from Junta de Andalucía: https://www.juntadeandalucia.es/sites/default/files/inline-files/2026/04/Guia%20para%20la%20gestion%20de%20proveedores%20y%20terceros%20en%20sistemas%20de%20IA.pdf.",
+        "2026-11-14 checked docs/SEO_GEO_CONTENT_OWNERSHIP.md and docs/PRODUCT_CONTEXT.md; vendor evaluation is educational comparison before buying, not a duplicate of the AI Employee catalog/SMB landing. Product capabilities are conditional on configured permissions and deployment.",
+        "No Search Console or Semrush volume/KD/CPC numbers were available for this specific query; no metrics or product certification were invented."
+      ]
+    }
+  }
+]
