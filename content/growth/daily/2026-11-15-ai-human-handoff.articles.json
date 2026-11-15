@@ -1,0 +1,240 @@
+[
+  {
+    "key": "ai-customer-support-human-handoff-protocol",
+    "slugs": {
+      "es": "protocolo-traspaso-agente-ia-atencion-humana",
+      "en": "ai-to-human-customer-support-handoff-protocol"
+    },
+    "seoTitle": {
+      "es": "Traspaso de agente IA a humano: protocolo | IA Empleado",
+      "en": "AI-to-human handoff protocol for support | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Diseña el escalado de IA a personas: disparadores, contexto, colas, aceptación, privacidad, pruebas y métricas de atención.",
+      "en": "Design safe AI-to-human support handoffs: triggers, context packets, ownership, privacy, testing and measurable outcomes."
+    },
+    "title": {
+      "es": "Protocolo de traspaso de un agente IA a atención humana: guía operativa",
+      "en": "AI-to-human customer support handoff: an operational protocol"
+    },
+    "excerpt": {
+      "es": "Cómo pasar un caso de atención al cliente desde IA a una persona con contexto, propietario y verificación, sin prometer automatización ilimitada.",
+      "en": "How to transfer customer service cases from AI to people with context, accountable ownership and verification, without promising unlimited automation."
+    },
+    "intro": {
+      "es": "El traspaso de un agente IA a una persona es un proceso de responsabilidad, no un botón. Esta guía ofrece reglas de escalado, un paquete de contexto, estados verificables, pruebas de errores y métricas para diseñar atención al cliente con supervisión humana. No presupone que una integración concreta esté activada en IA Empleado.",
+      "en": "An AI-to-human handoff is a transfer of accountability, not a button. This guide provides escalation rules, a context packet, observable states, failure tests and measures for designing customer service with human oversight. It does not assume any particular IA Empleado integration is enabled."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Cuándo termina realmente el traspaso",
+          "en": "When a handoff is actually complete"
+        },
+        "paragraphs": {
+          "es": [
+            "El traspaso de un empleado IA a una persona no termina cuando aparece un mensaje de transferencia. Termina cuando alguien del equipo acepta el caso y puede continuar sin pedir al cliente que empiece de cero. Define estados separados: solicitado, en cola, asignado, aceptado y resuelto. Un ticket creado sin responsable no es una resolución ni una transferencia satisfactoria. Para cada estado especifica un dueño, una marca temporal y la siguiente acción permitida. La supervisión humana debe ser una operación real, no una frase de marketing.",
+            "Empieza con un proceso concreto, por ejemplo una consulta de pedido con una incidencia de facturación. Distingue qué puede contestar el agente con información aprobada, qué puede preparar como borrador y qué debe decidir un empleado. No atribuyas a la IA facultades de devolver dinero, modificar contratos o resolver reclamaciones reguladas sin autorización. Esta guía describe un diseño de proceso evaluable, no una promesa de que todas las instalaciones tengan cada conector configurado. Documenta quién asume la responsabilidad final de la respuesta."
+          ],
+          "en": [
+            "An AI-to-human handoff is not complete when a transfer message appears. It is complete when a team member accepts ownership and can continue without asking the customer to start again. Model distinct states: requested, queued, assigned, accepted and resolved. A ticket created without an accountable owner is neither a resolution nor a satisfactory transfer. For each state define its owner, timestamp and the next permitted action. Human oversight must be an actual operating step, not a marketing phrase.",
+            "Begin with a bounded process, such as an order enquiry that exposes a billing discrepancy. Separate answers the agent can provide from approved knowledge, changes it may draft, and decisions reserved for a person. Do not grant an AI unlimited refund, contract amendment or regulated complaint authority. This guide describes a workflow to evaluate, not a promise that every customer installation has every connector enabled. Document who remains accountable for the final customer response."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Reglas para activar el escalado",
+          "en": "Rules that trigger escalation"
+        },
+        "paragraphs": {
+          "es": [
+            "El cliente debe poder pedir una persona de manera clara. Otros disparadores son identidad sin verificar, información contradictoria, ausencia de fuentes fiables, petición repetida, incidencia de seguridad u operación irreversible. No conviertas una puntuación de confianza del modelo en autorización para realizar acciones delicadas. Para los riesgos altos define reglas deterministas y una ruta de salida segura. Prueba frases naturales y no solo un botón perfectamente etiquetado. Si alguien solicita atención humana, no le obligues a superar nuevos intentos automáticos innecesarios.",
+            "Especifica prioridad y destino de cada señal. Una petición de acceso bloqueado puede ir a soporte, una disputa de cargo a facturación y una consulta contractual a un especialista autorizado. Si el clasificador no puede elegir responsable con seguridad, debe enviar el caso a una cola de revisión en lugar de inventar una decisión. El umbral de reintentos debe ser una política operativa aprobada, revisable según canal y contexto. Incluye también una ruta accesible para quien no pueda utilizar el canal automatizado."
+          ],
+          "en": [
+            "The customer should have a clear way to request a person. Other triggers include failed identity checks, conflicting information, missing trusted sources, repeated requests, security incidents or irreversible actions. Never treat a model confidence score as permission to execute sensitive operations. Use deterministic rules for high-stakes conditions and a safe exit path. Test natural requests, not only a perfectly labelled transfer button. When someone asks for human help, do not force additional unnecessary automated attempts.",
+            "Specify priority and destination for every signal. Locked access may belong to technical support, a disputed charge to billing, and a contract question to an authorised specialist. If the classifier cannot safely identify the owner, route to a review queue rather than inventing a decision. Retry thresholds must be approved operational policies, adaptable to channel and context. Include an accessible alternative for people unable to use the automated channel."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Qué información recibe la persona",
+          "en": "What the receiving person needs"
+        },
+        "paragraphs": {
+          "es": [
+            "El equipo receptor necesita motivo de contacto, identificador del caso, canal, referencias verificadas, historial pertinente, consultas realizadas y resultado de cada intento. Una síntesis breve facilita la lectura, pero no debe sustituir al registro original: un resumen generado puede omitir una condición o inventar una conclusión. Mantén acceso a la conversación según permisos y retención, y marca qué hechos proceden del sistema de origen y cuáles son interpretaciones pendientes de revisión. Evita presentar una inferencia como dato confirmado.",
+            "Usa un esquema sencillo: objetivo del cliente, datos confirmados, datos no confirmados, acciones ejecutadas, acciones propuestas, causa del escalado, urgencia y próximo paso. Incluye enlaces a registros autorizados en vez de copiar datos personales innecesarios. Comprueba que el agente humano pueda abrir esas referencias. Si una API no responde, el paquete debe declarar la ausencia de información y nunca rellenarla con una suposición. Conserva los identificadores necesarios para reconstruir el recorrido sin exponer secretos."
+          ],
+          "en": [
+            "The receiving team needs the contact reason, case identifier, channel, verified references, relevant history, attempted lookups and outcomes. A short summary improves readability but must not replace the original record: a generated summary can omit a condition or invent a conclusion. Retain access to the conversation subject to permissions and retention rules, and label which facts came from a source system versus unverified interpretations. Never present an inference as a confirmed fact.",
+            "Use a simple schema: customer goal, confirmed facts, unconfirmed facts, actions performed, proposed actions, escalation reason, urgency and next step. Link to authorised records instead of duplicating unnecessary personal data. Check that the human can actually open those references. If an API fails, the packet must disclose missing information rather than filling the gap with a plausible guess. Keep identifiers needed to reconstruct the process without exposing secrets."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Colas, aceptación y horarios",
+          "en": "Queues, acceptance and working hours"
+        },
+        "paragraphs": {
+          "es": [
+            "En muchas operaciones el fallo real aparece entre crear el ticket y conseguir que alguien lo atienda. Diseña una cola con propietario, sustituto y reglas de reasignación. Diferencia notificación enviada de notificación recibida, y ambas de aceptación real. Si nadie está disponible, conserva el caso y comunica el siguiente paso posible sin prometer un tiempo de respuesta que no puedas garantizar. Las transferencias fuera de horario deben quedar visibles para el siguiente turno, con un responsable de seguimiento definido.",
+            "En pruebas simula una cola llena, un agente ausente y una reasignación entre equipos. Comprueba que el caso no se pierda ni se duplique cuando un mensaje se reintenta. Un identificador persistente y reglas de idempotencia ayudan a evitar dos expedientes para la misma consulta. Define quién revisa casos sin dueño y cómo se alerta a una persona responsable cuando la cola supera los límites internos. No marques como aceptado un caso solo porque se envió una notificación."
+          ],
+          "en": [
+            "In many operations the real failure happens between creating a ticket and getting someone to work it. Design a queue with an owner, backup and reassignment rules. Distinguish notification sent from notification delivered, and both from actual acceptance. If nobody is available, preserve the case and communicate the next realistic step without promising a response time you cannot guarantee. Out-of-hours transfers must remain visible to the next shift with a named follow-up owner.",
+            "In a test environment simulate a full queue, an absent agent and reassignment between teams. Confirm that the case is neither lost nor duplicated when messages retry. A persistent identifier and idempotency rules help prevent two records for one request. Name the person who reviews unowned cases and define when an accountable supervisor receives an alert if internal queue limits are exceeded. Do not mark a case accepted merely because a notification was sent."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Comunicación honesta con el cliente",
+          "en": "Honest communication with the customer"
+        },
+        "paragraphs": {
+          "es": [
+            "El mensaje al cliente debe reconocer la necesidad de intervención humana, indicar qué información ya se ha conservado y explicar qué ocurrirá después. No afirmes que una persona está conectada si solo se ha abierto una cola. Tampoco prometas una resolución inmediata para una disputa que requiere revisión. Si el usuario necesita otro canal accesible, ofrécelo conforme a los recursos reales del negocio. El tono claro evita que la automatización oculte un bloqueo operativo o cree expectativas imposibles.",
+            "Una fórmula útil es explicar que el caso se ha registrado para revisión, facilitar una referencia y especificar el canal por el que llegará la respuesta. Cuando se acepte el caso, actualiza el estado. Si el cliente añade información mientras espera, vincúlala al expediente existente y avisa al responsable. No uses frases que atribuyan decisiones a un humano antes de que se hayan tomado ni marques como resuelta una consulta solo porque el bot cerró su ventana. Permite consultar el estado cuando sea viable."
+          ],
+          "en": [
+            "The customer-facing message should acknowledge the need for human intervention, explain which information has been retained and state what happens next. Do not claim a person is online when the request is merely queued. Do not promise immediate resolution for a dispute requiring investigation. Where the customer needs an accessible alternative channel, offer only options the organisation genuinely supports. Clear language prevents automation from concealing an operational blockage or creating impossible expectations.",
+            "A useful pattern is to explain that the case is recorded for review, provide a reference and specify the channel for the reply. Update the state when a person accepts it. If the customer adds information while waiting, attach it to the existing case and notify the owner. Avoid wording that attributes decisions to a human before they happen, and never mark a question resolved just because the bot window closed. Offer status visibility where practical."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Privacidad, permisos y decisiones sensibles",
+          "en": "Privacy, permissions and sensitive decisions"
+        },
+        "paragraphs": {
+          "es": [
+            "El paquete de traspaso puede contener datos personales, historial comercial o información financiera. Antes de implementarlo, decide qué campos necesita realmente cada equipo, qué se enmascara y durante cuánto tiempo se conserva. La integración no debe exponer credenciales ni conceder permisos de administrador por comodidad. Las identidades de servicio necesitan accesos limitados y revocables, mientras que el usuario humano debe seguir autenticándose en el sistema donde ejecuta la decisión. Separa entornos de ensayo y producción.",
+            "Prueba escenarios con clientes de nombres similares, adjuntos sensibles y usuarios sin permiso para abrir el expediente. El sistema debe negar acceso cuando corresponda y dejar un rastro útil de la denegación sin filtrar contenido. Revisa con los responsables de privacidad los contratos, canales y bases jurídicas aplicables. Una guía operativa no sustituye una evaluación legal, ni una afirmación general de cumplimiento demuestra que un despliegue particular sea conforme. El traspaso no autoriza automáticamente pagos, reembolsos o decisiones de elegibilidad."
+          ],
+          "en": [
+            "The handoff packet may contain personal data, commercial history or financial information. Before implementation decide which fields each team truly needs, what must be masked and how long records are retained. Integrations should not expose credentials or grant administrator permissions for convenience. Service identities need bounded, revocable access, while human staff must still authenticate in the system where they make consequential decisions. Keep test and production environments separate.",
+            "Test customers with similar names, sensitive attachments and users without permission to open a case. The system should deny access when appropriate and leave a useful denial trail without leaking content. Review relevant contracts, channels and legal grounds with privacy specialists. An operational guide does not replace legal assessment, and a general compliance statement does not establish that a particular deployment meets every applicable requirement. A handoff never automatically authorises payments, refunds or eligibility decisions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Ejemplo reproducible: incidencia de factura",
+          "en": "Reproducible example: invoice discrepancy"
+        },
+        "paragraphs": {
+          "es": [
+            "Imagina que una clienta pregunta por una factura de un pedido. El agente consulta una referencia autorizada, detecta que el importe mostrado no coincide con el documento aportado y evita confirmar un ajuste. Crea o prepara un caso con identificador del pedido, discrepancia y documentos permitidos. El sistema enruta la incidencia a facturación, donde una persona revisa la evidencia y decide. Este ejemplo es ilustrativo: la conexión y las acciones disponibles dependen del proyecto contratado y de sus permisos aprobados.",
+            "Repite la prueba con un pedido inexistente y con un servicio de facturación temporalmente inaccesible. En ambos casos la IA debe reconocer que no puede verificar el dato, conservar el contexto y pedir revisión humana. Añade una solicitud explícita de hablar con una persona para comprobar que no se retiene al cliente en un bucle. Registra estados y tiempos reales del ensayo, sin extrapolar ahorros ni porcentajes de automatización a otros negocios. Comprueba también qué ve el especialista al aceptar el expediente."
+          ],
+          "en": [
+            "Imagine a customer asking about an invoice for an order. The agent checks an authorised reference, notices that the displayed amount differs from an attached document and refrains from confirming an adjustment. It creates or prepares a case with the order identifier, discrepancy and permitted evidence. The system routes the issue to billing, where a person reviews the material and decides. This is an illustrative workflow: connections and available actions depend on the contracted deployment and its approved permissions.",
+            "Repeat the test with a nonexistent order and a temporarily unavailable billing service. In both situations the AI must acknowledge that it cannot verify the fact, preserve context and request human review. Add an explicit request to speak to a person to check that the customer is not trapped in a loop. Record actual states and timings from the trial without extrapolating automation percentages or savings to unrelated businesses. Check what the specialist sees on accepting the case."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Indicadores para medir la calidad",
+          "en": "Measures of handoff quality"
+        },
+        "paragraphs": {
+          "es": [
+            "El porcentaje de conversaciones que nunca llegan a una persona no demuestra por sí solo buena atención. Construye un cuadro de mando con casos solicitados, casos aceptados, casos sin dueño, repeticiones de información, errores de enrutamiento, tiempo hasta aceptación y resolución verificada. Segmenta por canal y tipo de incidencia para no comparar tareas simples con reclamaciones complejas. Define quién audita una muestra y cómo se registran las correcciones de políticas. No confundas contención con satisfacción del cliente.",
+            "Compara resultados con una línea base anterior obtenida de tus propios datos, sin inventar objetivos universales. Una caída en transferencias puede indicar mejora, pero también un botón oculto o un clasificador que bloquea escalados legítimos. Combina métricas cuantitativas con revisión de transcripciones permitidas y comentarios de agentes. Observa especialmente si el cliente tuvo que repetir su problema y si el receptor disponía de la información necesaria para actuar. Revisa excepciones y casos abandonados, no solo los cierres correctos."
+          ],
+          "en": [
+            "The share of conversations that never reach a person does not, by itself, prove good service. Build a dashboard with requested transfers, accepted cases, unowned cases, repeated explanations, routing errors, time to acceptance and verified resolution. Segment by channel and issue type rather than comparing simple questions with complex disputes. Name who audits a sample and how policy corrections are recorded. Do not confuse containment with customer satisfaction.",
+            "Compare outcomes with a baseline from your own operation rather than inventing universal targets. Fewer transfers may mean better automation, but can also indicate a hidden human option or a classifier blocking legitimate escalation. Combine quantitative measures with permitted transcript review and staff feedback. Pay particular attention to whether customers repeated their problem and whether receiving staff had the information required to act. Review exceptions and abandoned cases, not just successful closures."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Aceptación, fallos y reversión",
+          "en": "Acceptance testing, failures and rollback"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes del lanzamiento, realiza una batería de aceptación con consultas normales, lenguaje ambiguo, peticiones urgentes, sistemas caídos, usuarios sin permisos y reintentos de mensajes. Comprueba cada transición de estado y verifica que no haya una acción sensible sin autorización. Conserva evidencias con datos sintéticos y criterios de aprobado o rechazado definidos antes del ensayo. La ausencia de un fallo en una demo no equivale a fiabilidad en producción. Incluye también pruebas de accesibilidad y de solicitud de atención humana.",
+            "Establece una forma de suspender la automatización, desactivar un conector o devolver el proceso a atención humana cuando aparezca un incidente. Identifica quién puede tomar esa decisión y cómo se informa a clientes con casos abiertos. Una reversión segura preserva referencias y trabajo pendiente; no borra expedientes para hacer desaparecer el problema. Revisa las reglas después de incidentes y evita cambios silenciosos que invaliden pruebas anteriores. Un responsable debe autorizar la reactivación después de verificar la corrección."
+          ],
+          "en": [
+            "Before launch run acceptance cases covering normal requests, ambiguous language, urgent issues, unavailable systems, unauthorised users and message retries. Inspect every state transition and verify that no sensitive action occurs without approval. Preserve evidence using synthetic data and pass/fail criteria defined before the test. A demonstration without a visible failure is not proof of production reliability. Include accessibility checks and explicit requests for human assistance.",
+            "Provide a way to pause automation, disable a connector or return the process to human-only handling when an incident occurs. Identify who can make that decision and how customers with open cases will be informed. Safe rollback preserves references and unfinished work; it does not erase cases to hide the problem. Review rules after incidents and avoid silent changes that invalidate previously collected test evidence. An accountable person must authorise reactivation after verifying the correction."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Cómo empezar y qué preguntar en una demo",
+          "en": "How to start and what to ask in a demo"
+        },
+        "paragraphs": {
+          "es": [
+            "Para implantar este protocolo identifica primero un canal, un equipo receptor y una categoría de consultas de bajo riesgo. Reúne ejemplos anonimizados, define campos del ticket, acceso al historial, disparadores y aprobaciones. Ejecuta un piloto controlado con responsables nombrados y comprueba que el caso se puede cerrar de extremo a extremo. Amplía alcance solo cuando la revisión humana y la recuperación ante fallos estén demostradas. Solicita un inventario de integraciones, límites y dependencias antes de aprobar un despliegue.",
+            "IA Empleado puede servir como punto de partida para evaluar agentes de atención al cliente conectados a conocimiento, CRM y tickets según las capacidades y adaptaciones aprobadas para cada proyecto. Consulta el catálogo de empleados IA y la página de automatización de atención al cliente para delimitar el proceso. El siguiente paso es solicitar una demo basada en un caso propio anonimizado y preguntar qué componentes son demostrables hoy, cuáles requieren adaptación y quién supervisará cada acción. No confundas visión de producto con disponibilidad inmediata."
+          ],
+          "en": [
+            "To implement this protocol, begin with one channel, one receiving team and one category of low-risk enquiries. Gather anonymised examples, define ticket fields, access to history, triggers and approvals. Run a controlled pilot with named owners and confirm that a case can move from intake to verified closure. Expand scope only when human review and failure recovery have been demonstrated. Request an inventory of integrations, limitations and dependencies before approving deployment.",
+            "IA Empleado can be a starting point for evaluating customer-support agents connected to knowledge, CRM and tickets, subject to the capabilities and adaptations approved for each project. Review the AI employee catalogue and customer-service automation page to define scope. Request a demonstration using an anonymised real process and ask which components are demonstrable now, which need adaptation and who supervises each consequential action. Do not confuse product vision with immediate availability."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "El traspaso termina con aceptación humana verificable, no con un mensaje.",
+        "Los disparadores de alto riesgo requieren reglas y control humano.",
+        "El resumen debe acompañar al registro original y distinguir hechos verificados.",
+        "Las colas sin dueño, los reintentos y las caídas deben probarse antes del lanzamiento.",
+        "Mide repetición, aceptación y resolución, no solo contención."
+      ],
+      "en": [
+        "A handoff ends with verified human acceptance, not a message.",
+        "High-risk triggers need rules and human oversight.",
+        "Summaries should accompany original records and distinguish verified facts.",
+        "Test unowned queues, retries and outages before launch.",
+        "Measure repetition, acceptance and resolution, not just containment."
+      ]
+    },
+    "relatedLandingKey": "ai-customer-service-automation",
+    "publishedAt": "2026-11-15",
+    "updatedAt": "2026-11-15",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "protocolo de traspaso de IA a agente humano",
+        "en": "AI-to-human customer support handoff protocol"
+      },
+      "supportingKeywords": {
+        "es": [
+          "escalado de chatbot a persona",
+          "transferencia de contexto atención al cliente IA",
+          "cuándo escalar agente IA",
+          "supervisión humana atención al cliente"
+        ],
+        "en": [
+          "AI customer service escalation workflow",
+          "human handoff context packet",
+          "when to escalate AI support",
+          "customer service agent handoff checklist"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "customer-support-human-handoff",
+      "canonicalRole": "support",
+      "conversionRole": "evaluation",
+      "researchBasis": [
+        "2026-11-15 ES SERP: https://www.intake.es/es/blog/pasar-de-chatbot-a-agente-humano and https://support.zenvia.com/kb/es/article/496957/ describe human transfer needs; this guide focuses on accountable workflow states and acceptance testing, not generic customer service automation.",
+        "2026-11-15 EN SERP: https://www.salted.cx/guides/ai-to-human-handoff and https://www.bluetweak.com/blog/ai-to-human-handoff describe triggers, context and routing; independent protocol intent from commercial service automation.",
+        "2026-11-15 reviewed docs/SEO_GEO_CONTENT_OWNERSHIP.md, docs/PRODUCT_CONTEXT.md and content/growth/daily/.editorial-policy.json. Support employee and customer service automation own commercial intents; this educational handoff protocol has distinct primary keyword and intent.",
+        "No search volumes, rankings, savings or regulatory guarantees claimed. Features depend on approved customer configuration."
+      ]
+    }
+  }
+]
