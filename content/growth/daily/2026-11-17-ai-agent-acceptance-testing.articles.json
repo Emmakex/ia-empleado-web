@@ -1,0 +1,223 @@
+[
+  {
+    "key": "ai-agent-acceptance-testing-business-workflows",
+    "slugs": {
+      "es": "pruebas-aceptacion-empleados-ia-procesos-empresariales",
+      "en": "ai-employee-acceptance-testing-business-workflows"
+    },
+    "seoTitle": {
+      "es": "Pruebas de aceptación de empleados IA: guía UAT | IA Empleado",
+      "en": "AI employee acceptance testing: business UAT guide | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Checklist para probar empleados IA antes de producción: permisos, excepciones, supervisión humana, trazabilidad y criterios UAT.",
+      "en": "Practical AI employee UAT checklist covering permissions, exceptions, human approvals, evidence and release gates."
+    },
+    "title": {
+      "es": "Cómo realizar pruebas de aceptación de empleados IA antes de ponerlos en producción",
+      "en": "How to run AI employee acceptance tests before production"
+    },
+    "excerpt": {
+      "es": "Una guía de pruebas UAT para responsables empresariales que necesitan verificar procesos, permisos, errores y aprobaciones antes de desplegar empleados IA.",
+      "en": "A business UAT guide to validating workflows, permissions, failures and human approvals before deploying AI employees."
+    },
+    "intro": {
+      "es": "Las pruebas de aceptación de empleados IA sirven para decidir si un flujo delimitado puede entrar en operación con controles suficientes. No se trata de demostrar que el agente responde con soltura, sino de observar qué hace con datos, sistemas, excepciones y autorizaciones. Esta checklist distingue criterios empresariales, pruebas negativas, evidencia y decisión humana de lanzamiento. Es aplicable a distintas soluciones; no supone que todas las capacidades descritas estén disponibles de serie en IA Empleado.",
+      "en": "AI employee acceptance testing determines whether a bounded workflow can enter operation with adequate controls. The goal is not to demonstrate fluent answers, but to observe what happens to data, systems, exceptions and authorizations. This checklist separates business criteria, negative tests, evidence and human release decisions. It can be applied to different solutions and does not imply that every capability discussed is available by default in IA Empleado."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Definir el contrato de aceptación",
+          "en": "Define the acceptance contract"
+        },
+        "paragraphs": {
+          "es": [
+            "Una prueba de aceptación de un empleado IA empieza por una decisión empresarial: qué resultado se considerará aceptable, quién puede aprobarlo y qué evidencias quedarán disponibles. No equivale a preguntar al agente si entiende una instrucción. Escribe un contrato de prueba con objetivo, disparador, entradas, sistemas implicados, salida esperada, responsable y límites. Para un flujo de atención al cliente, por ejemplo, el objetivo puede ser preparar una clasificación revisable sin cerrar automáticamente una reclamación. El contrato debe identificar qué información se considera fuente de verdad y qué decisiones siguen siendo humanas.",
+            "Convierte ese contrato en criterios observables, no en adjetivos como inteligente o rápido. Describe qué debe aparecer en cada registro, qué campo no se puede alterar, qué autorización se exige y qué sucede si faltan datos. Separa pruebas de lectura, preparación de propuestas y escritura real. Cada criterio necesita un resultado esperado que una persona pueda comprobar sin interpretar las intenciones del modelo. Un criterio no verificable debe reescribirse antes de comenzar; de lo contrario, cualquier demostración satisfactoria puede confundirse con una aceptación formal."
+          ],
+          "en": [
+            "Acceptance testing for an AI employee begins with a business decision: what outcome counts as acceptable, who can sign it off, and which evidence will remain available. It is not the same as asking an agent whether it understands an instruction. Write a test contract describing the goal, trigger, inputs, connected systems, expected output, accountable owner and boundaries. In customer support, for example, the goal may be to prepare a reviewable classification without automatically closing a complaint. Identify the system of record and the decisions that must remain with a person.",
+            "Turn that contract into observable criteria rather than adjectives such as smart or fast. State which fields must appear in a record, which data must never change, which authorization is required and what happens when inputs are missing. Separate read-only operations, proposed changes and actual writes. Each criterion needs an expected result that a person can check without guessing the model's intentions. Rewrite any criterion that cannot be verified before the test begins; otherwise a convincing demonstration can be mistaken for formal acceptance."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Preparar casos representativos y límites",
+          "en": "Build representative cases and boundaries"
+        },
+        "paragraphs": {
+          "es": [
+            "Construye una batería de escenarios a partir del proceso real, pero utiliza datos sintéticos o debidamente anonimizados. Incluye una entrada normal, otra ambigua, una incompleta, una duplicada y una con conflicto entre dos fuentes. Documenta para cada caso el identificador, los datos permitidos, el resultado esperado y el motivo por el que se eligió. El objetivo no es sorprender al sistema con acertijos, sino comprobar si mantiene un comportamiento seguro cuando el trabajo cotidiano deja de ser ideal. No uses información de clientes reales sin las autorizaciones y garantías necesarias.",
+            "Una buena batería también contiene solicitudes fuera de alcance. Prueba una petición para revelar datos de otra cuenta, un cambio de importe no autorizado y una instrucción que intenta saltarse la aprobación. El resultado correcto puede ser rechazar, pedir aclaración o transferir a una persona. Registra esos rechazos como éxitos cuando coincidan con la política, no como errores de productividad. Incluye al menos una variante por idioma si el proceso opera en español e inglés; no presupongas que un resultado correcto en un idioma demuestra el comportamiento en el otro."
+          ],
+          "en": [
+            "Build a set of scenarios based on the actual workflow, using synthetic or properly anonymized data. Include a routine input, an ambiguous one, an incomplete one, a duplicate and one with conflicting sources. For each case record an identifier, permitted inputs, expected result and why it was selected. The goal is not to trick the system with puzzles; it is to establish whether behavior remains safe when ordinary work becomes messy. Do not introduce live customer information without the necessary authorization and safeguards.",
+            "A useful suite also contains out-of-scope requests. Test an attempt to disclose another account's data, an unauthorized amount change and an instruction designed to bypass approval. The correct result may be refusal, clarification or escalation to a person. Count those refusals as successful when they follow policy, not as productivity failures. Include language-specific cases when the workflow operates in Spanish and English; a correct result in one language does not establish correct behavior in the other."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Verificar permisos e identidades",
+          "en": "Verify identities and permissions"
+        },
+        "paragraphs": {
+          "es": [
+            "Para cada sistema conectado prepara una matriz con identidad técnica, recurso, permiso de lectura, permiso de escritura y procedimiento de revocación. Comprueba el permiso en el destino, no solo en el texto del prompt. Una cuenta que puede consultar pedidos no debería poder cambiar datos bancarios por el hecho de recibir una petición convincente. Ejecuta pruebas con credenciales de mínimos privilegios y registra qué operaciones fueron bloqueadas. Nunca conviertas una cuenta administrativa compartida en el mecanismo de acceso ordinario del empleado IA.",
+            "Comprueba también la separación entre entornos. Una prueba no debe crear pedidos reales, enviar correos a clientes ni modificar registros productivos por accidente. Si la integración no dispone de sandbox, limita la evaluación a lectura, simulación o aprobación manual hasta contar con controles equivalentes. Documenta qué secretos se usan, quién puede rotarlos y cómo se interrumpe el acceso. La aceptación requiere demostrar que una autorización revocada deja de funcionar y que los errores de permisos no se maquillan como respuestas satisfactorias."
+          ],
+          "en": [
+            "For every connected system, prepare a matrix showing the technical identity, resource, read permission, write permission and revocation procedure. Test enforcement in the destination system, not merely in prompt wording. An account allowed to inspect orders should not be able to change bank details because a request sounds persuasive. Run tests with least-privilege credentials and record which operations were denied. Never make a shared administrator account the normal access mechanism for an AI employee.",
+            "Check environment separation as well. A test should not accidentally create live orders, email customers or modify production records. If an integration has no sandbox, restrict evaluation to reading, simulation or manual approval until equivalent controls exist. Document which secrets are used, who can rotate them and how access can be interrupted. Acceptance requires showing that revoked authorization stops working and that permission errors are not disguised as successful answers."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Ensayar aprobación y supervisión humana",
+          "en": "Exercise human approval and oversight"
+        },
+        "paragraphs": {
+          "es": [
+            "Define una lista explícita de acciones que requieren validación: devoluciones, pagos, modificaciones contractuales, comunicaciones sensibles o cualquier decisión regulada. Para cada acción prueba tres caminos: aprobación, rechazo y ausencia de respuesta. El agente debe conservar el estado pendiente sin ejecutar la operación hasta obtener la autorización exigida. El registro debería permitir reconstruir qué se propuso, con qué información, quién decidió y qué cambio terminó realizándose. La supervisión humana es una condición operativa comprobable, no una frase decorativa en la web.",
+            "Introduce también un cambio de criterio a mitad del flujo. Si una persona corrige la clasificación o el importe propuesto, comprueba que el sistema no reenvía la versión anterior. Si dos personas responden de manera contradictoria, debe aplicarse una regla de responsabilidad previamente definida. No atribuyas al producto un motor de aprobaciones concreto sin comprobar su configuración: esta guía establece lo que un comprador debería exigir y probar, no promete que cualquier instalación disponga ya de todas estas funciones."
+          ],
+          "en": [
+            "Create an explicit list of actions requiring sign-off: refunds, payments, contractual changes, sensitive communications or regulated decisions. For each action test three paths: approval, rejection and no response. The agent should retain the pending state without executing the operation until required authorization is obtained. Evidence should allow a reviewer to reconstruct what was proposed, with which information, who decided and what change was ultimately made. Human oversight is a testable operational condition, not a decorative claim on a website.",
+            "Introduce a change of decision halfway through the workflow. If a person corrects a classification or proposed amount, check that the old version is not submitted afterward. If two people respond inconsistently, a previously defined accountability rule must apply. Do not attribute a specific approval engine to the product without checking its configuration: this guide sets out what a buyer should require and test, rather than promising that every deployment already includes every feature."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Comprobar errores, reintentos y duplicados",
+          "en": "Test errors, retries and duplicates"
+        },
+        "paragraphs": {
+          "es": [
+            "Simula la caída de una API, una respuesta lenta, un límite de peticiones y una operación cuyo resultado sea desconocido. El agente debe distinguir entre no ejecutado, ejecutado y pendiente de confirmar. Si reintenta sin verificar el estado, puede crear un segundo ticket o duplicar una acción. Define un identificador de operación y comprueba qué sucede al enviar dos veces el mismo evento. Cuando el sistema externo no permita idempotencia, documenta la reconciliación manual y el límite de automatización aceptable.",
+            "No basta con que aparezca un mensaje de error elegante. Comprueba que el trabajo no se pierda silenciosamente, que exista un responsable de recuperación y que el usuario no reciba una confirmación falsa. Una prueba de recuperación debe incluir el regreso del servicio, la consulta del estado real y la decisión sobre si reanudar o cancelar. Registra las dependencias externas y las condiciones de parada. Una implementación que se detiene de forma controlada puede ser más apta para producción que otra que intenta completar todo a cualquier precio."
+          ],
+          "en": [
+            "Simulate an API outage, a slow response, a rate limit and an operation with an unknown outcome. The agent must distinguish not executed, executed and pending confirmation. Blind retries can create a second ticket or duplicate an action. Define an operation identifier and test what happens when the same event arrives twice. When an external system does not support idempotency, document manual reconciliation and the acceptable automation boundary.",
+            "A polished error message is not sufficient. Verify that work is not silently lost, that a recovery owner exists and that users do not receive false confirmations. A recovery test should include service restoration, inspection of the actual state and a decision to resume or cancel. Record external dependencies and stop conditions. An implementation that stops safely can be more production-ready than one that attempts to finish everything regardless of consequences."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Evaluar calidad sin inventar porcentajes",
+          "en": "Evaluate quality without invented scores"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de medir define el denominador y la unidad de observación. Puedes contar casos completados correctamente, casos escalados conforme a regla, duplicados evitados, respuestas sin fuente y revisiones humanas necesarias. No publiques un porcentaje de precisión si no hay una muestra identificada, criterios estables y resultados reproducibles. La revisión debe distinguir errores de extracción, errores de interpretación y fallos de integración, porque cada uno exige una corrección diferente. Conserva ejemplos de desacuerdo para repetirlos después de cualquier cambio.",
+            "Establece umbrales internos en función del riesgo del proceso, no de cifras comerciales universales. Un borrador de respuesta puede tolerar revisión antes de enviar; una orden de pago necesita controles mucho más estrictos. Acompaña cualquier métrica con su periodo, volumen, versión del flujo y excepciones excluidas. Si los resultados varían entre idiomas, clientes o tipos de documento, muestra esa variación en lugar de esconderla en un promedio. La decisión de aceptar pertenece al responsable del proceso con apoyo técnico y de seguridad."
+          ],
+          "en": [
+            "Define the denominator and unit of observation before measuring. You may count correctly completed cases, policy-compliant escalations, avoided duplicates, unsupported answers and required human reviews. Do not publish an accuracy percentage without an identified sample, stable criteria and reproducible outcomes. Reviewers should distinguish extraction errors, interpretation errors and integration failures, since each requires a different remedy. Keep disagreement examples so they can be replayed after changes.",
+            "Set internal thresholds according to workflow risk rather than universal marketing numbers. A draft response can be reviewed before sending; a payment instruction needs much stricter controls. Accompany any metric with its period, sample size, workflow version and excluded exceptions. If outcomes vary by language, customer type or document type, show that variation instead of hiding it in an average. The acceptance decision belongs to the accountable process owner, supported by technical and security teams."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Documentar evidencias y trazabilidad",
+          "en": "Document evidence and traceability"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada ejecución de prueba necesita una ficha breve: identificador, fecha, versión del flujo, datos de entrada depurados, resultado esperado, resultado observado, decisión y revisor. Evita almacenar secretos o información personal innecesaria en capturas y logs. Si se utiliza una herramienta de evaluación, comprueba que permite exportar los resultados y entender los criterios aplicados. La trazabilidad no exige revelar razonamientos internos del modelo; exige demostrar las operaciones, autorizaciones y cambios observables que afectan al negocio.",
+            "Relaciona los defectos con casos reproducibles. Un informe que dice la IA se equivocó no sirve para corregir una integración ni para decidir si desplegar. Describe las condiciones, la salida incorrecta, el impacto, la prioridad y la persona responsable de resolverlo. Tras la corrección repite el caso original y un pequeño conjunto de regresión. Conserva también decisiones de no corrección justificadas cuando el riesgo residual sea aceptado formalmente; no las presentes como pruebas superadas."
+          ],
+          "en": [
+            "Each test run needs a concise record: identifier, date, workflow version, redacted inputs, expected result, observed result, decision and reviewer. Avoid storing secrets or unnecessary personal information in screenshots and logs. If an evaluation tool is used, confirm that results can be exported and that scoring criteria are understandable. Traceability does not require exposing hidden model reasoning; it requires evidence of observable operations, authorizations and business changes.",
+            "Link defects to reproducible cases. A report saying the AI got it wrong cannot guide an integration fix or deployment decision. Describe the conditions, incorrect output, impact, priority and owner responsible for resolution. After a fix, replay the original case and a small regression set. Also retain justified decisions not to fix an issue when residual risk is formally accepted; never present those decisions as passed tests."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Preparar reversión y transición a producción",
+          "en": "Prepare rollback and production transition"
+        },
+        "paragraphs": {
+          "es": [
+            "La aceptación no termina cuando la última prueba pasa. Define quién puede detener el flujo, cómo se revocan credenciales y qué procedimiento manual recupera el servicio si el agente falla. Comprueba que el equipo conoce el estado de las tareas pendientes y que puede identificar operaciones ya ejecutadas antes de volver a procesarlas. Un plan de reversión debe contemplar cambios de configuración, integraciones y comunicaciones a usuarios afectados. Ensaya el procedimiento con un escenario ficticio antes de habilitar acciones sensibles.",
+            "Establece una puerta de salida con firmas del responsable operativo, tecnología y seguridad cuando corresponda. Esa decisión debe indicar el alcance aprobado, las restricciones, los defectos abiertos, el plan de seguimiento y la fecha de revisión. Una prueba satisfactoria en laboratorio no demuestra rendimiento idéntico en producción. Empieza con un perímetro limitado y supervisión proporcional al riesgo. Si cambian las fuentes, permisos o instrucciones principales, revisa los casos afectados antes de ampliar la autonomía."
+          ],
+          "en": [
+            "Acceptance does not end when the last test passes. Define who can stop the workflow, how credentials are revoked and which manual procedure restores service when the agent fails. Confirm that the team can see pending work and identify operations already completed before reprocessing them. A rollback plan should address configuration changes, integrations and communications to affected users. Rehearse it with a fictional scenario before enabling sensitive actions.",
+            "Create a release gate signed by the operational owner, technology lead and security representative where appropriate. Record the approved scope, restrictions, open defects, monitoring plan and review date. A successful laboratory trial does not prove identical production performance. Begin with a limited scope and oversight proportionate to risk. If sources, permissions or core instructions change, retest affected cases before expanding autonomy."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Usar la checklist para decidir una compra",
+          "en": "Use the checklist in a buying decision"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando compares proveedores, entrega a todos la misma batería de aceptación y pide que identifiquen qué capacidades son demostrables hoy, cuáles requieren integración y cuáles no están disponibles. Separa el precio de implantación, el mantenimiento y el coste de revisar excepciones. No conviertas un vídeo comercial en evidencia de operación real. La guía de evaluación de proveedores publicada en este blog ayuda a estructurar esa comparación; este artículo profundiza en la fase de pruebas que sigue a la selección inicial.",
+            "Si estás evaluando IA Empleado, parte de un proceso delimitado y solicita una demostración de las capacidades realmente configuradas para ese caso. El catálogo de empleados IA y la página de empleados IA para pymes permiten explorar perfiles y plantear una conversación comercial. La llamada a la acción razonable es solicitar una evaluación del flujo con datos de prueba, no prometer que una herramienta automatizará cualquier tarea sin ajustes. Una decisión de compra responsable comienza por resultados observables, límites claros y responsables humanos."
+          ],
+          "en": [
+            "When comparing vendors, give each the same acceptance suite and ask which capabilities can be demonstrated today, which require integration and which are unavailable. Separate implementation cost, maintenance and the human effort of reviewing exceptions. Do not treat a marketing video as evidence of real operation. The vendor evaluation guide in this blog helps structure the comparison; this article goes deeper into the testing phase that follows initial selection.",
+            "If you are evaluating IA Empleado, start with a bounded process and request a demonstration of capabilities actually configured for that case. The AI employee catalog and small-business AI employee page help explore roles and begin a commercial conversation. The appropriate call to action is to request a workflow assessment using test data, not to promise that a tool will automate every task without adaptation. A responsible buying decision begins with observable outcomes, clear limits and accountable people."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Define criterios observables y responsables antes de ejecutar pruebas.",
+        "Prueba casos normales, ambiguos, duplicados y fuera de alcance.",
+        "Verifica permisos en sistemas de destino y aprobaciones humanas.",
+        "Documenta resultados, errores, reintentos y evidencias reproducibles.",
+        "No autorices producción sin un plan de parada y reversión."
+      ],
+      "en": [
+        "Define observable criteria and owners before testing.",
+        "Test routine, ambiguous, duplicate and out-of-scope cases.",
+        "Verify destination-system permissions and human approvals.",
+        "Record results, errors, retries and reproducible evidence.",
+        "Do not authorize production without stop and rollback procedures."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-11-17",
+    "updatedAt": "2026-11-17",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "pruebas de aceptación de empleados IA",
+        "en": "AI employee acceptance testing"
+      },
+      "supportingKeywords": {
+        "es": [
+          "checklist UAT agentes IA",
+          "criterios de aceptación automatización IA",
+          "pruebas antes de desplegar agentes IA",
+          "validación de procesos con empleados IA"
+        ],
+        "en": [
+          "AI agent UAT checklist",
+          "AI workflow acceptance criteria",
+          "testing AI agents before deployment",
+          "AI employee release readiness"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "ai-agent-acceptance-testing",
+      "canonicalRole": "support",
+      "conversionRole": "evaluation",
+      "researchBasis": [
+        "2026-11-17: Reviewed IA Empleado product boundaries in docs/PRODUCT_CONTEXT.md and editorial ownership in docs/SEO_GEO_CONTENT_OWNERSHIP.md; UAT testing is a distinct how-to intent from vendor evaluation and human handoff.",
+        "2026-11-17: NIST AI RMF https://www.nist.gov/itl/ai-risk-management-framework and NIST AI RMF Playbook https://airc.nist.gov/AI_RMF_Knowledge_Base/Playbook provide risk, measurement and governance principles; recommendations here are practical guidance, not certification claims.",
+        "2026-11-17: ISO/IEC 25010 quality model https://iso25000.com/index.php/en/iso-25000-standards/iso-25010 and OWASP LLM Top 10 https://genai.owasp.org/llm-top-10/ inform quality and misuse test scenarios; no product guarantees or search metrics claimed."
+      ]
+    }
+  }
+]
