@@ -1,0 +1,69 @@
+name: Growth Publication Watchdog
+
+on:
+  schedule:
+    # UTC: 18:35 Europe/Madrid in winter, 19:35 in summer.
+    - cron: "35 17 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: growth-publication-watchdog
+  cancel-in-progress: false
+
+jobs:
+  verify-recent-growth:
+    name: Verify recent ES/EN publications on production
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout production source
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check recent public Growth URLs and sitemap
+        id: verify
+        continue-on-error: true
+        env:
+          PRODUCTION_BASE_URL: https://iaempleado.com
+          GROWTH_VERIFY_RECENT_DAYS: 30
+        run: node scripts/verify-growth-production.mjs
+
+      - name: Keep one production backlog incident open
+        if: ${{ steps.verify.outcome == 'failure' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="Growth publishing: production backlog not certified"
+          existing="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 100 --json number,title --jq '.[] | select(.title == "Growth publishing: production backlog not certified") | .number' | head -n 1)"
+          body="Production backlog verification failed. Check the ES/EN URLs, Growth sitemap, canonical and hreflang in workflow run: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. This does not block tomorrow's new editorial content."
+          if [[ -n "$existing" ]]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+          fi
+
+      - name: Close resolved production backlog incident
+        if: ${{ steps.verify.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          existing="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 100 --json number,title --jq '.[] | select(.title == "Growth publishing: production backlog not certified") | .number' | head -n 1)"
+          if [[ -n "$existing" ]]; then
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY" --comment "All recent ES/EN Growth publications and their sitemap/canonical checks passed in https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
+          fi
+
+      - name: Fail visibly on missing production delivery
+        if: ${{ steps.verify.outcome == 'failure' }}
+        run: |
+          echo "One or more recent Growth URLs were not certified in production"
+          exit 1
