@@ -20,13 +20,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout production source
+      - name: Checkout production source and publishing history
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Check NEW bilingual content integrated today (Europe/Madrid)
+        id: cadence
+        continue-on-error: true
+        run: node scripts/check-growth-daily-cadence.mjs
 
       - name: Check recent public Growth URLs and sitemap
         id: verify
@@ -35,6 +42,32 @@ jobs:
           PRODUCTION_BASE_URL: https://iaempleado.com
           GROWTH_VERIFY_RECENT_DAYS: 30
         run: node scripts/verify-growth-production.mjs
+
+      - name: Report missed daily editorial delivery
+        if: ${{ steps.cadence.outcome == 'failure' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="Growth publishing: missing daily bilingual publication"
+          existing="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 100 --json number,title --jq '.[] | select(.title == "Growth publishing: missing daily bilingual publication") | .number' | head -n 1)"
+          body="No NEW bilingual Growth record was integrated into main today (Europe/Madrid). Check daily publishing status and logs: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. A successful scheduler is not proof that new content was delivered."
+          if [[ -n "$existing" ]]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+          fi
+
+      - name: Close recovered daily editorial delivery incident
+        if: ${{ steps.cadence.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          existing="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 100 --json number,title --jq '.[] | select(.title == "Growth publishing: missing daily bilingual publication") | .number' | head -n 1)"
+          if [[ -n "$existing" ]]; then
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY" --comment "Today's new bilingual content was integrated in main; see https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. Live publication is audited separately."
+          fi
 
       - name: Keep one production backlog incident open
         if: ${{ steps.verify.outcome == 'failure' }}
@@ -62,8 +95,24 @@ jobs:
             gh issue close "$existing" --repo "$GITHUB_REPOSITORY" --comment "All recent ES/EN Growth publications and their sitemap/canonical checks passed in https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
           fi
 
-      - name: Fail visibly on missing production delivery
-        if: ${{ steps.verify.outcome == 'failure' }}
+      - name: Write independent publishing status summary
+        if: always()
+        env:
+          CADENCE_OUTCOME: ${{ steps.cadence.outcome }}
+          PRODUCTION_OUTCOME: ${{ steps.verify.outcome }}
         run: |
-          echo "One or more recent Growth URLs were not certified in production"
+          {
+            echo "## IA Empleado | daily Growth publication monitor"
+            echo "| Gate | Result |"
+            echo "| --- | --- |"
+            echo "| New bilingual article/landing integrated today (Madrid) | $CADENCE_OUTCOME |"
+            echo "| Recent ES/EN URLs, HTML, canonical, hreflang and sitemap | $PRODUCTION_OUTCOME |"
+            echo ""
+            echo "Both must pass before the daily publication cycle can be considered delivered. This does not prove Google indexing."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail visibly if daily content or live production is missing
+        if: ${{ steps.verify.outcome == 'failure' || steps.cadence.outcome == 'failure' }}
+        run: |
+          echo "Daily publishing missed or at least one recent Growth URL is not certified on production"
           exit 1
