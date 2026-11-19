@@ -106,7 +106,7 @@ if (!Number.isSafeInteger(recentDays) || recentDays < 0 || recentDays > 365) {
   throw new Error("GROWTH_VERIFY_RECENT_DAYS must be an integer between 0 and 365");
 }
 const asOf = process.env.GROWTH_VERIFY_AS_OF || new Date().toISOString().slice(0, 10);
-if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(asOf) || Number.isNaN(Date.parse(asOf + "T00:00:00Z"))) {
+if (!/^\d{4}-\d{2}-\d{2}$/.test(asOf) || Number.isNaN(Date.parse(asOf + "T00:00:00Z"))) {
   throw new Error("GROWTH_VERIFY_AS_OF must be a valid YYYY-MM-DD date");
 }
 const cutoffDate = new Date(asOf + "T00:00:00Z");
