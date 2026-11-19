@@ -1,6 +1,10 @@
 import { blogArticlePath, blogArticleRecords, blogIndexPath, growthLandingPath, growthLandingRecords } from "../../lib/growth-content";
 
-// Growth articles are shipped as part of the application release. Never serve a stale\n// shared-cache sitemap when a newer release is already live.\nexport const dynamic = "force-dynamic";\n\nconst BASE_URL = "https://iaempleado.com";
+// Growth articles are shipped as part of the application release. Never serve a stale
+// shared-cache sitemap when a newer release is already live.
+export const dynamic = "force-dynamic";
+
+const BASE_URL = "https://iaempleado.com";
 
 type SitemapEntry = {
   url: string;
