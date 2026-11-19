@@ -1,0 +1,295 @@
+[
+  {
+    "key": "crm-ai-agent-permission-matrix",
+    "slugs": {
+      "es": "matriz-permisos-agentes-ia-crm-guia",
+      "en": "crm-ai-agent-permission-matrix-guide"
+    },
+    "seoTitle": {
+      "es": "Matriz de permisos de agentes IA para CRM | IA Empleado",
+      "en": "CRM AI agent permission matrix: practical guide | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Cómo definir permisos mínimos para empleados IA conectados al CRM: lectura, escritura, aprobaciones, pruebas y revocación.",
+      "en": "Design a least-privilege permission matrix for CRM AI agents: reads, writes, approvals, testing and revocation."
+    },
+    "title": {
+      "es": "Matriz de permisos para agentes IA conectados al CRM: guía práctica de mínimo privilegio",
+      "en": "A practical least-privilege permission matrix for AI agents connected to CRM"
+    },
+    "excerpt": {
+      "es": "Guía operativa para diseñar, probar y revisar accesos de un empleado IA al CRM sin conceder permisos administrativos innecesarios.",
+      "en": "An operational guide to designing, testing and reviewing an AI employee's CRM access without unnecessary administrator privileges."
+    },
+    "intro": {
+      "es": "Un empleado IA puede ayudar a consultar cuentas, preparar seguimientos y actualizar registros autorizados, pero cada acción requiere un límite comprobable. Esta guía enseña a documentar una matriz de permisos para un workflow de CRM, desde el primer acceso de lectura hasta una posible escritura con aprobación. Es una metodología de evaluación, no una promesa de que todos los conectores tengan los mismos controles. En IA Empleado las capacidades dependen del despliegue y la integración acordados.",
+      "en": "An AI employee may help retrieve accounts, prepare follow-ups and update approved records, but every action needs an enforceable boundary. This guide shows how to document a CRM permission matrix from initial read access to a possible human-approved write. It is an evaluation method, not a claim that every connector implements identical controls. IA Empleado capabilities depend on the agreed deployment and integration."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Delimitar el proceso antes de conceder acceso",
+          "en": "Scope the workflow before granting access"
+        },
+        "paragraphs": {
+          "es": [
+            "Un comercial necesita que el empleado IA consulte una ficha de cliente y prepare un resumen para la reunión. Esa necesidad no autoriza editar precios, descargar toda la cartera ni enviar mensajes sin revisión. Escribe primero el evento que inicia la tarea, los campos imprescindibles y la salida que se espera. Una matriz de permisos empieza por el trabajo concreto y no por las capacidades máximas que anuncia un conector.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "A sales representative wants an AI employee to inspect one customer record and prepare a meeting brief. That does not justify changing prices, exporting the entire database or sending messages without review. Define the triggering event, essential fields and expected output first. A permission matrix starts with a bounded business task, not the maximum capabilities advertised by a connector.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Inventariar objetos y campos del CRM",
+          "en": "Inventory CRM objects and fields"
+        },
+        "paragraphs": {
+          "es": [
+            "Separa cuentas, contactos, oportunidades, actividades, notas y archivos adjuntos. Para cada objeto identifica qué columnas necesita la operación y cuáles contienen datos que no deben entrar en el contexto del modelo. Una búsqueda de oportunidades abiertas no exige necesariamente leer comentarios privados, identificadores fiscales o documentos de todos los clientes. El inventario debe ser comprensible tanto para el responsable comercial como para seguridad.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "Separate accounts, contacts, opportunities, activities, notes and attachments. For every object identify the fields required for the task and those that must not enter model context. Looking up open opportunities does not necessarily require reading private comments, tax identifiers or documents belonging to every customer. The inventory should be understandable to both the sales process owner and the security team.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Diferenciar lectura, preparación y escritura",
+          "en": "Separate read, draft and write privileges"
+        },
+        "paragraphs": {
+          "es": [
+            "Consultar el estado de una oportunidad es distinto de preparar una actualización y muy distinto de confirmarla en el CRM. La matriz debe expresar esas tres acciones por separado, incluso si la interfaz comercial las presenta como un único botón. Una primera implantación puede limitarse a lectura y borradores. Solo tras pruebas y autorización explícita debería considerarse una escritura delimitada por reglas de negocio.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "Reading an opportunity status differs from drafting an update and differs again from committing it to the CRM. The matrix should express all three operations separately, even when a commercial interface combines them into one button. An initial deployment can remain read-only with draft outputs. Only after testing and explicit authorization should a narrowly constrained write operation be considered.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Definir identidad y ámbito de cada ejecución",
+          "en": "Define identity and scope for each execution"
+        },
+        "paragraphs": {
+          "es": [
+            "Evita reutilizar credenciales personales de administradores para que el empleado IA opere como si fuera un superusuario. Establece una identidad técnica atribuible, con alcance por organización, equipo, cliente o propietario de registro según el sistema de destino. Si un responsable solo puede consultar su cartera, la automatización no debe ampliar ese perímetro por conveniencia. La revocación debe poder realizarse sin detener otros procesos.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "Avoid reusing a human administrator's personal credentials so an AI employee acts as a superuser. Establish an attributable technical identity with boundaries by organization, team, account or record owner as supported by the destination system. If a representative can only see their portfolio, automation must not silently widen that boundary. Revocation should be possible without disrupting unrelated workflows.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Construir una matriz de permisos comprobable",
+          "en": "Build a testable permission matrix"
+        },
+        "paragraphs": {
+          "es": [
+            "Usa columnas para proceso, herramienta, objeto, campo, operación, identidad, condición de aprobación, tiempo de vigencia, responsable y evidencia. Una fila puede permitir leer nombre y etapa de una oportunidad durante la preparación de una reunión; otra puede prohibir modificar el importe sin intervención humana. Añade la razón de negocio de cada permiso. Si nadie puede explicar por qué existe una fila, probablemente convenga retirarla.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "Use columns for workflow, tool, object, field, operation, identity, approval condition, validity period, owner and evidence. One row might allow reading an opportunity name and stage while preparing a meeting; another might prohibit changing its amount without human intervention. Record the business justification for each grant. If nobody can explain why a row exists, consider removing it.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Tratar la aprobación como control independiente",
+          "en": "Treat approval as an independent control"
+        },
+        "paragraphs": {
+          "es": [
+            "Un mensaje del usuario que diga que aprueba algo no basta si el sistema no puede verificar su identidad y autoridad. Para cambios de propietario, importes, bajas de contactos o comunicaciones masivas, define quién puede aprobar, qué información ve y cuánto dura la autorización. El registro de aprobación debe referirse a la acción exacta, no a una autorización genérica. También se deben probar rechazo, caducidad y cancelación.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "A user message saying an action is approved is insufficient if the system cannot verify the person's identity and authority. For ownership changes, amounts, contact deletion or bulk communications, define who can approve, what they review and how long consent remains valid. The approval record should reference the exact action rather than a blanket authorization. Test rejection, expiry and cancellation too.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Limitar el alcance de búsquedas y exportaciones",
+          "en": "Constrain searches and exports"
+        },
+        "paragraphs": {
+          "es": [
+            "Las consultas aparentemente inocentes pueden revelar información excesiva si recuperan todos los registros o incluyen campos ocultos. Establece filtros por cuenta, paginación, límites de resultados y reglas de minimización. Prueba solicitudes como «muéstrame todos los contactos» o «exporta la base completa» y verifica que no atraviesen el perímetro autorizado. No confíes únicamente en que el prompt recuerde al agente comportarse con prudencia.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "Apparently harmless queries can expose excessive information if they retrieve all records or include hidden fields. Establish account filters, pagination, result limits and data minimization rules. Test requests such as 'show every contact' or 'export the whole database' and verify that they cannot cross the authorized boundary. Do not rely on the prompt alone to remind the agent to behave carefully.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Probar instrucciones maliciosas en datos del CRM",
+          "en": "Test hostile instructions inside CRM data"
+        },
+        "paragraphs": {
+          "es": [
+            "Una nota comercial, correo recibido o descripción de oportunidad puede contener texto que ordene al agente ignorar sus reglas. Ese contenido es dato de negocio no confiable, no una instrucción autorizada. Incluye ejemplos sintéticos que intenten obtener secretos, cambiar permisos o enviar información fuera de la organización. La respuesta esperada es continuar con el proceso permitido, descartar la orden incrustada y registrar la excepción cuando proceda.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "A sales note, incoming email or opportunity description can contain text instructing an agent to ignore its rules. That content is untrusted business data, not an authorized instruction. Include synthetic examples attempting to obtain secrets, change permissions or send information outside the organization. Expected behavior is to continue the permitted task, disregard the embedded command and record an exception where appropriate.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Gestionar duplicados, reintentos y errores",
+          "en": "Handle duplicates, retries and failures"
+        },
+        "paragraphs": {
+          "es": [
+            "Una API puede devolver un error después de haber guardado el cambio. Si el empleado IA reintenta sin comprobar el estado, puede crear dos actividades o duplicar seguimientos. Define identificadores de operación, verificación posterior y criterios para detenerse. Un timeout no debe interpretarse automáticamente como éxito ni como permiso para repetir indefinidamente. Cuando no pueda resolverse la incertidumbre, deriva el caso a una persona con contexto suficiente.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "An API may return an error after successfully storing a change. If an AI employee retries without checking state, it can create duplicate activities or follow-ups. Define operation identifiers, post-action verification and stop conditions. A timeout must not be treated automatically as success or as permission to retry indefinitely. When uncertainty cannot be resolved, escalate to a person with enough context to decide safely.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Conservar evidencias sin copiar datos innecesarios",
+          "en": "Keep evidence without copying unnecessary data"
+        },
+        "paragraphs": {
+          "es": [
+            "Para revisar un incidente interesa saber qué tarea se inició, qué permiso se evaluó, qué herramienta respondió y qué aprobación se aplicó. No hace falta almacenar indiscriminadamente conversaciones completas ni credenciales. Define retención, acceso a logs, redacción de campos sensibles y correlación entre acciones. La trazabilidad sirve para resolver errores y demostrar controles, pero también debe respetar las obligaciones de privacidad que correspondan al tratamiento.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "To investigate an incident, teams need to know which task started, which permission was evaluated, how a tool responded and which approval applied. They do not need to retain every conversation or any credentials indiscriminately. Define retention, log access, sensitive-field redaction and correlation between actions. Traceability supports troubleshooting and control evidence while remaining subject to applicable privacy obligations.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Revocar accesos y cerrar la prueba",
+          "en": "Revoke access and close the trial"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de conectar producción, ensaya la revocación del token y comprueba que una tarea en curso no pueda continuar escribiendo. Identifica el responsable de rotar secretos, revisar permisos y desactivar integraciones. La prueba debe incluir un caso en que el usuario pierde acceso a una cuenta y otro en que cambia la política de aprobación. No basta con desactivar el chat si las credenciales de herramientas siguen funcionando.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "Before connecting production, rehearse token revocation and verify that an in-flight task cannot continue writing. Name the owner for rotating secrets, reviewing permissions and disabling integrations. The trial should include a user losing access to an account and an approval policy changing mid-workflow. Disabling a chat interface is insufficient if tool credentials remain usable.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Evaluar costes, mantenimiento y evolución",
+          "en": "Evaluate cost, maintenance and change"
+        },
+        "paragraphs": {
+          "es": [
+            "Un permiso seguro hoy puede dejar de serlo cuando se añaden objetos al CRM, cambian los roles o aparece una nueva integración. Programa una revisión al modificar el workflow y al actualizar conectores. Incluye en el coste de implantación las pruebas negativas, gestión de identidades, aprobaciones y soporte. Compara escenarios de solo lectura, borradores y escritura autorizada antes de ampliar autonomía. No prometas ahorros sin medición propia.",
+            "Para aplicar este control, prepara un caso de prueba con datos ficticios, una petición válida y otra que exceda el permiso. Registra el resultado esperado antes de ejecutarlo, la identidad que actúa y la respuesta del sistema de destino. Si la comprobación depende de una capacidad opcional del conector, declárala como requisito por validar, no como una función disponible por defecto. El responsable de negocio debe firmar el criterio de aceptación y seguridad debe revisar el límite técnico.",
+            "Como evidencia conserva una tabla con solicitud, decisión permitir o denegar, motivo, sistema consultado y responsable de la revisión. Repite el escenario después de cambiar un rol o credencial. La finalidad no es convertir al modelo en árbitro de sus propios permisos, sino conseguir que los controles externos sigan funcionando aunque una respuesta sea ambigua, una instrucción resulte manipuladora o un servicio falle. Un resultado inesperado exige detener la ampliación del alcance y revisar la causa."
+          ],
+          "en": [
+            "A permission safe today may become unsafe when new CRM objects appear, roles change or another integration is added. Schedule reviews whenever workflows or connectors change. Include negative testing, identity management, approvals and support in the implementation cost. Compare read-only, draft and approved-write scenarios before expanding autonomy. Avoid promising savings without measurement in the customer's own environment.",
+            "To apply this control, prepare a test with synthetic records, one valid request and one request exceeding the grant. Record the expected result before execution, the acting identity and the destination system's response. If the check depends on an optional connector capability, identify it as a requirement to validate rather than a default product feature. The business owner should sign off on acceptance criteria and security should review the technical boundary.",
+            "Keep an evidence table containing the request, allow-or-deny decision, reason, destination system and reviewer. Repeat the scenario after changing a role or credential. The goal is not to make the model the judge of its own privileges; independent controls must hold even when an answer is ambiguous, an instruction is manipulative or a service fails. An unexpected result should pause any expansion of scope until its cause is understood."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Empieza por un proceso y los campos estrictamente necesarios.",
+        "Separa permisos de lectura, borrador y escritura efectiva.",
+        "Haz cumplir autorización en el CRM o servicio, nunca solo en el prompt.",
+        "Prueba instrucciones incrustadas, duplicados, denegaciones y revocación.",
+        "Solicita una evaluación de integración antes de ampliar autonomía."
+      ],
+      "en": [
+        "Start with one workflow and only the fields it requires.",
+        "Separate read, draft and actual write permissions.",
+        "Enforce authorization in the CRM or service, never only in a prompt.",
+        "Test embedded instructions, duplicates, denials and revocation.",
+        "Request an integration assessment before increasing autonomy."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-11-19",
+    "updatedAt": "2026-11-19",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "matriz de permisos agentes IA CRM",
+        "en": "CRM AI agent permission matrix"
+      },
+      "supportingKeywords": {
+        "es": [
+          "permisos mínimos agente IA CRM",
+          "seguridad integración CRM inteligencia artificial",
+          "control acceso empleados IA",
+          "aprobación humana cambios CRM"
+        ],
+        "en": [
+          "least privilege CRM AI agents",
+          "CRM agent access control checklist",
+          "AI agent CRM write permissions",
+          "human approval CRM automation"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "crm-ai-agent-access-governance",
+      "canonicalRole": "support",
+      "conversionRole": "evaluation",
+      "researchBasis": [
+        "2026-11-19: Compared the commercial product contract docs/PRODUCT_CONTEXT.md and canonical ownership docs/SEO_GEO_CONTENT_OWNERSHIP.md; this implementation-specific permission matrix is distinct from CRM automation BOFU and general vendor evaluation/UAT.",
+        "2026-11-19: OWASP AI Agent Security Cheat Sheet https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html and OWASP AI Agent and MCP Security https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-5-AI-Agent-and-MCP-Security/ support least privilege and independent tool controls.",
+        "2026-11-19: Australian Cyber Security Centre guidance https://www.cyber.gov.au/sites/default/files/2026-05/careful_adoption_of_agentic_ai_services.pdf supports access scoping, authentication and review. No search volume or product certification asserted."
+      ]
+    }
+  }
+]
