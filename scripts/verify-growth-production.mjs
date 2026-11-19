@@ -98,10 +98,30 @@ function changedRecordTargets() {
   return targets;
 }
 
-const changedTargets = changedRecordTargets();
-const targets = changedTargets.length ? changedTargets : latestTargets;
-const mode = changedTargets.length ? "release-diff" : "latest-fallback";
-if (!changedTargets.length) console.warn("WARNING no changed Growth owners identified; this is NOT a PR-specific acceptance");
+// Scheduled watchdog: verify the recent editorial backlog independently from
+// the current release diff. A failed deployment must not hide behind a newer PR.
+const recentDaysRaw = process.env.GROWTH_VERIFY_RECENT_DAYS;
+const recentDays = recentDaysRaw === undefined ? 0 : Number(recentDaysRaw);
+if (!Number.isSafeInteger(recentDays) || recentDays < 0 || recentDays > 365) {
+  throw new Error("GROWTH_VERIFY_RECENT_DAYS must be an integer between 0 and 365");
+}
+const asOf = process.env.GROWTH_VERIFY_AS_OF || new Date().toISOString().slice(0, 10);
+if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(asOf) || Number.isNaN(Date.parse(asOf + "T00:00:00Z"))) {
+  throw new Error("GROWTH_VERIFY_AS_OF must be a valid YYYY-MM-DD date");
+}
+const cutoffDate = new Date(asOf + "T00:00:00Z");
+cutoffDate.setUTCDate(cutoffDate.getUTCDate() - Math.max(0, recentDays - 1));
+const cutoff = cutoffDate.toISOString().slice(0, 10);
+const recentTargets = [
+  ...dailyLandings.map((record) => ({ kind: "landing", record })),
+  ...dailyArticles.map((record) => ({ kind: "article", record })),
+].filter(({ record }) => recordDate(record) >= cutoff && recordDate(record) <= asOf);
+
+const changedTargets = recentDays ? [] : changedRecordTargets();
+const targets = recentDays ? recentTargets : (changedTargets.length ? changedTargets : latestTargets);
+const mode = recentDays ? ("recent-" + recentDays + "-days") : (changedTargets.length ? "release-diff" : "latest-fallback");
+if (recentDays && !recentTargets.length) throw new Error("No Growth daily records found in " + mode);
+if (!recentDays && !changedTargets.length) console.warn("WARNING no changed Growth owners identified; this is NOT a PR-specific acceptance");
 
 function recordUrls({ kind, record }) {
   const prefix = kind === "article" ? "/blog/" : "/";
