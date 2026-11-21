@@ -1,5 +1,9 @@
 import { blogArticlePath, blogArticleRecords, blogIndexPath, growthLandingPath, growthLandingRecords } from "../../lib/growth-content";
 
+// Growth articles are shipped as part of the application release. Never serve a stale
+// shared-cache sitemap when a newer release is already live.
+export const dynamic = "force-dynamic";
+
 const BASE_URL = "https://iaempleado.com";
 
 type SitemapEntry = {
@@ -60,7 +64,7 @@ export function GET() {
   return new Response(xml, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
+      "Cache-Control": "no-store, max-age=0",
     },
   });
 }
