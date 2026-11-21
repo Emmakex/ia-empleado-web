@@ -1,0 +1,287 @@
+[
+  {
+    "key": "ai-employee-exception-queue-design",
+    "slugs": {
+      "es": "disenar-cola-excepciones-empleados-ia",
+      "en": "design-ai-employee-exception-queue"
+    },
+    "seoTitle": {
+      "es": "Cola de excepciones para empleados IA: diseño y control | IA Empleado",
+      "en": "AI employee exception queue design: practical guide | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Diseña colas de excepciones con responsables, estados, aprobaciones, trazabilidad y recuperación segura en procesos con IA.",
+      "en": "Design AI workflow exception queues with ownership, review states, approvals, audit trails and safe recovery."
+    },
+    "title": {
+      "es": "Cómo diseñar una cola de excepciones para empleados IA",
+      "en": "How to design an exception queue for AI employee workflows"
+    },
+    "excerpt": {
+      "es": "Guía para gestionar casos ambiguos o bloqueados sin perder responsables, contexto ni supervisión humana.",
+      "en": "A practical guide to handling ambiguous or blocked AI workflow cases with accountable human review."
+    },
+    "intro": {
+      "es": "Cuando un empleado IA no puede completar una tarea con seguridad, necesita una ruta operativa hacia una persona responsable. Esta guía explica cómo diseñar una cola de excepciones para procesos empresariales, desde la clasificación y asignación hasta el cierre verificable. Es una guía de diseño, no una afirmación de que todas las funciones estén disponibles automáticamente en cada despliegue.",
+      "en": "When an AI employee cannot safely complete a task, the workflow needs a route to an accountable person. This guide explains how to design an exception queue for business processes, from classification and assignment to verifiable closure. It is a design guide, not a claim that every feature is automatically available in every deployment."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Qué es una cola de excepciones y cuándo utilizarla",
+          "en": "What an exception queue does and when to use one"
+        },
+        "paragraphs": {
+          "es": [
+            "Una cola de excepciones no es una papelera para resultados que la IA no comprende. Es un espacio de trabajo donde cada caso detenido conserva motivo, contexto permitido, responsable y siguiente decisión. En atención al cliente puede recibir solicitudes sin identidad verificada; en facturación, documentos con importes contradictorios; en CRM, cambios cuya autorización no consta. El objetivo es que el proceso continúe de forma segura sin ocultar incertidumbre ni permitir que el empleado IA improvise decisiones fuera de su mandato.",
+            "Ejemplo de aplicación: imagina un proceso de soporte por correo que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "An exception queue is not a bin for outputs the AI cannot understand. It is a work area where every halted case retains a reason, permitted context, accountable owner and next decision. Customer support may route requests with unverified identities; invoice processing may route documents with conflicting amounts; CRM workflows may route changes lacking approval. The objective is to keep business operations safe without hiding uncertainty or allowing an AI employee to improvise beyond its authority.",
+            "Consider a shared inbox support workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Distinguir excepción, error técnico y solicitud de aprobación",
+          "en": "Separate business exceptions, technical errors and approval requests"
+        },
+        "paragraphs": {
+          "es": [
+            "Una factura con proveedor desconocido es una excepción de negocio; una API que no responde es un fallo técnico; una modificación válida pero sensible puede requerir aprobación. Mezclarlas produce bandejas confusas y prioridades erróneas. Define categorías estables y ejemplos positivos y negativos. Una misma operación puede tener varias señales, pero necesita una causa principal para el enrutamiento y referencias secundarias para el análisis. No presentes una clasificación probabilística como diagnóstico definitivo: conserva el dato original y permite corregir la categoría.",
+            "Ejemplo de aplicación: imagina un proceso de facturación que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "An invoice from an unknown supplier is a business exception; an unavailable API is a technical failure; a valid but sensitive change may require approval. Mixing them creates confusing queues and misleading priorities. Define stable categories with positive and negative examples. One operation may show several signals, but it needs a primary routing reason and secondary references for investigation. Do not present probabilistic classification as a final diagnosis: preserve the original evidence and let reviewers correct the category.",
+            "Consider a invoice processing workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Diseñar el registro mínimo de cada caso",
+          "en": "Design the minimum exception record"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada elemento necesita identificador único, fecha, proceso de origen, estado, motivo, prioridad justificada, responsable y referencia al registro empresarial. Añade únicamente el contexto que la persona necesita para decidir. Un enlace autorizado al CRM suele ser preferible a copiar datos personales completos en una bandeja secundaria. Guarda el resultado de la revisión y la identidad de quien autorizó la acción. Los campos obligatorios deben comprobarse con datos sintéticos antes de abrir la cola a casos reales.",
+            "Ejemplo de aplicación: imagina un proceso de gestión de pedidos que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "Every item needs a unique identifier, timestamp, source workflow, status, reason, justified priority, owner and reference to the business record. Include only the context a person needs to decide. An authorised link to a CRM record is often preferable to copying full personal information into another queue. Record the review outcome and the identity of the person who authorised the action. Test required fields with synthetic cases before allowing live traffic.",
+            "Consider a order management workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Establecer estados y transiciones verificables",
+          "en": "Define auditable states and transitions"
+        },
+        "paragraphs": {
+          "es": [
+            "Propón estados sencillos: pendiente, asignado, esperando información, esperando aprobación, resuelto y cerrado. Evita que cerrado signifique simplemente que alguien ocultó el aviso. Cada transición debe tener un actor autorizado, una condición comprobable y una marca temporal. Si una excepción vuelve a aparecer, crea una relación con el caso anterior en lugar de perder el historial. Las transiciones que cambian dinero, acceso o información sensible requieren control humano explícito.",
+            "Ejemplo de aplicación: imagina un proceso de actualización CRM que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "Start with simple states: new, assigned, awaiting information, awaiting approval, resolved and closed. Closed must not merely mean someone hid the alert. Every transition needs an authorised actor, a verifiable condition and a timestamp. If an exception reappears, link it to the earlier case rather than losing the history. Transitions involving money, access or sensitive information require explicit human control.",
+            "Consider a CRM update workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Asignar responsables sin crear bandejas huérfanas",
+          "en": "Assign owners without orphaned queues"
+        },
+        "paragraphs": {
+          "es": [
+            "La cola necesita un propietario de proceso y una persona de respaldo, no solo un buzón compartido. Determina qué equipo resuelve dudas documentales, qué equipo revisa permisos y quién decide ante un conflicto entre departamentos. La asignación puede apoyarse en reglas de tipo de caso, pero debe existir una ruta de recuperación cuando nadie acepta la tarea. Revisa los cambios de turno y las ausencias: una excepción sin responsable es un riesgo operativo, aunque el sistema la haya registrado correctamente.",
+            "Ejemplo de aplicación: imagina un proceso de soporte por correo que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "The queue needs a process owner and a backup, not just a shared mailbox. Decide which team resolves document questions, which team reviews permissions and who decides when departments disagree. Assignment may use case-type rules, but there must be a recovery path when nobody accepts the task. Review shift changes and absences: an exception without an owner is an operational risk even when the software recorded it correctly.",
+            "Consider a shared inbox support workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Priorizar por impacto y no por dramatismo del texto",
+          "en": "Prioritise by impact rather than dramatic wording"
+        },
+        "paragraphs": {
+          "es": [
+            "La urgencia debe derivarse de consecuencias empresariales, plazos reales, sensibilidad de datos y bloqueo de clientes, no de palabras alarmantes en un mensaje. Documenta una matriz pequeña con ejemplos: un acceso sospechoso se deriva a seguridad; una factura incompleta puede esperar revisión contable; una consulta repetida puede necesitar respuesta de soporte. No inventes SLA universales. Cada empresa debe fijar sus tiempos según capacidad, obligaciones aplicables y riesgos comprobados.",
+            "Ejemplo de aplicación: imagina un proceso de facturación que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "Urgency should follow business consequences, actual deadlines, data sensitivity and customer blockage, not alarming language in a message. Document a small matrix with examples: suspicious access goes to security; an incomplete invoice may await accounting review; a repeated enquiry may need a support response. Do not invent universal service-level targets. Each organisation must set its own response times according to capacity, applicable obligations and demonstrated risks.",
+            "Consider a invoice processing workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Evitar reintentos y operaciones duplicadas",
+          "en": "Prevent retries and duplicate operations"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando una escritura en ERP o CRM devuelve un resultado incierto, no vuelvas a ejecutarla automáticamente. Primero consulta el sistema de destino y comprueba el identificador de operación. Si no existe evidencia suficiente, deja el caso pendiente de conciliación humana. Define claves de idempotencia cuando la integración las permita y registra las limitaciones cuando no. Esta disciplina importa especialmente en facturación, cambios de pedido y comunicaciones que no pueden retirarse después de enviarse.",
+            "Ejemplo de aplicación: imagina un proceso de gestión de pedidos que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "When a CRM or ERP write returns an uncertain result, do not automatically execute it again. Inspect the destination system and check the operation reference first. If evidence remains insufficient, leave the case for human reconciliation. Use idempotency keys where the integration supports them and document limitations where it does not. This discipline is especially important for invoicing, order changes and messages that cannot be withdrawn after sending.",
+            "Consider a order management workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Preparar una vista de revisión humana útil",
+          "en": "Build a usable human review view"
+        },
+        "paragraphs": {
+          "es": [
+            "Una buena pantalla de revisión responde qué ocurrió, por qué se detuvo, qué evidencia es fiable y qué decisiones están permitidas. Separa datos originales, sugerencias de IA y acciones ejecutadas; nunca los presentes como si fueran equivalentes. Muestra el impacto de aprobar, rechazar, pedir información o escalar. El revisor debe poder corregir una clasificación y dejar una razón breve. Si el diseño obliga a copiar datos entre cinco aplicaciones, la automatización puede trasladar trabajo en lugar de reducirlo.",
+            "Ejemplo de aplicación: imagina un proceso de actualización CRM que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "A useful review screen answers what happened, why processing stopped, which evidence is reliable and what decisions are permitted. Separate original data, AI suggestions and executed actions; never display them as equivalent facts. Show the consequences of approving, rejecting, requesting information or escalating. Reviewers should be able to correct classification and leave a brief rationale. If the design forces people to copy data across five systems, automation may simply relocate work.",
+            "Consider a CRM update workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Medir calidad sin fabricar cifras",
+          "en": "Measure quality without invented performance claims"
+        },
+        "paragraphs": {
+          "es": [
+            "Define indicadores operativos antes del piloto: casos recibidos, proporción por motivo, tiempo hasta primera asignación, edad de casos abiertos, reaperturas y duplicados evitados mediante comprobación. Mide también decisiones corregidas por personas y casos que requieren intervención especializada. La línea base debe proceder del proceso real y conservar el periodo de observación. Una reducción aparente de excepciones puede significar que el sistema dejó de detectarlas; contrasta la cola con muestras independientes.",
+            "Ejemplo de aplicación: imagina un proceso de soporte por correo que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "Define operational measures before a pilot: incoming cases, share by reason, time to first assignment, age of open cases, reopened items and duplicates prevented through checks. Track decisions corrected by people and cases needing specialist intervention. Establish a baseline from the actual workflow and retain its observation period. An apparent fall in exceptions may mean the system stopped detecting them; compare the queue against independently reviewed samples.",
+            "Consider a shared inbox support workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Probar la cola con escenarios sintéticos",
+          "en": "Test the queue with synthetic scenarios"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de conectar datos de clientes, ensaya una referencia inexistente, un documento contradictorio, un permiso denegado, un servicio caído, un mensaje duplicado y una aprobación que no llega. Para cada prueba especifica estado esperado, responsable, información visible y acción prohibida. Comprueba que un caso no desaparezca por reinicio ni cambie a resuelto sin evidencia. Incluye pruebas de acceso: una persona de otro departamento no debe ver documentos fuera de su autorización.",
+            "Ejemplo de aplicación: imagina un proceso de facturación que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "Before connecting customer data, rehearse an unknown reference, contradictory document, denied permission, unavailable service, duplicate message and missing approval. For each test specify expected state, owner, visible information and prohibited action. Check that an item does not disappear after a restart or become resolved without evidence. Include access tests: a person from another department must not see documents outside their authorisation.",
+            "Consider a invoice processing workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Integrar la cola en un piloto de empleados IA",
+          "en": "Integrate the queue into an AI employee pilot"
+        },
+        "paragraphs": {
+          "es": [
+            "Elige un proceso delimitado y empieza por excepciones que ya conoce el equipo. Acuerda quién puede detener la automatización y quién puede reactivarla. Revisa diariamente una muestra de casos, errores de clasificación y decisiones pendientes durante el piloto, ajustando reglas con aprobación del responsable. Documenta lo que requiere adaptación de sistemas existentes y lo que todavía no está implementado. IA Empleado puede plantearse como una solución configurada por capacidades, permisos y supervisión; la disponibilidad concreta debe comprobarse en la demostración del despliegue propuesto.",
+            "Ejemplo de aplicación: imagina un proceso de gestión de pedidos que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "Choose a bounded workflow and begin with exception types the team already understands. Agree who can pause automation and who may restart it. During the pilot, review a sample of cases, misclassifications and pending decisions each day, adjusting rules with process-owner approval. Document what requires integration-specific adaptation and what is not yet implemented. IA Empleado can be evaluated as a capability-configured system with permissions and oversight; verify concrete availability in the proposed deployment demonstration.",
+            "Consider a order management workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Decidir cuándo escalar o volver al trabajo manual",
+          "en": "Decide when to escalate or return to manual work"
+        },
+        "paragraphs": {
+          "es": [
+            "Una cola no sustituye el plan de contingencia. Si aumentan casos sin dueño, se pierden referencias o fallan controles de acceso, el responsable debe poder detener nuevas ejecuciones y activar el procedimiento manual. Conserva el estado de los trabajos en curso antes de reiniciar o volver a procesar. La recuperación requiere confirmar en el sistema oficial qué acciones ocurrieron. Este criterio conecta con un runbook de reversión, pero aquí el objetivo específico es diseñar la operación cotidiana de las excepciones.",
+            "Ejemplo de aplicación: imagina un proceso de actualización CRM que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "An exception queue is not a substitute for contingency planning. If unowned cases accumulate, references disappear or access controls fail, the owner must be able to stop new executions and activate manual handling. Preserve in-flight work status before restarting or reprocessing. Recovery requires checking the official system for actions that actually occurred. This connects to a rollback runbook, but the distinct objective here is designing everyday exception operations.",
+            "Consider a CRM update workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Checklist de decisión y siguiente paso comercial",
+          "en": "Decision checklist and commercial next step"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de contratar o ampliar una solución, solicita una demostración que incluya entrada de casos, asignación, aprobación, rechazo, conciliación, trazabilidad y cierre. Pide que el proveedor diferencie funciones demostrables de adaptaciones previstas y que explique qué sucede cuando una integración falla. La empresa debe validar privacidad, permisos y responsabilidades con sus equipos internos. Si estás evaluando IA Empleado, empieza por un flujo acotado y solicita una revisión de requisitos para determinar qué controles pueden configurarse y cuáles necesitarían desarrollo adicional.",
+            "Ejemplo de aplicación: imagina un proceso de soporte por correo que recibe un caso ambiguo. El equipo debe acordar por escrito el dato que falta, la persona que lo puede confirmar y la acción que permanecerá bloqueada. Si una revisión no puede resolverlo, registra la razón y el siguiente destino en vez de cerrar el caso artificialmente. Prueba el procedimiento con datos sintéticos y revisa que las personas autorizadas puedan encontrar el historial. El diseño debe seguir funcionando cuando la IA no ofrece una respuesta útil; esa es precisamente la finalidad de una cola de excepciones bien gobernada."
+          ],
+          "en": [
+            "Before buying or expanding a solution, request a demonstration covering case intake, assignment, approval, rejection, reconciliation, audit history and closure. Ask the vendor to distinguish demonstrable functions from proposed adaptations and explain what happens when an integration fails. The business must validate privacy, permissions and accountability with its internal teams. When evaluating IA Empleado, start with a bounded workflow and request a requirements review to determine which controls can be configured and which would need additional work.",
+            "Consider a shared inbox support workflow receiving an ambiguous case. The team should document the missing evidence, the person authorised to confirm it and the action that must remain blocked. If review cannot resolve the issue, record why and where the case goes next instead of artificially closing it. Rehearse the procedure with synthetic data and check that authorised reviewers can locate the history. The design must continue to work when the AI cannot provide a useful answer; that is the purpose of a governed exception queue."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Diferencia excepciones empresariales, errores técnicos y aprobaciones.",
+        "Conserva referencias y decisiones sin duplicar datos sensibles.",
+        "Asigna responsables, estados y criterios de cierre verificables.",
+        "Prueba duplicados, fallos y recuperación con datos sintéticos.",
+        "Solicita una evaluación del proceso antes de asumir capacidades de despliegue."
+      ],
+      "en": [
+        "Separate business exceptions, technical failures and approvals.",
+        "Preserve references and decisions without duplicating sensitive data.",
+        "Assign owners, states and verifiable closure criteria.",
+        "Test duplicates, failures and recovery with synthetic data.",
+        "Request a workflow assessment before assuming deployment capabilities."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-11-21",
+    "updatedAt": "2026-11-21",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "cola de excepciones para agentes IA",
+        "en": "AI agent exception queue design"
+      },
+      "supportingKeywords": {
+        "es": [
+          "gestionar excepciones automatización IA",
+          "revisión humana de casos IA",
+          "bandeja de excepciones procesos empresariales",
+          "flujo de aprobación agentes IA"
+        ],
+        "en": [
+          "AI workflow exception handling",
+          "human review queue for AI agents",
+          "AI agent exception management",
+          "business process exception routing"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "ai-workflow-exception-management",
+      "canonicalRole": "support",
+      "conversionRole": "evaluation",
+      "researchBasis": [
+        "2026-11-21: researched workflow exception management as an operational design intent separate from rollback, UAT, CRM permissions and human support handoff; source references https://www.nist.gov/itl/ai-risk-management-framework and https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html.",
+        "2026-11-21: checked docs/SEO_GEO_CONTENT_OWNERSHIP.md and docs/PRODUCT_CONTEXT.md; commercial owner ai-employees-smb. No product-specific queue feature or guaranteed result is claimed.",
+        "2026-11-21: ES/EN queries defined separately; no GSC or Semrush volume or ranking data claimed."
+      ]
+    }
+  }
+]
