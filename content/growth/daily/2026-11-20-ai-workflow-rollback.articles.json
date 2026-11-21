@@ -1,0 +1,247 @@
+[
+  {
+    "key": "ai-employee-workflow-rollback-runbook",
+    "slugs": {
+      "es": "plan-reversion-automatizaciones-empleados-ia",
+      "en": "ai-employee-workflow-rollback-runbook"
+    },
+    "seoTitle": {
+      "es": "Plan de reversión de empleados IA: guía operativa | IA Empleado",
+      "en": "AI employee rollback plan: operational runbook | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Cómo detener y recuperar workflows con empleados IA: pausa, revocación, tareas pendientes, fallback humano y reactivación.",
+      "en": "Build an AI employee rollback runbook covering pause, revocation, pending work, human fallback and safe restart."
+    },
+    "title": {
+      "es": "Plan de reversión de automatizaciones con empleados IA: runbook práctico",
+      "en": "AI employee workflow rollback: a practical operational runbook"
+    },
+    "excerpt": {
+      "es": "Una guía para diseñar el procedimiento de parada y recuperación de procesos con empleados IA sin perder control humano.",
+      "en": "A guide to stopping and recovering AI employee workflows while retaining human operational control."
+    },
+    "intro": {
+      "es": "Antes de poner en marcha un empleado IA conviene definir cómo se detiene el trabajo si aparece una incidencia. Este runbook educativo diferencia pausa, aislamiento, conciliación de tareas y recuperación. Propone pruebas concretas para equipos de operaciones y seguridad, sin asumir que cualquier acción externa puede revertirse. La disponibilidad de controles depende de cada despliegue e integración.",
+      "en": "Before launching an AI employee, define how work will stop if something goes wrong. This educational runbook distinguishes pause, isolation, task reconciliation and recovery. It proposes concrete tests for operations and security teams without assuming that every external action can be reversed. Available controls depend on each deployment and integration."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Qué significa revertir una automatización con IA",
+          "en": "What rollback means for an AI workflow"
+        },
+        "paragraphs": {
+          "es": [
+            "Revertir un empleado IA no consiste únicamente en apagar una pantalla. Un proceso puede haber consultado datos, preparado borradores, solicitado aprobaciones o ejecutado una acción permitida en una aplicación empresarial. El plan debe distinguir detener nuevas ejecuciones, cancelar trabajos en curso, revocar credenciales, restaurar configuraciones y reparar efectos ya producidos. Por ejemplo, si un flujo prepara respuestas de soporte, detenerlo evita nuevos borradores, pero no retira automáticamente un mensaje que una persona ya envió. Define por escrito el estado seguro de cada etapa. El propietario del proceso debe decidir qué trabajos pueden completarse y cuáles requieren revisión. Nunca supongas que una acción externa es reversible solo porque el agente conserva un historial. El objetivo es recuperar control operativo y mantener evidencia verificable."
+          ],
+          "en": [
+            "Rolling back an AI employee is not simply switching off a dashboard. A workflow may have read records, prepared drafts, requested approval or executed a permitted action in another business application. The plan must distinguish stopping new executions, cancelling active jobs, revoking credentials, restoring configuration and repairing effects that have already occurred. For example, stopping a support drafting workflow prevents new drafts but does not retract a message a person has already sent. Document a safe state for every stage. The business process owner decides which work may finish and which items need review. Never assume an external action is reversible merely because an agent retains an activity history. The objective is to regain operational control while preserving evidence."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Definir el alcance y las dependencias",
+          "en": "Define scope and dependencies"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza con una ficha de una página que identifique el evento de entrada, las fuentes de información, las herramientas autorizadas, el responsable humano y la salida de negocio. Dibuja las dependencias: CRM, bandeja de correo, base documental, sistema de tickets y cualquier cola de trabajo. Indica qué servicio sigue funcionando cuando el empleado IA se detiene. Una integración de lectura puede desconectarse sin modificar registros; una integración que actualiza estados exige verificar escrituras pendientes. Evita un interruptor global si varias operaciones comparten infraestructura y una suspensión indiscriminada afectaría a equipos no implicados. Documenta las dependencias conocidas y los límites desconocidos antes del piloto. Esta ficha facilita que operaciones, seguridad y proveedor hablen del mismo flujo, no de una abstracción denominada inteligencia artificial."
+          ],
+          "en": [
+            "Begin with a one-page record of the trigger, information sources, authorized tools, accountable human owner and business output. Map dependencies such as CRM, shared inbox, document store, ticketing platform and work queue. State which services continue operating when the AI employee stops. A read-only integration may be disconnected without changing records, while a workflow that updates statuses needs a pending-write review. Avoid a global kill switch if multiple operations share infrastructure and indiscriminate suspension would affect unrelated teams. Document known dependencies and unknown boundaries before the pilot. This record allows operations, security and the implementation partner to discuss the same bounded workflow rather than an abstract system called artificial intelligence."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Fijar disparadores de parada",
+          "en": "Set explicit stop triggers"
+        },
+        "paragraphs": {
+          "es": [
+            "No esperes a una incidencia grave para decidir cuándo detener. Establece disparadores observables: acceso denegado repetido, cambios inesperados de permisos, resultados fuera del formato acordado, volumen anómalo de tareas, errores de integración o una aprobación humana ausente. Un disparador no equivale siempre a incidente de seguridad; puede ser una señal de calidad que exige pasar a modo manual. Para cada señal define quién la revisa, cuánto tiempo puede permanecer pendiente y qué evidencia conservar. Evita umbrales inventados: el equipo debe fijarlos durante pruebas con datos representativos y según el riesgo del proceso. Si el indicador no se puede medir de forma fiable, registra una comprobación humana explícita en lugar de presentar una alerta automática ficticia."
+          ],
+          "en": [
+            "Do not wait for a serious incident to decide when to stop. Establish observable triggers: repeated denied access, unexpected permission changes, outputs outside the agreed format, abnormal task volume, integration errors or a missing human approval. A trigger does not always indicate a security incident; it may be a quality signal requiring a switch to manual handling. For each signal identify the reviewer, the acceptable waiting period and the evidence to preserve. Avoid invented thresholds: the team should set them during representative testing according to the workflow risk. If an indicator cannot be measured reliably, document an explicit human check rather than claiming an automated alert exists."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Separar pausa, aislamiento y retirada",
+          "en": "Separate pause, isolation and retirement"
+        },
+        "paragraphs": {
+          "es": [
+            "Una pausa impide iniciar nuevas tareas; el aislamiento corta accesos o rutas de ejecución comprometidas; la retirada elimina la operación de forma controlada. Son decisiones distintas. Si un conector devuelve errores temporales, puede bastar una pausa y una cola de revisión. Si se sospecha exposición de datos, el responsable de seguridad puede exigir aislamiento y revocación inmediata. Si la automatización deja de ser útil, se planifica una retirada con archivo de evidencias y transferencia de responsabilidades. Define quién autoriza cada transición y cómo se confirma su ejecución. Un mensaje en una interfaz no demuestra por sí solo que las credenciales estén revocadas. Comprueba el estado en el sistema que concede realmente el acceso."
+          ],
+          "en": [
+            "A pause prevents new tasks from starting; isolation removes compromised access or execution paths; retirement decommissions the workflow in a controlled way. These are different decisions. If a connector has temporary errors, a pause and review queue may be sufficient. If data exposure is suspected, the security owner may require immediate isolation and credential revocation. If automation no longer provides value, plan retirement with evidence retention and ownership transfer. Define who authorizes each transition and how completion is confirmed. A message in an interface does not by itself prove credentials have been revoked. Verify the actual access state in the system that grants permissions."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Gestionar trabajos en vuelo",
+          "en": "Handle in-flight work"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de desconectar, enumera tareas iniciadas, borradores preparados, llamadas pendientes y solicitudes de aprobación. Identifica un identificador de operación para que una persona pueda reconciliar cada elemento sin crear duplicados. No reintentes a ciegas una escritura cuyo resultado sea desconocido: primero consulta el sistema de destino y comprueba si ya se aplicó. En un proceso de facturación, por ejemplo, el equipo financiero debe confirmar el estado real de una factura antes de repetir cualquier actualización. Clasifica los trabajos en completado, pendiente de verificación, cancelado y transferido a humano. Mantén visible quién decide la disposición final de cada uno. La recuperación correcta no se mide por reiniciar rápido, sino por evitar pérdida o duplicación de operaciones."
+          ],
+          "en": [
+            "Before disconnecting, enumerate started tasks, prepared drafts, pending tool calls and approval requests. Give each operation a reference so a person can reconcile it without creating duplicates. Never blindly retry a write whose outcome is unknown: inspect the destination system first and establish whether the change already happened. In an invoicing workflow, for example, finance should confirm the actual invoice state before repeating any update. Classify work as completed, awaiting verification, cancelled or transferred to a human. Make the person responsible for final disposition visible. Correct recovery is not measured only by restart speed; it is measured by preventing lost or duplicated operations."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Conservar evidencia sin exponer datos",
+          "en": "Preserve evidence without exposing data"
+        },
+        "paragraphs": {
+          "es": [
+            "Un registro útil identifica momento, actor, herramienta, acción solicitada, decisión de autorización, resultado y correlación con el caso de negocio. No exige copiar indiscriminadamente documentos personales o secretos en un informe. Establece una política de retención apropiada y acceso restringido, con responsables definidos. Cuando se investiga un fallo, preserva referencias y hashes si son adecuados, pero evita reproducir credenciales, tokens o datos sensibles en comentarios públicos de incidencias. Comprueba qué datos almacenan los proveedores y qué exportación permite el contrato. Si falta una traza necesaria, declara esa limitación y reconstruye los hechos con sistemas de origen. Una cronología verificable ayuda tanto a resolver la incidencia como a mejorar las pruebas posteriores."
+          ],
+          "en": [
+            "A useful record identifies time, actor, tool, requested action, authorization decision, result and correlation to the business case. It does not require indiscriminately copying personal documents or secrets into an incident report. Establish an appropriate retention policy, restricted access and accountable owners. During investigation preserve references and hashes where suitable, but avoid reproducing credentials, tokens or sensitive data in public issue comments. Check what each provider stores and what the contract permits exporting. If a necessary trace is missing, disclose that limitation and reconstruct events from source systems. A verifiable timeline helps both incident resolution and later acceptance testing."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Diseñar la alternativa manual",
+          "en": "Design the manual fallback"
+        },
+        "paragraphs": {
+          "es": [
+            "El plan de reversión debe explicar cómo continúa el trabajo sin IA. Identifica una bandeja de entrada, un responsable de turno, un criterio de prioridad y una plantilla de respuesta o registro. En atención al cliente, un supervisor puede asumir los tickets pendientes con su historial permitido y decidir cuáles necesitan comunicación inmediata. En operaciones administrativas, el equipo puede volver temporalmente a una lista controlada de tareas. Evita trasladar a una persona un volumen imposible sin reasignar capacidad. Prueba el procedimiento con el mismo tipo de solicitudes que procesa el empleado IA y documenta cuánto esfuerzo humano requiere, sin inventar ahorros. El fallback debe poder ejecutarse aunque el panel del agente no esté disponible."
+          ],
+          "en": [
+            "The rollback plan must explain how work continues without AI. Identify an intake queue, on-duty owner, priority rule and response or record template. In customer support, a supervisor may take over pending tickets with permitted context and decide which require immediate communication. In administrative operations, the team may temporarily return to a controlled task register. Avoid assigning an impossible volume to one person without allocating capacity. Test the procedure with the same types of requests the AI employee handles and document actual human effort without inventing savings. The fallback must remain usable even when the agent dashboard is unavailable."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Restaurar configuraciones con control de cambios",
+          "en": "Restore configuration under change control"
+        },
+        "paragraphs": {
+          "es": [
+            "Guarda versiones aprobadas de instrucciones operativas, conectores, reglas de autorización y parámetros relevantes, sin almacenar secretos en archivos editoriales. Una reversión de configuración debe identificar la versión anterior conocida, el motivo del cambio, la persona que aprueba y la prueba de funcionamiento posterior. No confundas restaurar una configuración con deshacer una transacción ya aplicada en un sistema externo. Si un cambio de esquema afecta al CRM, valida compatibilidad antes de recuperar una versión antigua. Usa un entorno de pruebas o datos sintéticos cuando sea posible. Registra cualquier diferencia que impida una restauración idéntica y establece una alternativa manual. La gestión de versiones reduce incertidumbre, pero no sustituye la supervisión de negocio."
+          ],
+          "en": [
+            "Keep approved versions of operational instructions, connectors, authorization rules and relevant parameters without storing secrets in editorial files. A configuration rollback should identify the last known good version, reason for the change, approving person and subsequent functional test. Do not confuse restoring configuration with undoing a transaction already committed in an external system. If a schema change affects CRM, validate compatibility before restoring an older version. Use a test environment or synthetic data where possible. Record any difference that prevents an identical restoration and establish a manual alternative. Version management reduces uncertainty but does not replace business oversight."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Probar revocación y límites de herramientas",
+          "en": "Test revocation and tool boundaries"
+        },
+        "paragraphs": {
+          "es": [
+            "Ejecuta pruebas negativas: una cuenta revocada no debe poder consultar registros, un flujo pausado no debe iniciar nuevas escrituras y una solicitud fuera de alcance debe quedar denegada por el servicio de destino. No basta con pedir al modelo que ignore una herramienta; la autorización debe aplicarse fuera del texto de la conversación. Incluye un caso de instrucciones maliciosas insertadas en un documento recuperado y comprueba que no alteren las reglas de ejecución. Si un proveedor no expone controles suficientes para la prueba, registra el riesgo y restringe el caso de uso. Repite estas comprobaciones después de cambios de permisos o integraciones. El resultado debe incluir evidencia de denegación, no solo una declaración de que la prueba pasó."
+          ],
+          "en": [
+            "Run negative tests: a revoked identity must not read records, a paused workflow must not start new writes and an out-of-scope request must be denied by the destination service. Asking a model to ignore a tool is insufficient; authorization must be enforced outside conversation text. Include a case with malicious instructions embedded in a retrieved document and confirm that they do not override execution rules. If a provider lacks controls needed for the test, record the risk and narrow the use case. Repeat these checks after permission or integration changes. Evidence should show actual denial, not merely a statement that the test passed."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Definir criterios de reactivación",
+          "en": "Define restart criteria"
+        },
+        "paragraphs": {
+          "es": [
+            "Reactivar exige algo más que ausencia de errores durante unos minutos. El responsable debe confirmar causa identificada o riesgo contenido, accesos revisados, tareas pendientes reconciliadas, pruebas de aceptación repetidas y fallback todavía disponible. Para procesos con efectos económicos o datos personales, exige aprobación explícita de quien tenga autoridad. Empieza con un alcance limitado y observa resultados antes de recuperar el volumen normal. Si la causa sigue sin conocerse, documenta la incertidumbre y considera mantener la ejecución manual. No publiques porcentajes de éxito sin medición propia. Una lista de criterios firmada permite distinguir una reanudación controlada de una decisión impulsiva tomada por presión operativa."
+          ],
+          "en": [
+            "Restarting requires more than a few error-free minutes. The accountable owner should confirm an identified cause or contained risk, reviewed access, reconciled pending work, repeated acceptance tests and a still-available fallback. For processes affecting money or personal data, require explicit approval from an authorized person. Resume with limited scope and observe outcomes before returning to normal volume. If the cause remains unknown, document uncertainty and consider continued manual operation. Do not publish success percentages without actual measurement. A signed set of criteria distinguishes a controlled restart from an impulsive decision under operational pressure."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Medir recuperación sin promesas ficticias",
+          "en": "Measure recovery without fictional promises"
+        },
+        "paragraphs": {
+          "es": [
+            "Define indicadores que el equipo pueda observar: tiempo desde detección hasta pausa efectiva, número de trabajos pendientes de conciliación, acciones externas confirmadas, casos transferidos a humanos y tiempo hasta autorización de reinicio. Añade el porcentaje de tareas revisadas solo cuando exista denominador y registro fiables. Segmenta por tipo de workflow porque una respuesta de soporte no tiene el mismo riesgo que una actualización financiera. Recoge una línea base manual antes de comparar automatización y recuperación. Presenta estos indicadores como propuesta de seguimiento, no como métricas alcanzadas por IA Empleado. La finalidad es aprender dónde falla el proceso y qué controles necesitan mejorarse antes de ampliar el despliegue."
+          ],
+          "en": [
+            "Define indicators the team can actually observe: time from detection to effective pause, number of tasks awaiting reconciliation, confirmed external actions, cases handed to people and time until restart approval. Add a reviewed-task percentage only when the denominator and record are reliable. Segment by workflow because a support response does not carry the same risk as a financial update. Establish a manual baseline before comparing automated and recovery operations. Present these as suggested measures, not results achieved by IA Empleado. The purpose is to learn where the process fails and which controls need improvement before deployment expands."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Convertir el simulacro en decisión de compra",
+          "en": "Turn the drill into a purchasing decision"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de contratar, pide al proveedor una demostración del procedimiento sobre un caso acotado y datos sintéticos: detener una tarea, inspeccionar la cola, retirar un permiso, transferir un caso a humano y volver a ejecutar una prueba. Pregunta qué controles existen de forma nativa, cuáles requieren desarrollo de integración y qué evidencias se entregan. Solicita que operaciones y seguridad validen el resultado conjuntamente. IA Empleado plantea empleados digitales para workflows delimitados con políticas y supervisión, pero cada integración concreta requiere confirmar alcance y capacidades. La guía complementa la evaluación comercial de empleados IA; no sustituye el contrato técnico ni garantiza que una acción irreversible pueda deshacerse. El siguiente paso razonable es evaluar un proceso real con límites y responsables definidos."
+          ],
+          "en": [
+            "Before purchasing, ask the provider to demonstrate the procedure on a bounded case with synthetic data: stop a task, inspect the queue, remove a permission, hand a case to a person and repeat an acceptance test. Ask which controls are native, which require integration development and what evidence will be delivered. Have operations and security validate the outcome together. IA Empleado describes digital workers for bounded workflows with policies and oversight, but each specific integration requires scope and capability confirmation. This guide complements commercial AI employee evaluation; it does not replace a technical agreement or guarantee an irreversible action can be undone. A sensible next step is to assess one real process with defined boundaries and accountable owners."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Documenta el estado seguro de cada etapa y el responsable humano.",
+        "Distingue pausa, aislamiento, revocación y reparación de efectos externos.",
+        "Concilia trabajos en vuelo antes de cualquier reintento.",
+        "Prueba el fallback manual y la autorización real de herramientas.",
+        "Reinicia solo tras pruebas y aprobación explícita."
+      ],
+      "en": [
+        "Document a safe state and accountable human for each stage.",
+        "Distinguish pause, isolation, revocation and repair of external effects.",
+        "Reconcile in-flight work before retrying anything.",
+        "Test manual fallback and actual tool authorization.",
+        "Restart only after tests and explicit approval."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-11-20",
+    "updatedAt": "2026-11-20",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "plan de reversión automatizaciones IA",
+        "en": "AI agent workflow rollback plan"
+      },
+      "supportingKeywords": {
+        "es": [
+          "cómo detener un agente IA empresarial",
+          "protocolo de recuperación empleados IA",
+          "fallback manual automatización IA",
+          "revocación accesos agente IA"
+        ],
+        "en": [
+          "AI agent rollback runbook",
+          "AI workflow emergency stop procedure",
+          "human fallback for AI agents",
+          "AI agent recovery checklist"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "ai-workflow-operational-resilience",
+      "canonicalRole": "support",
+      "conversionRole": "evaluation",
+      "researchBasis": [
+        "2026-11-20: Ownership and product scope reviewed in docs/SEO_GEO_CONTENT_OWNERSHIP.md and docs/PRODUCT_CONTEXT.md; distinct operational rollback intent from vendor selection, CRM permission matrix and acceptance testing.",
+        "2026-11-20: NIST AI Risk Management Framework https://www.nist.gov/itl/ai-risk-management-framework and NIST AI RMF Playbook https://airc.nist.gov/airmf-resources/playbook/ inform operational risk response and oversight.",
+        "2026-11-20: OWASP AI Agent Security Cheat Sheet https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html informs tool access boundaries and safe execution. No ranking, search volume or certified product controls claimed."
+      ]
+    }
+  }
+]
