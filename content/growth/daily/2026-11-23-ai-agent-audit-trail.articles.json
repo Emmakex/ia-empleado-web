@@ -1,0 +1,271 @@
+[
+  {
+    "key": "ai-agent-operational-audit-evidence",
+    "slugs": {
+      "es": "registro-auditoria-operaciones-agentes-ia",
+      "en": "ai-agent-operational-audit-trail-guide"
+    },
+    "seoTitle": {
+      "es": "Registro de auditoría de agentes IA: guía operativa | IA Empleado",
+      "en": "AI agent audit trail: operational evidence guide | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Diseña un registro de decisiones, aprobaciones y acciones de agentes IA sin duplicar datos sensibles.",
+      "en": "Design evidence for AI agent decisions, approvals and tool actions without copying sensitive data."
+    },
+    "title": {
+      "es": "Cómo diseñar un registro de auditoría de operaciones con agentes IA",
+      "en": "How to design an operational audit trail for AI agents"
+    },
+    "excerpt": {
+      "es": "Campos, ejemplos y pruebas para reconstruir qué hizo un agente IA y quién autorizó cada acción.",
+      "en": "Fields, examples and tests for reconstructing what an AI agent did and who authorised each action."
+    },
+    "intro": {
+      "es": "Un registro de auditoría de agentes IA conecta solicitudes, permisos, decisiones humanas y efectos reales en los sistemas. Esta guía propone un método de diseño para empresas; no afirma que IA Empleado incluya por defecto almacenamiento inmutable, certificaciones o conectores específicos.",
+      "en": "An AI agent audit trail connects requests, permissions, human decisions and actual effects in business systems. This is a practical design method, not a claim that IA Empleado automatically provides immutable storage, certifications or particular connectors."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Delimitar la decisión y el alcance",
+          "en": "Scope the decision and its boundaries"
+        },
+        "paragraphs": {
+          "es": [
+            "Un registro útil comienza antes de la ejecución: identifica el proceso, la finalidad, el sistema afectado y la acción que se espera del empleado IA. Diferencia una recomendación de una modificación irreversible. El propietario del proceso debe aprobar qué operaciones están permitidas, cuáles exigen revisión humana y qué datos nunca deben incorporarse al registro. No conviertas un log técnico en una copia indiscriminada de expedientes personales.",
+            "Ejemplo operativo 1: imagina un pedido B2B con stock insuficiente. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "An actionable record starts before execution: name the process, business purpose, affected system and expected agent action. Distinguish a recommendation from an irreversible mutation. The process owner should approve allowed operations, actions requiring human review and information that must never be copied into the audit record. A technical log should not become an uncontrolled duplicate of customer files.",
+            "Operational exercise 1: consider a B2B order with insufficient stock. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Identificar al actor y su delegación",
+          "en": "Identify the actor and delegation"
+        },
+        "paragraphs": {
+          "es": [
+            "Cada evento necesita una identidad de agente, una versión del flujo y un responsable humano identificable por un código interno. Una cuenta compartida llamada automatización no permite reconstruir quién solicitó el trabajo. Conserva el alcance de la delegación y la vigencia del permiso, pero evita guardar credenciales, tokens o secretos. La identidad de ejecución debe poder contrastarse con la identidad del sistema destino.",
+            "Ejemplo operativo 2: imagina un factura recibida sin número de proveedor. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Each event needs an agent identity, workflow version and accountable human represented by an internal reference. A shared account called automation cannot establish who initiated work. Preserve the delegation scope and its expiry, but never log credentials, tokens or secrets. The execution identity should be reconcilable with the identity recorded by the destination system.",
+            "Operational exercise 2: consider a supplier invoice missing a vendor identifier. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Crear identificadores de correlación",
+          "en": "Design correlation identifiers"
+        },
+        "paragraphs": {
+          "es": [
+            "Asigna un identificador estable a la solicitud, otro a la ejecución y otro a cada intento de herramienta. Una consulta que pasa por correo, CRM y ERP necesita poder seguirse sin depender de la hora aproximada. Vincula los eventos padre e hijo; así se distingue una acción autorizada de un reintento posterior. La correlación no justifica incluir texto completo de mensajes o documentos confidenciales.",
+            "Ejemplo operativo 3: imagina un solicitud de cambio de domicilio. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Assign stable identifiers to the request, execution and each tool attempt. Work that crosses email, CRM and ERP must remain traceable without relying on approximate timestamps. Link parent and child events so an authorised action can be distinguished from a later retry. Correlation does not require copying entire confidential messages or documents into telemetry.",
+            "Operational exercise 3: consider a request to change a customer address. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Registrar la regla y la versión",
+          "en": "Record policy and version"
+        },
+        "paragraphs": {
+          "es": [
+            "Guarda qué regla autorizó o bloqueó una acción y cuál era su versión cuando se tomó la decisión. Una etiqueta genérica como permitido no explica por qué se aceptó un cambio de estado. Incluye el tipo de operación, el nivel de riesgo y la condición aplicada. Cuando cambie la política, conserva la referencia histórica para que una revisión no juzgue el pasado con reglas nuevas.",
+            "Ejemplo operativo 4: imagina un reembolso que supera el límite delegado. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Record the rule that allowed or denied an action and its version at decision time. A generic allowed label cannot explain why a status change was accepted. Include operation type, risk category and the condition evaluated. When policies change, retain historical references so reviewers do not apply today's rules retrospectively to an earlier event.",
+            "Operational exercise 4: consider a refund above the delegated threshold. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Separar propuesta, aprobación y ejecución",
+          "en": "Separate proposal, approval and execution"
+        },
+        "paragraphs": {
+          "es": [
+            "Una propuesta del agente no equivale a una operación ejecutada. Registra tres momentos distintos: lo solicitado, la decisión humana cuando corresponda y el resultado confirmado por el sistema de destino. Si la persona rechaza la propuesta, la cadena debe mostrar que no se produjo ningún efecto posterior. La aprobación necesita identidad, instante, alcance y caducidad, no solo un botón pulsado.",
+            "Ejemplo operativo 5: imagina un correo con dos clientes mezclados. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "An agent proposal is not an executed operation. Record three distinct stages: the requested change, the human decision where required and the result confirmed by the destination system. If a reviewer rejects the proposal, the trail must show that no subsequent effect occurred. Approval needs an identity, timestamp, scope and expiry rather than a bare button click.",
+            "Operational exercise 5: consider a email mixing two customers. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Documentar lecturas y escrituras",
+          "en": "Document reads and writes"
+        },
+        "paragraphs": {
+          "es": [
+            "No todas las llamadas tienen el mismo impacto. Una búsqueda de cliente, una actualización de dirección y la emisión de un reembolso deben clasificarse por separado. Conserva el nombre de la herramienta, el tipo de operación, un identificador de recurso y un resultado mínimo. Redacta o resume los parámetros sensibles; no guardes tarjetas, contraseñas ni datos personales completos para facilitar una auditoría.",
+            "Ejemplo operativo 6: imagina un ticket con adjunto sensible. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Not all tool calls carry the same impact. A customer lookup, address update and refund must be classified separately. Keep the tool name, operation type, resource reference and minimal outcome. Redact or summarise sensitive parameters; do not store card numbers, passwords or complete personal records merely to make audits convenient.",
+            "Operational exercise 6: consider a support ticket with a sensitive attachment. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Tratar errores y resultados inciertos",
+          "en": "Handle failures and uncertain outcomes"
+        },
+        "paragraphs": {
+          "es": [
+            "Una respuesta de red interrumpida no demuestra que la operación haya fallado. Registra el estado desconocido y consulta el sistema de destino antes de repetir una escritura. Para pedidos y facturas, relaciona el intento con una clave de idempotencia o un identificador de negocio. Si la confirmación sigue ausente, asigna la incidencia a una persona; nunca fabriques un éxito para cerrar la cola.",
+            "Ejemplo operativo 7: imagina un pedido reenviado tras un timeout. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "A dropped network response does not prove that an operation failed. Record the unknown state and query the destination before retrying a write. For orders and invoices, connect the attempt to an idempotency key or business identifier. If confirmation remains unavailable, assign the exception to a person rather than manufacturing success to clear a queue.",
+            "Operational exercise 7: consider a order resent after a timeout. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Proteger privacidad y conservación",
+          "en": "Protect privacy and retention"
+        },
+        "paragraphs": {
+          "es": [
+            "La trazabilidad debe ser proporcional. Define qué campos se necesitan, quién puede consultar el historial, cuánto tiempo se conserva y cómo se eliminan datos cuando procede. Separa registros operativos de contenido personal y aplica controles de acceso por función. Una auditoría no requiere almacenar prompts completos de todos los clientes; muchas veces bastan referencias, categorías y evidencias minimizadas.",
+            "Ejemplo operativo 8: imagina un solicitud de borrado de datos. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Traceability must remain proportionate. Define necessary fields, who may inspect history, retention periods and deletion processes where appropriate. Separate operational events from personal content and enforce role-based access. An audit does not require retaining every customer's complete prompt; references, categories and minimised evidence often suffice for the stated purpose.",
+            "Operational exercise 8: consider a personal data deletion request. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Comprobar integridad y cambios",
+          "en": "Check integrity and alterations"
+        },
+        "paragraphs": {
+          "es": [
+            "Los registros editables sin historial pueden ocultar errores. Diseña controles de integridad apropiados al riesgo: almacenamiento restringido, exportaciones versionadas, comprobaciones de cambios o cadenas verificables cuando el contexto lo justifique. No afirmes que un archivo es inmutable solo porque está en una base de datos. Prueba que una modificación indebida se detecta y que existe un procedimiento de investigación.",
+            "Ejemplo operativo 9: imagina un cambio inesperado de permisos. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Editable logs without history can conceal errors. Choose integrity controls proportionate to risk: restricted storage, versioned exports, change detection or verifiable chains where justified. Do not call a database record immutable simply because it is stored. Test whether unauthorised modification can be detected and whether an investigation procedure actually exists.",
+            "Operational exercise 9: consider a unexpected permission change. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Reconstruir un caso de extremo a extremo",
+          "en": "Reconstruct an end-to-end case"
+        },
+        "paragraphs": {
+          "es": [
+            "Selecciona una operación sintética y pide a alguien ajeno al desarrollo que reconstruya quién la inició, qué datos consultó, qué regla se aplicó, quién aprobó y qué confirmó el ERP. La persona revisora debe encontrar también los intentos denegados y las excepciones. Si necesita pedir capturas por chat o confiar en recuerdos, faltan vínculos o campos en el modelo de evidencia.",
+            "Ejemplo operativo 10: imagina un factura duplicada en el ERP. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Select a synthetic operation and ask someone outside development to reconstruct who initiated it, which records were consulted, what rule applied, who approved and what the ERP confirmed. The reviewer should also find denied attempts and exceptions. If screenshots from private chats or someone's memory are required, the evidence model is missing links or fields.",
+            "Operational exercise 10: consider a duplicate invoice in the ERP. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Definir métricas de auditabilidad",
+          "en": "Define auditability measures"
+        },
+        "paragraphs": {
+          "es": [
+            "Mide la proporción de operaciones con identificador correlacionable, aprobaciones vinculadas, resultados confirmados y excepciones asignadas. Añade el tiempo necesario para reconstruir un caso y el número de escrituras de estado incierto. No confundas volumen de logs con calidad de evidencia. Establece umbrales internos con el propietario del proceso y revisa muestras reales antes de aumentar autonomía.",
+            "Ejemplo operativo 11: imagina un aprobación fuera del horario acordado. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Measure the share of operations with correlatable identifiers, linked approvals, confirmed outcomes and assigned exceptions. Track time to reconstruct a case and the number of writes with uncertain state. Log volume is not evidence quality. Agree internal thresholds with the process owner and inspect representative samples before increasing operational autonomy.",
+            "Operational exercise 11: consider a approval outside the agreed review window. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Convertir el diseño en un piloto controlado",
+          "en": "Turn the design into a controlled pilot"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza con un proceso acotado y datos sintéticos. Dibuja una ficha de evidencia con solicitud, regla, propuesta, aprobación, ejecución y resultado; ensaya también rechazo, error y repetición. Una persona responsable debe firmar los criterios de salida y decidir si el flujo puede ampliarse. Para evaluar la aplicación al negocio, relaciona esta guía con empleados IA para pymes y solicita una demostración del proceso concreto.",
+            "Ejemplo operativo 12: imagina un alta de cliente con datos incompletos. Antes de permitir cualquier escritura, prepara una ficha con referencia ficticia, responsable del proceso, permiso esperado, evidencia de la decisión y resultado comprobable. Ejecuta una variante autorizada y otra bloqueada. El registro debe mostrar ambas rutas, incluso si el sistema externo no responde. Una persona distinta del operador revisa la cadena, identifica la primera divergencia y decide si hay que detener el flujo. Anota qué información habría sido excesiva y elimínala del diseño antes de pasar a datos reales."
+          ],
+          "en": [
+            "Start with one bounded process and synthetic records. Draft an evidence sheet covering request, rule, proposal, approval, execution and outcome; rehearse rejection, error and retry as well. An accountable person should sign the exit criteria and decide whether the workflow may expand. To assess fit for a real business, connect this guide to AI employees for small businesses and request a demonstration of the specific process.",
+            "Operational exercise 12: consider a customer onboarding with missing details. Before allowing any write, prepare a case sheet with a fictional reference, process owner, expected permission, decision evidence and independently verifiable outcome. Run both an authorised and a denied variation. The record must explain both paths even if the external system times out. A reviewer other than the operator inspects the chain, identifies the first divergence and decides whether to pause the workflow. Note which details were excessive and remove them from the evidence design before introducing live records."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Relaciona cada ejecución con una identidad y un propietario humano.",
+        "Distingue propuesta, aprobación, ejecución y resultado confirmado.",
+        "Minimiza datos sensibles y define conservación y accesos.",
+        "Prueba errores, rechazos y reintentos con casos sintéticos.",
+        "Evalúa un proceso concreto antes de ampliar autonomía."
+      ],
+      "en": [
+        "Link every run to an identity and accountable human.",
+        "Distinguish proposals, approvals, execution and confirmed outcomes.",
+        "Minimise sensitive data and set retention and access rules.",
+        "Test denials, errors and retries with synthetic cases.",
+        "Evaluate one bounded workflow before expanding autonomy."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-11-23",
+    "updatedAt": "2026-11-23",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "registro de auditoría de agentes IA",
+        "en": "AI agent audit trail design"
+      },
+      "supportingKeywords": {
+        "es": [
+          "trazabilidad de decisiones de agentes IA",
+          "logs de automatización con IA",
+          "evidencia de aprobaciones humanas IA",
+          "auditar acciones de empleados IA"
+        ],
+        "en": [
+          "AI agent action logging",
+          "AI agent approval audit records",
+          "agent workflow traceability",
+          "AI agent operational evidence"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "ai-agent-operational-audit-evidence",
+      "canonicalRole": "support",
+      "conversionRole": "evaluation",
+      "researchBasis": [
+        "2026-11-23: ES SERP sobre trazabilidad de decisiones y EN SERP sobre audit trail design; intención operativa distinta de permisos CRM, UAT, rollback y cola de excepciones.",
+        "2026-11-23: https://github.com/OWASP/AISVS/blob/main/1.0/research/chapters/C09-Orchestration-and-Agents/C09-04-Agent-Identity-and-Audit.md ; https://microsoft.github.io/agent-governance-toolkit/tutorials/04-audit-and-compliance/ ; https://www.ismsforum.es/ficheros/descargas/gobierno-de-la-ia1762524108.pdf",
+        "2026-11-23: no se atribuyen métricas de búsqueda ni capacidades técnicas no verificadas al producto."
+      ]
+    }
+  }
+]
