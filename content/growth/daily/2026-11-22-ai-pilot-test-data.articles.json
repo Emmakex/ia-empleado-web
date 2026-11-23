@@ -1,0 +1,271 @@
+[
+  {
+    "key": "ai-employee-pilot-test-dataset-design",
+    "slugs": {
+      "es": "crear-datos-prueba-piloto-empleados-ia",
+      "en": "build-ai-employee-pilot-test-dataset"
+    },
+    "seoTitle": {
+      "es": "Datos de prueba para piloto de empleados IA | IA Empleado",
+      "en": "AI employee pilot test dataset: practical guide | IA Empleado"
+    },
+    "seoDescription": {
+      "es": "Cómo preparar casos sintéticos, excepciones y criterios de revisión para probar empleados IA sin exponer datos reales.",
+      "en": "Build synthetic test cases, exceptions and review criteria for an AI employee pilot without exposing live data."
+    },
+    "title": {
+      "es": "Cómo preparar datos de prueba para un piloto de empleados IA",
+      "en": "How to build a test dataset for an AI employee pilot"
+    },
+    "excerpt": {
+      "es": "Guía de diseño de casos sintéticos y expectativas verificables antes de conectar empleados IA a procesos reales.",
+      "en": "A guide to synthetic business cases and verifiable expectations before connecting AI employees to live workflows."
+    },
+    "intro": {
+      "es": "Un piloto útil necesita ejemplos representativos, no únicamente una demostración convincente. Esta guía explica cómo preparar datos de prueba, resultados esperados y controles humanos para procesos delimitados. No presupone que IA Empleado incluya automáticamente un generador de datasets ni una integración determinada.",
+      "en": "A useful pilot needs representative examples, not just a convincing demonstration. This guide covers test data, expected outcomes and human controls for bounded business processes. It does not imply that IA Empleado automatically includes a dataset generator or any particular integration."
+    },
+    "sections": [
+      {
+        "title": {
+          "es": "Definir el propósito del conjunto de pruebas",
+          "en": "Define the purpose of the test dataset"
+        },
+        "paragraphs": {
+          "es": [
+            "Antes de recopilar ejemplos, identifica la decisión empresarial que el empleado IA debe apoyar. Una prueba de clasificación de correo no necesita el mismo material que una conciliación de facturas. Especifica entrada, salida esperada, actor responsable y acción prohibida. La finalidad no es demostrar que el modelo responde con fluidez, sino detectar si un proceso delimitado funciona bajo las reglas de la empresa.",
+            "Ejercicio aplicado 1: en un piloto de atención al cliente, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Before collecting examples, identify the business decision the AI employee is expected to support. Email classification does not need the same evidence as invoice reconciliation. Specify the input, expected output, accountable actor and prohibited action. The goal is not to demonstrate fluent model responses; it is to discover whether a bounded process behaves within the organisation's rules.",
+            "Applied exercise 1: for a customer support pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Separar datos sintéticos de datos reales",
+          "en": "Separate synthetic from real information"
+        },
+        "paragraphs": {
+          "es": [
+            "Empieza con registros ficticios que reproduzcan formatos, relaciones y errores habituales sin copiar identidades reales. Un número de pedido inventado debe conservar la estructura que espera el sistema, pero no corresponder a una operación de cliente. Si una prueba exige datos históricos, documenta la base legal, minimiza campos, restringe accesos y obtiene la autorización pertinente antes de trasladar cualquier muestra.",
+            "Ejercicio aplicado 2: en un piloto de gestión documental, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Start with fictional records that reproduce formats, relationships and common errors without copying real identities. An invented order identifier should preserve the structure expected by the system but must not correspond to a customer transaction. If a test requires historical data, document the lawful basis, minimise fields, restrict access and obtain appropriate approval before moving any sample.",
+            "Applied exercise 2: for a document handling pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Construir casos normales y límites",
+          "en": "Build routine and boundary cases"
+        },
+        "paragraphs": {
+          "es": [
+            "Incluye solicitudes claras, documentos completos y respuestas de sistemas disponibles, pero también fechas imposibles, importes negativos, campos vacíos y referencias contradictorias. Cada caso necesita una expectativa verificable: completar, solicitar información o detenerse. Una batería formada solo por ejemplos fáciles crea una falsa sensación de preparación. Mantén un identificador estable para poder repetir la misma prueba después de un cambio.",
+            "Ejercicio aplicado 3: en un piloto de pedidos B2B, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Include clear requests, complete documents and available system responses, but also impossible dates, negative amounts, missing fields and contradictory references. Each case needs a verifiable expectation: complete, request information or stop. A suite made only of easy examples creates a misleading sense of readiness. Keep a stable identifier so the same case can be replayed after a change.",
+            "Applied exercise 3: for a B2B order pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Modelar permisos y aprobaciones",
+          "en": "Model permissions and approvals"
+        },
+        "paragraphs": {
+          "es": [
+            "Prepara una identidad de prueba con acceso de lectura y otra sin permiso de escritura. Comprueba que el empleado IA no convierte una recomendación en una modificación del CRM sin la aprobación exigida. Registra qué persona debería autorizar una acción sensible y qué evidencia quedaría. No utilices credenciales reales en ficheros de prueba ni asumas que la política del entorno de desarrollo replica producción.",
+            "Ejercicio aplicado 4: en un piloto de administración, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Prepare one test identity with read access and another without write permission. Verify that the AI employee does not turn a recommendation into a CRM modification without required approval. Record which person should authorise a sensitive action and what evidence would remain. Do not place real credentials in test fixtures or assume the development environment has production-equivalent policies.",
+            "Applied exercise 4: for a administrative pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Representar excepciones y derivaciones",
+          "en": "Represent exceptions and handoffs"
+        },
+        "paragraphs": {
+          "es": [
+            "Diseña ejemplos en los que falte una factura, un correo mezcle dos solicitudes o el cliente no pueda acreditar identidad. El resultado esperado puede ser una excepción asignada a una persona, no una respuesta automática. Anota el motivo, el contexto mínimo permitido y la acción bloqueada. Comprueba que el expediente conserva su referencia sin duplicar información personal en herramientas auxiliares.",
+            "Ejercicio aplicado 5: en un piloto de facturación, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Design examples involving a missing invoice, an email containing two requests or a customer unable to establish identity. The expected result may be an exception assigned to a person rather than an automated answer. Record the reason, minimum permitted context and blocked action. Check that the case retains its reference without duplicating personal information in auxiliary tools.",
+            "Applied exercise 5: for a invoice processing pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Probar integraciones con dobles controlados",
+          "en": "Test integrations with controlled doubles"
+        },
+        "paragraphs": {
+          "es": [
+            "Cuando el proceso depende de ERP, CRM o correo, prepara respuestas simuladas para éxito, espera, acceso denegado y error temporal. No conectes una prueba editorial a una cuenta de producción por comodidad. Define qué llamadas están permitidas, cuáles deben ser solo lectura y cómo comprobarás que no hubo escrituras accidentales. Si una integración es opcional, deja esa dependencia explícita en la ficha del caso.",
+            "Ejercicio aplicado 6: en un piloto de correo empresarial, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "When a workflow depends on ERP, CRM or email, prepare simulated responses for success, timeout, denied access and temporary failure. Do not connect a test to a production account merely for convenience. Define permitted calls, read-only calls and how you will detect accidental writes. If an integration is optional, make that dependency explicit in the case specification.",
+            "Applied exercise 6: for a shared inbox pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Detectar duplicados y reintentos",
+          "en": "Detect duplicates and retries"
+        },
+        "paragraphs": {
+          "es": [
+            "Repite un mensaje con el mismo identificador y simula una respuesta de red incierta después de crear un borrador. La expectativa debe indicar si el sistema consulta el estado anterior, bloquea el segundo intento o deriva el caso. En pedidos y facturas, duplicar una operación puede ser más grave que no completarla. No des por segura una escritura solo porque la interfaz mostró un aviso de éxito.",
+            "Ejercicio aplicado 7: en un piloto de atención al cliente, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Replay a message with the same identifier and simulate an uncertain network response after creating a draft. The expectation should say whether the system checks prior state, blocks a second attempt or routes the case for review. In orders and invoices, duplicating an operation can be more harmful than leaving it incomplete. Do not assume a write succeeded merely because the interface displayed a success message.",
+            "Applied exercise 7: for a customer support pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Incluir instrucciones adversarias",
+          "en": "Include adversarial instructions"
+        },
+        "paragraphs": {
+          "es": [
+            "Introduce en documentos ficticios frases que intenten cambiar la prioridad, revelar datos o saltarse aprobaciones. Trata esos textos como contenido externo y no como órdenes del sistema. Comprueba si el flujo mantiene límites de herramientas y registra una señal para revisión. Una prueba útil evalúa el comportamiento observable y las autorizaciones, no promete inmunidad universal ante instrucciones maliciosas.",
+            "Ejercicio aplicado 8: en un piloto de gestión documental, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Insert phrases in fictional documents that attempt to change priority, reveal data or bypass approval. Treat those phrases as external content rather than system instructions. Check whether the workflow preserves tool boundaries and records a review signal. A useful test evaluates observable behaviour and authorisation, rather than promising universal immunity from malicious instructions.",
+            "Applied exercise 8: for a document handling pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Definir criterios de evaluación por caso",
+          "en": "Define case-level evaluation criteria"
+        },
+        "paragraphs": {
+          "es": [
+            "Para cada ejemplo, escribe la respuesta aceptable antes de ejecutar la prueba. Separa exactitud de extracción, decisión de ruta, respeto de permisos y calidad de explicación. Una respuesta lingüísticamente correcta puede fallar si el agente consulta un registro indebido. Evita una única nota agregada que oculte fallos graves; marca los controles de seguridad como condiciones independientes de aceptación.",
+            "Ejercicio aplicado 9: en un piloto de pedidos B2B, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "For each example, write the acceptable outcome before running the test. Separate extraction accuracy, routing decision, permission compliance and explanation quality. A linguistically correct answer can still fail if the agent queries an unauthorised record. Avoid a single aggregate score that conceals severe failures; treat safety controls as independent acceptance conditions.",
+            "Applied exercise 9: for a B2B order pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Revisar cobertura con responsables de negocio",
+          "en": "Review coverage with business owners"
+        },
+        "paragraphs": {
+          "es": [
+            "Pide a soporte, administración o finanzas que revisen si los ejemplos representan los problemas que realmente atienden. Un técnico puede validar el formato de un documento y aun así ignorar una excepción contable habitual. Recoge desacuerdos sobre el resultado esperado y resuélvelos antes de convertir el caso en referencia. La aprobación del dataset corresponde al propietario del proceso, no al modelo que será evaluado.",
+            "Ejercicio aplicado 10: en un piloto de administración, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Ask support, administration or finance teams whether examples represent the problems they actually handle. An engineer may validate a document format yet miss a common accounting exception. Record disagreements about expected outcomes and resolve them before treating a case as a reference. Dataset approval belongs to the process owner, not the model being evaluated.",
+            "Applied exercise 10: for a administrative pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Versionar y conservar trazabilidad",
+          "en": "Version and preserve traceability"
+        },
+        "paragraphs": {
+          "es": [
+            "Asocia cada conjunto de casos con una versión, fecha, responsable y cambio de alcance. Si se modifica una regla de aprobación, registra qué ejemplos dejan de ser válidos y por qué. Mantén resultados separados de los datos de entrada para comparar ejecuciones sin reescribir expectativas retrospectivamente. El acceso al historial debe seguir la política de conservación de la empresa y no acumular datos innecesarios.",
+            "Ejercicio aplicado 11: en un piloto de facturación, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Associate each case set with a version, date, owner and scope change. If an approval rule changes, record which examples are no longer valid and why. Keep outcomes separate from inputs so runs can be compared without retrospectively rewriting expectations. Access to history must follow the organisation's retention policy rather than accumulating unnecessary information.",
+            "Applied exercise 11: for a invoice processing pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      },
+      {
+        "title": {
+          "es": "Convertir los resultados en una decisión de piloto",
+          "en": "Turn results into a pilot decision"
+        },
+        "paragraphs": {
+          "es": [
+            "Presenta al responsable una tabla de casos superados, fallidos y no ejecutados, con evidencia de cada decisión. Un fallo en permisos no se compensa con muchos aciertos de clasificación. Define correcciones, repetición de pruebas y condiciones para volver al trabajo manual. Antes de solicitar una demostración comercial, documenta las integraciones que necesita tu empresa y qué capacidades deben verificarse en su entorno específico.",
+            "Ejercicio aplicado 12: en un piloto de correo empresarial, prepara dos expedientes sintéticos con un resultado esperado y una condición de bloqueo. Entrega la ficha a una persona revisora distinta de quien la escribió. Pide que identifique qué información falta para decidir, qué evidencia debe conservarse y qué operación no puede autorizarse automáticamente. Después ejecuta el caso en un entorno aislado, compara la salida con la expectativa y registra cualquier discrepancia sin corregir silenciosamente el dato original. Esta práctica ayuda a descubrir ambigüedades del procedimiento antes de conectar el flujo a registros reales."
+          ],
+          "en": [
+            "Give the owner a table of passed, failed and unexecuted cases with evidence for each decision. A permission failure cannot be offset by numerous correct classifications. Define fixes, retesting and conditions for returning to manual work. Before requesting a commercial demonstration, document the integrations your organisation needs and which capabilities must be verified in its specific environment.",
+            "Applied exercise 12: for a shared inbox pilot, prepare two synthetic cases with an expected outcome and a blocking condition. Give the case sheet to a reviewer other than its author. Ask that person to identify the missing information, the evidence to retain and the operation that must not be authorised automatically. Then execute the case in an isolated environment, compare the output with the expectation and record discrepancies without silently rewriting the original input. This exercise reveals ambiguous operating rules before a workflow touches live business records."
+          ]
+        }
+      }
+    ],
+    "takeaways": {
+      "es": [
+        "Diseña casos sintéticos antes de usar datos reales.",
+        "Incluye límites, errores, duplicados y permisos.",
+        "Define expectativas independientes de la respuesta del modelo.",
+        "Revisa los casos con el propietario del proceso.",
+        "Evalúa un piloto con evidencias y supervisión humana."
+      ],
+      "en": [
+        "Design synthetic cases before using live records.",
+        "Include boundaries, failures, duplicates and permissions.",
+        "Define expectations independently of model responses.",
+        "Review cases with the business process owner.",
+        "Evaluate pilots with evidence and human oversight."
+      ]
+    },
+    "relatedLandingKey": "ai-employees-smb",
+    "publishedAt": "2026-11-22",
+    "updatedAt": "2026-11-22",
+    "editorial": {
+      "primaryKeyword": {
+        "es": "datos de prueba para piloto de agentes IA",
+        "en": "AI agent pilot test dataset"
+      },
+      "supportingKeywords": {
+        "es": [
+          "casos sintéticos para empleados IA",
+          "preparar piloto automatización IA",
+          "dataset de evaluación agentes IA",
+          "pruebas con datos ficticios IA"
+        ],
+        "en": [
+          "synthetic AI agent test cases",
+          "AI pilot evaluation dataset",
+          "test data for business AI agents",
+          "AI workflow pilot fixtures"
+        ]
+      },
+      "searchIntent": "informational",
+      "cluster": "ai-employee-pilot-test-data",
+      "canonicalRole": "support",
+      "conversionRole": "evaluation",
+      "researchBasis": [
+        "2026-11-22: informational intent for preparing synthetic pilot test data, distinct from acceptance testing (execution and release gate), vendor selection, permissions, rollback and exception queues.",
+        "2026-11-22: product claims constrained by docs/PRODUCT_CONTEXT.md; guidance only, no claimed built-in dataset generator. Reference guidance: https://www.nist.gov/itl/ai-risk-management-framework and https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+        "2026-11-22: ES and EN search phrases differentiated; no unverified volume, ranking or customer metrics claimed."
+      ]
+    }
+  }
+]
