@@ -8,8 +8,8 @@ import { spawnSync } from "node:child_process";
 
 const verifier = fileURLToPath(new URL("./verify-growth-production.mjs", import.meta.url));
 
-function exec(cwd, command, args) {
-  const result = spawnSync(command, args, { cwd, encoding: "utf8" });
+function exec(cwd, command, args, env = {}) {
+  const result = spawnSync(command, args, { cwd, encoding: "utf8", env: { ...process.env, ...env } });
   assert.equal(result.status, 0, result.stderr || result.stdout);
   return result.stdout;
 }
@@ -70,6 +70,29 @@ test("explicitly labels the newest-date fallback without a release parent", () =
       "https://iaempleado.com/newer-es",
       "https://iaempleado.com/en/newer-en",
     ]);
+  } finally {
+    rmSync(cwd, { recursive: true, force: true });
+  }
+});
+
+test("scheduled backlog check includes recent records without depending on HEAD diff", () => {
+  const cwd = repoFixture();
+  try {
+    writeJson(cwd, "content/growth/daily/2026-11-17-acceptance.articles.json", [
+      { key: "acceptance", slugs: { es: "aceptacion-ia", en: "ai-acceptance" },
+        updatedAt: "2026-11-17", title: { es: "Aceptación", en: "Acceptance" } },
+    ]);
+    const output = exec(cwd, process.execPath, [verifier, "--list-targets"], {
+      GROWTH_VERIFY_RECENT_DAYS: "7",
+      GROWTH_VERIFY_AS_OF: "2026-11-19",
+    });
+    const data = JSON.parse(output);
+    assert.equal(data.mode, "recent-7-days");
+    assert.deepEqual(data.urls, [
+      "https://iaempleado.com/blog/aceptacion-ia",
+      "https://iaempleado.com/en/blog/ai-acceptance",
+    ]);
+    assert.equal(data.urls.some((url) => url.includes("newer")), false);
   } finally {
     rmSync(cwd, { recursive: true, force: true });
   }

@@ -8,6 +8,9 @@ on:
       - "scripts/check-growth-content.mjs"
       - "scripts/verify-growth-production.mjs"
       - "scripts/test-verify-growth-production.mjs"
+      - "scripts/check-growth-daily-cadence.mjs"
+      - "scripts/test-check-growth-daily-cadence.mjs"
+      - ".github/workflows/growth-publication-watchdog.yml"
       - "docs/SEO_GEO_CONTENT_OWNERSHIP.md"
       - ".github/workflows/growth-content-ci.yml"
   push:
@@ -17,6 +20,9 @@ on:
       - "scripts/check-growth-content.mjs"
       - "scripts/verify-growth-production.mjs"
       - "scripts/test-verify-growth-production.mjs"
+      - "scripts/check-growth-daily-cadence.mjs"
+      - "scripts/test-check-growth-daily-cadence.mjs"
+      - ".github/workflows/growth-publication-watchdog.yml"
       - "docs/SEO_GEO_CONTENT_OWNERSHIP.md"
       - ".github/workflows/growth-content-ci.yml"
 
@@ -46,6 +52,9 @@ jobs:
 
       - name: Growth production verifier regression tests
         run: node --test scripts/test-verify-growth-production.mjs
+
+      - name: Daily publishing cadence regression tests
+        run: node --test scripts/test-check-growth-daily-cadence.mjs
 
       - name: Typecheck
         run: npm run typecheck
